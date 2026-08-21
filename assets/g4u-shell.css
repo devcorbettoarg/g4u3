@@ -57,7 +57,22 @@
 .header__heading-link { padding: 0; }
 .g4u-brand-link > .header__heading-logo-wrapper,
 .g4u-brand-link > .g4u-logo:not(.g4u-logo--forced) { display: none; }
-.g4u-brand-link > .g4u-logo--forced { display: block; }
+.header__heading-link.g4u-brand-link {
+  align-items: center;
+  display: flex;
+  min-height: 4.8rem;
+}
+
+/* Keep the custom mark independent from Dawn's optional logo setting. */
+.g4u-brand-link > .g4u-logo--forced {
+  display: block !important;
+  flex: 0 0 11.6rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.section-header .g4u-logo--forced .g4u-logo__dark { display: block; }
+.section-header .g4u-logo--forced .g4u-logo__light { display: none; }
 .g4u-logo { display: block; height: 4.8rem; overflow: hidden; position: relative; width: 11.6rem; }
 .g4u-logo img { display: block; position: absolute; }
 .g4u-logo__mark { height: 4.8rem; left: 0; top: 0; width: 4.3rem; }
