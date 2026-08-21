@@ -1,0 +1,74 @@
+<script src="{{ 'g4u-combo-builder.js' | asset_url }}" defer="defer"></script>
+
+<section class="g4u-combo" aria-labelledby="ComboTitle-{{ section.id }}">
+  <combo-builder class="g4u-combo__inner" data-cart-add-url="{{ routes.cart_add_url }}">
+    <header class="g4u-combo__header">
+      <p>{{ section.settings.eyebrow | escape }}</p>
+      <h1 id="ComboTitle-{{ section.id }}">{{ section.settings.title | escape }}</h1>
+      <div class="rte">{{ section.settings.description }}</div>
+    </header>
+
+    <div class="g4u-combo__tabs" role="tablist" aria-label="{{ section.settings.title | escape }}">
+      {%- assign groups = 'Panes,Snacks' | split: ',' -%}
+      {%- for group in groups -%}
+        <button class="g4u-combo__tab{% if forloop.first %} is-active{% endif %}" type="button" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-combo-tab="{{ group | handleize }}">{{ group }}</button>
+      {%- endfor -%}
+    </div>
+
+    <div class="g4u-combo__products">
+      {%- for block in section.blocks -%}
+        {%- assign product = block.settings.product -%}
+        {%- if product != blank -%}
+          {%- assign variant = product.selected_or_first_available_variant -%}
+          <article class="g4u-combo__product" data-combo-group="{{ block.settings.group | handleize }}" {% unless block.settings.group == 'Panes' %}hidden{% endunless %} {{ block.shopify_attributes }}>
+            <div class="g4u-combo__media">
+              {%- if product.featured_image -%}
+                {{ product.featured_image | image_url: width: 600 | image_tag: widths: '240,360,600', loading: 'lazy', alt: product.title }}
+              {%- endif -%}
+            </div>
+            <div class="g4u-combo__product-info">
+              <h2>{{ product.title | escape }}</h2>
+              {%- if product.metafields.custom.subtitle.value != blank -%}<p>{{ product.metafields.custom.subtitle.value | escape }}</p>{%- endif -%}
+              <strong>{{ variant.price | money }}</strong>
+              <label class="g4u-combo__select">
+                <input type="checkbox" data-combo-item data-variant-id="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                <span>{% if variant.available %}Sumar al combo{% else %}Sin stock{% endif %}</span>
+              </label>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <footer class="g4u-combo__footer">
+      <p data-combo-summary aria-live="polite">Elegí tus productos para armar el combo.</p>
+      <button class="button g4u-combo__add" type="button" data-combo-add disabled>Agregar selección al carrito</button>
+      <p class="g4u-combo__error" data-combo-error role="alert" hidden></p>
+    </footer>
+  </combo-builder>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Armá tu combo",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Elegí a tu manera" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Armá tu combo ideal" },
+    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>Elegí tus favoritos y agregalos juntos al carrito.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Producto",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "select", "id": "group", "label": "Categoría", "default": "Panes", "options": [{ "value": "Panes", "label": "Panes" }, { "value": "Snacks", "label": "Snacks" }] }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "G4U · Armá tu combo" }]
+}
+{% endschema %}

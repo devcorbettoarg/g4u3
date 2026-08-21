@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "combo": { "type": "g4u-combo-builder", "settings": {} }
+  },
+  "order": ["combo"]
+}
