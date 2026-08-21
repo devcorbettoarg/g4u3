@@ -13,6 +13,32 @@ Alcance revisado: templates, secciones, snippets y assets actualmente presentes 
 
 Esta es una lista de brechas para priorizar trabajo; no sustituye la validación visual en el preview a 1440 px y en responsive.
 
+## Segunda pasada contra el archivo Figma — 21 de agosto de 2026
+
+Esta revisión se hizo contra los frames originales del archivo, además de las capturas compartidas. Confirma que las páginas no son composiciones cortas: **Home** tiene 9.536 px de alto, **Productos (PLP)** 6.455 px y **PDP** 8.508 px a 1440 px. Por lo tanto, no alcanza con que el primer viewport se parezca al diseño.
+
+| Frame de Figma | Secuencia que exige el diseño | Situación en el tema |
+|---|---|---|
+| Home | Hero, anuncio de elección, packs, categorías, ciencia, marquee, comparativa, low-carb, profesionales, CTA editorial, Instagram, beneficios, newsletter y footer | La secuencia existe en gran parte; se debe hacer QA de fidelidad visual y corregir header/hero, espaciados y carruseles. |
+| Productos / PLP | Título, breadcrumb, filtros, 4 columnas de cards, marquee, low-carb, profesionales, Instagram, beneficios, newsletter y footer | Sólo están implementados grid + Instagram + beneficios + newsletter. Faltan marquee, low-carb y profesionales, además de datos reales. |
+| Packs / PLP | Misma continuidad de cierre que Productos, con grilla de packs y filtros | Igual que Productos; la grilla y el catálogo deben usar los packs reales, no productos de prueba. |
+| PDP | Breadcrumb, galería con thumbnails a la izquierda, compra, acordeones; comparativa, ingredientes, usos, harina, testimonios, relacionados, FAQ y cierre global | La cabecera de compra está avanzada, pero la mayor parte de la segunda mitad aún no existe como plantilla PDP. |
+| Combo ideal | Encabezado/breadcrumb, tabs Panes-Snacks, cards, progreso 5/10/15%, resumen lateral y CTA | Hay un builder propio, pero requiere contraste funcional completo con este flujo. |
+| Carrito y drawer | Progreso de envío gratis, cantidades, descuentos, total, CTA, medios de pago y recomendaciones | Se mantiene la base de Dawn; faltan la composición y los bloques de upsell de Figma. |
+| Nosotros y Nuestra harina | Páginas editoriales largas, módulos de ciencia, comparativas, FAQs y cierre compartido | Estructura presente; requiere una pasada visual y de contenido, no una reconstrucción desde cero. |
+| FAQ, contacto y legales | Encabezado, contenido específico, CTA/contacto cuando corresponda, newsletter/footer | Secciones presentes, pero faltan textos finales, densidad/anchura y chequeo de todos los estados. |
+| Login y checkout | Branding de cuenta/checkout, pago y envío | Son superficies de Shopify Admin/Checkout; no se pueden igualar enteramente sólo desde Liquid. |
+
+### Hallazgos visuales concretos de esta pasada
+
+1. **La PLP no debe confundir el área de filtros con un contenedor único.** Cerrada tiene una sola barra de 48 px; expandida conserva esa barra y despliega los cuatro filtros por debajo, como fila independiente. El CSS/markup actual ya fue ajustado en ese sentido, pero falta comprobarlo con datos reales de cuatro facetas.
+2. **La PLP de Figma usa 4 tarjetas completas de 328 px dentro de un contenedor de 1.360 px con separación de 16 px.** No admite scroll horizontal ni tarjetas parcialmente visibles en desktop.
+3. **Los títulos y breadcrumbs no pueden tomar el nombre por defecto del recurso de Shopify.** “AUTOMATED COLLECTION” y productos de snowboard son evidencia de una colección/template de prueba, no del diseño G4U. Debe asignarse la plantilla y colección correctas desde Admin.
+4. **El header debe tener dos variantes reales:** crema/bordó sobre contenido claro y transparente/blanco sobre el hero. El cambio sticky no puede conservar un logo o iconos sin contraste ni reducir sus áreas de toque.
+5. **El cierre de PLP y PDP es parte de la pantalla, no contenido exclusivo de Home.** En Figma incluye, según página, marquee naranja, beneficios low-carb, profesionales, Instagram, beneficios de servicio, newsletter y footer.
+6. **El drawer no es un panel Dawn reducido.** El frame contempla dos zonas: carrito y recomendaciones, con progreso de envío y un resumen persistente.
+7. **PDP exige contenido gobernado por producto.** Sin metafields/objetos de referencia no se pueden completar comparativa, ingredientes, usos, testimonios, FAQ y productos relacionados de manera sostenible.
+
 ## Prioridad 0 — coherencia que afecta todas las pantallas
 
 | Área | Estado | Falta concreta |
