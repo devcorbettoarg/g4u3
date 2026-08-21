@@ -1,0 +1,93 @@
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+
+<footer class="g4u-footer" aria-label="Pie de página">
+  <div class="g4u-footer__inner">
+    <div class="g4u-footer__top">
+      <div class="g4u-footer__brand">
+        <a class="g4u-footer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+          <img class="g4u-footer__logo-mark" src="{{ 'g4u-logo-mark-orange.svg' | asset_url }}" alt="" width="54" height="60">
+          <img class="g4u-footer__logo-wordmark" src="{{ 'g4u-logo-wordmark-orange.svg' | asset_url }}" alt="" width="78" height="28">
+        </a>
+        <div class="g4u-footer__description rte">{{ section.settings.description }}</div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        <nav class="g4u-footer__column" aria-labelledby="G4uFooterHeading-{{ block.id }}" {{ block.shopify_attributes }}>
+          <h2 id="G4uFooterHeading-{{ block.id }}">{{ block.settings.heading | escape }}</h2>
+          <ul role="list">
+            {%- if block.settings.menu != blank -%}
+              {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+              {%- endfor -%}
+            {%- elsif block.settings.fallback == 'shop' -%}
+              <li><a href="{{ routes.all_products_collection_url }}">Novedades</a></li>
+              <li><a href="/collections/desayuno">Desayuno</a></li>
+              <li><a href="/collections/sandwich">Sandwich</a></li>
+              <li><a href="/collections/snacks">Snacks</a></li>
+              <li><a href="/collections/packs">Packs</a></li>
+            {%- elsif block.settings.fallback == 'support' -%}
+              {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Política de envío</a></li>{%- endif -%}
+              {%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">Política de privacidad</a></li>{%- endif -%}
+              {%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">Términos y condiciones</a></li>{%- endif -%}
+              <li><a href="{{ pages.faqs.url | default: '/pages/faqs' }}">Preguntas frecuentes</a></li>
+            {%- else -%}
+              <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}">¿Por qué G4U es diferente?</a></li>
+              <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}#G4uAboutManifesto">Nuestra filosofía</a></li>
+              <li><a href="{{ pages.contact.url | default: '/pages/contact' }}">Contacto</a></li>
+            {%- endif -%}
+          </ul>
+        </nav>
+      {%- endfor -%}
+
+      <div class="g4u-footer__column g4u-footer__social">
+        <h2>{{ section.settings.social_heading | escape }}</h2>
+        <ul role="list">
+          {%- if settings.social_facebook_link != blank -%}<li><a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">{{ 'icon-facebook.svg' | inline_asset_content }}<span>Facebook</span></a></li>{%- endif -%}
+          {%- if settings.social_instagram_link != blank -%}<li><a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">{{ 'icon-instagram.svg' | inline_asset_content }}<span>Instagram</span></a></li>{%- endif -%}
+          {%- if settings.social_twitter_link != blank -%}<li><a href="{{ settings.social_twitter_link }}" target="_blank" rel="noopener">{{ 'icon-twitter.svg' | inline_asset_content }}<span>X</span></a></li>{%- endif -%}
+          {%- if section.settings.linkedin_url != blank -%}<li><a href="{{ section.settings.linkedin_url }}" target="_blank" rel="noopener"><span class="g4u-footer__linkedin" aria-hidden="true">in</span><span>LinkedIn</span></a></li>{%- endif -%}
+          {%- if settings.social_youtube_link != blank -%}<li><a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener">{{ 'icon-youtube.svg' | inline_asset_content }}<span>Youtube</span></a></li>{%- endif -%}
+        </ul>
+      </div>
+    </div>
+
+    <div class="g4u-footer__bottom">
+      <small>© {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</small>
+      {%- if section.settings.payment_enable -%}
+        <ul class="g4u-footer__payments" role="list" aria-label="Medios de pago">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "G4U · Footer",
+  "enabled_on": { "groups": ["footer"] },
+  "max_blocks": 3,
+  "settings": [
+    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>" },
+    { "type": "text", "id": "social_heading", "label": "Título de redes", "default": "Seguinos en" },
+    { "type": "url", "id": "linkedin_url", "label": "LinkedIn" },
+    { "type": "checkbox", "id": "payment_enable", "label": "Mostrar medios de pago", "default": true }
+  ],
+  "blocks": [{
+    "type": "menu",
+    "name": "Columna de enlaces",
+    "settings": [
+      { "type": "text", "id": "heading", "label": "Título", "default": "Tienda" },
+      { "type": "link_list", "id": "menu", "label": "Menú" },
+      { "type": "select", "id": "fallback", "label": "Enlaces predeterminados", "options": [
+        { "value": "shop", "label": "Tienda" },
+        { "value": "support", "label": "Atención al cliente" },
+        { "value": "g4u", "label": "G4U" }
+      ], "default": "shop" }
+    ]
+  }],
+  "presets": [{ "name": "G4U · Footer", "blocks": [{ "type": "menu" }, { "type": "menu" }, { "type": "menu" }] }]
+}
+{% endschema %}
