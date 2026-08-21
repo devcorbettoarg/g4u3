@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "legal": {
+      "type": "g4u-legal-page",
+      "settings": { "eyebrow": "Información legal" }
+    }
+  },
+  "order": ["legal"]
+}

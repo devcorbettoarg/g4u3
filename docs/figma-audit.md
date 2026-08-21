@@ -27,11 +27,11 @@ Hallazgos cuantitativos:
 | Nosotros | `1:2132` | 8961 | `templates/page.nosotros.json` | Hero + contenido editorial + módulos compartidos |
 | Nuestra Harina | `1:2250` | 9414 | `templates/page.nuestra-harina.json` | Secciones editoriales, comparativa y FAQ |
 | FAQs | `1:2366` | 2602 | `templates/page.faqs.json` | FAQ agrupado por categorías |
-| Política de privacidad | `1:2412` | 6668 | Política Shopify / plantilla legal | Contenido administrado por Shopify, estilo G4U |
-| Términos y condiciones | `1:2487` | 3011 | Política Shopify / plantilla legal | Contenido administrado por Shopify, estilo G4U |
-| Política de envío | `1:2518` | 3011 | Política Shopify / plantilla legal | Contenido administrado por Shopify, estilo G4U |
+| Política de privacidad | `1:2412` | 6668 | `templates/page.privacidad.json` | Plantilla legal G4U; contenido administrado por Shopify |
+| Términos y condiciones | `1:2487` | 3011 | `templates/page.terminos.json` | Plantilla legal G4U; contenido administrado por Shopify |
+| Política de envío | `1:2518` | 3011 | `templates/page.envios.json` | Plantilla legal G4U; contenido administrado por Shopify |
 | Productos | `1:2549` | 6455 | `templates/collection.json` | Grid, filtros, orden y módulos globales |
-| Packs | `1:2632` | 5276 | Template alternativo de colección | Reusa grid/filtros y cambia colección/contenido |
+| Packs | `1:2632` | 5276 | `templates/collection.packs.json` | Reusa grid/filtros y cambia colección/contenido |
 | Armá tu combo ideal | `1:2707` | 4922 | `templates/page.combo-ideal.json` | Bundle builder con estado y carrito real |
 | Detalle de producto | `1:2847` | 8508 | `templates/product.json` | Galería, compra, acordeones, comparativas y recomendaciones |
 | Carrito | `1:3321` | 2568 | `templates/cart.json` | Líneas, cantidades, descuento, envío y upsell |
@@ -262,4 +262,3 @@ Una pantalla no se considera terminada solo porque “se parece” al frame. Deb
 - [Secciones y bloques](https://shopify.dev/docs/storefronts/themes/best-practices/templates-sections-blocks)
 - [Checkout y accounts editor](https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations)
 - [Personalización de customer accounts](https://help.shopify.com/en/manual/customers/customer-accounts/new-customer-accounts/customize)
-

@@ -12,6 +12,15 @@
 .template-collection .facets__heading { color: #766c70; font-family: var(--g4u-display); font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; margin: 0; text-transform: none; }
 .template-collection .facets__heading::before { content: '☷'; font-size: 2rem; margin-right: 1.2rem; }
 .template-collection .facets__summary { color: #766c70; font-size: 1.4rem; letter-spacing: .05em; }
+.template-collection .facets__disclosure { border-left: .1rem solid #d5d4d4; margin-left: 1.6rem; padding-left: 1.6rem; }
+.template-collection .facets__disclosure:first-of-type { border-left: 0; margin-left: 0; padding-left: 0; }
+.template-collection .facets__summary:hover, .template-collection .facets__disclosure[open] .facets__summary { color: var(--g4u-burgundy); }
+.template-collection .facets__display { border: .1rem solid #d5d4d4; border-radius: 1.2rem; box-shadow: 0 1.2rem 3.2rem rgba(38, 19, 27, .12); padding: 2rem; }
+.template-collection .facets__label { font-family: var(--g4u-display); font-size: 1.5rem; letter-spacing: .03em; }
+.template-collection .facet-checkbox input[type='checkbox'] { accent-color: var(--g4u-burgundy); }
+.template-collection .active-facets { align-items: center; display: flex; flex-wrap: wrap; gap: .8rem; margin: 1.6rem 0 0; }
+.template-collection .active-facets__button-inner { border: .1rem solid var(--g4u-burgundy); border-radius: 10rem; color: var(--g4u-burgundy); font-family: var(--g4u-display); font-size: 1.4rem; letter-spacing: .03em; min-height: 3.2rem; padding: .4rem 1.2rem; }
+.template-collection .active-facets__button-remove { color: var(--g4u-burgundy); font-family: var(--g4u-display); font-size: 1.4rem; text-underline-offset: .3rem; }
 .template-collection .facet-filters { align-items: center; color: #766c70; }
 .template-collection .facet-filters__label { font-size: 1.4rem; letter-spacing: .05em; }
 .template-collection .facet-filters__sort { font-family: var(--g4u-display); font-size: 1.4rem; letter-spacing: .05em; }
@@ -42,6 +51,8 @@
 .template-product .product__media-wrapper { max-width: 66rem; }
 .template-product .product__media { background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
 .template-product .product__media img { mix-blend-mode: multiply; object-fit: contain; padding: 4rem; }
+.template-product .thumbnail { border-radius: .8rem; overflow: hidden; }
+.template-product .thumbnail[aria-current] { box-shadow: 0 0 0 .2rem var(--g4u-burgundy); }
 .template-product .product__title h1 { color: inherit; font-family: var(--g4u-display); font-size: clamp(4.4rem, 4.5vw, 6.4rem); letter-spacing: .01em; line-height: .9; text-transform: uppercase; }
 .template-product .product__info-container { max-width: 66rem; }
 .template-product .price { color: inherit; font-family: var(--g4u-display); font-size: 2.4rem; letter-spacing: .05em; }
@@ -50,10 +61,15 @@
 .template-product .product-form__input input[type='radio'] + label { border-color: #d5d4d4; border-radius: 10rem; color: var(--g4u-ink); font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; }
 .template-product .product-form__input input[type='radio']:checked + label { background: var(--g4u-burgundy); border-color: var(--g4u-burgundy); color: var(--g4u-cream); }
 .template-product .product-form__submit { background: var(--g4u-burgundy); border-radius: 10rem; font-family: var(--g4u-display); letter-spacing: .05em; min-height: 4.5rem; }
+.template-product quantity-input.quantity { border-color: #a9a1a3; border-radius: 10rem; min-height: 4.6rem; }
+.template-product .quantity__input { font-family: var(--g4u-display); font-size: 1.8rem; }
+.template-product .product-form__buttons { max-width: none; }
 .template-product .shopify-payment-button__button { border-radius: 10rem !important; font-family: var(--g4u-display) !important; min-height: 4.5rem !important; }
 .template-product .product__accordion { border-color: #d5d4d4; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }
+.template-product .product__accordion .accordion__content { font-size: 1.6rem; line-height: 1.55; }
 .template-product .related-products { background: var(--g4u-cream); }
+.template-product .related-products .related-products__heading { color: var(--g4u-ink); font-family: var(--g4u-display); font-size: clamp(3.6rem, 4vw, 5.6rem); letter-spacing: .01em; text-align: center; text-transform: uppercase; }
 @media screen and (max-width: 749px) { .template-product .page-width { padding-left: 2rem; padding-right: 2rem; } .template-product .product__media img { padding: 2rem; } .template-product .product__title h1 { font-size: 4rem; } }
 
 /* Cart */
@@ -99,3 +115,25 @@
 .g4u-faq-page__contact { margin: 8rem auto 0; text-align: center; }
 .g4u-faq-page__contact p { font-size: 3.2rem; letter-spacing: .04em; margin: 0 0 2.4rem; }
 @media screen and (max-width: 749px) { .g4u-faq-page { padding: 14rem 2rem 6.4rem; } .g4u-faq-page__header { margin-bottom: 5.6rem; } .g4u-faq-page__header h1 { font-size: 4rem; } .g4u-faq-page__header .rte { font-size: 1.6rem; } .g4u-faq-page__groups { gap: 4.8rem; } .g4u-faq-page__group h2 { font-size: 2.8rem; } .g4u-faq-page__contact { margin-top: 5.6rem; } }
+
+/* Contact */
+.g4u-contact { background: var(--g4u-cream); color: var(--g4u-ink); padding: 20rem 4rem 8rem; }
+.g4u-contact__header { margin: 0 auto 6rem; max-width: 76.8rem; text-align: center; }.g4u-contact__header > p { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }.g4u-contact__header h1 { color: inherit; font-size: 5.6rem; line-height: .9; margin: 0 0 1.6rem; }.g4u-contact__header .rte { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; }
+.g4u-contact__grid { display: grid; grid-template-columns: 1fr 1fr; margin: auto; max-width: 112rem; }.g4u-contact__media { border-radius: 1.2rem 0 0 1.2rem; overflow: hidden; }.g4u-contact__media img { height: 100%; object-fit: cover; width: 100%; }.g4u-contact__form { background: #f2ebe4; border-radius: 0 1.2rem 1.2rem 0; padding: 4.8rem; }.g4u-contact__form label { display: block; font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; margin: 0 0 .8rem; }.g4u-contact__form input, .g4u-contact__form textarea { background: transparent; border: .1rem solid #a9a1a3; border-radius: .4rem; box-sizing: border-box; font: inherit; margin: 0 0 2.4rem; padding: 1.2rem; width: 100%; }.g4u-contact__form button { background: var(--g4u-burgundy); color: var(--g4u-cream); }.g4u-contact__success { color: var(--g4u-burgundy); font-size: 1.6rem; }
+@media screen and (max-width: 749px) { .g4u-contact { padding: 14rem 2rem 6.4rem; }.g4u-contact__header h1 { font-size: 4rem; }.g4u-contact__header .rte { font-size: 1.6rem; }.g4u-contact__grid { grid-template-columns: 1fr; }.g4u-contact__media { aspect-ratio: 1 / 1; border-radius: 1.2rem 1.2rem 0 0; }.g4u-contact__form { border-radius: 0 0 1.2rem 1.2rem; padding: 2.4rem; }}
+
+/* Legal pages */
+.g4u-legal { background: var(--g4u-cream); color: var(--g4u-ink); min-height: 60vh; padding: 20rem 4rem 10rem; }
+.g4u-legal__header { border-bottom: .1rem solid #a9a1a3; margin: 0 auto 5.6rem; max-width: 102rem; padding-bottom: 3.2rem; }
+.g4u-legal__header > p { font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
+.g4u-legal__header h1 { color: inherit; font-size: clamp(4.8rem, 6vw, 7.2rem); line-height: .9; margin: 0; text-transform: uppercase; }
+.g4u-legal__content { margin: auto; max-width: 88rem; }
+.g4u-legal__content > *:first-child { margin-top: 0; }
+.g4u-legal__content h2, .g4u-legal__content h3 { color: inherit; font-family: var(--g4u-display); font-weight: 400; letter-spacing: .03em; text-transform: uppercase; }
+.g4u-legal__content h2 { font-size: 3.2rem; line-height: 1; margin: 5.6rem 0 1.6rem; }
+.g4u-legal__content h3 { font-size: 2.2rem; line-height: 1.15; margin: 3.2rem 0 1.2rem; }
+.g4u-legal__content p, .g4u-legal__content li { font-size: 1.6rem; line-height: 1.65; }
+.g4u-legal__content p { margin: 0 0 1.6rem; }
+.g4u-legal__content ul, .g4u-legal__content ol { margin: 0 0 2.4rem; padding-left: 2.4rem; }
+.g4u-legal__content a { color: var(--g4u-burgundy); text-underline-offset: .3rem; }
+@media screen and (max-width: 749px) { .g4u-legal { padding: 14rem 2rem 6.4rem; }.g4u-legal__header { margin-bottom: 4rem; padding-bottom: 2.4rem; }.g4u-legal__header h1 { font-size: 4.2rem; }.g4u-legal__content h2 { font-size: 2.8rem; margin-top: 4.8rem; }.g4u-legal__content h3 { font-size: 2rem; } }

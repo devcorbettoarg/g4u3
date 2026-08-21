@@ -1,0 +1,26 @@
+<section class="g4u-legal" aria-labelledby="G4uLegalTitle-{{ section.id }}">
+  <header class="g4u-legal__header">
+    <p>{{ section.settings.eyebrow | escape }}</p>
+    <h1 id="G4uLegalTitle-{{ section.id }}">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="g4u-legal__content rte">
+    {{ page.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U página legal",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "Información legal"
+    }
+  ]
+}
+{% endschema %}
