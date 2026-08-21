@@ -642,7 +642,7 @@
 .g4u-feel-good__image { height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }
 .g4u-feel-good__content { max-width: 76.8rem; position: relative; z-index: 1; }
 .g4u-feel-good__title { color: inherit; font-size: clamp(6rem, 6.4vw, 9.2rem); margin: 0 0 2.4rem; }
-.g4u-feel-good__accent { color: var(--g4u-orange); }
+.g4u-feel-good__accent { color: var(--g4u-orange); display: block; }
 .g4u-feel-good__text { font-size: 1.8rem; line-height: 1.5; margin-bottom: 3.2rem; }
 .g4u-feel-good__button { border: .1rem solid var(--g4u-cream); color: var(--g4u-cream); }
 .g4u-feel-good__button:hover { background: var(--g4u-cream); color: var(--g4u-burgundy); }
@@ -731,6 +731,18 @@
 }
 
 /* About page */
+body.template-suffix-nosotros .shopify-section-group-header-group {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+body.template-suffix-nosotros .section-header .header-wrapper {
+  --color-foreground: 255, 248, 240;
+  background: transparent;
+  border-bottom-color: rgba(255, 248, 240, .2);
+}
 .g4u-about-hero {
   align-items: flex-end;
   background: var(--g4u-ink);
