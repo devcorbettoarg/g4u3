@@ -2,6 +2,8 @@ class CartDrawer extends HTMLElement {
   constructor() {
     super();
 
+    this.openTimer = null;
+
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
     this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
     this.setHeaderCartIconAccessibility();
@@ -31,7 +33,8 @@ class CartDrawer extends HTMLElement {
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
     if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
     // here the animation doesn't seem to always get triggered. A timeout seem to help
-    setTimeout(() => {
+    window.clearTimeout(this.openTimer);
+    this.openTimer = window.setTimeout(() => {
       this.classList.add('animate', 'active');
     });
 
@@ -41,7 +44,7 @@ class CartDrawer extends HTMLElement {
         const containerToTrapFocusOn = this.classList.contains('is-empty')
           ? this.querySelector('.drawer__inner-empty')
           : document.getElementById('CartDrawer');
-        const focusElement = this.querySelector('.drawer__inner') || this.querySelector('.drawer__close');
+        const focusElement = this.querySelector('.drawer__close') || this.querySelector('.drawer__inner');
         trapFocus(containerToTrapFocusOn, focusElement);
       },
       { once: true },
@@ -56,6 +59,8 @@ class CartDrawer extends HTMLElement {
   }
 
   close() {
+    window.clearTimeout(this.openTimer);
+    this.openTimer = null;
     this.classList.remove('active');
     removeTrapFocus(this.activeElement);
     document.body.classList.remove('overflow-hidden');

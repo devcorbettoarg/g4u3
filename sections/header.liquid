@@ -184,7 +184,8 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+      <a href="{{ routes.root_url }}" class="header__heading-link g4u-brand-link link link--text focus-inset" aria-label="{{ shop.name | escape }}">
+        {% render 'g4u-brand-logo' %}
         {%- if settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -232,7 +233,8 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+      <a href="{{ routes.root_url }}" class="header__heading-link g4u-brand-link link link--text focus-inset" aria-label="{{ shop.name | escape }}">
+        {% render 'g4u-brand-logo' %}
         {%- if settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}

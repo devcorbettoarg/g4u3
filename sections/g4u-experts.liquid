@@ -48,7 +48,13 @@
           <hr class="g4u-expert-card__divider">
           <img class="g4u-expert-card__stars" src="{{ 'g4u-stars.svg' | asset_url }}" alt="5 estrellas" width="82" height="14">
           <div class="g4u-expert-card__text">{{ block.settings.quote }}</div>
-          {%- if block.settings.handle != blank -%}<a class="g4u-expert-card__handle" href="{{ block.settings.profile_link | default: '#' }}">{{ block.settings.handle | escape }}</a>{%- endif -%}
+          {%- if block.settings.handle != blank -%}
+            {%- if block.settings.profile_link != blank -%}
+              <a class="g4u-expert-card__handle" href="{{ block.settings.profile_link }}">{{ block.settings.handle | escape }}</a>
+            {%- else -%}
+              <span class="g4u-expert-card__handle">{{ block.settings.handle | escape }}</span>
+            {%- endif -%}
+          {%- endif -%}
         </blockquote>
       </li>
     {%- endfor -%}

@@ -456,6 +456,7 @@
 }
 
 /* Science tabs */
+g4u-tabs { display: block; }
 .g4u-science {
   background: #ffa6af;
   color: var(--g4u-ink);
@@ -675,7 +676,7 @@
 .g4u-low-carb__text { font-size: 1.6rem; line-height: 1.5; margin: auto; max-width: 32rem; }
 
 /* Professional recommendations */
-.g4u-experts { background: #f2ebe4; color: var(--g4u-ink); overflow: hidden; padding: 8rem 4rem; }
+.g4u-experts { background: #f2ebe4; color: var(--g4u-ink); display: block; overflow: hidden; padding: 8rem 4rem; }
 .g4u-experts__header { align-items: flex-end; display: flex; gap: 3.2rem; justify-content: space-between; margin-bottom: 6rem; }
 .g4u-experts__heading { max-width: 61rem; }
 .g4u-experts__eyebrow { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
@@ -716,7 +717,7 @@
 .g4u-expert-card__media { position: relative; }
 .g4u-expert-card__image { height: 100%; object-fit: cover; width: 100%; }
 .g4u-expert-card__play { height: 6.4rem; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 6.4rem; }
-.g4u-expert-card__quote { background: var(--g4u-cream); padding: 2.4rem; }
+.g4u-expert-card__quote { background: var(--g4u-cream); border-left: 0; color: var(--g4u-ink); font-style: normal; margin: 0; padding: 2.4rem; }
 .g4u-expert-card__profile { align-items: flex-start; display: flex; gap: 1.2rem; }
 .g4u-expert-card__avatar { border-radius: 50%; height: 5.6rem; object-fit: cover; width: 5.6rem; }
 .g4u-expert-card__name { font-size: 1.6rem; font-weight: 600; margin: 0; }
