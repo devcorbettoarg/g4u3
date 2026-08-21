@@ -3,18 +3,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title"
         },
         "price": {
           "type": "price"
+        },
+        "description": {
+          "type": "description"
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -33,8 +29,13 @@
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description"
+        "details": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Detalles del producto", "icon": "check_mark", "content": "<p>Conocé los ingredientes, conservación y toda la información de este producto.</p>" }
+        },
+        "shipping": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Envíos y entregas", "icon": "truck", "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>" }
         },
         "share": {
           "type": "share",
@@ -44,20 +45,21 @@
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
+        "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
+        "details",
+        "shipping",
         "share"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_position": "left",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -65,8 +67,8 @@
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "disclosures": {
