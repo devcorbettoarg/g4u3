@@ -147,6 +147,80 @@ function initStandardActions() {
   });
 }
 
+// Small cart enhancements used by the custom G4U cart layouts. Event
+// delegation keeps them working after Dawn replaces cart sections via Ajax.
+function initG4UCartEnhancements() {
+  document.addEventListener('submit', (event) => {
+    const form = event.target;
+    if (form.id !== 'G4U-Cart-Discount-Form') return;
+
+    event.preventDefault();
+    const code = form.querySelector('[name="discount"]')?.value.trim();
+    if (!code) return;
+
+    const redirect = form.querySelector('[name="return_url"]')?.value || '/cart';
+    window.location.assign(`/discount/${encodeURIComponent(code)}?redirect=${encodeURIComponent(redirect)}`);
+  });
+
+  document.addEventListener('click', async (event) => {
+    const copyButton = event.target.closest('[data-g4u-copy-cart-link]');
+    if (copyButton) {
+      const input = document.getElementById('G4U-Cart-Link');
+      if (!input) return;
+
+      try {
+        await navigator.clipboard.writeText(input.value);
+      } catch {
+        input.select();
+        document.execCommand('copy');
+      }
+
+      const originalLabel = copyButton.textContent;
+      copyButton.textContent = '¡Copiado!';
+      window.setTimeout(() => { copyButton.textContent = originalLabel; }, 1600);
+      return;
+    }
+
+    const addButton = event.target.closest('[data-g4u-cart-drawer-add]');
+    if (!addButton || addButton.disabled) return;
+
+    const variantId = addButton.closest('.g4u-cart-drawer__upsell')
+      ?.querySelector('[data-g4u-cart-drawer-variant]')?.value || addButton.dataset.variantId;
+    if (!variantId) return;
+
+    addButton.disabled = true;
+    addButton.setAttribute('aria-busy', 'true');
+    const status = addButton.closest('cart-drawer')?.querySelector('[data-g4u-cart-drawer-status]');
+    try {
+      const addUrl = (typeof routes !== 'undefined' && routes?.cart_add_url) || '/cart/add.js';
+      const drawer = document.querySelector('cart-drawer');
+      const response = await fetch(addUrl, {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: [{ id: Number(variantId), quantity: 1 }],
+          sections: drawer?.getSectionsToRender?.().map((section) => section.id) || ['cart-icon-bubble'],
+          sections_url: window.location.pathname,
+        }),
+      });
+      if (!response.ok) throw new Error('No se pudo agregar el producto.');
+      const cartState = await response.json();
+      if (status) status.textContent = 'Producto agregado al carrito.';
+      if (drawer && cartState.sections?.['cart-drawer']) {
+        drawer.renderContents(cartState);
+      } else {
+        await refreshDawnCartUI();
+      }
+    } catch (error) {
+      console.error('[G4U] Cart drawer upsell failed.', error);
+      if (status) status.textContent = 'No se pudo agregar el producto. Intentá nuevamente.';
+    } finally {
+      addButton.disabled = false;
+      addButton.removeAttribute('aria-busy');
+    }
+  });
+}
+
 // Run immediately if the standard-actions bundle has already attached
 // `Shopify.actions`; otherwise wait for DOMContentLoaded, which fires after
 // all module scripts have executed regardless of document order.
@@ -154,4 +228,10 @@ if (window.Shopify?.actions) {
   initStandardActions();
 } else {
   document.addEventListener('DOMContentLoaded', initStandardActions, { once: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initG4UCartEnhancements, { once: true });
+} else {
+  initG4UCartEnhancements();
 }

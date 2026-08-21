@@ -97,7 +97,7 @@
               <div class="g4u-cart-drawer__shipping">
                 <span aria-hidden="true">⌁</span>
                 <p>{% if g4u_drawer_shipping_remaining > 0 %}Agregá <strong>{{ g4u_drawer_shipping_remaining | money }}</strong> más para tener envío GRATIS{% else %}<strong>¡Tu envío es gratis!</strong>{% endif %}</p>
-                <i style="width: {{ g4u_drawer_shipping_progress }}%"></i>
+                <span class="g4u-cart-drawer__shipping-progress"><i style="width: {{ g4u_drawer_shipping_progress }}%"></i></span>
               </div>
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
@@ -500,6 +500,7 @@
       {%- if cart != empty -%}
         <aside class="g4u-cart-drawer__upsells" aria-label="Productos sugeridos">
           <h3>Sumá más proteína con fibra con:</h3>
+          <p class="visually-hidden" data-g4u-cart-drawer-status aria-live="polite"></p>
           <div class="g4u-cart-drawer__upsell-list">
             {%- assign g4u_upsell_count = 0 -%}
             {%- for product in collections.all.products -%}
@@ -511,8 +512,27 @@
                   <a href="{{ product.url }}" tabindex="-1">
                     {%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.featured_image.alt | escape }}" width="60" height="60" loading="lazy">{%- endif -%}
                   </a>
-                  <div><a href="{{ product.url }}">{{ product.title }}</a><span>{{ product.price | money }}</span></div>
-                  <a class="g4u-cart-drawer__upsell-add" href="{{ product.url }}" aria-label="Ver {{ product.title | escape }}">+</a>
+                  <div>
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                    <span>{{ product.price | money }}</span>
+                    {%- unless product.has_only_default_variant -%}
+                      <label class="visually-hidden" for="G4U-Upsell-Variant-{{ product.id }}">Elegí una variante de {{ product.title | escape }}</label>
+                      <select id="G4U-Upsell-Variant-{{ product.id }}" class="g4u-cart-drawer__upsell-variant" data-g4u-cart-drawer-variant>
+                        {%- for variant in product.variants -%}
+                          {%- if variant.available -%}
+                            <option value="{{ variant.id }}">{{ variant.title }}{% if variant.price != product.price %} — {{ variant.price | money }}{% endif %}</option>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </select>
+                    {%- endunless -%}
+                  </div>
+                  <button
+                    class="g4u-cart-drawer__upsell-add"
+                    type="button"
+                    data-g4u-cart-drawer-add
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    aria-label="Agregar {{ product.title | escape }} al carrito"
+                  >+</button>
                 </article>
                 {%- assign g4u_upsell_count = g4u_upsell_count | plus: 1 -%}
               {%- endif -%}
