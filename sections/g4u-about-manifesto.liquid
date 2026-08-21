@@ -1,0 +1,41 @@
+<section class="g4u-about-manifesto" id="G4uAboutManifesto" aria-labelledby="G4uAboutManifestoTitle-{{ section.id }}">
+  <div class="g4u-about-manifesto__copy">
+    <h2 class="g4u-about-manifesto__title g4u-display" id="G4uAboutManifestoTitle-{{ section.id }}">
+      Creemos en la <em>nutrición inteligente,</em><br>
+      la que combina <strong>ciencia, sabor</strong><br>
+      y <strong>bienestar</strong> real.<br>
+      En los alimentos que<br>
+      no prometen magia,<br>
+      sino <em>resultados</em> auténticos.<br>
+      Creemos en la <strong>transparencia,</strong><br>
+      en los <em>ingredientes limpios</em><br>
+      y en las <strong>decisiones conscientes.</strong><br>
+      Creemos que lo <em>saludable</em><br>
+      no tiene que ser aburrido.
+    </h2>
+    <div class="g4u-about-manifesto__closing g4u-display">
+      <p>{{ section.settings.closing | escape | newline_to_br }}</p>
+      <p>{{ section.settings.closing_accent | escape | newline_to_br }}</p>
+    </div>
+  </div>
+  <div class="g4u-about-manifesto__art" aria-hidden="true">
+    <img class="g4u-about-manifesto__dust" src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}" alt="" width="1024" height="1536">
+    <img class="g4u-about-manifesto__texture" src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}" alt="" width="1024" height="1535">
+    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--snack" src="{{ 'g4u-about-snack.png' | asset_url }}" alt="" width="456" height="458">
+    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--bread" src="{{ 'g4u-about-bread.png' | asset_url }}" alt="" width="866" height="926">
+    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla" src="{{ 'g4u-about-tortilla.png' | asset_url }}" alt="" width="490" height="449">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Manifiesto Nosotros",
+  "tag": "section",
+  "class": "section-g4u-about-manifesto",
+  "settings": [
+    { "type": "textarea", "id": "closing", "label": "Cierre", "default": "Por eso existimos:\nPara redefinir el pan." },
+    { "type": "textarea", "id": "closing_accent", "label": "Cierre destacado", "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico." }
+  ],
+  "presets": [{ "name": "G4U · Manifiesto Nosotros" }]
+}
+{% endschema %}

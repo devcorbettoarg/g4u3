@@ -1,0 +1,52 @@
+{%- liquid
+  assign fallback_asset = 'g4u-about-history.png'
+  if section.settings.fallback_asset == 'philosophy'
+    assign fallback_asset = 'g4u-about-philosophy.png'
+  endif
+-%}
+<section class="g4u-about-story g4u-about-story--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-about-story--reverse{% endif %}" aria-labelledby="G4uAboutStory-{{ section.id }}">
+  <div class="g4u-about-story__inner">
+    <div class="g4u-about-story__content">
+      {%- if section.settings.eyebrow != blank -%}<p class="g4u-about-story__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="g4u-about-story__title g4u-display" id="G4uAboutStory-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.lead != blank -%}<div class="g4u-about-story__lead rte">{{ section.settings.lead }}</div>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="g4u-about-story__text rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="g4u-about-story__list" role="list">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}><img src="{{ 'g4u-icon-check.svg' | asset_url }}" alt="" width="20" height="20"><span>{{ block.settings.text | escape }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    <div class="g4u-about-story__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: class: 'g4u-about-story__image', loading: 'lazy', widths: '550, 750, 1100, 1500, 1800', sizes: '(min-width: 990px) 50vw, 100vw' }}
+      {%- else -%}
+        <img class="g4u-about-story__image" src="{{ fallback_asset | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="2731" height="4096" loading="lazy">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Relato editorial",
+  "tag": "section",
+  "class": "section-g4u-about-story",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Fondo", "options": [{ "value": "cream", "label": "Crema" }, { "value": "soft", "label": "Suave" }], "default": "cream" },
+    { "type": "select", "id": "image_position", "label": "Posición de imagen", "options": [{ "value": "right", "label": "Derecha" }, { "value": "left", "label": "Izquierda" }], "default": "right" },
+    { "type": "select", "id": "fallback_asset", "label": "Imagen predeterminada", "options": [{ "value": "history", "label": "Historia" }, { "value": "philosophy", "label": "Filosofía" }], "default": "history" },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "image_alt", "label": "Descripción de imagen", "default": "Pan G4U preparado artesanalmente" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nuestra historia" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Todo empezó con una pregunta" },
+    { "type": "richtext", "id": "lead", "label": "Destacado", "default": "<p>¿Y si el pan pudiera seguir siendo pan, pero nutricionalmente mejor?</p>" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Nos preguntamos si era posible hacerlo diferente.</p><p>Así nació G4U: con el desafío de desarrollar productos que mantuvieran la experiencia de los alimentos que todos disfrutamos, pero con un perfil nutricional superior.</p><p>Hoy seguimos investigando, desarrollando y mejorando cada receta para demostrar que comer mejor no tiene por qué sentirse como un sacrificio.</p>" }
+  ],
+  "blocks": [{ "type": "item", "name": "Punto", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "En información clara." }] }],
+  "presets": [{ "name": "G4U · Relato editorial" }]
+}
+{% endschema %}
