@@ -79,7 +79,12 @@ if (!customElements.get('media-gallery')) {
         thumbnail.querySelector('button').setAttribute('aria-current', true);
         if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
-        this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });
+        const verticalThumbnails = getComputedStyle(this.elements.thumbnails.slider).flexDirection === 'column';
+        this.elements.thumbnails.slider.scrollTo(
+          verticalThumbnails
+            ? { top: thumbnail.offsetTop, behavior: 'smooth' }
+            : { left: thumbnail.offsetLeft, behavior: 'smooth' },
+        );
       }
 
       announceLiveRegion(activeItem, position) {
