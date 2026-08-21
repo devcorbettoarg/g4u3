@@ -1,0 +1,144 @@
+:root {
+  --g4u-header-height: 6rem;
+  --g4u-header-hero-height: 8.8rem;
+}
+
+/* Announcement bar */
+.announcement-bar-section .utility-bar {
+  background: var(--g4u-burgundy);
+  border: 0;
+  color: var(--g4u-cream);
+  height: 4rem;
+}
+.announcement-bar-section .utility-bar__grid {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  height: 4rem;
+  max-width: none;
+  padding: 0 3.2rem;
+}
+.announcement-bar-section .announcement-bar { grid-column: 2; grid-row: 1; }
+.announcement-bar-section .announcement-bar__message {
+  color: inherit;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  letter-spacing: .05em;
+  line-height: 1.2;
+  padding: 0;
+}
+.announcement-bar-section .list-social {
+  gap: .65rem;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+}
+.announcement-bar-section .list-social__link { color: inherit; padding: 0; }
+.announcement-bar-section .list-social__link .svg-wrapper { height: 2rem; width: 2rem; }
+.announcement-bar-section .localization-wrapper { display: none; }
+
+/* Header */
+.section-header { z-index: 9; }
+.section-header .header-wrapper {
+  background: var(--g4u-cream);
+  box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
+  color: var(--g4u-ink);
+}
+.section-header .header {
+  column-gap: 3.2rem;
+  height: var(--g4u-header-height);
+  max-width: none;
+  padding: .6rem 3.2rem !important;
+  width: 100%;
+}
+.header__heading-link { padding: 0; }
+.g4u-logo { display: block; height: 4.8rem; overflow: hidden; position: relative; width: 11.6rem; }
+.g4u-logo img { display: block; position: absolute; }
+.g4u-logo__mark { height: 4.8rem; left: 0; top: 0; width: 4.3rem; }
+.g4u-logo__wordmark { height: 2.25rem; right: 0; top: 1.55rem; width: 6.2rem; }
+.g4u-logo__light { display: none; }
+.header__inline-menu { justify-self: center; margin: 0; }
+.header__inline-menu .list-menu--inline { gap: 2.4rem; }
+.header__menu-item {
+  color: currentColor;
+  font-size: 1.6rem;
+  letter-spacing: .05em;
+  line-height: .8;
+  padding: 1.2rem 0;
+  text-decoration: none;
+}
+.header__menu-item span { text-decoration: none; }
+.header__menu-item:hover span { text-decoration: none; }
+.header__icons { gap: 1.6rem; padding-right: 0; }
+.header__icon { color: currentColor; height: 2.4rem; width: 2.4rem; }
+.header__icon .svg-wrapper { height: 2.4rem; width: 2.4rem; }
+.header__icon--cart { margin-right: 0; }
+.header__search { display: block; }
+
+body.template-index .shopify-section-group-header-group,
+body.template-suffix-nosotros .shopify-section-group-header-group {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+body.template-index .section-header .header-wrapper,
+body.template-suffix-nosotros .section-header .header-wrapper {
+  --color-foreground: 255, 248, 240;
+  background: transparent;
+  box-shadow: none;
+  color: var(--g4u-cream);
+}
+body.template-index .section-header:not(.shopify-section-header-sticky) .header,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header {
+  height: var(--g4u-header-hero-height);
+  padding: 1.4rem 3.2rem !important;
+}
+body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 6rem; width: 14.5rem; }
+body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark { height: 6rem; width: 5.4rem; }
+body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.8rem; top: 1.95rem; width: 7.8rem; }
+body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__dark,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__dark { display: none; }
+body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__light,
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__light { display: block; }
+body.template-index .section-header.shopify-section-header-sticky,
+body.template-suffix-nosotros .section-header.shopify-section-header-sticky {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+body.template-index .section-header.shopify-section-header-sticky .header-wrapper,
+body.template-suffix-nosotros .section-header.shopify-section-header-sticky .header-wrapper {
+  --color-foreground: 38, 19, 27;
+  background: var(--g4u-cream);
+  box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
+  color: var(--g4u-ink);
+}
+
+@media screen and (max-width: 989px) {
+  .announcement-bar-section .utility-bar__grid { grid-template-columns: 1fr auto; padding: 0 2rem; }
+  .announcement-bar-section .announcement-bar { grid-column: 1; justify-self: start; }
+  .announcement-bar-section .list-social { grid-column: 2; }
+  .section-header .header { padding-left: 2rem !important; padding-right: 2rem !important; }
+}
+
+@media screen and (max-width: 749px) {
+  .announcement-bar-section .utility-bar__grid { display: flex; justify-content: center; padding: 0 1.6rem; }
+  .announcement-bar-section .announcement-bar__message { font-size: 1.1rem; letter-spacing: .02em; white-space: nowrap; }
+  .announcement-bar-section .list-social { display: none; }
+  .section-header .header,
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header { height: 6.4rem; padding: .8rem 2rem !important; }
+  .g4u-logo,
+  body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 4.8rem; width: 11.6rem; }
+  body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark { height: 4.8rem; width: 4.3rem; }
+  body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.25rem; top: 1.55rem; width: 6.2rem; }
+}

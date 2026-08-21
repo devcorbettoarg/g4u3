@@ -205,7 +205,12 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="g4u-logo" aria-label="{{ shop.name | escape }}">
+            <img class="g4u-logo__mark g4u-logo__dark" src="{{ 'g4u-logo-mark-dark.svg' | asset_url }}" alt="" width="54" height="60">
+            <img class="g4u-logo__wordmark g4u-logo__dark" src="{{ 'g4u-logo-wordmark-dark.svg' | asset_url }}" alt="" width="78" height="28">
+            <img class="g4u-logo__mark g4u-logo__light" src="{{ 'g4u-logo-mark-light.svg' | asset_url }}" alt="" width="54" height="60">
+            <img class="g4u-logo__wordmark g4u-logo__light" src="{{ 'g4u-logo-wordmark-light.svg' | asset_url }}" alt="" width="78" height="28">
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +253,12 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="g4u-logo" aria-label="{{ shop.name | escape }}">
+            <img class="g4u-logo__mark g4u-logo__dark" src="{{ 'g4u-logo-mark-dark.svg' | asset_url }}" alt="" width="54" height="60">
+            <img class="g4u-logo__wordmark g4u-logo__dark" src="{{ 'g4u-logo-wordmark-dark.svg' | asset_url }}" alt="" width="78" height="28">
+            <img class="g4u-logo__mark g4u-logo__light" src="{{ 'g4u-logo-mark-light.svg' | asset_url }}" alt="" width="54" height="60">
+            <img class="g4u-logo__wordmark g4u-logo__light" src="{{ 'g4u-logo-wordmark-light.svg' | asset_url }}" alt="" width="78" height="28">
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
