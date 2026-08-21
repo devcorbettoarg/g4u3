@@ -729,3 +729,120 @@
 @media (prefers-reduced-motion: reduce) {
   .g4u-instagram__image { transition: none; }
 }
+
+/* About page */
+.g4u-about-hero {
+  align-items: flex-end;
+  background: var(--g4u-ink);
+  color: var(--g4u-cream);
+  display: flex;
+  min-height: min(90rem, 100svh);
+  overflow: hidden;
+  padding: 12rem 3.2rem 6.4rem;
+  position: relative;
+}
+.g4u-about-hero__media,
+.g4u-about-hero__image { height: 100%; inset: 0; position: absolute; width: 100%; }
+.g4u-about-hero__image { object-fit: cover; object-position: center; }
+.g4u-about-hero::before {
+  background: linear-gradient(90deg, rgba(0, 0, 0, .58) 0%, rgba(0, 0, 0, 0) 72%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+.g4u-about-hero__content { max-width: 76.8rem; position: relative; z-index: 2; }
+.g4u-about-hero__title { color: inherit; font-size: clamp(4.4rem, 3.9vw, 5.6rem); margin: 0 0 1.6rem; }
+.g4u-about-hero__title span { display: block; }
+.g4u-about-hero__title em { color: var(--g4u-orange); font-style: inherit; }
+.g4u-about-hero__text { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; max-width: 57.1rem; }
+.g4u-about-hero__scroll { bottom: 4rem; color: var(--g4u-cream); height: 5rem; position: absolute; right: 4.4rem; width: 2.2rem; z-index: 2; }
+.g4u-about-hero__scroll span::before,
+.g4u-about-hero__scroll span::after { background: currentColor; content: ""; position: absolute; }
+.g4u-about-hero__scroll span::before { height: 4.2rem; left: 1rem; top: 0; width: .1rem; }
+.g4u-about-hero__scroll span::after { border-bottom: .1rem solid currentColor; border-right: .1rem solid currentColor; bottom: .8rem; height: 1rem; left: .5rem; transform: rotate(45deg); width: 1rem; }
+
+.g4u-about-manifesto {
+  align-items: center;
+  background: var(--g4u-burgundy);
+  color: var(--g4u-cream);
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(42rem, 1fr);
+  min-height: 97.9rem;
+  overflow: hidden;
+  padding-left: 4rem;
+}
+.g4u-about-manifesto__copy { padding: 6rem 0; position: relative; z-index: 2; }
+.g4u-about-manifesto__title { color: inherit; font-size: clamp(4.2rem, 3.9vw, 5.6rem); line-height: .9; margin: 0 0 4rem; }
+.g4u-about-manifesto__title em { color: var(--g4u-orange); font-style: inherit; }
+.g4u-about-manifesto__title strong { color: #ffa6af; font: inherit; }
+.g4u-about-manifesto__closing { font-size: 2.4rem; line-height: 1; }
+.g4u-about-manifesto__closing p { margin: 0; }
+.g4u-about-manifesto__closing p:last-child { color: var(--g4u-orange); }
+.g4u-about-manifesto__art { align-self: stretch; min-height: 97.9rem; position: relative; }
+.g4u-about-manifesto__dust,
+.g4u-about-manifesto__texture { height: 110%; inset: -5% -8%; mix-blend-mode: screen; object-fit: cover; opacity: .42; position: absolute; width: 116%; }
+.g4u-about-manifesto__texture { opacity: .72; }
+.g4u-about-manifesto__object { filter: drop-shadow(.6rem .6rem 6rem rgba(0, 0, 0, .2)); object-fit: contain; position: absolute; }
+.g4u-about-manifesto__object--snack { height: 20.5rem; left: 14%; top: 12.8%; transform: rotate(22deg); width: 20.5rem; }
+.g4u-about-manifesto__object--bread { height: 35.4rem; right: -2%; top: 26.5%; transform: rotate(21deg); width: 34.3rem; }
+.g4u-about-manifesto__object--tortilla { bottom: 17.5%; height: 24.8rem; left: 10%; transform: rotate(44deg); width: 24.8rem; }
+
+.g4u-about-story { background: var(--g4u-cream); color: var(--g4u-ink); padding: 8rem 4rem; }
+.g4u-about-story--soft { background: #f2ebe4; }
+.g4u-about-story__inner { align-items: center; display: grid; gap: 8rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 136rem; }
+.g4u-about-story--reverse .g4u-about-story__content { order: 2; }
+.g4u-about-story--reverse .g4u-about-story__media { order: 1; }
+.g4u-about-story__content { max-width: 64rem; }
+.g4u-about-story__eyebrow { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .1em; margin: 0 0 2.4rem; text-transform: uppercase; }
+.g4u-about-story__title { color: inherit; font-size: 4rem; line-height: 1; margin: 0 0 2.4rem; max-width: 58rem; }
+.g4u-about-story__lead { font-size: 2.4rem; letter-spacing: .05em; line-height: 1.2; margin-bottom: 2.4rem; max-width: 49.2rem; }
+.g4u-about-story__text { font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; max-width: 52rem; }
+.g4u-about-story__text p { margin: 0 0 1.8rem; }
+.g4u-about-story__media { aspect-ratio: 15 / 16; border-radius: 1.2rem; overflow: hidden; }
+.g4u-about-story__image { height: 100%; object-fit: cover; width: 100%; }
+.g4u-about-story__list { display: grid; gap: .8rem; list-style: none; margin: 2.4rem 0 0; padding: 0; }
+.g4u-about-story__list li { align-items: flex-start; display: flex; font-size: 1.6rem; gap: 1.2rem; line-height: 1.5; }
+.g4u-about-story__list img { flex: 0 0 2rem; height: 2rem; width: 2rem; }
+
+.g4u-about-values { background: var(--g4u-cream); color: var(--g4u-ink); padding: 8rem 4rem; text-align: center; }
+.g4u-about-values__title { color: inherit; font-size: 4rem; margin: 0 0 8rem; }
+.g4u-about-values__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: auto; max-width: 136rem; }
+.g4u-about-value__media { aspect-ratio: 316 / 296; border-radius: 1.2rem; margin-bottom: 2.4rem; overflow: hidden; }
+.g4u-about-value__image { height: 100%; object-fit: cover; width: 100%; }
+.g4u-about-value h3 { color: inherit; font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin: 0 0 1.6rem; }
+.g4u-about-value .rte { font-size: 1.6rem; line-height: 1.5; margin: auto; max-width: 28rem; }
+
+@media screen and (max-width: 989px) {
+  .g4u-about-manifesto { grid-template-columns: 1fr 38%; }
+  .g4u-about-manifesto__title { font-size: 4rem; }
+  .g4u-about-story__inner { gap: 4rem; }
+  .g4u-about-values__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 5.6rem; }
+}
+
+@media screen and (max-width: 749px) {
+  .g4u-about-hero { min-height: 68rem; padding: 10rem 2rem 6rem; }
+  .g4u-about-hero::before { background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, .1) 80%); }
+  .g4u-about-hero__title { font-size: 4.1rem; }
+  .g4u-about-hero__text { font-size: 1.6rem; }
+  .g4u-about-hero__scroll { bottom: 2rem; right: 2rem; }
+  .g4u-about-manifesto { display: block; min-height: 0; padding: 6.4rem 2rem 0; }
+  .g4u-about-manifesto__copy { padding: 0; }
+  .g4u-about-manifesto__title { font-size: 3.5rem; }
+  .g4u-about-manifesto__closing { font-size: 2rem; }
+  .g4u-about-manifesto__art { min-height: 50rem; }
+  .g4u-about-manifesto__object--snack { height: 14rem; width: 14rem; }
+  .g4u-about-manifesto__object--bread { height: 25rem; width: 24rem; }
+  .g4u-about-manifesto__object--tortilla { height: 16rem; width: 16rem; }
+  .g4u-about-story { padding: 6.4rem 2rem; }
+  .g4u-about-story__inner { grid-template-columns: 1fr; }
+  .g4u-about-story--reverse .g4u-about-story__content,
+  .g4u-about-story--reverse .g4u-about-story__media { order: initial; }
+  .g4u-about-story__title { font-size: 3.6rem; }
+  .g4u-about-story__lead { font-size: 2rem; }
+  .g4u-about-story__text { font-size: 1.6rem; }
+  .g4u-about-values { padding: 6.4rem 2rem; }
+  .g4u-about-values__title { font-size: 3.6rem; margin-bottom: 4rem; }
+  .g4u-about-values__grid { display: flex; gap: 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .g4u-about-value { flex: 0 0 82%; scroll-snap-align: start; }
+}

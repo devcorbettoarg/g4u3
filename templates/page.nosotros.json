@@ -1,0 +1,132 @@
+{
+  "sections": {
+    "about_hero": {
+      "type": "g4u-about-hero",
+      "settings": {
+        "image_alt": "Wraps preparados con vegetales frescos",
+        "line_1": "Creemos que",
+        "accent_1": "comer bien",
+        "accent_2": "no debería",
+        "line_2": "sentirse",
+        "line_3": "como un",
+        "accent_3": "sacrificio",
+        "text": "<p>Desarrollamos alimentos funcionales que combinan ciencia, nutrición y sabor para demostrar que cuidarse también puede disfrutarse.</p>"
+      }
+    },
+    "about_manifesto": {
+      "type": "g4u-about-manifesto",
+      "settings": {
+        "closing": "Por eso existimos:\nPara redefinir el pan.",
+        "closing_accent": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
+      }
+    },
+    "about_history": {
+      "type": "g4u-about-story",
+      "settings": {
+        "background": "cream",
+        "image_position": "right",
+        "fallback_asset": "history",
+        "image_alt": "Pan G4U cortado sobre una tabla de madera",
+        "eyebrow": "Nuestra historia",
+        "title": "Todo empezó con una pregunta",
+        "lead": "<p>¿Y si el pan pudiera seguir siendo pan, pero nutricionalmente mejor?</p>",
+        "text": "<p>Nos preguntamos si era posible hacerlo diferente.</p><p>Así nació G4U: con el desafío de desarrollar productos que mantuvieran la experiencia de los alimentos que todos disfrutamos, pero con un perfil nutricional superior.</p><p>Hoy seguimos investigando, desarrollando y mejorando cada receta para demostrar que comer mejor no tiene por qué sentirse como un sacrificio.</p>"
+      }
+    },
+    "about_philosophy": {
+      "type": "g4u-about-story",
+      "blocks": {
+        "point_1": { "type": "item", "settings": { "text": "Creemos en productos que puedas elegir todos los días." } },
+        "point_2": { "type": "item", "settings": { "text": "En ingredientes que cumplen una función." } },
+        "point_3": { "type": "item", "settings": { "text": "En información clara." } },
+        "point_4": { "type": "item", "settings": { "text": "Y en la innovación aplicada a mejorar la forma en que nos alimentamos." } }
+      },
+      "block_order": ["point_1", "point_2", "point_3", "point_4"],
+      "settings": {
+        "background": "soft",
+        "image_position": "left",
+        "fallback_asset": "philosophy",
+        "image_alt": "Persona sosteniendo una hamburguesa G4U",
+        "eyebrow": "Nuestra filosofía",
+        "title": "Diseñamos alimentos para la vida real",
+        "lead": "<p>No creemos en soluciones mágicas ni en dietas extremas.</p>",
+        "text": ""
+      }
+    },
+    "about_values": {
+      "type": "g4u-about-values",
+      "blocks": {
+        "value_1": { "type": "value", "settings": { "title": "Innovación con propósito", "text": "<p>Cada formulación nace de investigación y desarrollo para ofrecer beneficios nutricionales reales.</p>" } },
+        "value_2": { "type": "value", "settings": { "title": "Ingredientes que suman", "text": "<p>Seleccionamos ingredientes que aportan valor, no solo sabor.</p>" } },
+        "value_3": { "type": "value", "settings": { "title": "El sabor de siempre", "text": "<p>La mejor alimentación es la que realmente disfrutás.</p>" } },
+        "value_4": { "type": "value", "settings": { "title": "Siempre mejorando", "text": "<p>Seguimos desarrollando nuevas formas de reinventar los alimentos de todos los días.</p>" } }
+      },
+      "block_order": ["value_1", "value_2", "value_3", "value_4"],
+      "settings": { "title": "Lo que nos diferencia" }
+    },
+    "about_flour": {
+      "type": "g4u-feel-good",
+      "settings": {
+        "fallback_image": "about_flour",
+        "image_alt": "Manos trabajando una masa con harina",
+        "heading": "Todo empieza",
+        "accent_heading": "con nuestra harina",
+        "text": "<p>Descubrí la innovación que hace posible cada uno de nuestros productos.</p>",
+        "button_label": "Conocé nuestra harina"
+      }
+    },
+    "about_products": {
+      "type": "g4u-featured-products",
+      "settings": {
+        "eyebrow": "",
+        "title": "Conocé nuestros productos",
+        "description": "",
+        "collection": "all",
+        "products_to_show": 4,
+        "show_secondary_image": true,
+        "show_view_all": false,
+        "button_label": "Ver todos los productos"
+      }
+    },
+    "about_experts": {
+      "type": "g4u-experts",
+      "blocks": {
+        "expert_alejandra": { "type": "expert", "settings": { "name": "Dra. Alejandra Moisello", "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte", "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada.”</p>", "handle": "@Dra.alejandramoisello" } },
+        "expert_roxana": { "type": "expert", "settings": { "name": "Roxana Marachlian", "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto", "quote": "<p>“Los panes G4U me resultaron una muy buena opción por su alto valor proteico y muy bajo contenido de carbohidratos.”</p>", "handle": "@nutricionintegralballester" } }
+      },
+      "block_order": ["expert_alejandra", "expert_roxana"],
+      "settings": { "eyebrow": "Respaldo profesional", "title": "Profesionales que nos recomiendan", "description": "<p>Nutricionistas y especialistas en alimentación confían en G4U por su perfil nutricional.</p>" }
+    },
+    "about_instagram": {
+      "type": "g4u-instagram",
+      "blocks": {
+        "post_1": { "type": "post", "settings": { "accessibility_label": "Ver publicación 1 en Instagram" } },
+        "post_2": { "type": "post", "settings": { "accessibility_label": "Ver publicación 2 en Instagram" } },
+        "post_3": { "type": "post", "settings": { "accessibility_label": "Ver publicación 3 en Instagram" } },
+        "post_4": { "type": "post", "settings": { "accessibility_label": "Ver publicación 4 en Instagram" } },
+        "post_5": { "type": "post", "settings": { "accessibility_label": "Ver publicación 5 en Instagram" } },
+        "post_6": { "type": "post", "settings": { "accessibility_label": "Ver publicación 6 en Instagram" } },
+        "post_7": { "type": "post", "settings": { "accessibility_label": "Ver publicación 7 en Instagram" } },
+        "post_8": { "type": "post", "settings": { "accessibility_label": "Ver publicación 8 en Instagram" } }
+      },
+      "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5", "post_6", "post_7", "post_8"],
+      "settings": { "title": "Descubrí más en Instagram", "button_label": "Seguinos" }
+    },
+    "about_services": {
+      "type": "g4u-service-benefits",
+      "blocks": {
+        "service_1": { "type": "benefit", "settings": { "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe" } },
+        "service_2": { "type": "benefit", "settings": { "text": "Nutrición inteligente, con sabor auténtico y beneficios reales" } },
+        "service_3": { "type": "benefit", "settings": { "text": "Entregas en 24/48 hs\nen AMBA" } },
+        "service_4": { "type": "benefit", "settings": { "text": "Pago seguro" } }
+      },
+      "block_order": ["service_1", "service_2", "service_3", "service_4"],
+      "settings": { "accessibility_label": "Beneficios de comprar en G4U" }
+    },
+    "about_newsletter": {
+      "type": "g4u-newsletter",
+      "settings": { "title": "Suscribite y accedé a un 10% off en tu primer compra", "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>", "placeholder": "Ingresá tu email", "button_label": "Suscribirme", "success_message": "¡Gracias por suscribirte!" }
+    }
+  },
+  "order": ["about_hero", "about_manifesto", "about_history", "about_philosophy", "about_values", "about_flour", "about_products", "about_experts", "about_instagram", "about_services", "about_newsletter"]
+}
