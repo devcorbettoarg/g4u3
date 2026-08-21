@@ -36,10 +36,49 @@
         "padding_top": 40,
         "padding_bottom": 80
       }
+    },
+    "g4u_instagram": {
+      "type": "g4u-instagram",
+      "blocks": {
+        "post_1": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_2": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_3": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_4": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_5": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_6": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_7": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } },
+        "post_8": { "type": "post", "settings": { "accessibility_label": "Ver publicación de G4U en Instagram" } }
+      },
+      "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5", "post_6", "post_7", "post_8"],
+      "settings": { "title": "Descubrí más en Instagram", "button_label": "Seguinos" }
+    },
+    "g4u_services": {
+      "type": "g4u-service-benefits",
+      "blocks": {
+        "shipping": { "type": "benefit", "settings": { "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe" } },
+        "nutrition": { "type": "benefit", "settings": { "text": "Nutrición inteligente,\ncon sabor auténtico y beneficios reales" } },
+        "delivery": { "type": "benefit", "settings": { "text": "Entregas en 24/48 hs\nen AMBA" } },
+        "payment": { "type": "benefit", "settings": { "text": "Pago seguro" } }
+      },
+      "block_order": ["shipping", "nutrition", "delivery", "payment"],
+      "settings": { "accessibility_label": "Beneficios de comprar en G4U" }
+    },
+    "g4u_newsletter": {
+      "type": "g4u-newsletter",
+      "settings": {
+        "title": "Suscribite y accedé a un 10% off en tu primer compra",
+        "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>",
+        "placeholder": "Ingresá tu email",
+        "button_label": "Suscribirme",
+        "success_message": "¡Gracias por suscribirte!"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "g4u_instagram",
+    "g4u_services",
+    "g4u_newsletter"
   ]
 }
