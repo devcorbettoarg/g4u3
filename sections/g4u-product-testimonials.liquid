@@ -1,0 +1,32 @@
+<section class="g4u-product-testimonials" aria-labelledby="G4uProductTestimonials-{{ section.id }}">
+  <div class="g4u-product-testimonials__inner">
+    <header><h2 class="g4u-display" id="G4uProductTestimonials-{{ section.id }}">{{ section.settings.title | escape }}</h2></header>
+    <div class="g4u-product-testimonials__grid">
+      {%- for block in section.blocks -%}
+        <blockquote {{ block.shopify_attributes }}>
+          <p class="g4u-product-testimonials__stars" aria-label="{{ block.settings.rating | escape }} de 5 estrellas">★★★★★</p>
+          <div class="rte">{{ block.settings.quote }}</div>
+          <footer>{{ block.settings.author | escape }}</footer>
+        </blockquote>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Reseñas PDP",
+  "tag": "section",
+  "class": "section-g4u-product-testimonials",
+  "max_blocks": 4,
+  "settings": [{ "type": "text", "id": "title", "label": "Título", "default": "Lo dicen quienes ya lo probaron" }],
+  "blocks": [
+    { "type": "review", "name": "Reseña", "settings": [
+      { "type": "text", "id": "rating", "label": "Calificación", "default": "5" },
+      { "type": "richtext", "id": "quote", "label": "Reseña", "default": "<p>“Por fin un pan que no se siente un cartón. Es suave, esponjoso y tiene sabor a pan real.”</p>" },
+      { "type": "text", "id": "author", "label": "Autor", "default": "Mariana G." }
+    ] }
+  ],
+  "presets": [{ "name": "G4U · Reseñas PDP", "blocks": [{ "type": "review" }, { "type": "review", "settings": { "quote": "<p>“Excelente producto: rico, práctico y fácil de incorporar todos los días.”</p>", "author": "Juan A." } }, { "type": "review", "settings": { "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>", "author": "Ivana M." } }] }]
+}
+{% endschema %}

@@ -3,118 +3,112 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": {
-          "type": "title"
-        },
-        "price": {
-          "type": "price"
-        },
-        "description": {
-          "type": "description"
-        },
-        "variant_picker": {
-          "type": "variant_picker",
+        "title": { "type": "title" }, "price": { "type": "price" },
+        "product_highlights": {
+          "type": "custom_liquid",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "custom_liquid": "<div class=\"g4u-product-highlights\"><div class=\"g4u-product-highlights__tags\">{% for tag in product.tags %}{% assign normalized_tag = tag | downcase %}{% if normalized_tag contains 'prote' or normalized_tag contains 'low-carb' or normalized_tag contains 'keto' or normalized_tag contains 'fibra' or normalized_tag contains 'azúcar' %}<span>{{ tag }}</span>{% endif %}{% endfor %}</div><p class=\"g4u-product-highlights__intro\">El pan de siempre, con beneficios reales.</p><ul><li>Alto en proteína</li><li>Bajo en carbohidratos</li><li>Alto en fibra</li><li>Sin azúcar agregada</li><li>Se puede congelar</li><li>Hasta 45 días refrigerado</li></ul></div>"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector"
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "details": {
-          "type": "collapsible_tab",
-          "settings": { "heading": "Detalles del producto", "icon": "check_mark", "content": "<p>Conocé los ingredientes, conservación y toda la información de este producto.</p>" }
-        },
-        "ingredients": {
-          "type": "collapsible_tab",
-          "settings": { "heading": "Ingredientes", "icon": "leaf", "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>" }
-        },
-        "nutrition": {
-          "type": "collapsible_tab",
-          "settings": { "heading": "Información nutricional", "icon": "heart", "content": "<p>Consultá la tabla nutricional y las características del producto en su descripción.</p>" }
-        },
-        "storage": {
-          "type": "collapsible_tab",
-          "settings": { "heading": "Conservación", "icon": "dryer", "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>" }
-        },
-        "shipping": {
-          "type": "collapsible_tab",
-          "settings": { "heading": "Envíos y entregas", "icon": "truck", "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>" }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Compartir"
-          }
-        }
+        "description": { "type": "description" },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
+        "quantity_selector": { "type": "quantity_selector" },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true, "show_gift_card_recipient": false } },
+        "details": { "type": "collapsible_tab", "settings": { "heading": "¿Por qué elegir G4U?", "icon": "check_mark", "content": "<p>Un pan funcional, con más proteína y fibra, menos carbohidratos y el sabor de siempre.</p>" } },
+        "ingredients": { "type": "collapsible_tab", "settings": { "heading": "Ingredientes", "icon": "leaf", "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>" } },
+        "nutrition": { "type": "collapsible_tab", "settings": { "heading": "Información nutricional", "icon": "heart", "content": "<p>Consultá la tabla nutricional en la descripción del producto.</p>" } },
+        "storage": { "type": "collapsible_tab", "settings": { "heading": "Conservación", "icon": "dryer", "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>" } },
+        "shipping": { "type": "collapsible_tab", "settings": { "heading": "Envíos", "icon": "truck", "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>" } },
+        "share": { "type": "share", "settings": { "share_label": "Compartir" } }
       },
-      "block_order": [
-        "title",
-        "price",
-        "description",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "details",
-        "ingredients",
-        "nutrition",
-        "storage",
-        "shipping",
-        "share"
-      ],
-      "settings": {
-        "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
-        "media_position": "left",
-        "gallery_layout": "thumbnail_slider",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "image_zoom": "lightbox",
-        "mobile_thumbnails": "show",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
+      "block_order": ["title", "price", "product_highlights", "description", "variant_picker", "quantity_selector", "buy_buttons", "details", "ingredients", "nutrition", "storage", "shipping", "share"],
+      "settings": { "enable_sticky_info": true, "color_scheme": "scheme-1", "media_position": "left", "gallery_layout": "thumbnail_slider", "media_size": "large", "constrain_to_viewport": true, "media_fit": "contain", "image_zoom": "lightbox", "mobile_thumbnails": "show", "hide_variants": false, "enable_video_looping": false, "padding_top": 80, "padding_bottom": 80 }
     },
-    "disclosures": {
-      "type": "disclosures",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
+    "product_comparison": {
+      "type": "g4u-product-comparison",
+      "blocks": {
+        "protein": { "type": "metric", "settings": { "label": "Proteína", "other_value": "5g", "g4u_value": "14g" } },
+        "carbs": { "type": "metric", "settings": { "label": "Carbohidratos", "other_value": "25g", "g4u_value": "3g" } },
+        "fiber": { "type": "metric", "settings": { "label": "Fibra", "other_value": "3g", "g4u_value": "17g" } },
+        "sugar": { "type": "metric", "settings": { "label": "Azúcar", "other_value": "2g", "g4u_value": "0g" } }
+      },
+      "block_order": ["protein", "carbs", "fiber", "sugar"],
+      "settings": { "other_heading": "Otros “integrales”", "g4u_heading": "Pan de molde G4U", "note": "Porción de 2 rebanadas / 60 g", "g4u_note": "Porción de 2 rebanadas / 60 g" }
+    },
+    "product_ingredients": {
+      "type": "g4u-product-ingredients",
+      "blocks": {
+        "starch": { "type": "ingredient", "settings": { "title": "Almidón resistente RS4", "text": "<p>Una fibra funcional que ayuda a mejorar el perfil nutricional.</p>" } },
+        "fiber": { "type": "ingredient", "settings": { "title": "Fibras funcionales", "text": "<p>Ingredientes que acompañan la saciedad y el bienestar digestivo.</p>" } },
+        "protein": { "type": "ingredient", "settings": { "title": "Proteínas de alta calidad", "text": "<p>Para un mayor aporte proteico sin perder suavidad ni sabor.</p>" } },
+        "technology": { "type": "ingredient", "settings": { "title": "Tecnología alimentaria", "text": "<p>Cada componente es seleccionado para lograr una experiencia deliciosa.</p>" } }
+      },
+      "block_order": ["starch", "fiber", "protein", "technology"],
+      "settings": { "eyebrow": "Ingredientes", "title": "Ciencia y nutrición en cada ingrediente", "description": "<p>Cada componente de nuestra fórmula cumple una función específica para lograr un pan más nutritivo, sin resignar sabor ni textura.</p>" }
+    },
+    "product_ideas": {
+      "type": "g4u-product-editorial",
+      "blocks": {
+        "sandwiches": { "type": "item", "settings": { "text": "Sandwiches" } }, "breakfast": { "type": "item", "settings": { "text": "Desayunos" } }, "toast": { "type": "item", "settings": { "text": "Tostadas" } }, "lunch": { "type": "item", "settings": { "text": "Almuerzos" } }
+      },
+      "block_order": ["sandwiches", "breakfast", "toast", "lunch"],
+      "settings": { "background": "soft", "image_position": "left", "fallback_asset": "bread", "image_alt": "Pan G4U para disfrutar todos los días", "eyebrow": "Ideas para disfrutarlo", "title": "Un pan, infinitas posibilidades", "text": "<p>Perfecto para desayunos, tostadas, sandwiches, hamburguesas o cualquier comida del día. Se puede tostar, congelar y disfrutar como un pan tradicional.</p>" }
+    },
+    "product_flour": {
+      "type": "g4u-product-editorial",
+      "settings": { "background": "cream", "image_position": "right", "fallback_asset": "flour", "image_alt": "Harina funcional G4U", "eyebrow": "Nuestra harina", "title": "La diferencia empieza en la harina", "text": "<p>No usamos una harina convencional. Desarrollamos una fórmula propia que combina almidón resistente RS4, proteínas funcionales y fibras naturales para lograr un pan con menos carbohidratos, más fibra y una textura sorprendentemente similar al pan tradicional.</p>", "link_label": "Conocé nuestra harina", "link": "/pages/nuestra-harina" }
+    },
+    "g4u_marquee": {
+      "type": "g4u-nutrition-marquee",
+      "blocks": { "carbs": { "type": "item", "settings": { "text": "Low-carbs" } }, "protein": { "type": "item", "settings": { "text": "Alto en proteínas" } }, "fiber": { "type": "item", "settings": { "text": "Alto en fibras" } } },
+      "block_order": ["carbs", "protein", "fiber"],
+      "settings": { "accessibility_label": "Beneficios nutricionales", "duration": 14 }
+    },
+    "g4u_low_carb": {
+      "type": "g4u-low-carb-benefits",
+      "blocks": {
+        "fat": { "type": "benefit", "settings": { "title": "Activamos la quema de grasa", "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>" } },
+        "energy": { "type": "benefit", "settings": { "title": "Energía más estable", "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>" } },
+        "focus": { "type": "benefit", "settings": { "title": "Foco y claridad mental", "text": "<p>Más foco, más lucidez, más presencia.</p>" } },
+        "wellbeing": { "type": "benefit", "settings": { "title": "Menos inflamación, más bienestar", "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>" } }
+      },
+      "block_order": ["fat", "energy", "focus", "wellbeing"],
+      "settings": { "title": "Alimentación low-carb" }
+    },
+    "product_reviews": {
+      "type": "g4u-product-testimonials",
+      "blocks": {
+        "review_1": { "type": "review", "settings": { "rating": "5", "quote": "<p>“Por fin un pan que no se siente un cartón. Es suave, esponjoso y tiene sabor a pan real.”</p>", "author": "Mariana G." } },
+        "review_2": { "type": "review", "settings": { "rating": "5", "quote": "<p>“Excelente producto: rico, práctico y fácil de incorporar todos los días.”</p>", "author": "Juan A." } },
+        "review_3": { "type": "review", "settings": { "rating": "5", "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>", "author": "Ivana M." } }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": { "title": "Lo dicen quienes ya lo probaron" }
     },
     "related-products": {
       "type": "related-products",
-      "settings": {
-        "heading": "También te puede gustar",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 28
-      }
-    }
+      "settings": { "heading": "También te puede gustar", "heading_size": "h2", "products_to_show": 4, "columns_desktop": 4, "color_scheme": "scheme-1", "image_ratio": "square", "image_shape": "default", "show_secondary_image": true, "show_vendor": false, "show_rating": false, "columns_mobile": "2", "padding_top": 72, "padding_bottom": 72 }
+    },
+    "product_faq": {
+      "type": "g4u-flour-faq",
+      "blocks": {
+        "freeze": { "type": "question", "settings": { "question": "¿Se puede congelar?", "answer": "<p>Sí. Podés congelarlo para conservar su frescura y tostarlo directamente cuando quieras disfrutarlo.</p>" } },
+        "duration": { "type": "question", "settings": { "question": "¿Cuánto dura?", "answer": "<p>Consultá el envase para conocer la fecha de vencimiento y las indicaciones de conservación de cada producto.</p>" } },
+        "keto": { "type": "question", "settings": { "question": "¿Es apto para una alimentación keto?", "answer": "<p>Por su bajo contenido de carbohidratos, es una opción que puede incorporarse a una alimentación low-carb o keto.</p>" } },
+        "sugar": { "type": "question", "settings": { "question": "¿Tiene azúcar agregada?", "answer": "<p>Nuestra línea fue desarrollada para ofrecer una alternativa sin azúcar agregada.</p>" } },
+        "shipping": { "type": "question", "settings": { "question": "¿Dónde realizan envíos?", "answer": "<p>Realizamos entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>" } },
+        "flour": { "type": "question", "settings": { "question": "¿Qué hace diferente a la harina G4U?", "answer": "<p>Combina proteínas, fibras y almidón resistente para mejorar el perfil nutricional sin resignar sabor ni textura.</p>" } }
+      },
+      "block_order": ["freeze", "duration", "keto", "sugar", "shipping", "flour"],
+      "settings": { "title": "Preguntas frecuentes", "description": "<p>Todo lo que querés saber antes de elegir tu producto G4U.</p>", "contact_title": "¿Todavía tenés preguntas?", "contact_label": "Contactate con nosotros", "contact_link": "/pages/contacto" }
+    },
+    "g4u_services": {
+      "type": "g4u-service-benefits",
+      "blocks": { "shipping": { "type": "benefit", "settings": { "text": "Envíos Buenos Aires, Córdoba y Santa Fe" } }, "nutrition": { "type": "benefit", "settings": { "text": "Nutrición inteligente, con sabor auténtico y beneficios reales" } }, "delivery": { "type": "benefit", "settings": { "text": "Entregas en 24/48 hs en AMBA" } }, "payment": { "type": "benefit", "settings": { "text": "Pago seguro" } } },
+      "block_order": ["shipping", "nutrition", "delivery", "payment"],
+      "settings": { "accessibility_label": "Beneficios de comprar en G4U" }
+    },
+    "g4u_newsletter": { "type": "g4u-newsletter", "settings": { "title": "Suscribite y accedé a un 10% off en tu primer compra", "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>", "placeholder": "Ingresá tu email", "button_label": "Suscribirme", "success_message": "¡Gracias por suscribirte!" } }
   },
-  "order": [
-    "main",
-    "disclosures",
-    "related-products"
-  ]
+  "order": ["main", "product_comparison", "product_ingredients", "product_ideas", "product_flour", "g4u_marquee", "g4u_low_carb", "product_reviews", "related-products", "product_faq", "g4u_services", "g4u_newsletter"]
 }

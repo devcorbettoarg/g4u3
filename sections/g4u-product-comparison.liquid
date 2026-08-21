@@ -1,0 +1,65 @@
+<section class="g4u-product-comparison" aria-labelledby="G4uProductComparison-{{ section.id }}">
+  <div class="g4u-product-comparison__grid">
+    <article class="g4u-product-comparison__panel g4u-product-comparison__panel--other">
+      <h2 id="G4uProductComparison-{{ section.id }}">{{ section.settings.other_heading | escape }}</h2>
+      <div class="g4u-product-comparison__media">
+        {%- if section.settings.other_image != blank -%}
+          {{ section.settings.other_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 50vw, 100vw' }}
+        {%- else -%}
+          <img src="{{ 'g4u-about-bread.png' | asset_url }}" alt="" width="900" height="900" loading="lazy">
+        {%- endif -%}
+      </div>
+      <dl class="g4u-product-comparison__metrics">
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}><dt>{{ block.settings.label | escape }}</dt><dd>{{ block.settings.other_value | escape }}</dd></div>
+        {%- endfor -%}
+      </dl>
+      <p class="g4u-product-comparison__note">{{ section.settings.note | escape }}</p>
+    </article>
+    <article class="g4u-product-comparison__panel g4u-product-comparison__panel--g4u">
+      <h2>{{ section.settings.g4u_heading | default: product.title | escape }}</h2>
+      <div class="g4u-product-comparison__media">
+        {%- if product.featured_media != blank -%}
+          {{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 50vw, 100vw' }}
+        {%- else -%}
+          <img src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="900" height="900" loading="lazy">
+        {%- endif -%}
+      </div>
+      <dl class="g4u-product-comparison__metrics">
+        {%- for block in section.blocks -%}
+          <div><dt>{{ block.settings.label | escape }}</dt><dd>{{ block.settings.g4u_value | escape }}</dd></div>
+        {%- endfor -%}
+      </dl>
+      <p class="g4u-product-comparison__note">{{ section.settings.g4u_note | escape }}</p>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Comparativa PDP",
+  "tag": "section",
+  "class": "section-g4u-product-comparison",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "other_heading", "label": "Título columna comparativa", "default": "Otros “integrales”" },
+    { "type": "image_picker", "id": "other_image", "label": "Imagen producto comparativo" },
+    { "type": "text", "id": "note", "label": "Nota columna comparativa", "default": "Porción de 2 rebanadas / 60 g" },
+    { "type": "text", "id": "g4u_heading", "label": "Título columna G4U", "default": "Pan de molde G4U" },
+    { "type": "text", "id": "g4u_note", "label": "Nota columna G4U", "default": "Porción de 2 rebanadas / 60 g" }
+  ],
+  "blocks": [
+    { "type": "metric", "name": "Métrica", "settings": [
+      { "type": "text", "id": "label", "label": "Métrica", "default": "Proteína" },
+      { "type": "text", "id": "other_value", "label": "Valor comparativo", "default": "5g" },
+      { "type": "text", "id": "g4u_value", "label": "Valor G4U", "default": "14g" }
+    ] }
+  ],
+  "presets": [{ "name": "G4U · Comparativa PDP", "blocks": [
+    { "type": "metric", "settings": { "label": "Proteína", "other_value": "5g", "g4u_value": "14g" } },
+    { "type": "metric", "settings": { "label": "Carbohidratos", "other_value": "25g", "g4u_value": "3g" } },
+    { "type": "metric", "settings": { "label": "Fibra", "other_value": "3g", "g4u_value": "17g" } },
+    { "type": "metric", "settings": { "label": "Azúcar", "other_value": "2g", "g4u_value": "0g" } }
+  ] }]
+}
+{% endschema %}

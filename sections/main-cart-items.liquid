@@ -52,6 +52,7 @@
     </div>
 
     <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
+      <div class="g4u-cart-page-layout">
       <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
         <div class="js-contents">
           {%- if cart != empty -%}
@@ -454,6 +455,53 @@
         </div>
       </div>
 
+      {%- if cart != empty -%}
+        {%- assign g4u_shipping_goal = 8000000 -%}
+        {%- assign g4u_shipping_remaining = g4u_shipping_goal | minus: cart.total_price -%}
+        {%- assign g4u_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_shipping_goal -%}
+        {%- if g4u_shipping_progress > 100 -%}{%- assign g4u_shipping_progress = 100 -%}{%- endif -%}
+        <aside class="g4u-cart-page-summary" aria-label="Resumen de tu carrito">
+          <div class="g4u-cart-page-summary__shipping">
+            <span class="g4u-cart-page-summary__truck" aria-hidden="true">⌁</span>
+            <p>
+              {%- if g4u_shipping_remaining > 0 -%}
+                Agregá <strong>{{ g4u_shipping_remaining | money }}</strong> más para tener envío GRATIS
+              {%- else -%}
+                <strong>¡Tu envío es gratis!</strong>
+              {%- endif -%}
+            </p>
+            <span class="g4u-cart-page-summary__progress"><i style="width: {{ g4u_shipping_progress }}%"></i></span>
+          </div>
+          <div class="g4u-cart-page-summary__body">
+            <label for="G4U-Cart-Discount">Código de descuento</label>
+            <div class="g4u-cart-page-summary__inline-field">
+              <input id="G4U-Cart-Discount" form="G4U-Cart-Discount-Form" name="discount" type="text" placeholder="Ingresá el código de descuento">
+              <button form="G4U-Cart-Discount-Form" type="submit">Aplicar</button>
+            </div>
+            <label for="G4U-Cart-Note">Comentario</label>
+            <textarea id="G4U-Cart-Note" name="note" form="cart" placeholder="¿Querés dejarnos algún comentario?">{{ cart.note }}</textarea>
+            <label for="G4U-Cart-Link">Compartir link</label>
+            <div class="g4u-cart-page-summary__inline-field">
+              <input id="G4U-Cart-Link" type="text" value="{{ request.origin }}{{ routes.cart_url }}" readonly>
+              <button type="button" data-g4u-copy-cart-link>Copiar</button>
+            </div>
+          </div>
+          <div class="g4u-cart-page-summary__total">
+            <div><span>Total</span><strong>{{ cart.total_price | money }}</strong></div>
+            {%- if cart.original_total_price > cart.total_price -%}
+              <p>Te ahorraste {{ cart.original_total_price | minus: cart.total_price | money }}!</p>
+              <s>{{ cart.original_total_price | money }}</s>
+            {%- endif -%}
+            <small>Impuestos, descuentos y envío calculados en la pantalla de pago.</small>
+            <button class="button" type="submit" name="checkout">Finalizar compra</button>
+            <ul class="g4u-cart-page-summary__payments" role="list">
+              {%- for type in shop.enabled_payment_types limit: 5 -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
+            </ul>
+          </div>
+        </aside>
+      {%- endif -%}
+      </div>
+
       <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
       <p
         class="visually-hidden"
@@ -464,6 +512,9 @@
       >
         {{ 'accessibility.loading' | t }}
       </p>
+    </form>
+    <form id="G4U-Cart-Discount-Form" action="{{ routes.root_url }}discount/" method="get">
+      <input name="return_url" type="hidden" value="{{ routes.cart_url }}">
     </form>
   </div>
 </cart-items>

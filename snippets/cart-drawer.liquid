@@ -62,7 +62,7 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }} <span class="g4u-cart-drawer__count">{{ cart.item_count }}</span></h2>
         <button
           class="drawer__close"
           type="button"
@@ -74,6 +74,7 @@
           </span>
         </button>
       </div>
+      <div class="g4u-cart-drawer__body">
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"
@@ -87,8 +88,17 @@
           class="cart__contents cart-drawer__form"
           method="post"
         >
+          {%- assign g4u_drawer_shipping_goal = 8000000 -%}
+          {%- assign g4u_drawer_shipping_remaining = g4u_drawer_shipping_goal | minus: cart.total_price -%}
+          {%- assign g4u_drawer_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_drawer_shipping_goal -%}
+          {%- if g4u_drawer_shipping_progress > 100 -%}{%- assign g4u_drawer_shipping_progress = 100 -%}{%- endif -%}
           <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
             {%- if cart != empty -%}
+              <div class="g4u-cart-drawer__shipping">
+                <span aria-hidden="true">⌁</span>
+                <p>{% if g4u_drawer_shipping_remaining > 0 %}Agregá <strong>{{ g4u_drawer_shipping_remaining | money }}</strong> más para tener envío GRATIS{% else %}<strong>¡Tu envío es gratis!</strong>{% endif %}</p>
+                <i style="width: {{ g4u_drawer_shipping_progress }}%"></i>
+              </div>
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
                   <thead role="rowgroup">
@@ -487,6 +497,30 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
+      {%- if cart != empty -%}
+        <aside class="g4u-cart-drawer__upsells" aria-label="Productos sugeridos">
+          <h3>Sumá más proteína con fibra con:</h3>
+          <div class="g4u-cart-drawer__upsell-list">
+            {%- assign g4u_upsell_count = 0 -%}
+            {%- for product in collections.all.products -%}
+              {%- if g4u_upsell_count >= 6 -%}{% break %}{%- endif -%}
+              {%- assign g4u_in_cart = false -%}
+              {%- for item in cart.items -%}{%- if item.product_id == product.id -%}{%- assign g4u_in_cart = true -%}{%- endif -%}{%- endfor -%}
+              {%- if product.available and g4u_in_cart == false -%}
+                <article class="g4u-cart-drawer__upsell">
+                  <a href="{{ product.url }}" tabindex="-1">
+                    {%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.featured_image.alt | escape }}" width="60" height="60" loading="lazy">{%- endif -%}
+                  </a>
+                  <div><a href="{{ product.url }}">{{ product.title }}</a><span>{{ product.price | money }}</span></div>
+                  <a class="g4u-cart-drawer__upsell-add" href="{{ product.url }}" aria-label="Ver {{ product.title | escape }}">+</a>
+                </article>
+                {%- assign g4u_upsell_count = g4u_upsell_count | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </aside>
+      {%- endif -%}
+      </div>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
@@ -575,6 +609,7 @@
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
+          <a class="g4u-cart-drawer__view-cart" href="{{ routes.cart_url }}">Ver carrito</a>
           <button
             type="submit"
             id="CartDrawer-Checkout"

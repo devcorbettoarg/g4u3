@@ -1,0 +1,51 @@
+{%- liquid
+  assign fallback_asset = 'g4u-about-bread.png'
+  if section.settings.fallback_asset == 'flour'
+    assign fallback_asset = 'g4u-about-flour-cta.png'
+  elsif section.settings.fallback_asset == 'ingredients'
+    assign fallback_asset = 'g4u-flour-ingredients.png'
+  endif
+-%}
+<section class="g4u-product-editorial g4u-product-editorial--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-product-editorial--reverse{% endif %}" aria-labelledby="G4uProductEditorial-{{ section.id }}">
+  <div class="g4u-product-editorial__inner">
+    <div class="g4u-product-editorial__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="g4u-product-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="g4u-display" id="G4uProductEditorial-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.blocks.size > 0 -%}
+        <ul role="list">{%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>{%- endfor -%}</ul>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}<a class="g4u-product-editorial__link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a>{%- endif -%}
+    </div>
+    <div class="g4u-product-editorial__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1300, 1600', sizes: '(min-width: 990px) 50vw, 100vw' }}
+      {%- else -%}
+        <img src="{{ fallback_asset | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="1600" height="1200" loading="lazy">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Editorial PDP",
+  "tag": "section",
+  "class": "section-g4u-product-editorial",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Fondo", "options": [{ "value": "cream", "label": "Crema" }, { "value": "soft", "label": "Suave" }], "default": "soft" },
+    { "type": "select", "id": "image_position", "label": "Posición de imagen", "options": [{ "value": "left", "label": "Izquierda" }, { "value": "right", "label": "Derecha" }], "default": "left" },
+    { "type": "select", "id": "fallback_asset", "label": "Imagen predeterminada", "options": [{ "value": "bread", "label": "Pan" }, { "value": "flour", "label": "Harina" }, { "value": "ingredients", "label": "Ingredientes" }], "default": "bread" },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "image_alt", "label": "Descripción de imagen", "default": "Producto G4U listo para disfrutar" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Ideas para disfrutarlo" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Un pan, infinitas posibilidades" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Perfecto para desayunos, tostadas, sandwiches, hamburguesas o cualquier comida del día.</p>" },
+    { "type": "text", "id": "link_label", "label": "Texto enlace" },
+    { "type": "url", "id": "link", "label": "Enlace" }
+  ],
+  "blocks": [{ "type": "item", "name": "Punto", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "Sandwiches" }] }],
+  "presets": [{ "name": "G4U · Editorial PDP", "blocks": [{ "type": "item" }, { "type": "item", "settings": { "text": "Desayunos" } }, { "type": "item", "settings": { "text": "Tostadas" } }, { "type": "item", "settings": { "text": "Almuerzos" } }] }]
+}
+{% endschema %}

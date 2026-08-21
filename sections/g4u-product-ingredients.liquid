@@ -1,0 +1,36 @@
+<section class="g4u-product-ingredients" aria-labelledby="G4uProductIngredients-{{ section.id }}">
+  <header class="g4u-product-ingredients__header">
+    {%- if section.settings.eyebrow != blank -%}<p>{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    <h2 class="g4u-display" id="G4uProductIngredients-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+    {%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}
+  </header>
+  <div class="g4u-product-ingredients__items">
+    {%- for block in section.blocks -%}
+      <details {{ block.shopify_attributes }}>
+        <summary>{{ block.settings.title | escape }}<span aria-hidden="true"></span></summary>
+        <div class="rte">{{ block.settings.text }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Ingredientes PDP",
+  "tag": "section",
+  "class": "section-g4u-product-ingredients",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Ingredientes" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Ciencia y nutrición en cada ingrediente" },
+    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>Cada componente de nuestra fórmula cumple una función específica para lograr un pan más nutritivo, sin resignar sabor ni textura.</p>" }
+  ],
+  "blocks": [
+    { "type": "ingredient", "name": "Ingrediente", "settings": [
+      { "type": "text", "id": "title", "label": "Título", "default": "Almidón resistente RS4" },
+      { "type": "richtext", "id": "text", "label": "Descripción", "default": "<p>Aporta fibra funcional y contribuye a un perfil nutricional más equilibrado.</p>" }
+    ] }
+  ],
+  "presets": [{ "name": "G4U · Ingredientes PDP", "blocks": [{ "type": "ingredient" }, { "type": "ingredient", "settings": { "title": "Fibras funcionales" } }, { "type": "ingredient", "settings": { "title": "Proteínas de alta calidad" } }, { "type": "ingredient", "settings": { "title": "Tecnología alimentaria" } }] }]
+}
+{% endschema %}
