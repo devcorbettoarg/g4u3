@@ -21,10 +21,10 @@
               {%- endfor -%}
             {%- elsif block.settings.fallback == 'shop' -%}
               <li><a href="{{ routes.all_products_collection_url }}">Novedades</a></li>
-              <li><a href="/collections/desayuno">Desayuno</a></li>
-              <li><a href="/collections/sandwich">Sandwich</a></li>
-              <li><a href="/collections/snacks">Snacks</a></li>
-              <li><a href="/collections/packs">Packs</a></li>
+              <li><a href="{{ routes.collections_url }}/desayuno">Desayuno</a></li>
+              <li><a href="{{ routes.collections_url }}/sandwich">Sandwich</a></li>
+              <li><a href="{{ routes.collections_url }}/snacks">Snacks</a></li>
+              <li><a href="{{ routes.collections_url }}/packs">Packs</a></li>
             {%- elsif block.settings.fallback == 'support' -%}
               {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Política de envío</a></li>{%- endif -%}
               {%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">Política de privacidad</a></li>{%- endif -%}
