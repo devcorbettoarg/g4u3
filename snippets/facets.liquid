@@ -50,11 +50,21 @@
           <div
             id="FacetsWrapperDesktop"
             {% if filter_type == 'horizontal' %}
-              class="facets__wrapper"
+              class="facets__wrapper g4u-facets__wrapper"
             {% endif %}
           >
             {%- if filter_type == 'horizontal' and results.filters != empty -%}
-              <h2 class="facets__heading caption-large text-body" id="verticalTitle" tabindex="-1">
+              <button
+                class="g4u-facets__toggle"
+                type="button"
+                aria-controls="FacetsWrapperDesktop"
+                aria-expanded="false"
+              >
+                {{- 'icon-filter.svg' | inline_asset_content -}}
+                <span class="g4u-facets__toggle-label g4u-facets__toggle-label--closed">Ver filtros</span>
+                <span class="g4u-facets__toggle-label g4u-facets__toggle-label--open">Ocultar filtros</span>
+              </button>
+              <h2 class="visually-hidden" id="verticalTitle" tabindex="-1">
                 {{ 'products.facets.filter_by_label' | t }}
               </h2>
             {%- endif -%}
