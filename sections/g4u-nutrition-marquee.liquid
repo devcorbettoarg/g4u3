@@ -1,0 +1,50 @@
+<section class="g4u-nutrition-marquee" aria-label="{{ section.settings.accessibility_label | escape }}" style="--g4u-marquee-duration: {{ section.settings.duration }}s;">
+  <div class="g4u-nutrition-marquee__track">
+    {%- for duplicate in (1..2) -%}
+      <div class="g4u-nutrition-marquee__group"{% if duplicate == 2 %} aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign fallback_icon = 'g4u-marquee-grain.svg'
+            if forloop.index == 2
+              assign fallback_icon = 'g4u-marquee-protein.svg'
+            elsif forloop.index == 3
+              assign fallback_icon = 'g4u-marquee-fiber.svg'
+            endif
+          -%}
+          <div class="g4u-nutrition-marquee__item"{% if duplicate == 1 %} {{ block.shopify_attributes }}{% endif %}>
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-nutrition-marquee__icon', loading: 'lazy' }}
+            {%- else -%}
+              <img class="g4u-nutrition-marquee__icon" src="{{ fallback_icon | asset_url }}" alt="" width="73" height="93">
+            {%- endif -%}
+            <span class="g4u-nutrition-marquee__text g4u-display">{{ block.settings.text | escape }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Marquee nutricional",
+  "tag": "section",
+  "class": "section-g4u-marquee",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "accessibility_label", "label": "Nombre accesible", "default": "Beneficios nutricionales" },
+    { "type": "range", "id": "duration", "label": "Duración del recorrido", "min": 8, "max": 30, "step": 1, "unit": "s", "default": 14 }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Beneficio", "settings": [
+      { "type": "image_picker", "id": "icon", "label": "Ícono" },
+      { "type": "text", "id": "text", "label": "Texto", "default": "Low-carbs" }
+    ] }
+  ],
+  "presets": [{ "name": "G4U · Marquee nutricional", "blocks": [
+    { "type": "item", "settings": { "text": "Low-carbs" } },
+    { "type": "item", "settings": { "text": "Alto en proteínas" } },
+    { "type": "item", "settings": { "text": "Alto en fibras" } }
+  ] }]
+}
+{% endschema %}

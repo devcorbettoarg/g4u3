@@ -1,0 +1,32 @@
+<section class="g4u-choice-banner" aria-labelledby="G4uChoice-{{ section.id }}">
+  <h2 class="g4u-choice-banner__copy g4u-display" id="G4uChoice-{{ section.id }}">
+    <span class="g4u-choice-banner__line">
+      {{ section.settings.first_prefix | escape }}
+      <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">
+      {{ section.settings.first_suffix | escape }}
+    </span>
+    <span class="g4u-choice-banner__line">
+      <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bun.png' | asset_url }}" alt="" width="406" height="391" loading="lazy">
+      <span class="g4u-choice-banner__accent">{{ section.settings.second_accent_one | escape }}</span>
+      {{ section.settings.second_joiner | escape }}
+      <span class="g4u-choice-banner__accent">{{ section.settings.second_accent_two | escape }}</span>
+      <img class="g4u-choice-banner__object g4u-choice-banner__object--tortilla" src="{{ 'g4u-choice-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">
+    </span>
+  </h2>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Manifiesto",
+  "tag": "section",
+  "class": "section-g4u-choice",
+  "settings": [
+    { "type": "text", "id": "first_prefix", "label": "Primera línea · inicio", "default": "No tenés que" },
+    { "type": "text", "id": "first_suffix", "label": "Primera línea · final", "default": "elegir entre" },
+    { "type": "text", "id": "second_accent_one", "label": "Destacado 1", "default": "cuidarte" },
+    { "type": "text", "id": "second_joiner", "label": "Conector", "default": "y" },
+    { "type": "text", "id": "second_accent_two", "label": "Destacado 2", "default": "disfrutar" }
+  ],
+  "presets": [{ "name": "G4U · Manifiesto" }]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+<section class="g4u-service-benefits" aria-label="{{ section.settings.accessibility_label | escape }}">
+  <div class="g4u-service-benefits__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign fallback_icon = 'g4u-service-shipping.svg'
+        if forloop.index == 2
+          assign fallback_icon = 'g4u-service-nutrition.svg'
+        elsif forloop.index == 3
+          assign fallback_icon = 'g4u-service-delivery.svg'
+        elsif forloop.index == 4
+          assign fallback_icon = 'g4u-service-payment.svg'
+        endif
+      -%}
+      <article class="g4u-service-benefits__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}
+          {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-service-benefits__icon', loading: 'lazy' }}
+        {%- else -%}
+          <img class="g4u-service-benefits__icon" src="{{ fallback_icon | asset_url }}" alt="" width="80" height="48" loading="lazy">
+        {%- endif -%}
+        <p class="g4u-service-benefits__text">{{ block.settings.text | escape | newline_to_br }}</p>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Beneficios compra",
+  "tag": "section",
+  "class": "section-g4u-services",
+  "max_blocks": 4,
+  "settings": [{ "type": "text", "id": "accessibility_label", "label": "Nombre accesible", "default": "Beneficios de comprar en G4U" }],
+  "blocks": [{ "type": "benefit", "name": "Beneficio", "settings": [
+    { "type": "image_picker", "id": "icon", "label": "Ícono" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Pago seguro" }
+  ] }],
+  "presets": [{ "name": "G4U · Beneficios compra", "blocks": [{ "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }] }]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<section class="g4u-featured-products" aria-labelledby="G4uProducts-{{ section.id }}">
+  <header class="g4u-featured-products__header">
+    {%- if section.settings.eyebrow != blank -%}<p class="g4u-featured-products__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    <h2 class="g4u-featured-products__title g4u-display" id="G4uProducts-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+    {%- if section.settings.description != blank -%}<div class="g4u-featured-products__description rte">{{ section.settings.description }}</div>{%- endif -%}
+  </header>
+  <ul class="g4u-featured-products__grid" role="list">
+    {%- if section.settings.collection.products.size > 0 -%}
+      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        <li class="g4u-featured-products__item">
+          {% render 'card-product', card_product: product, media_aspect_ratio: 'portrait', image_shape: 'default', lazy_load: true, show_secondary_image: section.settings.show_secondary_image, show_vendor: false, show_rating: false, skip_styles: forloop.index0, section_id: section.id, quick_add: 'none', product_view_context: 'featured-collection' %}
+        </li>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for index in (1..4) -%}
+        <li class="g4u-featured-products__item">
+          {% render 'card-product', media_aspect_ratio: 'portrait', placeholder_image: 'product-apparel-1', skip_styles: forloop.index0 %}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+  {%- if section.settings.show_view_all -%}
+    <div class="g4u-featured-products__footer">
+      <a class="g4u-pill g4u-featured-products__button" href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Packs destacados",
+  "tag": "section",
+  "class": "section-g4u-products",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Products" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Nuestros packs" },
+    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>Elegí el pack que mejor se adapta a vos y disfrutá todos los días.</p>" },
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "range", "id": "products_to_show", "label": "Productos", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "checkbox", "id": "show_secondary_image", "label": "Segunda imagen al pasar el cursor", "default": true },
+    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar botón", "default": true },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Ver todos los productos" }
+  ],
+  "presets": [{ "name": "G4U · Packs destacados" }]
+}
+{% endschema %}

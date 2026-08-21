@@ -1,0 +1,30 @@
+<section class="g4u-feel-good" aria-labelledby="G4uFeelGood-{{ section.id }}">
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 3000 | image_tag: class: 'g4u-feel-good__image', loading: 'lazy', widths: '750, 1100, 1500, 2000, 2500, 3000', sizes: '100vw' }}
+  {%- else -%}
+    <img class="g4u-feel-good__image" src="{{ 'g4u-feel-good.jpg' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="2000" height="1333" loading="lazy">
+  {%- endif -%}
+  <div class="g4u-feel-good__content">
+    <h2 class="g4u-feel-good__title g4u-display" id="G4uFeelGood-{{ section.id }}">{{ section.settings.heading | escape }} <span class="g4u-feel-good__accent">{{ section.settings.accent_heading | escape }}</span></h2>
+    <div class="g4u-feel-good__text rte">{{ section.settings.text }}</div>
+    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-feel-good__button" href="{{ section.settings.button_link | default: routes.root_url }}">{{ section.settings.button_label | escape }}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Sentite bien",
+  "tag": "section",
+  "class": "section-g4u-feel-good",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "image_alt", "label": "Descripción de imagen", "default": "Mesa compartida con panes G4U" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Sentite bien," },
+    { "type": "text", "id": "accent_heading", "label": "Título destacado", "default": "comiendo rico" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>" },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Conocé nuestra harina" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón" }
+  ],
+  "presets": [{ "name": "G4U · Sentite bien" }]
+}
+{% endschema %}

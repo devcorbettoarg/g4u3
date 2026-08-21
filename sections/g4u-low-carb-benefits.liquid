@@ -1,0 +1,46 @@
+<section class="g4u-low-carb" aria-labelledby="G4uLowCarb-{{ section.id }}">
+  <h2 class="g4u-low-carb__title g4u-display" id="G4uLowCarb-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+  <div class="g4u-low-carb__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign fallback_icon = 'g4u-lowcarb-fat.svg'
+        if forloop.index == 2
+          assign fallback_icon = 'g4u-lowcarb-energy.svg'
+        elsif forloop.index == 3
+          assign fallback_icon = 'g4u-lowcarb-focus.svg'
+        elsif forloop.index == 4
+          assign fallback_icon = 'g4u-lowcarb-wellbeing.svg'
+        endif
+      -%}
+      <article class="g4u-low-carb__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}
+          {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-low-carb__icon', loading: 'lazy' }}
+        {%- else -%}
+          <img class="g4u-low-carb__icon" src="{{ fallback_icon | asset_url }}" alt="" width="80" height="72" loading="lazy">
+        {%- endif -%}
+        <h3 class="g4u-low-carb__item-title">{{ block.settings.title | escape }}</h3>
+        <div class="g4u-low-carb__text rte">{{ block.settings.text }}</div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Beneficios low-carb",
+  "tag": "section",
+  "class": "section-g4u-low-carb",
+  "max_blocks": 4,
+  "settings": [{ "type": "text", "id": "title", "label": "Título", "default": "Alimentación low-carb" }],
+  "blocks": [{
+    "type": "benefit",
+    "name": "Beneficio",
+    "settings": [
+      { "type": "image_picker", "id": "icon", "label": "Ícono" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Energía más estable" },
+      { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Dejamos atrás la montaña rusa del azúcar.</p>" }
+    ]
+  }],
+  "presets": [{ "name": "G4U · Beneficios low-carb", "blocks": [{ "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }] }]
+}
+{% endschema %}

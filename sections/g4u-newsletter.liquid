@@ -1,0 +1,52 @@
+<section class="g4u-newsletter" aria-labelledby="G4uNewsletter-{{ section.id }}">
+  <div class="g4u-newsletter__inner">
+    <div>
+      <h2 class="g4u-newsletter__title g4u-display" id="G4uNewsletter-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      <div class="g4u-newsletter__text rte">{{ section.settings.text }}</div>
+    </div>
+    <div>
+      {%- form 'customer', class: 'g4u-newsletter__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="g4u-newsletter__form-row">
+          <label class="visually-hidden" for="G4uNewsletterEmail-{{ section.id }}">Correo electrónico</label>
+          <input
+            class="g4u-newsletter__input"
+            id="G4uNewsletterEmail-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            placeholder="{{ section.settings.placeholder | escape }}"
+            required
+            {% if form.errors %}aria-invalid="true" aria-describedby="G4uNewsletterError-{{ section.id }}"{% endif %}
+          >
+          <button class="g4u-pill g4u-newsletter__submit" type="submit">{{ section.settings.button_label | escape }}</button>
+        </div>
+        {%- if form.errors -%}
+          <p class="g4u-newsletter__message" id="G4uNewsletterError-{{ section.id }}" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {%- endif -%}
+        {%- if form.posted_successfully? -%}
+          <p class="g4u-newsletter__message" tabindex="-1" autofocus>{{ section.settings.success_message | escape }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Newsletter",
+  "tag": "section",
+  "class": "section-g4u-newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Suscribite y accedé a un 10% off en tu primer compra" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Ingresá tu email" },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Suscribirme" },
+    { "type": "text", "id": "success_message", "label": "Mensaje de éxito", "default": "¡Gracias por suscribirte!" }
+  ],
+  "presets": [{ "name": "G4U · Newsletter" }]
+}
+{% endschema %}

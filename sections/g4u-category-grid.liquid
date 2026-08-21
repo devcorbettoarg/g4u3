@@ -1,0 +1,59 @@
+<section class="g4u-category-grid" aria-label="{{ section.settings.accessibility_label | escape }}">
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign fallback_asset = 'g4u-category-panes.jpg'
+      if forloop.index == 2
+        assign fallback_asset = 'g4u-category-packs.jpg'
+      elsif forloop.index == 3
+        assign fallback_asset = 'g4u-category-snacks.jpg'
+      endif
+    -%}
+    <article class="g4u-category-card" {{ block.shopify_attributes }}>
+      {%- if block.settings.image != blank -%}
+        {{ block.settings.image | image_url: width: 2000 | image_tag: class: 'g4u-category-card__image', loading: 'lazy', widths: '550, 750, 1100, 1500, 2000', sizes: '(min-width: 750px) 33vw, 100vw' }}
+      {%- else -%}
+        <img class="g4u-category-card__image" src="{{ fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="2731" height="4096" loading="lazy">
+      {%- endif -%}
+      <div class="g4u-category-card__content">
+        <h2 class="g4u-category-card__title g4u-display">{{ block.settings.title | escape }}</h2>
+        {%- if block.settings.button_label != blank -%}
+          <a class="g4u-pill g4u-category-card__button" href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    </article>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Categorías",
+  "tag": "section",
+  "class": "section-g4u-categories",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "accessibility_label", "label": "Nombre accesible", "default": "Comprar por categoría" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categoría",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Panes" },
+        { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Ver productos" },
+        { "type": "url", "id": "link", "label": "Enlace" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Categorías",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Panes" } },
+        { "type": "category", "settings": { "title": "Packs" } },
+        { "type": "category", "settings": { "title": "Snacks" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

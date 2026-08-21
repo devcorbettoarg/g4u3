@@ -1,0 +1,154 @@
+<script src="{{ 'g4u-hero.js' | asset_url }}" defer="defer"></script>
+
+<g4u-hero
+  class="g4u-home-hero"
+  data-slide-count="{{ section.blocks.size }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-autoplay-seconds="{{ section.settings.autoplay_seconds }}"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.accessibility_label | escape }}"
+>
+  <div class="g4u-home-hero__slides">
+    {%- for block in section.blocks -%}
+      <article
+        class="g4u-home-hero__slide{% if forloop.first %} is-active{% endif %}"
+        data-g4u-slide
+        aria-roledescription="slide"
+        aria-label="{{ forloop.index }} de {{ forloop.length }}"
+        aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+        {{ block.shopify_attributes }}
+      >
+        <picture class="g4u-home-hero__media">
+          {%- if block.settings.mobile_image != blank -%}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ block.settings.mobile_image | image_url: width: 1100 }}"
+              width="{{ block.settings.mobile_image.width }}"
+              height="{{ block.settings.mobile_image.height }}"
+            >
+          {%- endif -%}
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image
+              | image_url: width: 3000
+              | image_tag:
+                class: 'g4u-home-hero__image',
+                loading: 'eager',
+                widths: '750, 1100, 1500, 2000, 2500, 3000',
+                sizes: '100vw'
+            }}
+          {%- else -%}
+            <img
+              class="g4u-home-hero__image"
+              src="{{ 'g4u-hero-bread.jpg' | asset_url }}"
+              alt="{{ block.settings.image_alt | escape }}"
+              width="4096"
+              height="2731"
+              {% unless forloop.first %}loading="lazy"{% endunless %}
+            >
+          {%- endif -%}
+        </picture>
+
+        <div class="g4u-home-hero__content">
+          {%- if forloop.first -%}
+            <h1 class="g4u-home-hero__heading g4u-display">
+              {{ block.settings.heading }}
+              <span class="g4u-home-hero__heading-accent">{{ block.settings.accent_heading }}</span>
+            </h1>
+          {%- else -%}
+            <h2 class="g4u-home-hero__heading g4u-display">
+              {{ block.settings.heading }}
+              <span class="g4u-home-hero__heading-accent">{{ block.settings.accent_heading }}</span>
+            </h2>
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <div class="g4u-home-hero__body">{{ block.settings.text }}</div>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            <a class="g4u-pill g4u-home-hero__button" href="{{ block.settings.button_link | default: routes.all_products_collection_url }}">
+              {{ block.settings.button_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="g4u-home-hero__controls">
+      <button class="g4u-hero__arrow g4u-hero__arrow--prev" type="button" data-g4u-prev aria-label="Anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+      </button>
+      <div class="g4u-home-hero__dots" aria-label="Elegir diapositiva">
+        {%- for block in section.blocks -%}
+          <button
+            class="g4u-hero__dot"
+            type="button"
+            data-g4u-dot
+            aria-label="Ir a diapositiva {{ forloop.index }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          ></button>
+        {%- endfor -%}
+      </div>
+      <button class="g4u-hero__arrow" type="button" data-g4u-next aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+      </button>
+    </div>
+  {%- endif -%}
+</g4u-hero>
+
+{% schema %}
+{
+  "name": "G4U · Hero",
+  "tag": "section",
+  "class": "section-g4u-hero",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Nombre accesible",
+      "default": "Promociones principales"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Reproducción automática",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_seconds",
+      "label": "Cambiar cada",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "image_picker", "id": "mobile_image", "label": "Imagen móvil" },
+        { "type": "text", "id": "image_alt", "label": "Descripción de imagen", "default": "Pan de molde G4U sobre una tabla" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "El pan de siempre," },
+        { "type": "text", "id": "accent_heading", "label": "Título destacado", "default": "beneficios reales" },
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Desarrollamos una harina funcional propia y logramos un pan tan rico como el de siempre, para que no tengas que elegir entre sabor y bienestar.</p>" },
+        { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Descubrí nuestro pan de molde" },
+        { "type": "url", "id": "button_link", "label": "Enlace del botón" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Hero",
+      "blocks": [{ "type": "slide" }]
+    }
+  ]
+}
+{% endschema %}
