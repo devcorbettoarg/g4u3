@@ -1,0 +1,16 @@
+<section class="g4u-flour-challenge" id="G4uFlourChallenge" aria-labelledby="G4uFlourChallengeTitle-{{ section.id }}">
+  <div class="g4u-flour-challenge__inner">
+    <header class="g4u-flour-challenge__header">
+      <p class="g4u-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="g4u-flour-challenge__title g4u-display" id="G4uFlourChallengeTitle-{{ section.id }}">{{ section.settings.title }}</h2>
+      <div class="g4u-flour-challenge__text rte">{{ section.settings.text }}</div>
+    </header>
+    <div class="g4u-flour-challenge__media">
+      {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 2800 | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 2000, 2800', sizes: '100vw' }}{%- else -%}<img src="{{ 'g4u-flour-challenge.png' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="4096" height="2731" loading="lazy">{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"G4U · Desafío harina","tag":"section","class":"section-g4u-flour-challenge","settings":[{"type":"text","id":"eyebrow","label":"Antetítulo","default":"El desafío"},{"type":"html","id":"title","label":"Título","default":"¿Y si el pan pudiera seguir siendo pan,<br>pero nutricionalmente mejor?"},{"type":"richtext","id":"text","label":"Texto","default":"<p><strong>Durante años, comer saludable significó resignar sabor, textura o placer.</strong></p><p>En G4U nos propusimos desarrollar una alternativa capaz de mejorar el perfil nutricional del pan sin perder aquello que más nos gusta: su sabor, su textura y la experiencia de disfrutarlo todos los días.</p>"},{"type":"image_picker","id":"image","label":"Imagen"},{"type":"text","id":"image_alt","label":"Descripción de imagen","default":"Pan cortado sobre una tabla"}],"presets":[{"name":"G4U · Desafío harina"}]}
+{% endschema %}

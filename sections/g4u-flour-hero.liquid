@@ -1,0 +1,18 @@
+<section class="g4u-flour-hero" aria-labelledby="G4uFlourHero-{{ section.id }}">
+  <picture class="g4u-flour-hero__media">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 3000 | image_tag: class: 'g4u-flour-hero__image', loading: 'eager', widths: '750, 1100, 1500, 2000, 2500, 3000', sizes: '100vw' }}
+    {%- else -%}
+      <img class="g4u-flour-hero__image" src="{{ 'g4u-flour-hero.png' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="4096" height="2731" fetchpriority="high">
+    {%- endif -%}
+  </picture>
+  <div class="g4u-flour-hero__content">
+    <h1 class="g4u-flour-hero__title g4u-display" id="G4uFlourHero-{{ section.id }}">{{ section.settings.title_before | escape }} <em>{{ section.settings.title_accent_1 | escape }}</em><br>{{ section.settings.title_after | escape }} <em>{{ section.settings.title_accent_2 | escape }}</em></h1>
+    <div class="g4u-flour-hero__text rte">{{ section.settings.text }}</div>
+  </div>
+  <a class="g4u-flour-hero__scroll" href="#G4uFlourChallenge" aria-label="Ir al contenido"><span></span></a>
+</section>
+
+{% schema %}
+{"name":"G4U · Hero Harina","tag":"section","class":"section-g4u-flour-hero","settings":[{"type":"image_picker","id":"image","label":"Imagen"},{"type":"text","id":"image_alt","label":"Descripción de imagen","default":"Masa de pan sobre una superficie con harina"},{"type":"text","id":"title_before","label":"Título antes destacado","default":"La"},{"type":"text","id":"title_accent_1","label":"Destacado 1","default":"diferencia"},{"type":"text","id":"title_after","label":"Título segunda línea","default":"empieza en la"},{"type":"text","id":"title_accent_2","label":"Destacado 2","default":"harina"},{"type":"richtext","id":"text","label":"Texto","default":"<p>Desarrollamos una harina funcional propia para reinventar el pan desde su origen, combinando ciencia, nutrición y sabor en una única fórmula.</p>"}],"presets":[{"name":"G4U · Hero Harina"}]}
+{% endschema %}

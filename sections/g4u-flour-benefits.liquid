@@ -1,0 +1,15 @@
+<section class="g4u-flour-benefits" aria-labelledby="G4uFlourBenefitsTitle-{{ section.id }}">
+  <h2 class="g4u-flour-benefits__title g4u-display" id="G4uFlourBenefitsTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+  <div class="g4u-flour-benefits__grid">
+    {%- for block in section.blocks -%}
+      <article class="g4u-flour-benefit" {{ block.shopify_attributes }}>
+        <img src="{{ block.settings.icon | asset_url }}" alt="" width="80" height="80" loading="lazy">
+        <h3>{{ block.settings.title | escape }}</h3><p>{{ block.settings.text | escape }}</p>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{"name":"G4U · Beneficios harina","tag":"section","class":"section-g4u-flour-benefits","max_blocks":4,"settings":[{"type":"text","id":"title","label":"Título","default":"Una harina que cambia la forma de hacer pan"}],"blocks":[{"type":"benefit","name":"Beneficio","settings":[{"type":"select","id":"icon","label":"Ícono","options":[{"value":"g4u-flour-icon-protein-large.svg","label":"Proteína"},{"value":"g4u-flour-icon-starch-large.svg","label":"Carbohidratos"},{"value":"g4u-flour-icon-fiber-large.svg","label":"Fibra"},{"value":"g4u-flour-icon-flavor-large.svg","label":"Sabor"}],"default":"g4u-flour-icon-protein-large.svg"},{"type":"text","id":"title","label":"Título","default":"Más proteína"},{"type":"textarea","id":"text","label":"Descripción","default":"Para una mayor saciedad y un mejor aporte nutricional."}]}],"presets":[{"name":"G4U · Beneficios harina","blocks":[{"type":"benefit","settings":{"icon":"g4u-flour-icon-protein-large.svg","title":"Más proteína","text":"Para una mayor saciedad y un mejor aporte nutricional."}},{"type":"benefit","settings":{"icon":"g4u-flour-icon-starch-large.svg","title":"Menos carbohidratos","text":"Pensada para una alimentación más equilibrada."}},{"type":"benefit","settings":{"icon":"g4u-flour-icon-fiber-large.svg","title":"Más fibra","text":"Ingredientes funcionales que acompañan tu bienestar digestivo."}},{"type":"benefit","settings":{"icon":"g4u-flour-icon-flavor-large.svg","title":"Mismo sabor","text":"La textura y el placer del pan de siempre."}}]}]}
+{% endschema %}
