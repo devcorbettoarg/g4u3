@@ -215,7 +215,11 @@
                 {%- assign g4u_tag_labels = 'Proteico,Low-Carb,Apto Keto,Alto en fibra' | split: ',' -%}
                 <div class="g4u-card__tags">
                   {%- for g4u_tag in g4u_tag_labels -%}
-                    {%- if card_product.tags contains g4u_tag -%}<span class="g4u-card__tag">{{ g4u_tag }}</span>{%- endif -%}
+                    {%- if card_product.tags contains g4u_tag -%}
+                      {%- assign g4u_tag_icon = 'g4u-card-icon-protein.svg' -%}
+                      {%- if g4u_tag == 'Low-Carb' -%}{%- assign g4u_tag_icon = 'g4u-card-icon-lowcarb.svg' -%}{%- elsif g4u_tag == 'Apto Keto' -%}{%- assign g4u_tag_icon = 'g4u-card-icon-keto.svg' -%}{%- endif -%}
+                      <span class="g4u-card__tag"><img src="{{ g4u_tag_icon | asset_url }}" alt="" width="20" height="20" loading="lazy">{{ g4u_tag }}</span>
+                    {%- endif -%}
                   {%- endfor -%}
                 </div>
               {%- endif -%}
