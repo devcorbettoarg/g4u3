@@ -181,8 +181,8 @@
 /* Brand statement */
 .g4u-choice-banner {
   align-items: center;
-  background: var(--g4u-burgundy);
-  color: var(--g4u-cream);
+  background: var(--g4u-choice-background, var(--g4u-burgundy));
+  color: var(--g4u-choice-line-one, var(--g4u-cream));
   display: flex;
   justify-content: center;
   min-height: 36.4rem;
@@ -200,7 +200,9 @@
 }
 
 .g4u-choice-banner__line { display: block; white-space: nowrap; }
-.g4u-choice-banner__accent { color: var(--g4u-orange); }
+.g4u-choice-banner__line--first { color: var(--g4u-choice-line-one, var(--g4u-cream)); }
+.g4u-choice-banner__line--second { color: var(--g4u-choice-line-two, var(--g4u-cream)); }
+.g4u-choice-banner__accent { color: var(--g4u-choice-accent, var(--g4u-orange)); }
 .g4u-choice-banner__object {
   display: inline-block;
   height: .95em;

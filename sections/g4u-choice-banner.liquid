@@ -1,11 +1,15 @@
-<section class="g4u-choice-banner" aria-labelledby="G4uChoice-{{ section.id }}">
+<section
+  class="g4u-choice-banner"
+  aria-labelledby="G4uChoice-{{ section.id }}"
+  style="--g4u-choice-background: {{ section.settings.background_color }}; --g4u-choice-line-one: {{ section.settings.line_one_color }}; --g4u-choice-line-two: {{ section.settings.line_two_color }}; --g4u-choice-accent: {{ section.settings.accent_color }};"
+>
   <h2 class="g4u-choice-banner__copy g4u-display" id="G4uChoice-{{ section.id }}">
-    <span class="g4u-choice-banner__line">
+    <span class="g4u-choice-banner__line g4u-choice-banner__line--first">
       {{ section.settings.first_prefix | escape }}
       <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">
       {{ section.settings.first_suffix | escape }}
     </span>
-    <span class="g4u-choice-banner__line">
+    <span class="g4u-choice-banner__line g4u-choice-banner__line--second">
       <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bun.png' | asset_url }}" alt="" width="406" height="391" loading="lazy">
       <span class="g4u-choice-banner__accent">{{ section.settings.second_accent_one | escape }}</span>
       {{ section.settings.second_joiner | escape }}
@@ -21,6 +25,12 @@
   "tag": "section",
   "class": "section-g4u-choice",
   "settings": [
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "background_color", "label": "Fondo", "default": "#500322" },
+    { "type": "color", "id": "line_one_color", "label": "Primera línea", "default": "#fff8f0" },
+    { "type": "color", "id": "line_two_color", "label": "Segunda línea", "default": "#fff8f0" },
+    { "type": "color", "id": "accent_color", "label": "Palabras destacadas", "default": "#ff4622" },
+    { "type": "header", "content": "Texto" },
     { "type": "text", "id": "first_prefix", "label": "Primera línea · inicio", "default": "No tenés que" },
     { "type": "text", "id": "first_suffix", "label": "Primera línea · final", "default": "elegir entre" },
     { "type": "text", "id": "second_accent_one", "label": "Destacado 1", "default": "cuidarte" },
