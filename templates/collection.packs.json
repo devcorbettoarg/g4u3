@@ -28,6 +28,38 @@
         "padding_bottom": 80
       }
     },
+    "g4u_marquee": {
+      "type": "g4u-nutrition-marquee",
+      "blocks": {
+        "marquee_carbs": { "type": "item", "settings": { "text": "Low-carbs" } },
+        "marquee_protein": { "type": "item", "settings": { "text": "Alto en proteínas" } },
+        "marquee_fiber": { "type": "item", "settings": { "text": "Alto en fibras" } }
+      },
+      "block_order": ["marquee_carbs", "marquee_protein", "marquee_fiber"],
+      "settings": { "accessibility_label": "Beneficios nutricionales", "duration": 14 }
+    },
+    "g4u_low_carb": {
+      "type": "g4u-low-carb-benefits",
+      "blocks": {
+        "low_carb_fat": { "type": "benefit", "settings": { "title": "Activamos la quema de grasa", "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>" } },
+        "low_carb_energy": { "type": "benefit", "settings": { "title": "Energía más estable", "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>" } },
+        "low_carb_focus": { "type": "benefit", "settings": { "title": "Foco y claridad mental", "text": "<p>Más foco, más lucidez, más presencia.</p>" } },
+        "low_carb_wellbeing": { "type": "benefit", "settings": { "title": "Menos inflamación, más bienestar", "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>" } }
+      },
+      "block_order": ["low_carb_fat", "low_carb_energy", "low_carb_focus", "low_carb_wellbeing"],
+      "settings": { "title": "Alimentación low-carb" }
+    },
+    "g4u_experts": {
+      "type": "g4u-experts",
+      "blocks": {
+        "expert_alejandra": { "type": "expert", "settings": { "name": "Dra. Alejandra Moisello", "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte", "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>", "handle": "@Dra.alejandramoisello" } },
+        "expert_roxana": { "type": "expert", "settings": { "name": "Roxana Marachlian", "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto", "quote": "<p>“Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes.”</p>", "handle": "@nutricionintegralballester" } },
+        "expert_alejandra2": { "type": "expert", "settings": { "name": "Dra. Alejandra Moisello", "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte", "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>", "handle": "@Dra.alejandramoisello" } },
+        "expert_roxana2": { "type": "expert", "settings": { "name": "Roxana Marachlian", "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto", "quote": "<p>“Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes.”</p>", "handle": "@nutricionintegralballester" } }
+      },
+      "block_order": ["expert_alejandra", "expert_roxana", "expert_alejandra2", "expert_roxana2"],
+      "settings": { "eyebrow": "Respaldo profesional", "title": "Profesionales que nos recomiendan", "description": "<p>Nutricionistas y especialistas en alimentación confían en G4U por su perfil nutricional y lo incorporan como una herramienta dentro de una alimentación equilibrada.</p>" }
+    },
     "g4u_instagram": {
       "type": "g4u-instagram",
       "blocks": {
@@ -65,5 +97,5 @@
       }
     }
   },
-  "order": ["banner", "product-grid", "g4u_instagram", "g4u_services", "g4u_newsletter"]
+  "order": ["banner", "product-grid", "g4u_marquee", "g4u_low_carb", "g4u_experts", "g4u_instagram", "g4u_services", "g4u_newsletter"]
 }
