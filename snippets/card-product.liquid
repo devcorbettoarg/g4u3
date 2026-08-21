@@ -206,7 +206,19 @@
                 </p>
               {%- endif -%}
 
+              {%- if product_view_context == 'collection' -%}
+                {%- assign g4u_card_subtitle = card_product.metafields.custom.subtitle.value | default: card_product.type -%}
+                {%- if g4u_card_subtitle != blank -%}<p class="g4u-card__subtitle">{{ g4u_card_subtitle | escape }}</p>{%- endif -%}
+              {%- endif -%}
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {%- if product_view_context == 'collection' -%}
+                {%- assign g4u_tag_labels = 'Proteico,Low-Carb,Apto Keto,Alto en fibra' | split: ',' -%}
+                <div class="g4u-card__tags">
+                  {%- for g4u_tag in g4u_tag_labels -%}
+                    {%- if card_product.tags contains g4u_tag -%}<span class="g4u-card__tag">{{ g4u_tag }}</span>{%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
