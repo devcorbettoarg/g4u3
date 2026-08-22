@@ -1,0 +1,27 @@
+{%- liquid
+  assign current_label = section.settings.current_label | default: product.title
+-%}
+
+<nav class="g4u-breadcrumb" aria-label="Migas de pan">
+  <ol class="g4u-breadcrumb__list" role="list">
+    <li><a href="{{ routes.root_url }}">{{ section.settings.home_label | escape }}</a></li>
+    {%- if section.settings.show_collection and collection != blank -%}
+      <li><a href="{{ collection.url }}">{{ collection.title | escape }}</a></li>
+    {%- endif -%}
+    <li aria-current="page">{{ current_label | escape }}</li>
+  </ol>
+</nav>
+
+{% schema %}
+{
+  "name": "G4U · Breadcrumb",
+  "tag": "section",
+  "class": "section-g4u-breadcrumb",
+  "settings": [
+    { "type": "text", "id": "home_label", "label": "Etiqueta de inicio", "default": "Home" },
+    { "type": "checkbox", "id": "show_collection", "label": "Mostrar colección cuando exista", "default": true },
+    { "type": "text", "id": "current_label", "label": "Etiqueta actual opcional", "info": "Dejar vacío para usar el nombre del producto." }
+  ],
+  "presets": [{ "name": "G4U · Breadcrumb" }]
+}
+{% endschema %}

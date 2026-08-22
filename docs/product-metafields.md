@@ -35,7 +35,7 @@ Después crear en Producto:
 | Nombre | Namespace y clave | Tipo Shopify | Uso |
 | --- | --- | --- | --- |
 | Beneficios destacados | `custom.product_benefits` | Lista de referencias a “Beneficio de producto” | Reemplaza el listado fijo bajo la introducción del PDP. |
-| Introducción PDP | `custom.product_intro` | Texto enriquecido | Reemplaza “El pan de siempre…” cuando cada producto tenga un mensaje distinto. |
+| Introducción PDP | `custom.product_intro` | Texto de una línea | Reemplaza “El pan de siempre…” cuando cada producto tenga un mensaje distinto. |
 | Métricas G4U | `custom.comparison_g4u` | JSON o metaobjeto de métricas | Valores de proteína, carbos, fibra y azúcar de la columna G4U. |
 | Métricas comparación | `custom.comparison_other` | JSON o metaobjeto de métricas | Valores de la columna de referencia. |
 

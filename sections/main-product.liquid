@@ -210,11 +210,13 @@
                   </p>
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
+                {%- when 'g4u_benefits' -%}
+                  {% render 'g4u-product-benefits', product: product, block: block %}
                 {%- when 'collapsible_tab' -%}
                   {%- liquid
                     assign g4u_accordion_metafield = blank
                     case block.settings.heading
-                      when 'Detalles del producto'
+                      when 'Detalles del producto', '¿Por qué elegir G4U?'
                         assign g4u_accordion_metafield = product.metafields.custom.product_details
                       when 'Ingredientes'
                         assign g4u_accordion_metafield = product.metafields.custom.ingredients
@@ -222,7 +224,7 @@
                         assign g4u_accordion_metafield = product.metafields.custom.nutrition
                       when 'Conservación'
                         assign g4u_accordion_metafield = product.metafields.custom.storage
-                      when 'Envíos y entregas'
+                      when 'Envíos y entregas', 'Envíos'
                         assign g4u_accordion_metafield = product.metafields.custom.shipping
                     endcase
                   -%}
@@ -1266,6 +1268,59 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+        }
+      ]
+    },
+    {
+      "type": "g4u_benefits",
+      "name": "G4U · Beneficios del producto",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Usa los metafields product_intro y product_benefits cuando estén definidos. Estos campos son el fallback editable desde el tema."
+        },
+        {
+          "type": "text",
+          "id": "intro",
+          "label": "Texto introductorio",
+          "default": "El pan de siempre, con beneficios reales."
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Beneficio 1",
+          "default": "Alto en proteína"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Beneficio 2",
+          "default": "Bajo en carbohidratos"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Beneficio 3",
+          "default": "Alto en fibra"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4",
+          "label": "Beneficio 4",
+          "default": "Sin azúcar agregada"
+        },
+        {
+          "type": "text",
+          "id": "benefit_5",
+          "label": "Beneficio 5",
+          "default": "Se puede congelar"
+        },
+        {
+          "type": "text",
+          "id": "benefit_6",
+          "label": "Beneficio 6",
+          "default": "Hasta 45 días refrigerado"
         }
       ]
     },

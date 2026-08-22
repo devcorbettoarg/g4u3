@@ -1,0 +1,38 @@
+{%- liquid
+  assign intro = product.metafields.custom.product_intro.value | default: block.settings.intro
+  assign metafield_benefits = product.metafields.custom.product_benefits.value
+-%}
+
+<div class="g4u-product-highlights" {{ block.shopify_attributes }}>
+  {%- if product.tags.size > 0 -%}
+    <div class="g4u-product-highlights__tags">
+      {%- for tag in product.tags -%}
+        {%- assign normalized_tag = tag | downcase -%}
+        {%- if normalized_tag contains 'prote' or normalized_tag contains 'low-carb' or normalized_tag contains 'keto' or normalized_tag contains 'fibra' or normalized_tag contains 'azúcar' -%}
+          <span>{{ tag }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if intro != blank -%}
+    <p class="g4u-product-highlights__intro">{{ intro | escape }}</p>
+  {%- endif -%}
+
+  <ul>
+    {%- if metafield_benefits != blank -%}
+      {%- for benefit in metafield_benefits limit: 6 -%}
+        {%- liquid
+          assign benefit_label = benefit.title.value | default: benefit.title | default: benefit
+        -%}
+        {%- if benefit_label != blank -%}<li>{{ benefit_label | escape }}</li>{%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for index in (1..6) -%}
+        {%- assign benefit_setting = 'benefit_' | append: index -%}
+        {%- assign benefit = block.settings[benefit_setting] -%}
+        {%- if benefit != blank -%}<li>{{ benefit | escape }}</li>{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+</div>

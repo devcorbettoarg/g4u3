@@ -1,13 +1,28 @@
 {
   "sections": {
+    "breadcrumb": {
+      "type": "g4u-breadcrumb",
+      "settings": {
+        "home_label": "Home",
+        "show_collection": true,
+        "current_label": ""
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
         "title": { "type": "title" }, "price": { "type": "price" },
+        "rating": { "type": "rating" },
         "product_highlights": {
-          "type": "custom_liquid",
+          "type": "g4u_benefits",
           "settings": {
-            "custom_liquid": "<div class=\"g4u-product-highlights\"><div class=\"g4u-product-highlights__tags\">{% for tag in product.tags %}{% assign normalized_tag = tag | downcase %}{% if normalized_tag contains 'prote' or normalized_tag contains 'low-carb' or normalized_tag contains 'keto' or normalized_tag contains 'fibra' or normalized_tag contains 'azúcar' %}<span>{{ tag }}</span>{% endif %}{% endfor %}</div><p class=\"g4u-product-highlights__intro\">El pan de siempre, con beneficios reales.</p><ul><li>Alto en proteína</li><li>Bajo en carbohidratos</li><li>Alto en fibra</li><li>Sin azúcar agregada</li><li>Se puede congelar</li><li>Hasta 45 días refrigerado</li></ul></div>"
+            "intro": "El pan de siempre, con beneficios reales.",
+            "benefit_1": "Alto en proteína",
+            "benefit_2": "Bajo en carbohidratos",
+            "benefit_3": "Alto en fibra",
+            "benefit_4": "Sin azúcar agregada",
+            "benefit_5": "Se puede congelar",
+            "benefit_6": "Hasta 45 días refrigerado"
           }
         },
         "description": { "type": "description" },
@@ -21,7 +36,7 @@
         "shipping": { "type": "collapsible_tab", "settings": { "heading": "Envíos", "icon": "truck", "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>" } },
         "share": { "type": "share", "settings": { "share_label": "Compartir" } }
       },
-      "block_order": ["title", "price", "product_highlights", "description", "variant_picker", "quantity_selector", "buy_buttons", "details", "ingredients", "nutrition", "storage", "shipping", "share"],
+      "block_order": ["title", "price", "rating", "product_highlights", "description", "variant_picker", "quantity_selector", "buy_buttons", "details", "ingredients", "nutrition", "storage", "shipping", "share"],
       "settings": { "enable_sticky_info": true, "color_scheme": "scheme-1", "media_position": "left", "gallery_layout": "thumbnail_slider", "media_size": "large", "constrain_to_viewport": true, "media_fit": "contain", "image_zoom": "lightbox", "mobile_thumbnails": "show", "hide_variants": false, "enable_video_looping": false, "padding_top": 80, "padding_bottom": 80 }
     },
     "product_comparison": {
@@ -110,5 +125,5 @@
     },
     "g4u_newsletter": { "type": "g4u-newsletter", "settings": { "title": "Suscribite y accedé a un 10% off en tu primer compra", "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>", "placeholder": "Ingresá tu email", "button_label": "Suscribirme", "success_message": "¡Gracias por suscribirte!" } }
   },
-  "order": ["main", "product_comparison", "product_ingredients", "product_ideas", "product_flour", "g4u_marquee", "g4u_low_carb", "product_reviews", "related-products", "product_faq", "g4u_services", "g4u_newsletter"]
+  "order": ["breadcrumb", "main", "product_comparison", "product_ingredients", "product_ideas", "product_flour", "g4u_marquee", "g4u_low_carb", "product_reviews", "related-products", "product_faq", "g4u_services", "g4u_newsletter"]
 }

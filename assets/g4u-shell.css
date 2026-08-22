@@ -1,6 +1,8 @@
 :root {
-  --g4u-header-height: 6rem;
+  --g4u-header-height: 8.8rem;
   --g4u-header-hero-height: 8.8rem;
+  --g4u-header-logo-width: 14.5263rem;
+  --g4u-header-logo-height: 6rem;
 }
 
 /* Announcement bar */
@@ -9,13 +11,13 @@
   border: 0;
   border-bottom: .1rem solid rgba(255, 248, 240, .12);
   color: var(--g4u-cream);
-  height: 2.8rem;
+  height: 4rem;
 }
 .announcement-bar-section .utility-bar__grid {
   align-items: center;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  height: 2.8rem;
+  height: 4rem;
   max-width: none;
   padding: 0 3.2rem;
 }
@@ -51,7 +53,7 @@
   column-gap: 3.2rem;
   height: var(--g4u-header-height);
   max-width: none;
-  padding: .6rem 3.2rem !important;
+  padding: 1.4rem 3.2rem !important;
   width: 100%;
 }
 .header__heading-link { padding: 0; }
@@ -60,23 +62,23 @@
 .header__heading-link.g4u-brand-link {
   align-items: center;
   display: flex;
-  min-height: 4.8rem;
+  min-height: 6rem;
 }
 
 /* Keep the custom mark independent from Dawn's optional logo setting. */
 .g4u-brand-link > .g4u-logo--forced {
   display: block !important;
-  flex: 0 0 11.6rem;
+  flex: 0 0 var(--g4u-header-logo-width);
   opacity: 1;
   visibility: visible;
 }
 
 .section-header .g4u-logo--forced .g4u-logo__dark { display: block; }
 .section-header .g4u-logo--forced .g4u-logo__light { display: none; }
-.g4u-logo { display: block; height: 4.8rem; overflow: hidden; position: relative; width: 11.6rem; }
+.g4u-logo { display: block; height: var(--g4u-header-logo-height); overflow: hidden; position: relative; width: var(--g4u-header-logo-width); }
 .g4u-logo img { display: block; position: absolute; }
-.g4u-logo__mark { height: 4.8rem; left: 0; top: 0; width: 4.3rem; }
-.g4u-logo__wordmark { height: 2.25rem; right: 0; top: 1.55rem; width: 6.2rem; }
+.g4u-logo__mark { height: 6rem; left: 0; top: 0; width: 5.4rem; }
+.g4u-logo__wordmark { height: 2.8rem; right: 0; top: 1.95rem; width: 7.8rem; }
 .g4u-logo__light { display: none; }
 .header__inline-menu { justify-self: center; margin: 0; }
 .header__inline-menu .list-menu--inline { gap: 2.4rem; }
@@ -130,26 +132,34 @@ body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky
   padding: 1.4rem 3.2rem !important;
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
-body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 6rem; width: 14.5rem; }
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo {
+  height: var(--g4u-header-logo-height);
+  width: var(--g4u-header-logo-width);
+}
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark { height: 6rem; width: 5.4rem; }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.8rem; left: 6.7rem; right: auto; top: 1.95rem; width: 7.8rem; }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo--forced,
-body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo--forced { flex-basis: 14.5rem; transform: translateY(3rem); }
+body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo--forced {
+  flex-basis: var(--g4u-header-logo-width);
+  transform: none;
+}
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__dark,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__dark { display: none; }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__light,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__light { display: block; }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header__icon {
-  background: rgba(35, 31, 32, .22);
-  box-shadow: 0 .1rem .5rem rgba(0, 0, 0, .14);
+  background: transparent;
+  box-shadow: none;
+  height: 2.4rem;
+  width: 2.4rem;
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon:hover,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header__icon:hover {
-  background: var(--g4u-cream);
-  color: var(--g4u-burgundy);
+  background: transparent;
+  color: var(--g4u-orange);
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .cart-count-bubble,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .cart-count-bubble {
@@ -169,6 +179,21 @@ body.template-suffix-nosotros .section-header.shopify-section-header-sticky .hea
   background: var(--g4u-cream);
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
   color: var(--g4u-ink);
+}
+@media screen and (min-width: 750px) {
+  .section-header.shopify-section-header-sticky .header {
+    height: 6rem;
+    padding: .6rem 3.2rem !important;
+  }
+  .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 4.8rem; }
+  .section-header.shopify-section-header-sticky .g4u-logo,
+  .section-header.shopify-section-header-sticky .g4u-logo--forced {
+    flex-basis: 11.6rem;
+    height: 4.8rem;
+    width: 11.6rem;
+  }
+  .section-header.shopify-section-header-sticky .g4u-logo__mark { height: 4.8rem; width: 4.3rem; }
+  .section-header.shopify-section-header-sticky .g4u-logo__wordmark { height: 2.25rem; left: 5.4rem; right: auto; top: 1.55rem; width: 6.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
