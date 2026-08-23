@@ -1,22 +1,24 @@
 {% comment %}
   Renders desktop navigation and configurable G4U mega menus.
-  Blocks with a matching `menu_trigger` replace the standard child-link layout.
+  One `mega_menu` block configures each enhanced parent item. Its child links
+  always come from Shopify Navigation, while featured products come from the
+  block's product list setting.
 {% endcomment %}
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
-      {%- assign has_custom_mega = false -%}
+      {%- assign mega_block = blank -%}
       {%- for block in section.blocks -%}
         {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-        {%- if block_trigger != blank and block_trigger == link.handle -%}
-          {%- assign has_custom_mega = true -%}
+        {%- if block.type == 'mega_menu' and block_trigger != blank and block_trigger == link.handle -%}
+          {%- assign mega_block = block -%}
           {%- break -%}
         {%- endif -%}
       {%- endfor -%}
 
       <li>
-        {%- if link.links != blank or has_custom_mega -%}
+        {%- if link.links != blank or mega_block != blank -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
               <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset">
@@ -24,87 +26,52 @@
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
               <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup" tabindex="-1">
-                {%- if has_custom_mega -%}
-                  <div class="g4u-mega-menu page-width">
-                    <div class="g4u-mega-menu__categories">
-                      {%- assign category_heading = '' -%}
-                      {%- for block in section.blocks -%}
-                        {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-                        {%- if block.type == 'mega_category' and block_trigger == link.handle -%}
-                          {%- assign category_heading = block.settings.group_heading -%}
-                          {%- break -%}
-                        {%- endif -%}
-                      {%- endfor -%}
-                      {%- if category_heading != blank -%}<p class="g4u-mega-menu__eyebrow">{{ category_heading | escape }}</p>{%- endif -%}
-                      <ul class="list-unstyled g4u-mega-menu__category-list" role="list">
-                        {%- assign category_count = 0 -%}
-                        {%- for block in section.blocks -%}
-                          {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-                          {%- if block.type == 'mega_category' and block_trigger == link.handle -%}
-                            {%- assign mega_collection = block.settings.collection -%}
-                            {%- assign category_title = block.settings.label | default: mega_collection.title -%}
-                            {%- assign category_url = block.settings.link | default: mega_collection.url -%}
-                            {%- if category_title != blank and category_url != blank -%}
-                              {%- assign category_count = category_count | plus: 1 -%}
-                              <li {{ block.shopify_attributes }}><a class="g4u-mega-menu__category-link link" href="{{ category_url }}"><span>{{ category_title | escape }}</span><span aria-hidden="true">→</span></a></li>
-                            {%- endif -%}
-                          {%- endif -%}
-                        {%- endfor -%}
-                        {%- if category_count == 0 -%}
+                {%- if mega_block != blank -%}
+                  <div class="g4u-mega-menu page-width" {{ mega_block.shopify_attributes }}>
+                    <div class="g4u-mega-menu__intro">
+                      {%- if mega_block.settings.heading != blank -%}
+                        <h2 class="g4u-mega-menu__heading">{{ mega_block.settings.heading | escape }}</h2>
+                      {%- endif -%}
+                      {%- if mega_block.settings.description != blank -%}
+                        <div class="g4u-mega-menu__description rte">{{ mega_block.settings.description }}</div>
+                      {%- endif -%}
+
+                      {%- if link.links != blank -%}
+                        <ul class="list-unstyled g4u-mega-menu__category-list" role="list">
                           {%- for childlink in link.links -%}
-                            <li><a class="g4u-mega-menu__category-link link" href="{{ childlink.url }}"><span>{{ childlink.title | escape }}</span><span aria-hidden="true">→</span></a></li>
+                            <li><a class="g4u-mega-menu__category-link link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
                           {%- endfor -%}
-                        {%- endif -%}
-                      </ul>
+                        </ul>
+                      {%- endif -%}
+
+                      {%- assign cta_url = mega_block.settings.cta_link | default: link.url -%}
+                      {%- if mega_block.settings.cta_label != blank and cta_url != blank -%}
+                        <a class="button button--secondary g4u-mega-menu__cta" href="{{ cta_url }}">{{ mega_block.settings.cta_label | escape }}</a>
+                      {%- endif -%}
                     </div>
 
-                    <div class="g4u-mega-menu__featured">
-                      {%- assign product_heading = '' -%}
-                      {%- for block in section.blocks -%}
-                        {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-                        {%- if block.type == 'mega_product' and block_trigger == link.handle -%}
-                          {%- assign product_heading = block.settings.group_heading -%}
-                          {%- break -%}
-                        {%- endif -%}
-                      {%- endfor -%}
-                      {%- if product_heading != blank -%}<p class="g4u-mega-menu__eyebrow">{{ product_heading | escape }}</p>{%- endif -%}
+                    {%- if mega_block.settings.products != blank -%}
                       <div class="g4u-mega-menu__products">
-                        {%- for block in section.blocks -%}
-                          {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-                          {%- assign mega_product = block.settings.product -%}
-                          {%- if block.type == 'mega_product' and block_trigger == link.handle and mega_product != blank -%}
-                            <a class="g4u-mega-menu__product link" href="{{ mega_product.url }}" {{ block.shopify_attributes }}>
-                              <span class="g4u-mega-menu__product-image">
-                                {%- if mega_product.featured_image != blank -%}
-                                  {{ mega_product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy', widths: '120, 180, 240, 300', alt: mega_product.title }}
-                                {%- else -%}
-                                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                                {%- endif -%}
+                        {%- for mega_product in mega_block.settings.products limit: mega_block.settings.products_to_show -%}
+                          <a class="g4u-mega-menu__product link" href="{{ mega_product.url }}">
+                            <span class="g4u-mega-menu__product-image">
+                              {%- if mega_product.featured_image != blank -%}
+                                {{ mega_product.featured_image | image_url: width: 420 | image_tag: loading: 'lazy', widths: '180, 240, 320, 420', alt: mega_product.title }}
+                              {%- else -%}
+                                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                              {%- endif -%}
+                            </span>
+                            <span class="g4u-mega-menu__product-copy">
+                              <span class="g4u-mega-menu__product-title">{{ mega_product.title | escape }}</span>
+                              <span class="g4u-mega-menu__product-price">
+                                {%- if mega_product.compare_at_price > mega_product.price -%}<s>{{ mega_product.compare_at_price | money }}</s>{%- endif -%}
+                                <strong>{{ mega_product.price | money }}</strong>
                               </span>
-                              <span class="g4u-mega-menu__product-copy">
-                                <span class="g4u-mega-menu__product-title">{{ mega_product.title | escape }}</span>
-                                <span class="g4u-mega-menu__product-price">{%- if mega_product.compare_at_price > mega_product.price -%}<s>{{ mega_product.compare_at_price | money }}</s>{%- endif -%}<strong>{{ mega_product.price | money }}</strong></span>
-                              </span>
-                            </a>
-                          {%- endif -%}
+                            </span>
+                          </a>
                         {%- endfor -%}
                       </div>
-                    </div>
-
-                    {%- for block in section.blocks -%}
-                      {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-                      {%- if block.type == 'mega_editorial' and block_trigger == link.handle -%}
-                        <a class="g4u-mega-menu__editorial link" href="{{ block.settings.link | default: link.url }}" {{ block.shopify_attributes }}>
-                          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300, 420, 560, 700', alt: block.settings.heading }}{%- endif -%}
-                          <span class="g4u-mega-menu__editorial-content">
-                            {%- if block.settings.eyebrow != blank -%}<span class="g4u-mega-menu__eyebrow">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
-                            {%- if block.settings.heading != blank -%}<strong>{{ block.settings.heading | escape }}</strong>{%- endif -%}
-                            {%- if block.settings.cta_label != blank -%}<span class="g4u-mega-menu__editorial-cta">{{ block.settings.cta_label | escape }} →</span>{%- endif -%}
-                          </span>
-                        </a>
-                        {%- break -%}
-                      {%- endif -%}
-                    {%- endfor -%}
+                    {%- endif -%}
                   </div>
                 {%- else -%}
                   <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
