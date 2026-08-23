@@ -1,6 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "combo": { "type": "g4u-combo-builder", "settings": {} }
+    "combo": {
+      "type": "g4u-combo-builder",
+      "blocks": {
+        "product_KLxQFT": {
+          "type": "product",
+          "settings": {
+            "product": "the-multi-location-snowboard",
+            "group": "Panes"
+          }
+        },
+        "product_TcKgAk": {
+          "type": "product",
+          "settings": {
+            "product": "the-multi-location-snowboard",
+            "group": "Panes"
+          }
+        }
+      },
+      "block_order": [
+        "product_KLxQFT",
+        "product_TcKgAk"
+      ],
+      "settings": {
+        "eyebrow": "Elegí a tu manera",
+        "title": "Armá tu combo ideal",
+        "description": "<p>Elegí tus favoritos y agregalos juntos al carrito.</p>"
+      }
+    }
   },
-  "order": ["combo"]
+  "order": [
+    "combo"
+  ]
 }
