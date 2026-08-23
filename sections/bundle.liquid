@@ -1,0 +1,2339 @@
+{% comment %}
+  Pack Builder nativo para Shopify
+  Compatible con themes Online Store 2.0, incluido Dawn y Horizon.
+  Instalar como: sections/pack-builder.liquid
+{% endcomment %}
+
+{%- liquid
+  assign has_collections = false
+  if section.settings.breakfast_collection != blank or section.settings.sandwich_collection != blank or section.settings.snacks_collection != blank
+    assign has_collections = true
+  endif
+-%}
+
+<section
+  id="PackBuilder-{{ section.id }}"
+  class="pb"
+  data-section-id="{{ section.id }}"
+  data-currency="{{ cart.currency.iso_code | default: shop.currency }}"
+  data-locale="{{ request.locale.iso_code | default: 'es' }}"
+  data-pack-name="{{ section.settings.pack_name | escape }}"
+  data-pack-key="{{ section.settings.pack_key | handleize }}"
+  data-enforce-minimums="{{ section.settings.enforce_category_minimums }}"
+  data-after-add="{{ section.settings.after_add_action }}"
+  data-reset-after-add="{{ section.settings.reset_after_add }}"
+  data-discount-1-qty="{{ section.settings.discount_1_qty }}"
+  data-discount-1-value="{{ section.settings.discount_1_value }}"
+  data-discount-2-qty="{{ section.settings.discount_2_qty }}"
+  data-discount-2-value="{{ section.settings.discount_2_value }}"
+  data-discount-3-qty="{{ section.settings.discount_3_qty }}"
+  data-discount-3-value="{{ section.settings.discount_3_value }}"
+  style="
+    --pb-bg: {{ section.settings.background_color }};
+    --pb-card: {{ section.settings.card_color }};
+    --pb-panel: {{ section.settings.panel_color }};
+    --pb-text: {{ section.settings.text_color }};
+    --pb-muted: {{ section.settings.muted_color }};
+    --pb-border: {{ section.settings.border_color }};
+    --pb-accent: {{ section.settings.accent_color }};
+    --pb-accent-contrast: {{ section.settings.accent_contrast }};
+    --pb-radius: {{ section.settings.border_radius }}px;
+    --pb-image-ratio: {{ section.settings.image_ratio }};
+    --pb-max-width: {{ section.settings.max_width }}px;
+  "
+>
+  <div class="pb__container">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <header class="pb__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="pb__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <div class="pb__subheading">{{ section.settings.subheading }}</div>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- if has_collections -%}
+      <div class="pb__layout">
+        <div class="pb__catalog">
+          <div class="pb__tabs-shell">
+            <div class="pb__tabs" role="tablist" aria-label="{{ section.settings.tabs_aria_label | escape }}">
+              {%- assign rendered_tabs = 0 -%}
+              {%- for category_index in (1..3) -%}
+                {%- liquid
+                  case category_index
+                    when 1
+                      assign category_id = 'breakfast'
+                      assign category_title = section.settings.breakfast_title
+                      assign category_collection = section.settings.breakfast_collection
+                      assign category_minimum = section.settings.breakfast_minimum
+                    when 2
+                      assign category_id = 'sandwich'
+                      assign category_title = section.settings.sandwich_title
+                      assign category_collection = section.settings.sandwich_collection
+                      assign category_minimum = section.settings.sandwich_minimum
+                    when 3
+                      assign category_id = 'snacks'
+                      assign category_title = section.settings.snacks_title
+                      assign category_collection = section.settings.snacks_collection
+                      assign category_minimum = section.settings.snacks_minimum
+                  endcase
+                -%}
+
+                {%- if category_collection != blank -%}
+                  {%- assign rendered_tabs = rendered_tabs | plus: 1 -%}
+                  <button
+                    type="button"
+                    class="pb__tab{% if rendered_tabs == 1 %} is-active{% endif %}"
+                    role="tab"
+                    id="PackTab-{{ section.id }}-{{ category_id }}"
+                    aria-controls="PackPanel-{{ section.id }}-{{ category_id }}"
+                    aria-selected="{% if rendered_tabs == 1 %}true{% else %}false{% endif %}"
+                    tabindex="{% if rendered_tabs == 1 %}0{% else %}-1{% endif %}"
+                    data-tab="{{ category_id }}"
+                    data-minimum="{{ category_minimum }}"
+                  >
+                    <span class="pb__tab-icon" aria-hidden="true">
+                      {%- case category_index -%}
+                        {%- when 1 -%}
+                          <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M7 4h10l2 5v10H5V9l2-5Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>
+                        {%- when 2 -%}
+                          <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 10.5c0-3 3.6-5.5 8-5.5s8 2.5 8 5.5H4Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M5 13h14M5 16h14M6 19h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>
+                        {%- when 3 -%}
+                          <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M7 5h10l1 14H6L7 5Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>
+                      {%- endcase -%}
+                    </span>
+                    <span>{{ category_title }}</span>
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+            <div class="pb__tab-arrows" aria-label="{{ section.settings.navigation_aria_label | escape }}">
+              <button type="button" class="pb__arrow" data-tab-prev aria-label="{{ section.settings.previous_label | escape }}">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button type="button" class="pb__arrow pb__arrow--accent" data-tab-next aria-label="{{ section.settings.next_label | escape }}">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="pb__panels">
+            {%- assign rendered_panels = 0 -%}
+            {%- for category_index in (1..3) -%}
+              {%- liquid
+                case category_index
+                  when 1
+                    assign category_id = 'breakfast'
+                    assign category_title = section.settings.breakfast_title
+                    assign category_collection = section.settings.breakfast_collection
+                    assign category_minimum = section.settings.breakfast_minimum
+                  when 2
+                    assign category_id = 'sandwich'
+                    assign category_title = section.settings.sandwich_title
+                    assign category_collection = section.settings.sandwich_collection
+                    assign category_minimum = section.settings.sandwich_minimum
+                  when 3
+                    assign category_id = 'snacks'
+                    assign category_title = section.settings.snacks_title
+                    assign category_collection = section.settings.snacks_collection
+                    assign category_minimum = section.settings.snacks_minimum
+                endcase
+              -%}
+
+              {%- if category_collection != blank -%}
+                {%- assign rendered_panels = rendered_panels | plus: 1 -%}
+                <div
+                  class="pb__panel{% if rendered_panels == 1 %} is-active{% endif %}"
+                  role="tabpanel"
+                  id="PackPanel-{{ section.id }}-{{ category_id }}"
+                  aria-labelledby="PackTab-{{ section.id }}-{{ category_id }}"
+                  data-panel="{{ category_id }}"
+                  data-category-title="{{ category_title | escape }}"
+                  data-category-minimum="{{ category_minimum }}"
+                  {% unless rendered_panels == 1 %}hidden{% endunless %}
+                >
+                  <div class="pb__grid">
+                    {%- for product in category_collection.products limit: section.settings.products_limit -%}
+                      {%- assign selected_variant = product.selected_or_first_available_variant -%}
+                      <article
+                        class="pb-card"
+                        data-product-card
+                        data-category="{{ category_id }}"
+                        data-category-title="{{ category_title | escape }}"
+                        data-product-id="{{ product.id }}"
+                        data-product-title="{{ product.title | escape }}"
+                      >
+                        <a class="pb-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+                          {%- if product.featured_image != blank -%}
+                            {{
+                              product.featured_image
+                              | image_url: width: 900
+                              | image_tag:
+                                loading: 'lazy',
+                                widths: '240, 360, 540, 720, 900',
+                                sizes: '(min-width: 990px) 28vw, (min-width: 750px) 45vw, 85vw',
+                                class: 'pb-card__image',
+                                alt: product.featured_image.alt
+                            }}
+                          {%- else -%}
+                            {{ 'product-1' | placeholder_svg_tag: 'pb-card__placeholder' }}
+                          {%- endif -%}
+                        </a>
+
+                        <div class="pb-card__body">
+                          <h3 class="pb-card__title">
+                            <a href="{{ product.url }}">{{ product.title }}</a>
+                          </h3>
+
+                          <div class="pb-card__price" data-card-price>
+                            {{ selected_variant.price | money }}
+                          </div>
+
+                          {%- if product.variants.size > 1 -%}
+                            <label class="pb-card__variant-label" for="PackVariant-{{ section.id }}-{{ product.id }}">
+                              {{ section.settings.variant_label }}
+                            </label>
+                            <select
+                              id="PackVariant-{{ section.id }}-{{ product.id }}"
+                              class="pb-card__variant"
+                              data-variant-select
+                            >
+                              {%- for variant in product.variants -%}
+                                {%- assign variant_image = variant.featured_image | default: product.featured_image -%}
+                                <option
+                                  value="{{ variant.id }}"
+                                  data-price="{{ variant.price }}"
+                                  data-price-formatted="{{ variant.price | money | escape }}"
+                                  data-available="{{ variant.available }}"
+                                  data-title="{{ variant.title | escape }}"
+                                  {% if variant_image != blank %}data-image="{{ variant_image | image_url: width: 320 }}"{% endif %}
+                                  {% if variant.id == selected_variant.id %}selected{% endif %}
+                                  {% unless variant.available %}disabled{% endunless %}
+                                >
+                                  {{ variant.title }}{% unless variant.available %} — {{ section.settings.sold_out_label }}{% endunless %}
+                                </option>
+                              {%- endfor -%}
+                            </select>
+                          {%- else -%}
+                            <input
+                              type="hidden"
+                              data-variant-select
+                              value="{{ selected_variant.id }}"
+                              data-price="{{ selected_variant.price }}"
+                              data-price-formatted="{{ selected_variant.price | money | escape }}"
+                              data-available="{{ selected_variant.available }}"
+                              data-title="{{ selected_variant.title | escape }}"
+                              {% if selected_variant.featured_image != blank %}data-image="{{ selected_variant.featured_image | image_url: width: 320 }}"{% elsif product.featured_image != blank %}data-image="{{ product.featured_image | image_url: width: 320 }}"{% endif %}
+                            >
+                          {%- endif -%}
+
+                          {%- if section.settings.show_tags and product.tags.size > 0 -%}
+                            <div class="pb-card__tags" aria-label="{{ section.settings.tags_aria_label | escape }}">
+                              {%- for tag in product.tags limit: 3 -%}
+                                <span class="pb-card__tag">
+                                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="m2.5 8 5.2-5.2h4.8v4.8L7.3 12.8 2.5 8Z" stroke="currentColor" stroke-width="1.1"/>
+                                    <circle cx="10.4" cy="4.9" r=".8" fill="currentColor"/>
+                                  </svg>
+                                  {{ tag }}
+                                </span>
+                              {%- endfor -%}
+                            </div>
+                          {%- endif -%}
+
+                          <div class="pb-card__actions">
+                            <button
+                              type="button"
+                              class="pb-card__add"
+                              data-add-item
+                              {% unless selected_variant.available %}disabled{% endunless %}
+                            >
+                              {% if selected_variant.available %}
+                                {{ section.settings.add_to_pack_label }}
+                              {% else %}
+                                {{ section.settings.sold_out_label }}
+                              {% endif %}
+                            </button>
+
+                            <div class="pb-card__quantity" data-card-quantity hidden>
+                              <button type="button" data-card-minus aria-label="{{ section.settings.decrease_label | escape }}">−</button>
+                              <span data-card-quantity-value aria-live="polite">0</span>
+                              <button type="button" data-card-plus aria-label="{{ section.settings.increase_label | escape }}">+</button>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    {%- else -%}
+                      <p class="pb__empty-category">{{ section.settings.empty_collection_text }}</p>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <aside class="pb-summary" aria-labelledby="PackSummaryTitle-{{ section.id }}">
+          <div class="pb-summary__inner">
+            <div class="pb-summary__heading-row">
+              <div>
+                <h2 id="PackSummaryTitle-{{ section.id }}" class="pb-summary__title">
+                  {{ section.settings.summary_title }}
+                </h2>
+                <p class="pb-summary__message" data-progress-message>
+                  {{ section.settings.initial_progress_text }}
+                </p>
+              </div>
+              <button
+                type="button"
+                class="pb-summary__mobile-toggle"
+                data-summary-toggle
+                aria-expanded="false"
+                aria-controls="PackSummaryContent-{{ section.id }}"
+              >
+                <span data-summary-count>0</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <div id="PackSummaryContent-{{ section.id }}" class="pb-summary__content" data-summary-content>
+              <div class="pb-progress" aria-label="{{ section.settings.progress_aria_label | escape }}">
+                <div class="pb-progress__track">
+                  <span class="pb-progress__fill" data-progress-fill></span>
+                  <span class="pb-progress__dot" data-progress-dot></span>
+                </div>
+                <div class="pb-progress__levels">
+                  <span data-level="1">
+                    <strong>{{ section.settings.discount_1_value }}% off</strong>
+                    <small>{{ section.settings.discount_1_qty }} {{ section.settings.items_short_label }}</small>
+                  </span>
+                  <span data-level="2">
+                    <strong>{{ section.settings.discount_2_value }}% off</strong>
+                    <small>{{ section.settings.discount_2_qty }} {{ section.settings.items_short_label }}</small>
+                  </span>
+                  <span data-level="3">
+                    <strong>{{ section.settings.discount_3_value }}% off</strong>
+                    <small>{{ section.settings.discount_3_qty }} {{ section.settings.items_short_label }}</small>
+                  </span>
+                </div>
+              </div>
+
+              <div class="pb-summary__groups">
+                {%- for category_index in (1..3) -%}
+                  {%- liquid
+                    case category_index
+                      when 1
+                        assign category_id = 'breakfast'
+                        assign category_title = section.settings.breakfast_title
+                        assign category_collection = section.settings.breakfast_collection
+                        assign category_minimum = section.settings.breakfast_minimum
+                      when 2
+                        assign category_id = 'sandwich'
+                        assign category_title = section.settings.sandwich_title
+                        assign category_collection = section.settings.sandwich_collection
+                        assign category_minimum = section.settings.sandwich_minimum
+                      when 3
+                        assign category_id = 'snacks'
+                        assign category_title = section.settings.snacks_title
+                        assign category_collection = section.settings.snacks_collection
+                        assign category_minimum = section.settings.snacks_minimum
+                    endcase
+                  -%}
+
+                  {%- if category_collection != blank -%}
+                    <details class="pb-group" data-summary-group="{{ category_id }}" open>
+                      <summary>
+                        <span>
+                          <strong>{{ category_title }}</strong>
+                          <small>
+                            {{ section.settings.requires_prefix }}
+                            {{ category_minimum }}
+                            {% if category_minimum == 1 %}{{ section.settings.item_singular }}{% else %}{{ section.settings.item_plural }}{% endif %}
+                          </small>
+                        </span>
+                        <span class="pb-group__count">
+                          <b data-category-count>0</b> {{ section.settings.items_added_label }}
+                          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </span>
+                      </summary>
+                      <div class="pb-group__items" data-category-items>
+                        <p class="pb-group__empty" data-group-empty>{{ section.settings.empty_group_text }}</p>
+                      </div>
+                    </details>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+              <div class="pb-summary__totals">
+                <div>
+                  <span>{{ section.settings.subtotal_label }}</span>
+                  <strong data-subtotal>—</strong>
+                </div>
+                <div data-discount-row hidden>
+                  <span>{{ section.settings.estimated_discount_label }}</span>
+                  <strong data-discount-amount>—</strong>
+                </div>
+                <div class="pb-summary__total-row">
+                  <span>{{ section.settings.total_label }}</span>
+                  <strong data-estimated-total>—</strong>
+                </div>
+              </div>
+
+              <button type="button" class="pb-summary__submit" data-submit disabled>
+                <span data-submit-label>{{ section.settings.submit_label }}</span>
+                <span class="pb-summary__spinner" aria-hidden="true"></span>
+              </button>
+
+              <p class="pb-summary__note">{{ section.settings.discount_note }}</p>
+              <div class="pb-summary__status" data-status role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    {%- else -%}
+      <div class="pb__editor-empty">
+        <strong>{{ section.settings.no_collections_title }}</strong>
+        <p>{{ section.settings.no_collections_text }}</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  #PackBuilder-{{ section.id }} {
+    background: var(--pb-bg);
+    color: var(--pb-text);
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+  }
+
+  #PackBuilder-{{ section.id }} *,
+  #PackBuilder-{{ section.id }} *::before,
+  #PackBuilder-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #PackBuilder-{{ section.id }} button,
+  #PackBuilder-{{ section.id }} select {
+    font: inherit;
+  }
+
+  #PackBuilder-{{ section.id }} button {
+    color: inherit;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__container {
+    width: min(100%, var(--pb-max-width));
+    margin-inline: auto;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__heading {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1.05;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__subheading {
+    max-width: 720px;
+    margin: 10px auto 0;
+    color: var(--pb-muted);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 340px);
+    gap: 14px;
+    align-items: start;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__catalog {
+    min-width: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tabs-shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 58px;
+    margin-bottom: 14px;
+    padding: 8px 10px;
+    border: 1px solid var(--pb-border);
+    border-radius: var(--pb-radius);
+    background: var(--pb-card);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tabs {
+    display: flex;
+    min-width: 0;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    border: 0;
+    background: transparent;
+    color: var(--pb-muted);
+    border-radius: 999px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab:hover,
+  #PackBuilder-{{ section.id }} .pb__tab.is-active {
+    color: var(--pb-text);
+    background: color-mix(in srgb, var(--pb-accent) 11%, transparent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab-icon {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--pb-border);
+    border-radius: 50%;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab.is-active .pb__tab-icon {
+    color: var(--pb-accent-contrast);
+    background: var(--pb-accent);
+    border-color: var(--pb-accent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab-arrows {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__arrow {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--pb-text);
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__arrow--accent {
+    border-color: var(--pb-accent);
+    background: var(--pb-accent);
+    color: var(--pb-accent-contrast);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__panel[hidden] {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - ({{ section.settings.columns_desktop | minus: 1 }} * 12px)) / {{ section.settings.columns_desktop }});
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card {
+    min-width: 0;
+    scroll-snap-align: start;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: var(--pb-radius);
+    background: var(--pb-card);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card:has(.pb-card__quantity:not([hidden])) {
+    border-color: var(--pb-accent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__media {
+    display: block;
+    position: relative;
+    aspect-ratio: var(--pb-image-ratio);
+    overflow: hidden;
+    background: color-mix(in srgb, var(--pb-border) 35%, transparent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__image,
+  #PackBuilder-{{ section.id }} .pb-card__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card:hover .pb-card__image {
+    transform: scale(1.025);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 205px;
+    padding: 14px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__title {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__price {
+    margin-top: 7px;
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__variant-label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: var(--pb-muted);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__variant {
+    width: 100%;
+    min-height: 38px;
+    padding: 7px 34px 7px 10px;
+    border: 1px solid var(--pb-border);
+    border-radius: 8px;
+    background: var(--pb-card);
+    color: var(--pb-text);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-top: 14px;
+    color: var(--pb-muted);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tag svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__actions {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__add,
+  #PackBuilder-{{ section.id }} .pb-card__quantity {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--pb-text);
+    border-radius: 999px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__add {
+    background: transparent;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__add:hover:not(:disabled) {
+    color: var(--pb-accent-contrast);
+    background: var(--pb-accent);
+    border-color: var(--pb-accent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__add:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__quantity {
+    display: grid;
+    grid-template-columns: 42px 1fr 42px;
+    align-items: center;
+    overflow: hidden;
+    border-color: var(--pb-accent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__quantity[hidden] {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__quantity button {
+    align-self: stretch;
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__quantity span {
+    text-align: center;
+    font-weight: 700;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary {
+    position: sticky;
+    top: 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__inner {
+    border: 1px solid var(--pb-border);
+    border-radius: var(--pb-radius);
+    background: var(--pb-panel);
+    overflow: hidden;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__heading-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 16px 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__message {
+    min-height: 34px;
+    margin: 7px 0 0;
+    color: var(--pb-muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle {
+    display: none;
+    place-items: center;
+    min-width: 46px;
+    height: 38px;
+    padding: 0 9px;
+    border: 1px solid var(--pb-border);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle svg {
+    width: 17px;
+    height: 17px;
+    transition: transform .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__content {
+    padding: 0 12px 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress {
+    padding: 14px 0 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__track {
+    position: relative;
+    height: 3px;
+    margin: 0 8px;
+    background: var(--pb-border);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    background: var(--pb-accent);
+    transition: width .25s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--pb-panel);
+    border-radius: 50%;
+    background: var(--pb-accent);
+    transform: translate(-50%, -50%);
+    transition: left .25s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    gap: 5px;
+    text-align: center;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span {
+    display: grid;
+    gap: 1px;
+    color: var(--pb-muted);
+    font-size: 11px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span.is-reached {
+    color: var(--pb-accent);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels strong {
+    font-size: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels small {
+    font-size: 10px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__groups {
+    display: grid;
+    gap: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group {
+    overflow: hidden;
+    border: 1px solid var(--pb-border);
+    border-radius: 10px;
+    background: var(--pb-card);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 56px;
+    padding: 9px 10px;
+    background: color-mix(in srgb, var(--pb-border) 30%, transparent);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary > span:first-child {
+    display: grid;
+    gap: 2px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary strong {
+    font-size: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary small {
+    color: var(--pb-muted);
+    font-size: 10px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__count {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--pb-accent);
+    font-size: 11px;
+    text-align: right;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__count svg {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    transition: transform .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group[open] .pb-group__count svg {
+    transform: rotate(180deg);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__items {
+    display: grid;
+    gap: 7px;
+    padding: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__empty {
+    margin: 6px;
+    color: var(--pb-muted);
+    font-size: 11px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 7px;
+    border: 1px solid var(--pb-border);
+    border-radius: 9px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__image {
+    display: block;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: var(--pb-bg);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__fallback {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: var(--pb-bg);
+    color: var(--pb-muted);
+    font-size: 10px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__info {
+    min-width: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__title,
+  #PackBuilder-{{ section.id }} .pb-selected__variant {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__title {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__variant {
+    margin-top: 2px;
+    color: var(--pb-muted);
+    font-size: 9px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__price {
+    margin-top: 3px;
+    font-size: 10px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls {
+    display: grid;
+    grid-template-columns: 24px 22px 24px;
+    align-items: center;
+    border: 1px solid var(--pb-border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls button {
+    width: 24px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls span {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__totals {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    padding: 12px 2px 4px;
+    border-top: 1px solid var(--pb-border);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__totals > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__total-row {
+    padding-top: 5px;
+    font-size: 14px !important;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 46px;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--pb-accent);
+    color: var(--pb-accent-contrast);
+    cursor: pointer;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__submit:disabled {
+    opacity: .48;
+    cursor: not-allowed;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: pb-spin .75s linear infinite;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__submit.is-loading .pb-summary__spinner {
+    display: block;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__note,
+  #PackBuilder-{{ section.id }} .pb-summary__status {
+    margin: 8px 2px 0;
+    color: var(--pb-muted);
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__status:not(:empty) {
+    color: var(--pb-text);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__empty-category,
+  #PackBuilder-{{ section.id }} .pb__editor-empty {
+    padding: 34px;
+    border: 1px dashed var(--pb-border);
+    border-radius: var(--pb-radius);
+    text-align: center;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__editor-empty p {
+    margin: 8px 0 0;
+    color: var(--pb-muted);
+  }
+
+  #PackBuilder-{{ section.id }} :focus-visible {
+    outline: 2px solid var(--pb-accent);
+    outline-offset: 3px;
+  }
+
+  @keyframes pb-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @media screen and (max-width: 989px) {
+    #PackBuilder-{{ section.id }} .pb__layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    #PackBuilder-{{ section.id }} .pb__grid {
+      grid-auto-columns: calc((100% - 12px) / 2);
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary {
+      position: sticky;
+      z-index: 20;
+      bottom: 10px;
+      top: auto;
+      order: -1;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__heading-row {
+      align-items: center;
+      padding: 12px 14px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__message {
+      min-height: 0;
+      margin-top: 4px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle {
+      display: inline-flex;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__content {
+      display: none;
+      max-height: min(70vh, 620px);
+      overflow-y: auto;
+      border-top: 1px solid var(--pb-border);
+      padding-top: 2px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary.is-open .pb-summary__content {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #PackBuilder-{{ section.id }} {
+      padding-inline: 12px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tabs-shell {
+      gap: 8px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tab {
+      padding-inline: 8px;
+      font-size: 12px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tab-arrows {
+      display: none;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__grid {
+      grid-auto-columns: calc((100% - ({{ section.settings.columns_mobile | minus: 1 }} * 9px)) / {{ section.settings.columns_mobile }});
+      gap: 9px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__body {
+      min-height: 190px;
+      padding: 10px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__title {
+      font-size: 13px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__price {
+      font-size: 14px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__tags {
+      gap: 5px 8px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__tag {
+      font-size: 9px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #PackBuilder-{{ section.id }} *,
+    #PackBuilder-{{ section.id }} *::before,
+    #PackBuilder-{{ section.id }} *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const ROOT_ID = 'PackBuilder-{{ section.id }}';
+    const root = document.getElementById(ROOT_ID);
+    if (!root || root.dataset.initialized === 'true') return;
+    root.dataset.initialized = 'true';
+
+    const state = new Map();
+    const tabs = [...root.querySelectorAll('[data-tab]')];
+    const panels = [...root.querySelectorAll('[data-panel]')];
+    const cards = [...root.querySelectorAll('[data-product-card]')];
+    const summary = root.querySelector('.pb-summary');
+    const summaryToggle = root.querySelector('[data-summary-toggle]');
+    const submitButton = root.querySelector('[data-submit]');
+    const submitLabel = root.querySelector('[data-submit-label]');
+    const statusNode = root.querySelector('[data-status]');
+    const progressMessage = root.querySelector('[data-progress-message]');
+    const progressFill = root.querySelector('[data-progress-fill]');
+    const progressDot = root.querySelector('[data-progress-dot]');
+    const subtotalNode = root.querySelector('[data-subtotal]');
+    const discountRow = root.querySelector('[data-discount-row]');
+    const discountAmountNode = root.querySelector('[data-discount-amount]');
+    const estimatedTotalNode = root.querySelector('[data-estimated-total]');
+    const summaryCount = root.querySelector('[data-summary-count]');
+
+    const settings = {
+      currency: root.dataset.currency || 'USD',
+      locale: root.dataset.locale || 'es',
+      packName: root.dataset.packName || 'Armá tu pack',
+      packKey: root.dataset.packKey || 'pack',
+      enforceMinimums: root.dataset.enforceMinimums === 'true',
+      afterAdd: root.dataset.afterAdd || 'drawer',
+      resetAfterAdd: root.dataset.resetAfterAdd === 'true',
+      levels: [
+        { qty: Number(root.dataset.discount1Qty || 0), value: Number(root.dataset.discount1Value || 0) },
+        { qty: Number(root.dataset.discount2Qty || 0), value: Number(root.dataset.discount2Value || 0) },
+        { qty: Number(root.dataset.discount3Qty || 0), value: Number(root.dataset.discount3Value || 0) }
+      ].filter(level => level.qty > 0).sort((a, b) => a.qty - b.qty)
+    };
+
+    const text = {
+      add: {{ section.settings.add_to_pack_label | json }},
+      soldOut: {{ section.settings.sold_out_label | json }},
+      submit: {{ section.settings.submit_label | json }},
+      loading: {{ section.settings.loading_label | json }},
+      added: {{ section.settings.success_message | json }},
+      error: {{ section.settings.error_message | json }},
+      initialProgress: {{ section.settings.initial_progress_text | json }},
+      complete: {{ section.settings.pack_complete_text | json }},
+      addMorePrefix: {{ section.settings.add_more_prefix | json }},
+      addMoreSuffix: {{ section.settings.add_more_suffix | json }},
+      missingPrefix: {{ section.settings.missing_prefix | json }},
+      missingJoin: {{ section.settings.missing_join | json }},
+      defaultVariant: {{ section.settings.default_variant_label | json }}
+    };
+
+    const moneyFormatter = new Intl.NumberFormat(settings.locale, {
+      style: 'currency',
+      currency: settings.currency
+    });
+
+    const formatMoney = cents => moneyFormatter.format((Number(cents) || 0) / 100);
+
+    const getVariantElement = card => card.querySelector('[data-variant-select]');
+
+    const getVariantData = card => {
+      const control = getVariantElement(card);
+      if (!control) return null;
+
+      const source = control.tagName === 'SELECT'
+        ? control.options[control.selectedIndex]
+        : control;
+
+      if (!source || !source.value) return null;
+
+      return {
+        id: String(source.value),
+        price: Number(source.dataset.price || 0),
+        priceFormatted: source.dataset.priceFormatted || formatMoney(source.dataset.price || 0),
+        available: source.dataset.available !== 'false',
+        variantTitle: source.dataset.title || '',
+        image: source.dataset.image || card.querySelector('.pb-card__image')?.currentSrc || card.querySelector('.pb-card__image')?.src || '',
+        productTitle: card.dataset.productTitle || '',
+        productId: card.dataset.productId || '',
+        category: card.dataset.category || '',
+        categoryTitle: card.dataset.categoryTitle || ''
+      };
+    };
+
+    const getCategoryConfiguration = () => {
+      return panels.map(panel => ({
+        id: panel.dataset.panel,
+        title: panel.dataset.categoryTitle || panel.dataset.panel,
+        minimum: Number(panel.dataset.categoryMinimum || 0)
+      }));
+    };
+
+    const getTotals = () => {
+      let quantity = 0;
+      let subtotal = 0;
+      const byCategory = {};
+
+      state.forEach(item => {
+        quantity += item.quantity;
+        subtotal += item.price * item.quantity;
+        byCategory[item.category] = (byCategory[item.category] || 0) + item.quantity;
+      });
+
+      return { quantity, subtotal, byCategory };
+    };
+
+    const getDiscount = quantity => {
+      let current = { qty: 0, value: 0 };
+      settings.levels.forEach(level => {
+        if (quantity >= level.qty) current = level;
+      });
+      return current;
+    };
+
+    const getNextDiscount = quantity => {
+      return settings.levels.find(level => quantity < level.qty) || null;
+    };
+
+    const getMissingCategories = totals => {
+      return getCategoryConfiguration()
+        .filter(category => (totals.byCategory[category.id] || 0) < category.minimum)
+        .map(category => ({
+          ...category,
+          missing: Math.max(category.minimum - (totals.byCategory[category.id] || 0), 0)
+        }));
+    };
+
+    const setStatus = (message, isError = false) => {
+      if (!statusNode) return;
+      statusNode.textContent = message || '';
+      statusNode.style.color = isError ? '#b42318' : '';
+    };
+
+    const activateTab = (category, focus = false) => {
+      tabs.forEach(tab => {
+        const active = tab.dataset.tab === category;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+
+      panels.forEach(panel => {
+        const active = panel.dataset.panel === category;
+        panel.classList.toggle('is-active', active);
+        panel.hidden = !active;
+      });
+    };
+
+    const moveTab = direction => {
+      if (!tabs.length) return;
+      const currentIndex = Math.max(tabs.findIndex(tab => tab.classList.contains('is-active')), 0);
+      const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
+      activateTab(tabs[nextIndex].dataset.tab, true);
+    };
+
+    const scrollProducts = direction => {
+      const activePanel = panels.find(panel => !panel.hidden);
+      const grid = activePanel?.querySelector('.pb__grid');
+      const firstCard = grid?.querySelector('[data-product-card]');
+      if (!grid || !firstCard) return;
+
+      const gap = Number.parseFloat(getComputedStyle(grid).columnGap || getComputedStyle(grid).gap || 0);
+      const distance = firstCard.getBoundingClientRect().width + gap;
+      grid.scrollBy({ left: distance * direction, behavior: 'smooth' });
+    };
+
+    const updateCard = card => {
+      const variant = getVariantData(card);
+      if (!variant) return;
+
+      const item = state.get(variant.id);
+      const quantity = item?.quantity || 0;
+      const addButton = card.querySelector('[data-add-item]');
+      const quantityControl = card.querySelector('[data-card-quantity]');
+      const quantityValue = card.querySelector('[data-card-quantity-value]');
+      const priceNode = card.querySelector('[data-card-price]');
+
+      if (priceNode) priceNode.textContent = variant.priceFormatted;
+      if (quantityValue) quantityValue.textContent = quantity;
+
+      if (quantity > 0) {
+        addButton.hidden = true;
+        quantityControl.hidden = false;
+      } else {
+        addButton.hidden = false;
+        quantityControl.hidden = true;
+        addButton.disabled = !variant.available;
+        addButton.textContent = variant.available ? text.add : text.soldOut;
+      }
+    };
+
+    const updateAllCards = () => cards.forEach(updateCard);
+
+    const createSelectedItem = item => {
+      const row = document.createElement('div');
+      row.className = 'pb-selected';
+      row.dataset.selectedVariant = item.id;
+
+      const media = item.image
+        ? `<img class="pb-selected__image" src="${escapeHtml(item.image)}" alt="" loading="lazy">`
+        : `<span class="pb-selected__fallback" aria-hidden="true">IMG</span>`;
+
+      const variantTitle = item.variantTitle && item.variantTitle !== text.defaultVariant
+        ? `<div class="pb-selected__variant">${escapeHtml(item.variantTitle)}</div>`
+        : '';
+
+      row.innerHTML = `
+        ${media}
+        <div class="pb-selected__info">
+          <p class="pb-selected__title">${escapeHtml(item.productTitle)}</p>
+          ${variantTitle}
+          <div class="pb-selected__price">${formatMoney(item.price * item.quantity)}</div>
+        </div>
+        <div class="pb-selected__controls">
+          <button type="button" data-selected-minus aria-label={{ section.settings.decrease_label | json }}>−</button>
+          <span>${item.quantity}</span>
+          <button type="button" data-selected-plus aria-label={{ section.settings.increase_label | json }}>+</button>
+        </div>
+      `;
+
+      row.querySelector('[data-selected-minus]').addEventListener('click', () => changeQuantity(item.id, -1));
+      row.querySelector('[data-selected-plus]').addEventListener('click', () => changeQuantity(item.id, 1));
+
+      return row;
+    };
+
+    const renderSummaryGroups = totals => {
+      root.querySelectorAll('[data-summary-group]').forEach(group => {
+        const category = group.dataset.summaryGroup;
+        const itemsContainer = group.querySelector('[data-category-items]');
+        const empty = group.querySelector('[data-group-empty]');
+        const categoryCount = group.querySelector('[data-category-count]');
+        const categoryItems = [...state.values()].filter(item => item.category === category);
+
+        if (categoryCount) categoryCount.textContent = totals.byCategory[category] || 0;
+        itemsContainer.querySelectorAll('[data-selected-variant]').forEach(node => node.remove());
+
+        if (categoryItems.length) {
+          empty.hidden = true;
+          categoryItems.forEach(item => itemsContainer.appendChild(createSelectedItem(item)));
+        } else {
+          empty.hidden = false;
+        }
+      });
+    };
+
+    const updateProgress = totals => {
+      const maxLevel = settings.levels[settings.levels.length - 1]?.qty || 1;
+      const percentage = Math.min((totals.quantity / maxLevel) * 100, 100);
+      const currentDiscount = getDiscount(totals.quantity);
+      const nextDiscount = getNextDiscount(totals.quantity);
+      const missingCategories = getMissingCategories(totals);
+
+      if (progressFill) progressFill.style.width = `${percentage}%`;
+      if (progressDot) progressDot.style.left = `${percentage}%`;
+
+      root.querySelectorAll('[data-level]').forEach((node, index) => {
+        const level = settings.levels[index];
+        node.classList.toggle('is-reached', Boolean(level && totals.quantity >= level.qty));
+      });
+
+      if (settings.enforceMinimums && missingCategories.length) {
+        const missingText = missingCategories
+          .map(category => `${category.missing} ${category.title}`)
+          .join(text.missingJoin);
+        progressMessage.textContent = `${text.missingPrefix}${missingText}`;
+      } else if (nextDiscount) {
+        progressMessage.textContent = `${text.addMorePrefix}${nextDiscount.qty - totals.quantity}${text.addMoreSuffix}${nextDiscount.value}%`;
+      } else if (currentDiscount.value > 0) {
+        progressMessage.textContent = `${text.complete} ${currentDiscount.value}% off`;
+      } else {
+        progressMessage.textContent = text.initialProgress;
+      }
+    };
+
+    const updateTotals = totals => {
+      const discount = getDiscount(totals.quantity);
+      const discountAmount = Math.round(totals.subtotal * (discount.value / 100));
+      const estimatedTotal = totals.subtotal - discountAmount;
+
+      subtotalNode.textContent = formatMoney(totals.subtotal);
+      estimatedTotalNode.textContent = formatMoney(estimatedTotal);
+      discountAmountNode.textContent = `−${formatMoney(discountAmount)}`;
+      discountRow.hidden = discountAmount <= 0;
+      summaryCount.textContent = totals.quantity;
+
+      const missingCategories = getMissingCategories(totals);
+      const canSubmit = totals.quantity > 0 && (!settings.enforceMinimums || missingCategories.length === 0);
+      submitButton.disabled = !canSubmit;
+    };
+
+    const render = () => {
+      const totals = getTotals();
+      updateAllCards();
+      renderSummaryGroups(totals);
+      updateProgress(totals);
+      updateTotals(totals);
+      setStatus('');
+    };
+
+    const changeQuantity = (variantId, delta, variantData = null) => {
+      const current = state.get(String(variantId));
+      const nextQuantity = Math.max((current?.quantity || 0) + delta, 0);
+
+      if (nextQuantity === 0) {
+        state.delete(String(variantId));
+      } else if (current) {
+        current.quantity = nextQuantity;
+        state.set(String(variantId), current);
+      } else if (variantData) {
+        state.set(String(variantId), { ...variantData, quantity: nextQuantity });
+      }
+
+      render();
+    };
+
+    const escapeHtml = value => String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+    const getCartSectionIds = () => {
+      const ids = new Set();
+
+      const dawnDrawer = document.querySelector('cart-drawer');
+      if (dawnDrawer && typeof dawnDrawer.getSectionsToRender === 'function') {
+        dawnDrawer.getSectionsToRender().forEach(section => {
+          if (section?.id) ids.add(section.id);
+        });
+      }
+
+      document.querySelectorAll('cart-items-component[data-section-id]').forEach(component => {
+        if (component.dataset.sectionId) ids.add(component.dataset.sectionId);
+      });
+
+      if (document.getElementById('cart-icon-bubble')) ids.add('cart-icon-bubble');
+
+      return [...ids];
+    };
+
+    const refreshGenericCartCount = async () => {
+      try {
+        const rootRoute = window.Shopify?.routes?.root || '/';
+        const response = await fetch(`${rootRoute}cart.js`, {
+          headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) return;
+        const cart = await response.json();
+
+        document.querySelectorAll('[data-cart-count], .cart-count-bubble span[aria-hidden="true"]').forEach(node => {
+          node.textContent = cart.item_count;
+        });
+      } catch (error) {
+        console.warn('[Pack Builder] No se pudo actualizar el contador del carrito.', error);
+      }
+    };
+
+    const updateThemeCart = async response => {
+      let handled = false;
+
+      const dawnDrawer = document.querySelector('cart-drawer');
+      if (dawnDrawer && typeof dawnDrawer.renderContents === 'function' && response.sections) {
+        const parsedState = {
+          ...response,
+          id: response.id || response.items?.[0]?.id || null
+        };
+        dawnDrawer.renderContents(parsedState);
+        handled = true;
+      }
+
+      const dawnNotification = document.querySelector('cart-notification');
+      if (!handled && dawnNotification && typeof dawnNotification.renderContents === 'function' && response.sections) {
+        dawnNotification.renderContents({
+          ...response,
+          id: response.id || response.items?.[0]?.id || null
+        });
+        handled = true;
+      }
+
+      const horizonCartComponents = [...document.querySelectorAll('cart-items-component')];
+      if (horizonCartComponents.length) {
+        await Promise.allSettled(
+          horizonCartComponents.map(component => {
+            if (typeof component.fetchCartData === 'function') return component.fetchCartData();
+            return Promise.resolve();
+          })
+        );
+
+        const horizonDrawerComponent = document.querySelector('cart-drawer-component');
+        const themeDrawer = horizonDrawerComponent?.closest('theme-drawer') || document.querySelector('theme-drawer');
+        if (settings.afterAdd === 'drawer') {
+          if (themeDrawer && typeof themeDrawer.open === 'function') {
+            themeDrawer.open();
+          } else if (themeDrawer) {
+            themeDrawer.setAttribute('open', '');
+          }
+        }
+        handled = true;
+      }
+
+      await refreshGenericCartCount();
+      document.dispatchEvent(new CustomEvent('cart:refresh', {
+        bubbles: true,
+        detail: { source: 'pack-builder', response }
+      }));
+
+      return handled;
+    };
+
+    const addPackToCart = async () => {
+      const totals = getTotals();
+      const missingCategories = getMissingCategories(totals);
+
+      if (!totals.quantity || (settings.enforceMinimums && missingCategories.length)) {
+        render();
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.classList.add('is-loading');
+      submitLabel.textContent = text.loading;
+      setStatus('');
+
+      const packInstance = `${settings.packKey}-${Date.now()}`;
+      const items = [...state.values()].map(item => ({
+        id: Number(item.id),
+        quantity: item.quantity,
+        properties: {
+          _pack_id: packInstance,
+          _pack_name: settings.packName,
+          _pack_category: item.category
+        }
+      }));
+
+      const sectionIds = getCartSectionIds();
+      const payload = { items };
+
+      if (sectionIds.length) {
+        payload.sections = sectionIds.join(',');
+        payload.sections_url = window.location.pathname;
+      }
+
+      try {
+        const rootRoute = window.Shopify?.routes?.root || '/';
+        const response = await fetch(`${rootRoute}cart/add.js`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || data.status) {
+          throw new Error(data.description || data.message || text.error);
+        }
+
+        await updateThemeCart(data);
+        setStatus(text.added);
+
+        if (settings.resetAfterAdd) {
+          state.clear();
+          render();
+        }
+
+        if (settings.afterAdd === 'cart') {
+          window.location.href = `${rootRoute}cart`;
+          return;
+        }
+
+        if (settings.afterAdd === 'drawer') {
+          const dawnDrawer = document.querySelector('cart-drawer');
+          if (dawnDrawer && typeof dawnDrawer.open === 'function' && !dawnDrawer.classList.contains('active')) {
+            dawnDrawer.open(submitButton);
+          }
+        }
+      } catch (error) {
+        console.error('[Pack Builder]', error);
+        setStatus(error.message || text.error, true);
+      } finally {
+        submitButton.classList.remove('is-loading');
+        submitLabel.textContent = text.submit;
+        const refreshedTotals = getTotals();
+        const missing = getMissingCategories(refreshedTotals);
+        submitButton.disabled = refreshedTotals.quantity === 0 || (settings.enforceMinimums && missing.length > 0);
+      }
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+      tab.addEventListener('keydown', event => {
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          moveTab(1);
+        }
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          moveTab(-1);
+        }
+      });
+    });
+
+    root.querySelector('[data-tab-prev]')?.addEventListener('click', () => scrollProducts(-1));
+    root.querySelector('[data-tab-next]')?.addEventListener('click', () => scrollProducts(1));
+
+    cards.forEach(card => {
+      card.querySelector('[data-add-item]')?.addEventListener('click', () => {
+        const variant = getVariantData(card);
+        if (!variant?.available) return;
+        changeQuantity(variant.id, 1, variant);
+      });
+
+      card.querySelector('[data-card-minus]')?.addEventListener('click', () => {
+        const variant = getVariantData(card);
+        if (!variant) return;
+        changeQuantity(variant.id, -1, variant);
+      });
+
+      card.querySelector('[data-card-plus]')?.addEventListener('click', () => {
+        const variant = getVariantData(card);
+        if (!variant?.available) return;
+        changeQuantity(variant.id, 1, variant);
+      });
+
+      const variantSelect = card.querySelector('select[data-variant-select]');
+      variantSelect?.addEventListener('change', () => updateCard(card));
+    });
+
+    summaryToggle?.addEventListener('click', () => {
+      const isOpen = summary.classList.toggle('is-open');
+      summaryToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    submitButton?.addEventListener('click', addPackToCart);
+
+    document.addEventListener('shopify:section:unload', event => {
+      if (event.detail?.sectionId === root.dataset.sectionId) {
+        root.dataset.initialized = 'false';
+      }
+    });
+
+    render();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Constructor de pack",
+  "tag": "section",
+  "class": "section-pack-builder",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contenido"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Armá tu propio pack"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Texto",
+      "default": "<p>Obtené descuentos exclusivos al crear tu propio pack.</p>"
+    },
+    {
+      "type": "text",
+      "id": "pack_name",
+      "label": "Nombre interno del pack",
+      "default": "Armá tu pack"
+    },
+    {
+      "type": "text",
+      "id": "pack_key",
+      "label": "Identificador interno",
+      "default": "g4u-pack",
+      "info": "Se agrega como propiedad privada a cada línea del carrito."
+    },
+    {
+      "type": "header",
+      "content": "Categoría 1"
+    },
+    {
+      "type": "text",
+      "id": "breakfast_title",
+      "label": "Nombre",
+      "default": "Desayunos"
+    },
+    {
+      "type": "collection",
+      "id": "breakfast_collection",
+      "label": "Colección"
+    },
+    {
+      "type": "range",
+      "id": "breakfast_minimum",
+      "label": "Cantidad mínima",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Categoría 2"
+    },
+    {
+      "type": "text",
+      "id": "sandwich_title",
+      "label": "Nombre",
+      "default": "Sandwich"
+    },
+    {
+      "type": "collection",
+      "id": "sandwich_collection",
+      "label": "Colección"
+    },
+    {
+      "type": "range",
+      "id": "sandwich_minimum",
+      "label": "Cantidad mínima",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Categoría 3"
+    },
+    {
+      "type": "text",
+      "id": "snacks_title",
+      "label": "Nombre",
+      "default": "Snacks"
+    },
+    {
+      "type": "collection",
+      "id": "snacks_collection",
+      "label": "Colección"
+    },
+    {
+      "type": "range",
+      "id": "snacks_minimum",
+      "label": "Cantidad mínima",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "enforce_category_minimums",
+      "label": "Bloquear hasta cumplir mínimos",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Escalones visuales"
+    },
+    {
+      "type": "paragraph",
+      "content": "Estos valores solo muestran el progreso. El descuento real lo aplica la app o Discount Function."
+    },
+    {
+      "type": "range",
+      "id": "discount_1_qty",
+      "label": "Nivel 1: cantidad",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "discount_1_value",
+      "label": "Nivel 1: porcentaje",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "discount_2_qty",
+      "label": "Nivel 2: cantidad",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "discount_2_value",
+      "label": "Nivel 2: porcentaje",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "discount_3_qty",
+      "label": "Nivel 3: cantidad",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "discount_3_value",
+      "label": "Nivel 3: porcentaje",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Productos"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Productos por colección",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columnas en escritorio",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columnas en móvil",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Mostrar primeras 3 etiquetas",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Carrito"
+    },
+    {
+      "type": "select",
+      "id": "after_add_action",
+      "label": "Después de agregar",
+      "options": [
+        { "value": "drawer", "label": "Abrir carrito lateral" },
+        { "value": "stay", "label": "Permanecer en la página" },
+        { "value": "cart", "label": "Ir a la página del carrito" }
+      ],
+      "default": "drawer"
+    },
+    {
+      "type": "checkbox",
+      "id": "reset_after_add",
+      "label": "Vaciar selección después de agregar",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Textos"
+    },
+    {
+      "type": "text",
+      "id": "summary_title",
+      "label": "Título del resumen",
+      "default": "Armá tu pack"
+    },
+    {
+      "type": "text",
+      "id": "initial_progress_text",
+      "label": "Mensaje inicial",
+      "default": "Agregá productos para acceder a un descuento."
+    },
+    {
+      "type": "text",
+      "id": "pack_complete_text",
+      "label": "Mensaje al alcanzar el máximo",
+      "default": "Descuento máximo alcanzado:"
+    },
+    {
+      "type": "text",
+      "id": "add_more_prefix",
+      "label": "Prefijo para próximo nivel",
+      "default": "Agregá "
+    },
+    {
+      "type": "text",
+      "id": "add_more_suffix",
+      "label": "Texto antes del porcentaje",
+      "default": " más para obtener "
+    },
+    {
+      "type": "text",
+      "id": "missing_prefix",
+      "label": "Prefijo de categorías faltantes",
+      "default": "Falta agregar: "
+    },
+    {
+      "type": "text",
+      "id": "missing_join",
+      "label": "Separador de categorías faltantes",
+      "default": ", "
+    },
+    {
+      "type": "text",
+      "id": "requires_prefix",
+      "label": "Texto del requisito",
+      "default": "Se requiere "
+    },
+    {
+      "type": "text",
+      "id": "item_singular",
+      "label": "Ítem singular",
+      "default": "ítem"
+    },
+    {
+      "type": "text",
+      "id": "item_plural",
+      "label": "Ítem plural",
+      "default": "ítems"
+    },
+    {
+      "type": "text",
+      "id": "items_added_label",
+      "label": "Texto de ítems agregados",
+      "default": "ítem(s) agregados"
+    },
+    {
+      "type": "text",
+      "id": "items_short_label",
+      "label": "Texto corto de unidades",
+      "default": "ítems"
+    },
+    {
+      "type": "text",
+      "id": "empty_group_text",
+      "label": "Grupo vacío",
+      "default": "Todavía no agregaste productos."
+    },
+    {
+      "type": "text",
+      "id": "empty_collection_text",
+      "label": "Colección vacía",
+      "default": "No hay productos disponibles en esta categoría."
+    },
+    {
+      "type": "text",
+      "id": "add_to_pack_label",
+      "label": "Botón de producto",
+      "default": "Agregar al pack"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Botón principal",
+      "default": "Agregar todos al carrito"
+    },
+    {
+      "type": "text",
+      "id": "loading_label",
+      "label": "Texto mientras carga",
+      "default": "Agregando..."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Mensaje de éxito",
+      "default": "El pack se agregó al carrito."
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Mensaje general de error",
+      "default": "No fue posible agregar el pack. Revisá los productos e intentá nuevamente."
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Agotado",
+      "default": "Agotado"
+    },
+    {
+      "type": "text",
+      "id": "variant_label",
+      "label": "Etiqueta de variantes",
+      "default": "Elegí una opción"
+    },
+    {
+      "type": "text",
+      "id": "default_variant_label",
+      "label": "Nombre de variante predeterminada",
+      "default": "Default Title"
+    },
+    {
+      "type": "text",
+      "id": "subtotal_label",
+      "label": "Subtotal",
+      "default": "Subtotal"
+    },
+    {
+      "type": "text",
+      "id": "estimated_discount_label",
+      "label": "Descuento estimado",
+      "default": "Descuento estimado"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total estimado",
+      "default": "Total estimado"
+    },
+    {
+      "type": "textarea",
+      "id": "discount_note",
+      "label": "Nota bajo el botón",
+      "default": "El descuento definitivo se calcula en el carrito y checkout."
+    },
+    {
+      "type": "header",
+      "content": "Accesibilidad"
+    },
+    {
+      "type": "text",
+      "id": "tabs_aria_label",
+      "label": "Etiqueta de pestañas",
+      "default": "Categorías del pack"
+    },
+    {
+      "type": "text",
+      "id": "navigation_aria_label",
+      "label": "Etiqueta de navegación",
+      "default": "Navegar productos"
+    },
+    {
+      "type": "text",
+      "id": "previous_label",
+      "label": "Anterior",
+      "default": "Productos anteriores"
+    },
+    {
+      "type": "text",
+      "id": "next_label",
+      "label": "Siguiente",
+      "default": "Productos siguientes"
+    },
+    {
+      "type": "text",
+      "id": "decrease_label",
+      "label": "Disminuir",
+      "default": "Disminuir cantidad"
+    },
+    {
+      "type": "text",
+      "id": "increase_label",
+      "label": "Aumentar",
+      "default": "Aumentar cantidad"
+    },
+    {
+      "type": "text",
+      "id": "tags_aria_label",
+      "label": "Etiquetas del producto",
+      "default": "Características del producto"
+    },
+    {
+      "type": "text",
+      "id": "progress_aria_label",
+      "label": "Progreso de descuento",
+      "default": "Progreso para alcanzar descuentos"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fondo",
+      "default": "#f4eee7"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Tarjetas",
+      "default": "#fffaf5"
+    },
+    {
+      "type": "color",
+      "id": "panel_color",
+      "label": "Panel lateral",
+      "default": "#fffaf5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#231d20"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Texto secundario",
+      "default": "#746c70"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Bordes",
+      "default": "#d8cec8"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Color principal",
+      "default": "#6b002d"
+    },
+    {
+      "type": "color",
+      "id": "accent_contrast",
+      "label": "Texto sobre color principal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Radio de bordes",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Proporción de imágenes",
+      "options": [
+        { "value": "1 / 1", "label": "Cuadrada" },
+        { "value": "4 / 5", "label": "Vertical" },
+        { "value": "3 / 2", "label": "Horizontal" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Ancho máximo",
+      "min": 960,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1380
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espacio superior",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espacio inferior",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Estado sin colecciones"
+    },
+    {
+      "type": "text",
+      "id": "no_collections_title",
+      "label": "Título",
+      "default": "Configurá las colecciones"
+    },
+    {
+      "type": "text",
+      "id": "no_collections_text",
+      "label": "Texto",
+      "default": "Seleccioná al menos una colección desde el editor del tema."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Constructor de pack"
+    }
+  ]
+}
+{% endschema %}
