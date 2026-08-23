@@ -37,6 +37,50 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega_editorial_k7LPPV": {
+          "type": "mega_editorial",
+          "settings": {
+            "menu_trigger": "Productos",
+            "eyebrow": "",
+            "heading": "Armá tu pack ideal",
+            "cta_label": "Ver packs",
+            "link": ""
+          }
+        },
+        "mega_product_z8zyNR": {
+          "type": "mega_product",
+          "settings": {
+            "menu_trigger": "Productos",
+            "group_heading": "Destacados",
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        },
+        "mega_product_jPFKYg": {
+          "type": "mega_product",
+          "settings": {
+            "menu_trigger": "Productos",
+            "group_heading": "Destacados",
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        },
+        "mega_category_Q3Dq8x": {
+          "type": "mega_category",
+          "settings": {
+            "menu_trigger": "Productos",
+            "group_heading": "Comprar por categoría",
+            "collection": "",
+            "label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega_editorial_k7LPPV",
+        "mega_product_z8zyNR",
+        "mega_product_jPFKYg",
+        "mega_category_Q3Dq8x"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
