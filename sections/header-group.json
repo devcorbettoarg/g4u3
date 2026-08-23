@@ -45,7 +45,9 @@
             "heading": "Productos",
             "description": "<p>Con G4U volvés a disfrutar del pan de siempre, pero con beneficios reales.</p>",
             "products": [
-              "the-3p-fulfilled-snowboard"
+              "the-3p-fulfilled-snowboard",
+              "the-collection-snowboard-hydrogen",
+              "the-collection-snowboard-liquid"
             ],
             "products_to_show": 3,
             "cta_label": "Ver todos",
