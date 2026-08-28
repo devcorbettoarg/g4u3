@@ -7,7 +7,13 @@
   <div class="g4u-product-ingredients__items">
     {%- for block in section.blocks -%}
       <details {{ block.shopify_attributes }}>
-        <summary>{{ block.settings.title | escape }}<span aria-hidden="true"></span></summary>
+        <summary>
+          <span class="g4u-product-ingredients__summary-label">
+            {% render 'icon-accordion', icon: block.settings.icon %}
+            {{ block.settings.title | escape }}
+          </span>
+          <span class="g4u-product-ingredients__chevron" aria-hidden="true"></span>
+        </summary>
         <div class="rte">{{ block.settings.text }}</div>
       </details>
     {%- endfor -%}
@@ -27,6 +33,13 @@
   ],
   "blocks": [
     { "type": "ingredient", "name": "Ingrediente", "settings": [
+      { "type": "select", "id": "icon", "label": "Icono", "options": [
+        { "value": "leaf", "label": "Hoja" },
+        { "value": "iron", "label": "Nutrientes" },
+        { "value": "serving_dish", "label": "Porción" },
+        { "value": "check_mark", "label": "Check" },
+        { "value": "none", "label": "Sin icono" }
+      ], "default": "leaf" },
       { "type": "text", "id": "title", "label": "Título", "default": "Almidón resistente RS4" },
       { "type": "richtext", "id": "text", "label": "Descripción", "default": "<p>Aporta fibra funcional y contribuye a un perfil nutricional más equilibrado.</p>" }
     ] }

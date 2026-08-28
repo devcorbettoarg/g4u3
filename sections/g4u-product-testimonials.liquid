@@ -1,7 +1,16 @@
-<section class="g4u-product-testimonials" aria-labelledby="G4uProductTestimonials-{{ section.id }}">
+<script src="{{ 'g4u-scroll-carousel.js' | asset_url }}" defer="defer"></script>
+<g4u-scroll-carousel class="g4u-product-testimonials" role="region" aria-labelledby="G4uProductTestimonials-{{ section.id }}">
   <div class="g4u-product-testimonials__inner">
-    <header><h2 class="g4u-display" id="G4uProductTestimonials-{{ section.id }}">{{ section.settings.title | escape }}</h2></header>
-    <div class="g4u-product-testimonials__grid">
+    <header class="g4u-product-testimonials__header">
+      <h2 class="g4u-display" id="G4uProductTestimonials-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      {%- if section.blocks.size > 0 -%}
+        <div class="g4u-product-testimonials__controls">
+          <button class="g4u-product-testimonials__arrow" type="button" data-g4u-scroll-prev aria-label="Reseña anterior"><img src="{{ 'g4u-icon-arrow-back.svg' | asset_url }}" alt="" width="24" height="24"></button>
+          <button class="g4u-product-testimonials__arrow" type="button" data-g4u-scroll-next aria-label="Reseña siguiente"><img src="{{ 'g4u-icon-arrow-forward.svg' | asset_url }}" alt="" width="24" height="24"></button>
+        </div>
+      {%- endif -%}
+    </header>
+    <div class="g4u-product-testimonials__grid" data-g4u-scroll-track>
       {%- for block in section.blocks -%}
         <blockquote {{ block.shopify_attributes }}>
           <p class="g4u-product-testimonials__stars" aria-label="{{ block.settings.rating | escape }} de 5 estrellas">★★★★★</p>
@@ -11,7 +20,7 @@
       {%- endfor -%}
     </div>
   </div>
-</section>
+</g4u-scroll-carousel>
 
 {% schema %}
 {
