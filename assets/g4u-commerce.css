@@ -295,6 +295,76 @@
 @media screen and (max-width: 989px) { .template-cart .g4u-cart-page-layout { grid-template-columns: 1fr; } .template-cart .g4u-cart-page-summary { position: static; } }
 @media screen and (max-width: 749px) { .template-cart .g4u-cart-page-layout { gap: 3.2rem; } .g4u-cart-page-summary__body, .g4u-cart-page-summary__total { padding-left: 1.6rem; padding-right: 1.6rem; } }
 
+/* Shopify policy page */
+.template-policy #MainContent {
+  background: var(--g4u-cream);
+  color: var(--g4u-ink);
+}
+
+.template-policy .shopify-policy__container {
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding: 8rem 2rem 10rem;
+  width: calc(100% - 4rem);
+}
+
+.template-policy .shopify-policy__title {
+  margin: 0 auto 1rem;
+  max-width: 80rem;
+  text-align: center;
+}
+
+.template-policy .shopify-policy__title h1 {
+  color: var(--g4u-burgundy);
+  font-family: var(--g4u-display);
+  font-size: clamp(4rem, 4.4vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.template-policy .shopify-policy__body {
+  font-family: var(--font-body-family);
+  font-size: clamp(1.4rem, 1.2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 8rem auto 0;
+  max-width: 78rem;
+}
+
+.template-policy .shopify-policy__body h2,
+.template-policy .shopify-policy__body h3,
+.template-policy .shopify-policy__body h4 {
+  color: var(--g4u-ink);
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+  margin: 4.8rem 0 1.8rem;
+}
+
+.template-policy .shopify-policy__body h2 { font-size: clamp(2.2rem, 2.2vw, 2.6rem); }
+.template-policy .shopify-policy__body h3 { font-size: clamp(1.9rem, 2vw, 2.2rem); }
+.template-policy .shopify-policy__body h4 { font-size: 1.8rem; }
+.template-policy .shopify-policy__body > :first-child { margin-top: 0; }
+.template-policy .shopify-policy__body p { margin: 0 0 1.6rem; }
+.template-policy .shopify-policy__body ul,
+.template-policy .shopify-policy__body ol { margin: 1.6rem 0 2rem; padding-left: 2.2rem; }
+.template-policy .shopify-policy__body li { margin-bottom: .6rem; }
+.template-policy .shopify-policy__body a { color: var(--g4u-burgundy); text-underline-offset: .3rem; }
+
+@media screen and (max-width: 749px) {
+  .template-policy .shopify-policy__container { padding: 5.6rem 0 6.4rem; width: calc(100% - 4rem); }
+  .template-policy .shopify-policy__title h1 { font-size: clamp(3.2rem, 10vw, 4rem); }
+  .template-policy .shopify-policy__body { margin-top: 5.6rem; }
+  .template-policy .shopify-policy__body h2,
+  .template-policy .shopify-policy__body h3,
+  .template-policy .shopify-policy__body h4 { margin-top: 3.6rem; }
+}
+
 /* General FAQ */
 .g4u-faq-page { background: var(--g4u-cream); color: var(--g4u-ink); padding: 20rem 4rem 8rem; }
 .g4u-faq-page__header { margin: 0 auto 8rem; max-width: 76.8rem; text-align: center; }

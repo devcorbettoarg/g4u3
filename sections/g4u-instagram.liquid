@@ -14,7 +14,7 @@
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'g4u-instagram__image', loading: 'lazy', widths: '360, 550, 750, 1000', sizes: '(min-width: 750px) 25vw, 50vw' }}
         {%- else -%}
-          <img class="g4u-instagram__image" src="{{ fallback_image | asset_url }}" alt="" width="900" height="900" loading="lazy">
+          <img class="g4u-instagram__image" src="{{ fallback_image | replace: '.png', '.webp' | asset_url }}" alt="" width="900" height="900" loading="lazy">
         {%- endif -%}
       </a>
     {%- endfor -%}

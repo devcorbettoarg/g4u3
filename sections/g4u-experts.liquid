@@ -28,7 +28,7 @@
           {%- if block.settings.media != blank -%}
             {{ block.settings.media | image_url: width: 1200 | image_tag: class: 'g4u-expert-card__image', loading: 'lazy', widths: '500, 750, 1000, 1200', sizes: '(min-width: 750px) 332px, 88vw' }}
           {%- else -%}
-            <img class="g4u-expert-card__image" src="{{ fallback_media | asset_url }}" alt="{{ block.settings.name | escape }}" width="1130" height="2000" loading="lazy">
+            <img class="g4u-expert-card__image" src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}" alt="{{ block.settings.name | escape }}" width="900" height="1593" loading="lazy">
           {%- endif -%}
           {%- if block.settings.video_url != blank -%}
             <a href="{{ block.settings.video_url }}" aria-label="Ver video de {{ block.settings.name | escape }}"><img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64"></a>

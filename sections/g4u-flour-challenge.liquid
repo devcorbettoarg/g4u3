@@ -6,7 +6,7 @@
       <div class="g4u-flour-challenge__text rte">{{ section.settings.text }}</div>
     </header>
     <div class="g4u-flour-challenge__media">
-      {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 2800 | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 2000, 2800', sizes: '100vw' }}{%- else -%}<img src="{{ 'g4u-flour-challenge.png' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="4096" height="2731" loading="lazy">{%- endif -%}
+      {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 1800, 2200, 2400', sizes: '100vw' }}{%- else -%}<img src="{{ 'g4u-flour-challenge.webp' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="2400" height="1600" loading="lazy">{%- endif -%}
     </div>
   </div>
 </section>
