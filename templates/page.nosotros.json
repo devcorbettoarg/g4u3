@@ -90,7 +90,7 @@
         "eyebrow": "",
         "title": "Conocé nuestros productos",
         "description": "",
-        "collection": "all",
+        "collection": "packs",
         "products_to_show": 4,
         "show_secondary_image": true,
         "show_view_all": false,

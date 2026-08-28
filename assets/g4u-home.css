@@ -957,3 +957,78 @@ body.template-suffix-nosotros .section-header .header-wrapper {
   .g4u-about-values__grid { display: flex; gap: 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; }
   .g4u-about-value { flex: 0 0 82%; scroll-snap-align: start; }
 }
+
+/* About page refinements: keep these changes local to /pages/nosotros. */
+@media screen and (min-width: 750px) {
+  body.template-suffix-nosotros .g4u-about-hero {
+    min-height: min(120rem, 125svh);
+    padding-inline: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__image { object-position: 56% center; }
+
+  body.template-suffix-nosotros .g4u-about-manifesto {
+    padding-left: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__title {
+    font-size: clamp(3.8rem, 3.35vw, 5rem);
+    letter-spacing: 0;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__object--snack {
+    height: 17.4rem;
+    width: 17.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
+    height: 30rem;
+    right: 0;
+    width: 29rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__object--tortilla {
+    height: 21rem;
+    width: 21rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story,
+  body.template-suffix-nosotros .g4u-about-values,
+  body.template-suffix-nosotros .g4u-featured-products,
+  body.template-suffix-nosotros .g4u-experts,
+  body.template-suffix-nosotros .g4u-instagram,
+  body.template-suffix-nosotros .g4u-service-benefits,
+  body.template-suffix-nosotros .g4u-newsletter {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__inner,
+  body.template-suffix-nosotros .g4u-about-values__grid,
+  body.template-suffix-nosotros .g4u-featured-products__grid {
+    max-width: 144rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__title { font-size: 3.6rem; }
+  body.template-suffix-nosotros .g4u-about-values__title { font-size: 3.6rem; }
+  body.template-suffix-nosotros .g4u-featured-products__title { font-size: clamp(3.8rem, 3.1vw, 4.4rem); }
+  body.template-suffix-nosotros .g4u-experts__title { font-size: 4.4rem; }
+  body.template-suffix-nosotros .g4u-instagram__title { font-size: 4.4rem; }
+  body.template-suffix-nosotros .g4u-newsletter__title { font-size: 3.6rem; }
+  body.template-suffix-nosotros .g4u-feel-good__title {
+    font-size: clamp(5.4rem, 5.8vw, 8rem);
+    max-width: 82rem;
+  }
+
+  body.template-suffix-nosotros .g4u-feel-good__accent { display: inline; }
+  body.template-suffix-nosotros .g4u-service-benefits__grid { gap: 2.4rem; }
+  body.template-suffix-nosotros .g4u-service-benefits__text { font-size: 1.8rem; }
+  body.template-suffix-nosotros .g4u-footer__column h2,
+  body.template-suffix-nosotros .g4u-footer__column a { font-family: var(--g4u-display); }
+}
+
+@media screen and (max-width: 749px) {
+  body.template-suffix-nosotros .g4u-about-hero { min-height: 78rem; }
+  body.template-suffix-nosotros .g4u-feel-good__accent { display: block; }
+  body.template-suffix-nosotros .g4u-feel-good__title { max-width: 34rem; }
+}
