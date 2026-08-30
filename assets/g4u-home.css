@@ -192,7 +192,7 @@
 }
 
 .g4u-choice-banner__copy {
-  font-size: clamp(4.5rem, 6.4vw, 9.2rem);
+  font-size: clamp(4.5rem, 6.4vw, 92px);
   margin: 0;
   position: relative;
   text-align: center;
