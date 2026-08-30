@@ -32,6 +32,10 @@
           "type": "rating",
           "settings": {}
         },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "product_highlights": {
           "type": "g4u_benefits",
           "settings": {
@@ -43,11 +47,6 @@
             "benefit_5": "Se puede congelar",
             "benefit_6": "Hasta 45 días refrigerado"
           }
-        },
-        "description": {
-          "type": "description",
-          "disabled": true,
-          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -123,8 +122,8 @@
         "title",
         "price",
         "rating",
-        "product_highlights",
         "description",
+        "product_highlights",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
