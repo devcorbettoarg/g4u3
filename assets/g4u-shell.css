@@ -68,6 +68,10 @@
 }
 
 /* Keep the custom mark independent from Dawn's optional logo setting. */
+
+.shopify-section-group-header-group {
+top:40px !important;
+}
 .g4u-brand-link > .g4u-logo--forced {
   display: block !important;
   flex: 0 0 var(--g4u-header-logo-width);
