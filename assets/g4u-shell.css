@@ -159,6 +159,7 @@ body.template-index .section-header:not(.shopify-section-header-sticky) .header,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header {
   height: var(--g4u-header-hero-height);
   padding: 1.4rem 3.2rem !important;
+  padding-top:60px !important;
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo {
