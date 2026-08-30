@@ -81,7 +81,12 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
-    {%- assign option_variant = product.variants | where: 'option1', value | first -%}
+    {%- assign normalized_option_name = option.name | downcase -%}
+    {%- assign is_quantity_option = false -%}
+    {%- if normalized_option_name contains 'cantidad' or normalized_option_name contains 'unidad' or normalized_option_name contains 'pack' or normalized_option_name contains 'presentación' -%}
+      {%- assign is_quantity_option = true -%}
+      {%- assign option_variant = product.variants | where: 'option1', value | first -%}
+    {%- endif -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -98,7 +103,7 @@
     >
     <label for="{{ input_id }}">
       <span class="product-form__option-value">{{ value }}</span>
-      {%- if option_variant != blank -%}
+      {%- if is_quantity_option and option_variant != blank -%}
         <span class="product-form__option-price">({{ option_variant.price | money }})</span>
       {%- endif -%}
       {{ label_unavailable }}
