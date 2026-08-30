@@ -64,9 +64,9 @@
     "g4u_products": {
       "type": "g4u-featured-products",
       "settings": {
-        "eyebrow": "Products",
+        "eyebrow": "productos",
         "title": "Nuestros packs",
-        "description": "<p>Elegí el pack que mejor se adapta a vos y disfrutá todos los días.</p>",
+        "description": "<p>Elegí el pack que mejor se adapte a tus objetivos y disfrutá de tus productos favoritos con un beneficio extra.</p>",
         "collection": "all",
         "products_to_show": 4,
         "show_secondary_image": true,
