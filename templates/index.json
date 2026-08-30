@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "g4u_hero": {
@@ -6,6 +15,7 @@
         "hero_main": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/g4u-hero-bread.jpg",
             "image_alt": "Pan de molde G4U sobre una tabla de madera",
             "heading": "El pan de siempre,",
             "accent_heading": "beneficios reales",
@@ -15,12 +25,22 @@
           }
         }
       },
-      "block_order": ["hero_main"],
-      "settings": { "accessibility_label": "Promociones principales", "autoplay": true, "autoplay_seconds": 5 }
+      "block_order": [
+        "hero_main"
+      ],
+      "settings": {
+        "accessibility_label": "Promociones principales",
+        "autoplay": true,
+        "autoplay_seconds": 5
+      }
     },
     "g4u_choice": {
       "type": "g4u-choice-banner",
       "settings": {
+        "background_color": "#500322",
+        "line_one_color": "#fff8f0",
+        "line_two_color": "#fff8f0",
+        "accent_color": "#ff4622",
         "first_prefix": "No tenés que",
         "first_suffix": "elegir entre",
         "second_accent_one": "cuidarte",
@@ -44,12 +64,39 @@
     "g4u_categories": {
       "type": "g4u-category-grid",
       "blocks": {
-        "category_breads": { "type": "category", "settings": { "title": "Panes", "button_label": "Ver productos", "link": "shopify://collections/all" } },
-        "category_packs": { "type": "category", "settings": { "title": "Packs", "button_label": "Ver productos", "link": "shopify://collections/all" } },
-        "category_snacks": { "type": "category", "settings": { "title": "Snacks", "button_label": "Ver productos", "link": "shopify://collections/all" } }
+        "category_breads": {
+          "type": "category",
+          "settings": {
+            "title": "Panes",
+            "button_label": "Ver productos",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_packs": {
+          "type": "category",
+          "settings": {
+            "title": "Packs",
+            "button_label": "Ver productos",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_snacks": {
+          "type": "category",
+          "settings": {
+            "title": "Snacks",
+            "button_label": "Ver productos",
+            "link": "shopify://collections/all"
+          }
+        }
       },
-      "block_order": ["category_breads", "category_packs", "category_snacks"],
-      "settings": { "accessibility_label": "Comprar por categoría" }
+      "block_order": [
+        "category_breads",
+        "category_packs",
+        "category_snacks"
+      ],
+      "settings": {
+        "accessibility_label": "Comprar por categoría"
+      }
     },
     "g4u_science": {
       "type": "g4u-science-tabs",
@@ -67,41 +114,172 @@
             "benefit_3": "Mayor saciedad"
           }
         },
-        "science_protein": { "type": "tab", "settings": { "tab_label": "Más proteína", "tagline": "", "heading": "Más proteína", "text": "", "benefit_1": "", "benefit_2": "", "benefit_3": "" } },
-        "science_fiber": { "type": "tab", "settings": { "tab_label": "Más fibra", "tagline": "", "heading": "Más fibra", "text": "", "benefit_1": "", "benefit_2": "", "benefit_3": "" } },
-        "science_flavor": { "type": "tab", "settings": { "tab_label": "Más sabor", "tagline": "", "heading": "Más sabor", "text": "", "benefit_1": "", "benefit_2": "", "benefit_3": "" } }
+        "science_protein": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Más proteína",
+            "image_alt": "Espigas de trigo sobre harina",
+            "tagline": "",
+            "heading": "Más proteína",
+            "text": "",
+            "benefit_1": "",
+            "benefit_2": "",
+            "benefit_3": ""
+          }
+        },
+        "science_fiber": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Más fibra",
+            "image_alt": "Espigas de trigo sobre harina",
+            "tagline": "",
+            "heading": "Más fibra",
+            "text": "",
+            "benefit_1": "",
+            "benefit_2": "",
+            "benefit_3": ""
+          }
+        },
+        "science_flavor": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Más sabor",
+            "image_alt": "Espigas de trigo sobre harina",
+            "tagline": "",
+            "heading": "Más sabor",
+            "text": "",
+            "benefit_1": "",
+            "benefit_2": "",
+            "benefit_3": ""
+          }
+        }
       },
-      "block_order": ["science_carbs", "science_protein", "science_fiber", "science_flavor"],
+      "block_order": [
+        "science_carbs",
+        "science_protein",
+        "science_fiber",
+        "science_flavor"
+      ],
       "settings": {
         "eyebrow": "Nuestra harina",
         "title": "La ciencia detrás de nuestro pan",
         "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.</p>",
         "tabs_label": "Beneficios de nuestra harina",
         "why_label": "Por qué lo usamos",
-        "link_label": "Conocé nuestra harina"
+        "link_label": "Conocé nuestra harina",
+        "link": ""
       }
     },
     "g4u_marquee": {
       "type": "g4u-nutrition-marquee",
       "blocks": {
-        "marquee_carbs": { "type": "item", "settings": { "text": "Low-carbs" } },
-        "marquee_protein": { "type": "item", "settings": { "text": "Alto en proteínas" } },
-        "marquee_fiber": { "type": "item", "settings": { "text": "Alto en fibras" } }
+        "marquee_carbs": {
+          "type": "item",
+          "settings": {
+            "text": "Low-carbs"
+          }
+        },
+        "marquee_protein": {
+          "type": "item",
+          "settings": {
+            "text": "Alto en proteínas"
+          }
+        },
+        "marquee_fiber": {
+          "type": "item",
+          "settings": {
+            "text": "Alto en fibras"
+          }
+        }
       },
-      "block_order": ["marquee_carbs", "marquee_protein", "marquee_fiber"],
-      "settings": { "accessibility_label": "Beneficios nutricionales", "duration": 14 }
+      "block_order": [
+        "marquee_carbs",
+        "marquee_protein",
+        "marquee_fiber"
+      ],
+      "settings": {
+        "accessibility_label": "Beneficios nutricionales",
+        "duration": 14
+      }
     },
     "g4u_comparison": {
       "type": "g4u-comparison-table",
       "blocks": {
-        "comparison_calories": { "type": "row", "settings": { "label": "Calorías (kcal)", "value_1": "360", "value_2": "320", "value_3": "387", "value_4": "576", "value_5": "151" } },
-        "comparison_carbs": { "type": "row", "settings": { "label": "Carbohidratos (g)", "value_1": "71", "value_2": "68", "value_3": "58", "value_4": "20", "value_5": "11" } },
-        "comparison_fiber": { "type": "row", "settings": { "label": "Fibra (g)", "value_1": "2,4", "value_2": "10", "value_3": "10", "value_4": "12", "value_5": "42" } },
-        "comparison_protein": { "type": "row", "settings": { "label": "Proteínas (g)", "value_1": "10", "value_2": "12", "value_3": "22", "value_4": "21", "value_5": "24" } },
-        "comparison_fat": { "type": "row", "settings": { "label": "Grasas totales (g)", "value_1": "1", "value_2": "2,5", "value_3": "6", "value_4": "50", "value_5": "1" } },
-        "comparison_saturated": { "type": "row", "settings": { "label": "Grasas saturadas (g)", "value_1": "0,2", "value_2": "0,5", "value_3": "0,6", "value_4": "3,8", "value_5": "0" } }
+        "comparison_calories": {
+          "type": "row",
+          "settings": {
+            "label": "Calorías (kcal)",
+            "value_1": "360",
+            "value_2": "320",
+            "value_3": "387",
+            "value_4": "576",
+            "value_5": "151"
+          }
+        },
+        "comparison_carbs": {
+          "type": "row",
+          "settings": {
+            "label": "Carbohidratos (g)",
+            "value_1": "71",
+            "value_2": "68",
+            "value_3": "58",
+            "value_4": "20",
+            "value_5": "11"
+          }
+        },
+        "comparison_fiber": {
+          "type": "row",
+          "settings": {
+            "label": "Fibra (g)",
+            "value_1": "2,4",
+            "value_2": "10",
+            "value_3": "10",
+            "value_4": "12",
+            "value_5": "42"
+          }
+        },
+        "comparison_protein": {
+          "type": "row",
+          "settings": {
+            "label": "Proteínas (g)",
+            "value_1": "10",
+            "value_2": "12",
+            "value_3": "22",
+            "value_4": "21",
+            "value_5": "24"
+          }
+        },
+        "comparison_fat": {
+          "type": "row",
+          "settings": {
+            "label": "Grasas totales (g)",
+            "value_1": "1",
+            "value_2": "2,5",
+            "value_3": "6",
+            "value_4": "50",
+            "value_5": "1"
+          }
+        },
+        "comparison_saturated": {
+          "type": "row",
+          "settings": {
+            "label": "Grasas saturadas (g)",
+            "value_1": "0,2",
+            "value_2": "0,5",
+            "value_3": "0,6",
+            "value_4": "3,8",
+            "value_5": "0"
+          }
+        }
       },
-      "block_order": ["comparison_calories", "comparison_carbs", "comparison_fiber", "comparison_protein", "comparison_fat", "comparison_saturated"],
+      "block_order": [
+        "comparison_calories",
+        "comparison_carbs",
+        "comparison_fiber",
+        "comparison_protein",
+        "comparison_fat",
+        "comparison_saturated"
+      ],
       "settings": {
         "eyebrow": "Nutrición",
         "title": "Compará y elegí mejor",
@@ -115,19 +293,51 @@
         "note": "Cada 100g",
         "primary_label": "Descubrir productos",
         "primary_link": "shopify://collections/all",
-        "secondary_label": "Conocé nuestra harina"
+        "secondary_label": "Conocé nuestra harina",
+        "secondary_link": ""
       }
     },
     "g4u_low_carb": {
       "type": "g4u-low-carb-benefits",
       "blocks": {
-        "low_carb_fat": { "type": "benefit", "settings": { "title": "Activamos la quema de grasa", "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>" } },
-        "low_carb_energy": { "type": "benefit", "settings": { "title": "Energía más estable", "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>" } },
-        "low_carb_focus": { "type": "benefit", "settings": { "title": "Foco y claridad mental", "text": "<p>Más foco, más lucidez, más presencia.</p>" } },
-        "low_carb_wellbeing": { "type": "benefit", "settings": { "title": "Menos inflamación, más bienestar", "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>" } }
+        "low_carb_fat": {
+          "type": "benefit",
+          "settings": {
+            "title": "Activamos la quema de grasa",
+            "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>"
+          }
+        },
+        "low_carb_energy": {
+          "type": "benefit",
+          "settings": {
+            "title": "Energía más estable",
+            "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>"
+          }
+        },
+        "low_carb_focus": {
+          "type": "benefit",
+          "settings": {
+            "title": "Foco y claridad mental",
+            "text": "<p>Más foco, más lucidez, más presencia.</p>"
+          }
+        },
+        "low_carb_wellbeing": {
+          "type": "benefit",
+          "settings": {
+            "title": "Menos inflamación, más bienestar",
+            "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>"
+          }
+        }
       },
-      "block_order": ["low_carb_fat", "low_carb_energy", "low_carb_focus", "low_carb_wellbeing"],
-      "settings": { "title": "Alimentación low-carb" }
+      "block_order": [
+        "low_carb_fat",
+        "low_carb_energy",
+        "low_carb_focus",
+        "low_carb_wellbeing"
+      ],
+      "settings": {
+        "title": "Alimentación low-carb"
+      }
     },
     "g4u_experts": {
       "type": "g4u-experts",
@@ -135,41 +345,54 @@
         "expert_alejandra": {
           "type": "expert",
           "settings": {
+            "video_url": "",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte",
             "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>",
-            "handle": "@Dra.alejandramoisello"
+            "handle": "@Dra.alejandramoisello",
+            "profile_link": ""
           }
         },
         "expert_roxana": {
           "type": "expert",
           "settings": {
+            "video_url": "",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto",
             "quote": "<p>“Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes.”</p>",
-            "handle": "@nutricionintegralballester"
+            "handle": "@nutricionintegralballester",
+            "profile_link": ""
           }
         },
         "expert_alejandra2": {
           "type": "expert",
           "settings": {
+            "video_url": "",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte",
             "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>",
-            "handle": "@Dra.alejandramoisello"
+            "handle": "@Dra.alejandramoisello",
+            "profile_link": ""
           }
         },
         "expert_roxana2": {
           "type": "expert",
           "settings": {
+            "video_url": "",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto",
             "quote": "<p>“Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes.”</p>",
-            "handle": "@nutricionintegralballester"
+            "handle": "@nutricionintegralballester",
+            "profile_link": ""
           }
         }
       },
-      "block_order": ["expert_alejandra", "expert_roxana","expert_alejandra2", "expert_roxana2"],
+      "block_order": [
+        "expert_alejandra",
+        "expert_roxana",
+        "expert_alejandra2",
+        "expert_roxana2"
+      ],
       "settings": {
         "eyebrow": "Respaldo profesional",
         "title": "Profesionales que nos recomiendan",
@@ -179,38 +402,128 @@
     "g4u_feel_good": {
       "type": "g4u-feel-good",
       "settings": {
+        "fallback_image": "feel_good",
         "image_alt": "Mesa compartida con panes G4U",
         "heading": "Sentite bien,",
         "accent_heading": "comiendo rico",
         "text": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>",
-        "button_label": "Conocé nuestra harina"
+        "button_label": "Conocé nuestra harina",
+        "button_link": ""
       }
     },
     "g4u_instagram": {
       "type": "g4u-instagram",
       "blocks": {
-        "instagram_1": { "type": "post", "settings": { "accessibility_label": "Ver publicación 1 en Instagram" } },
-        "instagram_2": { "type": "post", "settings": { "accessibility_label": "Ver publicación 2 en Instagram" } },
-        "instagram_3": { "type": "post", "settings": { "accessibility_label": "Ver publicación 3 en Instagram" } },
-        "instagram_4": { "type": "post", "settings": { "accessibility_label": "Ver publicación 4 en Instagram" } },
-        "instagram_5": { "type": "post", "settings": { "accessibility_label": "Ver publicación 5 en Instagram" } },
-        "instagram_6": { "type": "post", "settings": { "accessibility_label": "Ver publicación 6 en Instagram" } },
-        "instagram_7": { "type": "post", "settings": { "accessibility_label": "Ver publicación 7 en Instagram" } },
-        "instagram_8": { "type": "post", "settings": { "accessibility_label": "Ver publicación 8 en Instagram" } }
+        "instagram_1": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 1 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_2": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 2 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_3": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 3 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_4": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 4 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_5": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 5 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_6": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 6 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_7": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 7 en Instagram",
+            "link": ""
+          }
+        },
+        "instagram_8": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 8 en Instagram",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["instagram_1", "instagram_2", "instagram_3", "instagram_4", "instagram_5", "instagram_6", "instagram_7", "instagram_8"],
-      "settings": { "title": "Descubrí más en Instagram", "button_label": "Seguinos" }
+      "block_order": [
+        "instagram_1",
+        "instagram_2",
+        "instagram_3",
+        "instagram_4",
+        "instagram_5",
+        "instagram_6",
+        "instagram_7",
+        "instagram_8"
+      ],
+      "settings": {
+        "title": "Descubrí más en Instagram",
+        "button_label": "Seguinos",
+        "link": ""
+      }
     },
     "g4u_services": {
       "type": "g4u-service-benefits",
       "blocks": {
-        "service_shipping": { "type": "benefit", "settings": { "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe" } },
-        "service_nutrition": { "type": "benefit", "settings": { "text": "Nutrición inteligente, con sabor auténtico y beneficios reales" } },
-        "service_delivery": { "type": "benefit", "settings": { "text": "Entregas en 24/48 hs\nen AMBA" } },
-        "service_payment": { "type": "benefit", "settings": { "text": "Pago seguro" } }
+        "service_shipping": {
+          "type": "benefit",
+          "settings": {
+            "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe"
+          }
+        },
+        "service_nutrition": {
+          "type": "benefit",
+          "settings": {
+            "text": "Nutrición inteligente, con sabor auténtico y beneficios reales"
+          }
+        },
+        "service_delivery": {
+          "type": "benefit",
+          "settings": {
+            "text": "Entregas en 24/48 hs\nen AMBA"
+          }
+        },
+        "service_payment": {
+          "type": "benefit",
+          "settings": {
+            "text": "Pago seguro"
+          }
+        }
       },
-      "block_order": ["service_shipping", "service_nutrition", "service_delivery", "service_payment"],
-      "settings": { "accessibility_label": "Beneficios de comprar en G4U" }
+      "block_order": [
+        "service_shipping",
+        "service_nutrition",
+        "service_delivery",
+        "service_payment"
+      ],
+      "settings": {
+        "accessibility_label": "Beneficios de comprar en G4U"
+      }
     },
     "g4u_newsletter": {
       "type": "g4u-newsletter",
@@ -223,5 +536,19 @@
       }
     }
   },
-  "order": ["g4u_hero", "g4u_choice", "g4u_products", "g4u_categories", "g4u_science", "g4u_marquee", "g4u_comparison", "g4u_low_carb", "g4u_experts", "g4u_feel_good", "g4u_instagram", "g4u_services", "g4u_newsletter"]
+  "order": [
+    "g4u_hero",
+    "g4u_choice",
+    "g4u_products",
+    "g4u_categories",
+    "g4u_science",
+    "g4u_marquee",
+    "g4u_comparison",
+    "g4u_low_carb",
+    "g4u_experts",
+    "g4u_feel_good",
+    "g4u_instagram",
+    "g4u_services",
+    "g4u_newsletter"
+  ]
 }
