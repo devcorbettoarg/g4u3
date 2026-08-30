@@ -194,6 +194,7 @@
       ],
       "settings": {
         "other_heading": "Otros “integrales”",
+        "other_image": "shopify://shop_images/Burguerpack.png",
         "note": "Porción de 2 rebanadas / 60 g",
         "g4u_heading": "Pan de molde G4U",
         "g4u_note": "Porción de 2 rebanadas / 60 g"
@@ -285,6 +286,7 @@
         "background": "soft",
         "image_position": "left",
         "fallback_asset": "bread",
+        "image": "shopify://shop_images/g4u-hero-bread.jpg",
         "image_alt": "Pan G4U para disfrutar todos los días",
         "eyebrow": "Ideas para disfrutarlo",
         "title": "Un pan, infinitas posibilidades",
