@@ -81,6 +81,7 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
+    {%- assign option_variant = product.variants | where: 'option1', value | first -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -96,7 +97,10 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {{ value -}}
+      <span class="product-form__option-value">{{ value }}</span>
+      {%- if option_variant != blank -%}
+        <span class="product-form__option-price">({{ option_variant.price | money }})</span>
+      {%- endif -%}
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
