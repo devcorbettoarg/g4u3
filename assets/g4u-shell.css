@@ -69,7 +69,7 @@
 
 /* Keep the custom mark independent from Dawn's optional logo setting. */
 
-.shopify-section-group-header-group .header{
+body.template-index .section-header:not(.shopify-section-header-sticky) .header {
 padding-top:40px !important;
 }
 .g4u-brand-link > .g4u-logo--forced {
