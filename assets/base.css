@@ -3,6 +3,18 @@ collection-component {
   display: block;
 }
 
+
+@font-face{
+    font-family: "Europa Grotesk SH DemBol";
+    src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/c37a9f31696dbcc8b86a42827beae565.woff2?v=1788105954");
+    src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/c37a9f31696dbcc8b86a42827beae565.woff?v=1788105954")format("woff"),
+        url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/c37a9f31696dbcc8b86a42827beae565.woff2?v=1788105954")format("woff2");
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
