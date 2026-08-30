@@ -71,7 +71,8 @@
           "settings": {
             "heading": "¿Por qué elegir G4U?",
             "icon": "check_mark",
-            "content": "<p>Un pan funcional, con más proteína y fibra, menos carbohidratos y el sabor de siempre.</p>"
+            "content": "<p>Un pan funcional, con más proteína y fibra, menos carbohidratos y el sabor de siempre.</p>",
+            "page": ""
           }
         },
         "ingredients": {
@@ -79,7 +80,8 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "leaf",
-            "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>"
+            "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>",
+            "page": ""
           }
         },
         "nutrition": {
@@ -87,7 +89,8 @@
           "settings": {
             "heading": "Información nutricional",
             "icon": "heart",
-            "content": "<p>Consultá la tabla nutricional en la descripción del producto.</p>"
+            "content": "<p>Consultá la tabla nutricional en la descripción del producto.</p>",
+            "page": ""
           }
         },
         "storage": {
@@ -95,7 +98,8 @@
           "settings": {
             "heading": "Conservación",
             "icon": "dryer",
-            "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>"
+            "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>",
+            "page": ""
           }
         },
         "shipping": {
@@ -103,7 +107,8 @@
           "settings": {
             "heading": "Envíos",
             "icon": "truck",
-            "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>"
+            "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>",
+            "page": ""
           }
         },
         "share": {
@@ -132,7 +137,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
@@ -200,6 +205,7 @@
         "starch": {
           "type": "ingredient",
           "settings": {
+            "icon": "leaf",
             "title": "Almidón resistente RS4",
             "text": "<p>Una fibra funcional que ayuda a mejorar el perfil nutricional.</p>"
           }
@@ -207,6 +213,7 @@
         "fiber": {
           "type": "ingredient",
           "settings": {
+            "icon": "leaf",
             "title": "Fibras funcionales",
             "text": "<p>Ingredientes que acompañan la saciedad y el bienestar digestivo.</p>"
           }
@@ -214,6 +221,7 @@
         "protein": {
           "type": "ingredient",
           "settings": {
+            "icon": "leaf",
             "title": "Proteínas de alta calidad",
             "text": "<p>Para un mayor aporte proteico sin perder suavidad ni sabor.</p>"
           }
@@ -221,6 +229,7 @@
         "technology": {
           "type": "ingredient",
           "settings": {
+            "icon": "leaf",
             "title": "Tecnología alimentaria",
             "text": "<p>Cada componente es seleccionado para lograr una experiencia deliciosa.</p>"
           }
@@ -279,7 +288,9 @@
         "image_alt": "Pan G4U para disfrutar todos los días",
         "eyebrow": "Ideas para disfrutarlo",
         "title": "Un pan, infinitas posibilidades",
-        "text": "<p>Perfecto para desayunos, tostadas, sandwiches, hamburguesas o cualquier comida del día. Se puede tostar, congelar y disfrutar como un pan tradicional.</p>"
+        "text": "<p>Perfecto para desayunos, tostadas, sandwiches, hamburguesas o cualquier comida del día. Se puede tostar, congelar y disfrutar como un pan tradicional.</p>",
+        "link_label": "",
+        "link": ""
       }
     },
     "product_flour": {
