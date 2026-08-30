@@ -301,6 +301,7 @@
         "background": "cream",
         "image_position": "right",
         "fallback_asset": "flour",
+        "image": "shopify://shop_images/g4u-hero-bread.jpg",
         "image_alt": "Harina funcional G4U",
         "eyebrow": "Nuestra harina",
         "title": "La diferencia empieza en la harina",
