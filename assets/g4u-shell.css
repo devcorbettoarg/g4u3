@@ -69,9 +69,7 @@
 
 /* Keep the custom mark independent from Dawn's optional logo setting. */
 
-body.template-index .section-header:not(.shopify-section-header-sticky) .header {
-padding-top:40px !important;
-}
+
 .g4u-brand-link > .g4u-logo--forced {
   display: block !important;
   flex: 0 0 var(--g4u-header-logo-width);
@@ -158,7 +156,7 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 body.template-index .section-header:not(.shopify-section-header-sticky) .header,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header {
   height: var(--g4u-header-hero-height);
-  padding: 1.4rem 3.2rem !important;
+  padding: 1.4rem 32px !important;
   padding-top:60px !important;
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
