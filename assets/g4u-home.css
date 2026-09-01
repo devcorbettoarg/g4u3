@@ -462,9 +462,13 @@
 }
 
 /* Science tabs */
-g4u-tabs { display: block; }
+g4u-tabs {
+  display: block;
+  margin: 0 auto;
+  max-width: 136rem;
+}
 .g4u-science {
-  background: #ffa6af;
+  background: #f99ca6;
   color: var(--g4u-ink);
   padding: 8rem 4rem;
 }
