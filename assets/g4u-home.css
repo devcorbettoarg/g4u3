@@ -222,7 +222,7 @@
 }
 
 .g4u-featured-products__header {
-  margin: 0 auto 4.8rem;
+  margin: 0 auto 6rem;
   max-width: 62rem;
   text-align: center;
 }
@@ -230,21 +230,21 @@
 .g4u-featured-products__eyebrow {
   font-family: var(--g4u-display);
   font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  margin: 0 0 1.2rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  margin: 0 0 1.6rem;
   text-transform: uppercase;
 }
 
 .g4u-featured-products__title {
   color: var(--g4u-burgundy);
   font-size: clamp(4rem, 3.35vw, 4.8rem);
-  margin: 0 0 1.6rem;
+  margin: 0 0 .8rem;
 }
 
 .g4u-featured-products__description {
   font-size: 1.8rem;
-  line-height: 1.4;
+  line-height: 1.5;
   margin: auto;
   max-width: 42rem;
 }
@@ -276,7 +276,7 @@
   text-transform: uppercase;
 }
 .g4u-featured-products .price { font-size: 1.8rem; }
-.g4u-featured-products__footer { margin-top: 4rem; text-align: center; }
+.g4u-featured-products__footer { margin-top: 6rem; text-align: center; }
 .g4u-featured-products__button {
   background: transparent;
   border: .15rem solid var(--g4u-burgundy);
@@ -748,7 +748,7 @@ g4u-tabs {
 /* Full-width editorial hero */
 .g4u-feel-good { align-items: center; color: var(--g4u-cream); display: flex; justify-content: center; min-height: 90rem; overflow: hidden; padding: 6.4rem; position: relative; text-align: center; }
 .g4u-feel-good::after { background: rgba(0, 0, 0, .45); content: ""; inset: 0; position: absolute; }
-.g4u-feel-good__image { height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }
+.g4u-feel-good__image { height: 137.69%; left: -14.53%; object-fit: cover; position: absolute; top: -26.17%; width: 129.07%; }
 .g4u-feel-good__content { max-width: 76.8rem; position: relative; z-index: 1; }
 .g4u-feel-good__title { color: inherit; font-size: clamp(6rem, 6.4vw, 9.2rem); margin: 0 0 2.4rem; }
 .g4u-feel-good__accent { color: var(--g4u-orange); display: block; }
@@ -771,6 +771,7 @@ g4u-tabs {
   .g4u-expert-card__media { min-height: 48rem; }
   .g4u-expert-card__quote { min-height: auto; }
   .g4u-feel-good { min-height: 72rem; padding: 4rem 2rem; }
+  .g4u-feel-good__image { height: 100%; inset: 0; width: 100%; }
   .g4u-feel-good__title { font-size: 5.6rem; }
 }
 
