@@ -24,10 +24,10 @@
             "button_link": "shopify://collections/all"
           }
         },
-        "slide_JFkXwg": {
+        "slide_XUjUwF": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/g4u-hero-bread.jpg",
+            "image": "shopify://shop_images/semana_keto_grisin_y_marinera_3.png",
             "image_alt": "Pan de molde G4U sobre una tabla de madera",
             "heading": "El pan de siempre,",
             "accent_heading": "beneficios reales",
@@ -39,7 +39,7 @@
       },
       "block_order": [
         "hero_main",
-        "slide_JFkXwg"
+        "slide_XUjUwF"
       ],
       "settings": {
         "accessibility_label": "Promociones principales",
