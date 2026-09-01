@@ -1,0 +1,17 @@
+{%- assign quantity_options = product.metafields.custom.quantity_options.value -%}
+{%- if quantity_options != blank -%}
+  <script src="{{ 'g4u-quantity-options.js' | asset_url }}" defer="defer"></script>
+  <div class="g4u-quantity-options" data-g4u-quantity-options data-quantity-input="Quantity-{{ section_id }}" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}<p class="g4u-quantity-options__heading">{{ block.settings.heading | escape }}</p>{%- endif -%}
+    <div class="g4u-quantity-options__list" role="group" aria-label="{{ block.settings.aria_label | escape }}">
+      {%- for option in quantity_options -%}
+        {%- if option.active.value != false -%}
+          <button type="button" class="g4u-quantity-options__option{% if forloop.first %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ option.quantity.value }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+            <span>{{ option.label.value | default: option.quantity.value | append: ' unidades' | escape }}</span>
+            {%- if option.total_price.value != blank -%}<span>({{ option.total_price.value | money }})</span>{%- endif -%}
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

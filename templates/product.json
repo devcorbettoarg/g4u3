@@ -55,6 +55,13 @@
             "swatch_shape": "circle"
           }
         },
+        "quantity_options": {
+          "type": "g4u_quantity_options",
+          "settings": {
+            "heading": "¡Ahorrá comprando más unidades!",
+            "aria_label": "Elegir cantidad"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -125,6 +132,7 @@
         "description",
         "product_highlights",
         "variant_picker",
+        "quantity_options",
         "quantity_selector",
         "buy_buttons",
         "details",

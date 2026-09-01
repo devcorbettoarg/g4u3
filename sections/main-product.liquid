@@ -85,14 +85,6 @@
             class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
           >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
-            {%- assign has_quantity_variant_option = false -%}
-            {%- for product_option in product.options_with_values -%}
-              {%- assign normalized_option_name = product_option.name | downcase -%}
-              {%- if normalized_option_name contains 'cantidad' or normalized_option_name contains 'unidad' or normalized_option_name contains 'pack' or normalized_option_name contains 'presentación' -%}
-                {%- assign has_quantity_variant_option = true -%}
-              {%- endif -%}
-            {%- endfor -%}
-
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
@@ -256,11 +248,12 @@
                       </div>
                     </details>
                   </div>
+                {%- when 'g4u_quantity_options' -%}
+                  {% render 'g4u-quantity-options', product: product, block: block, section_id: section.id %}
                 {%- when 'quantity_selector' -%}
-                  {%- unless has_quantity_variant_option -%}
                   <div
                     id="Quantity-Form-{{ section.id }}"
-                    class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                    class="product-form__input product-form__quantity{% if product.metafields.custom.quantity_options.value != blank %} g4u-quantity-source-hidden{% endif %}{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                     {{ block.shopify_attributes }}
                   >
                     {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
@@ -484,7 +477,6 @@
                       </volume-pricing>
                     {%- endif -%}
                   </div>
-                  {%- endunless -%}
                 {%- when 'popup' -%}
                   <modal-opener
                     class="product-popup-modal__opener quick-add-hidden"
@@ -907,6 +899,15 @@
       "type": "quantity_selector",
       "name": "t:sections.main-product.blocks.quantity_selector.name",
       "limit": 1
+    },
+    {
+      "type": "g4u_quantity_options",
+      "name": "G4U · Opciones de cantidad",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "¡Ahorrá comprando más unidades!" },
+        { "type": "text", "id": "aria_label", "label": "Nombre accesible", "default": "Elegir cantidad" }
+      ]
     },
     {
       "type": "variant_picker",
