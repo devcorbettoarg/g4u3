@@ -8,6 +8,7 @@
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+  - show_discount_percentage: {Boolean} Renders the calculated percentage off beside a sale price (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -37,6 +38,10 @@
 
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+
+  if compare_at_price > price
+    assign discount_percentage = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round
   endif
 -%}
 
@@ -107,6 +112,9 @@
         <span class="price-item price-item--sale price-item--last">
           {{ money_price }}
         </span>
+        {%- if show_discount_percentage and discount_percentage > 0 -%}
+          <span class="g4u-price__discount" aria-label="{{ discount_percentage }} por ciento de descuento">-{{ discount_percentage }}%</span>
+        {%- endif -%}
       </div>
       {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
         {% render 'unit-price', price: product.selected_or_first_available_variant.unit_price, measurement: product.selected_or_first_available_variant.unit_price_measurement %}

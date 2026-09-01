@@ -39,6 +39,11 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign g4u_product_card = false
+    if product_view_context == 'collection' or product_view_context == 'featured-collection'
+      assign g4u_product_card = true
+    endif
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
@@ -52,6 +57,7 @@
           {% if extend_height %} card--extend-height{% endif %}
           {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
           {% if horizontal_class %} card--horizontal{% endif %}
+          {% if g4u_product_card %} g4u-product-card{% endif %}
         "
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
@@ -134,7 +140,7 @@
                 >
                   {{- 'products.product.sold_out' | t -}}
                 </span>
-              {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+              {%- elsif card_product.compare_at_price > card_product.price and card_product.available and g4u_product_card == false -%}
                 <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                   class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
@@ -206,18 +212,46 @@
                 </p>
               {%- endif -%}
 
-              {%- if product_view_context == 'collection' -%}
+              {%- if g4u_product_card -%}
                 {%- assign g4u_card_subtitle = card_product.metafields.custom.subtitle.value | default: card_product.type -%}
                 {%- if g4u_card_subtitle != blank -%}<p class="g4u-card__subtitle">{{ g4u_card_subtitle | escape }}</p>{%- endif -%}
               {%- endif -%}
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-              {%- if product_view_context == 'collection' -%}
-                {%- assign g4u_tag_labels = 'Proteico,Low-Carb,Apto Keto,Alto en fibra' | split: ',' -%}
-                <div class="g4u-card__tags">
-                  {%- for g4u_tag in g4u_tag_labels -%}
-                    {%- if card_product.tags contains g4u_tag -%}<span class="g4u-card__tag">{{ g4u_tag }}</span>{%- endif -%}
-                  {%- endfor -%}
-                </div>
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true, show_discount_percentage: g4u_product_card %}
+              {%- if g4u_product_card -%}
+                {%- liquid
+                  assign g4u_has_protein = false
+                  assign g4u_has_lowcarb = false
+                  assign g4u_has_keto = false
+                  assign g4u_has_fiber = false
+                  for product_tag in card_product.tags
+                    assign normalized_tag = product_tag | downcase | strip
+                    if normalized_tag contains 'prote'
+                      assign g4u_has_protein = true
+                    elsif normalized_tag contains 'low-carb' or normalized_tag contains 'low carb'
+                      assign g4u_has_lowcarb = true
+                    elsif normalized_tag contains 'keto'
+                      assign g4u_has_keto = true
+                    elsif normalized_tag contains 'fibra'
+                      assign g4u_has_fiber = true
+                    endif
+                  endfor
+                -%}
+                {%- if g4u_has_protein or g4u_has_lowcarb or g4u_has_keto or g4u_has_fiber -%}
+                  <div class="g4u-card__tags" aria-label="Características del producto">
+                    {%- if g4u_has_protein -%}
+                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-protein.svg' | asset_url }}" alt="" width="16" height="20">Proteico</span>
+                    {%- endif -%}
+                    {%- if g4u_has_lowcarb -%}
+                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-lowcarb.svg' | asset_url }}" alt="" width="16" height="20">Low-Carb</span>
+                    {%- endif -%}
+                    {%- if g4u_has_keto -%}
+                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-keto.svg' | asset_url }}" alt="" width="13" height="20">Apto Keto</span>
+                    {%- endif -%}
+                    {%- if g4u_has_fiber -%}
+                      <span class="g4u-card__tag"><img src="{{ 'g4u-flour-icon-fiber.svg' | asset_url }}" alt="" width="18" height="20">Alto en fibra</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               {%- endif -%}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
@@ -570,7 +604,7 @@
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            {%- elsif card_product.compare_at_price > card_product.price and card_product.available and g4u_product_card == false -%}
               <span
                 id="Badge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
