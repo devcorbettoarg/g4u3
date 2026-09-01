@@ -27,7 +27,7 @@
   letter-spacing: .02em;
   line-height: .8;
   min-height: 4.5rem;
-  padding: 1.3rem 2.4rem;
+  padding: 1.6rem 2.4rem;
   text-decoration: none;
   text-transform: none;
   transition: background-color .2s ease, color .2s ease, transform .2s ease;
@@ -279,7 +279,7 @@
 .g4u-featured-products__footer { margin-top: 6rem; text-align: center; }
 .g4u-featured-products__button {
   background: transparent;
-  border: .15rem solid var(--g4u-burgundy);
+  border: .1rem solid var(--g4u-burgundy);
   color: var(--g4u-burgundy);
 }
 .g4u-featured-products__button:hover {
@@ -812,7 +812,7 @@ g4u-tabs {
   font: inherit;
   font-size: 1.6rem;
   min-height: 4.5rem;
-  padding: 1.2rem 1.6rem;
+  padding: 1.2rem;
 }
 .g4u-newsletter__input::placeholder { color: rgba(80, 3, 34, .65); }
 .g4u-newsletter__submit { background: var(--g4u-burgundy); border: .1rem solid var(--g4u-burgundy); color: var(--g4u-cream); cursor: pointer; }
