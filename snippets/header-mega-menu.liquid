@@ -8,6 +8,7 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- if request.page_type == 'index' and link.handle != 'productos' -%}{%- continue -%}{%- endif -%}
       {%- assign mega_block = blank -%}
       {%- for block in section.blocks -%}
         {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
@@ -91,5 +92,12 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+    {%- if request.page_type == 'index' -%}
+      {%- assign combo_page = pages['combo-ideal'] -%}
+      <li><a href="{{ combo_page.url | default: '/pages/combo-ideal' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>Armá tu combo</span></a></li>
+      <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>¿Por qué G4U es diferente?</span></a></li>
+      <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}#G4uAboutManifesto" class="header__menu-item list-menu__item link link--text focus-inset"><span>Nuestra filosofía</span></a></li>
+      <li><a href="{{ pages.contact.url | default: '/pages/contact' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>Contacto</span></a></li>
+    {%- endif -%}
   </ul>
 </nav>

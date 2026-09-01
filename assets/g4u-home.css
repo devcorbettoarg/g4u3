@@ -51,7 +51,7 @@
   background: var(--g4u-ink);
   color: #fff;
   display: block;
-  min-height: min(90rem, 100svh);
+  height: 90rem;
   overflow: hidden;
   position: relative;
 }
@@ -87,7 +87,7 @@
 }
 
 .g4u-home-hero__slide::after {
-  background: linear-gradient(90deg, rgba(20, 8, 9, .82) 0%, rgba(20, 8, 9, .36) 46%, rgba(20, 8, 9, 0) 74%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, .6) 11.85%, rgba(0, 0, 0, 0) 71.67%, rgba(0, 0, 0, .3) 100%);
   content: "";
   inset: 0;
   pointer-events: none;
@@ -96,8 +96,8 @@
 
 .g4u-home-hero__content {
   bottom: 6.4rem;
-  left: 3.2rem;
-  max-width: 65rem;
+  left: 4rem;
+  max-width: 76.8rem;
   position: absolute;
   z-index: 2;
 }
@@ -105,7 +105,7 @@
 .g4u-home-hero__heading {
   color: #fff;
   font-size: clamp(4.4rem, 3.9vw, 5.6rem);
-  margin: 0 0 2.4rem;
+  margin: 0 0 1.6rem;
 }
 
 .g4u-home-hero__heading-accent {
@@ -115,9 +115,9 @@
 
 .g4u-home-hero__body {
   font-size: 1.8rem;
-  line-height: 1.35;
+  line-height: 1.5;
   margin: 0 0 3.2rem;
-  max-width: 58rem;
+  max-width: 49rem;
 }
 
 .g4u-home-hero__button {
@@ -126,12 +126,9 @@
 }
 
 .g4u-home-hero__controls {
-  align-items: center;
-  bottom: 3.2rem;
-  display: flex;
-  gap: 1.2rem;
+  inset: 0;
+  pointer-events: none;
   position: absolute;
-  right: 3.2rem;
   z-index: 3;
 }
 
@@ -145,10 +142,17 @@
   display: inline-flex;
   height: 4.8rem;
   justify-content: center;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 0;
   transition: background-color .2s ease, transform .2s ease;
   width: 4.8rem;
 }
+
+.g4u-hero__arrow--prev { left: 3.2rem; }
+.g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: 3.2rem; }
 
 .g4u-hero__arrow:hover {
   background: var(--g4u-cream);
@@ -161,8 +165,13 @@
 .g4u-hero__arrow--prev svg { transform: rotate(180deg); }
 
 .g4u-home-hero__dots {
+  bottom: 2rem;
   display: flex;
   gap: .8rem;
+  left: 50%;
+  pointer-events: auto;
+  position: absolute;
+  transform: translateX(-50%);
 }
 
 .g4u-hero__dot {
@@ -258,6 +267,16 @@
   max-width: 136rem;
   padding: 0;
 }
+
+.g4u-featured-products__grid > li { display: flex; }
+.g4u-featured-products .card-wrapper,
+.g4u-featured-products .card { height: 100%; width: 100%; }
+.g4u-featured-products .card { display: flex; flex-direction: column; }
+.g4u-featured-products .card__inner { aspect-ratio: 1; flex: 0 0 auto; }
+.g4u-featured-products .card > .card__content { display: flex; flex: 1; }
+.g4u-featured-products .card__information { display: flex; flex-direction: column; width: 100%; }
+.g4u-featured-products .card__heading { min-height: 4.8rem; }
+.g4u-featured-products .g4u-card__tags { margin-top: auto; min-height: 4.8rem; padding-top: 1.6rem; }
 
 .g4u-featured-products .card__inner {
   background: #f2ebe4;
@@ -355,7 +374,7 @@
   .g4u-home-hero__content { bottom: 8.4rem; left: 2rem; max-width: calc(100% - 4rem); }
   .g4u-home-hero__heading { font-size: 4.2rem; }
   .g4u-home-hero__body { font-size: 1.6rem; }
-  .g4u-home-hero__controls { bottom: 2rem; left: 2rem; right: auto; }
+  .g4u-home-hero__controls { inset: 0; }
   .g4u-choice-banner { min-height: 32rem; padding: 6.4rem 2rem; }
   .g4u-choice-banner__copy { font-size: 4rem; }
   .g4u-featured-products { padding: 6.4rem 2rem; }
@@ -698,6 +717,7 @@ g4u-tabs {
 .g4u-experts__title { color: var(--g4u-ink); font-size: 4.8rem; margin: 0 0 .8rem; }
 .g4u-experts__intro { font-size: 1.8rem; line-height: 1.5; }
 .g4u-experts__controls { display: flex; gap: 1.6rem; }
+.g4u-experts[data-g4u-static] .g4u-experts__controls { visibility: hidden; }
 .g4u-experts__arrow {
   align-items: center;
   background: transparent;
@@ -710,6 +730,7 @@ g4u-tabs {
   width: 4.8rem;
 }
 .g4u-experts__arrow img { height: 2.4rem; width: 2.4rem; }
+.g4u-experts__arrow:disabled { cursor: default; opacity: .35; }
 .g4u-experts__track {
   display: flex;
   gap: 2.4rem;
@@ -761,6 +782,10 @@ g4u-tabs {
 }
 
 @media screen and (max-width: 749px) {
+  .g4u-home-hero { height: min(90rem, 100svh); min-height: 68rem; }
+  .g4u-home-hero__content { left: 2rem; right: 2rem; }
+  .g4u-hero__arrow--prev { left: 2rem; }
+  .g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: 2rem; }
   .g4u-low-carb { padding: 6.4rem 2rem; }
   .g4u-low-carb__title { font-size: 4rem; margin-bottom: 5.6rem; }
   .g4u-low-carb__grid { grid-template-columns: 1fr; }
