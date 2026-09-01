@@ -1,14 +1,26 @@
 {%- liquid
-  assign current_label = section.settings.current_label | default: product.title
+  assign current_label = section.settings.current_label
+  if current_label == blank
+    if product != blank
+      assign current_label = product.title
+    elsif collection != blank
+      assign current_label = collection.title
+      if collection.handle == 'frontpage'
+        assign current_label = 'Productos'
+      endif
+    elsif template.name == 'cart'
+      assign current_label = 'Carrito'
+    endif
+  endif
 -%}
 
 <nav class="g4u-breadcrumb" aria-label="Migas de pan">
   <ol class="g4u-breadcrumb__list" role="list">
     <li><a href="{{ routes.root_url }}">{{ section.settings.home_label | escape }}</a></li>
-    {%- if section.settings.show_collection and collection != blank -%}
+    {%- if section.settings.show_collection and collection != blank and product != blank -%}
       <li><a href="{{ collection.url }}">{{ collection.title | escape }}</a></li>
     {%- endif -%}
-    <li aria-current="page">{{ current_label | escape }}</li>
+    {%- if current_label != blank -%}<li aria-current="page">{{ current_label | escape }}</li>{%- endif -%}
   </ol>
 </nav>
 
