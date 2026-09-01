@@ -570,7 +570,7 @@ g4u-tabs {
   gap: .4rem;
   text-decoration: none;
 }
-.g4u-science__link img,
+.g4u-science__link img { height: 1.6rem; width: 1.6rem; }
 .g4u-comparison__link img { height: 2.4rem; width: 2.4rem; }
 .g4u-science__arrows {
   display: flex;
