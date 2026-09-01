@@ -98,7 +98,7 @@
 }
 .header__menu-item span { text-decoration: none; }
 .header__menu-item:hover span { text-decoration: none; }
-.header__icons { align-items: center; gap: 2.4rem; padding-right: 0; }
+.header__icons { align-items: center;  padding-right: 0; }
 .header__icon { align-items: center; border-radius: 50%; color: currentColor; display: flex; height: 4.2rem; justify-content: center; transition: background-color .2s ease, color .2s ease, transform .2s ease; width: 4.2rem; }
 .header__icon .svg-wrapper { height: 2.4rem; width: 2.4rem; }
 .header__icon .icon { height: 2.4rem; width: 2.4rem; }
