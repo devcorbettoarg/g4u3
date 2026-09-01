@@ -24,18 +24,6 @@
             "button_link": "shopify://collections/all"
           }
         },
-        "slide_JFkXwg": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/g4u-hero-bread.jpg",
-            "image_alt": "Pan de molde G4U sobre una tabla de madera",
-            "heading": "El pan de siempre,",
-            "accent_heading": "beneficios reales",
-            "text": "<p>Desarrollamos una harina funcional propia y logramos un pan tan rico como el de siempre, para que no tengas que elegir entre sabor y bienestar.</p>",
-            "button_label": "Descubrí nuestro pan de molde",
-            "button_link": "shopify://collections/all"
-          }
-        },
         "slide_XUjUwF": {
           "type": "slide",
           "settings": {
@@ -51,7 +39,6 @@
       },
       "block_order": [
         "hero_main",
-        "slide_JFkXwg",
         "slide_XUjUwF"
       ],
       "settings": {
