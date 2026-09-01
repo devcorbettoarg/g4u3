@@ -73,7 +73,6 @@
 .template-collection .card-wrapper { height: 100%; }
 .template-collection .card { background: transparent; border: 0; box-shadow: none; gap: 1.6rem; height: 100%; }
 .g4u-product-card.card { background: transparent; border: 0; box-shadow: none; gap: 1.6rem; }
-.g4u-featured-products .g4u-product-card.card { height: 100%; }
 .g4u-product-card .card__inner { background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
 .g4u-product-card .card__media .media { background: #f2ebe4; }
 .g4u-product-card .card__media .media img { mix-blend-mode: multiply; object-fit: contain; padding: 1.2rem; }
