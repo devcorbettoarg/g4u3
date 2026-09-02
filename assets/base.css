@@ -3,16 +3,23 @@ collection-component {
   display: block;
 }
 
-
-@font-face{
-    font-family: "Europa Grotesk SH";
-    src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Bol.otf?v=1788387369");
-    src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Bol.otf?v=1788387369")format("otf");
-    font-weight:normal;
-    font-style:normal;
-    font-display:swap;
+/* Regular */
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Reg.otf?v=1788386825") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
+/* Bold */
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-BolCon.otf?v=1788387442") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --alpha-button-background: 1;
