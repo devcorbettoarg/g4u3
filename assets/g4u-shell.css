@@ -108,6 +108,11 @@
 .cart-count-bubble { background: var(--g4u-burgundy); color: var(--g4u-cream); }
 .header__search { display: block; }
 .header__menu-item .icon-caret { margin-left: .5rem; }
+@media screen and (min-width: 990px) {
+  .header-wrapper > .header > .header__inline-menu header-menu > details {
+    position: static;
+  }
+}
 .mega-menu__content { background: var(--g4u-cream); border-top: .1rem solid rgba(38, 19, 27, .1); box-shadow: 0 2.2rem 3.8rem rgba(38, 19, 27, .08); padding: 4.8rem 0 4.6rem; }
 .mega-menu__list { gap: 3.2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); max-width: 136rem; padding-left: 4rem; padding-right: 4rem; }
 .g4u-mega-menu__column { min-width: 0; }
