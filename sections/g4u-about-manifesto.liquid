@@ -132,46 +132,46 @@
 <style>
   /* ============================================================
      G4U MANIFESTO
-     ORGANIC PARALLAX — DESKTOP
+     ORGANIC PARALLAX
+     DESKTOP + MOBILE
+     ============================================================ */
+
+  #G4uAboutManifesto-{{ section.id }} {
+    position: relative;
+  }
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__art {
+    background: transparent !important;
+  }
+
+
+  /* ============================================================
+     GENERAL PERFORMANCE
+     ============================================================ */
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__dust,
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__texture,
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__object {
+    will-change: translate, rotate;
+    backface-visibility: hidden;
+  }
+
+
+  /* ============================================================
+     DESKTOP
      ============================================================ */
 
   @media screen and (min-width: 990px) {
 
-    #G4uAboutManifesto-{{ section.id }} {
-      position: relative;
-    }
-
-
-    /* ==========================================================
-       ART CONTAINER
-       ========================================================== */
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__art {
-      background: transparent !important;
-    }
-
-
-    /* ==========================================================
-       PERFORMANCE
-       ========================================================== */
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__dust,
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__texture,
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object {
-      will-change: translate, rotate;
-      backface-visibility: hidden;
-    }
-
-
-    /* ==========================================================
+    /* ----------------------------
        DUST
-       ========================================================== */
+       ---------------------------- */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__dust {
@@ -186,9 +186,9 @@
     }
 
 
-    /* ==========================================================
+    /* ----------------------------
        TEXTURE
-       ========================================================== */
+       ---------------------------- */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__texture {
@@ -201,17 +201,13 @@
       rotate:
         var(--g4u-texture-rotate, 0deg);
 
-      /*
-       * Un poco de margen extra para que el movimiento
-       * de la textura no revele bordes.
-       */
       scale: 1.055;
     }
 
 
-    /* ==========================================================
+    /* ----------------------------
        SNACK
-       ========================================================== */
+       ---------------------------- */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--snack {
@@ -224,9 +220,9 @@
     }
 
 
-    /* ==========================================================
+    /* ----------------------------
        BREAD
-       ========================================================== */
+       ---------------------------- */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--bread {
@@ -239,9 +235,9 @@
     }
 
 
-    /* ==========================================================
+    /* ----------------------------
        TORTILLA
-       ========================================================== */
+       ---------------------------- */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--tortilla {
@@ -251,6 +247,157 @@
 
       rotate:
         var(--g4u-tortilla-rotate, 0deg);
+    }
+
+  }
+
+
+  /* ============================================================
+     MOBILE
+     ============================================================ */
+
+  @media screen and (max-width: 989px) {
+
+    /*
+     * En mobile mantenemos las capas separadas.
+     *
+     * Los offsets fijos se SUMAN al parallax.
+     *
+     * Snack     → un poco arriba
+     * Pan       → queda como centro visual
+     * Tortilla  → un poco abajo
+     */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__dust {
+      mix-blend-mode: screen;
+
+      translate:
+        calc(var(--g4u-dust-x, 0px) - 4px)
+        calc(var(--g4u-dust-y, 0px) - 8px);
+
+      rotate:
+        var(--g4u-dust-rotate, 0deg);
+
+      scale: 1.04;
+    }
+
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__texture {
+      mix-blend-mode: screen;
+
+      translate:
+        calc(var(--g4u-texture-x, 0px) + 4px)
+        var(--g4u-texture-y, 0px);
+
+      rotate:
+        var(--g4u-texture-rotate, 0deg);
+
+      /*
+       * Más margen para que al desplazarse
+       * nunca aparezca un borde del asset.
+       */
+
+      scale: 1.09;
+    }
+
+
+    /* ==========================================================
+       SNACK MOBILE
+
+       Separamos hacia arriba.
+       ========================================================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--snack {
+      translate:
+        calc(var(--g4u-snack-x, 0px) - 5px)
+        calc(var(--g4u-snack-y, 0px) - 28px);
+
+      rotate:
+        var(--g4u-snack-rotate, 0deg);
+
+      scale: 0.94;
+    }
+
+
+    /* ==========================================================
+       PAN MOBILE
+
+       Le damos apenas aire pero permanece como protagonista.
+       ========================================================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--bread {
+      translate:
+        calc(var(--g4u-bread-x, 0px) + 4px)
+        calc(var(--g4u-bread-y, 0px) + 3px);
+
+      rotate:
+        var(--g4u-bread-rotate, 0deg);
+
+      scale: 0.93;
+    }
+
+
+    /* ==========================================================
+       TORTILLA MOBILE
+
+       Separamos hacia abajo y ligeramente hacia la izquierda.
+       ========================================================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--tortilla {
+      translate:
+        calc(var(--g4u-tortilla-x, 0px) - 7px)
+        calc(var(--g4u-tortilla-y, 0px) + 32px);
+
+      rotate:
+        var(--g4u-tortilla-rotate, 0deg);
+
+      scale: 0.95;
+    }
+
+  }
+
+
+  /* ============================================================
+     MOBILE EXTRA SMALL
+
+     En pantallas realmente estrechas les damos todavía
+     un poco más de respiración.
+     ============================================================ */
+
+  @media screen and (max-width: 480px) {
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--snack {
+      translate:
+        calc(var(--g4u-snack-x, 0px) - 7px)
+        calc(var(--g4u-snack-y, 0px) - 34px);
+
+      scale: 0.91;
+    }
+
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--bread {
+      translate:
+        calc(var(--g4u-bread-x, 0px) + 4px)
+        calc(var(--g4u-bread-y, 0px) + 3px);
+
+      scale: 0.91;
+    }
+
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--tortilla {
+      translate:
+        calc(var(--g4u-tortilla-x, 0px) - 8px)
+        calc(var(--g4u-tortilla-y, 0px) + 38px);
+
+      scale: 0.92;
     }
 
   }
@@ -272,7 +419,6 @@
     .g4u-about-manifesto__object {
       translate: 0 0 !important;
       rotate: 0deg !important;
-      scale: 1 !important;
     }
 
   }
@@ -316,24 +462,10 @@
 
 
     /* ==========================================================
-       LAYER CONFIGURATION
-
-       Intensidad aumentada aprox. 15%.
-
-       floatX / floatY:
-       microflotación orgánica
-
-       frequency:
-       velocidad individual de flotación
-
-       phase:
-       cada elemento empieza en un punto diferente
-
-       energy:
-       cuánto reacciona a la aceleración del scroll
+       DESKTOP CONFIGURATION
        ========================================================== */
 
-    const layers = {
+    const desktopLayers = {
 
       dust: {
         scrollY: 21,
@@ -418,6 +550,133 @@
 
 
     /* ==========================================================
+       MOBILE CONFIGURATION
+
+       No utilizamos mouse.
+
+       El movimiento depende de:
+       - scroll
+       - velocidad de scroll
+       - movimiento orgánico propio
+
+       Reduje un poco los recorridos para evitar congestión,
+       pero aumenté la independencia entre elementos.
+       ========================================================== */
+
+    const mobileLayers = {
+
+      dust: {
+        scrollY: 14,
+        mouseX: 0,
+        mouseY: 0,
+
+        floatX: 1.5,
+        floatY: 2.5,
+
+        frequency: 0.00030,
+        phase: 0.7,
+
+        energy: 2.5,
+        rotate: 0.025
+      },
+
+
+      texture: {
+        scrollY: -23,
+        mouseX: 0,
+        mouseY: 0,
+
+        floatX: 2.5,
+        floatY: 3.5,
+
+        frequency: 0.00025,
+        phase: 2.4,
+
+        energy: 4,
+        rotate: -0.04
+      },
+
+
+      /*
+       * SNACK:
+       * más reactivo y liviano.
+       */
+
+      snack: {
+        scrollY: -42,
+        mouseX: 0,
+        mouseY: 0,
+
+        floatX: 3.2,
+        floatY: 5,
+
+        frequency: 0.00058,
+        phase: 1.2,
+
+        energy: 7,
+        rotate: 0.65
+      },
+
+
+      /*
+       * BREAD:
+       * movimiento más pesado / estable.
+       */
+
+      bread: {
+        scrollY: -27,
+        mouseX: 0,
+        mouseY: 0,
+
+        floatX: 2.3,
+        floatY: 3.2,
+
+        frequency: 0.00038,
+        phase: 3.8,
+
+        energy: 4.5,
+        rotate: -0.27
+      },
+
+
+      /*
+       * TORTILLA:
+       * movimiento ligeramente diferente al snack,
+       * ayuda a generar profundidad.
+       */
+
+      tortilla: {
+        scrollY: -36,
+        mouseX: 0,
+        mouseY: 0,
+
+        floatX: 3,
+        floatY: 4.3,
+
+        frequency: 0.00050,
+        phase: 5.1,
+
+        energy: 5.5,
+        rotate: -0.42
+      }
+
+    };
+
+
+    /* ==========================================================
+       GET CURRENT CONFIGURATION
+       ========================================================== */
+
+    const getLayers = () => {
+
+      return desktopQuery.matches
+        ? desktopLayers
+        : mobileLayers;
+
+    };
+
+
+    /* ==========================================================
        STATE
        ========================================================== */
 
@@ -430,20 +689,14 @@
     let targetScrollProgress = 0;
     let scrollProgress = 0;
 
-
-    /*
-     * Energía generada cuando el usuario acelera el scroll.
-     *
-     * 0 = movimiento normal
-     * 1 = pequeño impulso adicional
-     */
-
     let targetEnergy = 0;
     let energy = 0;
 
+    let previousScrollY =
+      window.scrollY;
 
-    let previousScrollY = window.scrollY;
-    let previousScrollTime = performance.now();
+    let previousScrollTime =
+      performance.now();
 
     let isVisible = true;
 
@@ -480,16 +733,13 @@
 
     const enabled = () => {
 
-      return (
-        desktopQuery.matches &&
-        !reducedMotionQuery.matches
-      );
+      return !reducedMotionQuery.matches;
 
     };
 
 
     /* ==========================================================
-       SCROLL POSITION + VELOCITY
+       SCROLL POSITION + SCROLL VELOCITY
        ========================================================== */
 
     const updateScrollTarget = () => {
@@ -536,10 +786,6 @@
 
       /* ========================================================
          SCROLL VELOCITY
-
-         Cuanto más rápido scrolleamos, más energía acumulamos.
-         No afecta brutalmente al movimiento: sólo genera
-         una pequeña aceleración / overshoot.
          ======================================================== */
 
       const now =
@@ -557,7 +803,8 @@
 
       const deltaTime =
         Math.max(
-          now - previousScrollTime,
+          now -
+          previousScrollTime,
           16
         );
 
@@ -568,18 +815,22 @@
 
 
       /*
-       * Normalizamos la velocidad.
+       * Desktop acepta algo más de aceleración.
        *
-       * Scroll tranquilo:
-       * energy cerca de 0.
-       *
-       * Scroll rápido:
-       * energy se aproxima a 1.
+       * Mobile queda ligeramente amortiguado para que
+       * un flick rápido no haga saltar demasiado las imágenes.
        */
+
+      const velocityMultiplier =
+        desktopQuery.matches
+          ? 1.4
+          : 1.05;
+
 
       const velocityEnergy =
         clamp(
-          velocity * 1.4,
+          velocity *
+          velocityMultiplier,
           0,
           1
         );
@@ -604,13 +855,19 @@
 
     /* ==========================================================
        POINTER
+       DESKTOP ONLY
        ========================================================== */
 
     const updatePointerTarget = (
       event
     ) => {
 
-      if (!enabled()) return;
+      if (
+        !enabled() ||
+        !desktopQuery.matches
+      ) {
+        return;
+      }
 
 
       const rect =
@@ -660,12 +917,7 @@
 
 
     /* ==========================================================
-       ORGANIC MOTION
-
-       En lugar de random frame a frame usamos varias ondas
-       ligeramente desfasadas.
-
-       Esto genera irregularidad aparente sin vibraciones.
+       ORGANIC MOVEMENT
        ========================================================== */
 
     const getOrganicMotion = (
@@ -674,13 +926,9 @@
     ) => {
 
       const t =
-        time * config.frequency;
+        time *
+        config.frequency;
 
-
-      /*
-       * Primera onda:
-       * movimiento principal.
-       */
 
       const waveA =
         Math.sin(
@@ -689,11 +937,6 @@
         );
 
 
-      /*
-       * Segunda onda:
-       * frecuencia diferente para romper la regularidad.
-       */
-
       const waveB =
         Math.sin(
           t * 1.73 +
@@ -701,20 +944,12 @@
         );
 
 
-      /*
-       * Tercera onda todavía más lenta.
-       */
-
       const waveC =
         Math.cos(
           t * 0.61 +
           config.phase * 0.73
         );
 
-
-      /*
-       * Combinación pseudoaleatoria suave.
-       */
 
       const organicX =
         (
@@ -743,7 +978,7 @@
 
 
     /* ==========================================================
-       SET CSS VARIABLES
+       SET LAYER VARIABLES
        ========================================================== */
 
     const setLayerVariables = (
@@ -760,18 +995,14 @@
         );
 
 
-      /*
-       * El boost sólo aparece cuando hubo aceleración.
-       *
-       * No es una posición random:
-       * aprovecha la onda orgánica para que el impulso tenga
-       * una dirección coherente.
-       */
-
       const accelerationX =
         organic.x *
         energy *
-        0.65;
+        (
+          desktopQuery.matches
+            ? 0.65
+            : 0.42
+        );
 
 
       const accelerationY =
@@ -817,10 +1048,6 @@
       );
 
 
-      /*
-       * La rotación también recibe una microvariación.
-       */
-
       const organicRotation =
         Math.sin(
           time *
@@ -829,7 +1056,8 @@
           config.phase
         ) *
         Math.min(
-          Math.abs(config.rotate) * 0.18,
+          Math.abs(config.rotate) *
+          0.18,
           0.12
         );
 
@@ -856,9 +1084,17 @@
 
     const resetStyles = () => {
 
-      Object
-        .keys(layers)
-        .forEach((name) => {
+      const layerNames = [
+        'dust',
+        'texture',
+        'snack',
+        'bread',
+        'tortilla'
+      ];
+
+
+      layerNames.forEach(
+        (name) => {
 
           section.style.removeProperty(
             `--g4u-${name}-x`
@@ -872,7 +1108,8 @@
             `--g4u-${name}-rotate`
           );
 
-        });
+        }
+      );
 
 
       targetPointerX = 0;
@@ -898,6 +1135,7 @@
       time
     ) => {
 
+
       if (!enabled()) {
 
         resetStyles();
@@ -912,22 +1150,24 @@
 
 
       /*
-       * Pointer:
-       * ligeramente más reactivo que antes.
+       * Desktop:
+       * mouse un poco más reactivo.
+       *
+       * Mobile:
+       * el scroll lleva algo más de damping para dar
+       * sensación de flotación y no de rebote.
        */
 
       const pointerEase =
-        0.095;
+        desktopQuery.matches
+          ? 0.095
+          : 0.07;
 
-
-      /*
-       * Scroll:
-       * un poco más pesado para que el cambio de velocidad
-       * produzca una sensación de inercia.
-       */
 
       const scrollEase =
-        0.078;
+        desktopQuery.matches
+          ? 0.078
+          : 0.065;
 
 
       pointerX =
@@ -955,28 +1195,23 @@
 
 
       /* ========================================================
-         ENERGY
-
-         Ataque relativamente rápido.
-         Caída lenta.
-
-         Esto hace que un scroll rápido produzca un pequeño
-         impulso y después vuelva suavemente al movimiento normal.
+         ENERGY / INERTIA
          ======================================================== */
 
       energy =
         lerp(
           energy,
           targetEnergy,
-          0.12
+          desktopQuery.matches
+            ? 0.12
+            : 0.10
         );
 
 
-      /*
-       * Decaimiento continuo.
-       */
-
-      targetEnergy *= 0.955;
+      targetEnergy *=
+        desktopQuery.matches
+          ? 0.955
+          : 0.945;
 
 
       if (
@@ -986,7 +1221,15 @@
       }
 
 
+      /* ========================================================
+         RENDER VISIBLE SECTION
+         ======================================================== */
+
       if (isVisible) {
+
+        const layers =
+          getLayers();
+
 
         setLayerVariables(
           'dust',
@@ -1053,11 +1296,6 @@
 
                 if (isVisible) {
 
-                  /*
-                   * Reset de referencia para evitar que volver
-                   * a entrar genere un falso pico de velocidad.
-                   */
-
                   previousScrollY =
                     window.scrollY;
 
@@ -1075,8 +1313,14 @@
 
           },
           {
+            /*
+             * Mobile usa un margen algo mayor para que
+             * el movimiento ya esté preparado antes de que
+             * los objetos entren totalmente en pantalla.
+             */
+
             rootMargin:
-              '15% 0px 15% 0px'
+              '25% 0px 25% 0px'
           }
         );
 
@@ -1103,7 +1347,31 @@
 
     window.addEventListener(
       'resize',
-      updateScrollTarget,
+      () => {
+
+        /*
+         * Si pasamos desktop -> mobile,
+         * eliminamos cualquier posición residual del mouse.
+         */
+
+        if (
+          !desktopQuery.matches
+        ) {
+          resetPointer();
+        }
+
+
+        previousScrollY =
+          window.scrollY;
+
+
+        previousScrollTime =
+          performance.now();
+
+
+        updateScrollTarget();
+
+      },
       {
         passive: true
       }
@@ -1132,15 +1400,15 @@
       'change',
       () => {
 
-        if (!enabled()) {
-          resetStyles();
-        }
+        resetPointer();
 
         previousScrollY =
           window.scrollY;
 
+
         previousScrollTime =
           performance.now();
+
 
         updateScrollTarget();
 
@@ -1152,8 +1420,13 @@
       'change',
       () => {
 
-        if (!enabled()) {
+        if (
+          reducedMotionQuery.matches
+        ) {
           resetStyles();
+        }
+        else {
+          updateScrollTarget();
         }
 
       }
