@@ -133,7 +133,6 @@
   /* ============================================================
      G4U MANIFESTO
      PARALLAX DESKTOP
-     No modifica el posicionamiento base de los elementos.
      ============================================================ */
 
   @media screen and (min-width: 990px) {
@@ -142,11 +141,23 @@
       position: relative;
     }
 
+
+    /* ==========================================================
+       CONTENEDOR DEL ARTE
+
+       Importante:
+       No debe agregar ningún fondo propio.
+       ========================================================== */
+
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__art {
-      perspective: 1200px;
-      transform-style: preserve-3d;
+      background: transparent !important;
     }
+
+
+    /* ==========================================================
+       OPTIMIZACIÓN GENERAL
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__dust,
@@ -161,26 +172,34 @@
     }
 
 
-    /* ==========================
+    /* ==========================================================
        POLVO
-       Capa más profunda
-       ========================== */
+
+       SCREEN elimina visualmente los negros del asset y deja
+       visibles las partículas claras sobre el fondo bordó real.
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__dust {
+      mix-blend-mode: screen;
+
       translate:
         var(--g4u-dust-x, 0px)
         var(--g4u-dust-y, 0px);
     }
 
 
-    /* ==========================
+    /* ==========================================================
        TEXTURA
-       Capa de profundidad media
-       ========================== */
+
+       Esta era la capa que podía generar visualmente el gran
+       rectángulo oscuro de la derecha.
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__texture {
+      mix-blend-mode: screen;
+
       translate:
         var(--g4u-texture-x, 0px)
         var(--g4u-texture-y, 0px);
@@ -189,10 +208,9 @@
     }
 
 
-    /* ==========================
+    /* ==========================================================
        SNACK SUPERIOR
-       Elemento más "cercano"
-       ========================== */
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--snack {
@@ -205,10 +223,9 @@
     }
 
 
-    /* ==========================
+    /* ==========================================================
        PAN CENTRAL
-       Movimiento intermedio
-       ========================== */
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--bread {
@@ -221,11 +238,9 @@
     }
 
 
-    /* ==========================
+    /* ==========================================================
        TORTILLA
-       Movimiento ligeramente
-       contrario al resto
-       ========================== */
+       ========================================================== */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--tortilla {
@@ -270,11 +285,14 @@
 
     if (!section) return;
 
-    /*
-     * Evita inicializar dos veces la misma sección
-     * dentro del Theme Editor de Shopify.
-     */
-    if (section.dataset.g4uParallaxInitialized === 'true') {
+
+    /* ==========================================================
+       EVITAR DOBLE INICIALIZACIÓN
+       ========================================================== */
+
+    if (
+      section.dataset.g4uParallaxInitialized === 'true'
+    ) {
       return;
     }
 
@@ -282,7 +300,7 @@
 
 
     /* ==========================================================
-       CONFIGURACIÓN
+       MEDIA QUERIES
        ========================================================== */
 
     const desktopQuery = window.matchMedia(
@@ -294,16 +312,21 @@
     );
 
 
-    /*
-     * Intensidad del efecto.
-     *
-     * scrollY = movimiento máximo provocado por scroll
-     * mouseX  = movimiento horizontal por mouse
-     * mouseY  = movimiento vertical por mouse
-     * rotate  = rotación máxima por mouse
-     *
-     * Podés ajustar estos valores posteriormente.
-     */
+    /* ==========================================================
+       CONFIGURACIÓN DE CAPAS
+
+       scrollY:
+       movimiento vertical provocado por scroll
+
+       mouseX:
+       movimiento horizontal provocado por mouse
+
+       mouseY:
+       movimiento vertical provocado por mouse
+
+       rotate:
+       rotación máxima
+       ========================================================== */
 
     const layers = {
 
@@ -357,7 +380,6 @@
     let scrollProgress = 0;
 
     let isVisible = true;
-    let frame = null;
 
 
     /* ==========================================================
@@ -365,12 +387,20 @@
        ========================================================== */
 
     const clamp = (value, min, max) => {
-      return Math.min(Math.max(value, min), max);
+      return Math.min(
+        Math.max(value, min),
+        max
+      );
     };
 
 
-    const lerp = (current, target, amount) => {
-      return current + (target - current) * amount;
+    const lerp = (
+      current,
+      target,
+      amount
+    ) => {
+      return current +
+        (target - current) * amount;
     };
 
 
@@ -383,86 +413,102 @@
 
 
     /* ==========================================================
-       CALCULAR POSICIÓN DE SCROLL
+       SCROLL
        ========================================================== */
 
     const updateScrollTarget = () => {
 
       if (!enabled()) return;
 
-      const rect = section.getBoundingClientRect();
+      const rect =
+        section.getBoundingClientRect();
 
-      const viewportHeight = window.innerHeight;
+      const viewportHeight =
+        window.innerHeight;
+
 
       const sectionCenter =
-        rect.top + (rect.height / 2);
+        rect.top +
+        (rect.height / 2);
+
 
       const viewportCenter =
         viewportHeight / 2;
 
 
       /*
-       * progress:
-       *
-       * -1 = sección entrando por abajo
-       *  0 = sección centrada
-       *  1 = sección saliendo por arriba
+       * -1 = entrando
+       *  0 = centrada
+       *  1 = saliendo
        */
 
       const distance =
-        viewportCenter - sectionCenter;
+        viewportCenter -
+        sectionCenter;
+
 
       const range =
-        (viewportHeight + rect.height) / 2;
+        (
+          viewportHeight +
+          rect.height
+        ) / 2;
 
-      targetScrollProgress = clamp(
-        distance / range,
-        -1,
-        1
-      );
+
+      targetScrollProgress =
+        clamp(
+          distance / range,
+          -1,
+          1
+        );
 
     };
 
 
     /* ==========================================================
-       MOUSE / POINTER
+       POINTER / MOUSE
        ========================================================== */
 
-    const updatePointerTarget = (event) => {
+    const updatePointerTarget = (
+      event
+    ) => {
 
       if (!enabled()) return;
+
 
       const rect =
         section.getBoundingClientRect();
 
+
       const normalizedX =
-        (event.clientX - rect.left) /
+        (
+          event.clientX -
+          rect.left
+        ) /
         rect.width;
 
+
       const normalizedY =
-        (event.clientY - rect.top) /
+        (
+          event.clientY -
+          rect.top
+        ) /
         rect.height;
 
 
-      /*
-       * Convierte:
-       *
-       * izquierda  = -1
-       * centro     = 0
-       * derecha    = 1
-       */
+      targetPointerX =
+        clamp(
+          (normalizedX - 0.5) * 2,
+          -1,
+          1
+        );
 
-      targetPointerX = clamp(
-        (normalizedX - 0.5) * 2,
-        -1,
-        1
-      );
 
-      targetPointerY = clamp(
-        (normalizedY - 0.5) * 2,
-        -1,
-        1
-      );
+      targetPointerY =
+        clamp(
+          (normalizedY - 0.5) * 2,
+          -1,
+          1
+        );
 
     };
 
@@ -476,7 +522,7 @@
 
 
     /* ==========================================================
-       ESCRIBIR VARIABLES CSS
+       VARIABLES CSS
        ========================================================== */
 
     const setLayerVariables = (
@@ -485,14 +531,18 @@
     ) => {
 
       const x =
-        pointerX * config.mouseX;
+        pointerX *
+        config.mouseX;
+
 
       const y =
         (
-          scrollProgress * config.scrollY
+          scrollProgress *
+          config.scrollY
         ) +
         (
-          pointerY * config.mouseY
+          pointerY *
+          config.mouseY
         );
 
 
@@ -501,16 +551,22 @@
         `${x.toFixed(2)}px`
       );
 
+
       section.style.setProperty(
         `--g4u-${name}-y`,
         `${y.toFixed(2)}px`
       );
 
 
-      if (typeof config.rotate !== 'undefined') {
+      if (
+        typeof config.rotate !==
+        'undefined'
+      ) {
 
         const rotation =
-          pointerX * config.rotate;
+          pointerX *
+          config.rotate;
+
 
         section.style.setProperty(
           `--g4u-${name}-rotate`,
@@ -528,21 +584,24 @@
 
     const resetStyles = () => {
 
-      Object.keys(layers).forEach((name) => {
+      Object
+        .keys(layers)
+        .forEach((name) => {
 
-        section.style.removeProperty(
-          `--g4u-${name}-x`
-        );
+          section.style.removeProperty(
+            `--g4u-${name}-x`
+          );
 
-        section.style.removeProperty(
-          `--g4u-${name}-y`
-        );
+          section.style.removeProperty(
+            `--g4u-${name}-y`
+          );
 
-        section.style.removeProperty(
-          `--g4u-${name}-rotate`
-        );
+          section.style.removeProperty(
+            `--g4u-${name}-rotate`
+          );
 
-      });
+        });
+
 
       targetPointerX = 0;
       targetPointerY = 0;
@@ -557,7 +616,7 @@
 
 
     /* ==========================================================
-       ANIMATION LOOP
+       LOOP DE ANIMACIÓN
        ========================================================== */
 
     const render = () => {
@@ -566,40 +625,42 @@
 
         resetStyles();
 
-        frame = requestAnimationFrame(render);
+        requestAnimationFrame(render);
 
         return;
       }
 
 
       /*
-       * Easing.
-       *
-       * 0.06 - más cinematográfico / pesado
-       * 0.09 - balanceado
-       * 0.15 - más reactivo
+       * Valor bajo =
+       * movimiento más suave / pesado.
        */
 
       const ease = 0.085;
 
 
-      pointerX = lerp(
-        pointerX,
-        targetPointerX,
-        ease
-      );
+      pointerX =
+        lerp(
+          pointerX,
+          targetPointerX,
+          ease
+        );
 
-      pointerY = lerp(
-        pointerY,
-        targetPointerY,
-        ease
-      );
 
-      scrollProgress = lerp(
-        scrollProgress,
-        targetScrollProgress,
-        ease
-      );
+      pointerY =
+        lerp(
+          pointerY,
+          targetPointerY,
+          ease
+        );
+
+
+      scrollProgress =
+        lerp(
+          scrollProgress,
+          targetScrollProgress,
+          ease
+        );
 
 
       if (isVisible) {
@@ -632,38 +693,44 @@
       }
 
 
-      frame = requestAnimationFrame(render);
+      requestAnimationFrame(render);
 
     };
 
 
     /* ==========================================================
        INTERSECTION OBSERVER
-       Pausa escrituras cuando la sección no está visible
        ========================================================== */
 
-    if ('IntersectionObserver' in window) {
+    if (
+      'IntersectionObserver' in window
+    ) {
 
       const observer =
         new IntersectionObserver(
           (entries) => {
 
-            entries.forEach((entry) => {
+            entries.forEach(
+              (entry) => {
 
-              isVisible =
-                entry.isIntersecting;
+                isVisible =
+                  entry.isIntersecting;
 
-              if (isVisible) {
-                updateScrollTarget();
+
+                if (isVisible) {
+                  updateScrollTarget();
+                }
+
               }
-
-            });
+            );
 
           },
           {
-            rootMargin: '15% 0px 15% 0px'
+            rootMargin:
+              '15% 0px 15% 0px'
           }
         );
+
 
       observer.observe(section);
 
@@ -742,7 +809,7 @@
 
     updateScrollTarget();
 
-    frame = requestAnimationFrame(render);
+    requestAnimationFrame(render);
 
   })();
 </script>
