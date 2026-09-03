@@ -650,7 +650,7 @@ g4u-tabs {
 .g4u-comparison__table th,
 .g4u-comparison__table td { border-bottom: .1rem solid #d5d4d4; font-size: 2rem; padding: 1.6rem 2.4rem; text-align: center; }
 .g4u-comparison__table thead th { border-bottom-color: var(--g4u-burgundy); font-weight: 400; height: 8.8rem; }
-.g4u-comparison__table th:first-child { font-size: 1.6rem; font-weight: 600; padding-left: 0; text-align: left; width: 24rem; }
+.g4u-comparison__table th:first-child { font-size: 20px; font-weight: 600; padding-left: 0; text-align: left; width: 24rem; }
 .g4u-comparison__table th:not(:first-child),
 .g4u-comparison__table td { width: 16rem; }
 .g4u-comparison__table th:nth-child(even),
