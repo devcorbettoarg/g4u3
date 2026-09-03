@@ -413,7 +413,8 @@
 .g4u-flour-formula__technology img:nth-child(1) { left: 1.65rem; top: .45rem; }
 .g4u-flour-formula__technology img:nth-child(2) { left: .65rem; top: 1.2rem; }
 .g4u-flour-formula__technology img:nth-child(3) { left: .75rem; top: 1.1rem; }
-.g4u-flour-formula__item h3, .g4u-flour-benefit h3 { font-size: 2.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 0 0 1.2rem; }
+.g4u-flour-formula__item h3, .g4u-flour-benefit h3 { 
+  color:#FFF8F0 ; font-size: 2.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 0 0 1.2rem; }
 .g4u-flour-formula__item p, .g4u-flour-benefit p { font-family: var(--font-body-family); font-size: 1.6rem; line-height: 1.5; margin: 0 auto; max-width: 31rem; }
 .g4u-flour-formula__media { aspect-ratio: 1; border-radius: 1.2rem; overflow: hidden; }
 .g4u-flour-formula__media img { height: 100%; object-fit: cover; width: 100%; }
