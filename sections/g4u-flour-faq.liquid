@@ -1,7 +1,8 @@
 <section class="g4u-flour-faq" aria-labelledby="G4uFlourFaqTitle-{{ section.id }}">
   <header class="g4u-flour-faq__header"><h2 class="g4u-display" id="G4uFlourFaqTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>{%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}</header>
   <div class="g4u-flour-faq__items">{%- for block in section.blocks -%}<details class="g4u-flour-faq__item" {{ block.shopify_attributes }}><summary>{{ block.settings.question | escape }}<span aria-hidden="true"></span></summary><div class="rte">{{ block.settings.answer }}</div></details>{%- endfor -%}</div>
-  <div class="g4u-flour-faq__contact"><p>{{ section.settings.contact_title | escape }}</p>{%- if section.settings.contact_label != blank -%}<a class="g4u-pill" href="{{ section.settings.contact_link | default: routes.root_url }}">{{ section.settings.contact_label | escape }}</a>{%- endif -%}</div>
+  <div class="g4u-flour-faq__contact"><p>{{ section.settings.contact_title | escape }}</p>
+  {%- if section.settings.contact_label != blank -%}<a class="g4u-pill g4u-instagram__button" href="{{ section.settings.contact_link | default: routes.root_url }}">{{ section.settings.contact_label | escape }}</a>{%- endif -%}</div>
 </section>
 
 {% schema %}
