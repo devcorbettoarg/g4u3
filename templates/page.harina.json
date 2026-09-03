@@ -12,7 +12,7 @@
     "hero": {
       "type": "g4u-flour-hero",
       "settings": {
-        "image": "shopify://shop_images/g4u-flour-hero.jpg",
+        "image": "shopify://shop_images/Hero_1.jpg",
         "image_alt": "Masa de pan sobre una superficie con harina",
         "title_before": "La",
         "title_accent_1": "diferencia",
