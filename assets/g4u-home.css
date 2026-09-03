@@ -902,7 +902,7 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 .g4u-about-hero__title { color: inherit; font-size: clamp(4.4rem, 3.9vw, 5.6rem); margin: 0 0 1.6rem; }
 .g4u-about-hero__title span { display: block; }
 .g4u-about-hero__title em { color: var(--g4u-orange); font-style: inherit; }
-.g4u-about-hero__text { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; max-width: 57.1rem; }
+.g4u-about-hero__text {  font-family: var(--g4u-display); font-size: 2rem; letter-spacing: .05em; line-height: 1.2; max-width: 57.1rem; }
 .g4u-about-hero__scroll { bottom: 4rem; color: var(--g4u-cream); height: 5rem; position: absolute; right: 4.4rem; width: 2.2rem; z-index: 2; }
 .g4u-about-hero__scroll span::before,
 .g4u-about-hero__scroll span::after { background: currentColor; content: ""; position: absolute; }
