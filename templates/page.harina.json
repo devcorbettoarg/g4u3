@@ -340,6 +340,7 @@
         "post_1": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/d35f649ddbfec8ebbc696b87da60e1fdf6a49ac5.png",
             "accessibility_label": "Ver publicación 1 en Instagram",
             "link": ""
           }
@@ -347,6 +348,7 @@
         "post_2": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/g4u-instagram-2.png",
             "accessibility_label": "Ver publicación 2 en Instagram",
             "link": ""
           }
