@@ -1,6 +1,6 @@
 :root {
   --g4u-header-height: 8.8rem;
-  --g4u-header-hero-height: 8.8rem;
+  --g4u-header-hero-height: 14rem;
   --g4u-header-logo-width: 14.5263rem;
   --g4u-header-logo-height: 6rem;
 }
@@ -44,7 +44,7 @@
 .announcement-bar-section .localization-wrapper { display: none; }
 
 /* Header */
-.section-header { z-index: 9; }
+.section-header { position: relative; z-index: 9; }
 .section-header .header-wrapper {
   background: var(--g4u-cream);
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
