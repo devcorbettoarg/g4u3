@@ -124,6 +124,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Menos carbohidratos",
+            "image": "shopify://shop_images/g4u-flour-science.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "Almidón resistente RS4",
             "heading": "El carbohidrato que se comporta como fibra.",
@@ -137,6 +138,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más proteína",
+            "image": "shopify://shop_images/g4u-about-flour-cta.png",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "",
             "heading": "Más proteína",
@@ -150,6 +152,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más fibra",
+            "image": "shopify://shop_images/g4u-about-value-progress.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "",
             "heading": "Más fibra",
@@ -163,6 +166,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más sabor",
+            "image": "shopify://shop_images/g4u-flour-challenge.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "",
             "heading": "Más sabor",
