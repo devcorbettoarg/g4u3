@@ -210,6 +210,27 @@ body.template-suffix-nosotros .section-header.shopify-section-header-sticky .hea
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
   color: var(--g4u-ink);
 }
+/* The mega menu needs the same contrast treatment before the header becomes sticky. */
+body.template-index .section-header:has(header-menu details[open]) .header-wrapper,
+body.template-suffix-nosotros .section-header:has(header-menu details[open]) .header-wrapper {
+  --color-foreground: 38, 19, 27;
+  background: var(--g4u-cream);
+  box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
+  color: var(--g4u-ink);
+}
+body.template-index .section-header:has(header-menu details[open]) .g4u-logo__dark,
+body.template-suffix-nosotros .section-header:has(header-menu details[open]) .g4u-logo__dark { display: block; }
+body.template-index .section-header:has(header-menu details[open]) .g4u-logo__light,
+body.template-suffix-nosotros .section-header:has(header-menu details[open]) .g4u-logo__light { display: none; }
+/* Explicitly inherit the active header color for the inline cart SVG. */
+.section-header.shopify-section-header-sticky #cart-icon-bubble,
+.section-header:has(header-menu details[open]) #cart-icon-bubble {
+  color: var(--g4u-ink);
+}
+.section-header.shopify-section-header-sticky #cart-icon-bubble .icon,
+.section-header:has(header-menu details[open]) #cart-icon-bubble .icon {
+  stroke: currentColor;
+}
 @media screen and (min-width: 750px) {
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
