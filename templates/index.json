@@ -401,6 +401,7 @@
     "g4u_feel_good": {
       "type": "g4u-feel-good",
       "settings": {
+        "image": "shopify://shop_images/g4u-about-hero.jpg",
         "fallback_image": "feel_good",
         "image_alt": "Mesa compartida con panes G4U",
         "heading": "Sentite bien,",
@@ -416,6 +417,7 @@
         "instagram_1": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/g4u-instagram-1.png",
             "accessibility_label": "Ver publicación 1 en Instagram",
             "link": ""
           }
@@ -423,6 +425,7 @@
         "instagram_2": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/g4u-instagram-2.png",
             "accessibility_label": "Ver publicación 2 en Instagram",
             "link": ""
           }
