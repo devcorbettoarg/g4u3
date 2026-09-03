@@ -53,6 +53,7 @@
               class="facets__wrapper g4u-facets__wrapper"
             {% endif %}
           >
+            {%- if filter_type == 'horizontal' -%}<div class="g4u-facets__toolbar">{%- endif -%}
             {%- if filter_type == 'horizontal' and results.filters != empty -%}
               <button
                 class="g4u-facets__toggle"
@@ -68,6 +69,7 @@
                 {{ 'products.facets.filter_by_label' | t }}
               </h2>
             {%- endif -%}
+            {%- if filter_type == 'horizontal' -%}</div>{%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
               <div class="active-facets active-facets-desktop">
