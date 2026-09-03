@@ -70,12 +70,22 @@
               </h2>
             {%- endif -%}
             {%- if filter_type == 'horizontal' -%}</div>
+              <div class="g4u-facets__toolbar-right">
               <div class="product-count light" role="status"><h2 class="product-count__text text-body"><span id="ProductCountDesktop">{%- if results.results_count -%}{{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}{%- elsif results.products_count == results.all_products_count -%}{{ 'products.facets.product_count_simple' | t: count: results.products_count }}{%- else -%}{{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}{%- endif -%}</span></h2>{%- render 'loading-spinner' -%}</div>
+              <div class="g4u-facets__view-toggle" role="group" aria-label="Vista de productos">
+                <button class="g4u-facets__view-button" type="button" data-g4u-view="list" aria-label="Vista de lista" aria-pressed="false">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" focusable="false"><path d="M3 4.5h2M8 4.5h9M3 10h2M8 10h9M3 15.5h2M8 15.5h9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg>
+                </button>
+                <button class="g4u-facets__view-button" type="button" data-g4u-view="grid" aria-label="Vista de cuadrícula" aria-pressed="true">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" focusable="false"><path d="M3 3h5v5H3zm9 0h5v5h-5zM3 12h5v5H3zm9 0h5v5h-5z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                </button>
+              </div>
               {%- if enable_sorting -%}
                 <div class="facet-filters sorting caption">
                   <div class="facet-filters__field"><h2 class="facet-filters__label caption-large text-body"><label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label></h2><div class="select">{%- assign sort_by = results.sort_by | default: results.default_sort_by -%}<select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">{%- for option in results.sort_options -%}<option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>{%- endfor -%}</select><span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span></div></div>
                 </div>
               {%- endif -%}
+              </div>
             </div>{%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
