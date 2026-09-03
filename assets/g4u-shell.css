@@ -162,13 +162,16 @@ body.template-suffix-nosotros .announcement-bar-section {
   .g4u-mega-menu { column-gap: 4rem; grid-template-columns: minmax(20rem, .72fr) minmax(0, 2fr); }
 }
 
+body.template-index .announcement-bar-section  {
+  z-index: 9999;
+}
 body.template-index .shopify-section-group-header-group,
 body.template-suffix-nosotros .shopify-section-group-header-group {
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 99998;
+  z-index: 10;
 }
 body.template-index .section-header .header-wrapper,
 body.template-suffix-nosotros .section-header .header-wrapper {
