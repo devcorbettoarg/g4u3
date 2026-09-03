@@ -54,6 +54,9 @@
         "line_one_color": "#fff8f0",
         "line_two_color": "#fff8f0",
         "accent_color": "#ff4622",
+        "bread_image": "shopify://shop_images/g4u-choice-bread.png",
+        "bun_image": "shopify://shop_images/g4u-choice-bun.png",
+        "tortilla_image": "shopify://shop_images/g4u-choice-tortilla.png",
         "first_prefix": "No tenés que",
         "first_suffix": "elegir entre",
         "second_accent_one": "cuidarte",
@@ -80,6 +83,7 @@
         "category_breads": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/g4u-category-panes.jpg",
             "title": "Panes",
             "button_label": "Ver productos",
             "link": "shopify://collections/all"
@@ -88,6 +92,7 @@
         "category_packs": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/g4u-category-packs.jpg",
             "title": "Packs",
             "button_label": "Ver productos",
             "link": "shopify://collections/all"
@@ -96,6 +101,7 @@
         "category_snacks": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/g4u-category-snacks.jpg",
             "title": "Snacks",
             "button_label": "Ver productos",
             "link": "shopify://collections/all"
