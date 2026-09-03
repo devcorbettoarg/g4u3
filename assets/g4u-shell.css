@@ -13,6 +13,11 @@
   color: var(--g4u-cream);
   height: 4rem;
 }
+body.template-index .announcement-bar-section,
+body.template-suffix-nosotros .announcement-bar-section {
+  position: relative;
+  z-index: 2;
+}
 .announcement-bar-section .utility-bar__grid {
   align-items: center;
   display: grid;
@@ -44,7 +49,7 @@
 .announcement-bar-section .localization-wrapper { display: none; }
 
 /* Header */
-.section-header { position: relative; z-index: 9; }
+.section-header { position: relative; z-index: 1; }
 .section-header .header-wrapper {
   background: var(--g4u-cream);
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
