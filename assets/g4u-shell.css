@@ -171,7 +171,7 @@ body.template-suffix-nosotros .shopify-section-group-header-group {
   top: 0;
   z-index: 10;
 }
-body.template-index .announcement-bar-section  {
+body .announcement-bar-section  {
   z-index: 9999;
 }
 body.template-index .section-header .header-wrapper,
