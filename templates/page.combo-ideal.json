@@ -50,7 +50,7 @@
         "breakfast_collection": "automated-collection",
         "breakfast_minimum": 1,
         "sandwich_title": "Sandwich",
-        "sandwich_collection": "frontpage",
+        "sandwich_collection": "panes",
         "sandwich_minimum": 1,
         "snacks_title": "Snacks",
         "snacks_collection": "hydrogen",
