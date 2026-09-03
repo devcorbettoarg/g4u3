@@ -138,7 +138,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más proteína",
-            "image": "shopify://shop_images/g4u-about-flour-cta.png",
+            "image": "shopify://shop_images/f32c082388917954ebffbe4eba53d3356e1a6cf1.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "",
             "heading": "Más proteína",
@@ -152,7 +152,7 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más fibra",
-            "image": "shopify://shop_images/g4u-about-value-progress.jpg",
+            "image": "shopify://shop_images/d2755b3cfcd00a72ff1c1ca31b30dfb467a691a5_1.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "",
             "heading": "Más fibra",
@@ -166,14 +166,14 @@
           "type": "tab",
           "settings": {
             "tab_label": "Más sabor",
-            "image": "shopify://shop_images/g4u-flour-challenge.jpg",
+            "image": "shopify://shop_images/a2153bb74ffb4e298b0790f398b29ee1d8df77e0_3.jpg",
             "image_alt": "Espigas de trigo sobre harina",
-            "tagline": "",
-            "heading": "Más sabor",
-            "text": "",
-            "benefit_1": "",
-            "benefit_2": "",
-            "benefit_3": ""
+            "tagline": "Tecnología alimentaria",
+            "heading": "No es una receta.Es una formulación.",
+            "text": "<p>Cada ingrediente fue seleccionado para trabajar en conjunto. La combinación de proteínas funcionales, fibras y almidones resistentes permite lograr un pan con la textura y el sabor del pan tradicional, pero con menos carbohidratos y sin azúcar agregada. <br/><br/></p>",
+            "benefit_1": "Sabor tradicional",
+            "benefit_2": "Textura esponjosa",
+            "benefit_3": "Bajo en carbohidratos"
           }
         }
       },
@@ -186,9 +186,9 @@
       "settings": {
         "eyebrow": "Nuestra harina",
         "title": "La ciencia detrás de nuestro pan",
-        "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.</p>",
-        "tabs_label": "Beneficios de nuestra harina",
-        "why_label": "Por qué lo usamos",
+        "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.<br/><br/></p>",
+        "tabs_label": "Más sabor",
+        "why_label": "",
         "link_label": "Conocé nuestra harina",
         "link": ""
       }
