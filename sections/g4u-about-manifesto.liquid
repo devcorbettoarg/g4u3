@@ -19,11 +19,11 @@
     </div>
   </div>
   <div class="g4u-about-manifesto__art" aria-hidden="true">
-    <img class="g4u-about-manifesto__dust" src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}" alt="" width="1024" height="1536">
-    <img class="g4u-about-manifesto__texture" src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}" alt="" width="1024" height="1535">
-    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--snack" src="{{ 'g4u-about-snack.png' | asset_url }}" alt="" width="456" height="458">
-    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--bread" src="{{ 'g4u-about-bread.png' | asset_url }}" alt="" width="866" height="926">
-    <img class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla" src="{{ 'g4u-about-tortilla.png' | asset_url }}" alt="" width="490" height="449">
+    {%- if section.settings.dust_image != blank -%}{{ section.settings.dust_image | image_url: width: 1024 | image_tag: class: 'g4u-about-manifesto__dust', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__dust" src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}" alt="" width="1024" height="1536" loading="lazy">{%- endif -%}
+    {%- if section.settings.texture_image != blank -%}{{ section.settings.texture_image | image_url: width: 1024 | image_tag: class: 'g4u-about-manifesto__texture', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__texture" src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}" alt="" width="1024" height="1535" loading="lazy">{%- endif -%}
+    {%- if section.settings.snack_image != blank -%}{{ section.settings.snack_image | image_url: width: 456 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--snack" src="{{ 'g4u-about-snack.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">{%- endif -%}
+    {%- if section.settings.bread_image != blank -%}{{ section.settings.bread_image | image_url: width: 866 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--bread" src="{{ 'g4u-about-bread.png' | asset_url }}" alt="" width="866" height="926" loading="lazy">{%- endif -%}
+    {%- if section.settings.tortilla_image != blank -%}{{ section.settings.tortilla_image | image_url: width: 490 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla" src="{{ 'g4u-about-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">{%- endif -%}
   </div>
 </section>
 
@@ -33,6 +33,12 @@
   "tag": "section",
   "class": "section-g4u-about-manifesto",
   "settings": [
+    { "type": "header", "content": "Imágenes decorativas" },
+    { "type": "image_picker", "id": "dust_image", "label": "Polvo / fondo izquierdo" },
+    { "type": "image_picker", "id": "texture_image", "label": "Textura / fondo derecho" },
+    { "type": "image_picker", "id": "snack_image", "label": "Producto izquierdo" },
+    { "type": "image_picker", "id": "bread_image", "label": "Producto central" },
+    { "type": "image_picker", "id": "tortilla_image", "label": "Producto derecho" },
     { "type": "textarea", "id": "closing", "label": "Cierre", "default": "Por eso existimos:\nPara redefinir el pan." },
     { "type": "textarea", "id": "closing_accent", "label": "Cierre destacado", "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico." }
   ],
