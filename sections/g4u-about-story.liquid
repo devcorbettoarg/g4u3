@@ -44,27 +44,39 @@
 
           {%- for block in section.blocks -%}
 
-            {%- liquid
-              assign item_icon = 'g4u-icon-check.svg'
+            <li
+              class="g4u-about-story__list-item"
+              {{ block.shopify_attributes }}
+            >
 
-              if block.settings.icon == 'transport'
-                assign item_icon = 'transport.svg'
-              endif
-            -%}
+              {%- if block.settings.icon != blank -%}
 
-            <li {{ block.shopify_attributes }}>
-              <img
-                class="g4u-about-story__list-icon"
-                src="{{ item_icon | asset_url }}"
-                alt=""
-                width="20"
-                height="20"
-                loading="lazy"
-              >
+                <img
+                  class="g4u-about-story__list-icon"
+                  src="{{ block.settings.icon | image_url }}"
+                  alt=""
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+
+              {%- else -%}
+
+                <img
+                  class="g4u-about-story__list-icon"
+                  src="{{ 'g4u-icon-check.svg' | asset_url }}"
+                  alt=""
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+
+              {%- endif -%}
 
               <span>
                 {{ block.settings.text | escape }}
               </span>
+
             </li>
 
           {%- endfor -%}
@@ -209,20 +221,10 @@
           "default": "En información clara."
         },
         {
-          "type": "select",
+          "type": "image_picker",
           "id": "icon",
-          "label": "Icono",
-          "options": [
-            {
-              "value": "check",
-              "label": "Check"
-            },
-            {
-              "value": "transport",
-              "label": "Transporte"
-            }
-          ],
-          "default": "check"
+          "label": "Icono personalizado",
+          "info": "Opcional. Si no seleccionás ningún icono se utilizará automáticamente el check predeterminado."
         }
       ]
     }
