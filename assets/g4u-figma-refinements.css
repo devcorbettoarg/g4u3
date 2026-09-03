@@ -1,0 +1,1157 @@
+/* ==========================================================================
+   G4U · FIGMA REFINEMENTS
+   --------------------------------------------------------------------------
+   Objetivo:
+   - Ajustar /pages/nosotros al frame desktop de Figma 1440px.
+   - Corregir header/hero de /pages/harina según comparación Figma vs render.
+   - Mantener todos los cambios encapsulados por template.
+   - No alterar Home, PDP, collections ni otras páginas.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   TOKENS LOCALES
+   ========================================================================== */
+
+body.template-suffix-nosotros,
+body.template-suffix-harina {
+  --g4u-cream: #fff8f0;
+  --g4u-burgundy: #500322;
+  --g4u-orange: #ff4622;
+  --g4u-ink: #26131b;
+}
+
+
+/* ==========================================================================
+   NOSOTROS · DESKTOP
+   Figma node: 1:2132
+   Base de referencia: 1440px
+   ========================================================================== */
+
+@media screen and (min-width: 990px) {
+
+  /* ------------------------------------------------------------------------
+     HEADER SOBRE HERO
+     Figma:
+     - announcement: 40px
+     - header: 88px
+     - horizontal padding: 32px
+     ------------------------------------------------------------------------ */
+
+\
+
+  /* ------------------------------------------------------------------------
+     HERO
+     Figma:
+     - 1440 × 900
+     - px 32
+     - pb 64
+     - H1 56px / .9
+     - body 20px
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-about-hero {
+    box-sizing: border-box;
+    height: 90rem;
+    min-height: 90rem;
+    padding: 12rem 3.2rem 6.4rem;
+  }
+
+  /*
+   * Crop exacto aproximado desde los valores dev de Figma:
+   * h: 116.76%
+   * w: 109.45%
+   * left: -0.68%
+   * top: -16.78%
+   */
+  body.template-suffix-nosotros .g4u-about-hero__image {
+    bottom: auto;
+    height: 116.76%;
+    left: -0.68%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    right: auto;
+    top: -16.78%;
+    width: 109.45%;
+  }
+
+  /*
+   * Figma tiene:
+   * - overlay negro general 10%
+   * - gradient lateral adicional
+   */
+  body.template-suffix-nosotros .g4u-about-hero::before {
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.5) 23.819%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    content: "";
+    inset: 0;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__content {
+    max-width: 76.8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__title {
+    font-size: 5.6rem;
+    letter-spacing: 0.112rem;
+    line-height: 0.9;
+    margin-bottom: 1.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__text {
+    font-family: var(--g4u-display);
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+    max-width: 57.1rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__text p {
+    margin-top: 0;
+  }
+
+  body.template-suffix-nosotros .g4u-about-hero__scroll {
+    bottom: 4rem;
+    right: 4.34rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     MANIFESTO
+     Figma:
+     - altura visual: 979px
+     - px: 40px
+     - texto: 56px / .9
+     - art column: ~605px
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-about-manifesto {
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr) 60.5rem;
+    min-height: 97.9rem;
+    padding: 0 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__copy {
+    padding: 6rem 0;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__title {
+    font-size: 5.6rem;
+    letter-spacing: 0.112rem;
+    line-height: 0.9;
+    margin: 0 0 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__closing {
+    font-size: 2.4rem;
+    letter-spacing: 0.048rem;
+    line-height: 1;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__art {
+    min-height: 97.9rem;
+    width: 60.5rem;
+  }
+
+
+  /* Background dust / texture */
+
+  body.template-suffix-nosotros .g4u-about-manifesto__dust {
+    bottom: auto;
+    height: 109.24%;
+    left: -12.84%;
+    opacity: 0.4;
+    right: auto;
+    top: -8.01%;
+    width: 117.84%;
+  }
+
+  body.template-suffix-nosotros .g4u-about-manifesto__texture {
+    bottom: auto;
+    height: 100%;
+    left: -3.97%;
+    opacity: 0.8;
+    right: auto;
+    scale: 1;
+    top: 0;
+    width: 107.95%;
+  }
+
+
+  /*
+   * En Figma las dimensiones visibles grandes vienen del bounding box
+   * después de rotar. Por eso el asset real debe ser menor.
+   */
+
+  body.template-suffix-nosotros
+  .g4u-about-manifesto__object--snack {
+    bottom: auto;
+    height: 15.752rem;
+    left: 16.1rem;
+    right: auto;
+    top: 15rem;
+    transform: rotate(22.43deg);
+    width: 15.683rem;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-about-manifesto__object--bread {
+    bottom: auto;
+    height: 27.845rem;
+    left: 21.15rem;
+    right: auto;
+    top: 29.66rem;
+    transform: rotate(21.15deg);
+    width: 26.052rem;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-about-manifesto__object--tortilla {
+    bottom: auto;
+    height: 16.757rem;
+    left: 14.85rem;
+    right: auto;
+    top: 59.5rem;
+    transform: rotate(44.39deg);
+    width: 18.287rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     HISTORIA + FILOSOFÍA
+     Figma:
+     - section py: 80
+     - px: 40
+     - columns gap: 80
+     - container: 1360
+     - image aspect: 600/640
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-about-story {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__inner {
+    gap: 8rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__content {
+    max-width: 64rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__eyebrow {
+    font-size: 1.8rem;
+    letter-spacing: 0.18rem;
+    line-height: 1.5;
+    margin-bottom: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__title {
+    font-size: 4rem;
+    letter-spacing: 0.04rem;
+    line-height: 1;
+    margin-bottom: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__lead {
+    font-size: 2.4rem;
+    letter-spacing: 0.12rem;
+    line-height: 1.2;
+    margin-bottom: 2.4rem;
+    max-width: 49.2rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__text {
+    font-size: 1.8rem;
+    letter-spacing: 0.072rem;
+    line-height: 1.5;
+    max-width: 52.1rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__media {
+    aspect-ratio: 600 / 640;
+    border-radius: 1.2rem;
+    position: relative;
+  }
+
+
+  /* Historia: crop del asset según Figma */
+
+  body.template-suffix-nosotros
+  .g4u-about-story--cream
+  .g4u-about-story__image {
+    bottom: auto;
+    height: 184.22%;
+    left: -4.19%;
+    max-width: none;
+    object-fit: cover;
+    position: absolute;
+    right: auto;
+    top: -35.6%;
+    width: 131.02%;
+  }
+
+
+  /* Filosofía */
+
+  body.template-suffix-nosotros
+  .g4u-about-story--soft
+  .g4u-about-story__image {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__list {
+    gap: 0.8rem;
+    margin-top: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-story__list li {
+    font-size: 1.6rem;
+    gap: 1.2rem;
+    line-height: 1.5;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     LO QUE NOS DIFERENCIA
+     Figma:
+     - py/px: 80 / 40
+     - title: 40
+     - title -> row: 80
+     - gap: 32
+     - media: 316 × 296 aprox.
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-about-values {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-values__title {
+    font-size: 4rem;
+    letter-spacing: 0.04rem;
+    line-height: 1;
+    margin-bottom: 8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-values__grid {
+    gap: 3.2rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-value__media {
+    aspect-ratio: 316 / 296;
+    border-radius: 1.2rem;
+    margin-bottom: 2.4rem;
+    position: relative;
+  }
+
+  body.template-suffix-nosotros .g4u-about-value h3 {
+    color: var(--g4u-ink);
+    font-family: var(--g4u-display);
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: 0.12rem;
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-about-value .rte {
+    font-family: var(--font-body-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+
+  /* Valor 3 · pan */
+
+  body.template-suffix-nosotros
+  .g4u-about-value:nth-child(3)
+  .g4u-about-value__image {
+    bottom: auto;
+    height: 268.88%;
+    left: -21.59%;
+    max-width: none;
+    position: absolute;
+    right: auto;
+    top: -76.92%;
+    width: 179.28%;
+  }
+
+
+  /* Valor 4 */
+
+  body.template-suffix-nosotros
+  .g4u-about-value:nth-child(4)
+  .g4u-about-value__image {
+    bottom: auto;
+    height: 172.17%;
+    left: -0.63%;
+    max-width: none;
+    position: absolute;
+    right: auto;
+    top: -18.02%;
+    width: 107.52%;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     TODO EMPIEZA CON NUESTRA HARINA
+     Figma: 900px
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-feel-good {
+    height: 90rem;
+    min-height: 90rem;
+    padding: 6.4rem;
+  }
+
+  /*
+   * Crop del background obtenido desde Figma.
+   */
+  body.template-suffix-nosotros .g4u-feel-good__image {
+    bottom: auto;
+    height: 115.98%;
+    left: -4.37%;
+    max-width: none;
+    object-fit: cover;
+    right: auto;
+    top: -5.84%;
+    width: 108.73%;
+  }
+
+  body.template-suffix-nosotros .g4u-feel-good__content {
+    max-width: 76.8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-feel-good__title {
+    font-size: 9.2rem;
+    letter-spacing: 0.184rem;
+    line-height: 0.8;
+    margin-bottom: 2.4rem;
+    max-width: 76.8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-feel-good__accent {
+    display: block;
+  }
+
+  body.template-suffix-nosotros .g4u-feel-good__text {
+    font-size: 1.8rem;
+    letter-spacing: 0.072rem;
+    line-height: 1.5;
+    margin-bottom: 3.2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     PRODUCTOS
+     Figma:
+     - section: 80px 40px
+     - title 48
+     - header -> products 60
+     - product image ratio: 284 / 340.8 = 1.2 height
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-featured-products {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-featured-products__header {
+    margin-bottom: 6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-featured-products__title {
+    color: var(--g4u-ink);
+    font-size: 4.8rem;
+    letter-spacing: 0.048rem;
+    line-height: 1;
+    margin: 0;
+  }
+
+  body.template-suffix-nosotros .g4u-featured-products__grid {
+    gap: 1.6rem;
+    max-width: 136rem;
+  }
+
+  /*
+   * Figma = portrait 5:6.
+   * El CSS anterior lo estaba obligando a cuadrado.
+   */
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__inner.ratio::before {
+    padding-bottom: 120% !important;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__inner {
+    background: #f2ebe4;
+    border-radius: 1.2rem;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__media,
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .media {
+    border-radius: 1.2rem;
+    overflow: hidden;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__media img {
+    mix-blend-mode: multiply;
+    object-fit: cover;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__content {
+    padding-top: 1.6rem;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .card__heading {
+    color: var(--g4u-ink);
+    font-family: var(--g4u-display);
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+    min-height: 0;
+    text-transform: none;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .g4u-card__subtitle {
+    color: var(--g4u-ink);
+    font-family: var(--g4u-display);
+    font-size: 1.6rem;
+    letter-spacing: 0.064rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .price {
+    color: var(--g4u-ink);
+    font-family: var(--g4u-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.072rem;
+    line-height: 1.5;
+    min-height: 0;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .g4u-card__tags {
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+    min-height: 0;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .g4u-card__tag {
+    border: 0.1rem solid #ebe7e8;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    gap: 0.4rem;
+    letter-spacing: 0.07rem;
+    line-height: 1.2;
+    min-height: 2.4rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  body.template-suffix-nosotros
+  .g4u-featured-products
+  .g4u-card__tag img {
+    height: 2rem;
+    max-width: 2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     PROFESIONALES
+     Figma:
+     - section py/px: 80 / 40
+     - header gap: 60
+     - video/review: 332 × 560
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-experts {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__header {
+    margin-bottom: 6rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__heading {
+    max-width: 60.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__eyebrow {
+    font-size: 1.8rem;
+    letter-spacing: 0.18rem;
+    line-height: 1.5;
+    margin-bottom: 1.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__title {
+    font-size: 4.8rem;
+    letter-spacing: 0.048rem;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__intro {
+    font-size: 1.8rem;
+    letter-spacing: 0.072rem;
+    line-height: 1.5;
+  }
+
+  body.template-suffix-nosotros .g4u-experts__track {
+    gap: 2.4rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card {
+    flex: 0 0 67.6rem;
+    gap: 1.2rem;
+    grid-template-columns: 33.2rem 33.2rem;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__media,
+  body.template-suffix-nosotros .g4u-expert-card__quote {
+    border-radius: 1.2rem;
+    height: 56rem;
+    min-height: 56rem;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__quote {
+    padding: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__avatar {
+    height: 5.6rem;
+    width: 5.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__name {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__role {
+    font-size: 1.4rem;
+    letter-spacing: 0.07rem;
+    line-height: 1.2;
+  }
+
+  body.template-suffix-nosotros .g4u-expert-card__text,
+  body.template-suffix-nosotros .g4u-expert-card__handle {
+    font-size: 1.6rem;
+    letter-spacing: 0.064rem;
+    line-height: 1.5;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     INSTAGRAM
+     Figma:
+     - pt 80
+     - pb 40
+     - px 40
+     - title 48
+     - header -> grid 60
+     - grid gap 12
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-instagram {
+    padding: 8rem 4rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-instagram__header {
+    margin-bottom: 6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-instagram__title {
+    font-size: 4.8rem;
+    letter-spacing: 0.048rem;
+    line-height: 1;
+    margin-bottom: 2.4rem;
+    max-width: 44.6rem;
+  }
+
+  body.template-suffix-nosotros .g4u-instagram__grid {
+    gap: 1.2rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-instagram__item {
+    border-radius: 1.2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     BENEFICIOS
+     Figma = padding 40 en los cuatro lados
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-service-benefits {
+    padding: 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-service-benefits__grid {
+    gap: 3.2rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-service-benefits__icon {
+    height: 4.8rem;
+    margin-bottom: 2.4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-service-benefits__text {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     NEWSLETTER
+     Figma = 40px
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-newsletter {
+    padding: 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-newsletter__inner {
+    gap: 4rem;
+    grid-template-columns:
+      minmax(0, 60.8rem)
+      minmax(44rem, 59.4rem);
+    max-width: 136rem;
+  }
+
+  body.template-suffix-nosotros .g4u-newsletter__title {
+    font-size: 4rem;
+    letter-spacing: 0.04rem;
+    line-height: 1;
+    max-width: 60.8rem;
+  }
+
+  body.template-suffix-nosotros .g4u-newsletter__text {
+    font-size: 1.8rem;
+    letter-spacing: 0.072rem;
+    line-height: 1.5;
+  }
+
+  body.template-suffix-nosotros .g4u-newsletter__input {
+    min-height: 4.5rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     FOOTER
+     Mantener dimensiones del componente del Figma
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-nosotros .g4u-footer {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-nosotros .g4u-footer__inner {
+    max-width: 136rem;
+  }
+}
+
+
+/* ==========================================================================
+   NUESTRA HARINA
+   --------------------------------------------------------------------------
+   Estos son los cambios seguros que ya se desprenden de la comparación
+   screenshot Figma vs PDF.
+
+   Cuando tengamos el node-id exacto de Harina se pueden calibrar los crops y
+   medidas interiores con el mismo nivel de exactitud que Nosotros.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   HARINA · HEADER TRANSPARENTE SOBRE HERO
+   -------------------------------------------------------------------------- */
+
+body.template-suffix-harina .shopify-section-group-header-group {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+body.template-suffix-harina .announcement-bar-section {
+  position: relative;
+  z-index: 2;
+}
+
+body.template-suffix-harina .section-header .header-wrapper {
+  --color-foreground: 255, 248, 240;
+
+  background: transparent;
+  border-bottom-color: rgba(255, 248, 240, 0.2);
+  box-shadow: none;
+  color: var(--g4u-cream);
+}
+
+
+/* Logo claro antes del sticky */
+
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+.g4u-logo__dark {
+  display: none;
+}
+
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+.g4u-logo__light {
+  display: block;
+}
+
+
+/* Iconos claros */
+
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+.header__icon {
+  background: transparent;
+  box-shadow: none;
+  color: var(--g4u-cream);
+}
+
+
+/*
+ * g4u-shell.css fuerza el carrito oscuro para todas las páginas
+ * que no son Home, por lo tanto hay que neutralizarlo específicamente.
+ */
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble,
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble svg,
+body.template-suffix-harina
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble svg path {
+  color: var(--g4u-cream) !important;
+  stroke: var(--g4u-cream) !important;
+}
+
+
+/* Mega menu abierto = fondo claro + logo oscuro */
+
+body.template-suffix-harina
+.section-header:has(header-menu details[open])
+.header-wrapper {
+  --color-foreground: 38, 19, 27;
+
+  background: var(--g4u-cream);
+  box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.02);
+  color: var(--g4u-ink);
+}
+
+body.template-suffix-harina
+.section-header:has(header-menu details[open])
+.g4u-logo__dark {
+  display: block;
+}
+
+body.template-suffix-harina
+.section-header:has(header-menu details[open])
+.g4u-logo__light {
+  display: none;
+}
+
+
+/* ==========================================================================
+   HARINA · DESKTOP
+   ========================================================================== */
+
+@media screen and (min-width: 990px) {
+
+  /* Header = mismo sistema que Figma / Nosotros */
+
+  body.template-suffix-harina
+  .section-header:not(.shopify-section-header-sticky)
+  .header {
+    height: 8.8rem;
+    padding: 1.4rem 3.2rem !important;
+    padding-top: 1.4rem !important;
+  }
+
+  body.template-suffix-harina
+  .section-header:not(.shopify-section-header-sticky)
+  .g4u-logo {
+    height: 6rem;
+    width: 14.5263rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     HERO HARINA
+     Base actual ya tiene la altura correcta de 900px.
+     Ajustamos principalmente crop + integración del header.
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-hero {
+    box-sizing: border-box;
+    height: 90rem;
+    min-height: 90rem;
+    padding: 12rem 3.2rem 6.4rem;
+  }
+
+  /*
+   * Calibración inicial por comparación visual con Figma.
+   * Será posible dejarla exacta cuando tengamos su node-id.
+   */
+  body.template-suffix-harina .g4u-flour-hero__image {
+    object-fit: cover;
+    object-position: 56% 40%;
+  }
+
+  body.template-suffix-harina .g4u-flour-hero__content {
+    max-width: 76.8rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-hero__title {
+    font-size: 5.6rem;
+    line-height: 0.9;
+    margin-bottom: 1.6rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-hero__text {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     CHALLENGE
+     Mantener container real de 1360px
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-challenge {
+    padding: 10rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-challenge__inner {
+    max-width: 136rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-challenge__header {
+    margin-bottom: 6rem;
+    max-width: 76.8rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-challenge__media {
+    border-radius: 1.2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     FÓRMULA
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-formula {
+    padding: 10rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-formula__grid {
+    gap: 4.8rem;
+    grid-template-columns:
+      minmax(0, 1fr)
+      54rem
+      minmax(0, 1fr);
+    max-width: 136rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-formula__media {
+    border-radius: 1.2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     BENEFICIOS HARINA
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-benefits {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-benefits__grid {
+    gap: 3.2rem;
+    max-width: 136rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     CALIDAD RESPALDADA
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-quality {
+    height: 90rem;
+    min-height: 90rem;
+    padding: 6.4rem 4rem;
+  }
+
+  /*
+   * Ajuste inicial del encuadre.
+   */
+  body.template-suffix-harina .g4u-flour-quality__image {
+    object-fit: cover;
+    object-position: 50% 42%;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     FAQ
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-flour-faq {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-flour-faq__items {
+    max-width: 67.2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     PROFESIONALES
+     Compartido visualmente con Nosotros
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-experts {
+    padding: 8rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-experts__header,
+  body.template-suffix-harina .g4u-experts__track {
+    max-width: 136rem;
+  }
+
+  body.template-suffix-harina .g4u-experts__title {
+    font-size: 4.8rem;
+  }
+
+  body.template-suffix-harina .g4u-expert-card {
+    flex: 0 0 67.6rem;
+    gap: 1.2rem;
+    grid-template-columns: 33.2rem 33.2rem;
+  }
+
+  body.template-suffix-harina .g4u-expert-card__media,
+  body.template-suffix-harina .g4u-expert-card__quote {
+    height: 56rem;
+    min-height: 56rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     INSTAGRAM
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-instagram {
+    padding: 8rem 4rem 4rem;
+  }
+
+  body.template-suffix-harina .g4u-instagram__title {
+    font-size: 4.8rem;
+  }
+
+  body.template-suffix-harina .g4u-instagram__grid {
+    gap: 1.2rem;
+    max-width: 136rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     BENEFICIOS DE SERVICIO
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-service-benefits {
+    padding: 4rem;
+  }
+
+  body.template-suffix-harina .g4u-service-benefits__grid {
+    gap: 3.2rem;
+    max-width: 136rem;
+  }
+
+  body.template-suffix-harina .g4u-service-benefits__text {
+    font-size: 2rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     NEWSLETTER
+     ------------------------------------------------------------------------ */
+
+  body.template-suffix-harina .g4u-newsletter {
+    padding: 4rem;
+  }
+
+  body.template-suffix-harina .g4u-newsletter__inner {
+    max-width: 136rem;
+  }
+
+  body.template-suffix-harina .g4u-newsletter__title {
+    font-size: 4rem;
+  }
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY / MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  body.template-suffix-nosotros .g4u-about-manifesto__dust,
+  body.template-suffix-nosotros .g4u-about-manifesto__texture,
+  body.template-suffix-nosotros .g4u-about-manifesto__object {
+    transition: none !important;
+  }
+}
