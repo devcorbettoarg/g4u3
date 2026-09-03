@@ -1,101 +1,247 @@
 {% comment %}
   Renders desktop navigation and configurable G4U mega menus.
-  One `mega_menu` block configures each enhanced parent item. Its child links
-  always come from Shopify Navigation, while featured products come from the
-  block's product list setting.
+
+  Navigation items always come from section.settings.menu.
+  A mega_menu block can optionally enhance any top-level menu item
+  when block.settings.menu_trigger matches the menu item's handle.
 {% endcomment %}
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
-      {%- if link.handle != 'productos' -%}{%- continue -%}{%- endif -%}
+
       {%- assign mega_block = blank -%}
+
       {%- for block in section.blocks -%}
-        {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
-        {%- if block.type == 'mega_menu' and block_trigger != blank and block_trigger == link.handle -%}
-          {%- assign mega_block = block -%}
-          {%- break -%}
+        {%- if block.type == 'mega_menu' -%}
+          {%- assign block_trigger = block.settings.menu_trigger | handleize -%}
+
+          {%- if block_trigger != blank and block_trigger == link.handle -%}
+            {%- assign mega_block = block -%}
+            {%- break -%}
+          {%- endif -%}
         {%- endif -%}
       {%- endfor -%}
 
       <li>
         {%- if link.links != blank or mega_block != blank -%}
           <header-menu>
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
-              <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset">
-                <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>{{- link.title | escape -}}</span>
+            <details
+              id="Details-HeaderMenu-{{ forloop.index }}"
+              class="mega-menu"
+            >
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>
+                  {{- link.title | escape -}}
+                </span>
+
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
-              <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup" tabindex="-1">
+
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+
                 {%- if mega_block != blank -%}
-                  <div class="g4u-mega-menu page-width" {{ mega_block.shopify_attributes }}>
+
+                  <div
+                    class="g4u-mega-menu page-width"
+                    {{ mega_block.shopify_attributes }}
+                  >
+
                     <div class="g4u-mega-menu__intro">
+
                       {%- if mega_block.settings.heading != blank -%}
-                        <h2 class="g4u-mega-menu__heading">{{ mega_block.settings.heading | escape }}</h2>
+                        <h2 class="g4u-mega-menu__heading">
+                          {{ mega_block.settings.heading | escape }}
+                        </h2>
                       {%- endif -%}
+
                       {%- if mega_block.settings.description != blank -%}
-                        <div class="g4u-mega-menu__description rte">{{ mega_block.settings.description }}</div>
+                        <div class="g4u-mega-menu__description rte">
+                          {{ mega_block.settings.description }}
+                        </div>
                       {%- endif -%}
 
                       {%- if link.links != blank -%}
-                        <ul class="list-unstyled g4u-mega-menu__category-list" role="list">
+                        <ul
+                          class="list-unstyled g4u-mega-menu__category-list"
+                          role="list"
+                        >
                           {%- for childlink in link.links -%}
-                            <li><a class="g4u-mega-menu__category-link link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                            <li>
+                              <a
+                                class="g4u-mega-menu__category-link link"
+                                href="{{ childlink.url }}"
+                              >
+                                {{ childlink.title | escape }}
+                              </a>
+                            </li>
                           {%- endfor -%}
                         </ul>
                       {%- endif -%}
 
                       {%- assign cta_url = mega_block.settings.cta_link | default: link.url -%}
+
                       {%- if mega_block.settings.cta_label != blank and cta_url != blank -%}
-                        <a class="button button--secondary g4u-mega-menu__cta" href="{{ cta_url }}">{{ mega_block.settings.cta_label | escape }}</a>
+                        <a
+                          class="button button--secondary g4u-mega-menu__cta"
+                          href="{{ cta_url }}"
+                        >
+                          {{ mega_block.settings.cta_label | escape }}
+                        </a>
                       {%- endif -%}
+
                     </div>
 
                     {%- if mega_block.settings.products != blank -%}
                       <div class="g4u-mega-menu__products">
-                        {%- for mega_product in mega_block.settings.products limit: mega_block.settings.products_to_show -%}
-                          <a class="g4u-mega-menu__product link" href="{{ mega_product.url }}">
+
+                        {%- for mega_product in mega_block.settings.products
+                          limit: mega_block.settings.products_to_show
+                        -%}
+
+                          <a
+                            class="g4u-mega-menu__product link"
+                            href="{{ mega_product.url }}"
+                          >
+
                             <span class="g4u-mega-menu__product-image">
+
                               {%- if mega_product.featured_image != blank -%}
-                                {{ mega_product.featured_image | image_url: width: 420 | image_tag: loading: 'lazy', widths: '180, 240, 320, 420', alt: mega_product.title }}
+
+                                {{
+                                  mega_product.featured_image
+                                  | image_url: width: 420
+                                  | image_tag:
+                                    loading: 'lazy',
+                                    widths: '180, 240, 320, 420',
+                                    alt: mega_product.title
+                                }}
+
                               {%- else -%}
-                                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+
+                                {{
+                                  'product-1'
+                                  | placeholder_svg_tag: 'placeholder-svg'
+                                }}
+
                               {%- endif -%}
+
                             </span>
+
                             <span class="g4u-mega-menu__product-copy">
-                              <span class="g4u-mega-menu__product-title">{{ mega_product.title | escape }}</span>
-                              <span class="g4u-mega-menu__product-price">
-                                {%- if mega_product.compare_at_price > mega_product.price -%}<s>{{ mega_product.compare_at_price | money }}</s>{%- endif -%}
-                                <strong>{{ mega_product.price | money }}</strong>
+
+                              <span class="g4u-mega-menu__product-title">
+                                {{ mega_product.title | escape }}
                               </span>
+
+                              <span class="g4u-mega-menu__product-price">
+
+                                {%- if mega_product.compare_at_price > mega_product.price -%}
+                                  <s>
+                                    {{ mega_product.compare_at_price | money }}
+                                  </s>
+                                {%- endif -%}
+
+                                <strong>
+                                  {{ mega_product.price | money }}
+                                </strong>
+
+                              </span>
+
                             </span>
+
                           </a>
+
                         {%- endfor -%}
+
                       </div>
                     {%- endif -%}
+
                   </div>
+
                 {%- else -%}
-                  <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
+
+                  <ul
+                    class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                    role="list"
+                  >
+
                     {%- for childlink in link.links -%}
+
                       <li class="g4u-mega-menu__column">
-                        <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 g4u-mega-menu__heading link{% if childlink.current %} mega-menu__link--active{% endif %}">{{ childlink.title | escape }}</a>
-                        {%- if childlink.links != blank -%}<ul class="list-unstyled g4u-mega-menu__links" role="list">{%- for grandchildlink in childlink.links -%}<li><a href="{{ grandchildlink.url }}" class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}">{{ grandchildlink.title | escape }}</a></li>{%- endfor -%}</ul>{%- endif -%}
+
+                        <a
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 g4u-mega-menu__heading link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+
+                        {%- if childlink.links != blank -%}
+                          <ul
+                            class="list-unstyled g4u-mega-menu__links"
+                            role="list"
+                          >
+
+                            {%- for grandchildlink in childlink.links -%}
+
+                              <li>
+                                <a
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+
+                            {%- endfor -%}
+
+                          </ul>
+                        {%- endif -%}
+
                       </li>
+
                     {%- endfor -%}
+
                   </ul>
+
                 {%- endif -%}
+
               </div>
             </details>
           </header-menu>
+
         {%- else -%}
-          <a id="HeaderMenu-{{ link.handle }}" href="{{ link.url }}" class="header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}><span{% if link.current %} class="header__active-menu-item"{% endif %}>{{- link.title | escape -}}</span></a>
+
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span{% if link.current %} class="header__active-menu-item"{% endif %}>
+              {{- link.title | escape -}}
+            </span>
+          </a>
+
         {%- endif -%}
       </li>
+
     {%- endfor -%}
-    {%- assign combo_page = pages['combo-ideal'] -%}
-    <li><a href="{{ combo_page.url | default: '/pages/arma-tu-combo' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>Armá tu combo</span></a></li>
-    <li><a href="{{ pages.harina.url | default: '/pages/nuestra-harina' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>¿Por qué G4U es diferente?</span></a></li>
-    <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>Nuestra filosofía</span></a></li>
-    <li><a href="{{ pages.contact.url | default: '/pages/contact' }}" class="header__menu-item list-menu__item link link--text focus-inset"><span>Contacto</span></a></li>
   </ul>
 </nav>
