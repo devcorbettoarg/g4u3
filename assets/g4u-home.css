@@ -398,7 +398,8 @@
 .g4u-flour-challenge__inner { margin: auto; max-width: 136rem; }
 .g4u-flour-challenge__header { margin: auto auto 6rem; max-width: 76.8rem; }
 .g4u-flour-challenge__title, .g4u-flour-formula__title, .g4u-flour-benefits__title { color: inherit; font-size: 4.8rem; line-height: 1; margin: 0; }
-.g4u-flour-challenge__text { font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; margin: 2.4rem auto 0; max-width: 50.2rem; }
+.g4u-flour-challenge__text { font-family: var(--g4u-display);
+   font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; margin: 2.4rem auto 0; max-width: 50.2rem; }
 .g4u-flour-challenge__text strong { font-family: var(--g4u-display); font-weight: 400; }
 .g4u-flour-challenge__media { aspect-ratio: 17 / 9; border-radius: 1.2rem; overflow: hidden; }
 .g4u-flour-challenge__media img { height: 100%; object-fit: cover; width: 100%; }
