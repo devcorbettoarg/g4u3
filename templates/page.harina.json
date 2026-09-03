@@ -301,7 +301,9 @@
         "alejandra": {
           "type": "expert",
           "settings": {
+            "media": "shopify://shop_images/g4u-expert-alejandra.png",
             "video_url": "",
+            "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand",
             "quote": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos.</p>",
@@ -312,6 +314,7 @@
         "roxana": {
           "type": "expert",
           "settings": {
+            "media": "shopify://shop_images/g4u-expert-roxana.png",
             "video_url": "",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA) · MN 1806 · MP 1128",
