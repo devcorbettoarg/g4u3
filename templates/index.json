@@ -129,6 +129,7 @@
             "tagline": "Almidón resistente RS4",
             "heading": "El carbohidrato que se comporta como fibra.",
             "text": "<p>Nuestra base está formulada con almidón resistente tipo 4 (RS4), que no se digiere como un carbohidrato tradicional. Ayuda a disminuir los carbohidratos netos, aporta mayor saciedad y contribuye al equilibrio de la microbiota intestinal. Es uno de los componentes que hace posible un pan con un perfil nutricional completamente diferente.</p>",
+            "why_label": "POR QUÉ LO USAMOS",
             "benefit_1": "Menor impacto glucémico",
             "benefit_2": "Más fibra funcional",
             "benefit_3": "Mayor saciedad"
@@ -143,6 +144,7 @@
             "tagline": "Proteínas completas",
             "heading": "Nutrición que realmente alimenta.",
             "text": "<p>Combinamos concentrado proteico de leche y huevo en polvo para aportar proteínas de alto valor biológico, con todos los aminoácidos esenciales. El resultado es un pan que ayuda a mantener la masa muscular y genera mayor sensación de saciedad.<br/><br/></p>",
+            "why_label": "Por qué lo usamos",
             "benefit_1": "Entre 12 y 15 g de proteína por porción",
             "benefit_2": "Proteína completa",
             "benefit_3": "Mayor saciedad"
@@ -157,6 +159,7 @@
             "tagline": "Fibras funcionales",
             "heading": "Más bienestar desde el intestino.",
             "text": "<p>Inulina, psyllium y otras fibras funcionales ayudan a mejorar la digestión, favorecer la microbiota y mantener la humedad y textura del pan durante más tiempo, sin necesidad de conservantes artificiales. </p><p></p>",
+            "why_label": "Por qué lo usamos",
             "benefit_1": "Mejor digestión",
             "benefit_2": "Más saciedad",
             "benefit_3": "Textura más suave"
@@ -171,6 +174,7 @@
             "tagline": "Tecnología alimentaria",
             "heading": "No es una receta.Es una formulación.",
             "text": "<p>Cada ingrediente fue seleccionado para trabajar en conjunto. La combinación de proteínas funcionales, fibras y almidones resistentes permite lograr un pan con la textura y el sabor del pan tradicional, pero con menos carbohidratos y sin azúcar agregada. <br/><br/></p>",
+            "why_label": "Por qué lo usamos",
             "benefit_1": "Sabor tradicional",
             "benefit_2": "Textura esponjosa",
             "benefit_3": "Bajo en carbohidratos"
@@ -188,7 +192,6 @@
         "title": "La ciencia detrás de nuestro pan",
         "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.<br/></p>",
         "tabs_label": "Más sabor",
-        "why_label": "",
         "link_label": "Conocé nuestra harina",
         "link": ""
       }
