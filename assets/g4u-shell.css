@@ -143,9 +143,8 @@
 body.template-index .shopify-section-group-header-group,
 body.template-suffix-nosotros .shopify-section-group-header-group {
   left: 0;
-  position: absolute;
+  position: relative;
   right: 0;
-  top: 0;
   z-index: 10;
 }
 body.template-index .section-header .header-wrapper,
