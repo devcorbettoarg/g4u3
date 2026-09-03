@@ -55,13 +55,6 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_options": {
-          "type": "g4u_quantity_options",
-          "settings": {
-            "heading": "¡Ahorrá comprando más unidades!",
-            "aria_label": "Elegir cantidad"
-          }
-        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -132,7 +125,6 @@
         "description",
         "product_highlights",
         "variant_picker",
-        "quantity_options",
         "quantity_selector",
         "buy_buttons",
         "details",
@@ -202,10 +194,10 @@
       ],
       "settings": {
         "other_heading": "Otros “integrales”",
-        "other_image": "shopify://shop_images/Burguerpack.png",
-        "g4u_image": "shopify://shop_images/g4u-choice-bread.png",
+        "other_image": "shopify://shop_images/1da93132b1c7a3c71bd89d39283393c3f3653d06.png",
         "note": "Porción de 2 rebanadas / 60 g",
         "g4u_heading": "Pan de molde G4U",
+        "g4u_image": "shopify://shop_images/8637a5422daeb876d84cd5e9593b7f1d4cd2bc12.png",
         "g4u_note": "Porción de 2 rebanadas / 60 g"
       }
     },
@@ -295,7 +287,7 @@
         "background": "soft",
         "image_position": "left",
         "fallback_asset": "bread",
-        "image": "shopify://shop_images/g4u-hero-bread.jpg",
+        "image": "shopify://shop_images/Placeholder_Image_54ccf8d5-be36-4db0-852f-2838a151b501.png",
         "image_alt": "Pan G4U para disfrutar todos los días",
         "eyebrow": "Ideas para disfrutarlo",
         "title": "Un pan, infinitas posibilidades",
@@ -310,7 +302,7 @@
         "background": "cream",
         "image_position": "right",
         "fallback_asset": "flour",
-        "image": "shopify://shop_images/g4u-hero-bread.jpg",
+        "image": "shopify://shop_images/4bd19022252f281687074bc8e346eaf550fb5616.jpg",
         "image_alt": "Harina funcional G4U",
         "eyebrow": "Nuestra harina",
         "title": "La diferencia empieza en la harina",

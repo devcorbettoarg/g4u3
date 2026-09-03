@@ -368,7 +368,9 @@
         "expert_alejandra": {
           "type": "expert",
           "settings": {
+            "media": "shopify://shop_images/Placeholder_Image_1.png",
             "video_url": "",
+            "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand\nEspecialista en Nutrición y Medicina del deporte",
             "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>",
@@ -379,7 +381,9 @@
         "expert_roxana": {
           "type": "expert",
           "settings": {
+            "media": "shopify://shop_images/g4u-expert-roxana.png",
             "video_url": "",
+            "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA) · MN 1806 · MP 1128\nEspecializada en alimentación low-carb / keto",
             "quote": "<p>“Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes.”</p>",
