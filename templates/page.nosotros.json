@@ -98,6 +98,7 @@
         "value_1": {
           "type": "value",
           "settings": {
+            "image": "shopify://shop_images/g4u-about-value-innovation.jpg",
             "title": "Innovación con propósito",
             "text": "<p>Cada formulación nace de investigación y desarrollo para ofrecer beneficios nutricionales reales.</p>"
           }
@@ -105,6 +106,7 @@
         "value_2": {
           "type": "value",
           "settings": {
+            "image": "shopify://shop_images/d2755b3cfcd00a72ff1c1ca31b30dfb467a691a5.jpg",
             "title": "Ingredientes que suman",
             "text": "<p>Seleccionamos ingredientes que aportan valor, no solo sabor.</p>"
           }
@@ -112,6 +114,7 @@
         "value_3": {
           "type": "value",
           "settings": {
+            "image": "shopify://shop_images/a2153bb74ffb4e298b0790f398b29ee1d8df77e0_1.jpg",
             "title": "El sabor de siempre",
             "text": "<p>La mejor alimentación es la que realmente disfrutás.</p>"
           }
@@ -119,6 +122,7 @@
         "value_4": {
           "type": "value",
           "settings": {
+            "image": "shopify://shop_images/g4u-about-value-progress.jpg",
             "title": "Siempre mejorando",
             "text": "<p>Seguimos desarrollando nuevas formas de reinventar los alimentos de todos los días.</p>"
           }
