@@ -961,7 +961,7 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 .g4u-about-values__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: auto; max-width: 136rem; }
 .g4u-about-value__media { aspect-ratio: 316 / 296; border-radius: 1.2rem; margin-bottom: 2.4rem; overflow: hidden; }
 .g4u-about-value__image { height: 100%; object-fit: cover; width: 100%; }
-.g4u-about-value h3 { color: inherit; font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin: 0 0 1.6rem; }
+.g4u-about-value h3 { font-family: var(--g4u-display); color: inherit; font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin: 0 0 1.6rem; }
 .g4u-about-value .rte { font-size: 1.6rem; line-height: 1.5; margin: auto; max-width: 28rem; }
 
 @media screen and (max-width: 989px) {
