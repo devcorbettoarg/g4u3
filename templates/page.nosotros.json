@@ -11,8 +11,9 @@
   "sections": {
     "about_hero": {
       "type": "g4u-about-hero",
+      "custom_css": [],
       "settings": {
-        "image": "shopify://shop_images/g4u-about-hero.jpg",
+        "image": "shopify://shop_images/Hero_1.png",
         "image_alt": "Wraps preparados con vegetales frescos",
         "line_1": "Creemos que",
         "accent_1": "comer bien",
@@ -20,7 +21,7 @@
         "line_2": "sentirse",
         "line_3": "como un",
         "accent_3": "sacrificio",
-        "text": "<p>Desarrollamos alimentos funcionales que combinan ciencia, nutrición y sabor para demostrar que cuidarse también puede disfrutarse.</p>"
+        "text": "<p>Desarrollamos alimentos funcionales que combinan ciencia, nutrición y sabor para demostrar que cuidarse también puede disfrutarse.<br/><br/></p>"
       }
     },
     "about_manifesto": {
