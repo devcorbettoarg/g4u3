@@ -166,6 +166,7 @@
         "post_1": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/g4u-instagram-1.png",
             "accessibility_label": "Ver publicación de G4U en Instagram",
             "link": ""
           }
@@ -173,6 +174,7 @@
         "post_2": {
           "type": "post",
           "settings": {
+            "image": "shopify://shop_images/g4u-instagram-2.png",
             "accessibility_label": "Ver publicación de G4U en Instagram",
             "link": ""
           }
