@@ -9,26 +9,464 @@
  */
 {
   "sections": {
-    "hero": { "type": "g4u-flour-hero", "settings": { "image": "shopify://shop_images/g4u-flour-hero.jpg" } },
-    "challenge": { "type": "g4u-flour-challenge", "settings": { "image": "shopify://shop_images/g4u-flour-challenge.jpg" } },
+    "hero": {
+      "type": "g4u-flour-hero",
+      "settings": {
+        "image": "shopify://shop_images/g4u-flour-hero.jpg",
+        "image_alt": "Masa de pan sobre una superficie con harina",
+        "title_before": "La",
+        "title_accent_1": "diferencia",
+        "title_after": "empieza en la",
+        "title_accent_2": "harina",
+        "text": "<p>Desarrollamos una harina funcional propia para reinventar el pan desde su origen, combinando ciencia, nutrición y sabor en una única fórmula.</p>"
+      }
+    },
+    "challenge": {
+      "type": "g4u-flour-challenge",
+      "settings": {
+        "eyebrow": "El desafío",
+        "title": "¿Y si el pan pudiera seguir siendo pan,<br>pero nutricionalmente mejor?",
+        "text": "<p><strong>Durante años, comer saludable significó resignar sabor, textura o placer.</strong></p><p>En G4U nos propusimos desarrollar una alternativa capaz de mejorar el perfil nutricional del pan sin perder aquello que más nos gusta: su sabor, su textura y la experiencia de disfrutarlo todos los días.</p>",
+        "image": "shopify://shop_images/g4u-flour-challenge.jpg",
+        "image_alt": "Pan cortado sobre una tabla"
+      }
+    },
     "formula": {
       "type": "g4u-flour-formula",
       "blocks": {
-        "starch": { "type": "ingredient", "settings": { "icon": "g4u-flour-icon-starch.svg", "title": "Almidón resistente RS4", "text": "Reduce el impacto de los carbohidratos disponibles y aporta fibra funcional, ayudando a lograr un mejor perfil nutricional." } },
-        "protein": { "type": "ingredient", "settings": { "icon": "g4u-flour-icon-protein.svg", "title": "Proteínas de alta calidad", "text": "Combinamos distintas fuentes proteicas para aumentar el contenido de proteínas y conservar una textura suave y esponjosa." } },
-        "fiber": { "type": "ingredient", "settings": { "icon": "g4u-flour-icon-fiber.svg", "title": "Fibras funcionales", "text": "Ingredientes como la inulina y el psyllium aportan fibra y ayudan a prolongar la sensación de saciedad." } },
-        "technology": { "type": "ingredient", "settings": { "icon": "technology", "title": "Tecnología alimentaria", "text": "Cada componente fue cuidadosamente seleccionado para lograr estabilidad, frescura y una experiencia similar a la del pan tradicional." } }
+        "starch": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "g4u-flour-icon-starch.svg",
+            "title": "Almidón resistente RS4",
+            "text": "Reduce el impacto de los carbohidratos disponibles y aporta fibra funcional, ayudando a lograr un mejor perfil nutricional."
+          }
+        },
+        "protein": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "g4u-flour-icon-protein.svg",
+            "title": "Proteínas de alta calidad",
+            "text": "Combinamos distintas fuentes proteicas para aumentar el contenido de proteínas y conservar una textura suave y esponjosa."
+          }
+        },
+        "fiber": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "g4u-flour-icon-fiber.svg",
+            "title": "Fibras funcionales",
+            "text": "Ingredientes como la inulina y el psyllium aportan fibra y ayudan a prolongar la sensación de saciedad."
+          }
+        },
+        "technology": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "technology",
+            "title": "Tecnología alimentaria",
+            "text": "Cada componente fue cuidadosamente seleccionado para lograr estabilidad, frescura y una experiencia similar a la del pan tradicional."
+          }
+        }
       },
-      "block_order": ["starch", "protein", "fiber", "technology"], "settings": { "image": "shopify://shop_images/g4u-flour-ingredients.jpg" }
+      "block_order": [
+        "starch",
+        "protein",
+        "fiber",
+        "technology"
+      ],
+      "settings": {
+        "eyebrow": "¿Cómo lo logramos?",
+        "title": "Una fórmula donde cada ingrediente tiene un propósito",
+        "image": "shopify://shop_images/g4u-flour-ingredients.jpg",
+        "image_alt": "Espigas de trigo sobre harina"
+      }
     },
-    "benefits": { "type": "g4u-flour-benefits", "blocks": { "protein": { "type": "benefit", "settings": { "icon": "g4u-flour-icon-protein-large.svg", "title": "Más proteína", "text": "Para una mayor saciedad y un mejor aporte nutricional." } }, "carbs": { "type": "benefit", "settings": { "icon": "g4u-flour-icon-starch-large.svg", "title": "Menos carbohidratos", "text": "Pensada para una alimentación más equilibrada." } }, "fiber": { "type": "benefit", "settings": { "icon": "g4u-flour-icon-fiber-large.svg", "title": "Más fibra", "text": "Ingredientes funcionales que acompañan tu bienestar digestivo." } }, "flavor": { "type": "benefit", "settings": { "icon": "g4u-flour-icon-flavor-large.svg", "title": "Mismo sabor", "text": "La textura y el placer del pan de siempre." } } }, "block_order": ["protein", "carbs", "fiber", "flavor"], "settings": {} },
-    "comparison": { "type": "g4u-comparison-table", "blocks": { "calories": { "type": "row", "settings": { "label": "Calorías (kcal)", "value_1": "360", "value_2": "320", "value_3": "387", "value_4": "576", "value_5": "151" } }, "carbs": { "type": "row", "settings": { "label": "Carbohidratos (g)", "value_1": "71", "value_2": "68", "value_3": "58", "value_4": "20", "value_5": "11" } }, "fiber": { "type": "row", "settings": { "label": "Fibra (g)", "value_1": "2,4", "value_2": "10", "value_3": "10", "value_4": "12", "value_5": "42" } }, "protein": { "type": "row", "settings": { "label": "Proteínas (g)", "value_1": "10", "value_2": "12", "value_3": "22", "value_4": "21", "value_5": "24" } }, "fat": { "type": "row", "settings": { "label": "Grasas totales (g)", "value_1": "1", "value_2": "2,5", "value_3": "6", "value_4": "50", "value_5": "1" } }, "saturated": { "type": "row", "settings": { "label": "Grasas saturadas (g)", "value_1": "0,2", "value_2": "0,5", "value_3": "0,6", "value_4": "3,8", "value_5": "0" } } }, "block_order": ["calories", "carbs", "fiber", "protein", "fat", "saturated"], "settings": { "eyebrow": "Nutrición", "title": "Compará y elegí mejor", "description": "<p>Nuestra harina fue desarrollada para ofrecer más proteína, más fibra y muchos menos carbohidratos que las harinas tradicionales. Los números hablan por sí solos.</p>", "primary_label": "Descubrir productos", "primary_link": "shopify://collections/all", "secondary_label": "" } },
-    "quality": { "type": "g4u-flour-quality", "settings": { "image": "shopify://shop_images/g4u-flour-quality.jpg" } },
-    "faq": { "type": "g4u-flour-faq", "blocks": { "q1": { "type": "question", "settings": { "question": "¿Qué hace diferente a la harina G4U?" } }, "q2": { "type": "question", "settings": { "question": "¿Qué es el almidón resistente RS4?", "answer": "<p>Es un ingrediente funcional que aporta fibra y ayuda a reducir el impacto de los carbohidratos disponibles.</p>" } }, "q3": { "type": "question", "settings": { "question": "¿Por qué desarrollaron una harina propia?", "answer": "<p>Para poder mejorar el perfil nutricional de nuestros productos desde su origen, manteniendo la experiencia del pan de siempre.</p>" } }, "q4": { "type": "question", "settings": { "question": "¿La harina G4U se utiliza en todos sus productos?", "answer": "<p>Nuestra harina funcional es la base de la línea de productos G4U.</p>" } }, "q5": { "type": "question", "settings": { "question": "¿La harina modifica el sabor del pan?", "answer": "<p>No: la fórmula fue desarrollada para conservar una textura suave y el sabor que esperamos de un buen pan.</p>" } }, "q6": { "type": "question", "settings": { "question": "¿Puedo comprar la harina G4U por separado?", "answer": "<p>Consultanos para conocer la disponibilidad y las opciones vigentes.</p>" } } }, "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"], "settings": {} },
-    "experts": { "type": "g4u-experts", "blocks": { "alejandra": { "type": "expert", "settings": { "name": "Dra. Alejandra Moisello", "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand", "quote": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos.</p>", "handle": "@Dra.alejandramoisello" } }, "roxana": { "type": "expert", "settings": { "name": "Roxana Marachlian", "role": "Nutricionista (UBA) · MN 1806 · MP 1128", "quote": "<p>Los panes G4U son una buena opción por su alto valor proteico y muy bajo contenido de carbohidratos.</p>", "handle": "@nutricionintegralballester" } } }, "block_order": ["alejandra", "roxana"], "settings": { "eyebrow": "Respaldo profesional", "title": "Profesionales que nos recomiendan", "description": "<p>Nutricionistas y especialistas confían en G4U por su perfil nutricional.</p>" } },
-    "instagram": { "type": "g4u-instagram", "blocks": { "post_1": { "type": "post", "settings": { "accessibility_label": "Ver publicación 1 en Instagram" } }, "post_2": { "type": "post", "settings": { "accessibility_label": "Ver publicación 2 en Instagram" } }, "post_3": { "type": "post", "settings": { "accessibility_label": "Ver publicación 3 en Instagram" } }, "post_4": { "type": "post", "settings": { "accessibility_label": "Ver publicación 4 en Instagram" } }, "post_5": { "type": "post", "settings": { "accessibility_label": "Ver publicación 5 en Instagram" } }, "post_6": { "type": "post", "settings": { "accessibility_label": "Ver publicación 6 en Instagram" } }, "post_7": { "type": "post", "settings": { "accessibility_label": "Ver publicación 7 en Instagram" } }, "post_8": { "type": "post", "settings": { "accessibility_label": "Ver publicación 8 en Instagram" } } }, "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5", "post_6", "post_7", "post_8"], "settings": { "title": "Descubrí más en Instagram", "button_label": "Seguinos" } },
-    "services": { "type": "g4u-service-benefits", "blocks": { "shipping": { "type": "benefit", "settings": { "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe" } }, "nutrition": { "type": "benefit", "settings": { "text": "Nutrición inteligente, con sabor auténtico y beneficios reales" } }, "delivery": { "type": "benefit", "settings": { "text": "Entregas en 24/48 hs\nen AMBA" } }, "payment": { "type": "benefit", "settings": { "text": "Pago seguro" } } }, "block_order": ["shipping", "nutrition", "delivery", "payment"], "settings": { "accessibility_label": "Beneficios de comprar en G4U" } },
-    "newsletter": { "type": "g4u-newsletter", "settings": { "title": "Suscribite y accedé a un 10% off en tu primer compra", "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>", "placeholder": "Ingresá tu email", "button_label": "Suscribirme", "success_message": "¡Gracias por suscribirte!" } }
+    "benefits": {
+      "type": "g4u-flour-benefits",
+      "blocks": {
+        "protein": {
+          "type": "benefit",
+          "settings": {
+            "icon": "g4u-flour-icon-protein-large.svg",
+            "title": "Más proteína",
+            "text": "Para una mayor saciedad y un mejor aporte nutricional."
+          }
+        },
+        "carbs": {
+          "type": "benefit",
+          "settings": {
+            "icon": "g4u-flour-icon-starch-large.svg",
+            "title": "Menos carbohidratos",
+            "text": "Pensada para una alimentación más equilibrada."
+          }
+        },
+        "fiber": {
+          "type": "benefit",
+          "settings": {
+            "icon": "g4u-flour-icon-fiber-large.svg",
+            "title": "Más fibra",
+            "text": "Ingredientes funcionales que acompañan tu bienestar digestivo."
+          }
+        },
+        "flavor": {
+          "type": "benefit",
+          "settings": {
+            "icon": "g4u-flour-icon-flavor-large.svg",
+            "title": "Mismo sabor",
+            "text": "La textura y el placer del pan de siempre."
+          }
+        }
+      },
+      "block_order": [
+        "protein",
+        "carbs",
+        "fiber",
+        "flavor"
+      ],
+      "settings": {
+        "title": "Una harina que cambia la forma de hacer pan"
+      }
+    },
+    "comparison": {
+      "type": "g4u-comparison-table",
+      "blocks": {
+        "calories": {
+          "type": "row",
+          "settings": {
+            "label": "Calorías (kcal)",
+            "value_1": "360",
+            "value_2": "320",
+            "value_3": "387",
+            "value_4": "576",
+            "value_5": "151"
+          }
+        },
+        "carbs": {
+          "type": "row",
+          "settings": {
+            "label": "Carbohidratos (g)",
+            "value_1": "71",
+            "value_2": "68",
+            "value_3": "58",
+            "value_4": "20",
+            "value_5": "11"
+          }
+        },
+        "fiber": {
+          "type": "row",
+          "settings": {
+            "label": "Fibra (g)",
+            "value_1": "2,4",
+            "value_2": "10",
+            "value_3": "10",
+            "value_4": "12",
+            "value_5": "42"
+          }
+        },
+        "protein": {
+          "type": "row",
+          "settings": {
+            "label": "Proteínas (g)",
+            "value_1": "10",
+            "value_2": "12",
+            "value_3": "22",
+            "value_4": "21",
+            "value_5": "24"
+          }
+        },
+        "fat": {
+          "type": "row",
+          "settings": {
+            "label": "Grasas totales (g)",
+            "value_1": "1",
+            "value_2": "2,5",
+            "value_3": "6",
+            "value_4": "50",
+            "value_5": "1"
+          }
+        },
+        "saturated": {
+          "type": "row",
+          "settings": {
+            "label": "Grasas saturadas (g)",
+            "value_1": "0,2",
+            "value_2": "0,5",
+            "value_3": "0,6",
+            "value_4": "3,8",
+            "value_5": "0"
+          }
+        }
+      },
+      "block_order": [
+        "calories",
+        "carbs",
+        "fiber",
+        "protein",
+        "fat",
+        "saturated"
+      ],
+      "settings": {
+        "eyebrow": "Nutrición",
+        "title": "Compará y elegí mejor",
+        "description": "<p>Nuestra harina fue desarrollada para ofrecer más proteína, más fibra y muchos menos carbohidratos que las harinas tradicionales. Los números hablan por sí solos.</p>",
+        "first_column": "Nutrientes",
+        "column_1": "Harina de Trigo 000",
+        "column_2": "Harina de Trigo Integral",
+        "column_3": "Harina de Garbanzos",
+        "column_4": "Harina de Almendras",
+        "column_5": "Harina G4U",
+        "note": "Cada 100g",
+        "primary_label": "Descubrir productos",
+        "primary_link": "shopify://collections/all",
+        "secondary_label": "",
+        "secondary_link": ""
+      }
+    },
+    "quality": {
+      "type": "g4u-flour-quality",
+      "settings": {
+        "image": "shopify://shop_images/9449a25688fedba6a2ae31745aa486f66741fdd7.png",
+        "image_alt": "Harina junto a espigas de trigo",
+        "accent": "Calidad",
+        "title": "respaldada",
+        "text": "<p>Nuestra harina fue desarrollada y analizada para garantizar un perfil nutricional consistente y transparente.</p>",
+        "button_label": "Ver el análisis CONICET",
+        "button_link": ""
+      }
+    },
+    "faq": {
+      "type": "g4u-flour-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué hace diferente a la harina G4U?",
+            "answer": "<p>Es una formulación funcional propia que combina proteínas, fibras y almidón resistente para mejorar el perfil nutricional sin resignar sabor ni textura.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué es el almidón resistente RS4?",
+            "answer": "<p>Es un ingrediente funcional que aporta fibra y ayuda a reducir el impacto de los carbohidratos disponibles.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "¿Por qué desarrollaron una harina propia?",
+            "answer": "<p>Para poder mejorar el perfil nutricional de nuestros productos desde su origen, manteniendo la experiencia del pan de siempre.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "¿La harina G4U se utiliza en todos sus productos?",
+            "answer": "<p>Nuestra harina funcional es la base de la línea de productos G4U.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "¿La harina modifica el sabor del pan?",
+            "answer": "<p>No: la fórmula fue desarrollada para conservar una textura suave y el sabor que esperamos de un buen pan.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "¿Puedo comprar la harina G4U por separado?",
+            "answer": "<p>Consultanos para conocer la disponibilidad y las opciones vigentes.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "title": "Preguntas frecuentes",
+        "description": "<p>Todo lo que querés saber sobre la harina que hace diferentes a nuestros productos.</p>",
+        "contact_title": "¿Todavía tenés preguntas?",
+        "contact_label": "Contactate con nosotros",
+        "contact_link": ""
+      }
+    },
+    "experts": {
+      "type": "g4u-experts",
+      "blocks": {
+        "alejandra": {
+          "type": "expert",
+          "settings": {
+            "video_url": "",
+            "name": "Dra. Alejandra Moisello",
+            "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand",
+            "quote": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos.</p>",
+            "handle": "@Dra.alejandramoisello",
+            "profile_link": ""
+          }
+        },
+        "roxana": {
+          "type": "expert",
+          "settings": {
+            "video_url": "",
+            "name": "Roxana Marachlian",
+            "role": "Nutricionista (UBA) · MN 1806 · MP 1128",
+            "quote": "<p>Los panes G4U son una buena opción por su alto valor proteico y muy bajo contenido de carbohidratos.</p>",
+            "handle": "@nutricionintegralballester",
+            "profile_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "alejandra",
+        "roxana"
+      ],
+      "settings": {
+        "eyebrow": "Respaldo profesional",
+        "title": "Profesionales que nos recomiendan",
+        "description": "<p>Nutricionistas y especialistas confían en G4U por su perfil nutricional.</p>"
+      }
+    },
+    "instagram": {
+      "type": "g4u-instagram",
+      "blocks": {
+        "post_1": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 1 en Instagram",
+            "link": ""
+          }
+        },
+        "post_2": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 2 en Instagram",
+            "link": ""
+          }
+        },
+        "post_3": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 3 en Instagram",
+            "link": ""
+          }
+        },
+        "post_4": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 4 en Instagram",
+            "link": ""
+          }
+        },
+        "post_5": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 5 en Instagram",
+            "link": ""
+          }
+        },
+        "post_6": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 6 en Instagram",
+            "link": ""
+          }
+        },
+        "post_7": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 7 en Instagram",
+            "link": ""
+          }
+        },
+        "post_8": {
+          "type": "post",
+          "settings": {
+            "accessibility_label": "Ver publicación 8 en Instagram",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "post_1",
+        "post_2",
+        "post_3",
+        "post_4",
+        "post_5",
+        "post_6",
+        "post_7",
+        "post_8"
+      ],
+      "settings": {
+        "title": "Descubrí más en Instagram",
+        "button_label": "Seguinos",
+        "link": ""
+      }
+    },
+    "services": {
+      "type": "g4u-service-benefits",
+      "blocks": {
+        "shipping": {
+          "type": "benefit",
+          "settings": {
+            "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe"
+          }
+        },
+        "nutrition": {
+          "type": "benefit",
+          "settings": {
+            "text": "Nutrición inteligente, con sabor auténtico y beneficios reales"
+          }
+        },
+        "delivery": {
+          "type": "benefit",
+          "settings": {
+            "text": "Entregas en 24/48 hs\nen AMBA"
+          }
+        },
+        "payment": {
+          "type": "benefit",
+          "settings": {
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "shipping",
+        "nutrition",
+        "delivery",
+        "payment"
+      ],
+      "settings": {
+        "accessibility_label": "Beneficios de comprar en G4U"
+      }
+    },
+    "newsletter": {
+      "type": "g4u-newsletter",
+      "settings": {
+        "title": "Suscribite y accedé a un 10% off en tu primer compra",
+        "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>",
+        "placeholder": "Ingresá tu email",
+        "button_label": "Suscribirme",
+        "success_message": "¡Gracias por suscribirte!"
+      }
+    }
   },
-  "order": ["hero", "challenge", "formula", "benefits", "comparison", "quality", "faq", "experts", "instagram", "services", "newsletter"]
+  "order": [
+    "hero",
+    "challenge",
+    "formula",
+    "benefits",
+    "comparison",
+    "quality",
+    "faq",
+    "experts",
+    "instagram",
+    "services",
+    "newsletter"
+  ]
 }
