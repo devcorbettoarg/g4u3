@@ -24,7 +24,7 @@
         class="g4u-about-story__title g4u-display"
         id="G4uAboutStory-{{ section.id }}"
       >
-        {{ section.settings.title | escape }}
+        {{ section.settings.title | replace:"|","<br>"  | escape }}
       </h2>
 
       {%- if section.settings.lead != blank -%}
