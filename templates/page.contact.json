@@ -1,6 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "contact": { "type": "g4u-contact", "settings": {} }
+    "contact": {
+      "type": "g4u-contact",
+      "settings": {
+        "eyebrow": "Estamos para ayudarte",
+        "title": "Contactanos",
+        "intro": "<p>Escribinos y nuestro equipo te responderá a la brevedad.</p>",
+        "image": "shopify://shop_images/Placeholder_Image.png",
+        "image_alt": "Productos G4U sobre una mesa",
+        "button_label": "Enviar mensaje",
+        "success": "¡Gracias! Recibimos tu mensaje."
+      }
+    }
   },
   "order": [
     "contact"
