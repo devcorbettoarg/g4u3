@@ -168,7 +168,7 @@ body.template-suffix-nosotros .shopify-section-group-header-group {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 999;
+  z-index: 99998;
 }
 body.template-index .section-header .header-wrapper,
 body.template-suffix-nosotros .section-header .header-wrapper {
