@@ -184,9 +184,9 @@
         "science_flavor"
       ],
       "settings": {
-        "eyebrow": "Fibras funcionales",
+        "eyebrow": "Nuestra harina",
         "title": "La ciencia detrás de nuestro pan",
-        "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.</p>",
+        "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.<br/><br/></p>",
         "tabs_label": "Más sabor",
         "why_label": "",
         "link_label": "Conocé nuestra harina",
