@@ -140,12 +140,12 @@
             "tab_label": "Más proteína",
             "image": "shopify://shop_images/f32c082388917954ebffbe4eba53d3356e1a6cf1.jpg",
             "image_alt": "Espigas de trigo sobre harina",
-            "tagline": "",
-            "heading": "Más proteína",
-            "text": "",
-            "benefit_1": "",
-            "benefit_2": "",
-            "benefit_3": ""
+            "tagline": "Proteínas completas",
+            "heading": "Nutrición que realmente alimenta.",
+            "text": "<p>Combinamos concentrado proteico de leche y huevo en polvo para aportar proteínas de alto valor biológico, con todos los aminoácidos esenciales. El resultado es un pan que ayuda a mantener la masa muscular y genera mayor sensación de saciedad.<br/><br/></p>",
+            "benefit_1": "Entre 12 y 15 g de proteína por porción",
+            "benefit_2": "Proteína completa",
+            "benefit_3": "Mayor saciedad"
           }
         },
         "science_fiber": {
