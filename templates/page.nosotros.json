@@ -54,25 +54,29 @@
         "point_1": {
           "type": "item",
           "settings": {
-            "text": "Creemos en productos que puedas elegir todos los días."
+            "text": "Creemos en productos que puedas elegir todos los días.",
+            "icon": "transport"
           }
         },
         "point_2": {
           "type": "item",
           "settings": {
-            "text": "En ingredientes que cumplen una función."
+            "text": "En ingredientes que cumplen una función.",
+            "icon": "check"
           }
         },
         "point_3": {
           "type": "item",
           "settings": {
-            "text": "En información clara."
+            "text": "En información clara.",
+            "icon": "check"
           }
         },
         "point_4": {
           "type": "item",
           "settings": {
-            "text": "Y en la innovación aplicada a mejorar la forma en que nos alimentamos."
+            "text": "Y en la innovación aplicada a mejorar la forma en que nos alimentamos.",
+            "icon": "check"
           }
         }
       },
