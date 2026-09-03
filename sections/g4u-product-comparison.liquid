@@ -19,7 +19,9 @@
     <article class="g4u-product-comparison__panel g4u-product-comparison__panel--g4u">
       <h2>{{ section.settings.g4u_heading | default: product.title | escape }}</h2>
       <div class="g4u-product-comparison__media">
-        {%- if product.featured_media != blank -%}
+        {%- if section.settings.g4u_image != blank -%}
+          {{ section.settings.g4u_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 50vw, 100vw' }}
+        {%- elsif product.featured_media != blank -%}
           {{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 50vw, 100vw' }}
         {%- else -%}
           <img src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="900" height="900" loading="lazy">
@@ -46,6 +48,7 @@
     { "type": "image_picker", "id": "other_image", "label": "Imagen producto comparativo" },
     { "type": "text", "id": "note", "label": "Nota columna comparativa", "default": "Porción de 2 rebanadas / 60 g" },
     { "type": "text", "id": "g4u_heading", "label": "Título columna G4U", "default": "Pan de molde G4U" },
+    { "type": "image_picker", "id": "g4u_image", "label": "Imagen producto G4U (opcional)" },
     { "type": "text", "id": "g4u_note", "label": "Nota columna G4U", "default": "Porción de 2 rebanadas / 60 g" }
   ],
   "blocks": [

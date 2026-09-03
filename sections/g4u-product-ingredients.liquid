@@ -9,7 +9,11 @@
       <details {{ block.shopify_attributes }}>
         <summary>
           <span class="g4u-product-ingredients__summary-label">
-            {% render 'icon-accordion', icon: block.settings.icon %}
+            {%- if block.settings.custom_icon != blank -%}
+              {{ block.settings.custom_icon | image_url: width: 64 | image_tag: loading: 'lazy', widths: '32, 64', sizes: '32px' }}
+            {%- else -%}
+              {% render 'icon-accordion', icon: block.settings.icon %}
+            {%- endif -%}
             {{ block.settings.title | escape }}
           </span>
           <span class="g4u-product-ingredients__chevron" aria-hidden="true"></span>
@@ -33,6 +37,7 @@
   ],
   "blocks": [
     { "type": "ingredient", "name": "Ingrediente", "settings": [
+      { "type": "image_picker", "id": "custom_icon", "label": "Ícono personalizado" },
       { "type": "select", "id": "icon", "label": "Icono", "options": [
         { "value": "leaf", "label": "Hoja" },
         { "value": "iron", "label": "Nutrientes" },

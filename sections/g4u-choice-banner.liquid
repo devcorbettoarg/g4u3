@@ -6,15 +6,15 @@
   <h2 class="g4u-choice-banner__copy g4u-display" id="G4uChoice-{{ section.id }}">
     <span class="g4u-choice-banner__line g4u-choice-banner__line--first">
       {{ section.settings.first_prefix | escape }}
-      <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">
+      {%- if section.settings.bread_image != blank -%}{{ section.settings.bread_image | image_url: width: 912 | image_tag: class: 'g4u-choice-banner__object', loading: 'lazy', widths: '456, 912', sizes: '456px' }}{%- else -%}<img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">{%- endif -%}
       {{ section.settings.first_suffix | escape }}
     </span>
     <span class="g4u-choice-banner__line g4u-choice-banner__line--second">
-      <img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bun.png' | asset_url }}" alt="" width="406" height="391" loading="lazy">
+      {%- if section.settings.bun_image != blank -%}{{ section.settings.bun_image | image_url: width: 812 | image_tag: class: 'g4u-choice-banner__object', loading: 'lazy', widths: '406, 812', sizes: '406px' }}{%- else -%}<img class="g4u-choice-banner__object" src="{{ 'g4u-choice-bun.png' | asset_url }}" alt="" width="406" height="391" loading="lazy">{%- endif -%}
       <span class="g4u-choice-banner__accent">{{ section.settings.second_accent_one | escape }}</span>
       {{ section.settings.second_joiner | escape }}
       <span class="g4u-choice-banner__accent">{{ section.settings.second_accent_two | escape }}</span>
-      <img class="g4u-choice-banner__object g4u-choice-banner__object--tortilla" src="{{ 'g4u-choice-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">
+      {%- if section.settings.tortilla_image != blank -%}{{ section.settings.tortilla_image | image_url: width: 980 | image_tag: class: 'g4u-choice-banner__object g4u-choice-banner__object--tortilla', loading: 'lazy', widths: '490, 980', sizes: '490px' }}{%- else -%}<img class="g4u-choice-banner__object g4u-choice-banner__object--tortilla" src="{{ 'g4u-choice-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">{%- endif -%}
     </span>
   </h2>
 </section>
@@ -30,6 +30,10 @@
     { "type": "color", "id": "line_one_color", "label": "Primera línea", "default": "#fff8f0" },
     { "type": "color", "id": "line_two_color", "label": "Segunda línea", "default": "#fff8f0" },
     { "type": "color", "id": "accent_color", "label": "Palabras destacadas", "default": "#ff4622" },
+    { "type": "header", "content": "Imágenes" },
+    { "type": "image_picker", "id": "bread_image", "label": "Producto primera línea" },
+    { "type": "image_picker", "id": "bun_image", "label": "Producto segunda línea" },
+    { "type": "image_picker", "id": "tortilla_image", "label": "Producto derecho" },
     { "type": "header", "content": "Texto" },
     { "type": "text", "id": "first_prefix", "label": "Primera línea · inicio", "default": "No tenés que" },
     { "type": "text", "id": "first_suffix", "label": "Primera línea · final", "default": "elegir entre" },
