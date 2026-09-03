@@ -369,6 +369,32 @@
                   </details>
               {% endcase %}
             {%- endfor -%}
+            {%- if filter_type == 'horizontal' and results.filters.size < 4 -%}
+              {%- if results.filters.size <= 2 and collection.all_tags.size > 0 -%}
+                <details class="g4u-facets__fallback">
+                  <summary class="facets__summary caption-large focus-offset"><div><span>Etiquetas</span>{{- 'icon-caret.svg' | inline_asset_content -}}</div></summary>
+                  <div class="facets__display">
+                    <ul class="facets-layout facets-layout-list list-unstyled" role="list">
+                      {%- for tag in collection.all_tags -%}
+                        <li class="list-menu__item"><a class="facet-checkbox" href="{{ collection.url }}/{{ tag | handle }}">{{ tag | escape }}</a></li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </details>
+              {%- endif -%}
+              {%- if results.filters.size <= 3 -%}
+                <details class="g4u-facets__fallback">
+                  <summary class="facets__summary caption-large focus-offset"><div><span>Colección</span>{{- 'icon-caret.svg' | inline_asset_content -}}</div></summary>
+                  <div class="facets__display">
+                    <ul class="facets-layout facets-layout-list list-unstyled" role="list">
+                      {%- for collection_item in collections limit: 50 -%}
+                        <li class="list-menu__item"><a class="facet-checkbox" href="{{ collection_item.url }}">{{ collection_item.title | escape }}</a></li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </details>
+              {%- endif -%}
+            {%- endif -%}
             </div>
           </div>
           {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
