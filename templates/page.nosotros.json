@@ -55,28 +55,28 @@
           "type": "item",
           "settings": {
             "text": "Creemos en productos que puedas elegir todos los días.",
-            "icon": "transport"
+            "icon": "shopify://shop_images/transport.svg"
           }
         },
         "point_2": {
           "type": "item",
           "settings": {
             "text": "En ingredientes que cumplen una función.",
-            "icon": "check"
+            "icon": "shopify://shop_images/transport.svg"
           }
         },
         "point_3": {
           "type": "item",
           "settings": {
             "text": "En información clara.",
-            "icon": "check"
+            "icon": "shopify://shop_images/transport.svg"
           }
         },
         "point_4": {
           "type": "item",
           "settings": {
             "text": "Y en la innovación aplicada a mejorar la forma en que nos alimentamos.",
-            "icon": "check"
+            "icon": "shopify://shop_images/transport.svg"
           }
         }
       },
