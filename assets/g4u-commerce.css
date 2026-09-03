@@ -66,17 +66,6 @@
   border-radius: 0;
   padding: 0;
 }
-.template-collection .facets__form.g4u-facets--expanded::before {
-  background: var(--g4u-cream);
-  border: .1rem solid #d5d4d4;
-  border-radius: 10rem;
-  content: '';
-  grid-column: 1 / -1;
-  grid-row: 1;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
 .template-collection .facets__form.g4u-facets--expanded > * { position: relative; z-index: 1; }
 .template-collection .facets-container.g4u-facets--expanded .g4u-facets__controls {
   display: grid;
