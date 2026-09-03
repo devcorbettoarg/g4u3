@@ -231,6 +231,12 @@ body.template-suffix-nosotros .section-header:has(header-menu details[open]) .g4
 .section-header:has(header-menu details[open]) #cart-icon-bubble .icon {
   stroke: currentColor;
 }
+.section-header.shopify-section-header-sticky #cart-icon-bubble svg,
+.section-header:has(header-menu details[open]) #cart-icon-bubble svg,
+.section-header.shopify-section-header-sticky #cart-icon-bubble svg path,
+.section-header:has(header-menu details[open]) #cart-icon-bubble svg path {
+  stroke: var(--g4u-ink) !important;
+}
 @media screen and (min-width: 750px) {
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
