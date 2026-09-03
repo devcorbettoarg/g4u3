@@ -129,8 +129,25 @@ body.template-suffix-nosotros .announcement-bar-section {
 .g4u-mega-menu__category-list { display: grid; gap: 0; margin: 0 0 2.5rem; }
 .g4u-mega-menu__category-link { color: var(--g4u-burgundy); display: inline-block; font-size: 1.45rem; font-weight: 500; padding: .4rem 0; text-decoration: none; }
 .g4u-mega-menu__category-link:hover { color: var(--g4u-orange); text-decoration: underline; text-underline-offset: .25rem; }
-.g4u-mega-menu__cta { --alpha-button-background: 0; --alpha-button-border: 1; border-color: var(--g4u-ink); border-radius: 10rem; color: var(--g4u-ink); font-size: 1.3rem; min-height: 3.8rem; padding: .7rem 1.8rem; }
-.g4u-mega-menu__cta:hover { background: var(--g4u-burgundy); border-color: var(--g4u-burgundy); color: var(--g4u-cream); }
+.g4u-mega-menu__cta {
+  --alpha-button-background: 0;
+  --buttons-border-opacity: 1;
+  --buttons-radius: 10rem;
+  --buttons-radius-outset: 10rem;
+  --color-button: 38, 19, 27;
+  --color-button-text: 38, 19, 27;
+  --border-offset: 0px;
+  border-radius: 10rem;
+  color: var(--g4u-ink);
+  font-size: 1.3rem;
+  min-height: 3.8rem;
+  padding: .7rem 1.8rem;
+}
+.g4u-mega-menu__cta:hover {
+  --alpha-button-background: 1;
+  --color-button: 80, 3, 34;
+  --color-button-text: 255, 248, 240;
+}
 .g4u-mega-menu__products { display: grid; gap: 1.6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .g4u-mega-menu__product { color: var(--g4u-ink); display: grid; gap: 1rem; min-width: 0; text-decoration: none; }
 .g4u-mega-menu__product-image { align-items: center; aspect-ratio: .83 / 1; background: #f0e8df; border-radius: .8rem; display: flex; justify-content: center; overflow: hidden; padding: 1.2rem; }
