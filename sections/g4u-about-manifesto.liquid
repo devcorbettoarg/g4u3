@@ -1,6 +1,14 @@
-<section class="g4u-about-manifesto" id="G4uAboutManifesto" aria-labelledby="G4uAboutManifestoTitle-{{ section.id }}">
+<section
+  class="g4u-about-manifesto"
+  id="G4uAboutManifesto-{{ section.id }}"
+  aria-labelledby="G4uAboutManifestoTitle-{{ section.id }}"
+  data-g4u-manifesto-parallax
+>
   <div class="g4u-about-manifesto__copy">
-    <h2 class="g4u-about-manifesto__title g4u-display" id="G4uAboutManifestoTitle-{{ section.id }}">
+    <h2
+      class="g4u-about-manifesto__title g4u-display"
+      id="G4uAboutManifestoTitle-{{ section.id }}"
+    >
       Creemos en la <em>nutrición inteligente,</em><br>
       la que combina <strong>ciencia, sabor</strong><br>
       y <strong>bienestar</strong> real.<br>
@@ -13,19 +21,732 @@
       Creemos que lo <em>saludable</em><br>
       no tiene que ser aburrido.
     </h2>
+
     <div class="g4u-about-manifesto__closing g4u-display">
       <p>{{ section.settings.closing | escape | newline_to_br }}</p>
       <p>{{ section.settings.closing_accent | escape | newline_to_br }}</p>
     </div>
   </div>
+
   <div class="g4u-about-manifesto__art" aria-hidden="true">
-    {%- if section.settings.dust_image != blank -%}{{ section.settings.dust_image | image_url: width: 1024 | image_tag: class: 'g4u-about-manifesto__dust', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__dust" src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}" alt="" width="1024" height="1536" loading="lazy">{%- endif -%}
-    {%- if section.settings.texture_image != blank -%}{{ section.settings.texture_image | image_url: width: 1024 | image_tag: class: 'g4u-about-manifesto__texture', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__texture" src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}" alt="" width="1024" height="1535" loading="lazy">{%- endif -%}
-    {%- if section.settings.snack_image != blank -%}{{ section.settings.snack_image | image_url: width: 456 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--snack" src="{{ 'g4u-about-snack.png' | asset_url }}" alt="" width="456" height="458" loading="lazy">{%- endif -%}
-    {%- if section.settings.bread_image != blank -%}{{ section.settings.bread_image | image_url: width: 866 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--bread" src="{{ 'g4u-about-bread.png' | asset_url }}" alt="" width="866" height="926" loading="lazy">{%- endif -%}
-    {%- if section.settings.tortilla_image != blank -%}{{ section.settings.tortilla_image | image_url: width: 490 | image_tag: class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla', loading: 'lazy' }}{%- else -%}<img class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla" src="{{ 'g4u-about-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">{%- endif -%}
+
+    {%- if section.settings.dust_image != blank -%}
+      {{
+        section.settings.dust_image
+        | image_url: width: 1024
+        | image_tag:
+          class: 'g4u-about-manifesto__dust',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      <img
+        class="g4u-about-manifesto__dust"
+        src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}"
+        alt=""
+        width="1024"
+        height="1536"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.texture_image != blank -%}
+      {{
+        section.settings.texture_image
+        | image_url: width: 1024
+        | image_tag:
+          class: 'g4u-about-manifesto__texture',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      <img
+        class="g4u-about-manifesto__texture"
+        src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}"
+        alt=""
+        width="1024"
+        height="1535"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.snack_image != blank -%}
+      {{
+        section.settings.snack_image
+        | image_url: width: 456
+        | image_tag:
+          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      <img
+        class="g4u-about-manifesto__object g4u-about-manifesto__object--snack"
+        src="{{ 'g4u-about-snack.png' | asset_url }}"
+        alt=""
+        width="456"
+        height="458"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.bread_image != blank -%}
+      {{
+        section.settings.bread_image
+        | image_url: width: 866
+        | image_tag:
+          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      <img
+        class="g4u-about-manifesto__object g4u-about-manifesto__object--bread"
+        src="{{ 'g4u-about-bread.png' | asset_url }}"
+        alt=""
+        width="866"
+        height="926"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.tortilla_image != blank -%}
+      {{
+        section.settings.tortilla_image
+        | image_url: width: 490
+        | image_tag:
+          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      <img
+        class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla"
+        src="{{ 'g4u-about-tortilla.png' | asset_url }}"
+        alt=""
+        width="490"
+        height="449"
+        loading="lazy"
+      >
+    {%- endif -%}
+
   </div>
 </section>
+
+
+<style>
+  /* ============================================================
+     G4U MANIFESTO
+     PARALLAX DESKTOP
+     No modifica el posicionamiento base de los elementos.
+     ============================================================ */
+
+  @media screen and (min-width: 990px) {
+
+    #G4uAboutManifesto-{{ section.id }} {
+      position: relative;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__art {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__dust,
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__texture,
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object {
+      will-change: translate, rotate;
+      backface-visibility: hidden;
+    }
+
+
+    /* ==========================
+       POLVO
+       Capa más profunda
+       ========================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__dust {
+      translate:
+        var(--g4u-dust-x, 0px)
+        var(--g4u-dust-y, 0px);
+    }
+
+
+    /* ==========================
+       TEXTURA
+       Capa de profundidad media
+       ========================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__texture {
+      translate:
+        var(--g4u-texture-x, 0px)
+        var(--g4u-texture-y, 0px);
+
+      scale: 1.035;
+    }
+
+
+    /* ==========================
+       SNACK SUPERIOR
+       Elemento más "cercano"
+       ========================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--snack {
+      translate:
+        var(--g4u-snack-x, 0px)
+        var(--g4u-snack-y, 0px);
+
+      rotate:
+        var(--g4u-snack-rotate, 0deg);
+    }
+
+
+    /* ==========================
+       PAN CENTRAL
+       Movimiento intermedio
+       ========================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--bread {
+      translate:
+        var(--g4u-bread-x, 0px)
+        var(--g4u-bread-y, 0px);
+
+      rotate:
+        var(--g4u-bread-rotate, 0deg);
+    }
+
+
+    /* ==========================
+       TORTILLA
+       Movimiento ligeramente
+       contrario al resto
+       ========================== */
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--tortilla {
+      translate:
+        var(--g4u-tortilla-x, 0px)
+        var(--g4u-tortilla-y, 0px);
+
+      rotate:
+        var(--g4u-tortilla-rotate, 0deg);
+    }
+  }
+
+
+  /* ============================================================
+     ACCESIBILIDAD
+     ============================================================ */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__dust,
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__texture,
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object {
+      translate: 0 0 !important;
+      rotate: 0deg !important;
+      scale: 1 !important;
+    }
+  }
+</style>
+
+
+<script>
+  (() => {
+
+    const section = document.querySelector(
+      '#G4uAboutManifesto-{{ section.id }}'
+    );
+
+    if (!section) return;
+
+    /*
+     * Evita inicializar dos veces la misma sección
+     * dentro del Theme Editor de Shopify.
+     */
+    if (section.dataset.g4uParallaxInitialized === 'true') {
+      return;
+    }
+
+    section.dataset.g4uParallaxInitialized = 'true';
+
+
+    /* ==========================================================
+       CONFIGURACIÓN
+       ========================================================== */
+
+    const desktopQuery = window.matchMedia(
+      '(min-width: 990px)'
+    );
+
+    const reducedMotionQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
+
+
+    /*
+     * Intensidad del efecto.
+     *
+     * scrollY = movimiento máximo provocado por scroll
+     * mouseX  = movimiento horizontal por mouse
+     * mouseY  = movimiento vertical por mouse
+     * rotate  = rotación máxima por mouse
+     *
+     * Podés ajustar estos valores posteriormente.
+     */
+
+    const layers = {
+
+      dust: {
+        scrollY: 18,
+        mouseX: -4,
+        mouseY: -4
+      },
+
+      texture: {
+        scrollY: -32,
+        mouseX: 6,
+        mouseY: 6
+      },
+
+      snack: {
+        scrollY: -58,
+        mouseX: 16,
+        mouseY: 12,
+        rotate: 0.8
+      },
+
+      bread: {
+        scrollY: -38,
+        mouseX: 10,
+        mouseY: 8,
+        rotate: -0.35
+      },
+
+      tortilla: {
+        scrollY: -48,
+        mouseX: -11,
+        mouseY: -8,
+        rotate: -0.55
+      }
+
+    };
+
+
+    /* ==========================================================
+       ESTADO
+       ========================================================== */
+
+    let targetPointerX = 0;
+    let targetPointerY = 0;
+
+    let pointerX = 0;
+    let pointerY = 0;
+
+    let targetScrollProgress = 0;
+    let scrollProgress = 0;
+
+    let isVisible = true;
+    let frame = null;
+
+
+    /* ==========================================================
+       HELPERS
+       ========================================================== */
+
+    const clamp = (value, min, max) => {
+      return Math.min(Math.max(value, min), max);
+    };
+
+
+    const lerp = (current, target, amount) => {
+      return current + (target - current) * amount;
+    };
+
+
+    const enabled = () => {
+      return (
+        desktopQuery.matches &&
+        !reducedMotionQuery.matches
+      );
+    };
+
+
+    /* ==========================================================
+       CALCULAR POSICIÓN DE SCROLL
+       ========================================================== */
+
+    const updateScrollTarget = () => {
+
+      if (!enabled()) return;
+
+      const rect = section.getBoundingClientRect();
+
+      const viewportHeight = window.innerHeight;
+
+      const sectionCenter =
+        rect.top + (rect.height / 2);
+
+      const viewportCenter =
+        viewportHeight / 2;
+
+
+      /*
+       * progress:
+       *
+       * -1 = sección entrando por abajo
+       *  0 = sección centrada
+       *  1 = sección saliendo por arriba
+       */
+
+      const distance =
+        viewportCenter - sectionCenter;
+
+      const range =
+        (viewportHeight + rect.height) / 2;
+
+      targetScrollProgress = clamp(
+        distance / range,
+        -1,
+        1
+      );
+
+    };
+
+
+    /* ==========================================================
+       MOUSE / POINTER
+       ========================================================== */
+
+    const updatePointerTarget = (event) => {
+
+      if (!enabled()) return;
+
+      const rect =
+        section.getBoundingClientRect();
+
+      const normalizedX =
+        (event.clientX - rect.left) /
+        rect.width;
+
+      const normalizedY =
+        (event.clientY - rect.top) /
+        rect.height;
+
+
+      /*
+       * Convierte:
+       *
+       * izquierda  = -1
+       * centro     = 0
+       * derecha    = 1
+       */
+
+      targetPointerX = clamp(
+        (normalizedX - 0.5) * 2,
+        -1,
+        1
+      );
+
+      targetPointerY = clamp(
+        (normalizedY - 0.5) * 2,
+        -1,
+        1
+      );
+
+    };
+
+
+    const resetPointer = () => {
+
+      targetPointerX = 0;
+      targetPointerY = 0;
+
+    };
+
+
+    /* ==========================================================
+       ESCRIBIR VARIABLES CSS
+       ========================================================== */
+
+    const setLayerVariables = (
+      name,
+      config
+    ) => {
+
+      const x =
+        pointerX * config.mouseX;
+
+      const y =
+        (
+          scrollProgress * config.scrollY
+        ) +
+        (
+          pointerY * config.mouseY
+        );
+
+
+      section.style.setProperty(
+        `--g4u-${name}-x`,
+        `${x.toFixed(2)}px`
+      );
+
+      section.style.setProperty(
+        `--g4u-${name}-y`,
+        `${y.toFixed(2)}px`
+      );
+
+
+      if (typeof config.rotate !== 'undefined') {
+
+        const rotation =
+          pointerX * config.rotate;
+
+        section.style.setProperty(
+          `--g4u-${name}-rotate`,
+          `${rotation.toFixed(3)}deg`
+        );
+
+      }
+
+    };
+
+
+    /* ==========================================================
+       RESET
+       ========================================================== */
+
+    const resetStyles = () => {
+
+      Object.keys(layers).forEach((name) => {
+
+        section.style.removeProperty(
+          `--g4u-${name}-x`
+        );
+
+        section.style.removeProperty(
+          `--g4u-${name}-y`
+        );
+
+        section.style.removeProperty(
+          `--g4u-${name}-rotate`
+        );
+
+      });
+
+      targetPointerX = 0;
+      targetPointerY = 0;
+
+      pointerX = 0;
+      pointerY = 0;
+
+      targetScrollProgress = 0;
+      scrollProgress = 0;
+
+    };
+
+
+    /* ==========================================================
+       ANIMATION LOOP
+       ========================================================== */
+
+    const render = () => {
+
+      if (!enabled()) {
+
+        resetStyles();
+
+        frame = requestAnimationFrame(render);
+
+        return;
+      }
+
+
+      /*
+       * Easing.
+       *
+       * 0.06 - más cinematográfico / pesado
+       * 0.09 - balanceado
+       * 0.15 - más reactivo
+       */
+
+      const ease = 0.085;
+
+
+      pointerX = lerp(
+        pointerX,
+        targetPointerX,
+        ease
+      );
+
+      pointerY = lerp(
+        pointerY,
+        targetPointerY,
+        ease
+      );
+
+      scrollProgress = lerp(
+        scrollProgress,
+        targetScrollProgress,
+        ease
+      );
+
+
+      if (isVisible) {
+
+        setLayerVariables(
+          'dust',
+          layers.dust
+        );
+
+        setLayerVariables(
+          'texture',
+          layers.texture
+        );
+
+        setLayerVariables(
+          'snack',
+          layers.snack
+        );
+
+        setLayerVariables(
+          'bread',
+          layers.bread
+        );
+
+        setLayerVariables(
+          'tortilla',
+          layers.tortilla
+        );
+
+      }
+
+
+      frame = requestAnimationFrame(render);
+
+    };
+
+
+    /* ==========================================================
+       INTERSECTION OBSERVER
+       Pausa escrituras cuando la sección no está visible
+       ========================================================== */
+
+    if ('IntersectionObserver' in window) {
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach((entry) => {
+
+              isVisible =
+                entry.isIntersecting;
+
+              if (isVisible) {
+                updateScrollTarget();
+              }
+
+            });
+
+          },
+          {
+            rootMargin: '15% 0px 15% 0px'
+          }
+        );
+
+      observer.observe(section);
+
+    }
+
+
+    /* ==========================================================
+       EVENTS
+       ========================================================== */
+
+    window.addEventListener(
+      'scroll',
+      updateScrollTarget,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      'resize',
+      updateScrollTarget,
+      {
+        passive: true
+      }
+    );
+
+
+    section.addEventListener(
+      'pointermove',
+      updatePointerTarget,
+      {
+        passive: true
+      }
+    );
+
+
+    section.addEventListener(
+      'pointerleave',
+      resetPointer,
+      {
+        passive: true
+      }
+    );
+
+
+    desktopQuery.addEventListener?.(
+      'change',
+      () => {
+
+        if (!enabled()) {
+          resetStyles();
+        }
+
+        updateScrollTarget();
+
+      }
+    );
+
+
+    reducedMotionQuery.addEventListener?.(
+      'change',
+      () => {
+
+        if (!enabled()) {
+          resetStyles();
+        }
+
+      }
+    );
+
+
+    /* ==========================================================
+       INIT
+       ========================================================== */
+
+    updateScrollTarget();
+
+    frame = requestAnimationFrame(render);
+
+  })();
+</script>
+
 
 {% schema %}
 {
@@ -33,15 +754,52 @@
   "tag": "section",
   "class": "section-g4u-about-manifesto",
   "settings": [
-    { "type": "header", "content": "Imágenes decorativas" },
-    { "type": "image_picker", "id": "dust_image", "label": "Polvo / fondo izquierdo" },
-    { "type": "image_picker", "id": "texture_image", "label": "Textura / fondo derecho" },
-    { "type": "image_picker", "id": "snack_image", "label": "Producto izquierdo" },
-    { "type": "image_picker", "id": "bread_image", "label": "Producto central" },
-    { "type": "image_picker", "id": "tortilla_image", "label": "Producto derecho" },
-    { "type": "textarea", "id": "closing", "label": "Cierre", "default": "Por eso existimos:\nPara redefinir el pan." },
-    { "type": "textarea", "id": "closing_accent", "label": "Cierre destacado", "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico." }
+    {
+      "type": "header",
+      "content": "Imágenes decorativas"
+    },
+    {
+      "type": "image_picker",
+      "id": "dust_image",
+      "label": "Polvo / fondo izquierdo"
+    },
+    {
+      "type": "image_picker",
+      "id": "texture_image",
+      "label": "Textura / fondo derecho"
+    },
+    {
+      "type": "image_picker",
+      "id": "snack_image",
+      "label": "Producto izquierdo"
+    },
+    {
+      "type": "image_picker",
+      "id": "bread_image",
+      "label": "Producto central"
+    },
+    {
+      "type": "image_picker",
+      "id": "tortilla_image",
+      "label": "Producto derecho"
+    },
+    {
+      "type": "textarea",
+      "id": "closing",
+      "label": "Cierre",
+      "default": "Por eso existimos:\nPara redefinir el pan."
+    },
+    {
+      "type": "textarea",
+      "id": "closing_accent",
+      "label": "Cierre destacado",
+      "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
+    }
   ],
-  "presets": [{ "name": "G4U · Manifiesto Nosotros" }]
+  "presets": [
+    {
+      "name": "G4U · Manifiesto Nosotros"
+    }
+  ]
 }
 {% endschema %}
