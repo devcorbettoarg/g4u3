@@ -941,6 +941,10 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 .g4u-about-story--reverse .g4u-about-story__content { order: 2; }
 .g4u-about-story--reverse .g4u-about-story__media { order: 1; }
 .g4u-about-story__content { max-width: 64rem;  font-family: var(--g4u-display);}
+.g4u-about-story__content  .rte
+{
+   font-family: var(--g4u-display);
+}
 .g4u-about-story__eyebrow { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .1em; margin: 0 0 2.4rem; text-transform: uppercase; }
 .g4u-about-story__title { color: inherit; font-size: 4rem; line-height: 1; margin: 0 0 2.4rem; max-width: 58rem; }
 .g4u-about-story__lead { font-size: 2.4rem; letter-spacing: .05em; line-height: 1.2; margin-bottom: 2.4rem; max-width: 49.2rem; }
