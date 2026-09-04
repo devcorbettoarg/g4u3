@@ -925,13 +925,6 @@ body.template-suffix-harina
 
   /* Header = mismo sistema que Figma / Nosotros */
 
-  body.template-suffix-harina
-  .section-header:not(.shopify-section-header-sticky)
-  .header {
-    height: 8.8rem;
-    padding: 1.4rem 3.2rem !important;
-    padding-top: 1.4rem !important;
-  }
 
   body.template-suffix-harina
   .section-header:not(.shopify-section-header-sticky)
