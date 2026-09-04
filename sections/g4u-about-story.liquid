@@ -4,7 +4,72 @@
   if section.settings.fallback_asset == 'philosophy'
     assign fallback_asset = 'g4u-about-philosophy.png'
   endif
+
+  assign media_animation_class = 'animate__g4uStoryRevealRight'
+
+  if section.settings.image_position == 'left'
+    assign media_animation_class = 'animate__g4uStoryRevealLeft'
+  endif
 -%}
+
+<style>
+  /* =========================================================
+     G4U · Relato editorial — Image reveal
+     ========================================================= */
+
+  @keyframes g4uStoryRevealRight {
+    0% {
+      opacity: 0;
+      transform: translateX(30px) translateY(10px) scale(0.95) rotate(1deg);
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes g4uStoryRevealLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px) translateY(10px) scale(0.95) rotate(-1deg);
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  .animate__g4uStoryRevealRight {
+    animation-name: g4uStoryRevealRight;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  .animate__g4uStoryRevealLeft {
+    animation-name: g4uStoryRevealLeft;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate__g4uStoryRevealRight,
+    .animate__g4uStoryRevealLeft {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
 
 <section
   class="g4u-about-story g4u-about-story--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-about-story--reverse{% endif %}"
@@ -15,37 +80,68 @@
     <div class="g4u-about-story__content">
 
       {%- if section.settings.eyebrow != blank -%}
-        <p class="g4u-about-story__eyebrow">
+        <p
+          class="g4u-about-story__eyebrow wow animate__fadeIn"
+          data-wow-duration="0.6s"
+        >
           {{ section.settings.eyebrow | escape }}
         </p>
       {%- endif -%}
 
       <h2
-        class="g4u-about-story__title g4u-display"
+        class="g4u-about-story__title g4u-display wow animate__fadeInUp"
         id="G4uAboutStory-{{ section.id }}"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.06s"
       >
-        {{ section.settings.title | replace:"|","<br>"  | escape }}
+        {{ section.settings.title | replace: "|", "<br>" }}
       </h2>
 
       {%- if section.settings.lead != blank -%}
-        <div class="g4u-about-story__lead rte">
+        <div
+          class="g4u-about-story__lead rte wow animate__fadeInUp"
+          data-wow-duration="0.75s"
+          data-wow-delay="0.14s"
+        >
           {{ section.settings.lead }}
         </div>
       {%- endif -%}
 
       {%- if section.settings.text != blank -%}
-        <div class="g4u-about-story__text rte">
+        <div
+          class="g4u-about-story__text rte wow animate__fadeIn"
+          data-wow-duration="0.8s"
+          data-wow-delay="0.22s"
+        >
           {{ section.settings.text }}
         </div>
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
+
         <ul class="g4u-about-story__list" role="list">
 
           {%- for block in section.blocks -%}
 
+            {%- assign item_delay = '0.26s' -%}
+
+            {%- case forloop.index -%}
+              {%- when 2 -%}
+                {%- assign item_delay = '0.32s' -%}
+              {%- when 3 -%}
+                {%- assign item_delay = '0.38s' -%}
+              {%- when 4 -%}
+                {%- assign item_delay = '0.44s' -%}
+              {%- when 5 -%}
+                {%- assign item_delay = '0.50s' -%}
+              {%- when 6 -%}
+                {%- assign item_delay = '0.56s' -%}
+            {%- endcase -%}
+
             <li
-              class="g4u-about-story__list-item"
+              class="g4u-about-story__list-item wow animate__fadeInUp"
+              data-wow-duration="0.65s"
+              data-wow-delay="{{ item_delay }}"
               {{ block.shopify_attributes }}
             >
 
@@ -82,11 +178,17 @@
           {%- endfor -%}
 
         </ul>
+
       {%- endif -%}
 
     </div>
 
-    <div class="g4u-about-story__media">
+
+    <div
+      class="g4u-about-story__media wow {{ media_animation_class }}"
+      data-wow-duration="1s"
+      data-wow-delay="0.10s"
+    >
 
       {%- if section.settings.image != blank -%}
 
