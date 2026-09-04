@@ -1,25 +1,109 @@
-<section class="g4u-about-hero" aria-labelledby="G4uAboutHero-{{ section.id }}">
+<section
+  class="g4u-about-hero"
+  aria-labelledby="G4uAboutHero-{{ section.id }}"
+>
+
   <picture class="g4u-about-hero__media">
+
     {%- if section.settings.mobile_image != blank -%}
-      <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 1100 }}">
+      <source
+        media="(max-width: 749px)"
+        srcset="{{ section.settings.mobile_image | image_url: width: 1100 }}"
+      >
     {%- endif -%}
+
     {%- if section.settings.image != blank -%}
-      {{ section.settings.image | image_url: width: 3000 | image_tag: class: 'g4u-about-hero__image', loading: 'eager', widths: '750, 1100, 1500, 2000, 2500, 3000', sizes: '100vw' }}
+
+      {{
+        section.settings.image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'g4u-about-hero__image',
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '750, 1100, 1500, 2000, 2500, 3000',
+          sizes: '100vw'
+      }}
+
     {%- else -%}
-      <img class="g4u-about-hero__image" src="{{ 'g4u-about-hero.png' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="4096" height="2731" fetchpriority="high">
+
+      <img
+        class="g4u-about-hero__image"
+        src="{{ 'g4u-about-hero.png' | asset_url }}"
+        alt="{{ section.settings.image_alt | escape }}"
+        width="4096"
+        height="2731"
+        loading="eager"
+        fetchpriority="high"
+      >
+
     {%- endif -%}
+
   </picture>
+
+
   <div class="g4u-about-hero__content">
-    <h1 class="g4u-about-hero__title g4u-display" id="G4uAboutHero-{{ section.id }}">
-      <span>{{ section.settings.line_1 | escape }} <em>{{ section.settings.accent_1 | escape }}</em></span>
-      <span><em>{{ section.settings.accent_2 | escape }}</em> {{ section.settings.line_2 | escape }}</span>
-      <span>{{ section.settings.line_3 | escape }} <em>{{ section.settings.accent_3 | escape }}</em></span>
+
+    <h1
+      class="g4u-about-hero__title g4u-display"
+      id="G4uAboutHero-{{ section.id }}"
+    >
+
+      <span
+        class="wow animate__fadeInUp"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.03s"
+      >
+        {{ section.settings.line_1 | escape }}
+        <em>{{ section.settings.accent_1 | escape }}</em>
+      </span>
+
+      <span
+        class="wow animate__fadeInUp"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.10s"
+      >
+        <em>{{ section.settings.accent_2 | escape }}</em>
+        {{ section.settings.line_2 | escape }}
+      </span>
+
+      <span
+        class="wow animate__fadeInUp"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.17s"
+      >
+        {{ section.settings.line_3 | escape }}
+        <em>{{ section.settings.accent_3 | escape }}</em>
+      </span>
+
     </h1>
-    {%- if section.settings.text != blank -%}<div class="g4u-about-hero__text rte">{{ section.settings.text }}</div>{%- endif -%}
+
+
+    {%- if section.settings.text != blank -%}
+
+      <div
+        class="g4u-about-hero__text rte wow animate__fadeInUp"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.26s"
+      >
+        {{ section.settings.text }}
+      </div>
+
+    {%- endif -%}
+
   </div>
-  <a class="g4u-about-hero__scroll" href="#G4uAboutManifesto" aria-label="Ir al contenido">
+
+
+  <a
+    class="g4u-about-hero__scroll wow animate__fadeIn"
+    href="#G4uAboutManifesto"
+    aria-label="Ir al contenido"
+    data-wow-duration="0.7s"
+    data-wow-delay="0.45s"
+  >
     <span></span>
   </a>
+
 </section>
 
 {% schema %}
@@ -28,17 +112,69 @@
   "tag": "section",
   "class": "section-g4u-about-hero",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Imagen" },
-    { "type": "image_picker", "id": "mobile_image", "label": "Imagen móvil" },
-    { "type": "text", "id": "image_alt", "label": "Descripción de imagen", "default": "Wraps preparados con vegetales frescos" },
-    { "type": "text", "id": "line_1", "label": "Línea 1", "default": "Creemos que" },
-    { "type": "text", "id": "accent_1", "label": "Destacado 1", "default": "comer bien" },
-    { "type": "text", "id": "accent_2", "label": "Destacado 2", "default": "no debería" },
-    { "type": "text", "id": "line_2", "label": "Línea 2", "default": "sentirse" },
-    { "type": "text", "id": "line_3", "label": "Línea 3", "default": "como un" },
-    { "type": "text", "id": "accent_3", "label": "Destacado 3", "default": "sacrificio" },
-    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Desarrollamos alimentos funcionales que combinan ciencia, nutrición y sabor para demostrar que cuidarse también puede disfrutarse.</p>" }
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Imagen móvil"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Descripción de imagen",
+      "default": "Wraps preparados con vegetales frescos"
+    },
+    {
+      "type": "text",
+      "id": "line_1",
+      "label": "Línea 1",
+      "default": "Creemos que"
+    },
+    {
+      "type": "text",
+      "id": "accent_1",
+      "label": "Destacado 1",
+      "default": "comer bien"
+    },
+    {
+      "type": "text",
+      "id": "accent_2",
+      "label": "Destacado 2",
+      "default": "no debería"
+    },
+    {
+      "type": "text",
+      "id": "line_2",
+      "label": "Línea 2",
+      "default": "sentirse"
+    },
+    {
+      "type": "text",
+      "id": "line_3",
+      "label": "Línea 3",
+      "default": "como un"
+    },
+    {
+      "type": "text",
+      "id": "accent_3",
+      "label": "Destacado 3",
+      "default": "sacrificio"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Desarrollamos alimentos funcionales que combinan ciencia, nutrición y sabor para demostrar que cuidarse también puede disfrutarse.</p>"
+    }
   ],
-  "presets": [{ "name": "G4U · Hero Nosotros" }]
+  "presets": [
+    {
+      "name": "G4U · Hero Nosotros"
+    }
+  ]
 }
 {% endschema %}
