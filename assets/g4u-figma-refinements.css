@@ -878,6 +878,19 @@ body.template-suffix-harina
   stroke: var(--g4u-cream) !important;
 }
 
+body.template-suffix-nosotros
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble,
+body.template-suffix-nosotros
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble svg,
+body.template-suffix-nosotros
+.section-header:not(.shopify-section-header-sticky)
+#cart-icon-bubble svg path {
+  color: var(--g4u-cream) !important;
+  stroke: var(--g4u-cream) !important;
+}
+
 
 /* Mega menu abierto = fondo claro + logo oscuro */
 
