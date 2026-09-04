@@ -3653,3 +3653,85 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   G4U · GLOBAL PRODUCT CARD IMAGES
+   Todas las imágenes de cards de producto se muestran
+   completas, centradas y sin recorte.
+   Afecta imagen principal + imagen secundaria de hover.
+   ========================================================== */
+
+:root {
+  --g4u-product-card-image-fit: contain;
+  --g4u-product-card-image-position: center center;
+}
+
+/* Contenedor de imagen de las product cards */
+.product-card-wrapper .card__media,
+.product-card-wrapper .card__media .media {
+  overflow: hidden;
+}
+
+/* Imagen principal + imagen hover */
+.product-card-wrapper .card__media .media > img {
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: var(--g4u-product-card-image-fit) !important;
+  object-position: var(--g4u-product-card-image-position) !important;
+}
