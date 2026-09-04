@@ -182,7 +182,9 @@ body.template-suffix-nosotros .section-header .header-wrapper {
   color: var(--g4u-cream);
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header,
-body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header {
+ body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
+
+ body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header{
   height: var(--g4u-header-hero-height);
   padding: 1.4rem 4rem !important;
   padding-top:60px !important;
