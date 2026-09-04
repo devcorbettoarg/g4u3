@@ -1,3 +1,39 @@
+<style>
+  /* ==========================================
+     G4U · Instagram — Image reveal
+     ========================================== */
+
+  @keyframes g4uInstagramImageReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(22px) scale(0.92) rotate(-1.5deg);
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  .animate__g4uInstagramImageReveal {
+    animation-name: g4uInstagramImageReveal;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate__g4uInstagramImageReveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
 <section class="g4u-instagram" aria-labelledby="G4uInstagram-{{ section.id }}">
 
   <header class="g4u-instagram__header">
@@ -20,7 +56,6 @@
         data-wow-delay="0.14s"
       >
         {{ section.settings.button_label | escape }}
-
         <img
           src="{{ 'g4u-icon-instagram.svg' | asset_url }}"
           alt=""
@@ -37,7 +72,6 @@
     {%- for block in section.blocks -%}
 
       {%- assign fallback_image = 'g4u-instagram-' | append: forloop.index | append: '.png' -%}
-
       {%- assign item_delay = '0.05s' -%}
 
       {%- case forloop.index -%}
@@ -58,18 +92,17 @@
       {%- endcase -%}
 
       <a
-        class="g4u-instagram__item wow animate__fadeInUp"
+        class="g4u-instagram__item wow animate__g4uInstagramImageReveal"
         href="{{ block.settings.link | default: section.settings.link | default: '#' }}"
         target="_blank"
         rel="noopener"
         aria-label="{{ block.settings.accessibility_label | escape }}"
-        data-wow-duration="0.7s"
+        data-wow-duration="0.9s"
         data-wow-delay="{{ item_delay }}"
         {{ block.shopify_attributes }}
       >
 
         {%- if block.settings.image != blank -%}
-
           {{
             block.settings.image
             | image_url: width: 1000
@@ -79,9 +112,7 @@
               widths: '360, 550, 750, 1000',
               sizes: '(min-width: 750px) 25vw, 50vw'
           }}
-
         {%- else -%}
-
           <img
             class="g4u-instagram__image"
             src="{{ fallback_image | replace: '.png', '.webp' | asset_url }}"
@@ -90,7 +121,6 @@
             height="900"
             loading="lazy"
           >
-
         {%- endif -%}
 
       </a>
