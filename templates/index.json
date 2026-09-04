@@ -132,7 +132,8 @@
             "why_label": "POR QUÉ LO USAMOS",
             "benefit_1": "Menor impacto glucémico",
             "benefit_2": "Más fibra funcional",
-            "benefit_3": "Mayor saciedad"
+            "benefit_3": "Mayor saciedad",
+            "benefit_4": ""
           }
         },
         "science_protein": {
@@ -147,7 +148,8 @@
             "why_label": "Por qué lo usamos",
             "benefit_1": "Entre 12 y 15 g de proteína por porción",
             "benefit_2": "Proteína completa",
-            "benefit_3": "Mayor saciedad"
+            "benefit_3": "Mayor saciedad",
+            "benefit_4": ""
           }
         },
         "science_fiber": {
@@ -162,7 +164,8 @@
             "why_label": "Por qué lo usamos",
             "benefit_1": "Mejor digestión",
             "benefit_2": "Más saciedad",
-            "benefit_3": "Textura más suave"
+            "benefit_3": "Textura más suave",
+            "benefit_4": ""
           }
         },
         "science_flavor": {
@@ -177,7 +180,8 @@
             "why_label": "Por qué lo usamos",
             "benefit_1": "Sabor tradicional",
             "benefit_2": "Textura esponjosa",
-            "benefit_3": "Bajo en carbohidratos"
+            "benefit_3": "Bajo en carbohidratos",
+            "benefit_4": "Alto en proteínas"
           }
         }
       },
