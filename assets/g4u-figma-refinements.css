@@ -926,12 +926,7 @@ body.template-suffix-harina
   /* Header = mismo sistema que Figma / Nosotros */
 
 
-  body.template-suffix-harina
-  .section-header:not(.shopify-section-header-sticky)
-  .g4u-logo {
-    height: 6rem;
-    width: 14.5263rem;
-  }
+
 
 
   /* ------------------------------------------------------------------------
