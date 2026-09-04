@@ -1,139 +1,7 @@
-<section
-  class="g4u-about-manifesto"
-  id="G4uAboutManifesto-{{ section.id }}"
-  aria-labelledby="G4uAboutManifestoTitle-{{ section.id }}"
-  data-g4u-manifesto-parallax
->
-  <div class="g4u-about-manifesto__copy">
-    <h2
-      class="g4u-about-manifesto__title g4u-display"
-      id="G4uAboutManifestoTitle-{{ section.id }}"
-    >
-      Creemos en la <em>nutrición inteligente,</em><br>
-      la que combina <strong>ciencia, sabor</strong><br>
-      y <strong>bienestar</strong> real.<br>
-      En los alimentos que<br>
-      no prometen magia,<br>
-      sino <em>resultados</em> auténticos.<br>
-      Creemos en la <strong>transparencia,</strong><br>
-      en los <em>ingredientes limpios</em><br>
-      y en las <strong>decisiones conscientes.</strong><br>
-      Creemos que lo <em>saludable</em><br>
-      no tiene que ser aburrido.
-    </h2>
-
-    <div class="g4u-about-manifesto__closing g4u-display">
-      <p>{{ section.settings.closing | escape | newline_to_br }}</p>
-      <p>{{ section.settings.closing_accent | escape | newline_to_br }}</p>
-    </div>
-  </div>
-
-  <div class="g4u-about-manifesto__art" aria-hidden="true">
-
-    {%- if section.settings.dust_image != blank -%}
-      {{
-        section.settings.dust_image
-        | image_url: width: 1024
-        | image_tag:
-          class: 'g4u-about-manifesto__dust',
-          loading: 'lazy'
-      }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__dust"
-        src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}"
-        alt=""
-        width="1024"
-        height="1536"
-        loading="lazy"
-      >
-    {%- endif -%}
-
-    {%- if section.settings.texture_image != blank -%}
-      {{
-        section.settings.texture_image
-        | image_url: width: 1024
-        | image_tag:
-          class: 'g4u-about-manifesto__texture',
-          loading: 'lazy'
-      }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__texture"
-        src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}"
-        alt=""
-        width="1024"
-        height="1535"
-        loading="lazy"
-      >
-    {%- endif -%}
-
-    {%- if section.settings.snack_image != blank -%}
-      {{
-        section.settings.snack_image
-        | image_url: width: 456
-        | image_tag:
-          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack',
-          loading: 'lazy'
-      }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--snack"
-        src="{{ 'g4u-about-snack.png' | asset_url }}"
-        alt=""
-        width="456"
-        height="458"
-        loading="lazy"
-      >
-    {%- endif -%}
-
-    {%- if section.settings.bread_image != blank -%}
-      {{
-        section.settings.bread_image
-        | image_url: width: 866
-        | image_tag:
-          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread',
-          loading: 'lazy'
-      }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--bread"
-        src="{{ 'g4u-about-bread.png' | asset_url }}"
-        alt=""
-        width="866"
-        height="926"
-        loading="lazy"
-      >
-    {%- endif -%}
-
-    {%- if section.settings.tortilla_image != blank -%}
-      {{
-        section.settings.tortilla_image
-        | image_url: width: 490
-        | image_tag:
-          class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla',
-          loading: 'lazy'
-      }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla"
-        src="{{ 'g4u-about-tortilla.png' | asset_url }}"
-        alt=""
-        width="490"
-        height="449"
-        loading="lazy"
-      >
-    {%- endif -%}
-
-  </div>
-</section>
-
-
 <style>
   /* ============================================================
-     G4U MANIFESTO
-     ORGANIC PARALLAX
-     DESKTOP + MOBILE
+     G4U · MANIFESTO
+     DEPTH PARALLAX / ORGANIC 3D
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }} {
@@ -143,11 +11,19 @@
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__art {
     background: transparent !important;
+
+    /*
+     * Perspective relativamente larga:
+     * suficiente profundidad sin efecto "tarjeta 3D".
+     */
+    perspective: 1200px;
+    perspective-origin: 50% 46%;
+    transform-style: preserve-3d;
   }
 
 
   /* ============================================================
-     GENERAL PERFORMANCE
+     PERFORMANCE
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
@@ -158,8 +34,92 @@
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__object {
-    will-change: translate, rotate;
     backface-visibility: hidden;
+    transform-origin: center center;
+  }
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__dust,
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__texture {
+    will-change: translate, rotate;
+  }
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__object {
+    will-change: transform, translate, rotate;
+  }
+
+
+  /* ============================================================
+     3D OBJECT TRANSFORMS
+
+     El translate / rotate principal sigue usando las
+     individual transform properties.
+
+     El transform convencional queda reservado para:
+     - Z depth
+     - rotateX
+     - rotateY
+     - micro scale de aproximación
+     ============================================================ */
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__object--snack {
+    transform:
+      translate3d(
+        0,
+        0,
+        var(--g4u-snack-z, 0px)
+      )
+      rotateX(
+        var(--g4u-snack-rx, 0deg)
+      )
+      rotateY(
+        var(--g4u-snack-ry, 0deg)
+      )
+      scale(
+        var(--g4u-snack-depth-scale, 1)
+      );
+  }
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__object--bread {
+    transform:
+      translate3d(
+        0,
+        0,
+        var(--g4u-bread-z, 0px)
+      )
+      rotateX(
+        var(--g4u-bread-rx, 0deg)
+      )
+      rotateY(
+        var(--g4u-bread-ry, 0deg)
+      )
+      scale(
+        var(--g4u-bread-depth-scale, 1)
+      );
+  }
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__object--tortilla {
+    transform:
+      translate3d(
+        0,
+        0,
+        var(--g4u-tortilla-z, 0px)
+      )
+      rotateX(
+        var(--g4u-tortilla-rx, 0deg)
+      )
+      rotateY(
+        var(--g4u-tortilla-ry, 0deg)
+      )
+      scale(
+        var(--g4u-tortilla-depth-scale, 1)
+      );
   }
 
 
@@ -169,9 +129,7 @@
 
   @media screen and (min-width: 990px) {
 
-    /* ----------------------------
-       DUST
-       ---------------------------- */
+    /* DUST */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__dust {
@@ -186,9 +144,7 @@
     }
 
 
-    /* ----------------------------
-       TEXTURE
-       ---------------------------- */
+    /* TEXTURE */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__texture {
@@ -205,9 +161,7 @@
     }
 
 
-    /* ----------------------------
-       SNACK
-       ---------------------------- */
+    /* SNACK */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--snack {
@@ -220,9 +174,7 @@
     }
 
 
-    /* ----------------------------
-       BREAD
-       ---------------------------- */
+    /* BREAD */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--bread {
@@ -235,9 +187,7 @@
     }
 
 
-    /* ----------------------------
-       TORTILLA
-       ---------------------------- */
+    /* TORTILLA */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--tortilla {
@@ -248,7 +198,6 @@
       rotate:
         var(--g4u-tortilla-rotate, 0deg);
     }
-
   }
 
 
@@ -257,16 +206,6 @@
      ============================================================ */
 
   @media screen and (max-width: 989px) {
-
-    /*
-     * En mobile mantenemos las capas separadas.
-     *
-     * Los offsets fijos se SUMAN al parallax.
-     *
-     * Snack     → un poco arriba
-     * Pan       → queda como centro visual
-     * Tortilla  → un poco abajo
-     */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__dust {
@@ -294,20 +233,11 @@
       rotate:
         var(--g4u-texture-rotate, 0deg);
 
-      /*
-       * Más margen para que al desplazarse
-       * nunca aparezca un borde del asset.
-       */
-
       scale: 1.09;
     }
 
 
-    /* ==========================================================
-       SNACK MOBILE
-
-       Separamos hacia arriba.
-       ========================================================== */
+    /* SNACK */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--snack {
@@ -318,15 +248,15 @@
       rotate:
         var(--g4u-snack-rotate, 0deg);
 
+      /*
+       * Escala estructural.
+       * La profundidad dinámica se multiplica desde transform().
+       */
       scale: 0.94;
     }
 
 
-    /* ==========================================================
-       PAN MOBILE
-
-       Le damos apenas aire pero permanece como protagonista.
-       ========================================================== */
+    /* BREAD */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--bread {
@@ -341,11 +271,7 @@
     }
 
 
-    /* ==========================================================
-       TORTILLA MOBILE
-
-       Separamos hacia abajo y ligeramente hacia la izquierda.
-       ========================================================== */
+    /* TORTILLA */
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object--tortilla {
@@ -358,15 +284,11 @@
 
       scale: 0.95;
     }
-
   }
 
 
   /* ============================================================
-     MOBILE EXTRA SMALL
-
-     En pantallas realmente estrechas les damos todavía
-     un poco más de respiración.
+     EXTRA SMALL
      ============================================================ */
 
   @media screen and (max-width: 480px) {
@@ -399,7 +321,6 @@
 
       scale: 0.92;
     }
-
   }
 
 
@@ -421,6 +342,10 @@
       rotate: 0deg !important;
     }
 
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object {
+      transform: none !important;
+    }
   }
 </style>
 
@@ -462,7 +387,7 @@
 
 
     /* ==========================================================
-       DESKTOP CONFIGURATION
+       DESKTOP MOTION CONFIG
        ========================================================== */
 
     const desktopLayers = {
@@ -499,8 +424,16 @@
       },
 
 
+      /*
+       * SNACK
+       *
+       * Empieza más lejos,
+       * desplazado hacia izquierda / arriba.
+       */
+
       snack: {
         scrollY: -67,
+
         mouseX: 18.5,
         mouseY: 14,
 
@@ -511,12 +444,37 @@
         phase: 1.2,
 
         energy: 9,
-        rotate: 0.95
+        rotate: 0.95,
+
+        depthX: -68,
+        depthY: -28,
+
+        farZ: -180,
+        nearZ: 12,
+
+        farScale: 0.965,
+        nearScale: 1,
+
+        scalePulse: 0.018,
+
+        tiltX: 1.4,
+        tiltY: -2.4,
+
+        pointerTilt: 0.85
       },
 
 
+      /*
+       * BREAD
+       *
+       * Es el objeto más pesado.
+       * Menos dispersión lateral y acercamiento
+       * ligeramente más estable.
+       */
+
       bread: {
         scrollY: -44,
+
         mouseX: 11.5,
         mouseY: 9,
 
@@ -527,12 +485,36 @@
         phase: 3.8,
 
         energy: 6,
-        rotate: -0.42
+        rotate: -0.42,
+
+        depthX: 10,
+        depthY: 42,
+
+        farZ: -135,
+        nearZ: 16,
+
+        farScale: 0.975,
+        nearScale: 1,
+
+        scalePulse: 0.013,
+
+        tiltX: -1.15,
+        tiltY: 1.5,
+
+        pointerTilt: 0.65
       },
 
 
+      /*
+       * TORTILLA
+       *
+       * Empieza más lejos a la derecha,
+       * generando triangulación con snack y pan.
+       */
+
       tortilla: {
         scrollY: -55,
+
         mouseX: -12.5,
         mouseY: -9,
 
@@ -543,24 +525,33 @@
         phase: 5.1,
 
         energy: 7,
-        rotate: -0.65
+        rotate: -0.65,
+
+        depthX: 70,
+        depthY: 32,
+
+        farZ: -165,
+        nearZ: 10,
+
+        farScale: 0.97,
+        nearScale: 1,
+
+        scalePulse: 0.016,
+
+        tiltX: 1.35,
+        tiltY: 2.2,
+
+        pointerTilt: 0.8
       }
 
     };
 
 
     /* ==========================================================
-       MOBILE CONFIGURATION
+       MOBILE MOTION CONFIG
 
-       No utilizamos mouse.
-
-       El movimiento depende de:
-       - scroll
-       - velocidad de scroll
-       - movimiento orgánico propio
-
-       Reduje un poco los recorridos para evitar congestión,
-       pero aumenté la independencia entre elementos.
+       La profundidad se reduce bastante.
+       Mobile no necesita movimientos 3D tan amplios.
        ========================================================== */
 
     const mobileLayers = {
@@ -597,13 +588,9 @@
       },
 
 
-      /*
-       * SNACK:
-       * más reactivo y liviano.
-       */
-
       snack: {
         scrollY: -42,
+
         mouseX: 0,
         mouseY: 0,
 
@@ -614,17 +601,29 @@
         phase: 1.2,
 
         energy: 7,
-        rotate: 0.65
+        rotate: 0.65,
+
+        depthX: -22,
+        depthY: -24,
+
+        farZ: -90,
+        nearZ: 4,
+
+        farScale: 0.98,
+        nearScale: 1,
+
+        scalePulse: 0.010,
+
+        tiltX: 0.65,
+        tiltY: -1.05,
+
+        pointerTilt: 0
       },
 
 
-      /*
-       * BREAD:
-       * movimiento más pesado / estable.
-       */
-
       bread: {
         scrollY: -27,
+
         mouseX: 0,
         mouseY: 0,
 
@@ -635,18 +634,29 @@
         phase: 3.8,
 
         energy: 4.5,
-        rotate: -0.27
+        rotate: -0.27,
+
+        depthX: 3,
+        depthY: 21,
+
+        farZ: -72,
+        nearZ: 5,
+
+        farScale: 0.985,
+        nearScale: 1,
+
+        scalePulse: 0.008,
+
+        tiltX: -0.45,
+        tiltY: 0.6,
+
+        pointerTilt: 0
       },
 
 
-      /*
-       * TORTILLA:
-       * movimiento ligeramente diferente al snack,
-       * ayuda a generar profundidad.
-       */
-
       tortilla: {
         scrollY: -36,
+
         mouseX: 0,
         mouseY: 0,
 
@@ -657,22 +667,36 @@
         phase: 5.1,
 
         energy: 5.5,
-        rotate: -0.42
+        rotate: -0.42,
+
+        depthX: 22,
+        depthY: 25,
+
+        farZ: -82,
+        nearZ: 4,
+
+        farScale: 0.98,
+        nearScale: 1,
+
+        scalePulse: 0.010,
+
+        tiltX: 0.6,
+        tiltY: 0.9,
+
+        pointerTilt: 0
       }
 
     };
 
 
     /* ==========================================================
-       GET CURRENT CONFIGURATION
+       CONFIG
        ========================================================== */
 
     const getLayers = () => {
-
       return desktopQuery.matches
         ? desktopLayers
         : mobileLayers;
-
     };
 
 
@@ -688,6 +712,15 @@
 
     let targetScrollProgress = 0;
     let scrollProgress = 0;
+
+    /*
+     * Nuevo:
+     *
+     * 0 = objetos lejos
+     * 1 = objetos en posición final
+     */
+    let targetApproachProgress = 0;
+    let approachProgress = 0;
 
     let targetEnergy = 0;
     let energy = 0;
@@ -710,12 +743,10 @@
       min,
       max
     ) => {
-
       return Math.min(
         Math.max(value, min),
         max
       );
-
     };
 
 
@@ -724,22 +755,43 @@
       target,
       amount
     ) => {
-
       return current +
         (target - current) * amount;
+    };
 
+
+    /*
+     * Smoothstep evita que el acercamiento
+     * tenga comienzo o final mecánicos.
+     */
+    const smoothstep = (
+      edge0,
+      edge1,
+      value
+    ) => {
+
+      const x = clamp(
+        (
+          value - edge0
+        ) /
+        (
+          edge1 - edge0
+        ),
+        0,
+        1
+      );
+
+      return x * x * (3 - 2 * x);
     };
 
 
     const enabled = () => {
-
       return !reducedMotionQuery.matches;
-
     };
 
 
     /* ==========================================================
-       SCROLL POSITION + SCROLL VELOCITY
+       SCROLL POSITION
        ========================================================== */
 
     const updateScrollTarget = () => {
@@ -750,24 +802,24 @@
       const rect =
         section.getBoundingClientRect();
 
-
       const viewportHeight =
         window.innerHeight;
 
 
+      /* ----------------------------------------------------------
+         PARALLAX TRADICIONAL
+         ---------------------------------------------------------- */
+
       const sectionCenter =
         rect.top +
-        (rect.height / 2);
-
+        rect.height / 2;
 
       const viewportCenter =
         viewportHeight / 2;
 
-
       const distance =
         viewportCenter -
         sectionCenter;
-
 
       const range =
         (
@@ -784,22 +836,60 @@
         );
 
 
-      /* ========================================================
+      /* ----------------------------------------------------------
+         DEPTH / APPROACH PROGRESS
+
+         Empieza cuando la sección comienza
+         a entrar por debajo del viewport.
+
+         Termina aproximadamente cuando la parte superior
+         de la sección alcanza el tercio superior de pantalla.
+
+         Esto evita que el objeto siga aumentando
+         indefinidamente durante toda la sección.
+         ---------------------------------------------------------- */
+
+      const approachRange =
+        viewportHeight +
+        Math.min(
+          rect.height,
+          viewportHeight
+        );
+
+
+      const rawApproach =
+        clamp(
+          (
+            viewportHeight -
+            rect.top
+          ) /
+          approachRange,
+          0,
+          1
+        );
+
+
+      targetApproachProgress =
+        smoothstep(
+          0.015,
+          0.50,
+          rawApproach
+        );
+
+
+      /* ----------------------------------------------------------
          SCROLL VELOCITY
-         ======================================================== */
+         ---------------------------------------------------------- */
 
       const now =
         performance.now();
 
-
       const currentScrollY =
         window.scrollY;
-
 
       const deltaY =
         currentScrollY -
         previousScrollY;
-
 
       const deltaTime =
         Math.max(
@@ -808,18 +898,10 @@
           16
         );
 
-
       const velocity =
         Math.abs(deltaY) /
         deltaTime;
 
-
-      /*
-       * Desktop acepta algo más de aceleración.
-       *
-       * Mobile queda ligeramente amortiguado para que
-       * un flick rápido no haga saltar demasiado las imágenes.
-       */
 
       const velocityMultiplier =
         desktopQuery.matches
@@ -846,10 +928,8 @@
       previousScrollY =
         currentScrollY;
 
-
       previousScrollTime =
         now;
-
     };
 
 
@@ -904,20 +984,17 @@
           -1,
           1
         );
-
     };
 
 
     const resetPointer = () => {
-
       targetPointerX = 0;
       targetPointerY = 0;
-
     };
 
 
     /* ==========================================================
-       ORGANIC MOVEMENT
+       ORGANIC MOTION
        ========================================================== */
 
     const getOrganicMotion = (
@@ -973,7 +1050,6 @@
         x: organicX,
         y: organicY
       };
-
     };
 
 
@@ -986,7 +1062,6 @@
       config,
       time
     ) => {
-
 
       const organic =
         getOrganicMotion(
@@ -1014,13 +1089,38 @@
         energy;
 
 
+      /*
+       * Cuando approachProgress = 0,
+       * farAmount = 1.
+       *
+       * Cuando llega a composición final,
+       * farAmount = 0.
+       */
+      const farAmount =
+        1 -
+        approachProgress;
+
+
+      const depthOffsetX =
+        config.depthX !== undefined
+          ? config.depthX * farAmount
+          : 0;
+
+
+      const depthOffsetY =
+        config.depthY !== undefined
+          ? config.depthY * farAmount
+          : 0;
+
+
       const x =
         (
           pointerX *
           config.mouseX
         ) +
         organic.x +
-        accelerationX;
+        accelerationX +
+        depthOffsetX;
 
 
       const y =
@@ -1033,7 +1133,8 @@
           config.mouseY
         ) +
         organic.y +
-        accelerationY;
+        accelerationY +
+        depthOffsetY;
 
 
       section.style.setProperty(
@@ -1047,6 +1148,10 @@
         `${y.toFixed(2)}px`
       );
 
+
+      /* ========================================================
+         2D ROTATION
+         ======================================================== */
 
       const organicRotation =
         Math.sin(
@@ -1075,6 +1180,100 @@
         `${rotation.toFixed(3)}deg`
       );
 
+
+      /* ========================================================
+         3D DEPTH
+         Sólo productos.
+         ======================================================== */
+
+      if (
+        config.farZ !== undefined
+      ) {
+
+        /*
+         * Z interpolation
+         */
+        const z =
+          lerp(
+            config.farZ,
+            config.nearZ,
+            approachProgress
+          );
+
+
+        /*
+         * Micro overshoot.
+
+         * 0 al principio,
+         * máximo en mitad del acercamiento,
+         * vuelve a 0 al finalizar.
+         */
+        const pulse =
+          Math.sin(
+            approachProgress *
+            Math.PI
+          ) *
+          config.scalePulse;
+
+
+        const depthScale =
+          lerp(
+            config.farScale,
+            config.nearScale,
+            approachProgress
+          ) +
+          pulse;
+
+
+        /*
+         * El tilt inicial desaparece progresivamente.
+         * El mouse aporta sólo una mínima perspectiva.
+         */
+        const rx =
+          (
+            config.tiltX *
+            farAmount
+          ) -
+          (
+            pointerY *
+            config.pointerTilt
+          );
+
+
+        const ry =
+          (
+            config.tiltY *
+            farAmount
+          ) +
+          (
+            pointerX *
+            config.pointerTilt
+          );
+
+
+        section.style.setProperty(
+          `--g4u-${name}-z`,
+          `${z.toFixed(2)}px`
+        );
+
+
+        section.style.setProperty(
+          `--g4u-${name}-depth-scale`,
+          depthScale.toFixed(4)
+        );
+
+
+        section.style.setProperty(
+          `--g4u-${name}-rx`,
+          `${rx.toFixed(3)}deg`
+        );
+
+
+        section.style.setProperty(
+          `--g4u-${name}-ry`,
+          `${ry.toFixed(3)}deg`
+        );
+      }
     };
 
 
@@ -1108,6 +1307,21 @@
             `--g4u-${name}-rotate`
           );
 
+          section.style.removeProperty(
+            `--g4u-${name}-z`
+          );
+
+          section.style.removeProperty(
+            `--g4u-${name}-rx`
+          );
+
+          section.style.removeProperty(
+            `--g4u-${name}-ry`
+          );
+
+          section.style.removeProperty(
+            `--g4u-${name}-depth-scale`
+          );
         }
       );
 
@@ -1121,42 +1335,31 @@
       targetScrollProgress = 0;
       scrollProgress = 0;
 
+      targetApproachProgress = 0;
+      approachProgress = 0;
+
       targetEnergy = 0;
       energy = 0;
-
     };
 
 
     /* ==========================================================
-       ANIMATION LOOP
+       RENDER LOOP
        ========================================================== */
 
     const render = (
       time
     ) => {
 
-
       if (!enabled()) {
-
-        resetStyles();
 
         requestAnimationFrame(
           render
         );
 
         return;
-
       }
 
-
-      /*
-       * Desktop:
-       * mouse un poco más reactivo.
-       *
-       * Mobile:
-       * el scroll lleva algo más de damping para dar
-       * sensación de flotación y no de rebote.
-       */
 
       const pointerEase =
         desktopQuery.matches
@@ -1164,10 +1367,27 @@
           : 0.07;
 
 
+      /*
+       * Parallax tradicional:
+       * deliberadamente flotante.
+       */
       const scrollEase =
         desktopQuery.matches
           ? 0.078
           : 0.065;
+
+
+      /*
+       * Acercamiento algo más pesado.
+
+       * Esto es importante:
+       * si fuese igual de rápido que el scroll,
+       * parecería una interpolación CSS simple.
+       */
+      const approachEase =
+        desktopQuery.matches
+          ? 0.055
+          : 0.048;
 
 
       pointerX =
@@ -1191,6 +1411,14 @@
           scrollProgress,
           targetScrollProgress,
           scrollEase
+        );
+
+
+      approachProgress =
+        lerp(
+          approachProgress,
+          targetApproachProgress,
+          approachEase
         );
 
 
@@ -1222,7 +1450,7 @@
 
 
       /* ========================================================
-         RENDER VISIBLE SECTION
+         RENDER ONLY WHEN NEAR VIEWPORT
          ======================================================== */
 
       if (isVisible) {
@@ -1264,14 +1492,12 @@
           layers.tortilla,
           time
         );
-
       }
 
 
       requestAnimationFrame(
         render
       );
-
     };
 
 
@@ -1299,28 +1525,21 @@
                   previousScrollY =
                     window.scrollY;
 
-
                   previousScrollTime =
                     performance.now();
 
-
                   updateScrollTarget();
-
                 }
-
               }
             );
-
           },
           {
             /*
-             * Mobile usa un margen algo mayor para que
-             * el movimiento ya esté preparado antes de que
-             * los objetos entren totalmente en pantalla.
+             * Empezamos a preparar las posiciones antes
+             * de que los productos entren realmente.
              */
-
             rootMargin:
-              '25% 0px 25% 0px'
+              '35% 0px 35% 0px'
           }
         );
 
@@ -1328,7 +1547,6 @@
       observer.observe(
         section
       );
-
     }
 
 
@@ -1349,11 +1567,6 @@
       'resize',
       () => {
 
-        /*
-         * Si pasamos desktop -> mobile,
-         * eliminamos cualquier posición residual del mouse.
-         */
-
         if (
           !desktopQuery.matches
         ) {
@@ -1364,13 +1577,11 @@
         previousScrollY =
           window.scrollY;
 
-
         previousScrollTime =
           performance.now();
 
 
         updateScrollTarget();
-
       },
       {
         passive: true
@@ -1405,13 +1616,10 @@
         previousScrollY =
           window.scrollY;
 
-
         previousScrollTime =
           performance.now();
 
-
         updateScrollTarget();
-
       }
     );
 
@@ -1428,7 +1636,6 @@
         else {
           updateScrollTarget();
         }
-
       }
     );
 
@@ -1439,7 +1646,6 @@
 
     previousScrollY =
       window.scrollY;
-
 
     previousScrollTime =
       performance.now();
@@ -1454,60 +1660,3 @@
 
   })();
 </script>
-
-
-{% schema %}
-{
-  "name": "G4U · Manifiesto Nosotros",
-  "tag": "section",
-  "class": "section-g4u-about-manifesto",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Imágenes decorativas"
-    },
-    {
-      "type": "image_picker",
-      "id": "dust_image",
-      "label": "Polvo / fondo izquierdo"
-    },
-    {
-      "type": "image_picker",
-      "id": "texture_image",
-      "label": "Textura / fondo derecho"
-    },
-    {
-      "type": "image_picker",
-      "id": "snack_image",
-      "label": "Producto izquierdo"
-    },
-    {
-      "type": "image_picker",
-      "id": "bread_image",
-      "label": "Producto central"
-    },
-    {
-      "type": "image_picker",
-      "id": "tortilla_image",
-      "label": "Producto derecho"
-    },
-    {
-      "type": "textarea",
-      "id": "closing",
-      "label": "Cierre",
-      "default": "Por eso existimos:\nPara redefinir el pan."
-    },
-    {
-      "type": "textarea",
-      "id": "closing_accent",
-      "label": "Cierre destacado",
-      "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
-    }
-  ],
-  "presets": [
-    {
-      "name": "G4U · Manifiesto Nosotros"
-    }
-  ]
-}
-{% endschema %}
