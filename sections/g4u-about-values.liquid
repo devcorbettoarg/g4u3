@@ -1,26 +1,128 @@
-<section class="g4u-about-values" aria-labelledby="G4uAboutValues-{{ section.id }}">
-  <h2 class="g4u-about-values__title g4u-display" id="G4uAboutValues-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+<style>
+  /* ==========================================
+     G4U · Diferenciales — Card reveal
+     ========================================== */
+
+  @keyframes g4uValueReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95) rotate(-0.8deg);
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  .animate__g4uValueReveal {
+    animation-name: g4uValueReveal;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate__g4uValueReveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<section
+  class="g4u-about-values"
+  aria-labelledby="G4uAboutValues-{{ section.id }}"
+>
+
+  <h2
+    class="g4u-about-values__title g4u-display wow animate__fadeInUp"
+    id="G4uAboutValues-{{ section.id }}"
+    data-wow-duration="0.8s"
+  >
+    {{ section.settings.title | escape }}
+  </h2>
+
   <div class="g4u-about-values__grid">
+
     {%- for block in section.blocks -%}
+
       {%- assign fallback_asset = 'g4u-about-value-innovation.png' -%}
+
       {%- case forloop.index -%}
-        {%- when 2 -%}{%- assign fallback_asset = 'g4u-about-value-ingredients.png' -%}
-        {%- when 3 -%}{%- assign fallback_asset = 'g4u-about-value-flavor.png' -%}
-        {%- when 4 -%}{%- assign fallback_asset = 'g4u-about-value-progress.png' -%}
+        {%- when 2 -%}
+          {%- assign fallback_asset = 'g4u-about-value-ingredients.png' -%}
+        {%- when 3 -%}
+          {%- assign fallback_asset = 'g4u-about-value-flavor.png' -%}
+        {%- when 4 -%}
+          {%- assign fallback_asset = 'g4u-about-value-progress.png' -%}
       {%- endcase -%}
-      <article class="g4u-about-value" {{ block.shopify_attributes }}>
+
+      {%- assign item_delay = '0.06s' -%}
+
+      {%- case forloop.index -%}
+        {%- when 2 -%}
+          {%- assign item_delay = '0.14s' -%}
+        {%- when 3 -%}
+          {%- assign item_delay = '0.22s' -%}
+        {%- when 4 -%}
+          {%- assign item_delay = '0.30s' -%}
+      {%- endcase -%}
+
+      <article
+        class="g4u-about-value wow animate__g4uValueReveal"
+        data-wow-duration="0.85s"
+        data-wow-delay="{{ item_delay }}"
+        {{ block.shopify_attributes }}
+      >
+
         <div class="g4u-about-value__media">
+
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'g4u-about-value__image', loading: 'lazy', widths: '360, 550, 750, 1000', sizes: '(min-width: 990px) 25vw, 50vw' }}
+
+            {{
+              block.settings.image
+              | image_url: width: 1000
+              | image_tag:
+                class: 'g4u-about-value__image',
+                loading: 'lazy',
+                widths: '360, 550, 750, 1000',
+                sizes: '(min-width: 990px) 25vw, 50vw'
+            }}
+
           {%- else -%}
-            <img class="g4u-about-value__image" src="{{ fallback_asset | asset_url }}" alt="" width="900" height="900" loading="lazy">
+
+            <img
+              class="g4u-about-value__image"
+              src="{{ fallback_asset | asset_url }}"
+              alt=""
+              width="900"
+              height="900"
+              loading="lazy"
+            >
+
           {%- endif -%}
+
         </div>
-        <h3>{{ block.settings.title | escape }}</h3>
-        <div class="rte">{{ block.settings.text }}</div>
+
+        <h3>
+          {{ block.settings.title | escape }}
+        </h3>
+
+        <div class="rte">
+          {{ block.settings.text }}
+        </div>
+
       </article>
+
     {%- endfor -%}
+
   </div>
+
 </section>
 
 {% schema %}
@@ -29,12 +131,57 @@
   "tag": "section",
   "class": "section-g4u-about-values",
   "max_blocks": 4,
-  "settings": [{ "type": "text", "id": "title", "label": "Título", "default": "Lo que nos diferencia" }],
-  "blocks": [{ "type": "value", "name": "Diferencial", "settings": [
-    { "type": "image_picker", "id": "image", "label": "Imagen" },
-    { "type": "text", "id": "title", "label": "Título", "default": "Innovación con propósito" },
-    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Cada formulación nace de investigación y desarrollo para ofrecer beneficios nutricionales reales.</p>" }
-  ] }],
-  "presets": [{ "name": "G4U · Diferenciales", "blocks": [{ "type": "value" }, { "type": "value" }, { "type": "value" }, { "type": "value" }] }]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Lo que nos diferencia"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Diferencial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Innovación con propósito"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texto",
+          "default": "<p>Cada formulación nace de investigación y desarrollo para ofrecer beneficios nutricionales reales.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Diferenciales",
+      "blocks": [
+        {
+          "type": "value"
+        },
+        {
+          "type": "value"
+        },
+        {
+          "type": "value"
+        },
+        {
+          "type": "value"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
