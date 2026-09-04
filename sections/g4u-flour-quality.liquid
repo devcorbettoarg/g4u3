@@ -1,242 +1,98 @@
 <style>
-  /* ==========================================
-     G4U · Fórmula harina — Center image reveal
-     ========================================== */
+  /* =========================================================
+     G4U · Calidad harina — Editorial image reveal
+     ========================================================= */
 
-  @keyframes g4uFormulaImageReveal {
+  @keyframes g4uQualityImageReveal {
     0% {
-      opacity: 0;
-      transform: translateY(22px) scale(0.92) rotate(-1.5deg);
-    }
-
-    60% {
-      opacity: 1;
+      clip-path: inset(0 100% 0 0);
+      transform: scale(1.04);
     }
 
     100% {
-      opacity: 1;
-      transform: translateY(0) scale(1) rotate(0deg);
+      clip-path: inset(0 0 0 0);
+      transform: scale(1);
     }
   }
 
-  .animate__g4uFormulaImageReveal {
-    animation-name: g4uFormulaImageReveal;
+  .animate__g4uQualityImageReveal {
+    animation-name: g4uQualityImageReveal;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     transform-origin: center center;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate__g4uFormulaImageReveal {
+    .animate__g4uQualityImageReveal {
       animation: none !important;
-      opacity: 1 !important;
+      clip-path: none !important;
       transform: none !important;
+      opacity: 1 !important;
     }
   }
 </style>
 
 <section
-  class="g4u-flour-formula"
-  aria-labelledby="G4uFlourFormulaTitle-{{ section.id }}"
+  class="g4u-flour-quality"
+  aria-labelledby="G4uFlourQualityTitle-{{ section.id }}"
 >
 
-  <header class="g4u-flour-formula__header">
+  {%- if section.settings.image != blank -%}
+    {{
+      section.settings.image
+      | image_url: width: 2200
+      | image_tag:
+        class: 'g4u-flour-quality__image wow animate__g4uQualityImageReveal',
+        loading: 'lazy',
+        widths: '750, 1100, 1500, 1800, 2200',
+        sizes: '100vw'
+    }}
+  {%- else -%}
 
-    <p
-      class="g4u-eyebrow wow animate__fadeIn"
-      data-wow-duration="0.6s"
+    <img
+      class="g4u-flour-quality__image wow animate__g4uQualityImageReveal"
+      src="{{ 'g4u-flour-quality.webp' | asset_url }}"
+      alt="{{ section.settings.image_alt | escape }}"
+      width="2200"
+      height="1447"
+      loading="lazy"
     >
-      {{ section.settings.eyebrow | escape }}
-    </p>
+
+  {%- endif -%}
+
+  <div class="g4u-flour-quality__content">
 
     <h2
-      class="g4u-flour-formula__title g4u-display wow animate__fadeInUp"
-      id="G4uFlourFormulaTitle-{{ section.id }}"
+      class="g4u-flour-quality__title g4u-display wow animate__fadeInLeft"
+      id="G4uFlourQualityTitle-{{ section.id }}"
       data-wow-duration="0.8s"
-      data-wow-delay="0.08s"
+      data-wow-delay="0.12s"
     >
+      <em>{{ section.settings.accent | escape }}</em><br>
       {{ section.settings.title | escape }}
     </h2>
 
-  </header>
-
-  <div class="g4u-flour-formula__grid">
-
-    <!-- LEFT INGREDIENTS -->
-    <div class="g4u-flour-formula__list">
-
-      {%- for block in section.blocks limit: 2 -%}
-
-        {%- assign item_delay = '0.12s' -%}
-
-        {%- if forloop.index == 2 -%}
-          {%- assign item_delay = '0.24s' -%}
-        {%- endif -%}
-
-        <article
-          class="g4u-flour-formula__item wow animate__slideInLeft"
-          data-wow-duration="0.8s"
-          data-wow-delay="{{ item_delay }}"
-          {{ block.shopify_attributes }}
-        >
-
-          {%- if block.settings.custom_icon != blank -%}
-
-            {{
-              block.settings.custom_icon
-              | image_url: width: 96
-              | image_tag:
-                loading: 'lazy',
-                widths: '48, 96',
-                sizes: '48px'
-            }}
-
-          {%- else -%}
-
-            <img
-              src="{{ block.settings.icon | default: 'g4u-flour-icon-starch.svg' | asset_url }}"
-              alt=""
-              width="48"
-              height="48"
-              loading="lazy"
-            >
-
-          {%- endif -%}
-
-          <h3>
-            {{ block.settings.title | escape }}
-          </h3>
-
-          <p>
-            {{ block.settings.text | escape }}
-          </p>
-
-        </article>
-
-      {%- endfor -%}
-
-    </div>
-
-
-    <!-- CENTER IMAGE -->
     <div
-      class="g4u-flour-formula__media wow animate__g4uFormulaImageReveal"
-      data-wow-duration="1s"
-      data-wow-delay="0.10s"
+      class="g4u-flour-quality__text rte wow animate__fadeIn"
+      data-wow-duration="0.75s"
+      data-wow-delay="0.24s"
     >
-
-      {%- if section.settings.image != blank -%}
-
-        {{
-          section.settings.image
-          | image_url: width: 1600
-          | image_tag:
-            loading: 'lazy',
-            widths: '600, 900, 1200, 1600',
-            sizes: '(min-width: 750px) 540px, 90vw'
-        }}
-
-      {%- else -%}
-
-        <img
-          src="{{ 'g4u-flour-ingredients.webp' | asset_url }}"
-          alt="{{ section.settings.image_alt | escape }}"
-          width="1800"
-          height="1203"
-          loading="lazy"
-        >
-
-      {%- endif -%}
-
+      {{ section.settings.text }}
     </div>
 
+    {%- if section.settings.button_label != blank -%}
 
-    <!-- RIGHT INGREDIENTS -->
-    <div class="g4u-flour-formula__list">
+      <a
+        class="g4u-pill g4u-pill--light wow animate__fadeInUp"
+        href="{{ section.settings.button_link | default: 'https://drive.google.com/file/d/1phHsXeXerpK-pRPHk34W481dR7vwaBtT/view?usp=sharing' }}"
+        target="_blank"
+        rel="noopener"
+        data-wow-duration="0.7s"
+        data-wow-delay="0.34s"
+      >
+        {{ section.settings.button_label | escape }}
+      </a>
 
-      {%- for block in section.blocks offset: 2 -%}
-
-        {%- assign item_delay = '0.16s' -%}
-
-        {%- if forloop.index == 2 -%}
-          {%- assign item_delay = '0.28s' -%}
-        {%- endif -%}
-
-        <article
-          class="g4u-flour-formula__item wow animate__slideInRight"
-          data-wow-duration="0.8s"
-          data-wow-delay="{{ item_delay }}"
-          {{ block.shopify_attributes }}
-        >
-
-          {%- if block.settings.custom_icon != blank -%}
-
-            {{
-              block.settings.custom_icon
-              | image_url: width: 96
-              | image_tag:
-                loading: 'lazy',
-                widths: '48, 96',
-                sizes: '48px'
-            }}
-
-          {%- elsif block.settings.icon == 'technology' -%}
-
-            <span
-              class="g4u-flour-formula__technology"
-              aria-hidden="true"
-            >
-
-              <img
-                src="{{ 'g4u-flour-icon-technology-1.svg' | asset_url }}"
-                alt=""
-                width="15"
-                height="39"
-                loading="lazy"
-              >
-
-              <img
-                src="{{ 'g4u-flour-icon-technology-2.svg' | asset_url }}"
-                alt=""
-                width="33"
-                height="28"
-                loading="lazy"
-              >
-
-              <img
-                src="{{ 'g4u-flour-icon-technology-3.svg' | asset_url }}"
-                alt=""
-                width="34"
-                height="22"
-                loading="lazy"
-              >
-
-            </span>
-
-          {%- else -%}
-
-            <img
-              src="{{ block.settings.icon | default: 'g4u-flour-icon-fiber.svg' | asset_url }}"
-              alt=""
-              width="48"
-              height="48"
-              loading="lazy"
-            >
-
-          {%- endif -%}
-
-          <h3>
-            {{ block.settings.title | escape }}
-          </h3>
-
-          <p>
-            {{ block.settings.text | escape }}
-          </p>
-
-        </article>
-
-      {%- endfor -%}
-
-    </div>
+    {%- endif -%}
 
   </div>
 
@@ -244,23 +100,10 @@
 
 {% schema %}
 {
-  "name": "G4U · Fórmula harina",
+  "name": "G4U · Calidad harina",
   "tag": "section",
-  "class": "section-g4u-flour-formula",
-  "max_blocks": 4,
+  "class": "section-g4u-flour-quality",
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Antetítulo",
-      "default": "¿Cómo lo logramos?"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Título",
-      "default": "Una fórmula donde cada ingrediente tiene un propósito"
-    },
     {
       "type": "image_picker",
       "id": "image",
@@ -270,95 +113,41 @@
       "type": "text",
       "id": "image_alt",
       "label": "Descripción de imagen",
-      "default": "Espigas de trigo sobre harina"
-    }
-  ],
-  "blocks": [
+      "default": "Harina junto a espigas de trigo"
+    },
     {
-      "type": "ingredient",
-      "name": "Ingrediente",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "custom_icon",
-          "label": "Ícono personalizado"
-        },
-        {
-          "type": "select",
-          "id": "icon",
-          "label": "Ícono predeterminado",
-          "options": [
-            {
-              "value": "g4u-flour-icon-starch.svg",
-              "label": "Almidón"
-            },
-            {
-              "value": "g4u-flour-icon-protein.svg",
-              "label": "Proteína"
-            },
-            {
-              "value": "g4u-flour-icon-fiber.svg",
-              "label": "Fibra"
-            },
-            {
-              "value": "technology",
-              "label": "Tecnología alimentaria"
-            }
-          ],
-          "default": "g4u-flour-icon-starch.svg"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título",
-          "default": "Almidón resistente RS4"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Descripción",
-          "default": "Reduce el impacto de los carbohidratos disponibles y aporta fibra funcional, ayudando a lograr un mejor perfil nutricional."
-        }
-      ]
+      "type": "text",
+      "id": "accent",
+      "label": "Título destacado",
+      "default": "Calidad"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "respaldada"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Nuestra harina fue desarrollada y analizada para garantizar un perfil nutricional consistente y transparente.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Ver el análisis CONICET"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón"
     }
   ],
   "presets": [
     {
-      "name": "G4U · Fórmula harina",
-      "blocks": [
-        {
-          "type": "ingredient",
-          "settings": {
-            "icon": "g4u-flour-icon-starch.svg",
-            "title": "Almidón resistente RS4",
-            "text": "Reduce el impacto de los carbohidratos disponibles y aporta fibra funcional, ayudando a lograr un mejor perfil nutricional."
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "icon": "g4u-flour-icon-protein.svg",
-            "title": "Proteínas de alta calidad",
-            "text": "Combinamos distintas fuentes proteicas para aumentar el contenido de proteínas y conservar una textura suave y esponjosa."
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "icon": "g4u-flour-icon-fiber.svg",
-            "title": "Fibras funcionales",
-            "text": "Ingredientes como la inulina y el psyllium aportan fibra y ayudan a prolongar la sensación de saciedad."
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "icon": "technology",
-            "title": "Tecnología alimentaria",
-            "text": "Cada componente fue cuidadosamente seleccionado para lograr estabilidad, frescura y una experiencia similar a la del pan tradicional."
-          }
-        }
-      ]
+      "name": "G4U · Calidad harina"
     }
   ]
 }
