@@ -1,5 +1,46 @@
-<section class="g4u-flour-formula" aria-labelledby="G4uFlourFormulaTitle-{{ section.id }}">
+<style>
+  /* ==========================================
+     G4U · Fórmula harina — Center image reveal
+     ========================================== */
+
+  @keyframes g4uFormulaImageReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(22px) scale(0.92) rotate(-1.5deg);
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  .animate__g4uFormulaImageReveal {
+    animation-name: g4uFormulaImageReveal;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate__g4uFormulaImageReveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<section
+  class="g4u-flour-formula"
+  aria-labelledby="G4uFlourFormulaTitle-{{ section.id }}"
+>
+
   <header class="g4u-flour-formula__header">
+
     <p
       class="g4u-eyebrow wow animate__fadeIn"
       data-wow-duration="0.6s"
@@ -15,13 +56,18 @@
     >
       {{ section.settings.title | escape }}
     </h2>
+
   </header>
 
   <div class="g4u-flour-formula__grid">
 
+    <!-- LEFT INGREDIENTS -->
     <div class="g4u-flour-formula__list">
+
       {%- for block in section.blocks limit: 2 -%}
+
         {%- assign item_delay = '0.12s' -%}
+
         {%- if forloop.index == 2 -%}
           {%- assign item_delay = '0.24s' -%}
         {%- endif -%}
@@ -32,7 +78,9 @@
           data-wow-delay="{{ item_delay }}"
           {{ block.shopify_attributes }}
         >
+
           {%- if block.settings.custom_icon != blank -%}
+
             {{
               block.settings.custom_icon
               | image_url: width: 96
@@ -41,7 +89,9 @@
                 widths: '48, 96',
                 sizes: '48px'
             }}
+
           {%- else -%}
+
             <img
               src="{{ block.settings.icon | default: 'g4u-flour-icon-starch.svg' | asset_url }}"
               alt=""
@@ -49,20 +99,33 @@
               height="48"
               loading="lazy"
             >
+
           {%- endif -%}
 
-          <h3>{{ block.settings.title | escape }}</h3>
-          <p>{{ block.settings.text | escape }}</p>
+          <h3>
+            {{ block.settings.title | escape }}
+          </h3>
+
+          <p>
+            {{ block.settings.text | escape }}
+          </p>
+
         </article>
+
       {%- endfor -%}
+
     </div>
 
+
+    <!-- CENTER IMAGE -->
     <div
-      class="g4u-flour-formula__media wow animate__fadeIn"
-      data-wow-duration="0.9s"
-      data-wow-delay="0.14s"
+      class="g4u-flour-formula__media wow animate__g4uFormulaImageReveal"
+      data-wow-duration="1s"
+      data-wow-delay="0.10s"
     >
+
       {%- if section.settings.image != blank -%}
+
         {{
           section.settings.image
           | image_url: width: 1600
@@ -71,7 +134,9 @@
             widths: '600, 900, 1200, 1600',
             sizes: '(min-width: 750px) 540px, 90vw'
         }}
+
       {%- else -%}
+
         <img
           src="{{ 'g4u-flour-ingredients.webp' | asset_url }}"
           alt="{{ section.settings.image_alt | escape }}"
@@ -79,12 +144,19 @@
           height="1203"
           loading="lazy"
         >
+
       {%- endif -%}
+
     </div>
 
+
+    <!-- RIGHT INGREDIENTS -->
     <div class="g4u-flour-formula__list">
+
       {%- for block in section.blocks offset: 2 -%}
+
         {%- assign item_delay = '0.16s' -%}
+
         {%- if forloop.index == 2 -%}
           {%- assign item_delay = '0.28s' -%}
         {%- endif -%}
@@ -95,7 +167,9 @@
           data-wow-delay="{{ item_delay }}"
           {{ block.shopify_attributes }}
         >
+
           {%- if block.settings.custom_icon != blank -%}
+
             {{
               block.settings.custom_icon
               | image_url: width: 96
@@ -104,13 +178,42 @@
                 widths: '48, 96',
                 sizes: '48px'
             }}
+
           {%- elsif block.settings.icon == 'technology' -%}
-            <span class="g4u-flour-formula__technology" aria-hidden="true">
-              <img src="{{ 'g4u-flour-icon-technology-1.svg' | asset_url }}" alt="" width="15" height="39" loading="lazy">
-              <img src="{{ 'g4u-flour-icon-technology-2.svg' | asset_url }}" alt="" width="33" height="28" loading="lazy">
-              <img src="{{ 'g4u-flour-icon-technology-3.svg' | asset_url }}" alt="" width="34" height="22" loading="lazy">
+
+            <span
+              class="g4u-flour-formula__technology"
+              aria-hidden="true"
+            >
+
+              <img
+                src="{{ 'g4u-flour-icon-technology-1.svg' | asset_url }}"
+                alt=""
+                width="15"
+                height="39"
+                loading="lazy"
+              >
+
+              <img
+                src="{{ 'g4u-flour-icon-technology-2.svg' | asset_url }}"
+                alt=""
+                width="33"
+                height="28"
+                loading="lazy"
+              >
+
+              <img
+                src="{{ 'g4u-flour-icon-technology-3.svg' | asset_url }}"
+                alt=""
+                width="34"
+                height="22"
+                loading="lazy"
+              >
+
             </span>
+
           {%- else -%}
+
             <img
               src="{{ block.settings.icon | default: 'g4u-flour-icon-fiber.svg' | asset_url }}"
               alt=""
@@ -118,15 +221,25 @@
               height="48"
               loading="lazy"
             >
+
           {%- endif -%}
 
-          <h3>{{ block.settings.title | escape }}</h3>
-          <p>{{ block.settings.text | escape }}</p>
+          <h3>
+            {{ block.settings.title | escape }}
+          </h3>
+
+          <p>
+            {{ block.settings.text | escape }}
+          </p>
+
         </article>
+
       {%- endfor -%}
+
     </div>
 
   </div>
+
 </section>
 
 {% schema %}
