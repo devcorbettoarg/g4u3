@@ -866,6 +866,7 @@ g4u-tabs {
 }
 
 /* About page */
+body.template-suffix-harina .shopify-section-group-header-group,
 body.template-suffix-nosotros .shopify-section-group-header-group {
   left: 0;
   position: absolute;
