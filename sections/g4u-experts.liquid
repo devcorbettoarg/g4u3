@@ -1,64 +1,224 @@
 <script src="{{ 'g4u-scroll-carousel.js' | asset_url }}" defer="defer"></script>
 
-<g4u-scroll-carousel class="g4u-experts" role="region" aria-labelledby="G4uExperts-{{ section.id }}">
+<g4u-scroll-carousel
+  class="g4u-experts"
+  role="region"
+  aria-labelledby="G4uExperts-{{ section.id }}"
+>
+
   <header class="g4u-experts__header">
+
     <div class="g4u-experts__heading">
-      <p class="g4u-experts__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-      <h2 class="g4u-experts__title g4u-display" id="G4uExperts-{{ section.id }}">{{ section.settings.title | escape }}</h2>
-      <div class="g4u-experts__intro rte">{{ section.settings.description }}</div>
+
+      <p
+        class="g4u-experts__eyebrow wow animate__fadeIn"
+        data-wow-duration="0.6s"
+      >
+        {{ section.settings.eyebrow | escape }}
+      </p>
+
+      <h2
+        class="g4u-experts__title g4u-display wow animate__fadeInUp"
+        id="G4uExperts-{{ section.id }}"
+        data-wow-duration="0.8s"
+        data-wow-delay="0.06s"
+      >
+        {{ section.settings.title | escape }}
+      </h2>
+
+      <div
+        class="g4u-experts__intro rte wow animate__fadeInUp"
+        data-wow-duration="0.75s"
+        data-wow-delay="0.14s"
+      >
+        {{ section.settings.description }}
+      </div>
+
     </div>
-    <div class="g4u-experts__controls">
-      <button class="g4u-experts__arrow" type="button" data-g4u-scroll-prev aria-label="Recomendación anterior"><img src="{{ 'g4u-icon-arrow-back.svg' | asset_url }}" alt="" width="24" height="24"></button>
-      <button class="g4u-experts__arrow" type="button" data-g4u-scroll-next aria-label="Recomendación siguiente"><img src="{{ 'g4u-icon-arrow-forward.svg' | asset_url }}" alt="" width="24" height="24"></button>
+
+    <div
+      class="g4u-experts__controls wow animate__fadeIn"
+      data-wow-duration="0.65s"
+      data-wow-delay="0.22s"
+    >
+      <button
+        class="g4u-experts__arrow"
+        type="button"
+        data-g4u-scroll-prev
+        aria-label="Recomendación anterior"
+      >
+        <img
+          src="{{ 'g4u-icon-arrow-back.svg' | asset_url }}"
+          alt=""
+          width="24"
+          height="24"
+        >
+      </button>
+
+      <button
+        class="g4u-experts__arrow"
+        type="button"
+        data-g4u-scroll-next
+        aria-label="Recomendación siguiente"
+      >
+        <img
+          src="{{ 'g4u-icon-arrow-forward.svg' | asset_url }}"
+          alt=""
+          width="24"
+          height="24"
+        >
+      </button>
     </div>
+
   </header>
 
-  <ul class="g4u-experts__track" data-g4u-scroll-track role="list">
+  <ul
+    class="g4u-experts__track wow animate__fadeInUp"
+    data-g4u-scroll-track
+    role="list"
+    data-wow-duration="0.85s"
+    data-wow-delay="0.16s"
+  >
+
     {%- for block in section.blocks -%}
+
       {%- liquid
         assign fallback_media = 'g4u-expert-alejandra.png'
         assign fallback_avatar = 'g4u-expert-alejandra-avatar.png'
+
         if forloop.index == 2 or forloop.index == 4
           assign fallback_media = 'g4u-expert-roxana.png'
           assign fallback_avatar = 'g4u-expert-roxana-avatar.png'
         endif
       -%}
-      <li class="g4u-expert-card" {{ block.shopify_attributes }}>
+
+      <li
+        class="g4u-expert-card"
+        {{ block.shopify_attributes }}
+      >
+
         <div class="g4u-expert-card__media">
+
           {%- if block.settings.media != blank -%}
-            {{ block.settings.media | image_url: width: 1200 | image_tag: class: 'g4u-expert-card__image', loading: 'lazy', widths: '500, 750, 1000, 1200', sizes: '(min-width: 750px) 332px, 88vw' }}
+            {{
+              block.settings.media
+              | image_url: width: 1200
+              | image_tag:
+                class: 'g4u-expert-card__image',
+                loading: 'lazy',
+                widths: '500, 750, 1000, 1200',
+                sizes: '(min-width: 750px) 332px, 88vw'
+            }}
           {%- else -%}
-            <img class="g4u-expert-card__image" src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}" alt="{{ block.settings.name | escape }}" width="900" height="1593" loading="lazy">
+            <img
+              class="g4u-expert-card__image"
+              src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}"
+              alt="{{ block.settings.name | escape }}"
+              width="900"
+              height="1593"
+              loading="lazy"
+            >
           {%- endif -%}
+
           {%- if block.settings.video_url != blank -%}
-            <a href="{{ block.settings.video_url }}" aria-label="Ver video de {{ block.settings.name | escape }}"><img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64"></a>
+            <a
+              href="{{ block.settings.video_url }}"
+              aria-label="Ver video de {{ block.settings.name | escape }}"
+            >
+              <img
+                class="g4u-expert-card__play"
+                src="{{ 'g4u-icon-play.svg' | asset_url }}"
+                alt=""
+                width="64"
+                height="64"
+              >
+            </a>
           {%- else -%}
-            <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
+            <img
+              class="g4u-expert-card__play"
+              src="{{ 'g4u-icon-play.svg' | asset_url }}"
+              alt=""
+              width="64"
+              height="64"
+            >
           {%- endif -%}
+
         </div>
+
         <blockquote class="g4u-expert-card__quote">
+
           <div class="g4u-expert-card__profile">
+
             {%- if block.settings.avatar != blank -%}
-              {{ block.settings.avatar | image_url: width: 160 | image_tag: class: 'g4u-expert-card__avatar', loading: 'lazy' }}
+              {{
+                block.settings.avatar
+                | image_url: width: 160
+                | image_tag:
+                  class: 'g4u-expert-card__avatar',
+                  loading: 'lazy'
+              }}
             {%- else -%}
-              <img class="g4u-expert-card__avatar" src="{{ fallback_avatar | asset_url }}" alt="" width="56" height="56" loading="lazy">
+              <img
+                class="g4u-expert-card__avatar"
+                src="{{ fallback_avatar | asset_url }}"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+              >
             {%- endif -%}
-            <div><p class="g4u-expert-card__name">{{ block.settings.name | escape }}</p><p class="g4u-expert-card__role">{{ block.settings.role | escape | newline_to_br }}</p></div>
+
+            <div>
+              <p class="g4u-expert-card__name">
+                {{ block.settings.name | escape }}
+              </p>
+
+              <p class="g4u-expert-card__role">
+                {{ block.settings.role | escape | newline_to_br }}
+              </p>
+            </div>
+
           </div>
+
           <hr class="g4u-expert-card__divider">
-          <img class="g4u-expert-card__stars" src="{{ 'g4u-stars.svg' | asset_url }}" alt="5 estrellas" width="82" height="14">
-          <div class="g4u-expert-card__text">{{ block.settings.quote }}</div>
+
+          <img
+            class="g4u-expert-card__stars"
+            src="{{ 'g4u-stars.svg' | asset_url }}"
+            alt="5 estrellas"
+            width="82"
+            height="14"
+          >
+
+          <div class="g4u-expert-card__text">
+            {{ block.settings.quote }}
+          </div>
+
           {%- if block.settings.handle != blank -%}
+
             {%- if block.settings.profile_link != blank -%}
-              <a class="g4u-expert-card__handle" href="{{ block.settings.profile_link }}">{{ block.settings.handle | escape }}</a>
+              <a
+                class="g4u-expert-card__handle"
+                href="{{ block.settings.profile_link }}"
+              >
+                {{ block.settings.handle | escape }}
+              </a>
             {%- else -%}
-              <span class="g4u-expert-card__handle">{{ block.settings.handle | escape }}</span>
+              <span class="g4u-expert-card__handle">
+                {{ block.settings.handle | escape }}
+              </span>
             {%- endif -%}
+
           {%- endif -%}
+
         </blockquote>
+
       </li>
+
     {%- endfor -%}
+
   </ul>
+
 </g4u-scroll-carousel>
 
 {% schema %}
@@ -68,24 +228,89 @@
   "class": "section-g4u-experts",
   "max_blocks": 8,
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Respaldo profesional" },
-    { "type": "text", "id": "title", "label": "Título", "default": "Profesionales que nos recomiendan" },
-    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>Nutricionistas y especialistas en alimentación confían en G4U por su perfil nutricional y lo incorporan como una herramienta dentro de una alimentación equilibrada.</p>" }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "Respaldo profesional"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Profesionales que nos recomiendan"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción",
+      "default": "<p>Nutricionistas y especialistas en alimentación confían en G4U por su perfil nutricional y lo incorporan como una herramienta dentro de una alimentación equilibrada.</p>"
+    }
   ],
-  "blocks": [{
-    "type": "expert",
-    "name": "Profesional",
-    "settings": [
-      { "type": "image_picker", "id": "media", "label": "Imagen principal" },
-      { "type": "url", "id": "video_url", "label": "Enlace al video" },
-      { "type": "image_picker", "id": "avatar", "label": "Avatar" },
-      { "type": "text", "id": "name", "label": "Nombre", "default": "Dra. Alejandra Moisello" },
-      { "type": "textarea", "id": "role", "label": "Especialidad", "default": "Especialista en Nutrición y Medicina del deporte" },
-      { "type": "richtext", "id": "quote", "label": "Recomendación", "default": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas.</p>" },
-      { "type": "text", "id": "handle", "label": "Usuario social", "default": "@Dra.alejandramoisello" },
-      { "type": "url", "id": "profile_link", "label": "Perfil social" }
-    ]
-  }],
-  "presets": [{ "name": "G4U · Profesionales", "blocks": [{ "type": "expert" }, { "type": "expert" }] }]
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Profesional",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "media",
+          "label": "Imagen principal"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Enlace al video"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "Dra. Alejandra Moisello"
+        },
+        {
+          "type": "textarea",
+          "id": "role",
+          "label": "Especialidad",
+          "default": "Especialista en Nutrición y Medicina del deporte"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Recomendación",
+          "default": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas.</p>"
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Usuario social",
+          "default": "@Dra.alejandramoisello"
+        },
+        {
+          "type": "url",
+          "id": "profile_link",
+          "label": "Perfil social"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Profesionales",
+      "blocks": [
+        {
+          "type": "expert"
+        },
+        {
+          "type": "expert"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
