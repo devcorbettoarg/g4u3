@@ -1,12 +1,43 @@
 <section class="g4u-comparison" aria-labelledby="G4uComparison-{{ section.id }}">
+
   <header class="g4u-comparison__header">
-    <p class="g4u-comparison__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-    <h2 class="g4u-comparison__title g4u-display" id="G4uComparison-{{ section.id }}">{{ section.settings.title | escape }}</h2>
-    <div class="g4u-comparison__intro rte">{{ section.settings.description }}</div>
+
+    <p
+      class="g4u-comparison__eyebrow wow animate__fadeIn"
+      data-wow-duration="0.6s"
+    >
+      {{ section.settings.eyebrow | escape }}
+    </p>
+
+    <h2
+      class="g4u-comparison__title g4u-display wow animate__fadeInUp"
+      id="G4uComparison-{{ section.id }}"
+      data-wow-duration="0.8s"
+      data-wow-delay="0.06s"
+    >
+      {{ section.settings.title | escape }}
+    </h2>
+
+    <div
+      class="g4u-comparison__intro rte wow animate__fadeInUp"
+      data-wow-duration="0.75s"
+      data-wow-delay="0.14s"
+    >
+      {{ section.settings.description }}
+    </div>
+
   </header>
 
-  <div class="g4u-comparison__table-wrap" tabindex="0" role="region" aria-label="Comparación nutricional desplazable">
+  <div
+    class="g4u-comparison__table-wrap wow animate__fadeInUp"
+    tabindex="0"
+    role="region"
+    aria-label="Comparación nutricional desplazable"
+    data-wow-duration="0.85s"
+    data-wow-delay="0.18s"
+  >
     <table class="g4u-comparison__table">
+
       <thead>
         <tr>
           <th scope="col">{{ section.settings.first_column | escape }}</th>
@@ -17,6 +48,7 @@
           <th scope="col">{{ section.settings.column_5 | escape }}</th>
         </tr>
       </thead>
+
       <tbody>
         {%- for block in section.blocks -%}
           <tr {{ block.shopify_attributes }}>
@@ -29,17 +61,51 @@
           </tr>
         {%- endfor -%}
       </tbody>
+
     </table>
   </div>
-  <p class="g4u-comparison__note">{{ section.settings.note | escape }}</p>
-  <div class="g4u-comparison__actions">
+
+  <p
+    class="g4u-comparison__note wow animate__fadeIn"
+    data-wow-duration="0.6s"
+    data-wow-delay="0.22s"
+  >
+    {{ section.settings.note | escape }}
+  </p>
+
+  <div
+    class="g4u-comparison__actions wow animate__fadeInUp"
+    data-wow-duration="0.7s"
+    data-wow-delay="0.26s"
+  >
+
     {%- if section.settings.primary_label != blank -%}
-      <a class="g4u-pill g4u-comparison__button" href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}">{{ section.settings.primary_label | escape }}</a>
+      <a
+        class="g4u-pill g4u-comparison__button"
+        href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}"
+      >
+        {{ section.settings.primary_label | escape }}
+      </a>
     {%- endif -%}
+
     {%- if section.settings.secondary_label != blank -%}
-      <a class="g4u-comparison__link" href="{{ section.settings.secondary_link | default: routes.root_url }}">{{ section.settings.secondary_label | escape }} <img src="{{ 'g4u-icon-chevron.svg' | asset_url }}" alt="" width="24" height="24"></a>
+      <a
+        class="g4u-comparison__link"
+        href="{{ section.settings.secondary_link | default: routes.root_url }}"
+      >
+        {{ section.settings.secondary_label | escape }}
+
+        <img
+          src="{{ 'g4u-icon-chevron.svg' | asset_url }}"
+          alt=""
+          width="24"
+          height="24"
+        >
+      </a>
     {%- endif -%}
+
   </div>
+
 </section>
 
 {% schema %}
@@ -49,35 +115,142 @@
   "class": "section-g4u-comparison",
   "max_blocks": 8,
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nutrición" },
-    { "type": "text", "id": "title", "label": "Título", "default": "Compará y elegí mejor" },
-    { "type": "richtext", "id": "description", "label": "Descripción", "default": "<p>Nuestra harina fue desarrollada para ofrecer más proteína, más fibra y muchos menos carbohidratos que las harinas tradicionales. Los números hablan por sí solos.</p>" },
-    { "type": "text", "id": "first_column", "label": "Primera columna", "default": "Nutrientes" },
-    { "type": "text", "id": "column_1", "label": "Columna 1", "default": "Harina de Trigo 000" },
-    { "type": "text", "id": "column_2", "label": "Columna 2", "default": "Harina de Trigo Integral" },
-    { "type": "text", "id": "column_3", "label": "Columna 3", "default": "Harina de Garbanzos" },
-    { "type": "text", "id": "column_4", "label": "Columna 4", "default": "Harina de Almendras" },
-    { "type": "text", "id": "column_5", "label": "Columna destacada", "default": "Harina G4U" },
-    { "type": "text", "id": "note", "label": "Nota", "default": "Cada 100g" },
-    { "type": "text", "id": "primary_label", "label": "Botón principal", "default": "Descubrir productos" },
-    { "type": "url", "id": "primary_link", "label": "Enlace principal" },
-    { "type": "text", "id": "secondary_label", "label": "Enlace secundario", "default": "Conocé nuestra harina" },
-    { "type": "url", "id": "secondary_link", "label": "Destino secundario" }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "Nutrición"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Compará y elegí mejor"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción",
+      "default": "<p>Nuestra harina fue desarrollada para ofrecer más proteína, más fibra y muchos menos carbohidratos que las harinas tradicionales. Los números hablan por sí solos.</p>"
+    },
+    {
+      "type": "text",
+      "id": "first_column",
+      "label": "Primera columna",
+      "default": "Nutrientes"
+    },
+    {
+      "type": "text",
+      "id": "column_1",
+      "label": "Columna 1",
+      "default": "Harina de Trigo 000"
+    },
+    {
+      "type": "text",
+      "id": "column_2",
+      "label": "Columna 2",
+      "default": "Harina de Trigo Integral"
+    },
+    {
+      "type": "text",
+      "id": "column_3",
+      "label": "Columna 3",
+      "default": "Harina de Garbanzos"
+    },
+    {
+      "type": "text",
+      "id": "column_4",
+      "label": "Columna 4",
+      "default": "Harina de Almendras"
+    },
+    {
+      "type": "text",
+      "id": "column_5",
+      "label": "Columna destacada",
+      "default": "Harina G4U"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Nota",
+      "default": "Cada 100g"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Botón principal",
+      "default": "Descubrir productos"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Enlace principal"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Enlace secundario",
+      "default": "Conocé nuestra harina"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Destino secundario"
+    }
   ],
   "blocks": [
     {
       "type": "row",
       "name": "Fila",
       "settings": [
-        { "type": "text", "id": "label", "label": "Nutriente", "default": "Calorías (kcal)" },
-        { "type": "text", "id": "value_1", "label": "Valor 1", "default": "360" },
-        { "type": "text", "id": "value_2", "label": "Valor 2", "default": "320" },
-        { "type": "text", "id": "value_3", "label": "Valor 3", "default": "387" },
-        { "type": "text", "id": "value_4", "label": "Valor 4", "default": "576" },
-        { "type": "text", "id": "value_5", "label": "Valor G4U", "default": "151" }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nutriente",
+          "default": "Calorías (kcal)"
+        },
+        {
+          "type": "text",
+          "id": "value_1",
+          "label": "Valor 1",
+          "default": "360"
+        },
+        {
+          "type": "text",
+          "id": "value_2",
+          "label": "Valor 2",
+          "default": "320"
+        },
+        {
+          "type": "text",
+          "id": "value_3",
+          "label": "Valor 3",
+          "default": "387"
+        },
+        {
+          "type": "text",
+          "id": "value_4",
+          "label": "Valor 4",
+          "default": "576"
+        },
+        {
+          "type": "text",
+          "id": "value_5",
+          "label": "Valor G4U",
+          "default": "151"
+        }
       ]
     }
   ],
-  "presets": [{ "name": "G4U · Comparativa", "blocks": [{ "type": "row" }] }]
+  "presets": [
+    {
+      "name": "G4U · Comparativa",
+      "blocks": [
+        {
+          "type": "row"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
