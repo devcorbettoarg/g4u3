@@ -39,103 +39,92 @@
     aria-hidden="true"
   >
 
-    {%- if section.settings.dust_image != blank -%}
+    {%- comment -%}
+      ============================================================
+      BACKGROUND PARTICLE 01
+      ============================================================
+    {%- endcomment -%}
+
+    {%- if section.settings.particles_image_1 != blank -%}
       {{
-        section.settings.dust_image
-        | image_url: width: 1400
+        section.settings.particles_image_1
+        | image_url: width: 1800
         | image_tag:
-          class: 'g4u-about-manifesto__dust',
+          class: 'g4u-about-manifesto__particles g4u-about-manifesto__particles--one',
           loading: 'lazy'
       }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__dust"
-        src="{{ 'g4u-about-manifesto-dust.png' | asset_url }}"
-        alt=""
-        width="1024"
-        height="1536"
-        loading="lazy"
-      >
     {%- endif -%}
 
 
-    {%- if section.settings.texture_image != blank -%}
+    {%- comment -%}
+      ============================================================
+      BACKGROUND PARTICLE 02
+      OPTIONAL
+      ============================================================
+    {%- endcomment -%}
+
+    {%- if section.settings.particles_image_2 != blank -%}
       {{
-        section.settings.texture_image
-        | image_url: width: 1400
+        section.settings.particles_image_2
+        | image_url: width: 1800
         | image_tag:
-          class: 'g4u-about-manifesto__texture',
+          class: 'g4u-about-manifesto__particles g4u-about-manifesto__particles--two',
           loading: 'lazy'
       }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__texture"
-        src="{{ 'g4u-about-manifesto-texture.png' | asset_url }}"
-        alt=""
-        width="1024"
-        height="1535"
-        loading="lazy"
-      >
     {%- endif -%}
 
+
+    {%- comment -%}
+      ============================================================
+      TOP PRODUCT
+      Entra desde arriba / izquierda
+      ============================================================
+    {%- endcomment -%}
 
     {%- if section.settings.snack_image != blank -%}
       {{
         section.settings.snack_image
-        | image_url: width: 700
+        | image_url: width: 900
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack',
           loading: 'lazy'
       }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--snack"
-        src="{{ 'g4u-about-snack.png' | asset_url }}"
-        alt=""
-        width="456"
-        height="458"
-        loading="lazy"
-      >
     {%- endif -%}
 
+
+    {%- comment -%}
+      ============================================================
+      CENTRAL BREAD
+      Entra desde arriba / derecha
+      ============================================================
+    {%- endcomment -%}
 
     {%- if section.settings.bread_image != blank -%}
       {{
         section.settings.bread_image
-        | image_url: width: 1100
+        | image_url: width: 1400
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread',
           loading: 'lazy'
       }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--bread"
-        src="{{ 'g4u-about-bread.png' | asset_url }}"
-        alt=""
-        width="866"
-        height="926"
-        loading="lazy"
-      >
     {%- endif -%}
 
+
+    {%- comment -%}
+      ============================================================
+      TORTILLA
+      Entra desde abajo / izquierda
+      ============================================================
+    {%- endcomment -%}
 
     {%- if section.settings.tortilla_image != blank -%}
       {{
         section.settings.tortilla_image
-        | image_url: width: 700
+        | image_url: width: 900
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla',
           loading: 'lazy'
       }}
-    {%- else -%}
-      <img
-        class="g4u-about-manifesto__object g4u-about-manifesto__object--tortilla"
-        src="{{ 'g4u-about-tortilla.png' | asset_url }}"
-        alt=""
-        width="490"
-        height="449"
-        loading="lazy"
-      >
     {%- endif -%}
 
   </div>
@@ -145,14 +134,26 @@
 <style>
   /* ============================================================
      G4U · MANIFESTO
-     CINEMATIC DEPTH PARALLAX V3
+     INDEPENDENT LAYERS PARALLAX
+     ============================================================
+
+     ORDER:
+
+     0 → background #500322
+     1 → particles 1
+     1 → particles 2
+     3 → top product
+     4 → central bread
+     3 → tortilla
+     10 → copy
+
+     Products keep their native alpha channel.
+     Only particle layers use screen blending.
      ============================================================ */
 
 
   /* ============================================================
-     ROOT / BACKGROUND
-
-     #500322 ES EL ÚNICO COLOR DE FONDO.
+     SECTION BACKGROUND
      ============================================================ */
 
   .section-g4u-about-manifesto {
@@ -165,7 +166,7 @@
     background-image:
       none !important;
 
-    overflow-x:
+    overflow:
       hidden;
   }
 
@@ -183,22 +184,15 @@
     background-image:
       none !important;
 
-    overflow-x:
+    overflow:
       hidden;
-
-    overflow-x:
-      clip;
   }
 
-
-  /* ============================================================
-     ELIMINAR POSIBLES BACKGROUNDS AUXILIARES DEL THEME
-     ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}::before,
   #G4uAboutManifesto-{{ section.id }}::after {
     background:
-      transparent !important;
+      none !important;
 
     background-image:
       none !important;
@@ -207,8 +201,6 @@
 
   /* ============================================================
      COPY
-
-     Siempre por encima.
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
@@ -223,12 +215,6 @@
 
   /* ============================================================
      ART CONTAINER
-
-     MUY IMPORTANTE:
-
-     Las partículas quedan recortadas dentro del área gráfica.
-     De esta manera jamás pueden dibujar barras oscuras
-     encima de la zona de texto.
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
@@ -243,13 +229,10 @@
       none !important;
 
     overflow:
-      hidden !important;
+      hidden;
 
     isolation:
       isolate;
-
-    contain:
-      paint;
   }
 
 
@@ -258,58 +241,37 @@
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__art::after {
-    content:
-      none !important;
-
     display:
       none !important;
 
-    background:
+    content:
       none !important;
   }
 
 
   /* ============================================================
      PARTICLE LAYERS
-     ============================================================
 
-     Estas imágenes NO forman parte del mismo plano que
-     los productos.
-
-     Son background visual.
-
-     - z-index 0
-     - screen
-     - grayscale
-     - contrast alto
-     - brightness reducido
-
-     El tratamiento "aplasta" el fondo oscuro de los archivos
-     para que desaparezca y deja fundamentalmente las partículas.
+     Estas son las ÚNICAS capas con blend mode.
+     Siempre permanecen detrás.
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__dust,
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__texture {
+  .g4u-about-manifesto__particles {
     position:
       absolute !important;
 
     z-index:
-      0 !important;
+      1 !important;
 
     pointer-events:
-      none !important;
+      none;
+
+    user-select:
+      none;
 
     background:
       transparent !important;
-
-    background-color:
-      transparent !important;
-
-    background-image:
-      none !important;
 
     mix-blend-mode:
       screen !important;
@@ -325,34 +287,49 @@
 
     will-change:
       transform;
-
-    /*
-     * "Luma key" CSS.
-     *
-     * Convierte el fondo rojizo/oscuro del asset
-     * prácticamente en negro.
-     *
-     * Con screen, el negro deja de modificar #500322.
-     */
-    filter:
-      grayscale(1)
-      contrast(2.35)
-      brightness(0.72);
-
-    opacity:
-      0.78;
   }
 
 
   /* ============================================================
-     DUST
-
-     Overscan:
-     nunca se ve un borde aunque se mueva.
+     PARTICLES 01
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__dust {
+  .g4u-about-manifesto__particles--one {
+    inset:
+      -5% !important;
+
+    width:
+      110% !important;
+
+    height:
+      110% !important;
+
+    object-fit:
+      cover;
+
+    opacity:
+      {{ section.settings.particles_1_opacity | divided_by: 100.0 }};
+
+    transform:
+      translate3d(
+        var(--g4u-particles-one-x, 0px),
+        var(--g4u-particles-one-y, 0px),
+        0
+      )
+      rotate(
+        var(--g4u-particles-one-r, 0deg)
+      )
+      scale(1.03);
+  }
+
+
+  /* ============================================================
+     PARTICLES 02
+     ============================================================ */
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-about-manifesto__particles--two {
     inset:
       -7% !important;
 
@@ -363,84 +340,40 @@
       114% !important;
 
     object-fit:
-      cover !important;
-
-    object-position:
-      45% 50% !important;
-
-    transform:
-      translate3d(
-        var(--g4u-dust-x, 0px),
-        var(--g4u-dust-y, 0px),
-        0
-      )
-      rotate(
-        var(--g4u-dust-rotate, 0deg)
-      )
-      scale(1.02);
-  }
-
-
-  /* ============================================================
-     TEXTURE
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__texture {
-    inset:
-      -8% !important;
-
-    width:
-      116% !important;
-
-    height:
-      116% !important;
-
-    object-fit:
-      cover !important;
-
-    object-position:
-      55% 50% !important;
+      cover;
 
     opacity:
-      0.58;
-
-    filter:
-      grayscale(1)
-      contrast(2.55)
-      brightness(0.68);
+      {{ section.settings.particles_2_opacity | divided_by: 100.0 }};
 
     transform:
       translate3d(
-        var(--g4u-texture-x, 0px),
-        var(--g4u-texture-y, 0px),
+        var(--g4u-particles-two-x, 0px),
+        var(--g4u-particles-two-y, 0px),
         0
       )
       rotate(
-        var(--g4u-texture-rotate, 0deg)
+        var(--g4u-particles-two-r, 0deg)
       )
-      scale(1.03);
+      scale(1.04);
   }
 
 
   /* ============================================================
-     PRODUCTS
-     ============================================================
+     PRODUCT COMMON
 
-     NO MIX BLEND.
-     NO FILTER.
-     NO BACKGROUND.
+     IMPORTANTE:
+     - no blend mode
+     - no filter
+     - no background
+     - alpha PNG nativo
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__object {
-    position:
-      absolute;
-
-    z-index:
-      3 !important;
-
     pointer-events:
+      none;
+
+    user-select:
       none;
 
     background:
@@ -474,12 +407,16 @@
 
   /* ============================================================
      SNACK
+     TOP PRODUCT
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__object--snack {
+    z-index:
+      3 !important;
+
     transform:
-      perspective(1500px)
+      perspective(1400px)
 
       translate3d(
         var(--g4u-snack-x, 0px),
@@ -506,13 +443,16 @@
 
 
   /* ============================================================
-     BREAD
+     CENTRAL BREAD
      ============================================================ */
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__object--bread {
+    z-index:
+      4 !important;
+
     transform:
-      perspective(1600px)
+      perspective(1500px)
 
       translate3d(
         var(--g4u-bread-x, 0px),
@@ -544,8 +484,11 @@
 
   #G4uAboutManifesto-{{ section.id }}
   .g4u-about-manifesto__object--tortilla {
+    z-index:
+      3 !important;
+
     transform:
-      perspective(1500px)
+      perspective(1400px)
 
       translate3d(
         var(--g4u-tortilla-x, 0px),
@@ -572,10 +515,7 @@
 
 
   /* ============================================================
-     MOBILE ORIGINAL POSITIONING
-
-     Conservamos los pequeños offsets que tenías,
-     pero la animación dinámica va mediante transform.
+     MOBILE
      ============================================================ */
 
   @media screen and (max-width: 989px) {
@@ -645,14 +585,7 @@
   ) {
 
     #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__dust,
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__texture {
-      transform:
-        none !important;
-    }
-
+    .g4u-about-manifesto__particles,
 
     #G4uAboutManifesto-{{ section.id }}
     .g4u-about-manifesto__object {
@@ -683,14 +616,16 @@
        ========================================================== */
 
     if (
-      section.dataset.g4uParallaxInitialized ===
+      section.dataset
+        .g4uIndependentParallaxInitialized ===
       'true'
     ) {
       return;
     }
 
 
-    section.dataset.g4uParallaxInitialized =
+    section.dataset
+      .g4uIndependentParallaxInitialized =
       'true';
 
 
@@ -711,30 +646,454 @@
 
 
     /* ==========================================================
-       DESKTOP CONFIG
+       DESKTOP MOTION
+
+       DIRECTIONS BASED ON PROVIDED REFERENCE:
+
+       snack:
+       upper-left → final position
+
+       bread:
+       upper-right → final position
+
+       tortilla:
+       bottom-left → final position
        ========================================================== */
 
-    const desktopLayers = {
+    const desktopProducts = {
 
-      /*
-       * ========================================================
-       * BACKGROUND PARTICLES
-       *
-       * Muy poco desplazamiento.
-       *
-       * Se deben sentir prácticamente ancladas al fondo.
-       * ========================================================
-       */
 
-      dust: {
+      /* ========================================================
+         TOP SNACK
+
+         FROM:
+         upper-left
+
+         TO:
+         original CSS position
+         ======================================================== */
+
+      snack: {
+
+        entryX:
+          -82,
+
+        entryY:
+          -68,
+
+
         scrollY:
-          8,
+          -28,
 
-        pointerX:
+
+        mouseX:
+          9,
+
+        mouseY:
+          6,
+
+
+        floatX:
+          2.2,
+
+        floatY:
+          2.8,
+
+
+        frequency:
+          0.00046,
+
+        phase:
+          1.1,
+
+
+        startScale:
+          0.82,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.018,
+
+
+        startRotate:
+          -4.0,
+
+
+        tiltX:
+          1.0,
+
+        tiltY:
           -1.5,
 
-        pointerY:
+
+        pointerTilt:
+          0.28
+      },
+
+
+      /* ========================================================
+         CENTRAL BREAD
+
+         FROM:
+         upper-right
+
+         TO:
+         original central position
+
+         More mass / slower movement.
+         ======================================================== */
+
+      bread: {
+
+        entryX:
+          96,
+
+        entryY:
+          -54,
+
+
+        scrollY:
+          -19,
+
+
+        mouseX:
+          5.5,
+
+        mouseY:
+          4,
+
+
+        floatX:
+          1.6,
+
+        floatY:
+          2.1,
+
+
+        frequency:
+          0.00034,
+
+        phase:
+          3.7,
+
+
+        startScale:
+          0.84,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.012,
+
+
+        startRotate:
+          3.2,
+
+
+        tiltX:
+          -0.7,
+
+        tiltY:
+          1.1,
+
+
+        pointerTilt:
+          0.20
+      },
+
+
+      /* ========================================================
+         TORTILLA
+
+         FROM:
+         bottom-left
+
+         TO:
+         original CSS position
+         ======================================================== */
+
+      tortilla: {
+
+        entryX:
+          -76,
+
+        entryY:
+          76,
+
+
+        scrollY:
+          -24,
+
+
+        mouseX:
+          -6.5,
+
+        mouseY:
+          -4.5,
+
+
+        floatX:
+          1.9,
+
+        floatY:
+          2.5,
+
+
+        frequency:
+          0.00042,
+
+        phase:
+          5.0,
+
+
+        startScale:
+          0.83,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.014,
+
+
+        startRotate:
+          -3.0,
+
+
+        tiltX:
+          0.8,
+
+        tiltY:
           -1.0,
+
+
+        pointerTilt:
+          0.23
+      }
+
+    };
+
+
+    /* ==========================================================
+       MOBILE MOTION
+
+       Mismas direcciones,
+       recorridos aproximadamente 45% menores.
+       ========================================================== */
+
+    const mobileProducts = {
+
+
+      snack: {
+
+        entryX:
+          -38,
+
+        entryY:
+          -34,
+
+
+        scrollY:
+          -18,
+
+
+        mouseX:
+          0,
+
+        mouseY:
+          0,
+
+
+        floatX:
+          1.2,
+
+        floatY:
+          1.7,
+
+
+        frequency:
+          0.00046,
+
+        phase:
+          1.1,
+
+
+        startScale:
+          0.90,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.008,
+
+
+        startRotate:
+          -2.0,
+
+
+        tiltX:
+          0.35,
+
+        tiltY:
+          -0.5,
+
+
+        pointerTilt:
+          0
+      },
+
+
+      bread: {
+
+        entryX:
+          44,
+
+        entryY:
+          -27,
+
+
+        scrollY:
+          -13,
+
+
+        mouseX:
+          0,
+
+        mouseY:
+          0,
+
+
+        floatX:
+          0.9,
+
+        floatY:
+          1.3,
+
+
+        frequency:
+          0.00034,
+
+        phase:
+          3.7,
+
+
+        startScale:
+          0.91,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.006,
+
+
+        startRotate:
+          1.5,
+
+
+        tiltX:
+          -0.25,
+
+        tiltY:
+          0.35,
+
+
+        pointerTilt:
+          0
+      },
+
+
+      tortilla: {
+
+        entryX:
+          -35,
+
+        entryY:
+          38,
+
+
+        scrollY:
+          -16,
+
+
+        mouseX:
+          0,
+
+        mouseY:
+          0,
+
+
+        floatX:
+          1.0,
+
+        floatY:
+          1.5,
+
+
+        frequency:
+          0.00042,
+
+        phase:
+          5.0,
+
+
+        startScale:
+          0.91,
+
+        finalScale:
+          1,
+
+
+        scalePulse:
+          0.007,
+
+
+        startRotate:
+          -1.5,
+
+
+        tiltX:
+          0.30,
+
+        tiltY:
+          -0.35,
+
+
+        pointerTilt:
+          0
+      }
+
+    };
+
+
+    /* ==========================================================
+       PARTICLE CONFIG
+
+       VERY SLOW.
+       BACKGROUND MUST NEVER COMPETE WITH PRODUCTS.
+       ========================================================== */
+
+    const desktopParticles = {
+
+      one: {
+
+        scrollY:
+          9,
+
+        mouseX:
+          -1.5,
+
+        mouseY:
+          -1,
 
         floatX:
           1.0,
@@ -743,485 +1102,101 @@
           1.4,
 
         frequency:
-          0.00022,
+          0.00020,
 
         phase:
-          0.5,
+          0.4,
 
-        rotation:
+        rotate:
           0.018
       },
 
 
-      texture: {
+      two: {
+
         scrollY:
-          -11,
+          -12,
 
-        pointerX:
-          1.8,
+        mouseX:
+          1.5,
 
-        pointerY:
+        mouseY:
+          1,
+
+        floatX:
           1.2,
 
-        floatX:
-          1.3,
-
         floatY:
-          1.8,
+          1.6,
 
         frequency:
-          0.00019,
+          0.00017,
 
         phase:
-          2.2,
+          2.5,
 
-        rotation:
-          -0.022
-      },
-
-
-      /*
-       * ========================================================
-       * SNACK
-       *
-       * Liviano.
-       * Se acerca algo más rápido.
-       *
-       * Separación inicial deliberadamente pequeña.
-       * ========================================================
-       */
-
-      snack: {
-        scrollY:
-          -48,
-
-        pointerX:
-          10,
-
-        pointerY:
-          7,
-
-        floatX:
-          2.6,
-
-        floatY:
-          3.4,
-
-        frequency:
-          0.00048,
-
-        phase:
-          1.1,
-
-        rotation:
-          0.48,
-
-        energy:
-          3.8,
-
-
-        farX:
-          -9,
-
-        farY:
-          -8,
-
-
-        farScale:
-          0.89,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.012,
-
-
-        farTiltX:
-          0.65,
-
-        farTiltY:
-          -0.9,
-
-
-        pointerTilt:
-          0.28
-      },
-
-
-      /*
-       * ========================================================
-       * CENTRAL BREAD
-       *
-       * Más pesado.
-       * Menos recorrido.
-       * ========================================================
-       */
-
-      bread: {
-        scrollY:
-          -34,
-
-        pointerX:
-          6.5,
-
-        pointerY:
-          5,
-
-        floatX:
-          2,
-
-        floatY:
-          2.7,
-
-        frequency:
-          0.00035,
-
-        phase:
-          3.7,
-
-        rotation:
-          -0.25,
-
-        energy:
-          2.8,
-
-
-        farX:
-          0,
-
-        farY:
-          8,
-
-
-        farScale:
-          0.91,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.009,
-
-
-        farTiltX:
-          -0.45,
-
-        farTiltY:
-          0.55,
-
-
-        pointerTilt:
-          0.21
-      },
-
-
-      /*
-       * ========================================================
-       * TORTILLA
-       *
-       * Contrapeso del snack.
-       * ========================================================
-       */
-
-      tortilla: {
-        scrollY:
-          -41,
-
-        pointerX:
-          -7.5,
-
-        pointerY:
-          -5.5,
-
-        floatX:
-          2.3,
-
-        floatY:
-          3,
-
-        frequency:
-          0.00043,
-
-        phase:
-          5.0,
-
-        rotation:
-          -0.36,
-
-        energy:
-          3.2,
-
-
-        farX:
-          9,
-
-        farY:
-          8,
-
-
-        farScale:
-          0.90,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.010,
-
-
-        farTiltX:
-          0.55,
-
-        farTiltY:
-          0.75,
-
-
-        pointerTilt:
-          0.24
+        rotate:
+          -0.016
       }
 
     };
 
 
-    /* ==========================================================
-       MOBILE CONFIG
-       ========================================================== */
+    const mobileParticles = {
 
-    const mobileLayers = {
+      one: {
 
-
-      dust: {
         scrollY:
-          4,
+          5,
 
-        pointerX:
+        mouseX:
           0,
 
-        pointerY:
+        mouseY:
           0,
 
         floatX:
           0.6,
 
         floatY:
-          0.9,
+          0.8,
 
         frequency:
-          0.00022,
+          0.00020,
 
         phase:
-          0.5,
+          0.4,
 
-        rotation:
+        rotate:
           0.010
       },
 
 
-      texture: {
+      two: {
+
         scrollY:
           -6,
 
-        pointerX:
+        mouseX:
           0,
 
-        pointerY:
-          0,
-
-        floatX:
-          0.8,
-
-        floatY:
-          1.1,
-
-        frequency:
-          0.00019,
-
-        phase:
-          2.2,
-
-        rotation:
-          -0.012
-      },
-
-
-      snack: {
-        scrollY:
-          -30,
-
-        pointerX:
-          0,
-
-        pointerY:
+        mouseY:
           0,
 
         floatX:
-          1.6,
+          0.7,
 
         floatY:
-          2.3,
+          0.9,
 
         frequency:
-          0.00048,
+          0.00017,
 
         phase:
-          1.1,
+          2.5,
 
-        rotation:
-          0.28,
-
-        energy:
-          2.7,
-
-
-        farX:
-          -4,
-
-        farY:
-          -4,
-
-
-        farScale:
-          0.94,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.006,
-
-
-        farTiltX:
-          0.25,
-
-        farTiltY:
-          -0.35,
-
-
-        pointerTilt:
-          0
-      },
-
-
-      bread: {
-        scrollY:
-          -21,
-
-        pointerX:
-          0,
-
-        pointerY:
-          0,
-
-        floatX:
-          1.3,
-
-        floatY:
-          1.8,
-
-        frequency:
-          0.00035,
-
-        phase:
-          3.7,
-
-        rotation:
-          -0.15,
-
-        energy:
-          2,
-
-
-        farX:
-          0,
-
-        farY:
-          3,
-
-
-        farScale:
-          0.95,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.005,
-
-
-        farTiltX:
-          -0.18,
-
-        farTiltY:
-          0.22,
-
-
-        pointerTilt:
-          0
-      },
-
-
-      tortilla: {
-        scrollY:
-          -26,
-
-        pointerX:
-          0,
-
-        pointerY:
-          0,
-
-        floatX:
-          1.5,
-
-        floatY:
-          2,
-
-        frequency:
-          0.00043,
-
-        phase:
-          5.0,
-
-        rotation:
-          -0.21,
-
-        energy:
-          2.3,
-
-
-        farX:
-          4,
-
-        farY:
-          4,
-
-
-        farScale:
-          0.945,
-
-        nearScale:
-          1,
-
-
-        scalePulse:
-          0.006,
-
-
-        farTiltX:
-          0.20,
-
-        farTiltY:
-          0.30,
-
-
-        pointerTilt:
-          0
+        rotate:
+          -0.009
       }
 
     };
@@ -1248,40 +1223,25 @@
     let targetScroll =
       0;
 
-    let scroll =
+    let currentScroll =
       0;
 
 
     /*
      * 0:
-     * objetos lejos.
+     * objects in their entry positions.
      *
      * 1:
-     * objetos en su escala final.
+     * objects in final composition.
      */
     let targetApproach =
       0;
 
-    let approach =
+    let currentApproach =
       0;
 
 
-    let targetEnergy =
-      0;
-
-    let energy =
-      0;
-
-
-    let previousScrollY =
-      window.scrollY;
-
-
-    let previousScrollTime =
-      performance.now();
-
-
-    let isVisible =
+    let visible =
       true;
 
 
@@ -1351,20 +1311,33 @@
     };
 
 
-    const getLayers = () => {
+    /* ==========================================================
+       GET CONFIG
+       ========================================================== */
+
+    const getProducts = () => {
 
       return desktopQuery.matches
-        ? desktopLayers
-        : mobileLayers;
+        ? desktopProducts
+        : mobileProducts;
+
+    };
+
+
+    const getParticles = () => {
+
+      return desktopQuery.matches
+        ? desktopParticles
+        : mobileParticles;
 
     };
 
 
     /* ==========================================================
-       SCROLL TARGET
+       UPDATE SCROLL
        ========================================================== */
 
-    const updateScrollTarget = () => {
+    const updateScroll = () => {
 
       if (
         reducedMotionQuery.matches
@@ -1382,7 +1355,7 @@
 
 
       /* ========================================================
-         GENERAL SCROLL PROGRESS
+         GENERAL PARALLAX
          ======================================================== */
 
       const sectionCenter =
@@ -1398,7 +1371,7 @@
         2;
 
 
-      const range =
+      const travelRange =
         (
           viewportHeight +
           rect.height
@@ -1412,7 +1385,7 @@
             viewportCenter -
             sectionCenter
           ) /
-          range,
+          travelRange,
           -1,
           1
         );
@@ -1421,10 +1394,11 @@
       /* ========================================================
          APPROACH PROGRESS
 
-         Empieza antes de entrar.
+         Start:
+         section is slightly below viewport.
 
-         La mayor parte del acercamiento ocurre mientras
-         el hero visual va entrando en viewport.
+         End:
+         section reaches upper part of viewport.
          ======================================================== */
 
       const start =
@@ -1434,10 +1408,10 @@
 
       const end =
         viewportHeight *
-        0.08;
+        0.12;
 
 
-      const rawApproach =
+      const raw =
         clamp(
           (
             start -
@@ -1454,66 +1428,8 @@
 
       targetApproach =
         smoothstep(
-          rawApproach
+          raw
         );
-
-
-      /* ========================================================
-         VELOCITY
-         ======================================================== */
-
-      const now =
-        performance.now();
-
-
-      const currentScrollY =
-        window.scrollY;
-
-
-      const deltaY =
-        currentScrollY -
-        previousScrollY;
-
-
-      const deltaTime =
-        Math.max(
-          now -
-          previousScrollTime,
-          16
-        );
-
-
-      const velocity =
-        Math.abs(
-          deltaY
-        ) /
-        deltaTime;
-
-
-      const velocityMultiplier =
-        desktopQuery.matches
-          ? 1.1
-          : 0.8;
-
-
-      targetEnergy =
-        Math.max(
-          targetEnergy,
-          clamp(
-            velocity *
-            velocityMultiplier,
-            0,
-            1
-          )
-        );
-
-
-      previousScrollY =
-        currentScrollY;
-
-
-      previousScrollTime =
-        now;
 
     };
 
@@ -1597,27 +1513,27 @@
         config.frequency;
 
 
-      const a =
+      const waveA =
         Math.sin(
           t +
           config.phase
         );
 
 
-      const b =
+      const waveB =
         Math.sin(
           (
             t *
-            1.61
+            1.67
           ) +
           (
             config.phase *
-            1.7
+            1.8
           )
         );
 
 
-      const c =
+      const waveC =
         Math.cos(
           (
             t *
@@ -1625,7 +1541,7 @@
           ) +
           (
             config.phase *
-            0.77
+            0.75
           )
         );
 
@@ -1635,15 +1551,15 @@
         x:
           (
             (
-              a *
+              waveA *
               0.52
             ) +
             (
-              b *
+              waveB *
               0.31
             ) +
             (
-              c *
+              waveC *
               0.17
             )
           ) *
@@ -1653,15 +1569,15 @@
         y:
           (
             (
-              a *
+              waveA *
               0.27
             ) +
             (
-              b *
+              waveB *
               0.48
             ) +
             (
-              c *
+              waveC *
               0.25
             )
           ) *
@@ -1673,11 +1589,11 @@
 
 
     /* ==========================================================
-       BACKGROUND PARTICLE RENDER
+       PARTICLE RENDER
        ========================================================== */
 
     const renderParticle = (
-      name,
+      key,
       config,
       time
     ) => {
@@ -1692,19 +1608,19 @@
       const x =
         (
           pointerX *
-          config.pointerX
+          config.mouseX
         ) +
         organic.x;
 
 
       const y =
         (
-          scroll *
+          currentScroll *
           config.scrollY
         ) +
         (
           pointerY *
-          config.pointerY
+          config.mouseY
         ) +
         organic.y;
 
@@ -1714,27 +1630,27 @@
           (
             time *
             config.frequency *
-            0.7
+            0.75
           ) +
           config.phase
         ) *
-        config.rotation;
+        config.rotate;
 
 
       section.style.setProperty(
-        `--g4u-${name}-x`,
+        `--g4u-particles-${key}-x`,
         `${x.toFixed(2)}px`
       );
 
 
       section.style.setProperty(
-        `--g4u-${name}-y`,
+        `--g4u-particles-${key}-y`,
         `${y.toFixed(2)}px`
       );
 
 
       section.style.setProperty(
-        `--g4u-${name}-rotate`,
+        `--g4u-particles-${key}-r`,
         `${rotation.toFixed(3)}deg`
       );
 
@@ -1758,100 +1674,86 @@
         );
 
 
+      /*
+       * 1 at entry.
+       * 0 at final composition.
+       */
       const far =
         1 -
-        approach;
+        currentApproach;
 
 
       /* ========================================================
-         GROUPED ENTRY
+         ENTRY VECTOR
 
-         Sólo unos pocos pixels de separación.
+         This controls where each product originates.
          ======================================================== */
 
-      const approachX =
-        config.farX *
+      const entryX =
+        config.entryX *
         far;
 
 
-      const approachY =
-        config.farY *
+      const entryY =
+        config.entryY *
         far;
 
 
       /* ========================================================
-         INERTIA
-
-         Muy pequeña.
-         ======================================================== */
-
-      const inertiaY =
-        Math.sin(
-          (
-            time *
-            0.001
-          ) +
-          config.phase
-        ) *
-        config.energy *
-        energy;
-
-
-      /* ========================================================
-         X
+         POSITION
          ======================================================== */
 
       const x =
+        entryX +
+
+        (
+          currentScroll *
+          3
+        ) +
+
         (
           pointerX *
-          config.pointerX
+          config.mouseX
         ) +
-        organic.x +
-        approachX;
 
+        organic.x;
 
-      /* ========================================================
-         Y
-         ======================================================== */
 
       const y =
+        entryY +
+
         (
-          scroll *
+          currentScroll *
           config.scrollY
         ) +
+
         (
           pointerY *
-          config.pointerY
+          config.mouseY
         ) +
-        organic.y +
-        approachY +
-        inertiaY;
+
+        organic.y;
 
 
       /* ========================================================
-         SCALE / DEPTH
-
-         Lejos:
-         89-91%.
-
-         Cerca:
-         100%.
-
-         Durante el recorrido:
-         micro expansión adicional.
+         DEPTH / SCALE
          ======================================================== */
 
       const baseScale =
         lerp(
-          config.farScale,
-          config.nearScale,
-          approach
+          config.startScale,
+          config.finalScale,
+          currentApproach
         );
 
 
+      /*
+       * Very subtle depth "breathing"
+       * around the middle of the transition.
+       */
       const pulse =
         Math.sin(
-          approach *
+          currentApproach *
           Math.PI
         ) *
         config.scalePulse;
@@ -1863,36 +1765,40 @@
 
 
       /* ========================================================
-         ROTATION Z
+         ROTATE Z
+
+         Entry rotation disappears progressively.
          ======================================================== */
+
+      const entryRotation =
+        config.startRotate *
+        far;
+
 
       const organicRotation =
         Math.sin(
           (
             time *
             config.frequency *
-            0.82
+            0.80
           ) +
           config.phase
         ) *
-        0.06;
+        0.075;
 
 
       const rotateZ =
-        (
-          pointerX *
-          config.rotation
-        ) +
+        entryRotation +
         organicRotation;
 
 
       /* ========================================================
-         SUBTLE 3D TILT
+         SUBTLE 3D
          ======================================================== */
 
       const rotateX =
         (
-          config.farTiltX *
+          config.tiltX *
           far
         ) -
         (
@@ -1903,7 +1809,7 @@
 
       const rotateY =
         (
-          config.farTiltY *
+          config.tiltY *
           far
         ) +
         (
@@ -1911,6 +1817,10 @@
           config.pointerTilt
         );
 
+
+      /* ========================================================
+         WRITE CSS VARIABLES
+         ======================================================== */
 
       section.style.setProperty(
         `--g4u-${name}-x`,
@@ -1951,7 +1861,7 @@
 
 
     /* ==========================================================
-       RENDER LOOP
+       ANIMATION LOOP
        ========================================================== */
 
     const render = (
@@ -1972,7 +1882,7 @@
 
 
       /* ========================================================
-         DAMPING
+         POINTER DAMPING
          ======================================================== */
 
       pointerX =
@@ -1995,93 +1905,81 @@
         );
 
 
-      scroll =
+      /* ========================================================
+         SCROLL DAMPING
+         ======================================================== */
+
+      currentScroll =
         lerp(
-          scroll,
+          currentScroll,
           targetScroll,
           desktopQuery.matches
-            ? 0.065
-            : 0.055
+            ? 0.062
+            : 0.052
         );
-
-
-      /*
-       * Depth deliberadamente más pesado.
-       */
-      approach =
-        lerp(
-          approach,
-          targetApproach,
-          desktopQuery.matches
-            ? 0.045
-            : 0.038
-        );
-
-
-      energy =
-        lerp(
-          energy,
-          targetEnergy,
-          0.09
-        );
-
-
-      targetEnergy *=
-        0.945;
-
-
-      if (
-        targetEnergy <
-        0.001
-      ) {
-
-        targetEnergy =
-          0;
-
-      }
 
 
       /* ========================================================
-         VISIBLE ONLY
+         APPROACH DAMPING
+
+         Slower than scroll to create physical weight.
          ======================================================== */
 
-      if (isVisible) {
+      currentApproach =
+        lerp(
+          currentApproach,
+          targetApproach,
+          desktopQuery.matches
+            ? 0.042
+            : 0.036
+        );
 
-        const layers =
-          getLayers();
+
+      /* ========================================================
+         DRAW
+         ======================================================== */
+
+      if (visible) {
+
+        const particles =
+          getParticles();
+
+
+        const products =
+          getProducts();
 
 
         renderParticle(
-          'dust',
-          layers.dust,
+          'one',
+          particles.one,
           time
         );
 
 
         renderParticle(
-          'texture',
-          layers.texture,
+          'two',
+          particles.two,
           time
         );
 
 
         renderProduct(
           'snack',
-          layers.snack,
+          products.snack,
           time
         );
 
 
         renderProduct(
           'bread',
-          layers.bread,
+          products.bread,
           time
         );
 
 
         renderProduct(
           'tortilla',
-          layers.tortilla,
+          products.tortilla,
           time
         );
 
@@ -2096,7 +1994,7 @@
 
 
     /* ==========================================================
-       OBSERVER
+       INTERSECTION OBSERVER
        ========================================================== */
 
     if (
@@ -2110,23 +2008,13 @@
             entries.forEach(
               (entry) => {
 
-                isVisible =
+                visible =
                   entry.isIntersecting;
 
 
-                if (
-                  isVisible
-                ) {
+                if (visible) {
 
-                  previousScrollY =
-                    window.scrollY;
-
-
-                  previousScrollTime =
-                    performance.now();
-
-
-                  updateScrollTarget();
+                  updateScroll();
 
                 }
 
@@ -2136,7 +2024,7 @@
           },
           {
             rootMargin:
-              '25% 0px 25% 0px'
+              '30% 0px 30% 0px'
           }
         );
 
@@ -2154,7 +2042,7 @@
 
     window.addEventListener(
       'scroll',
-      updateScrollTarget,
+      updateScroll,
       {
         passive:
           true
@@ -2168,16 +2056,7 @@
 
         resetPointer();
 
-
-        previousScrollY =
-          window.scrollY;
-
-
-        previousScrollTime =
-          performance.now();
-
-
-        updateScrollTarget();
+        updateScroll();
 
       },
       {
@@ -2213,7 +2092,7 @@
 
         resetPointer();
 
-        updateScrollTarget();
+        updateScroll();
 
       }
     );
@@ -2223,7 +2102,7 @@
        INIT
        ========================================================== */
 
-    updateScrollTarget();
+    updateScroll();
 
 
     requestAnimationFrame(
@@ -2240,48 +2119,92 @@
   "tag": "section",
   "class": "section-g4u-about-manifesto",
   "settings": [
+
     {
       "type": "header",
-      "content": "Imágenes decorativas"
+      "content": "Capas de partículas"
     },
+
     {
       "type": "image_picker",
-      "id": "dust_image",
-      "label": "Polvo / fondo izquierdo"
+      "id": "particles_image_1",
+      "label": "Partículas / polvo de fondo 1"
     },
+
+    {
+      "type": "range",
+      "id": "particles_1_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Opacidad partículas 1",
+      "default": 85
+    },
+
     {
       "type": "image_picker",
-      "id": "texture_image",
-      "label": "Textura / fondo derecho"
+      "id": "particles_image_2",
+      "label": "Partículas / polvo de fondo 2"
     },
+
+    {
+      "type": "range",
+      "id": "particles_2_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Opacidad partículas 2",
+      "default": 65
+    },
+
+
+    {
+      "type": "header",
+      "content": "Productos flotantes"
+    },
+
     {
       "type": "image_picker",
       "id": "snack_image",
-      "label": "Producto izquierdo"
+      "label": "1 · Pan pequeño superior"
     },
+
     {
       "type": "image_picker",
       "id": "bread_image",
-      "label": "Producto central"
+      "label": "2 · Pan central"
     },
+
     {
       "type": "image_picker",
       "id": "tortilla_image",
-      "label": "Producto derecho"
+      "label": "3 · Tortilla inferior"
     },
+
+
+    {
+      "type": "header",
+      "content": "Texto final"
+    },
+
     {
       "type": "textarea",
       "id": "closing",
       "label": "Cierre",
       "default": "Por eso existimos:\nPara redefinir el pan."
     },
+
     {
       "type": "textarea",
       "id": "closing_accent",
       "label": "Cierre destacado",
       "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
     }
+
   ],
+
   "presets": [
     {
       "name": "G4U · Manifiesto Nosotros"
