@@ -1,24 +1,104 @@
 <section class="g4u-instagram" aria-labelledby="G4uInstagram-{{ section.id }}">
+
   <header class="g4u-instagram__header">
-    <h2 class="g4u-instagram__title g4u-display" id="G4uInstagram-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+
+    <h2
+      class="g4u-instagram__title g4u-display wow animate__fadeInUp"
+      id="G4uInstagram-{{ section.id }}"
+      data-wow-duration="0.8s"
+    >
+      {{ section.settings.title | escape }}
+    </h2>
+
     {%- if section.settings.button_label != blank -%}
-      <a class="g4u-pill g4u-instagram__button" href="{{ section.settings.link | default: '#' }}" target="_blank" rel="noopener">
-        {{ section.settings.button_label | escape }} <img src="{{ 'g4u-icon-instagram.svg' | asset_url }}" alt="" width="20" height="20">
+      <a
+        class="g4u-pill g4u-instagram__button wow animate__fadeIn"
+        href="{{ section.settings.link | default: '#' }}"
+        target="_blank"
+        rel="noopener"
+        data-wow-duration="0.65s"
+        data-wow-delay="0.14s"
+      >
+        {{ section.settings.button_label | escape }}
+
+        <img
+          src="{{ 'g4u-icon-instagram.svg' | asset_url }}"
+          alt=""
+          width="20"
+          height="20"
+        >
       </a>
     {%- endif -%}
+
   </header>
+
   <div class="g4u-instagram__grid">
+
     {%- for block in section.blocks -%}
+
       {%- assign fallback_image = 'g4u-instagram-' | append: forloop.index | append: '.png' -%}
-      <a class="g4u-instagram__item" href="{{ block.settings.link | default: section.settings.link | default: '#' }}" target="_blank" rel="noopener" aria-label="{{ block.settings.accessibility_label | escape }}" {{ block.shopify_attributes }}>
+
+      {%- assign item_delay = '0.05s' -%}
+
+      {%- case forloop.index -%}
+        {%- when 2 -%}
+          {%- assign item_delay = '0.10s' -%}
+        {%- when 3 -%}
+          {%- assign item_delay = '0.15s' -%}
+        {%- when 4 -%}
+          {%- assign item_delay = '0.20s' -%}
+        {%- when 5 -%}
+          {%- assign item_delay = '0.25s' -%}
+        {%- when 6 -%}
+          {%- assign item_delay = '0.30s' -%}
+        {%- when 7 -%}
+          {%- assign item_delay = '0.35s' -%}
+        {%- when 8 -%}
+          {%- assign item_delay = '0.40s' -%}
+      {%- endcase -%}
+
+      <a
+        class="g4u-instagram__item wow animate__fadeInUp"
+        href="{{ block.settings.link | default: section.settings.link | default: '#' }}"
+        target="_blank"
+        rel="noopener"
+        aria-label="{{ block.settings.accessibility_label | escape }}"
+        data-wow-duration="0.7s"
+        data-wow-delay="{{ item_delay }}"
+        {{ block.shopify_attributes }}
+      >
+
         {%- if block.settings.image != blank -%}
-          {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'g4u-instagram__image', loading: 'lazy', widths: '360, 550, 750, 1000', sizes: '(min-width: 750px) 25vw, 50vw' }}
+
+          {{
+            block.settings.image
+            | image_url: width: 1000
+            | image_tag:
+              class: 'g4u-instagram__image',
+              loading: 'lazy',
+              widths: '360, 550, 750, 1000',
+              sizes: '(min-width: 750px) 25vw, 50vw'
+          }}
+
         {%- else -%}
-          <img class="g4u-instagram__image" src="{{ fallback_image | replace: '.png', '.webp' | asset_url }}" alt="" width="900" height="900" loading="lazy">
+
+          <img
+            class="g4u-instagram__image"
+            src="{{ fallback_image | replace: '.png', '.webp' | asset_url }}"
+            alt=""
+            width="900"
+            height="900"
+            loading="lazy"
+          >
+
         {%- endif -%}
+
       </a>
+
     {%- endfor -%}
+
   </div>
+
 </section>
 
 {% schema %}
@@ -28,15 +108,62 @@
   "class": "section-g4u-instagram",
   "max_blocks": 8,
   "settings": [
-    { "type": "text", "id": "title", "label": "Título", "default": "Descubrí más en Instagram" },
-    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Seguinos" },
-    { "type": "url", "id": "link", "label": "Perfil de Instagram" }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Descubrí más en Instagram"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Seguinos"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Perfil de Instagram"
+    }
   ],
-  "blocks": [{ "type": "post", "name": "Publicación", "settings": [
-    { "type": "image_picker", "id": "image", "label": "Imagen" },
-    { "type": "text", "id": "accessibility_label", "label": "Descripción accesible", "default": "Ver publicación en Instagram" },
-    { "type": "url", "id": "link", "label": "Enlace a publicación" }
-  ] }],
-  "presets": [{ "name": "G4U · Instagram", "blocks": [{ "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }] }]
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Publicación",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "accessibility_label",
+          "label": "Descripción accesible",
+          "default": "Ver publicación en Instagram"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace a publicación"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Instagram",
+      "blocks": [
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" }
+      ]
+    }
+  ]
 }
 {% endschema %}
