@@ -3709,34 +3709,3 @@ details-disclosure > details {
 
 
 
-/* ==========================================================
-   G4U · GLOBAL PRODUCT CARD IMAGES
-   Solo afecta imágenes de cards de producto.
-   Imagen completa, sin crop y sin espacio extra del ratio 125%.
-   Imagen principal + imagen secundaria de hover.
-   ========================================================== */
-
-/*
-  Las imágenes de producto utilizadas en las cards son cuadradas.
-  Dawn está generando --ratio-percent: 125% inline,
-  por eso con object-fit: contain quedaba espacio arriba y abajo.
-*/
-.product-card-wrapper .card__inner.ratio {
-  --ratio-percent: 100% !important;
-}
-
-/* Mantener el media ocupando toda la superficie de la card */
-.product-card-wrapper .card__media,
-.product-card-wrapper .card__media .media {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Imagen principal + imagen secundaria del hover */
-.product-card-wrapper .card__media .media > img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-}
