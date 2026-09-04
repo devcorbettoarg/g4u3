@@ -27,9 +27,13 @@
     "about_manifesto": {
       "type": "g4u-about-manifesto",
       "settings": {
-        "dust_image": "shopify://shop_images/g4u-about-manifesto-dust.png",
-        "texture_image": "shopify://shop_images/g4u-about-manifesto-texture.png",
-        "bread_image": "shopify://shop_images/g4u-about-bread.png",
+        "particles_image_1": "shopify://shop_images/image_20.png",
+        "particles_1_opacity": 85,
+        "particles_image_2": "shopify://shop_images/g4u-about-manifesto-dust.png",
+        "particles_2_opacity": 65,
+        "snack_image": "shopify://shop_images/floating_1.png",
+        "bread_image": "shopify://shop_images/image_19.png",
+        "tortilla_image": "shopify://shop_images/floating_3.png",
         "closing": "Por eso existimos:\nPara redefinir el pan.",
         "closing_accent": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
       }
