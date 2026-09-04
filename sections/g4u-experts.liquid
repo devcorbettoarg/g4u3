@@ -41,6 +41,7 @@
       data-wow-duration="0.65s"
       data-wow-delay="0.22s"
     >
+
       <button
         class="g4u-experts__arrow"
         type="button"
@@ -68,9 +69,11 @@
           height="24"
         >
       </button>
+
     </div>
 
   </header>
+
 
   <ul
     class="g4u-experts__track wow animate__fadeInUp"
@@ -100,6 +103,7 @@
         <div class="g4u-expert-card__media">
 
           {%- if block.settings.media != blank -%}
+
             {{
               block.settings.media
               | image_url: width: 1200
@@ -109,7 +113,9 @@
                 widths: '500, 750, 1000, 1200',
                 sizes: '(min-width: 750px) 332px, 88vw'
             }}
+
           {%- else -%}
+
             <img
               class="g4u-expert-card__image"
               src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}"
@@ -118,9 +124,12 @@
               height="1593"
               loading="lazy"
             >
+
           {%- endif -%}
 
+
           {%- if block.settings.video_url != blank -%}
+
             <a
               href="{{ block.settings.video_url }}"
               aria-label="Ver video de {{ block.settings.name | escape }}"
@@ -133,7 +142,9 @@
                 height="64"
               >
             </a>
+
           {%- else -%}
+
             <img
               class="g4u-expert-card__play"
               src="{{ 'g4u-icon-play.svg' | asset_url }}"
@@ -141,15 +152,18 @@
               width="64"
               height="64"
             >
+
           {%- endif -%}
 
         </div>
+
 
         <blockquote class="g4u-expert-card__quote">
 
           <div class="g4u-expert-card__profile">
 
             {%- if block.settings.avatar != blank -%}
+
               {{
                 block.settings.avatar
                 | image_url: width: 160
@@ -157,7 +171,9 @@
                   class: 'g4u-expert-card__avatar',
                   loading: 'lazy'
               }}
+
             {%- else -%}
+
               <img
                 class="g4u-expert-card__avatar"
                 src="{{ fallback_avatar | asset_url }}"
@@ -166,9 +182,11 @@
                 height="56"
                 loading="lazy"
               >
+
             {%- endif -%}
 
             <div>
+
               <p class="g4u-expert-card__name">
                 {{ block.settings.name | escape }}
               </p>
@@ -176,11 +194,14 @@
               <p class="g4u-expert-card__role">
                 {{ block.settings.role | escape | newline_to_br }}
               </p>
+
             </div>
 
           </div>
 
+
           <hr class="g4u-expert-card__divider">
+
 
           <img
             class="g4u-expert-card__stars"
@@ -190,23 +211,29 @@
             height="14"
           >
 
+
           <div class="g4u-expert-card__text">
             {{ block.settings.quote }}
           </div>
 
+
           {%- if block.settings.handle != blank -%}
 
             {%- if block.settings.profile_link != blank -%}
+
               <a
                 class="g4u-expert-card__handle"
                 href="{{ block.settings.profile_link }}"
               >
                 {{ block.settings.handle | escape }}
               </a>
+
             {%- else -%}
+
               <span class="g4u-expert-card__handle">
                 {{ block.settings.handle | escape }}
               </span>
+
             {%- endif -%}
 
           {%- endif -%}
@@ -220,6 +247,7 @@
   </ul>
 
 </g4u-scroll-carousel>
+
 
 {% schema %}
 {
