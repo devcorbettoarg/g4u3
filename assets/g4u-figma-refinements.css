@@ -38,7 +38,6 @@ body.template-suffix-harina {
      - horizontal padding: 32px
      ------------------------------------------------------------------------ */
 
-\
 
   /* ------------------------------------------------------------------------
      HERO
@@ -783,6 +782,10 @@ body.template-suffix-harina {
   }
 
 
+  /* ------------------------------------------------------------------------
+     FOOTER
+     Mantener dimensiones del componente del Figma
+     ------------------------------------------------------------------------ */
 
   body.template-suffix-nosotros .g4u-footer {
     padding: 8rem 4rem;
@@ -794,7 +797,20 @@ body.template-suffix-harina {
 }
 
 
+/* ==========================================================================
+   NUESTRA HARINA
+   --------------------------------------------------------------------------
+   Estos son los cambios seguros que ya se desprenden de la comparación
+   screenshot Figma vs PDF.
 
+   Cuando tengamos el node-id exacto de Harina se pueden calibrar los crops y
+   medidas interiores con el mismo nivel de exactitud que Nosotros.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   HARINA · HEADER TRANSPARENTE SOBRE HERO
+   -------------------------------------------------------------------------- */
 
 body.template-suffix-harina .shopify-section-group-header-group {
   left: 0;
