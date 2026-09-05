@@ -23,27 +23,12 @@
     </h2>
 
     <div class="g4u-about-manifesto__closing g4u-display">
-      <p>
-        {{ section.settings.closing | escape | newline_to_br }}
-      </p>
-
-      <p>
-        {{ section.settings.closing_accent | escape | newline_to_br }}
-      </p>
+      <p>{{ section.settings.closing | escape | newline_to_br }}</p>
+      <p>{{ section.settings.closing_accent | escape | newline_to_br }}</p>
     </div>
   </div>
 
-
-  <div
-    class="g4u-about-manifesto__art"
-    aria-hidden="true"
-  >
-
-    {%- comment -%}
-      ============================================================
-      BACKGROUND PARTICLE 01
-      ============================================================
-    {%- endcomment -%}
+  <div class="g4u-about-manifesto__art" aria-hidden="true">
 
     {%- if section.settings.particles_image_1 != blank -%}
       {{
@@ -55,14 +40,6 @@
       }}
     {%- endif -%}
 
-
-    {%- comment -%}
-      ============================================================
-      BACKGROUND PARTICLE 02
-      OPTIONAL
-      ============================================================
-    {%- endcomment -%}
-
     {%- if section.settings.particles_image_2 != blank -%}
       {{
         section.settings.particles_image_2
@@ -73,54 +50,30 @@
       }}
     {%- endif -%}
 
-
-    {%- comment -%}
-      ============================================================
-      TOP PRODUCT
-      Entra desde arriba / izquierda
-      ============================================================
-    {%- endcomment -%}
-
     {%- if section.settings.snack_image != blank -%}
       {{
         section.settings.snack_image
-        | image_url: width: 900
+        | image_url: width: 1200
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--snack',
           loading: 'lazy'
       }}
     {%- endif -%}
 
-
-    {%- comment -%}
-      ============================================================
-      CENTRAL BREAD
-      Entra desde arriba / derecha
-      ============================================================
-    {%- endcomment -%}
-
     {%- if section.settings.bread_image != blank -%}
       {{
         section.settings.bread_image
-        | image_url: width: 1400
+        | image_url: width: 1600
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--bread',
           loading: 'lazy'
       }}
     {%- endif -%}
 
-
-    {%- comment -%}
-      ============================================================
-      TORTILLA
-      Entra desde abajo / izquierda
-      ============================================================
-    {%- endcomment -%}
-
     {%- if section.settings.tortilla_image != blank -%}
       {{
         section.settings.tortilla_image
-        | image_url: width: 900
+        | image_url: width: 1200
         | image_tag:
           class: 'g4u-about-manifesto__object g4u-about-manifesto__object--tortilla',
           loading: 'lazy'
@@ -130,1988 +83,687 @@
   </div>
 </section>
 
-
 <style>
   /* ============================================================
-     G4U · MANIFESTO
-     INDEPENDENT LAYERS PARALLAX
-     ============================================================
-
-     ORDER:
-
-     0 → background #500322
-     1 → particles 1
-     1 → particles 2
-     3 → top product
-     4 → central bread
-     3 → tortilla
-     10 → copy
-
-     Products keep their native alpha channel.
-     Only particle layers use screen blending.
-     ============================================================ */
-
-
-  /* ============================================================
-     SECTION BACKGROUND
+     G4U · MANIFIESTO
+     INDEPENDENT LAYERS PARALLAX · V2
      ============================================================ */
 
   .section-g4u-about-manifesto {
-    background:
-      #500322 !important;
-
-    background-color:
-      #500322 !important;
-
-    background-image:
-      none !important;
-
-    overflow:
-      hidden;
+    background: #500322 !important;
+    background-color: #500322 !important;
+    background-image: none !important;
+    overflow: hidden;
   }
-
 
   #G4uAboutManifesto-{{ section.id }} {
-    position:
-      relative;
-
-    background:
-      #500322 !important;
-
-    background-color:
-      #500322 !important;
-
-    background-image:
-      none !important;
-
-    overflow:
-      hidden;
+    position: relative;
+    background: #500322 !important;
+    background-color: #500322 !important;
+    background-image: none !important;
+    overflow: hidden;
+    isolation: isolate;
   }
-
 
   #G4uAboutManifesto-{{ section.id }}::before,
   #G4uAboutManifesto-{{ section.id }}::after {
-    background:
-      none !important;
-
-    background-image:
-      none !important;
+    content: none !important;
+    display: none !important;
+    background: none !important;
   }
 
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__copy {
+    position: relative;
+    z-index: 10;
+  }
+
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__art {
+    position: relative;
+    background: #500322 !important;
+    background-color: #500322 !important;
+    background-image: none !important;
+    overflow: hidden;
+    isolation: isolate;
+    contain: paint;
+  }
+
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__art::before,
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__art::after {
+    content: none !important;
+    display: none !important;
+  }
 
   /* ============================================================
-     COPY
+     PARTICLES
      ============================================================ */
 
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__copy {
-    position:
-      relative;
-
-    z-index:
-      10;
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__particles {
+    position: absolute !important;
+    z-index: 1 !important;
+    pointer-events: none;
+    user-select: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    mix-blend-mode: screen !important;
+    backface-visibility: hidden;
+    transform-origin: center center;
+    max-width: none !important;
+    will-change: transform;
   }
 
-
-  /* ============================================================
-     ART CONTAINER
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__art {
-    background:
-      #500322 !important;
-
-    background-color:
-      #500322 !important;
-
-    background-image:
-      none !important;
-
-    overflow:
-      hidden;
-
-    isolation:
-      isolate;
-  }
-
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__art::before,
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__art::after {
-    display:
-      none !important;
-
-    content:
-      none !important;
-  }
-
-
-  /* ============================================================
-     PARTICLE LAYERS
-
-     Estas son las ÚNICAS capas con blend mode.
-     Siempre permanecen detrás.
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__particles {
-    position:
-      absolute !important;
-
-    z-index:
-      1 !important;
-
-    pointer-events:
-      none;
-
-    user-select:
-      none;
-
-    background:
-      transparent !important;
-
-    mix-blend-mode:
-      screen !important;
-
-    transform-origin:
-      center center;
-
-    backface-visibility:
-      hidden;
-
-    max-width:
-      none !important;
-
-    will-change:
-      transform;
-  }
-
-
-  /* ============================================================
-     PARTICLES 01
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__particles--one {
-    inset:
-      -5% !important;
-
-    width:
-      110% !important;
-
-    height:
-      110% !important;
-
-    object-fit:
-      cover;
-
-    opacity:
-      {{ section.settings.particles_1_opacity | divided_by: 100.0 }};
-
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__particles--one {
+    inset: -6% !important;
+    width: 112% !important;
+    height: 112% !important;
+    object-fit: cover;
+    object-position: center center;
+    opacity: {{ section.settings.particles_1_opacity | divided_by: 100.0 }};
     transform:
       translate3d(
         var(--g4u-particles-one-x, 0px),
         var(--g4u-particles-one-y, 0px),
         0
       )
-      rotate(
-        var(--g4u-particles-one-r, 0deg)
-      )
-      scale(1.03);
+      rotate(var(--g4u-particles-one-r, 0deg))
+      scale(1.04);
   }
 
-
-  /* ============================================================
-     PARTICLES 02
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__particles--two {
-    inset:
-      -7% !important;
-
-    width:
-      114% !important;
-
-    height:
-      114% !important;
-
-    object-fit:
-      cover;
-
-    opacity:
-      {{ section.settings.particles_2_opacity | divided_by: 100.0 }};
-
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__particles--two {
+    inset: -8% !important;
+    width: 116% !important;
+    height: 116% !important;
+    object-fit: cover;
+    object-position: center center;
+    opacity: {{ section.settings.particles_2_opacity | divided_by: 100.0 }};
     transform:
       translate3d(
         var(--g4u-particles-two-x, 0px),
         var(--g4u-particles-two-y, 0px),
         0
       )
-      rotate(
-        var(--g4u-particles-two-r, 0deg)
-      )
-      scale(1.04);
+      rotate(var(--g4u-particles-two-r, 0deg))
+      scale(1.05);
   }
 
-
   /* ============================================================
-     PRODUCT COMMON
-
-     IMPORTANTE:
-     - no blend mode
-     - no filter
-     - no background
-     - alpha PNG nativo
+     PRODUCTS
      ============================================================ */
 
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__object {
-    pointer-events:
-      none;
-
-    user-select:
-      none;
-
-    background:
-      transparent !important;
-
-    background-color:
-      transparent !important;
-
-    background-image:
-      none !important;
-
-    mix-blend-mode:
-      normal !important;
-
-    filter:
-      none !important;
-
-    opacity:
-      1 !important;
-
-    transform-origin:
-      center center;
-
-    backface-visibility:
-      hidden;
-
-    will-change:
-      transform;
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 3;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform;
   }
 
-
-  /* ============================================================
-     SNACK
-     TOP PRODUCT
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__object--snack {
-    z-index:
-      3 !important;
-
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--snack {
+    z-index: 4 !important;
     transform:
-      perspective(1400px)
-
+      perspective(1500px)
       translate3d(
         var(--g4u-snack-x, 0px),
         var(--g4u-snack-y, 0px),
         0
       )
-
-      rotate(
-        var(--g4u-snack-rz, 0deg)
-      )
-
-      rotateX(
-        var(--g4u-snack-rx, 0deg)
-      )
-
-      rotateY(
-        var(--g4u-snack-ry, 0deg)
-      )
-
-      scale(
-        var(--g4u-snack-scale, 1)
-      );
+      rotate(var(--g4u-snack-rz, 0deg))
+      rotateX(var(--g4u-snack-rx, 0deg))
+      rotateY(var(--g4u-snack-ry, 0deg))
+      scale(var(--g4u-snack-scale, 1));
   }
 
-
-  /* ============================================================
-     CENTRAL BREAD
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__object--bread {
-    z-index:
-      4 !important;
-
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--bread {
+    z-index: 5 !important;
     transform:
-      perspective(1500px)
-
+      perspective(1600px)
       translate3d(
         var(--g4u-bread-x, 0px),
         var(--g4u-bread-y, 0px),
         0
       )
-
-      rotate(
-        var(--g4u-bread-rz, 0deg)
-      )
-
-      rotateX(
-        var(--g4u-bread-rx, 0deg)
-      )
-
-      rotateY(
-        var(--g4u-bread-ry, 0deg)
-      )
-
-      scale(
-        var(--g4u-bread-scale, 1)
-      );
+      rotate(var(--g4u-bread-rz, 0deg))
+      rotateX(var(--g4u-bread-rx, 0deg))
+      rotateY(var(--g4u-bread-ry, 0deg))
+      scale(var(--g4u-bread-scale, 1));
   }
 
-
-  /* ============================================================
-     TORTILLA
-     ============================================================ */
-
-  #G4uAboutManifesto-{{ section.id }}
-  .g4u-about-manifesto__object--tortilla {
-    z-index:
-      3 !important;
-
+  #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--tortilla {
+    z-index: 4 !important;
     transform:
-      perspective(1400px)
-
+      perspective(1500px)
       translate3d(
         var(--g4u-tortilla-x, 0px),
         var(--g4u-tortilla-y, 0px),
         0
       )
-
-      rotate(
-        var(--g4u-tortilla-rz, 0deg)
-      )
-
-      rotateX(
-        var(--g4u-tortilla-rx, 0deg)
-      )
-
-      rotateY(
-        var(--g4u-tortilla-ry, 0deg)
-      )
-
-      scale(
-        var(--g4u-tortilla-scale, 1)
-      );
+      rotate(var(--g4u-tortilla-rz, 0deg))
+      rotateX(var(--g4u-tortilla-rx, 0deg))
+      rotateY(var(--g4u-tortilla-ry, 0deg))
+      scale(var(--g4u-tortilla-scale, 1));
   }
 
-
   /* ============================================================
-     MOBILE
+     MOBILE TWEAKS
      ============================================================ */
 
   @media screen and (max-width: 989px) {
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object--snack {
-      margin-left:
-        -5px;
-
-      margin-top:
-        -28px;
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--snack {
+      margin-left: -5px;
+      margin-top: -28px;
     }
 
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object--bread {
-      margin-left:
-        4px;
-
-      margin-top:
-        3px;
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--bread {
+      margin-left: 4px;
+      margin-top: 3px;
     }
 
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object--tortilla {
-      margin-left:
-        -7px;
-
-      margin-top:
-        32px;
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--tortilla {
+      margin-left: -7px;
+      margin-top: 32px;
     }
-
   }
-
 
   @media screen and (max-width: 480px) {
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object--snack {
-      margin-left:
-        -7px;
-
-      margin-top:
-        -34px;
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--snack {
+      margin-left: -7px;
+      margin-top: -34px;
     }
 
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object--tortilla {
-      margin-left:
-        -8px;
-
-      margin-top:
-        38px;
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object--tortilla {
+      margin-left: -8px;
+      margin-top: 38px;
     }
-
   }
-
 
   /* ============================================================
      REDUCED MOTION
      ============================================================ */
 
-  @media (
-    prefers-reduced-motion: reduce
-  ) {
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__particles,
-
-    #G4uAboutManifesto-{{ section.id }}
-    .g4u-about-manifesto__object {
-      transform:
-        none !important;
+  @media (prefers-reduced-motion: reduce) {
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__particles,
+    #G4uAboutManifesto-{{ section.id }} .g4u-about-manifesto__object {
+      transform: none !important;
     }
-
   }
 </style>
 
-
 <script>
   (() => {
+    const section = document.querySelector('#G4uAboutManifesto-{{ section.id }}');
 
-    const section =
-      document.querySelector(
-        '#G4uAboutManifesto-{{ section.id }}'
-      );
+    if (!section) return;
 
+    if (section.dataset.g4uIndependentParallaxInitialized === 'true') return;
+    section.dataset.g4uIndependentParallaxInitialized = 'true';
 
-    if (!section) {
-      return;
-    }
-
+    const desktopQuery = window.matchMedia('(min-width: 990px)');
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     /* ==========================================================
-       PREVENT DOUBLE INITIALIZATION
-       ========================================================== */
-
-    if (
-      section.dataset
-        .g4uIndependentParallaxInitialized ===
-      'true'
-    ) {
-      return;
-    }
-
-
-    section.dataset
-      .g4uIndependentParallaxInitialized =
-      'true';
-
-
-    /* ==========================================================
-       MEDIA
-       ========================================================== */
-
-    const desktopQuery =
-      window.matchMedia(
-        '(min-width: 990px)'
-      );
-
-
-    const reducedMotionQuery =
-      window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-      );
-
-
-    /* ==========================================================
-       DESKTOP MOTION
-
-       DIRECTIONS BASED ON PROVIDED REFERENCE:
-
-       snack:
-       upper-left → final position
-
-       bread:
-       upper-right → final position
-
-       tortilla:
-       bottom-left → final position
+       PRODUCTS
        ========================================================== */
 
     const desktopProducts = {
-
-
-      /* ========================================================
-         TOP SNACK
-
-         FROM:
-         upper-left
-
-         TO:
-         original CSS position
-         ======================================================== */
-
       snack: {
-
-        entryX:
-          -82,
-
-        entryY:
-          -68,
-
-
-        scrollY:
-          -28,
-
-
-        mouseX:
-          9,
-
-        mouseY:
-          6,
-
-
-        floatX:
-          2.2,
-
-        floatY:
-          2.8,
-
-
-        frequency:
-          0.00046,
-
-        phase:
-          1.1,
-
-
-        startScale:
-          0.82,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.018,
-
-
-        startRotate:
-          -4.0,
-
-
-        tiltX:
-          1.0,
-
-        tiltY:
-          -1.5,
-
-
-        pointerTilt:
-          0.28
+        entryX: -120,
+        entryY: -95,
+        scrollX: 10,
+        scrollY: -52,
+        mouseX: 15,
+        mouseY: 11,
+        floatX: 2.7,
+        floatY: 3.5,
+        frequency: 0.00048,
+        phase: 1.1,
+        startScale: 0.72,
+        finalScale: 1,
+        displayScale: {{ section.settings.snack_size_desktop | divided_by: 100.0 }},
+        scalePulse: 0.026,
+        startRotate: -7,
+        tiltX: 1.2,
+        tiltY: -1.7,
+        pointerTilt: 0.34
       },
-
-
-      /* ========================================================
-         CENTRAL BREAD
-
-         FROM:
-         upper-right
-
-         TO:
-         original central position
-
-         More mass / slower movement.
-         ======================================================== */
 
       bread: {
-
-        entryX:
-          96,
-
-        entryY:
-          -54,
-
-
-        scrollY:
-          -19,
-
-
-        mouseX:
-          5.5,
-
-        mouseY:
-          4,
-
-
-        floatX:
-          1.6,
-
-        floatY:
-          2.1,
-
-
-        frequency:
-          0.00034,
-
-        phase:
-          3.7,
-
-
-        startScale:
-          0.84,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.012,
-
-
-        startRotate:
-          3.2,
-
-
-        tiltX:
-          -0.7,
-
-        tiltY:
-          1.1,
-
-
-        pointerTilt:
-          0.20
+        entryX: 135,
+        entryY: -78,
+        scrollX: -8,
+        scrollY: -34,
+        mouseX: 8,
+        mouseY: 6,
+        floatX: 1.9,
+        floatY: 2.4,
+        frequency: 0.00034,
+        phase: 3.7,
+        startScale: 0.76,
+        finalScale: 1,
+        displayScale: {{ section.settings.bread_size_desktop | divided_by: 100.0 }},
+        scalePulse: 0.018,
+        startRotate: 4.5,
+        tiltX: -0.8,
+        tiltY: 1.15,
+        pointerTilt: 0.22
       },
 
-
-      /* ========================================================
-         TORTILLA
-
-         FROM:
-         bottom-left
-
-         TO:
-         original CSS position
-         ======================================================== */
-
       tortilla: {
-
-        entryX:
-          -76,
-
-        entryY:
-          76,
-
-
-        scrollY:
-          -24,
-
-
-        mouseX:
-          -6.5,
-
-        mouseY:
-          -4.5,
-
-
-        floatX:
-          1.9,
-
-        floatY:
-          2.5,
-
-
-        frequency:
-          0.00042,
-
-        phase:
-          5.0,
-
-
-        startScale:
-          0.83,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.014,
-
-
-        startRotate:
-          -3.0,
-
-
-        tiltX:
-          0.8,
-
-        tiltY:
-          -1.0,
-
-
-        pointerTilt:
-          0.23
+        entryX: -108,
+        entryY: 112,
+        scrollX: 8,
+        scrollY: -38,
+        mouseX: -9,
+        mouseY: -6,
+        floatX: 2.1,
+        floatY: 2.8,
+        frequency: 0.00042,
+        phase: 5.0,
+        startScale: 0.74,
+        finalScale: 1,
+        displayScale: {{ section.settings.tortilla_size_desktop | divided_by: 100.0 }},
+        scalePulse: 0.020,
+        startRotate: -4.2,
+        tiltX: 0.95,
+        tiltY: -1.15,
+        pointerTilt: 0.25
       }
-
     };
-
-
-    /* ==========================================================
-       MOBILE MOTION
-
-       Mismas direcciones,
-       recorridos aproximadamente 45% menores.
-       ========================================================== */
 
     const mobileProducts = {
-
-
       snack: {
-
-        entryX:
-          -38,
-
-        entryY:
-          -34,
-
-
-        scrollY:
-          -18,
-
-
-        mouseX:
-          0,
-
-        mouseY:
-          0,
-
-
-        floatX:
-          1.2,
-
-        floatY:
-          1.7,
-
-
-        frequency:
-          0.00046,
-
-        phase:
-          1.1,
-
-
-        startScale:
-          0.90,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.008,
-
-
-        startRotate:
-          -2.0,
-
-
-        tiltX:
-          0.35,
-
-        tiltY:
-          -0.5,
-
-
-        pointerTilt:
-          0
+        entryX: -48,
+        entryY: -40,
+        scrollX: 6,
+        scrollY: -28,
+        mouseX: 0,
+        mouseY: 0,
+        floatX: 1.4,
+        floatY: 1.9,
+        frequency: 0.00048,
+        phase: 1.1,
+        startScale: 0.88,
+        finalScale: 1,
+        displayScale: {{ section.settings.snack_size_mobile | divided_by: 100.0 }},
+        scalePulse: 0.010,
+        startRotate: -2.5,
+        tiltX: 0.35,
+        tiltY: -0.5,
+        pointerTilt: 0
       },
-
 
       bread: {
-
-        entryX:
-          44,
-
-        entryY:
-          -27,
-
-
-        scrollY:
-          -13,
-
-
-        mouseX:
-          0,
-
-        mouseY:
-          0,
-
-
-        floatX:
-          0.9,
-
-        floatY:
-          1.3,
-
-
-        frequency:
-          0.00034,
-
-        phase:
-          3.7,
-
-
-        startScale:
-          0.91,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.006,
-
-
-        startRotate:
-          1.5,
-
-
-        tiltX:
-          -0.25,
-
-        tiltY:
-          0.35,
-
-
-        pointerTilt:
-          0
+        entryX: 56,
+        entryY: -34,
+        scrollX: -4,
+        scrollY: -18,
+        mouseX: 0,
+        mouseY: 0,
+        floatX: 1.1,
+        floatY: 1.5,
+        frequency: 0.00034,
+        phase: 3.7,
+        startScale: 0.90,
+        finalScale: 1,
+        displayScale: {{ section.settings.bread_size_mobile | divided_by: 100.0 }},
+        scalePulse: 0.008,
+        startRotate: 1.8,
+        tiltX: -0.22,
+        tiltY: 0.30,
+        pointerTilt: 0
       },
 
-
       tortilla: {
-
-        entryX:
-          -35,
-
-        entryY:
-          38,
-
-
-        scrollY:
-          -16,
-
-
-        mouseX:
-          0,
-
-        mouseY:
-          0,
-
-
-        floatX:
-          1.0,
-
-        floatY:
-          1.5,
-
-
-        frequency:
-          0.00042,
-
-        phase:
-          5.0,
-
-
-        startScale:
-          0.91,
-
-        finalScale:
-          1,
-
-
-        scalePulse:
-          0.007,
-
-
-        startRotate:
-          -1.5,
-
-
-        tiltX:
-          0.30,
-
-        tiltY:
-          -0.35,
-
-
-        pointerTilt:
-          0
+        entryX: -44,
+        entryY: 50,
+        scrollX: 5,
+        scrollY: -21,
+        mouseX: 0,
+        mouseY: 0,
+        floatX: 1.2,
+        floatY: 1.6,
+        frequency: 0.00042,
+        phase: 5.0,
+        startScale: 0.89,
+        finalScale: 1,
+        displayScale: {{ section.settings.tortilla_size_mobile | divided_by: 100.0 }},
+        scalePulse: 0.009,
+        startRotate: -2,
+        tiltX: 0.28,
+        tiltY: -0.35,
+        pointerTilt: 0
       }
-
     };
 
-
     /* ==========================================================
-       PARTICLE CONFIG
-
-       VERY SLOW.
-       BACKGROUND MUST NEVER COMPETE WITH PRODUCTS.
+       PARTICLES
        ========================================================== */
 
     const desktopParticles = {
-
       one: {
-
-        scrollY:
-          9,
-
-        mouseX:
-          -1.5,
-
-        mouseY:
-          -1,
-
-        floatX:
-          1.0,
-
-        floatY:
-          1.4,
-
-        frequency:
-          0.00020,
-
-        phase:
-          0.4,
-
-        rotate:
-          0.018
+        scrollY: 14,
+        mouseX: -2.4,
+        mouseY: -1.6,
+        floatX: 1.3,
+        floatY: 1.7,
+        frequency: 0.00021,
+        phase: 0.4,
+        rotate: 0.022
       },
 
-
       two: {
-
-        scrollY:
-          -12,
-
-        mouseX:
-          1.5,
-
-        mouseY:
-          1,
-
-        floatX:
-          1.2,
-
-        floatY:
-          1.6,
-
-        frequency:
-          0.00017,
-
-        phase:
-          2.5,
-
-        rotate:
-          -0.016
+        scrollY: -18,
+        mouseX: 2.0,
+        mouseY: 1.2,
+        floatX: 1.5,
+        floatY: 2.0,
+        frequency: 0.00018,
+        phase: 2.5,
+        rotate: -0.018
       }
-
     };
-
 
     const mobileParticles = {
-
       one: {
-
-        scrollY:
-          5,
-
-        mouseX:
-          0,
-
-        mouseY:
-          0,
-
-        floatX:
-          0.6,
-
-        floatY:
-          0.8,
-
-        frequency:
-          0.00020,
-
-        phase:
-          0.4,
-
-        rotate:
-          0.010
+        scrollY: 8,
+        mouseX: 0,
+        mouseY: 0,
+        floatX: 0.7,
+        floatY: 1.0,
+        frequency: 0.00021,
+        phase: 0.4,
+        rotate: 0.010
       },
 
-
       two: {
-
-        scrollY:
-          -6,
-
-        mouseX:
-          0,
-
-        mouseY:
-          0,
-
-        floatX:
-          0.7,
-
-        floatY:
-          0.9,
-
-        frequency:
-          0.00017,
-
-        phase:
-          2.5,
-
-        rotate:
-          -0.009
+        scrollY: -10,
+        mouseX: 0,
+        mouseY: 0,
+        floatX: 0.8,
+        floatY: 1.1,
+        frequency: 0.00018,
+        phase: 2.5,
+        rotate: -0.009
       }
-
     };
 
+    let targetPointerX = 0;
+    let targetPointerY = 0;
+    let pointerX = 0;
+    let pointerY = 0;
 
-    /* ==========================================================
-       STATE
-       ========================================================== */
+    let targetScroll = 0;
+    let currentScroll = 0;
 
-    let targetPointerX =
-      0;
+    let targetApproach = 0;
+    let currentApproach = 0;
 
-    let targetPointerY =
-      0;
+    let visible = true;
 
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const lerp = (current, target, amount) => current + ((target - current) * amount);
 
-    let pointerX =
-      0;
-
-    let pointerY =
-      0;
-
-
-    let targetScroll =
-      0;
-
-    let currentScroll =
-      0;
-
-
-    /*
-     * 0:
-     * objects in their entry positions.
-     *
-     * 1:
-     * objects in final composition.
-     */
-    let targetApproach =
-      0;
-
-    let currentApproach =
-      0;
-
-
-    let visible =
-      true;
-
-
-    /* ==========================================================
-       HELPERS
-       ========================================================== */
-
-    const clamp = (
-      value,
-      min,
-      max
-    ) => {
-
-      return Math.min(
-        Math.max(
-          value,
-          min
-        ),
-        max
-      );
-
+    const smoothstep = (value) => {
+      const x = clamp(value, 0, 1);
+      return x * x * (3 - (2 * x));
     };
 
+    const getProducts = () => (
+      desktopQuery.matches ? desktopProducts : mobileProducts
+    );
 
-    const lerp = (
-      current,
-      target,
-      amount
-    ) => {
-
-      return (
-        current +
-        (
-          target -
-          current
-        ) *
-        amount
-      );
-
-    };
-
-
-    const smoothstep = (
-      value
-    ) => {
-
-      const x =
-        clamp(
-          value,
-          0,
-          1
-        );
-
-
-      return (
-        x *
-        x *
-        (
-          3 -
-          (
-            2 *
-            x
-          )
-        )
-      );
-
-    };
-
-
-    /* ==========================================================
-       GET CONFIG
-       ========================================================== */
-
-    const getProducts = () => {
-
-      return desktopQuery.matches
-        ? desktopProducts
-        : mobileProducts;
-
-    };
-
-
-    const getParticles = () => {
-
-      return desktopQuery.matches
-        ? desktopParticles
-        : mobileParticles;
-
-    };
-
-
-    /* ==========================================================
-       UPDATE SCROLL
-       ========================================================== */
+    const getParticles = () => (
+      desktopQuery.matches ? desktopParticles : mobileParticles
+    );
 
     const updateScroll = () => {
+      if (reducedMotionQuery.matches) return;
 
-      if (
-        reducedMotionQuery.matches
-      ) {
-        return;
-      }
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
 
+      const sectionCenter = rect.top + (rect.height / 2);
+      const viewportCenter = viewportHeight / 2;
+      const travelRange = (viewportHeight + rect.height) / 2;
 
-      const rect =
-        section.getBoundingClientRect();
+      targetScroll = clamp(
+        (viewportCenter - sectionCenter) / travelRange,
+        -1,
+        1
+      );
 
+      const start = viewportHeight * 1.18;
+      const end = viewportHeight * 0.04;
 
-      const viewportHeight =
-        window.innerHeight;
+      const raw = clamp(
+        (start - rect.top) / (start - end),
+        0,
+        1
+      );
 
-
-      /* ========================================================
-         GENERAL PARALLAX
-         ======================================================== */
-
-      const sectionCenter =
-        rect.top +
-        (
-          rect.height /
-          2
-        );
-
-
-      const viewportCenter =
-        viewportHeight /
-        2;
-
-
-      const travelRange =
-        (
-          viewportHeight +
-          rect.height
-        ) /
-        2;
-
-
-      targetScroll =
-        clamp(
-          (
-            viewportCenter -
-            sectionCenter
-          ) /
-          travelRange,
-          -1,
-          1
-        );
-
-
-      /* ========================================================
-         APPROACH PROGRESS
-
-         Start:
-         section is slightly below viewport.
-
-         End:
-         section reaches upper part of viewport.
-         ======================================================== */
-
-      const start =
-        viewportHeight *
-        1.12;
-
-
-      const end =
-        viewportHeight *
-        0.12;
-
-
-      const raw =
-        clamp(
-          (
-            start -
-            rect.top
-          ) /
-          (
-            start -
-            end
-          ),
-          0,
-          1
-        );
-
-
-      targetApproach =
-        smoothstep(
-          raw
-        );
-
+      targetApproach = smoothstep(raw);
     };
 
+    const updatePointer = (event) => {
+      if (!desktopQuery.matches || reducedMotionQuery.matches) return;
 
-    /* ==========================================================
-       POINTER
-       ========================================================== */
+      const rect = section.getBoundingClientRect();
 
-    const updatePointer = (
-      event
-    ) => {
+      targetPointerX = clamp(
+        (((event.clientX - rect.left) / rect.width) - 0.5) * 2,
+        -1,
+        1
+      );
 
-      if (
-        !desktopQuery.matches ||
-        reducedMotionQuery.matches
-      ) {
-        return;
-      }
-
-
-      const rect =
-        section.getBoundingClientRect();
-
-
-      targetPointerX =
-        clamp(
-          (
-            (
-              event.clientX -
-              rect.left
-            ) /
-            rect.width -
-            0.5
-          ) *
-          2,
-          -1,
-          1
-        );
-
-
-      targetPointerY =
-        clamp(
-          (
-            (
-              event.clientY -
-              rect.top
-            ) /
-            rect.height -
-            0.5
-          ) *
-          2,
-          -1,
-          1
-        );
-
+      targetPointerY = clamp(
+        (((event.clientY - rect.top) / rect.height) - 0.5) * 2,
+        -1,
+        1
+      );
     };
-
 
     const resetPointer = () => {
-
-      targetPointerX =
-        0;
-
-      targetPointerY =
-        0;
-
+      targetPointerX = 0;
+      targetPointerY = 0;
     };
 
+    const getOrganic = (time, config) => {
+      const t = time * config.frequency;
 
-    /* ==========================================================
-       ORGANIC MOTION
-       ========================================================== */
-
-    const getOrganic = (
-      time,
-      config
-    ) => {
-
-      const t =
-        time *
-        config.frequency;
-
-
-      const waveA =
-        Math.sin(
-          t +
-          config.phase
-        );
-
-
-      const waveB =
-        Math.sin(
-          (
-            t *
-            1.67
-          ) +
-          (
-            config.phase *
-            1.8
-          )
-        );
-
-
-      const waveC =
-        Math.cos(
-          (
-            t *
-            0.63
-          ) +
-          (
-            config.phase *
-            0.75
-          )
-        );
-
+      const waveA = Math.sin(t + config.phase);
+      const waveB = Math.sin((t * 1.67) + (config.phase * 1.8));
+      const waveC = Math.cos((t * 0.63) + (config.phase * 0.75));
 
       return {
+        x: (
+          (waveA * 0.52) +
+          (waveB * 0.31) +
+          (waveC * 0.17)
+        ) * config.floatX,
 
-        x:
-          (
-            (
-              waveA *
-              0.52
-            ) +
-            (
-              waveB *
-              0.31
-            ) +
-            (
-              waveC *
-              0.17
-            )
-          ) *
-          config.floatX,
-
-
-        y:
-          (
-            (
-              waveA *
-              0.27
-            ) +
-            (
-              waveB *
-              0.48
-            ) +
-            (
-              waveC *
-              0.25
-            )
-          ) *
-          config.floatY
-
+        y: (
+          (waveA * 0.27) +
+          (waveB * 0.48) +
+          (waveC * 0.25)
+        ) * config.floatY
       };
-
     };
 
-
-    /* ==========================================================
-       PARTICLE RENDER
-       ========================================================== */
-
-    const renderParticle = (
-      key,
-      config,
-      time
-    ) => {
-
-      const organic =
-        getOrganic(
-          time,
-          config
-        );
-
+    const renderParticle = (key, config, time) => {
+      const organic = getOrganic(time, config);
 
       const x =
-        (
-          pointerX *
-          config.mouseX
-        ) +
+        (pointerX * config.mouseX) +
         organic.x;
 
-
       const y =
-        (
-          currentScroll *
-          config.scrollY
-        ) +
-        (
-          pointerY *
-          config.mouseY
-        ) +
+        (currentScroll * config.scrollY) +
+        (pointerY * config.mouseY) +
         organic.y;
 
-
       const rotation =
-        Math.sin(
-          (
-            time *
-            config.frequency *
-            0.75
-          ) +
-          config.phase
-        ) *
+        Math.sin((time * config.frequency * 0.75) + config.phase) *
         config.rotate;
 
-
-      section.style.setProperty(
-        `--g4u-particles-${key}-x`,
-        `${x.toFixed(2)}px`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-particles-${key}-y`,
-        `${y.toFixed(2)}px`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-particles-${key}-r`,
-        `${rotation.toFixed(3)}deg`
-      );
-
+      section.style.setProperty(`--g4u-particles-${key}-x`, `${x.toFixed(2)}px`);
+      section.style.setProperty(`--g4u-particles-${key}-y`, `${y.toFixed(2)}px`);
+      section.style.setProperty(`--g4u-particles-${key}-r`, `${rotation.toFixed(3)}deg`);
     };
 
+    const renderProduct = (name, config, time) => {
+      const organic = getOrganic(time, config);
+      const far = 1 - currentApproach;
 
-    /* ==========================================================
-       PRODUCT RENDER
-       ========================================================== */
-
-    const renderProduct = (
-      name,
-      config,
-      time
-    ) => {
-
-      const organic =
-        getOrganic(
-          time,
-          config
-        );
-
-
-      /*
-       * 1 at entry.
-       * 0 at final composition.
-       */
-      const far =
-        1 -
-        currentApproach;
-
-
-      /* ========================================================
-         ENTRY VECTOR
-
-         This controls where each product originates.
-         ======================================================== */
-
-      const entryX =
-        config.entryX *
-        far;
-
-
-      const entryY =
-        config.entryY *
-        far;
-
-
-      /* ========================================================
-         POSITION
-         ======================================================== */
+      const entryX = config.entryX * far;
+      const entryY = config.entryY * far;
 
       const x =
         entryX +
-
-        (
-          currentScroll *
-          3
-        ) +
-
-        (
-          pointerX *
-          config.mouseX
-        ) +
-
+        (currentScroll * config.scrollX) +
+        (pointerX * config.mouseX) +
         organic.x;
-
 
       const y =
         entryY +
-
-        (
-          currentScroll *
-          config.scrollY
-        ) +
-
-        (
-          pointerY *
-          config.mouseY
-        ) +
-
+        (currentScroll * config.scrollY) +
+        (pointerY * config.mouseY) +
         organic.y;
 
+      const baseScale = lerp(
+        config.startScale,
+        config.finalScale,
+        currentApproach
+      );
 
-      /* ========================================================
-         DEPTH / SCALE
-         ======================================================== */
-
-      const baseScale =
-        lerp(
-          config.startScale,
-          config.finalScale,
-          currentApproach
-        );
-
-
-      /*
-       * Very subtle depth "breathing"
-       * around the middle of the transition.
-       */
       const pulse =
-        Math.sin(
-          currentApproach *
-          Math.PI
-        ) *
+        Math.sin(currentApproach * Math.PI) *
         config.scalePulse;
 
-
       const scale =
-        baseScale +
-        pulse;
-
-
-      /* ========================================================
-         ROTATE Z
-
-         Entry rotation disappears progressively.
-         ======================================================== */
+        (baseScale + pulse) *
+        config.displayScale;
 
       const entryRotation =
-        config.startRotate *
-        far;
-
+        config.startRotate * far;
 
       const organicRotation =
-        Math.sin(
-          (
-            time *
-            config.frequency *
-            0.80
-          ) +
-          config.phase
-        ) *
-        0.075;
-
+        Math.sin((time * config.frequency * 0.80) + config.phase) *
+        0.08;
 
       const rotateZ =
         entryRotation +
         organicRotation;
 
-
-      /* ========================================================
-         SUBTLE 3D
-         ======================================================== */
-
       const rotateX =
-        (
-          config.tiltX *
-          far
-        ) -
-        (
-          pointerY *
-          config.pointerTilt
-        );
-
+        (config.tiltX * far) -
+        (pointerY * config.pointerTilt);
 
       const rotateY =
-        (
-          config.tiltY *
-          far
-        ) +
-        (
-          pointerX *
-          config.pointerTilt
-        );
+        (config.tiltY * far) +
+        (pointerX * config.pointerTilt);
 
-
-      /* ========================================================
-         WRITE CSS VARIABLES
-         ======================================================== */
-
-      section.style.setProperty(
-        `--g4u-${name}-x`,
-        `${x.toFixed(2)}px`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-${name}-y`,
-        `${y.toFixed(2)}px`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-${name}-scale`,
-        scale.toFixed(4)
-      );
-
-
-      section.style.setProperty(
-        `--g4u-${name}-rz`,
-        `${rotateZ.toFixed(3)}deg`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-${name}-rx`,
-        `${rotateX.toFixed(3)}deg`
-      );
-
-
-      section.style.setProperty(
-        `--g4u-${name}-ry`,
-        `${rotateY.toFixed(3)}deg`
-      );
-
+      section.style.setProperty(`--g4u-${name}-x`, `${x.toFixed(2)}px`);
+      section.style.setProperty(`--g4u-${name}-y`, `${y.toFixed(2)}px`);
+      section.style.setProperty(`--g4u-${name}-scale`, scale.toFixed(4));
+      section.style.setProperty(`--g4u-${name}-rz`, `${rotateZ.toFixed(3)}deg`);
+      section.style.setProperty(`--g4u-${name}-rx`, `${rotateX.toFixed(3)}deg`);
+      section.style.setProperty(`--g4u-${name}-ry`, `${rotateY.toFixed(3)}deg`);
     };
 
-
-    /* ==========================================================
-       ANIMATION LOOP
-       ========================================================== */
-
-    const render = (
-      time
-    ) => {
-
-      if (
-        reducedMotionQuery.matches
-      ) {
-
-        requestAnimationFrame(
-          render
-        );
-
+    const render = (time) => {
+      if (reducedMotionQuery.matches) {
+        requestAnimationFrame(render);
         return;
-
       }
 
+      pointerX = lerp(
+        pointerX,
+        targetPointerX,
+        desktopQuery.matches ? 0.085 : 0.05
+      );
 
-      /* ========================================================
-         POINTER DAMPING
-         ======================================================== */
+      pointerY = lerp(
+        pointerY,
+        targetPointerY,
+        desktopQuery.matches ? 0.085 : 0.05
+      );
 
-      pointerX =
-        lerp(
-          pointerX,
-          targetPointerX,
-          desktopQuery.matches
-            ? 0.075
-            : 0.05
-        );
+      currentScroll = lerp(
+        currentScroll,
+        targetScroll,
+        desktopQuery.matches ? 0.075 : 0.060
+      );
 
-
-      pointerY =
-        lerp(
-          pointerY,
-          targetPointerY,
-          desktopQuery.matches
-            ? 0.075
-            : 0.05
-        );
-
-
-      /* ========================================================
-         SCROLL DAMPING
-         ======================================================== */
-
-      currentScroll =
-        lerp(
-          currentScroll,
-          targetScroll,
-          desktopQuery.matches
-            ? 0.062
-            : 0.052
-        );
-
-
-      /* ========================================================
-         APPROACH DAMPING
-
-         Slower than scroll to create physical weight.
-         ======================================================== */
-
-      currentApproach =
-        lerp(
-          currentApproach,
-          targetApproach,
-          desktopQuery.matches
-            ? 0.042
-            : 0.036
-        );
-
-
-      /* ========================================================
-         DRAW
-         ======================================================== */
+      currentApproach = lerp(
+        currentApproach,
+        targetApproach,
+        desktopQuery.matches ? 0.050 : 0.042
+      );
 
       if (visible) {
+        const particles = getParticles();
+        const products = getProducts();
 
-        const particles =
-          getParticles();
+        renderParticle('one', particles.one, time);
+        renderParticle('two', particles.two, time);
 
-
-        const products =
-          getProducts();
-
-
-        renderParticle(
-          'one',
-          particles.one,
-          time
-        );
-
-
-        renderParticle(
-          'two',
-          particles.two,
-          time
-        );
-
-
-        renderProduct(
-          'snack',
-          products.snack,
-          time
-        );
-
-
-        renderProduct(
-          'bread',
-          products.bread,
-          time
-        );
-
-
-        renderProduct(
-          'tortilla',
-          products.tortilla,
-          time
-        );
-
+        renderProduct('snack', products.snack, time);
+        renderProduct('bread', products.bread, time);
+        renderProduct('tortilla', products.tortilla, time);
       }
 
-
-      requestAnimationFrame(
-        render
-      );
-
+      requestAnimationFrame(render);
     };
 
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            visible = entry.isIntersecting;
 
-    /* ==========================================================
-       INTERSECTION OBSERVER
-       ========================================================== */
-
-    if (
-      'IntersectionObserver' in window
-    ) {
-
-      const observer =
-        new IntersectionObserver(
-          (entries) => {
-
-            entries.forEach(
-              (entry) => {
-
-                visible =
-                  entry.isIntersecting;
-
-
-                if (visible) {
-
-                  updateScroll();
-
-                }
-
-              }
-            );
-
-          },
-          {
-            rootMargin:
-              '30% 0px 30% 0px'
-          }
-        );
-
-
-      observer.observe(
-        section
+            if (visible) {
+              updateScroll();
+            }
+          });
+        },
+        {
+          rootMargin: '30% 0px 30% 0px'
+        }
       );
 
+      observer.observe(section);
     }
 
-
-    /* ==========================================================
-       EVENTS
-       ========================================================== */
-
-    window.addEventListener(
-      'scroll',
-      updateScroll,
-      {
-        passive:
-          true
-      }
-    );
-
+    window.addEventListener('scroll', updateScroll, { passive: true });
 
     window.addEventListener(
       'resize',
       () => {
-
         resetPointer();
-
         updateScroll();
-
       },
-      {
-        passive:
-          true
-      }
+      { passive: true }
     );
 
+    section.addEventListener('pointermove', updatePointer, { passive: true });
+    section.addEventListener('pointerleave', resetPointer, { passive: true });
 
-    section.addEventListener(
-      'pointermove',
-      updatePointer,
-      {
-        passive:
-          true
-      }
-    );
-
-
-    section.addEventListener(
-      'pointerleave',
-      resetPointer,
-      {
-        passive:
-          true
-      }
-    );
-
-
-    desktopQuery.addEventListener?.(
-      'change',
-      () => {
-
-        resetPointer();
-
-        updateScroll();
-
-      }
-    );
-
-
-    /* ==========================================================
-       INIT
-       ========================================================== */
+    desktopQuery.addEventListener?.('change', () => {
+      resetPointer();
+      updateScroll();
+    });
 
     updateScroll();
-
-
-    requestAnimationFrame(
-      render
-    );
-
+    requestAnimationFrame(render);
   })();
 </script>
-
 
 {% schema %}
 {
@@ -2119,18 +771,15 @@
   "tag": "section",
   "class": "section-g4u-about-manifesto",
   "settings": [
-
     {
       "type": "header",
       "content": "Capas de partículas"
     },
-
     {
       "type": "image_picker",
       "id": "particles_image_1",
       "label": "Partículas / polvo de fondo 1"
     },
-
     {
       "type": "range",
       "id": "particles_1_opacity",
@@ -2141,13 +790,11 @@
       "label": "Opacidad partículas 1",
       "default": 85
     },
-
     {
       "type": "image_picker",
       "id": "particles_image_2",
       "label": "Partículas / polvo de fondo 2"
     },
-
     {
       "type": "range",
       "id": "particles_2_opacity",
@@ -2159,52 +806,113 @@
       "default": 65
     },
 
-
     {
       "type": "header",
       "content": "Productos flotantes"
     },
-
     {
       "type": "image_picker",
       "id": "snack_image",
       "label": "1 · Pan pequeño superior"
     },
-
     {
       "type": "image_picker",
       "id": "bread_image",
       "label": "2 · Pan central"
     },
-
     {
       "type": "image_picker",
       "id": "tortilla_image",
       "label": "3 · Tortilla inferior"
     },
 
+    {
+      "type": "header",
+      "content": "Tamaño desktop"
+    },
+    {
+      "type": "range",
+      "id": "snack_size_desktop",
+      "min": 80,
+      "max": 180,
+      "step": 2,
+      "unit": "%",
+      "label": "Pan pequeño superior · tamaño desktop",
+      "default": 126
+    },
+    {
+      "type": "range",
+      "id": "bread_size_desktop",
+      "min": 80,
+      "max": 180,
+      "step": 2,
+      "unit": "%",
+      "label": "Pan central · tamaño desktop",
+      "default": 136
+    },
+    {
+      "type": "range",
+      "id": "tortilla_size_desktop",
+      "min": 80,
+      "max": 180,
+      "step": 2,
+      "unit": "%",
+      "label": "Tortilla inferior · tamaño desktop",
+      "default": 124
+    },
+
+    {
+      "type": "header",
+      "content": "Tamaño mobile"
+    },
+    {
+      "type": "range",
+      "id": "snack_size_mobile",
+      "min": 80,
+      "max": 160,
+      "step": 2,
+      "unit": "%",
+      "label": "Pan pequeño superior · tamaño mobile",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "bread_size_mobile",
+      "min": 80,
+      "max": 160,
+      "step": 2,
+      "unit": "%",
+      "label": "Pan central · tamaño mobile",
+      "default": 116
+    },
+    {
+      "type": "range",
+      "id": "tortilla_size_mobile",
+      "min": 80,
+      "max": 160,
+      "step": 2,
+      "unit": "%",
+      "label": "Tortilla inferior · tamaño mobile",
+      "default": 108
+    },
 
     {
       "type": "header",
       "content": "Texto final"
     },
-
     {
       "type": "textarea",
       "id": "closing",
       "label": "Cierre",
       "default": "Por eso existimos:\nPara redefinir el pan."
     },
-
     {
       "type": "textarea",
       "id": "closing_accent",
       "label": "Cierre destacado",
       "default": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
     }
-
   ],
-
   "presets": [
     {
       "name": "G4U · Manifiesto Nosotros"
