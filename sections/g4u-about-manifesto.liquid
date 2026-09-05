@@ -2457,7 +2457,93 @@ strong {
 
   })();
 </script>
+<script>
+  (() => {
 
+    const section =
+      document.querySelector(
+        '#G4uAboutManifesto-{{ section.id }}'
+      );
+
+    if (!section) {
+      return;
+    }
+
+
+    const title =
+      section.querySelector(
+        '.g4u-manifesto-reveal'
+      );
+
+    if (!title) {
+      return;
+    }
+
+
+    const reducedMotion =
+      window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      );
+
+
+    /*
+     * Accessibility:
+     * si el usuario no quiere movimiento,
+     * mostramos inmediatamente.
+     */
+    if (reducedMotion.matches) {
+
+      title.classList.add(
+        'is-visible'
+      );
+
+      return;
+    }
+
+
+    const observer =
+      new IntersectionObserver(
+        (entries, observerInstance) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+
+              title.classList.add(
+                'is-visible'
+              );
+
+
+              /*
+               * Animación una sola vez.
+               */
+              observerInstance.unobserve(
+                entry.target
+              );
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.18,
+
+          rootMargin:
+            '0px 0px -8% 0px'
+        }
+      );
+
+
+    observer.observe(
+      title
+    );
+
+  })();
+</script>
 
 {% schema %}
 {
