@@ -147,6 +147,205 @@
 
 
 <style>
+
+  /* ============================================================
+   G4U · MANIFESTO TEXT REVEAL
+   ============================================================ */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line {
+  display: block;
+  overflow: hidden;
+
+  /*
+   * Un poquito de aire evita que italic,
+   * descenders o blur se corten.
+   */
+  padding:
+    0.06em
+    0;
+
+  margin:
+    -0.06em
+    0;
+}
+
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line__inner {
+  display: block;
+
+  opacity: 0;
+
+  transform:
+    translate3d(
+      0,
+      105%,
+      0
+    )
+    rotate(0.8deg);
+
+  transform-origin:
+    left bottom;
+
+  filter:
+    blur(5px);
+
+  transition:
+    transform
+      1.05s
+      cubic-bezier(0.16, 1, 0.3, 1),
+
+    opacity
+      0.72s
+      ease-out,
+
+    filter
+      0.9s
+      cubic-bezier(0.16, 1, 0.3, 1);
+
+  /*
+   * 75ms entre líneas.
+   *
+   * Es suficientemente perceptible
+   * sin hacer que el manifiesto tarde
+   * demasiado en aparecer.
+   */
+  transition-delay:
+    calc(
+      var(--i) *
+      75ms
+    );
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+
+/* ACTIVE */
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal.is-visible
+.g4u-manifesto-line__inner {
+  opacity: 1;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    rotate(0deg);
+
+  filter:
+    blur(0);
+}
+
+
+/* ============================================================
+   EMPHASIS
+   ============================================================ */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal em,
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal strong {
+  display: inline-block;
+
+  transform:
+    translate3d(
+      0,
+      0.08em,
+      0
+    );
+
+  transition:
+    transform
+      0.85s
+      cubic-bezier(0.16, 1, 0.3, 1);
+
+  transition-delay:
+    calc(
+      (
+        var(--i, 0) *
+        75ms
+      ) +
+      220ms
+    );
+}
+
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal.is-visible
+em,
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal.is-visible
+strong {
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    );
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media screen and (max-width: 749px) {
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-manifesto-line__inner {
+    transform:
+      translate3d(
+        0,
+        90%,
+        0
+      );
+
+    filter:
+      blur(3px);
+
+    transition-duration:
+      0.9s;
+
+    transition-delay:
+      calc(
+        var(--i) *
+        58ms
+      );
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-manifesto-line__inner {
+    opacity: 1 !important;
+
+    transform:
+      none !important;
+
+    filter:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+}
+
   /* ============================================================
      G4U · MANIFIESTO
      INDEPENDENT CINEMATIC PARALLAX V4
