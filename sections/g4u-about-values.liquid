@@ -32,6 +32,96 @@
       transform: none !important;
     }
   }
+
+  /* ==========================================
+   G4U · About Values — Mobile full bleed
+   ========================================== */
+
+@media screen and (max-width: 749px) {
+
+  /*
+   * El contenedor general mantiene
+   * el padding lateral para el título.
+   */
+  .g4u-about-values {
+    overflow: visible;
+  }
+
+  /*
+   * El grid rompe el padding de la sección
+   * y usa todo el ancho del viewport.
+   */
+  .g4u-about-values__grid {
+    width: 100vw;
+    max-width: none;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    display: flex;
+    flex-wrap: nowrap;
+
+    gap: 1.6rem;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 2rem;
+    scroll-padding-right: 2rem;
+
+    scrollbar-width: none;
+  }
+
+  .g4u-about-values__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*
+   * Las cards no se achican.
+   * Se ve parte de la siguiente card para
+   * indicar visualmente que hay scroll.
+   */
+  .g4u-about-value {
+    flex: 0 0 calc(82vw - 2rem);
+    width: calc(82vw - 2rem);
+    min-width: calc(82vw - 2rem);
+
+    scroll-snap-align: start;
+  }
+
+  /*
+   * Evita que una imagen sobresalga
+   * o altere el ancho del slide.
+   */
+  .g4u-about-value__media {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .g4u-about-value__image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /*
+   * Que el wrapper de Shopify no corte
+   * el desplazamiento.
+   */
+  .section-g4u-about-values {
+    overflow: hidden;
+  }
+}
 </style>
 
 <section
