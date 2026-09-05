@@ -176,6 +176,66 @@
 
 </section>
 
+
+
+<style>
+  /* ==========================================
+   G4U · Featured products — Mobile slider
+   Full bleed
+   ========================================== */
+
+@media screen and (max-width: 749px) {
+
+  /*
+   * La sección conserva su padding actual.
+   * El slider rompe ese padding y ocupa
+   * todo el ancho real del viewport.
+   */
+  .g4u-featured-products__grid {
+    width: 100vw;
+    max-width: none;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    box-sizing: border-box;
+
+    /*
+     * Espacio únicamente al comienzo/final
+     * del recorrido del slider.
+     */
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-padding-left: 2rem;
+    scroll-padding-right: 2rem;
+
+    scrollbar-width: none;
+  }
+
+  .g4u-featured-products__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*
+   * Muy importante:
+   * ningún ancestro inmediato debe cortar
+   * horizontalmente el slider.
+   */
+  .g4u-featured-products {
+    overflow: visible;
+  }
+
+  .section-g4u-products {
+    overflow: hidden;
+  }
+}
+</style>
 {% schema %}
 {
   "name": "G4U · Packs destacados",
