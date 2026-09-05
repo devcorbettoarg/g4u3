@@ -35,11 +35,11 @@
         "bread_image": "shopify://shop_images/image_19.png",
         "tortilla_image": "shopify://shop_images/floating_3.png",
         "snack_size_desktop_v2": 184,
-        "bread_size_desktop_v2": 200,
+        "bread_size_desktop_v2": 196,
         "tortilla_size_desktop_v2": 182,
-        "snack_size_mobile_v2": 170,
-        "bread_size_mobile_v2": 170,
-        "tortilla_size_mobile_v2": 170,
+        "snack_size_mobile_v2": 150,
+        "bread_size_mobile_v2": 184,
+        "tortilla_size_mobile_v2": 156,
         "closing": "Por eso existimos:\nPara redefinir el pan.",
         "closing_accent": "Y demostrar que lo que te hace bien…\ntambién puede ser rico."
       }
