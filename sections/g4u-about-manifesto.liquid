@@ -77,17 +77,19 @@
 </h2>
 <style>
 /* ============================================================
-   G4U · MANIFESTO — SEQUENTIAL LINE REVEAL
-   CSS + JS en un solo snippet Liquid
+   G4U · MANIFESTO — VIEWPORT LINE REVEAL
+   Cada línea se anima solamente cuando entra en pantalla.
    ============================================================ */
 
 #G4uAboutManifesto-{{ section.id }}
 .g4u-manifesto-line {
   display: block;
   overflow: hidden;
+
   padding: 0.08em 0;
   margin: -0.08em 0;
 }
+
 
 #G4uAboutManifesto-{{ section.id }}
 .g4u-manifesto-line__inner {
@@ -96,25 +98,23 @@
   opacity: 0;
 
   transform:
-    translate3d(0, 115%, 0);
+    translate3d(0, 110%, 0);
 
   filter:
     blur(4px);
 
-  transition-property:
-    transform,
-    opacity,
-    filter;
+  transition:
+    transform
+      0.95s
+      cubic-bezier(0.16, 1, 0.3, 1),
 
-  transition-duration:
-    1s,
-    0.7s,
-    0.8s;
+    opacity
+      0.62s
+      ease-out,
 
-  transition-timing-function:
-    cubic-bezier(0.16, 1, 0.3, 1),
-    ease-out,
-    ease-out;
+    filter
+      0.75s
+      ease-out;
 
   will-change:
     transform,
@@ -124,88 +124,11 @@
 
 
 /* ============================================================
-   DELAYS — REVEAL SECUENCIAL
+   CADA LÍNEA SE ACTIVA INDIVIDUALMENTE
    ============================================================ */
 
 #G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(1)
-.g4u-manifesto-line__inner {
-  transition-delay: 0ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(2)
-.g4u-manifesto-line__inner {
-  transition-delay: 150ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(3)
-.g4u-manifesto-line__inner {
-  transition-delay: 300ms;
-}
-
-
-/* Pausa entre ideas */
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(4)
-.g4u-manifesto-line__inner {
-  transition-delay: 620ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(5)
-.g4u-manifesto-line__inner {
-  transition-delay: 770ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(6)
-.g4u-manifesto-line__inner {
-  transition-delay: 920ms;
-}
-
-
-/* Segunda pausa */
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(7)
-.g4u-manifesto-line__inner {
-  transition-delay: 1240ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(8)
-.g4u-manifesto-line__inner {
-  transition-delay: 1390ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(9)
-.g4u-manifesto-line__inner {
-  transition-delay: 1540ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(10)
-.g4u-manifesto-line__inner {
-  transition-delay: 1810ms;
-}
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-line:nth-child(11)
-.g4u-manifesto-line__inner {
-  transition-delay: 1960ms;
-}
-
-
-/* ============================================================
-   ESTADO VISIBLE
-   ============================================================ */
-
-#G4uAboutManifesto-{{ section.id }}
-.g4u-manifesto-reveal.is-visible
+.g4u-manifesto-line.is-visible
 .g4u-manifesto-line__inner {
   opacity: 1;
 
@@ -231,10 +154,18 @@
     filter:
       blur(2px);
 
-    transition-duration:
-      0.85s,
-      0.6s,
-      0.7s;
+    transition:
+      transform
+        0.82s
+        cubic-bezier(0.16, 1, 0.3, 1),
+
+      opacity
+        0.55s
+        ease-out,
+
+      filter
+        0.65s
+        ease-out;
   }
 
 }
@@ -281,20 +212,22 @@
      ========================================================== */
 
   if (
-    section.dataset.g4uManifestoTextReveal === 'true'
+    section.dataset.g4uManifestoViewportReveal === 'true'
   ) {
     return;
   }
 
-  section.dataset.g4uManifestoTextReveal = 'true';
+  section.dataset.g4uManifestoViewportReveal = 'true';
 
 
-  const title =
-    section.querySelector(
-      '.g4u-manifesto-reveal'
+  const lines =
+    Array.from(
+      section.querySelectorAll(
+        '.g4u-manifesto-line'
+      )
     );
 
-  if (!title) {
+  if (!lines.length) {
     return;
   }
 
@@ -311,102 +244,119 @@
 
   if (reducedMotion.matches) {
 
-    title.classList.add(
-      'is-visible'
+    lines.forEach(
+      (line) => {
+        line.classList.add(
+          'is-visible'
+        );
+      }
     );
 
     return;
   }
 
 
-  let animated = false;
-
-
   /* ==========================================================
-     REVEAL
-     ========================================================== */
-
-  const reveal = () => {
-
-    if (animated) {
-      return;
-    }
-
-    animated = true;
-
-
-    /*
-     * Dos frames fuerzan al navegador a pintar
-     * primero el estado inicial oculto.
-     *
-     * Evita que todas las líneas aparezcan juntas.
-     */
-
-    requestAnimationFrame(() => {
-
-      requestAnimationFrame(() => {
-
-        title.classList.add(
-          'is-visible'
-        );
-
-      });
-
-    });
-
-  };
-
-
-  /* ==========================================================
-     INTERSECTION OBSERVER
+     FALLBACK
      ========================================================== */
 
   if (
-    'IntersectionObserver' in window
+    !('IntersectionObserver' in window)
   ) {
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach(
-            (entry) => {
-
-              if (!entry.isIntersecting) {
-                return;
-              }
-
-              reveal();
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-          );
-
-        },
-        {
-          threshold: 0.25,
-
-          rootMargin:
-            '0px 0px -12% 0px'
-        }
-      );
-
-
-    observer.observe(
-      title
+    lines.forEach(
+      (line) => {
+        line.classList.add(
+          'is-visible'
+        );
+      }
     );
 
-  } else {
-
-    /*
-     * Fallback navegadores antiguos
-     */
-    reveal();
-
+    return;
   }
+
+
+  /* ==========================================================
+     OBSERVER POR LÍNEA
+
+     La línea NO comienza su animación hasta que ella misma
+     alcanza la zona visible del viewport.
+     ========================================================== */
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+
+            /*
+             * Esperamos dos frames para garantizar que
+             * el navegador haya pintado el estado oculto.
+             */
+
+            requestAnimationFrame(() => {
+
+              requestAnimationFrame(() => {
+
+                entry.target.classList.add(
+                  'is-visible'
+                );
+
+              });
+
+            });
+
+
+            /*
+             * Reveal una sola vez.
+             */
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+        );
+
+      },
+      {
+        /*
+         * La línea necesita estar realmente dentro
+         * de la pantalla.
+         */
+        threshold: 0.35,
+
+        /*
+         * Reducimos la zona activa inferior.
+         *
+         * La animación empieza aproximadamente cuando
+         * la línea supera el último 10% del viewport.
+         */
+        rootMargin:
+          '0px 0px -10% 0px'
+      }
+    );
+
+
+  /* ==========================================================
+     OBSERVE EACH LINE
+     ========================================================== */
+
+  lines.forEach(
+    (line) => {
+
+      observer.observe(
+        line
+      );
+
+    }
+  );
 
 })();
 </script>
