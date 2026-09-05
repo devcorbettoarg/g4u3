@@ -75,6 +75,342 @@
     </span>
   </span>
 </h2>
+<style>
+/* ============================================================
+   G4U · MANIFESTO — SEQUENTIAL LINE REVEAL
+   CSS + JS en un solo snippet Liquid
+   ============================================================ */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.08em 0;
+  margin: -0.08em 0;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line__inner {
+  display: block;
+
+  opacity: 0;
+
+  transform:
+    translate3d(0, 115%, 0);
+
+  filter:
+    blur(4px);
+
+  transition-property:
+    transform,
+    opacity,
+    filter;
+
+  transition-duration:
+    1s,
+    0.7s,
+    0.8s;
+
+  transition-timing-function:
+    cubic-bezier(0.16, 1, 0.3, 1),
+    ease-out,
+    ease-out;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+
+/* ============================================================
+   DELAYS — REVEAL SECUENCIAL
+   ============================================================ */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(1)
+.g4u-manifesto-line__inner {
+  transition-delay: 0ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(2)
+.g4u-manifesto-line__inner {
+  transition-delay: 150ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(3)
+.g4u-manifesto-line__inner {
+  transition-delay: 300ms;
+}
+
+
+/* Pausa entre ideas */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(4)
+.g4u-manifesto-line__inner {
+  transition-delay: 620ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(5)
+.g4u-manifesto-line__inner {
+  transition-delay: 770ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(6)
+.g4u-manifesto-line__inner {
+  transition-delay: 920ms;
+}
+
+
+/* Segunda pausa */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(7)
+.g4u-manifesto-line__inner {
+  transition-delay: 1240ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(8)
+.g4u-manifesto-line__inner {
+  transition-delay: 1390ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(9)
+.g4u-manifesto-line__inner {
+  transition-delay: 1540ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(10)
+.g4u-manifesto-line__inner {
+  transition-delay: 1810ms;
+}
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-line:nth-child(11)
+.g4u-manifesto-line__inner {
+  transition-delay: 1960ms;
+}
+
+
+/* ============================================================
+   ESTADO VISIBLE
+   ============================================================ */
+
+#G4uAboutManifesto-{{ section.id }}
+.g4u-manifesto-reveal.is-visible
+.g4u-manifesto-line__inner {
+  opacity: 1;
+
+  transform:
+    translate3d(0, 0, 0);
+
+  filter:
+    blur(0);
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media screen and (max-width: 749px) {
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-manifesto-line__inner {
+    transform:
+      translate3d(0, 90%, 0);
+
+    filter:
+      blur(2px);
+
+    transition-duration:
+      0.85s,
+      0.6s,
+      0.7s;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #G4uAboutManifesto-{{ section.id }}
+  .g4u-manifesto-line__inner {
+    opacity: 1 !important;
+
+    transform:
+      none !important;
+
+    filter:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+}
+</style>
+
+<script>
+(() => {
+
+  const section =
+    document.querySelector(
+      '#G4uAboutManifesto-{{ section.id }}'
+    );
+
+  if (!section) {
+    return;
+  }
+
+
+  /* ==========================================================
+     PREVENT DOUBLE INIT
+     ========================================================== */
+
+  if (
+    section.dataset.g4uManifestoTextReveal === 'true'
+  ) {
+    return;
+  }
+
+  section.dataset.g4uManifestoTextReveal = 'true';
+
+
+  const title =
+    section.querySelector(
+      '.g4u-manifesto-reveal'
+    );
+
+  if (!title) {
+    return;
+  }
+
+
+  const reducedMotion =
+    window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
+
+
+  /* ==========================================================
+     ACCESSIBILITY
+     ========================================================== */
+
+  if (reducedMotion.matches) {
+
+    title.classList.add(
+      'is-visible'
+    );
+
+    return;
+  }
+
+
+  let animated = false;
+
+
+  /* ==========================================================
+     REVEAL
+     ========================================================== */
+
+  const reveal = () => {
+
+    if (animated) {
+      return;
+    }
+
+    animated = true;
+
+
+    /*
+     * Dos frames fuerzan al navegador a pintar
+     * primero el estado inicial oculto.
+     *
+     * Evita que todas las líneas aparezcan juntas.
+     */
+
+    requestAnimationFrame(() => {
+
+      requestAnimationFrame(() => {
+
+        title.classList.add(
+          'is-visible'
+        );
+
+      });
+
+    });
+
+  };
+
+
+  /* ==========================================================
+     INTERSECTION OBSERVER
+     ========================================================== */
+
+  if (
+    'IntersectionObserver' in window
+  ) {
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              reveal();
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.25,
+
+          rootMargin:
+            '0px 0px -12% 0px'
+        }
+      );
+
+
+    observer.observe(
+      title
+    );
+
+  } else {
+
+    /*
+     * Fallback navegadores antiguos
+     */
+    reveal();
+
+  }
+
+})();
+</script>
+
 
     <div class="g4u-about-manifesto__closing g4u-display">
       <p>{{ section.settings.closing | escape | newline_to_br }}</p>
