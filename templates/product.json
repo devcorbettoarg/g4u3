@@ -36,6 +36,11 @@
           "type": "g4u_product_tags",
           "settings": {}
         },
+        "custom_liquid_azWFHi": {
+          "type": "custom_liquid",
+          "repeater": "{{ product.metafields.custom.product_benefits.value }}",
+          "settings": {}
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -128,6 +133,7 @@
         "price",
         "rating",
         "g4u_product_tags_XD4UDU",
+        "custom_liquid_azWFHi",
         "description",
         "product_highlights",
         "variant_picker",
