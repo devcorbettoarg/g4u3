@@ -20,6 +20,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "custom_liquid_NGU677": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{product.metafields.custom.beneficios.value}}"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -34,11 +40,6 @@
         },
         "g4u_product_tags_XD4UDU": {
           "type": "g4u_product_tags",
-          "settings": {}
-        },
-        "custom_liquid_azWFHi": {
-          "type": "custom_liquid",
-          "repeater": "{{ product.metafields.custom.product_benefits.value }}",
           "settings": {}
         },
         "description": {
@@ -129,11 +130,11 @@
         }
       },
       "block_order": [
+        "custom_liquid_NGU677",
         "title",
         "price",
         "rating",
         "g4u_product_tags_XD4UDU",
-        "custom_liquid_azWFHi",
         "description",
         "product_highlights",
         "variant_picker",
