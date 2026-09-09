@@ -212,6 +212,8 @@
                   {{ block.settings.custom_liquid }}
                 {%- when 'g4u_benefits' -%}
                   {% render 'g4u-product-benefits', product: product, block: block %}
+                {%- when 'g4u_product_tags' -%}
+                  {% render 'g4u-product-tags', product: product, block: block %}
                 {%- when 'collapsible_tab' -%}
                   {%- liquid
                     assign g4u_accordion_metafield = blank
@@ -1281,6 +1283,12 @@
           "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
         }
       ]
+    },
+    {
+      "type": "g4u_product_tags",
+      "name": "G4U · Características del producto",
+      "limit": 1,
+      "settings": []
     },
     {
       "type": "g4u_benefits",
