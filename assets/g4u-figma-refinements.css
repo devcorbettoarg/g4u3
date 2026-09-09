@@ -571,7 +571,7 @@ body.template-suffix-harina {
   .g4u-featured-products
   .g4u-card__tags {
     gap: 0.8rem;
-    margin-top: 1.6rem;
+    margin-top: 1.6rem !important;
     min-height: 0;
   }
 
