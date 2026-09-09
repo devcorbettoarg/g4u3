@@ -29,7 +29,7 @@ body.template-suffix-nosotros .announcement-bar-section {
 .announcement-bar-section .announcement-bar { grid-column: 2; grid-row: 1; }
 .announcement-bar-section .announcement-bar__message {
   color: inherit;
-  font-family: var(--font-body-family);
+  font-family: "Europa Grotesk SH";
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .025em;
