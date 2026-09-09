@@ -333,28 +333,28 @@
         "low_carb_fat": {
           "type": "benefit",
           "settings": {
-            "title": "Activamos la quema de grasa",
+            "title": "Activamos la quema | de grasa",
             "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>"
           }
         },
         "low_carb_energy": {
           "type": "benefit",
           "settings": {
-            "title": "Energía más estable",
+            "title": "Energía | más estable",
             "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>"
           }
         },
         "low_carb_focus": {
           "type": "benefit",
           "settings": {
-            "title": "Foco y claridad mental",
+            "title": "Foco y claridad | mental",
             "text": "<p>Más foco, más lucidez, más presencia.</p>"
           }
         },
         "low_carb_wellbeing": {
           "type": "benefit",
           "settings": {
-            "title": "Menos inflamación, más bienestar",
+            "title": "Menos inflamación, | más bienestar",
             "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>"
           }
         }
