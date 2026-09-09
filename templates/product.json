@@ -23,7 +23,7 @@
         "custom_liquid_NGU677": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{product.metafields.custom.beneficios.value}}"
+            "custom_liquid": "{{product.metafields.custom.beneficios}}"
           }
         },
         "title": {
