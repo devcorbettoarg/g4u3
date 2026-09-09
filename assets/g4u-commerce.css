@@ -3,7 +3,7 @@
 .template-collection .collection-hero__inner { max-width: 136rem; padding: 0; text-align: center; }
 .template-collection .collection-hero__title { color: inherit; font-family: var(--g4u-display); font-size: 4.8rem; letter-spacing: .01em; line-height: 1; margin: 0; text-transform: uppercase; }
 .template-collection .collection-hero__description { display: none; }
-.template-collection .section-g4u-breadcrumb { background: var(--g4u-ink); }
+.template-collection .section-g4u-breadcrumb { background: #F2EBE4; }
 .template-collection .g4u-breadcrumb { margin: 0 auto; max-width: 144rem; padding: 0 4rem 3.2rem; }
 .template-collection .g4u-breadcrumb__list { align-items: center; display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; list-style: none; margin: 0; padding: 0; }
 .template-collection .g4u-breadcrumb__list li { align-items: center; color: #766c70; display: flex; font-family: var(--g4u-display); font-size: 1.4rem; letter-spacing: .04em; line-height: 1.4; }
