@@ -777,7 +777,7 @@ g4u-tabs {
 .g4u-feel-good__content { max-width: 76.8rem; position: relative; z-index: 1; }
 .g4u-feel-good__title { color: inherit; font-size: clamp(6rem, 6.4vw, 9.2rem); margin: 0 0 2.4rem; }
 .g4u-feel-good__accent { color: var(--g4u-orange); display: block; }
-.g4u-feel-good__text { font-size: 1.8rem; line-height: 1.5; margin-bottom: 3.2rem; }
+.g4u-feel-good__text { font-family: var(--g4u-display); font-size: 1.8rem; line-height: 1.5; margin-bottom: 3.2rem; }
 .g4u-feel-good__button { border: .1rem solid var(--g4u-cream); color: var(--g4u-cream); }
 .g4u-feel-good__button:hover { background: var(--g4u-cream); color: var(--g4u-burgundy); }
 
