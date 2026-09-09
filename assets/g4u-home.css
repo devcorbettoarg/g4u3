@@ -549,6 +549,7 @@ g4u-tabs {
   min-height: 4.8rem;
   padding: 1.2rem 1.6rem;
   white-space: nowrap;
+   font-family: "Europa Grotesk SH";
 }
 
 .g4u-science__tab[aria-selected="true"] {
