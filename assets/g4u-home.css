@@ -650,7 +650,7 @@ g4u-tabs {
 .g4u-comparison__header { margin: 0 auto 6rem; }
 .g4u-comparison__title { color: var(--g4u-burgundy); }
 .g4u-comparison__table-wrap { margin: auto; max-width: 104rem; overflow-x: auto; text-align: left; }
-.g4u-comparison__table { border-collapse: collapse; min-width: 104rem; table-layout: fixed; width: 100%; }
+.g4u-comparison__table { border-collapse: collapse; min-width: 104rem; table-layout: fixed; width: 100%;  font-family: "Europa Grotesk SH"; }
 .g4u-comparison__table th,
 .g4u-comparison__table td { border-bottom: .1rem solid #d5d4d4; font-size: 2rem; padding: 1.6rem 2.4rem; text-align: center; }
 .g4u-comparison__table thead th { border-bottom-color: var(--g4u-burgundy); font-weight: 400; height: 8.8rem; }
