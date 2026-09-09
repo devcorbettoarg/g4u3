@@ -32,6 +32,10 @@
           "type": "rating",
           "settings": {}
         },
+        "g4u_product_tags_XD4UDU": {
+          "type": "g4u_product_tags",
+          "settings": {}
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -123,6 +127,7 @@
         "title",
         "price",
         "rating",
+        "g4u_product_tags_XD4UDU",
         "description",
         "product_highlights",
         "variant_picker",
