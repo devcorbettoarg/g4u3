@@ -10,8 +10,9 @@
     assign g4u_has_keto = false
     assign g4u_has_fiber = false
     assign g4u_has_no_sugar = false
-    for product_tag in product.tags
-      assign normalized_tag = product_tag | downcase | strip
+    for benefit in metafield_benefits
+      assign benefit_label = benefit.title.value | default: benefit.title | default: benefit
+      assign normalized_tag = benefit_label | downcase | strip
       if normalized_tag contains 'prote'
         assign g4u_has_protein = true
       elsif normalized_tag contains 'low-carb' or normalized_tag contains 'low carb'
