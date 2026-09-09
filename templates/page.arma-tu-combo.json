@@ -119,44 +119,6 @@
         "no_collections_text": "Seleccioná al menos una colección desde el editor del tema."
       }
     },
-    "g4u_service_benefits_ig9jdL": {
-      "type": "g4u-service-benefits",
-      "blocks": {
-        "benefit_QXDaDm": {
-          "type": "benefit",
-          "settings": {
-            "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe"
-          }
-        },
-        "benefit_PynxVq": {
-          "type": "benefit",
-          "settings": {
-            "text": "Nutrición inteligente, con sabor auténtico y beneficios reales"
-          }
-        },
-        "benefit_4ddGEz": {
-          "type": "benefit",
-          "settings": {
-            "text": "Entregas en 24/48 hs\nen AMBA"
-          }
-        },
-        "benefit_mfJP6y": {
-          "type": "benefit",
-          "settings": {
-            "text": "Pago seguro"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_QXDaDm",
-        "benefit_PynxVq",
-        "benefit_4ddGEz",
-        "benefit_mfJP6y"
-      ],
-      "settings": {
-        "accessibility_label": "Beneficios de comprar en G4U"
-      }
-    },
     "g4u_nutrition_marquee_haEjNG": {
       "type": "g4u-nutrition-marquee",
       "blocks": {
@@ -348,15 +310,53 @@
         "button_label": "Seguinos",
         "link": ""
       }
+    },
+    "g4u_service_benefits_ig9jdL": {
+      "type": "g4u-service-benefits",
+      "blocks": {
+        "benefit_QXDaDm": {
+          "type": "benefit",
+          "settings": {
+            "text": "Envíos Buenos Aires,\nCórdoba y Santa Fe"
+          }
+        },
+        "benefit_PynxVq": {
+          "type": "benefit",
+          "settings": {
+            "text": "Nutrición inteligente, con sabor auténtico y beneficios reales"
+          }
+        },
+        "benefit_4ddGEz": {
+          "type": "benefit",
+          "settings": {
+            "text": "Entregas en 24/48 hs\nen AMBA"
+          }
+        },
+        "benefit_mfJP6y": {
+          "type": "benefit",
+          "settings": {
+            "text": "Pago seguro"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_QXDaDm",
+        "benefit_PynxVq",
+        "benefit_4ddGEz",
+        "benefit_mfJP6y"
+      ],
+      "settings": {
+        "accessibility_label": "Beneficios de comprar en G4U"
+      }
     }
   },
   "order": [
     "combo",
     "bundle_kaHktn",
-    "g4u_service_benefits_ig9jdL",
     "g4u_nutrition_marquee_haEjNG",
     "g4u_low_carb_benefits_ahaxxX",
     "g4u_experts_jY3Jt8",
-    "g4u_instagram_zDaaEa"
+    "g4u_instagram_zDaaEa",
+    "g4u_service_benefits_ig9jdL"
   ]
 }
