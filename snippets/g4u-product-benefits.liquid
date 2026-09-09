@@ -4,14 +4,34 @@
 -%}
 
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
-  {%- if product.tags.size > 0 -%}
-    <div class="g4u-product-highlights__tags">
-      {%- for tag in product.tags -%}
-        {%- assign normalized_tag = tag | downcase -%}
-        {%- if normalized_tag contains 'prote' or normalized_tag contains 'low-carb' or normalized_tag contains 'keto' or normalized_tag contains 'fibra' or normalized_tag contains 'azúcar' -%}
-          <span>{{ tag }}</span>
-        {%- endif -%}
-      {%- endfor -%}
+  {%- liquid
+    assign g4u_has_protein = false
+    assign g4u_has_lowcarb = false
+    assign g4u_has_keto = false
+    assign g4u_has_fiber = false
+    assign g4u_has_no_sugar = false
+    for product_tag in product.tags
+      assign normalized_tag = product_tag | downcase | strip
+      if normalized_tag contains 'prote'
+        assign g4u_has_protein = true
+      elsif normalized_tag contains 'low-carb' or normalized_tag contains 'low carb'
+        assign g4u_has_lowcarb = true
+      elsif normalized_tag contains 'keto'
+        assign g4u_has_keto = true
+      elsif normalized_tag contains 'fibra'
+        assign g4u_has_fiber = true
+      elsif normalized_tag contains 'azúcar' or normalized_tag contains 'azucar'
+        assign g4u_has_no_sugar = true
+      endif
+    endfor
+  -%}
+  {%- if g4u_has_protein or g4u_has_lowcarb or g4u_has_keto or g4u_has_fiber or g4u_has_no_sugar -%}
+    <div class="g4u-card__tags g4u-product-highlights__tags" aria-label="Características del producto">
+      {%- if g4u_has_protein -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-protein.svg' | asset_url }}" alt="" width="16" height="20">Proteico</span>{%- endif -%}
+      {%- if g4u_has_lowcarb -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-lowcarb.svg' | asset_url }}" alt="" width="16" height="20">Low-Carb</span>{%- endif -%}
+      {%- if g4u_has_keto -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-keto.svg' | asset_url }}" alt="" width="13" height="20">Apto Keto</span>{%- endif -%}
+      {%- if g4u_has_fiber -%}<span class="g4u-card__tag"><img src="{{ 'g4u-flour-icon-fiber.svg' | asset_url }}" alt="" width="18" height="20">Alto en fibra</span>{%- endif -%}
+      {%- if g4u_has_no_sugar -%}<span class="g4u-card__tag"><span aria-hidden="true">⊘</span>Sin azúcar agregada</span>{%- endif -%}
     </div>
   {%- endif -%}
 

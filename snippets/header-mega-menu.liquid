@@ -138,7 +138,7 @@
                             <span class="g4u-mega-menu__product-copy">
 
                               <span class="g4u-mega-menu__product-title">
-                                {{ mega_product.title | escape }}
+                                {{ mega_product.title | split: '|' | first | strip | escape }}
                               </span>
 
                               <span class="g4u-mega-menu__product-price">

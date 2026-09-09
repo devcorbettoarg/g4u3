@@ -198,7 +198,7 @@
 
                         <div class="pb-card__body">
                           <h3 class="pb-card__title">
-                            <a href="{{ product.url }}">{{ product.title }}</a>
+                            <a href="{{ product.url }}">{{ product.title | split: '|' | first | strip | escape }}</a>
                           </h3>
 
                           <div class="pb-card__price" data-card-price>

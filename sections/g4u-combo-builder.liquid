@@ -27,7 +27,7 @@
               {%- endif -%}
             </div>
             <div class="g4u-combo__product-info">
-              <h2>{{ product.title | escape }}</h2>
+              <h2>{{ product.title | split: '|' | first | strip | escape }}</h2>
               {%- if product.metafields.custom.subtitle.value != blank -%}<p>{{ product.metafields.custom.subtitle.value | escape }}</p>{%- endif -%}
               <strong>{{ variant.price | money }}</strong>
               <label class="g4u-combo__select">
