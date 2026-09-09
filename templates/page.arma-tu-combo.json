@@ -47,7 +47,7 @@
         "pack_name": "Armá tu pack",
         "pack_key": "g4u-pack",
         "breakfast_title": "Desayunos",
-        "breakfast_collection": "automated-collection",
+        "breakfast_collection": "frontpage",
         "breakfast_minimum": 1,
         "sandwich_title": "Sandwich",
         "sandwich_collection": "panes",
