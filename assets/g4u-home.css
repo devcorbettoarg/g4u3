@@ -519,6 +519,7 @@ g4u-tabs {
 
 .g4u-science__intro,
 .g4u-comparison__intro {
+   font-family: "Europa Grotesk SH";
   font-size: 1.8rem;
   line-height: 1.5;
   margin: auto;
