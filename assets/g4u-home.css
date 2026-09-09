@@ -580,7 +580,7 @@ g4u-tabs {
   text-transform: uppercase;
 }
 .g4u-science__panel-title { color: var(--g4u-ink); font-size: 4rem; margin: 0 0 1.2rem; }
-.g4u-science__text { font-size: 1.6rem; line-height: 1.5; max-width: 55rem;  font-family: "Europa Grotesk SH"; }
+.g4u-science__text { font-size: 1.6rem; line-height: 1.5; max-width: 52rem;  font-family: "Europa Grotesk SH"; }
 .g4u-science__why { font-size: 1.6rem; font-weight: 600; margin: 2.4rem 0 1.2rem; text-transform: uppercase; }
 .g4u-science__benefits { display: grid; gap: .8rem; list-style: none; margin: 0 0 2.4rem; padding: 0; }
 .g4u-science__benefit { align-items: center; display: flex; gap: 1.2rem; }
