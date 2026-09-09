@@ -18,7 +18,7 @@
         {%- else -%}
           <img class="g4u-low-carb__icon" src="{{ fallback_icon | asset_url }}" alt="" width="80" height="72" loading="lazy">
         {%- endif -%}
-        <h3 class="g4u-low-carb__item-title">{{ block.settings.title | escape }}</h3>
+        <h3 class="g4u-low-carb__item-title">{{ block.settings.title | replace: "|", "<br>" }}</h3>
         <div class="g4u-low-carb__text rte">{{ block.settings.text }}</div>
       </article>
     {%- endfor -%}
