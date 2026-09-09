@@ -20,12 +20,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "custom_liquid_NGU677": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{{product.metafields.custom.product_benefits}}\n{{product.metafields.custom.lista_beneficios}}"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -130,7 +124,6 @@
         }
       },
       "block_order": [
-        "custom_liquid_NGU677",
         "title",
         "price",
         "rating",
