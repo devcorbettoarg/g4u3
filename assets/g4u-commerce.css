@@ -1,5 +1,5 @@
 /* Commerce surfaces — Figma Products-List */
-.template-collection .collection-hero { background: var(--g4u-white); color: var(--g4u-ink); padding: 8rem 4rem 2.4rem; }
+.template-collection .collection-hero { background: #FFF8F0; color: var(--g4u-ink); padding: 8rem 4rem 2.4rem; }
 .template-collection .collection-hero__inner { max-width: 136rem; padding: 0; text-align: center; }
 .template-collection .collection-hero__title { color: inherit; font-family: var(--g4u-display); font-size: 4.8rem; letter-spacing: .01em; line-height: 1; margin: 0; text-transform: uppercase; }
 .template-collection .collection-hero__description { display: none; }
