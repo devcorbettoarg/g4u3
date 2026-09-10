@@ -104,6 +104,7 @@
               <div class="drawer__cart-items-wrapper">
                 <div class="cart-items" role="table">
                   <div class="cart-items__body" role="rowgroup">
+                    {%- assign g4u_cart_compare_total = 0 -%}
                     {%- for item in cart.items -%}
                       <div
                         id="CartDrawer-Item-{{ item.index | plus: 1 }}"
@@ -391,6 +392,24 @@
                         </div>
                         </div>
 
+                        {%- liquid
+                          assign g4u_line_compare_price = item.original_line_price
+                          if item.variant.compare_at_price != blank and item.variant.compare_at_price > item.variant.price
+                            assign g4u_variant_compare_line_price = item.variant.compare_at_price | times: item.quantity
+                            if g4u_variant_compare_line_price > g4u_line_compare_price
+                              assign g4u_line_compare_price = g4u_variant_compare_line_price
+                            endif
+                          endif
+
+                          assign g4u_line_has_discount = false
+                          assign g4u_line_discount_percent = 0
+                          if g4u_line_compare_price > item.final_line_price
+                            assign g4u_line_has_discount = true
+                            assign g4u_line_discount_amount = g4u_line_compare_price | minus: item.final_line_price
+                            assign g4u_line_discount_percent = g4u_line_discount_amount | times: 100.0 | divided_by: g4u_line_compare_price | round
+                          endif
+                          assign g4u_cart_compare_total = g4u_cart_compare_total | plus: g4u_line_compare_price
+                        -%}
                         <div class="cart-item__totals right" role="cell">
                           <cart-remove-button
                             id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
@@ -403,30 +422,30 @@
                               data-variant-id="{{ item.variant.id }}"
                             >
                               <span class="svg-wrapper">
-                                {{- 'icon-remove.svg' | inline_asset_content -}}
+                                {{- 'icon-remove-cart.svg' | inline_asset_content -}}
                               </span>
                             </button>
                           </cart-remove-button>
                           {%- render 'loading-spinner' -%}
                           <div class="cart-item__price-wrapper">
-                            {%- if item.original_line_price != item.final_line_price -%}
+                            {%- if g4u_line_has_discount -%}
                               <div class="cart-item__discounted-prices">
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
                                 </span>
                                 <s class="cart-item__old-price price price--end">
-                                  {{ item.original_line_price | money }}
+                                  {{ g4u_line_compare_price | money }}
                                 </s>
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.sale_price' | t }}
                                 </span>
-                                <span class="price price--end">
+                                <span class="cart-item__final-price price price--end">
                                   {{ item.final_line_price | money }}
                                 </span>
                               </div>
                             {%- else -%}
                               <span class="price price--end">
-                                {{ item.original_line_price | money }}
+                                {{ item.final_line_price | money }}
                               </span>
                             {%- endif -%}
 
@@ -436,10 +455,8 @@
                                 measurement: item.unit_price_measurement
                               %}
                             {%- endif -%}
-                            {%- if item.original_line_price > item.final_line_price -%}
-                              {%- assign g4u_line_discount_amount = item.original_line_price | minus: item.final_line_price -%}
-                              {%- assign g4u_line_discount_percent = g4u_line_discount_amount | times: 100.0 | divided_by: item.original_line_price | round -%}
-                              <span class="g4u-cart-drawer__discount-tag">-{{ g4u_line_discount_percent }}% de descuento</span>
+                            {%- if g4u_line_has_discount and g4u_line_discount_percent > 0 -%}
+                              <span class="g4u-cart-drawer__discount-tag" aria-label="{{ g4u_line_discount_percent }} por ciento de descuento">-{{ g4u_line_discount_percent }}% de descuento</span>
                             {%- endif -%}
                           </div>
                         </div>
@@ -545,10 +562,10 @@
             <p class="totals__total-value">{{ cart.total_price | money }}</p>
           </div>
 
-          {%- if cart.original_total_price > cart.total_price -%}
+          {%- if g4u_cart_compare_total > cart.total_price -%}
             <div class="g4u-cart-drawer__savings" role="status">
-              <p>Te ahorraste {{ cart.original_total_price | minus: cart.total_price | money }}!</p>
-              <s>{{ cart.original_total_price | money }}</s>
+              <p>Te ahorraste {{ g4u_cart_compare_total | minus: cart.total_price | money }}!</p>
+              <s>{{ g4u_cart_compare_total | money }}</s>
             </div>
           {%- endif -%}
 
