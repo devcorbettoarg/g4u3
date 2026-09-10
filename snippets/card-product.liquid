@@ -220,38 +220,15 @@
               {%- endif -%}
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true, show_discount_percentage: g4u_product_card %}
               {%- if g4u_product_card -%}
-                {%- liquid
-                  assign g4u_has_protein = false
-                  assign g4u_has_lowcarb = false
-                  assign g4u_has_keto = false
-                  assign g4u_has_fiber = false
-                  for product_tag in card_product.tags
-                    assign normalized_tag = product_tag | downcase | strip
-                    if normalized_tag contains 'prote'
-                      assign g4u_has_protein = true
-                    elsif normalized_tag contains 'low-carb' or normalized_tag contains 'low carb'
-                      assign g4u_has_lowcarb = true
-                    elsif normalized_tag contains 'keto'
-                      assign g4u_has_keto = true
-                    elsif normalized_tag contains 'fibra'
-                      assign g4u_has_fiber = true
-                    endif
-                  endfor
-                -%}
-                {%- if g4u_has_protein or g4u_has_lowcarb or g4u_has_keto or g4u_has_fiber -%}
+                {%- assign g4u_card_benefits = card_product.metafields.custom.product_benefits.value -%}
+                {%- if g4u_card_benefits != blank -%}
                   <div class="g4u-card__tags" aria-label="Características del producto">
-                    {%- if g4u_has_protein -%}
-                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-protein.svg' | asset_url }}" alt="" width="16" height="20">Proteico</span>
-                    {%- endif -%}
-                    {%- if g4u_has_lowcarb -%}
-                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-lowcarb.svg' | asset_url }}" alt="" width="16" height="20">Low-Carb</span>
-                    {%- endif -%}
-                    {%- if g4u_has_keto -%}
-                      <span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-keto.svg' | asset_url }}" alt="" width="13" height="20">Apto Keto</span>
-                    {%- endif -%}
-                    {%- if g4u_has_fiber -%}
-                      <span class="g4u-card__tag"><img src="{{ 'g4u-flour-icon-fiber.svg' | asset_url }}" alt="" width="18" height="20">Alto en fibra</span>
-                    {%- endif -%}
+                    {%- for benefit in g4u_card_benefits -%}
+                      <span class="g4u-card__tag">
+                        {%- if benefit.icon.value != blank -%}{{ benefit.icon.value | image_url: width: 100 | image_tag: class: 'g4u-card__tag-icon', loading: 'lazy', alt: benefit.name.value }}{%- endif -%}
+                        {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
+                      </span>
+                    {%- endfor -%}
                   </div>
                 {%- endif -%}
               {%- endif -%}

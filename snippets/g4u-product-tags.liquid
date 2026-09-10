@@ -1,37 +1,14 @@
-{%- liquid
-  assign metafield_benefits = product.metafields.custom.product_benefits.value
--%}
+{%- assign metafield_benefits = product.metafields.custom.product_benefits.value -%}
 
 {%- if metafield_benefits != blank -%}
-  {%- liquid
-    assign g4u_has_protein = false
-    assign g4u_has_lowcarb = false
-    assign g4u_has_keto = false
-    assign g4u_has_fiber = false
-    assign g4u_has_no_sugar = false
-    for benefit in metafield_benefits
-      assign benefit_label = benefit.title.value | default: benefit.title | default: benefit
-      assign normalized_benefit = benefit_label | downcase | strip
-      if normalized_benefit contains 'prote'
-        assign g4u_has_protein = true
-      elsif normalized_benefit contains 'low-carb' or normalized_benefit contains 'low carb'
-        assign g4u_has_lowcarb = true
-      elsif normalized_benefit contains 'keto'
-        assign g4u_has_keto = true
-      elsif normalized_benefit contains 'fibra'
-        assign g4u_has_fiber = true
-      elsif normalized_benefit contains 'azúcar' or normalized_benefit contains 'azucar'
-        assign g4u_has_no_sugar = true
-      endif
-    endfor
-  -%}
-  {%- if g4u_has_protein or g4u_has_lowcarb or g4u_has_keto or g4u_has_fiber or g4u_has_no_sugar -%}
-    <div class="g4u-card__tags g4u-product-highlights__tags" aria-label="Características del producto" {{ block.shopify_attributes }}>
-      {%- if g4u_has_protein -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-protein.svg' | asset_url }}" alt="" width="16" height="20">Proteico</span>{%- endif -%}
-      {%- if g4u_has_lowcarb -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-lowcarb.svg' | asset_url }}" alt="" width="16" height="20">Low-Carb</span>{%- endif -%}
-      {%- if g4u_has_keto -%}<span class="g4u-card__tag"><img src="{{ 'g4u-card-icon-keto.svg' | asset_url }}" alt="" width="13" height="20">Apto Keto</span>{%- endif -%}
-      {%- if g4u_has_fiber -%}<span class="g4u-card__tag"><img src="{{ 'g4u-flour-icon-fiber.svg' | asset_url }}" alt="" width="18" height="20">Alto en fibra</span>{%- endif -%}
-      {%- if g4u_has_no_sugar -%}<span class="g4u-card__tag"><span aria-hidden="true">⊘</span>Sin azúcar agregada</span>{%- endif -%}
-    </div>
-  {%- endif -%}
+  <div class="g4u-card__tags g4u-product-highlights__tags" aria-label="Características del producto" {{ block.shopify_attributes }}>
+    {%- for benefit in metafield_benefits -%}
+      <span class="g4u-card__tag">
+        {%- if benefit.icon.value != blank -%}
+          {{ benefit.icon.value | image_url: width: 100 | image_tag: class: 'g4u-card__tag-icon', loading: 'lazy', alt: benefit.name.value }}
+        {%- endif -%}
+        {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
+      </span>
+    {%- endfor -%}
+  </div>
 {%- endif -%}
