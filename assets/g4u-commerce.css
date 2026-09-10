@@ -513,13 +513,19 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   .g4u-cart-drawer__shipping > .g4u-cart-drawer__shipping-icon { align-items: center; display: flex; height: 2rem; left: 2.6rem; position: absolute; top: 1.8rem; width: 3.2rem; }
   .g4u-cart-drawer__shipping-icon svg { height: 100%; width: 100%; }
   .g4u-cart-drawer__shipping p { font-size: 1.35rem; line-height: 1.3; margin: 0 0 1rem; }
-  .g4u-cart-drawer__shipping-progress { background: rgba(255,255,255,.78); display: block; height: .2rem; overflow: hidden; }
+  .g4u-cart-drawer__shipping-progress { background: rgba(255,255,255,.78); bottom: 1.2rem; display: block; height: .2rem; left: 2.4rem; overflow: hidden; position: absolute; right: 2.4rem; }
   .g4u-cart-drawer__shipping-progress i { background: var(--g4u-burgundy); display: block; height: 100%; transition: width .25s ease; }
   cart-drawer .drawer__cart-items-wrapper { padding: 0; }
-  cart-drawer .cart-item { padding: 1.8rem 0; }
+  cart-drawer .cart-item { padding: 1.6rem 0; }
   cart-drawer .cart-item__media { width: 9.2rem; }
   cart-drawer .cart-item__name { font-family: var(--font-body-family); font-size: 1.6rem; font-weight: 700; letter-spacing: 0; }
   cart-drawer .cart-item__price-wrapper, cart-drawer .cart-item .product-option, cart-drawer .cart-item__final-price { font-family: var(--font-body-family); font-size: 1.4rem; letter-spacing: 0; }
+  cart-drawer .cart-item__details { min-width: 0; }
+  cart-drawer .cart-items .cart-item__quantity { min-height: 3.6rem; }
+  cart-drawer quantity-input.quantity { height: 3.6rem; min-height: 3.6rem; width: 8.7rem; }
+  cart-drawer .g4u-cart-drawer__savings { align-items: center; display: flex; font-size: 1.4rem; justify-content: space-between; line-height: 1.5; }
+  cart-drawer .g4u-cart-drawer__savings p { margin: .4rem 0 0; }
+  cart-drawer .g4u-cart-drawer__savings s { margin-top: .4rem; }
   .g4u-cart-drawer__upsells { align-self: stretch; border-left: .1rem solid #d5d0cb; height: 100%; min-height: 0; overflow: auto; padding: 2.4rem 2rem; }
   .g4u-cart-drawer__upsells h3 { font-family: var(--font-body-family); font-size: 1.55rem; font-weight: 400; margin: 0 0 1.6rem; }
   .g4u-cart-drawer__upsell { align-items: center; border-bottom: .1rem solid #d5d0cb; display: grid; gap: 1.2rem; grid-template-columns: 7.2rem 1fr 3.2rem; min-height: 9.8rem; padding: 1rem 0; }

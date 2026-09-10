@@ -554,9 +554,16 @@
           </div>
 
           <div class="totals" role="status">
-            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <h2 class="totals__total">Total</h2>
+            <p class="totals__total-value">{{ cart.total_price | money }}</p>
           </div>
+
+          {%- if cart.original_total_price > cart.total_price -%}
+            <div class="g4u-cart-drawer__savings" role="status">
+              <p>Te ahorraste {{ cart.original_total_price | minus: cart.total_price | money }}!</p>
+              <s>{{ cart.original_total_price | money }}</s>
+            </div>
+          {%- endif -%}
 
           <small class="tax-note caption-large rte">
             {%- if cart.duties_included and cart.taxes_included -%}
