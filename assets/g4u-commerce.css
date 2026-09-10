@@ -176,7 +176,7 @@
 .template-product .related-products { background: var(--g4u-cream); }
 .template-product .related-products .related-products__heading {
   font-weight:bold; color: var(--g4u-ink); font-family: var(--g4u-display); font-size: clamp(3.6rem, 4vw, 5.6rem); letter-spacing: .01em; text-align: center; text-transform: uppercase; }
-.template-product .related-products .product-grid { column-gap: 1rem; row-gap: 3.2rem; }
+.template-product .related-products .product-grid { column-gap: 0.8rem; row-gap: 3.2rem; }
 .template-product .related-products .card__inner,
 .template-product .related-products .card__media .media { aspect-ratio: 1 / 1; background: #f2ebe4; }
 .template-product .related-products .card__media img { mix-blend-mode: multiply; object-fit: contain; }
