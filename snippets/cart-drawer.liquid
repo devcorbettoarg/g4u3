@@ -62,7 +62,7 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }} <span class="g4u-cart-drawer__count">{{ cart.item_count }}</span></h2>
+        <h2 class="drawer__heading">Carrito <span class="g4u-cart-drawer__count">{{ cart.item_count }}</span></h2>
         <button
           class="drawer__close"
           type="button"
@@ -147,25 +147,9 @@
                             -%}
                           </div>
 
-                          {%- if item.original_price != item.final_price -%}
-                            <div class="cart-item__discounted-prices">
-                              <span class="visually-hidden">
-                                {{ 'products.product.price.regular_price' | t }}
-                              </span>
-                              <s class="cart-item__old-price product-option">
-                                {{- item.original_price | money -}}
-                              </s>
-                              <span class="visually-hidden">
-                                {{ 'products.product.price.sale_price' | t }}
-                              </span>
-                              <strong class="cart-item__final-price product-option">
-                                {{ item.final_price | money }}
-                              </strong>
-                            </div>
-                          {%- else -%}
-                            <div class="product-option">
-                              {{ item.original_price | money }}
-                            </div>
+                          {%- assign g4u_cart_item_subtitle = item.product.metafields.custom.subtitle.value -%}
+                          {%- if g4u_cart_item_subtitle != blank -%}
+                            <p class="g4u-cart-drawer__item-subtitle">{{ g4u_cart_item_subtitle | escape }}</p>
                           {%- endif -%}
 
                           {%- if item.product.has_only_default_variant == false
@@ -213,7 +197,7 @@
                           {%- endif -%}
 
                           <ul
-                            class="discounts list-unstyled"
+                            class="discounts list-unstyled visually-hidden"
                             role="list"
                             aria-label="{{ 'customer.order.discount' | t }}"
                           >
@@ -270,6 +254,11 @@
                                 price: item.unit_price,
                                 measurement: item.unit_price_measurement
                               %}
+                            {%- endif -%}
+                            {%- if item.original_line_price > item.final_line_price -%}
+                              {%- assign g4u_line_discount_amount = item.original_line_price | minus: item.final_line_price -%}
+                              {%- assign g4u_line_discount_percent = g4u_line_discount_amount | times: 100.0 | divided_by: item.original_line_price | round -%}
+                              <span class="g4u-cart-drawer__discount-tag">-{{ g4u_line_discount_percent }}% de descuento</span>
                             {%- endif -%}
                           </div>
                         </td>
@@ -617,9 +606,14 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            Finalizar compra
           </button>
         </div>
+        <ul class="g4u-cart-drawer__payments" role="list" aria-label="Medios de pago aceptados">
+          {%- for type in shop.enabled_payment_types limit: 4 -%}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {%- endfor -%}
+        </ul>
       </div>
     </div>
   </div>
