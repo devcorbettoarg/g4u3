@@ -5,7 +5,7 @@
 
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
   {%- if intro != blank -%}
-    <p class="g4u-product-highlights__intro">{{product.metafields.custom.description}}</p>
+    <p class="g4u-product-highlights__intro">{{product.metafields.custom.description | metafield_tag }}</p>
   {%- endif -%}
 
   <ul>
