@@ -32,12 +32,6 @@
           "type": "rating",
           "settings": {}
         },
-        "custom_liquid_gAgmgd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% assign benefits = product.metafields.custom.product_benefits.value %}\n\n{% if benefits != blank %}\n  <div class=\"barkin-product-benefits\">\n    {% for benefit in benefits %}\n      <div class=\"barkin-product-benefit\">\n\n        {% if benefit.icon.value != blank %}\n          {{\n            benefit.icon.value\n            | image_url: width: 100\n            | image_tag:\n              class: 'barkin-product-benefit__icon',\n              loading: 'lazy',\n              alt: benefit.name.value\n          }}\n        {% endif %}\n\n        {% if benefit.name.value != blank %}\n          <span class=\"barkin-product-benefit__name\">\n            {{ benefit.name.value }}\n          </span>\n        {% endif %}\n\n      </div>\n    {% endfor %}\n  </div>\n{% endif %}"
-          }
-        },
         "g4u_product_tags_XD4UDU": {
           "type": "g4u_product_tags",
           "settings": {}
@@ -129,7 +123,6 @@
         "title",
         "price",
         "rating",
-        "custom_liquid_gAgmgd",
         "g4u_product_tags_XD4UDU",
         "product_highlights",
         "variant_picker",
