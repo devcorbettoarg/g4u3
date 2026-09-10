@@ -523,6 +523,10 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   cart-drawer .cart-item__media { width: 9.2rem; }
   cart-drawer .cart-item__name { font-family: var(--font-body-family); font-size: 1.6rem; font-weight: 700; letter-spacing: 0; }
   cart-drawer .cart-item__price-wrapper, cart-drawer .cart-item .product-option, cart-drawer .cart-item__final-price { font-family: var(--font-body-family); font-size: 1.4rem; letter-spacing: 0; }
+  cart-drawer .cart-item__totals { align-items: flex-end; display: flex; flex-direction: column; }
+  cart-drawer .cart-item__totals cart-remove-button { margin: 0 0 .4rem; }
+  cart-drawer .cart-item__totals cart-remove-button .button { min-height: 2rem; min-width: 2rem; }
+  cart-drawer .cart-item__totals cart-remove-button .svg-wrapper { height: 1.7rem; width: 1.7rem; }
   cart-drawer .cart-item__details { min-width: 0; }
   cart-drawer .cart-items .cart-item__quantity { min-height: 3.6rem; }
   cart-drawer quantity-input.quantity { height: 3.6rem; min-height: 3.6rem; width: 8.7rem; }
