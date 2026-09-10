@@ -88,14 +88,16 @@
           class="cart__contents cart-drawer__form"
           method="post"
         >
-          {%- assign g4u_drawer_shipping_goal = 8000000 -%}
+          {%- assign g4u_drawer_shipping_goal = 6000000 -%}
           {%- assign g4u_drawer_shipping_remaining = g4u_drawer_shipping_goal | minus: cart.total_price -%}
           {%- assign g4u_drawer_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_drawer_shipping_goal -%}
           {%- if g4u_drawer_shipping_progress > 100 -%}{%- assign g4u_drawer_shipping_progress = 100 -%}{%- endif -%}
           <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
             {%- if cart != empty -%}
               <div class="g4u-cart-drawer__shipping">
-                <span aria-hidden="true">⌁</span>
+                <span class="g4u-cart-drawer__shipping-icon" aria-hidden="true">
+                  {{- 'icon-truck.svg' | inline_asset_content -}}
+                </span>
                 <p>{% if g4u_drawer_shipping_remaining > 0 %}Agregá <strong>{{ g4u_drawer_shipping_remaining | money }}</strong> más para tener envío GRATIS{% else %}<strong>¡Tu envío es gratis!</strong>{% endif %}</p>
                 <span class="g4u-cart-drawer__shipping-progress"><i style="width: {{ g4u_drawer_shipping_progress }}%"></i></span>
               </div>
