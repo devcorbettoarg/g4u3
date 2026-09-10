@@ -344,43 +344,43 @@
         "duration": 14
       }
     },
-    "g4u_low_carb": {
+    "g4u_low_carb_benefits_6rftF7": {
       "type": "g4u-low-carb-benefits",
       "blocks": {
-        "fat": {
+        "benefit_3ERnrp": {
           "type": "benefit",
           "settings": {
-            "title": "Activamos la quema de grasa",
+            "title": "Activamos la quema | de grasa",
             "text": "<p>Cuando reducimos los carbs, también bajamos el azúcar en sangre y la insulina.</p>"
           }
         },
-        "energy": {
+        "benefit_7483Cn": {
           "type": "benefit",
           "settings": {
-            "title": "Energía más estable",
+            "title": "Energía | más estable",
             "text": "<p>Dejamos atrás la montaña rusa del azúcar.</p>"
           }
         },
-        "focus": {
+        "benefit_rXMxNf": {
           "type": "benefit",
           "settings": {
-            "title": "Foco y claridad mental",
+            "title": "Foco y claridad | mental",
             "text": "<p>Más foco, más lucidez, más presencia.</p>"
           }
         },
-        "wellbeing": {
+        "benefit_LyM3Nf": {
           "type": "benefit",
           "settings": {
-            "title": "Menos inflamación, más bienestar",
+            "title": "Menos inflamación, | más bienestar",
             "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>"
           }
         }
       },
       "block_order": [
-        "fat",
-        "energy",
-        "focus",
-        "wellbeing"
+        "benefit_3ERnrp",
+        "benefit_7483Cn",
+        "benefit_rXMxNf",
+        "benefit_LyM3Nf"
       ],
       "settings": {
         "title": "Alimentación low-carb"
@@ -419,6 +419,7 @@
         "review_2",
         "review_3"
       ],
+      "disabled": true,
       "settings": {
         "title": "Lo dicen quienes ya lo probaron"
       }
@@ -560,7 +561,7 @@
     "product_ideas",
     "product_flour",
     "g4u_marquee",
-    "g4u_low_carb",
+    "g4u_low_carb_benefits_6rftF7",
     "product_reviews",
     "related-products",
     "product_faq",
