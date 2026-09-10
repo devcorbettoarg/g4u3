@@ -1,6 +1,6 @@
 {%- liquid
   assign intro = product.metafields.custom.product_intro.value | default: block.settings.intro
-  assign metafield_benefits = product.metafields.custom.product_benefits.value
+  assign metafield_benefits = product.metafields.custom.lista_beneficios.value
 -%}
 
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
