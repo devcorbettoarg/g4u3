@@ -498,7 +498,11 @@ cart-drawer .cart-item__price-wrapper, cart-drawer .cart-item .product-option, c
 cart-drawer .cart-item__old-price { color: var(--g4u-ink); opacity: 1; }
 cart-drawer .cart-item__final-price { color: var(--g4u-orange); }
 cart-drawer .cart-item__price-wrapper .price { font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; }
-.cart-drawer cart-drawer-items .cart-item__totals { align-items: flex-end; display: flex; flex: 0 0 8.5rem; flex-direction: column; gap: .8rem; margin-left: auto; min-width: 0; padding: 0; pointer-events: auto; }
+.cart-drawer cart-drawer-items .cart-item__totals {
+   align-items: flex-end; display: flex; flex: 0 0 8.5rem; 
+   flex-direction: column; gap: .8rem; 
+   margin-left: auto; min-width: 0; padding: 0; pointer-events: auto;
+  justify-content: flex-start; }
 .cart-drawer cart-drawer-items .cart-item__price-wrapper .cart-item__discounted-prices { align-items: flex-end; display: flex; flex-direction: column; gap: 0; }
 .cart-drawer cart-drawer-items .cart-item__discounted-prices .cart-item__old-price { font-size: 1.6rem; }
 .cart-drawer cart-drawer-items .cart-items .cart-item__quantity { align-items: center; display: flex; margin-top: .8rem; min-height: 4rem; padding: 0; }
@@ -537,7 +541,8 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   .g4u-cart-drawer__shipping-progress { background: #ffd1d6; border-radius: 10rem; display: block; grid-column: 1 / -1; height: .2rem; overflow: hidden; position: static; width: 100%; }
   .g4u-cart-drawer__shipping-progress i { background: var(--g4u-burgundy); display: block; height: 100%; transition: width .25s ease; }
   cart-drawer .drawer__cart-items-wrapper { box-sizing: border-box; padding: 4rem 2rem; }
-  .cart-drawer cart-drawer-items .cart-item { column-gap: 1.6rem; padding: 1.6rem 0; }
+  .cart-drawer cart-drawer-items .cart-item { 
+    column-gap: 1.6rem; padding: 1.6rem 0; }
   cart-drawer .cart-item:first-child { padding-top: 0; }
   cart-drawer .cart-item:last-child { margin: 0; padding-bottom: 0; }
   cart-drawer .cart-item__media { background: #f2ebe4; border-radius: 1.2rem; flex-basis: 9.2rem; height: 9.2rem; width: 9.2rem; }
