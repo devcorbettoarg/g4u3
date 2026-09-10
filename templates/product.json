@@ -36,13 +36,6 @@
           "type": "g4u_product_tags",
           "settings": {}
         },
-        "text_3R3ddi": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
         "product_highlights": {
           "type": "g4u_benefits",
           "settings": {
@@ -131,7 +124,6 @@
         "price",
         "rating",
         "g4u_product_tags_XD4UDU",
-        "text_3R3ddi",
         "product_highlights",
         "variant_picker",
         "quantity_selector",
