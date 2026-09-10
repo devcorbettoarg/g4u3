@@ -14,13 +14,5 @@
         <li class="barkin-benefits-list__item">{{ beneficio | escape }}</li>
       {%- endfor -%}
     </ul>
-  {%- else -%}
-    <ul>
-      {%- for index in (1..6) -%}
-        {%- assign benefit_setting = 'benefit_' | append: index -%}
-        {%- assign benefit = block.settings[benefit_setting] -%}
-        {%- if benefit != blank -%}<li>{{ benefit | escape }}</li>{%- endif -%}
-      {%- endfor -%}
-    </ul>
   {%- endif -%}
 </div>
