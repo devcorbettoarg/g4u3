@@ -425,6 +425,9 @@
 .g4u-faq-page__group summary span { border-bottom: .1rem solid currentColor; border-right: .1rem solid currentColor; height: .8rem; margin-right: .5rem; transform: rotate(45deg) translateY(-.25rem); width: .8rem; }
 .g4u-faq-page__group details[open] summary span { transform: rotate(225deg) translate(-.25rem, -.25rem); }
 .g4u-faq-page__group details p { font-family: var(--font-body-family); font-size: 1.6rem; line-height: 1.5; margin: 0; padding: 0 3rem 1.6rem 0; }
+.g4u-faq-page__group, .g4u-faq-page__group h2, .g4u-faq-page__group-subtitle, .g4u-faq-page__group summary, .g4u-faq-page__group details p { text-align: center; }
+.g4u-faq-page__group summary { justify-content: center; gap: 1.2rem; }
+.g4u-faq-page__group details p { padding-left: 3rem; padding-right: 3rem; }
 .g4u-faq-page__contact { margin: 8rem auto 0; text-align: center; }
 .g4u-faq-page__contact p { font-size: 3.2rem; letter-spacing: .04em; margin: 0 0 2.4rem; }
 @media screen and (max-width: 749px) { .g4u-faq-page { padding: 14rem 2rem 6.4rem; } .g4u-faq-page__header { margin-bottom: 5.6rem; } .g4u-faq-page__header h1 { font-size: 4rem; } .g4u-faq-page__header .rte { font-size: 1.6rem; } .g4u-faq-page__groups { gap: 4.8rem; } .g4u-faq-page__group h2 { font-size: 2.8rem; } .g4u-faq-page__contact { margin-top: 5.6rem; } }
@@ -499,15 +502,15 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 /* The cart drawer uses the wider two-panel composition from Figma on desktop. */
 @media screen and (min-width: 990px) {
   cart-drawer.drawer { align-items: stretch; background: rgba(27, 4, 11, .88); display: flex; justify-content: flex-end; padding: 0; }
-  cart-drawer .drawer__inner { border-radius: 1.2rem; box-shadow: -2rem 0 7rem rgba(0,0,0,.28); height: min(86.4rem, 100vh); max-height: none; padding: 0; transform: translateX(100%); width: min(79.7rem, calc(100vw - 2rem)); }
+  cart-drawer .drawer__inner { border-radius: 1.2rem; box-shadow: -2rem 0 7rem rgba(0,0,0,.28); display: grid; grid-template-columns: 56.3% 43.7%; grid-template-rows: auto minmax(0, 1fr) auto; height: min(86.4rem, 100vh); max-height: none; padding: 0; transform: translateX(100%); width: min(79.7rem, calc(100vw - 2rem)); }
   cart-drawer.drawer.active .drawer__inner { transform: translateX(0); }
-  cart-drawer .drawer__header { min-height: 6.6rem; padding: 2rem 2.4rem 1.4rem; }
+  cart-drawer .drawer__header { grid-column: 1 / -1; min-height: 6.6rem; padding: 2rem 2.4rem 1.4rem; }
   cart-drawer .drawer__heading { font-family: var(--font-body-family); font-size: 2.4rem; letter-spacing: 0; text-transform: none; }
   cart-drawer .drawer__close { background: #ebe7e3; border-radius: 50%; height: 3.8rem; right: 1.4rem; top: 1.4rem; width: 3.8rem; }
   cart-drawer .drawer__close .svg-wrapper { height: 1.7rem; width: 1.7rem; }
   .g4u-cart-drawer__count { background: var(--g4u-burgundy); border-radius: 50%; color: var(--g4u-cream); display: inline-grid; font-family: var(--font-body-family); font-size: 1.3rem; height: 2.4rem; letter-spacing: 0; margin-left: .4rem; place-items: center; vertical-align: middle; width: 2.4rem; }
-  .g4u-cart-drawer__body { display: grid; flex: 1; grid-template-columns: 44.9rem minmax(0, 1fr); min-height: 0; }
-  cart-drawer cart-drawer-items { min-height: 0; overflow: auto; padding: 0 2.4rem; }
+  .g4u-cart-drawer__body { display: block; grid-column: 1; grid-row: 2; min-height: 0; min-width: 0; }
+  cart-drawer cart-drawer-items { height: 100%; min-height: 0; overflow: auto; padding: 0 2.4rem; }
   cart-drawer .drawer__contents { padding: 0; }
   .g4u-cart-drawer__shipping { background: #f7a0ae; margin: 0 -2.4rem; min-height: 6.4rem; padding: 1.8rem 2.4rem 1.2rem 7rem; position: relative; }
   .g4u-cart-drawer__shipping > .g4u-cart-drawer__shipping-icon { align-items: center; display: flex; height: 2rem; left: 2.6rem; position: absolute; top: 1.8rem; width: 3.2rem; }
@@ -526,7 +529,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   cart-drawer .g4u-cart-drawer__savings { align-items: center; display: flex; font-size: 1.4rem; justify-content: space-between; line-height: 1.5; }
   cart-drawer .g4u-cart-drawer__savings p { margin: .4rem 0 0; }
   cart-drawer .g4u-cart-drawer__savings s { margin-top: .4rem; }
-  .g4u-cart-drawer__upsells { align-self: stretch; border-left: .1rem solid #d5d0cb; height: 100%; min-height: 0; overflow: auto; padding: 2.4rem 2rem; }
+  .g4u-cart-drawer__upsells { align-self: stretch; border-left: .1rem solid #d5d0cb; grid-column: 2; grid-row: 2 / 4; height: auto; min-height: 0; overflow: auto; padding: 2.4rem 2rem; }
   .g4u-cart-drawer__upsells h3 { font-family: var(--font-body-family); font-size: 1.55rem; font-weight: 400; margin: 0 0 1.6rem; }
   .g4u-cart-drawer__upsell { align-items: center; border-bottom: .1rem solid #d5d0cb; display: grid; gap: 1.2rem; grid-template-columns: 7.2rem 1fr 3.2rem; min-height: 9.8rem; padding: 1rem 0; }
   .g4u-cart-drawer__upsell img { background: #f2ebe4; border-radius: .8rem; height: 7rem; object-fit: contain; padding: .5rem; width: 7rem; }
@@ -535,7 +538,8 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   .g4u-cart-drawer__upsell-variant { background: var(--g4u-cream); border: .1rem solid #d5d0cb; border-radius: .5rem; color: var(--g4u-ink); font: inherit; font-size: 1.15rem; margin-top: .8rem; max-width: 100%; padding: .45rem 2.4rem .45rem .7rem; }
   .g4u-cart-drawer__upsell .g4u-cart-drawer__upsell-add { align-items: center; background: var(--g4u-burgundy); border: 0; border-radius: 50%; color: var(--g4u-cream); cursor: pointer; display: grid; font-size: 2.4rem; font-weight: 300; height: 3rem; line-height: 1; place-items: center; width: 3rem; }
   /* Match the left grid track so the footer never slides under recommendations. */
-  cart-drawer .drawer__footer { align-self: flex-start; border-top: .1rem solid #d5d0cb; box-sizing: border-box; margin-right: 0; padding: 1.8rem 2.4rem 2.4rem; width: 56.3%; }
+  cart-drawer .drawer__footer { align-self: stretch; border-top: .1rem solid #d5d0cb; box-sizing: border-box; grid-column: 1; grid-row: 3; margin-right: 0; padding: 1.8rem 2.4rem 2.4rem; width: auto; }
+  cart-drawer.is-empty .g4u-cart-drawer__body { grid-column: 1 / -1; }
   cart-drawer .totals { border: 0; padding: 0; }
   cart-drawer .totals__total, cart-drawer .totals__total-value { font-family: var(--font-body-family); font-size: 2rem; letter-spacing: 0; }
   cart-drawer .tax-note { margin: .8rem 0 1.6rem; }
