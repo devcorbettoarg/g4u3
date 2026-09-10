@@ -195,7 +195,7 @@
   .g4u-product-comparison__media { align-self: stretch; display: flex; min-height: 30rem; }
 .g4u-product-comparison__media img { height: 100%; mix-blend-mode: multiply; object-fit: contain; width: 100%; }
 .g4u-product-comparison__panel--g4u .g4u-product-comparison__media img { mix-blend-mode: normal; }
-.g4u-product-comparison__metrics { display: grid; margin: 0; text-align:center; }
+.g4u-product-comparison__metrics { display: grid; margin: 0; text-align:center;  }
 .g4u-product-comparison__metrics div { border-bottom: .1rem solid currentColor; padding: 1.2rem 0; }
 .g4u-product-comparison__metrics dt { font-size: 1.5rem; letter-spacing: .05em; }
 .g4u-product-comparison__metrics dd { font-family: var(--g4u-display); font-size: clamp(3.4rem, 4vw, 5.6rem); line-height: 1; margin: .4rem 0 0; }
