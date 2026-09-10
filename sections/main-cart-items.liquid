@@ -329,7 +329,7 @@
                               aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
                             >
                               <span class="svg-wrapper">
-                                {{- 'icon-remove.svg' | inline_asset_content -}}
+                                {{- 'icon-remove-cart.svg' | inline_asset_content -}}
                               </span>
                             </a>
                           </cart-remove-button>
@@ -474,7 +474,7 @@
         {%- if g4u_shipping_progress > 100 -%}{%- assign g4u_shipping_progress = 100 -%}{%- endif -%}
         <aside class="g4u-cart-page-summary" aria-label="Resumen de tu carrito">
           <div class="g4u-cart-page-summary__shipping">
-            <img class="g4u-cart-page-summary__truck" src="{{ 'icon-truck.svg' | asset_url }}" alt="" width="24" height="24">
+            <img class="g4u-cart-page-summary__truck" src="{{ 'icon-truck.svg' | asset_url }}" alt="" width="28" height="18">
             <p>
               {%- if g4u_shipping_remaining > 0 -%}
                 Agregá <strong>{{ g4u_shipping_remaining | money }}</strong> más para tener envío GRATIS
@@ -507,7 +507,7 @@
             <small>Impuestos, descuentos y envío calculados en la pantalla de pago.</small>
             <button class="button" type="submit" name="checkout">Finalizar compra</button>
             <ul class="g4u-cart-page-summary__payments" role="list">
-              {%- for type in shop.enabled_payment_types limit: 5 -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
+              {%- for type in shop.enabled_payment_types limit: 4 -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
             </ul>
           </div>
         </aside>
