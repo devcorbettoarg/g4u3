@@ -100,6 +100,8 @@ cart-items .title-wrapper-with-link {
 .cart-item__title .cart-item__name {
   flex: 0 1 auto;
   min-width: 0;
+  font-size:22px;
+  font-weight:bold;
 }
 
 .cart-item__disclosure {

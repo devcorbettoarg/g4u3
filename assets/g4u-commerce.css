@@ -494,6 +494,9 @@ cart-drawer .cart-item__details { min-width: 0; padding: 0; width: 100%; }
 cart-drawer .cart-item__name { color: inherit; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.15; }
 cart-drawer .cart-item__price-wrapper, cart-drawer .cart-item .product-option, cart-drawer .cart-item__final-price { color: inherit; font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .03em; }
 cart-drawer .cart-item__old-price { color: #766c70; }
+cart-drawer .cart-item__price-wrapper .price {
+  font-size:16px;
+}
 .cart-drawer cart-drawer-items .cart-item__totals { align-items: flex-end; display: flex; flex: 0 0 8.5rem; flex-direction: column; min-width: 0; padding: 0; pointer-events: auto; }
 .cart-drawer cart-drawer-items .cart-items .cart-item__quantity { align-items: center; display: flex; margin-top: .8rem; min-height: 4rem; padding: 0; }
 cart-drawer quantity-input.quantity { border-color: #a9a1a3; border-radius: 10rem; min-height: 3.6rem; }
