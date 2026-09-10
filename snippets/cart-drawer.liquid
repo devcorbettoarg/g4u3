@@ -98,7 +98,7 @@
                 <span class="g4u-cart-drawer__shipping-icon" aria-hidden="true">
                   {{- 'icon-truck.svg' | inline_asset_content -}}
                 </span>
-                <p>{% if g4u_drawer_shipping_remaining > 0 %}Agregá <strong>{{ g4u_drawer_shipping_remaining | money }}</strong> más para tener envío GRATIS{% else %}<strong>¡Tu envío es gratis!</strong>{% endif %}</p>
+                <p>{% if g4u_drawer_shipping_remaining > 0 %}Agregá <strong>{{ g4u_drawer_shipping_remaining | money }}</strong> más para tener envío GRATIS{% else %}¡Tu envío es gratis!{% endif %}</p>
                 <span class="g4u-cart-drawer__shipping-progress"><i style="width: {{ g4u_drawer_shipping_progress }}%"></i></span>
               </div>
               <div class="drawer__cart-items-wrapper">
