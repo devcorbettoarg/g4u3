@@ -1,7 +1,7 @@
 <section class="g4u-product-ingredients" aria-labelledby="G4uProductIngredients-{{ section.id }}">
   <header class="g4u-product-ingredients__header">
     {%- if section.settings.eyebrow != blank -%}<p>{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-    <h2 class="g4u-display" id="G4uProductIngredients-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+    <h2 class="g4u-display" id="G4uProductIngredients-{{ section.id }}">{{ section.settings.title | replace: "|","<br>" }}</h2>
     {%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}
   </header>
   <div class="g4u-product-ingredients__items">
