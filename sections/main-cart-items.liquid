@@ -468,7 +468,7 @@
       </div>
 
       {%- if cart != empty -%}
-        {%- assign g4u_shipping_goal = 8000000 -%}
+        {%- assign g4u_shipping_goal = 6000000 -%}
         {%- assign g4u_shipping_remaining = g4u_shipping_goal | minus: cart.total_price -%}
         {%- assign g4u_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_shipping_goal -%}
         {%- if g4u_shipping_progress > 100 -%}{%- assign g4u_shipping_progress = 100 -%}{%- endif -%}
