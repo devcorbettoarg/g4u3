@@ -1,6 +1,6 @@
 {%- liquid
   assign intro = product.metafields.custom.product_intro.value | default: block.settings.intro
-  assign metafield_benefits = product.metafields.custom.lista_beneficios.value
+  assign beneficios_obj = product.metafields.custom.lista_beneficios.value
 -%}
 
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
@@ -8,20 +8,19 @@
     <div class="g4u-product-highlights__intro">{{product.metafields.custom.description | metafield_tag }}</div>
   {%- endif -%}
 
-  <ul>
-    {%- if metafield_benefits != blank -%}
-      {%- for benefit in metafield_benefits limit: 6 -%}
-        {%- liquid
-          assign benefit_label = benefit.title.value | default: benefit.title | default: benefit
-        -%}
-        {%- if benefit_label != blank -%}<li>{{ benefit_label | escape }}</li>{%- endif -%}
+  {%- if beneficios_obj != blank and beneficios_obj.beneficios.value != blank -%}
+    <ul class="barkin-benefits-list">
+      {%- for beneficio in beneficios_obj.beneficios.value -%}
+        <li class="barkin-benefits-list__item">{{ beneficio | escape }}</li>
       {%- endfor -%}
-    {%- else -%}
+    </ul>
+  {%- else -%}
+    <ul>
       {%- for index in (1..6) -%}
         {%- assign benefit_setting = 'benefit_' | append: index -%}
         {%- assign benefit = block.settings[benefit_setting] -%}
         {%- if benefit != blank -%}<li>{{ benefit | escape }}</li>{%- endif -%}
       {%- endfor -%}
-    {%- endif -%}
-  </ul>
+    </ul>
+  {%- endif -%}
 </div>
