@@ -12,6 +12,14 @@ collection-component {
   font-display: swap;
 }
 
+/* Medium */
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Med.otf?v=1789062427") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 /* Bold */
 @font-face {
   font-family: "Europa Grotesk SH";
