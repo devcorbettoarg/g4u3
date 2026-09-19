@@ -172,10 +172,11 @@
 .template-product .product-form__buttons { max-width: none; }
 .template-product .shopify-payment-button__button { background: transparent !important; border: .1rem solid #26131b !important; border-radius: 10rem !important; color: #26131b !important; font-family: var(--g4u-display) !important; font-size: 1.6rem !important; font-weight: 400 !important; letter-spacing: .05em !important; line-height: .8 !important; min-height: 4.5rem !important; }
 .template-product .product__accordion { border-bottom: .1rem solid #26131b; border-top: .1rem solid #26131b; margin-top: 1.6rem; }
-.template-product .product__accordion + .product__accordion { border-top: 0; }
+.template-product .product__accordion + .product__accordion { border-top: .1rem solid #26131b; }
 .template-product .product__accordion .summary__title > .svg-wrapper { display: none; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }
 .template-product .product__accordion summary { min-height: 5.2rem; padding-block: 1.2rem; }
+.template-product .product__accordion .accordion__title { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; }
 .template-product .product__accordion .accordion__content { padding-inline: 0; }
 .template-product .product__accordion summary:hover { color: var(--g4u-burgundy); }
 .template-product .product__accordion summary:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: .4rem; }
@@ -261,14 +262,15 @@
 .g4u-product-editorial__copy > .rte { font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; }
 .g4u-product-editorial__copy ul { display: grid; gap: 1.2rem; list-style: none; margin: 2.4rem 0; padding: 0; }
 .g4u-product-editorial__copy li { align-items: center; display: flex; font-size: 1.7rem; gap: 1rem; }
-.g4u-product-editorial__copy li::before { border: .15rem solid var(--g4u-orange); border-radius: 50%; content: '✓'; color: var(--g4u-orange); display: inline-grid; font-size: 1.2rem; height: 1.8rem; place-items: center; width: 1.8rem; }
+.g4u-product-editorial__copy li::before { border: .1rem solid var(--g4u-orange); border-radius: 50%; box-sizing: border-box; color: var(--g4u-orange); content: '✓'; display: inline-grid; flex: 0 0 2rem; font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: 700; height: 2rem; line-height: 1; place-items: center; width: 2rem; }
 .g4u-product-editorial__link { align-items: center; color: var(--g4u-orange); display: inline-flex; font-family: var(--g4u-display); font-size: 1.6rem; gap: .8rem; letter-spacing: .04em; margin-top: 2.4rem; text-decoration: none; }
 .g4u-product-editorial__media { aspect-ratio: 1 / 1; border-radius: 1.2rem; max-width: 66rem; overflow: hidden; width: 100%; }
 .g4u-product-editorial__media img { height: 100%; object-fit: cover; width: 100%; }
 .template-product .g4u-flour-faq { background: #f2ebe4; }
 .template-product .g4u-flour-faq__header h2 { font-family: var(--g4u-display); font-weight: 700; line-height: .95; text-transform: uppercase; }
-.template-product .g4u-flour-faq__item { border-color: rgba(35, 31, 32, .6); }
-.template-product .g4u-flour-faq__item summary { font-family: var(--g4u-display); font-size: 1.8rem; line-height: 1.2; }
+.template-product .g4u-flour-faq__item { border-color: #26131b; }
+.template-product .g4u-flour-faq__item summary { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; line-height: 1.5; }
+.template-product .g4u-flour-faq__item .rte { color: #26131b; }
 .template-product .g4u-flour-faq__contact p { font-family: var(--g4u-display); font-size: 2.6rem; line-height: 1; }
 .template-product .g4u-flour-faq__contact .g4u-pill { background: transparent; border-color: currentColor; color: inherit; font-size: 1.4rem; min-height: 0; padding: .7rem 1.8rem; }
 @media screen and (max-width: 749px) { .template-product .page-width { padding-left: 2rem; padding-right: 2rem; } .template-product .product__media img { padding: 2rem; } .template-product .thumbnail-slider { margin-top: 1.2rem; } .template-product .thumbnail-slider .slider-button { flex-basis: 3.6rem; height: 3.6rem; width: 3.6rem; } .template-product .product__title h1 { font-size: 4rem; } .template-product .g4u-product-highlights ul { grid-template-columns: 1fr; } }
@@ -446,6 +448,29 @@
 .g4u-faq-page__contact { margin: 8rem auto 0; text-align: center; }
 .g4u-faq-page__contact p { font-size: 3.2rem; letter-spacing: .04em; margin: 0 0 2.4rem; }
 @media screen and (max-width: 749px) { .g4u-faq-page { padding: 14rem 2rem 6.4rem; } .g4u-faq-page__header { margin-bottom: 5.6rem; } .g4u-faq-page__header h1 { font-size: 4rem; } .g4u-faq-page__header .rte { font-size: 1.6rem; } .g4u-faq-page__groups { gap: 4.8rem; } .g4u-faq-page__group h2 { font-size: 2.8rem; } .g4u-faq-page__contact { margin-top: 5.6rem; } }
+
+/* Search */
+.search-modal { --color-background: 255, 248, 240; --color-foreground: 38, 19, 27; background: #fff8f0; color: #26131b; height: auto; min-height: 8.8rem; }
+.search-modal__content { min-height: 8.8rem; padding-block: 1.6rem; }
+.search-modal__form { color: #26131b; max-width: 74.2rem; }
+.search-modal .field, .template-search .field { background: #fff8f0; border: .1rem solid #766c70; border-radius: 10rem; box-shadow: none; overflow: visible; }
+.search-modal .field::before, .search-modal .field::after, .template-search .field::before, .template-search .field::after { box-shadow: none; content: none; }
+.search-modal .field__input, .template-search .field__input { border: 0; border-radius: 10rem; box-shadow: none; color: #26131b; font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; min-height: 4.8rem; padding-block: 0; }
+.search-modal .field__label, .template-search .field__label { color: #766c70; font-family: var(--g4u-display); }
+.search-modal .field__button, .template-search .field__button { color: #26131b; height: 4.6rem; width: 4.6rem; }
+.search-modal__close-button { color: #26131b; }
+.search-modal .predictive-search { background: #fff8f0; border: .1rem solid #d5d4d4; border-radius: 1.2rem; box-shadow: 0 1.2rem 3.2rem rgba(38, 19, 27, .12); color: #26131b; margin-top: .8rem; max-height: min(68rem, calc(100vh - 14rem)); overflow-y: auto; }
+.search-modal .predictive-search__heading, .template-search .predictive-search__heading { color: #766c70; font-family: var(--g4u-display); font-size: 1.4rem; letter-spacing: .05em; }
+.search-modal .predictive-search__item, .template-search .predictive-search__item { color: #26131b; font-family: var(--g4u-display); }
+.search-modal .predictive-search__image, .template-search .predictive-search__image { background: #f2ebe4; border-radius: .8rem; height: 6.4rem; object-fit: contain; padding: .4rem; width: 6.4rem; }
+.search-modal .predictive-search__item-heading, .template-search .predictive-search__item-heading { color: #26131b; font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; line-height: 1.2; }
+.template-search { background: #fff8f0; color: #26131b; min-height: 60vh; padding-inline: 4rem; }
+.template-search__header { margin-inline: auto; max-width: 76.8rem; }
+.template-search__header h1 { color: #26131b; font-family: var(--g4u-display); font-size: 4.8rem; font-weight: 700; letter-spacing: .01em; line-height: 1; text-transform: uppercase; }
+.template-search__search { position: relative; }
+.template-search .predictive-search { background: #fff8f0; border: .1rem solid #d5d4d4; border-radius: 1.2rem; box-shadow: 0 1.2rem 3.2rem rgba(38, 19, 27, .12); color: #26131b; margin-top: .8rem; overflow-y: auto; }
+.template-search .template-search__results { margin-top: 4rem; }
+@media screen and (max-width: 749px) { .search-modal { min-height: 7.2rem; } .search-modal__content { min-height: 7.2rem; padding: 1.2rem 5.6rem 1.2rem 1.6rem; } .search-modal__close-button { right: .8rem; } .search-modal .predictive-search { border-left: 0; border-radius: 0; border-right: 0; left: -1.6rem; margin-top: 1.2rem; right: -5.6rem; width: auto; } .template-search { padding-inline: 2rem; } .template-search__header h1 { font-size: 3.6rem; } }
 
 /* Contact */
 .g4u-contact { background: var(--g4u-cream); color: var(--g4u-ink); padding: 20rem 4rem 8rem; }
