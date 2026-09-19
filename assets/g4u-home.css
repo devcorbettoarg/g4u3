@@ -116,10 +116,10 @@
 .g4u-home-hero__body {
   font-size: 18px;
   line-height: 27px;
-  letter-spacing:2%;
+  letter-spacing: .04em;
   color:#FFF8F0;
   margin: 0 0 3.2rem;
-  font-weight:300;
+  font-weight: 400;
   max-width: 49rem;
    font-family: "Europa Grotesk SH";
 }
@@ -357,8 +357,9 @@
 .g4u-category-card__button {
   border: .15rem solid var(--g4u-cream);
   color: var(--g4u-cream);
-  font-weight:300;
-  letter-spacing:5%;
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: .8;
 }
 .g4u-category-card__button:hover {
   background: var(--g4u-cream);

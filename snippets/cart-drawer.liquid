@@ -510,7 +510,12 @@
                     data-g4u-cart-drawer-add
                     data-variant-id="{{ product.selected_or_first_available_variant.id }}"
                     aria-label="Agregar {{ product.title | escape }} al carrito"
-                  >+</button>
+                  >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M7.74609 15.5V0" stroke="currentColor"/>
+                      <path d="M0 7.74512L15.5 7.74512" stroke="currentColor"/>
+                    </svg>
+                  </button>
                 </article>
                 {%- assign g4u_upsell_count = g4u_upsell_count | plus: 1 -%}
               {%- endif -%}
