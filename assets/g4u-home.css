@@ -853,7 +853,7 @@ max-height:45px;}
 /* Newsletter */
 .g4u-newsletter { background: var(--g4u-orange); color: var(--g4u-burgundy); padding: 4rem; }
 .g4u-newsletter__inner { align-items: center; display: grid; gap: 4rem; grid-template-columns: minmax(0, 60.8rem) minmax(44rem, 59.4rem); justify-content: space-between; margin: 0 auto; max-width: 136rem; }
-.g4u-newsletter__title { color: inherit; font-size: 4rem; margin: 0 0 .8rem; max-width: 61rem; }
+.g4u-newsletter__title { color: inherit; font-size: 4rem; margin: 0 0 .8rem; max-width: 500px; }
 .g4u-newsletter__text { font-size: 1.8rem; line-height: 1.5; }
 .g4u-newsletter__form-row { display: flex; gap: 1.2rem; }
 .g4u-newsletter__input {
