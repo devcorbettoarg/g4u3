@@ -59,7 +59,7 @@
       data-wow-duration="0.8s"
       data-wow-delay="0.06s"
     >
-      {{ section.settings.title | escape }}
+      {{ section.settings.title | escape | replace: '|', '<br>' }}
     </h2>
 
     {%- if section.settings.description != blank -%}

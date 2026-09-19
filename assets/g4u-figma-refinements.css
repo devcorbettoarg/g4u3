@@ -525,7 +525,7 @@ body.template-suffix-harina {
   .g4u-featured-products
   .card__media img {
     mix-blend-mode: multiply;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   body.template-suffix-nosotros
@@ -668,6 +668,8 @@ body.template-suffix-harina {
 
   body.template-suffix-nosotros .g4u-expert-card__name {
     font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.064rem;
     line-height: 1.5;
   }
 
