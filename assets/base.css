@@ -2292,6 +2292,10 @@ input[type='checkbox'] {
   letter-spacing: 0.1rem;
   min-height: 3.8rem;
 }
+.spanbar {
+  padding-left:20px;
+  padding-right:20px;
+}
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
 .announcement-bar-slider--fade-in-previous .announcement-bar__message,
