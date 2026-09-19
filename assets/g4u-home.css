@@ -358,6 +358,7 @@
   border: .15rem solid var(--g4u-cream);
   color: var(--g4u-cream);
   font-weight:300;
+  letter-spacing:5%;
 }
 .g4u-category-card__button:hover {
   background: var(--g4u-cream);
