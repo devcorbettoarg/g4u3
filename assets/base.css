@@ -2938,7 +2938,7 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__menu-item .icon-caret {
- right: 3px;
+ right: 6px;
     height: 8px;
     top: calc(50% - .4rem);
 }
