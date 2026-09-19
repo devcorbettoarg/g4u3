@@ -250,7 +250,7 @@
 }
 
 .g4u-featured-products__title {
-  color: var(--g4u-burgundy);
+
   font-size: clamp(4rem, 3.35vw, 4.8rem);
   margin: 0 0 .8rem;
 }
