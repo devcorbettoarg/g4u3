@@ -173,7 +173,6 @@
 .template-product .product-form__buttons { max-width: none; }
 .template-product .shopify-payment-button__button { background: transparent !important; border: .1rem solid #26131b !important; border-radius: 10rem !important; color: #26131b !important; font-family: var(--g4u-display) !important; font-size: 1.6rem !important; font-weight: 400 !important; letter-spacing: .05em !important; line-height: .8 !important; min-height: 4.5rem !important; }
 .template-product .product__accordion { border-bottom: .1rem solid #26131b; border-top: 0; margin-top: 1.6rem; }
-.template-product .product__accordion:first-of-type { border-top: .1rem solid #26131b; }
 .template-product .product__accordion .summary__title > .svg-wrapper { display: none; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }
 .template-product .product__accordion summary { min-height: 5.2rem; padding-block: 1.2rem; }
@@ -227,7 +226,6 @@
 .g4u-product-ingredients__header .rte { font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; }
 .g4u-product-ingredients__items { display: grid; gap: 2rem 3.2rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 112rem; }
 .g4u-product-ingredients details, .g4u-product-ingredients details:nth-last-child(-n + 2) { border-bottom: .1rem solid #26131b; border-top: 0; }
-.g4u-product-ingredients details:nth-child(-n + 2) { border-top: .1rem solid #26131b; }
 .g4u-product-ingredients summary { align-items: center; color: #26131b; cursor: pointer; display: flex; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; justify-content: space-between; letter-spacing: .05em; line-height: 1.2; list-style: none; padding: 2.4rem 0; }
 .g4u-product-ingredients summary::-webkit-details-marker { display: none; }
 .g4u-product-ingredients__summary-label { align-items: center; display: inline-flex; gap: 1rem; }
@@ -271,13 +269,12 @@
 .template-product .g4u-flour-faq { background: #f2ebe4; }
 .template-product .g4u-flour-faq__header h2 { font-family: var(--g4u-display); font-weight: 700; line-height: .95; text-transform: uppercase; }
 .template-product .g4u-flour-faq__item { border-bottom-color: #26131b; border-top: 0; }
-.template-product .g4u-flour-faq__item:first-child { border-top: .1rem solid #26131b; }
 .template-product .g4u-flour-faq__item summary { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; line-height: 1.5; }
 .template-product .g4u-flour-faq__item .rte { color: #26131b; }
 .template-product .g4u-flour-faq__contact p { font-family: var(--g4u-display); font-size: 2.6rem; line-height: 1; }
 .template-product .g4u-flour-faq__contact .g4u-pill { background: transparent; border-color: currentColor; color: inherit; font-size: 1.4rem; min-height: 0; padding: .7rem 1.8rem; }
 @media screen and (max-width: 749px) { .template-product .page-width { padding-left: 2rem; padding-right: 2rem; } .template-product .product__media img { padding: 2rem; } .template-product .thumbnail-slider { margin-top: 1.2rem; } .template-product .thumbnail-slider .slider-button { flex-basis: 3.6rem; height: 3.6rem; width: 3.6rem; } .template-product .product__title h1 { font-size: 4rem; } .template-product .g4u-product-highlights ul { grid-template-columns: 1fr; } }
-@media screen and (max-width: 749px) { .g4u-product-comparison, .g4u-product-ingredients, .g4u-product-testimonials, .g4u-product-editorial { padding: 6.4rem 2rem; } .g4u-product-comparison { padding-inline: 0; } .g4u-product-comparison__grid { grid-template-columns: 1fr; } .g4u-product-comparison__panel { grid-template-columns: minmax(12rem, .8fr) 1fr; min-height: 0; padding: 4rem 2rem; } .g4u-product-comparison__media { min-height: 20rem; } .g4u-product-ingredients__header { margin-bottom: 4rem; } .g4u-product-ingredients__items { grid-template-columns: 1fr; } .g4u-product-ingredients details:nth-child(2) { border-top: 0; } .g4u-product-testimonials__header { align-items: start; gap: 2.4rem; flex-direction: column; margin-bottom: 3.2rem; } .g4u-product-testimonials h2 { margin-bottom: 0; } .g4u-product-testimonials__grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr; } .g4u-product-testimonials blockquote, .g4u-product-testimonials blockquote:first-child { border-left: 0; border-top: .1rem solid rgba(35,31,32,.55); min-height: 0; padding: 2.4rem 0; } .g4u-product-testimonials blockquote:first-child { border-top: 0; padding-top: 0; } .g4u-product-editorial__inner { grid-template-columns: 1fr; } .g4u-product-editorial--reverse .g4u-product-editorial__copy, .g4u-product-editorial--reverse .g4u-product-editorial__media { order: initial; } }
+@media screen and (max-width: 749px) { .g4u-product-comparison, .g4u-product-ingredients, .g4u-product-testimonials, .g4u-product-editorial { padding: 6.4rem 2rem; } .g4u-product-comparison { padding-inline: 0; } .g4u-product-comparison__grid { grid-template-columns: 1fr; } .g4u-product-comparison__panel { grid-template-columns: minmax(12rem, .8fr) 1fr; min-height: 0; padding: 4rem 2rem; } .g4u-product-comparison__media { min-height: 20rem; } .g4u-product-ingredients__header { margin-bottom: 4rem; } .g4u-product-ingredients__items { grid-template-columns: 1fr; } .g4u-product-testimonials__header { align-items: start; gap: 2.4rem; flex-direction: column; margin-bottom: 3.2rem; } .g4u-product-testimonials h2 { margin-bottom: 0; } .g4u-product-testimonials__grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr; } .g4u-product-testimonials blockquote, .g4u-product-testimonials blockquote:first-child { border-left: 0; border-top: .1rem solid rgba(35,31,32,.55); min-height: 0; padding: 2.4rem 0; } .g4u-product-testimonials blockquote:first-child { border-top: 0; padding-top: 0; } .g4u-product-editorial__inner { grid-template-columns: 1fr; } .g4u-product-editorial--reverse .g4u-product-editorial__copy, .g4u-product-editorial--reverse .g4u-product-editorial__media { order: initial; } }
 
 /* Cart */
 .template-cart { --g4u-ink: #26131b; }
