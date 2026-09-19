@@ -538,8 +538,10 @@ font-style: Condensed;
 
 .g4u-science__intro,
 .g4u-comparison__intro {
-   font-family: "Europa Grotesk SH";
+  font-family: var(--g4u-display);
   font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: .04em;
   line-height: 1.5;
   margin: auto;
   max-width: 48rem;
@@ -573,7 +575,7 @@ font-style: Condensed;
   white-space: nowrap;
    font-family: "Europa Grotesk SH";
    font-weight:400;
-   letter-spacing:5%;
+   letter-spacing: .05em;
 }
 
 .g4u-science__tab[aria-selected="true"] {
@@ -747,8 +749,7 @@ max-width:400px; }
 .g4u-experts__heading { max-width: 61rem; }
 .g4u-experts__eyebrow { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
 .g4u-experts__title { color: var(--g4u-ink); font-size: 4.8rem; margin: 0 0 .8rem; }
-.g4u-experts__intro { font-size: 1.8rem; line-height: 150%; 
-letter-spacing:4%;}
+.g4u-experts__intro { font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; }
 .g4u-experts__controls { display: flex; gap: 1.6rem; }
 .g4u-experts[data-g4u-static] .g4u-experts__controls { visibility: hidden; }
 .g4u-experts__arrow {

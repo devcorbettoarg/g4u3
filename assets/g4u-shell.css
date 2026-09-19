@@ -310,7 +310,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 
 @media screen and (max-width: 749px) {
   .announcement-bar-section .utility-bar__grid { display: flex; justify-content: center; padding: 0 1.6rem; }
-  .announcement-bar-section .announcement-bar__message { font-size: 1.1rem; letter-spacing: .02em; white-space: nowrap; }
+  .announcement-bar-section .announcement-bar__message { font-size: 1.1rem; letter-spacing: .05em; white-space: nowrap; }
   .announcement-bar-section .list-social { display: none; }
   .section-header .header,
   body.template-index .section-header:not(.shopify-section-header-sticky) .header,

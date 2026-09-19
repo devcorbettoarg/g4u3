@@ -105,8 +105,8 @@ body.template-suffix-harina {
   }
 
   body.template-suffix-nosotros .g4u-about-hero__title {
-    font-size: 53px;
-    letter-spacing: 2%;
+    font-size: 5.6rem;
+    letter-spacing: .02em;
     line-height: 0.9;
     margin-bottom: 1.6rem;
   }
@@ -150,8 +150,8 @@ body.template-suffix-harina {
   }
 
   body.template-suffix-nosotros .g4u-about-manifesto__title {
-    font-size: 53px;
-    letter-spacing: 2%;
+    font-size: 5.6rem;
+    letter-spacing: .02em;
     line-height: 0.9;
     margin: 0 0 4rem;
   }
