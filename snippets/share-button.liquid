@@ -13,11 +13,26 @@
 <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
 
 <share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
+  <div class="g4u-product-payments" aria-label="Medios de pago aceptados">
+    <span>Pagá con</span>
+    <ul role="list">
+      {%- for type in shop.enabled_payment_types limit: 4 -%}
+        <li>{{ type | payment_type_svg_tag }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="g4u-product-share-row">
+    <span>{{ block.settings.share_label | escape }}</span>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_link | url_encode }}" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">in</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_link | url_encode }}" target="_blank" rel="noopener" aria-label="Compartir en Facebook">f</a>
+    <a href="https://twitter.com/intent/tweet?url={{ share_link | url_encode }}" target="_blank" rel="noopener" aria-label="Compartir en X">X</a>
+    <a href="https://wa.me/?text={{ share_link | url_encode }}" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp">W</a>
+  </div>
   <button class="share-button__button hidden">
     <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
     {{ block.settings.share_label | escape }}
   </button>
-  <details id="Details-{{ block.id }}-{{ section.id }}">
+  <details id="Details-{{ block.id }}-{{ section.id }}" class="visually-hidden">
     <summary class="share-button__button">
       <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
       {{ block.settings.share_label | escape }}

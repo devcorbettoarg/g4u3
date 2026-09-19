@@ -1,17 +1,24 @@
 {%- assign quantity_options = product.metafields.custom.quantity_options.value -%}
-{%- if quantity_options != blank -%}
-  <script src="{{ 'g4u-quantity-options.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'g4u-quantity-options.js' | asset_url }}" defer="defer"></script>
   <div class="g4u-quantity-options" data-g4u-quantity-options data-quantity-input="Quantity-{{ section_id }}" {{ block.shopify_attributes }}>
     {%- if block.settings.heading != blank -%}<p class="g4u-quantity-options__heading">{{ block.settings.heading | escape }}</p>{%- endif -%}
     <div class="g4u-quantity-options__list" role="group" aria-label="{{ block.settings.aria_label | escape }}">
       {%- for option in quantity_options -%}
         {%- if option.active.value != false -%}
           <button type="button" class="g4u-quantity-options__option{% if forloop.first %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ option.quantity.value }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
-            <span>{{ option.label.value | default: option.quantity.value | append: ' unidades' | escape }}</span>
+            <span>{% if option.label.value != blank %}{{ option.label.value | escape }}{% else %}{{ option.quantity.value }} {% if option.quantity.value == 1 %}unidad{% else %}unidades{% endif %}{% endif %}</span>
             {%- if option.total_price.value != blank -%}<span>({{ option.total_price.value | money }})</span>{%- endif -%}
           </button>
         {%- endif -%}
       {%- endfor -%}
+      {%- if quantity_options == blank -%}
+        {%- for quantity in (1..8) -%}
+          {%- if quantity == 1 or quantity == 4 or quantity == 8 -%}
+            <button type="button" class="g4u-quantity-options__option{% if quantity == 1 %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ quantity }}" aria-pressed="{% if quantity == 1 %}true{% else %}false{% endif %}">
+              <span>{{ quantity }} {% if quantity == 1 %}unidad{% else %}unidades{% endif %}</span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
-{%- endif -%}

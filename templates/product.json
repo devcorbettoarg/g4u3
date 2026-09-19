@@ -55,9 +55,14 @@
             "swatch_shape": "circle"
           }
         },
+        "quantity_options": {
+          "type": "g4u_quantity_options",
+          "settings": {
+            "heading": "Elegí la cantidad"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
-          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
@@ -126,6 +131,7 @@
         "g4u_product_tags_XD4UDU",
         "product_highlights",
         "variant_picker",
+        "quantity_options",
         "quantity_selector",
         "buy_buttons",
         "details",
