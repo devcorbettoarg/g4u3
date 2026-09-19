@@ -214,7 +214,7 @@
 .template-product .related-products .card__media img { mix-blend-mode: multiply; object-fit: contain; }
 
 /* PDP editorial sequence */
-.g4u-product-comparison { background: var(--g4u-cream); padding: 0 0 8rem ; }
+.g4u-product-comparison { background: var(--g4u-cream); padding: 0 ; }
 .g4u-product-comparison__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: none; overflow: hidden; }
 .g4u-product-comparison__panel { align-items: center; display: grid; grid-template-columns: minmax(18rem, .9fr) minmax(18rem, 1.1fr); gap: 3.2rem; min-height: 56rem; padding: 5.6rem clamp(2.4rem, 5vw, 9.6rem); }
 .g4u-product-comparison__panel--other { background: #ffa5af; color: var(--g4u-ink); }
