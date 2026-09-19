@@ -124,7 +124,7 @@
           "settings": {
             "image": "shopify://shop_images/d2755b3cfcd00a72ff1c1ca31b30dfb467a691a5.jpg",
             "title": "Ingredientes que suman",
-            "text": "<p>Seleccionamos ingredientes que aportan valor, no solo sabor.</p>"
+            "text": "<p>Seleccionamos ingredientes que<br/> aportan valor, no solo sabor.</p>"
           }
         },
         "value_3": {
