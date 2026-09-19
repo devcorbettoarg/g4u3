@@ -140,7 +140,7 @@
           "settings": {
             "image": "shopify://shop_images/g4u-about-value-progress.jpg",
             "title": "Siempre mejorando",
-            "text": "<p>Seguimos desarrollando nuevas formas de reinventar los alimentos de todos los días.</p>"
+            "text": "<p>Seguimos desarrollando nuevas<br/> formas de reinventar los<br/> alimentos de todos los días.</p>"
           }
         }
       },
