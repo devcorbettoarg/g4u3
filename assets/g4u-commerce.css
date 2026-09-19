@@ -101,6 +101,14 @@
 .template-product .page-width { max-width: 144rem; padding-left: 4rem; padding-right: 4rem; }
 .template-product .product { column-gap: 4rem; }
 .template-product .product__media-wrapper { max-width: 66rem; }
+.template-product .thumbnail-list, .template-product .thumbnail-slider { scrollbar-width: none; }
+.template-product .thumbnail-list::-webkit-scrollbar, .template-product .thumbnail-slider::-webkit-scrollbar { display: none; }
+@media screen and (min-width: 990px) {
+  .template-product .product:not(.product--no-media) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .template-product .product:not(.product--no-media) .product__media-wrapper,
+  .template-product .product:not(.product--no-media) .product__info-wrapper { max-width: none; width: 100%; }
+  .template-product .product:not(.product--no-media) .product__info-wrapper { padding: 0; }
+}
 .template-product .product__media { aspect-ratio: 4 / 5; background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
 .template-product .thumbnail-list__item::before { padding-bottom: 125%; }
 .template-product .product__media img { mix-blend-mode: multiply; object-fit: contain; padding: 4rem; }
