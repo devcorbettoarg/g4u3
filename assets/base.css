@@ -2938,8 +2938,9 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__menu-item .icon-caret {
-  right: 0.8rem;
-  height:8px;
+ right: 3px;
+    height: 8px;
+    top: calc(50% - .4rem);
 }
 
 .header__submenu .icon-caret {
