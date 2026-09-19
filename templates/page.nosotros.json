@@ -132,7 +132,7 @@
           "settings": {
             "image": "shopify://shop_images/a2153bb74ffb4e298b0790f398b29ee1d8df77e0_1.jpg",
             "title": "El sabor de siempre",
-            "text": "<p>La mejor alimentación es la que realmente disfrutás.</p>"
+            "text": "<p>La mejor alimentación es la<br/> que realmente disfrutás.</p>"
           }
         },
         "value_4": {
