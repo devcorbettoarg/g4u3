@@ -836,7 +836,7 @@ letter-spacing:4%;}
 .g4u-instagram__header { margin: 0 auto 6rem; text-align: center; }
 .g4u-instagram__title { color: inherit; font-size: 4.8rem; margin: 0 auto 2.4rem; max-width: 45rem; }
 .g4u-instagram__button { border: .1rem solid var(--g4u-ink); color: var(--g4u-ink); gap: .8rem; 
-max-width:45px;}
+max-height:45px;}
 .g4u-instagram__button img { height: 2rem; width: 2rem; }
 .g4u-instagram__grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 136rem; }
 .g4u-instagram__item { aspect-ratio: 1; border-radius: 1.2rem; overflow: hidden; position: relative; }
