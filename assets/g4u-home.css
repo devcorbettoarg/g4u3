@@ -505,7 +505,9 @@ g4u-tabs {
   max-width: 100rem;
   text-align: center;
 }
-
+.g4u-science__eyebrow {
+  font-weight:300;
+}
 .g4u-science__eyebrow,
 .g4u-comparison__eyebrow {
   font-family: var(--g4u-display);
