@@ -26,10 +26,13 @@ if (!customElements.get('g4u-scroll-carousel')) {
       }
 
       move(direction) {
-        const item = this.track?.firstElementChild;
-        if (!this.track || !item) return;
+        if (!this.track) return;
+        const item = this.track.firstElementChild;
         const gap = Number.parseFloat(getComputedStyle(this.track).columnGap) || 0;
-        this.track.scrollBy({ left: direction * (item.getBoundingClientRect().width + gap), behavior: 'smooth' });
+        const distance = this.hasAttribute('data-g4u-scroll-page')
+          ? this.track.clientWidth
+          : (item?.getBoundingClientRect().width || this.track.clientWidth) + gap;
+        this.track.scrollBy({ left: direction * distance, behavior: 'smooth' });
       }
     }
   );
