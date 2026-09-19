@@ -983,7 +983,8 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 .g4u-about-story__image { height: 100%; object-fit: cover; width: 100%; }
 .g4u-about-story__list { display: grid; gap: .8rem; list-style: none; margin: 2.4rem 0 0; padding: 0; }
 .g4u-about-story__list li { align-items: flex-start; display: flex; font-size: 1.6rem; gap: 1.2rem; line-height: 1.5; }
-.g4u-about-story__list img { flex: 0 0 2rem; height: 2rem; width: 2rem; }
+.g4u-about-story__list img { flex: 0 0 2rem; height: 2rem; width: 2rem; 
+margin-top:2px;}
 
 .g4u-about-values { background: var(--g4u-cream); color: var(--g4u-ink); padding: 8rem 4rem; text-align: center; }
 .g4u-about-values__title { color: inherit; font-size: 4rem; margin: 0 0 8rem; }
