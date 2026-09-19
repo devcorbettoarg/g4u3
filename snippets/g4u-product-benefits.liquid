@@ -17,7 +17,7 @@
   {%- if beneficios_obj != blank and beneficios_obj.beneficios.value != blank -%}
     <ul class="barkin-benefits-list">
       {%- for beneficio in beneficios_obj.beneficios.value -%}
-        <li class="barkin-benefits-list__item">{{ beneficio | escape }}</li>
+        <li class="barkin-benefits-list__item"><img class="g4u-benefit-check" src="{{ 'g4u-icon-check.svg' | asset_url }}" alt="" width="20" height="20">{{ beneficio | escape }}</li>
       {%- endfor -%}
     </ul>
   {%- endif -%}
