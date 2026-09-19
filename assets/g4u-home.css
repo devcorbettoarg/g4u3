@@ -350,13 +350,14 @@
   z-index: 2;
 }
 .g4u-category-card__title {
-  color: #fff;
+  color: var(--g4u-cream);
   font-size: clamp(4rem, 3.35vw, 4.8rem);
   margin: 0 0 2rem;
 }
 .g4u-category-card__button {
-  border: .15rem solid #fff;
-  color: #fff;
+  border: .15rem solid var(--g4u-cream);
+  color: var(--g4u-cream);
+  font-weight:300;
 }
 .g4u-category-card__button:hover {
   background: var(--g4u-cream);
