@@ -58,7 +58,8 @@
         "quantity_options": {
           "type": "g4u_quantity_options",
           "settings": {
-            "heading": "Elegí la cantidad"
+            "heading": "Elegí la cantidad",
+            "aria_label": "Elegir cantidad"
           }
         },
         "quantity_selector": {
@@ -418,12 +419,39 @@
             "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>",
             "author": "Ivana M."
           }
+        },
+        "review_wPAbjB": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>",
+            "author": "Ivana M."
+          }
+        },
+        "review_8H6bM4": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>",
+            "author": "Ivana M."
+          }
+        },
+        "review_93A3YP": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "quote": "<p>“Me encantó. Lo sigo recomendando y voy a seguir comprando.”</p>",
+            "author": "Ivana M."
+          }
         }
       },
       "block_order": [
         "review_1",
         "review_2",
-        "review_3"
+        "review_3",
+        "review_wPAbjB",
+        "review_8H6bM4",
+        "review_93A3YP"
       ],
       "settings": {
         "title": "Lo dicen quienes ya lo probaron"
