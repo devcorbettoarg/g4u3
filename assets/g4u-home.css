@@ -535,6 +535,9 @@ font-style: Condensed;
   margin: auto;
   max-width: 48rem;
 }
+.g4u-comparison__intro {
+  max-width:600px;
+}
 
 .g4u-science__tablist {
   display: flex;
