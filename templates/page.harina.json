@@ -78,7 +78,7 @@
       ],
       "settings": {
         "eyebrow": "¿Cómo lo logramos?",
-        "title": "Una fórmula donde cada ingrediente tiene un propósito",
+        "title": "Una fórmula donde|cada ingrediente tiene un propósito",
         "image": "shopify://shop_images/g4u-flour-ingredients.jpg",
         "image_alt": "Espigas de trigo sobre harina"
       }
@@ -126,7 +126,7 @@
         "flavor"
       ],
       "settings": {
-        "title": "Una harina que cambia la forma de hacer pan"
+        "title": "Una harina que cambia|la forma de hacer pan"
       }
     },
     "comparison": {

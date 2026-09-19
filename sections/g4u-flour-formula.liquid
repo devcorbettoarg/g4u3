@@ -54,7 +54,7 @@
       data-wow-duration="0.8s"
       data-wow-delay="0.08s"
     >
-      {{ section.settings.title | escape }}
+      {{ section.settings.title | escape | replace: '|', '<br>' }}
     </h2>
 
   </header>
@@ -259,7 +259,7 @@
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Una fórmula donde cada ingrediente tiene un propósito"
+      "default": "Una fórmula donde|cada ingrediente tiene un propósito"
     },
     {
       "type": "image_picker",

@@ -5,7 +5,7 @@
     id="G4uFlourBenefitsTitle-{{ section.id }}"
     data-wow-duration="0.8s"
   >
-    {{ section.settings.title | escape }}
+    {{ section.settings.title | escape | replace: '|', '<br>' }}
   </h2>
 
   <div class="g4u-flour-benefits__grid">
@@ -72,7 +72,7 @@
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Una harina que cambia la forma de hacer pan"
+      "default": "Una harina que cambia|la forma de hacer pan"
     }
   ],
   "blocks": [
