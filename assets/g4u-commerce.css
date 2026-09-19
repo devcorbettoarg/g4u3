@@ -484,7 +484,7 @@ cart-drawer .drawer__inner { --g4u-ink: #26131b; background: var(--g4u-cream); b
 cart-drawer .drawer__header { border-bottom: .1rem solid #d5d4d4; min-height: 8rem; padding: 2.4rem 0 1.6rem; }
 cart-drawer .drawer__heading, cart-drawer .cart__empty-text { color: inherit; font-family: var(--g4u-display); font-size: 3.6rem; font-weight: 400; letter-spacing: .02em; line-height: .9; text-transform: uppercase; }
 cart-drawer .drawer__close { border: 0; color: inherit; right: -.8rem; top: 1.6rem; }
-cart-drawer .drawer__close svg path { stroke: #26131b; stroke-width: .69; }
+cart-drawer .drawer__close svg path { fill: #26131b; }
 cart-drawer .drawer__close:hover { color: var(--g4u-burgundy); }
 /* A drawer item is three flex columns: media, product/quantity and remove/price. */
 .cart-drawer cart-drawer-items .cart-item {
@@ -572,6 +572,10 @@ cart-drawer .tax-note { color: #766c70; font-size: 1.3rem; line-height: 1.45; ma
 cart-drawer .cart__ctas { display: grid; gap: 1.2rem; grid-template-columns: 1fr 1fr; }
 cart-drawer .g4u-cart-drawer__view-cart,
 cart-drawer .cart__checkout-button { align-items: center; border-radius: 10rem; display: flex; font-family: var(--g4u-display); font-size: 1.6rem; font-weight: 400; justify-content: center; letter-spacing: .05em; line-height: .8; margin: 0; min-height: 4.8rem; text-decoration: none; width: 100%; }
+cart-drawer .g4u-cart-drawer__view-cart::before,
+cart-drawer .g4u-cart-drawer__view-cart::after,
+cart-drawer .cart__checkout-button::before,
+cart-drawer .cart__checkout-button::after { box-shadow: none; content: none; }
 cart-drawer .g4u-cart-drawer__view-cart { border: .1rem solid var(--g4u-ink); color: var(--g4u-ink); }
 cart-drawer .cart__checkout-button { background: var(--g4u-burgundy); color: var(--g4u-cream); }
 cart-drawer .cart__checkout-button:hover { background: var(--g4u-orange); }

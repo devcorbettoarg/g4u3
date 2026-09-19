@@ -243,7 +243,7 @@
 .g4u-featured-products__eyebrow {
   font-family: var(--g4u-display);
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: .1em;
   margin: 0 0 1.6rem;
   text-transform: uppercase;
@@ -256,11 +256,13 @@
 }
 
 .g4u-featured-products__description {
+  font-family: var(--g4u-display);
   font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: .04em;
   line-height: 1.5;
   margin: auto;
   max-width: 42rem;
-   font-family: "Europa Grotesk SH";
 }
 
 .g4u-featured-products__grid {
@@ -292,10 +294,10 @@
   color: var(--g4u-burgundy);
   font-family: var(--g4u-display);
   font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-  line-height: 1;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: 1.2;
+  text-transform: none;
 }
 .g4u-featured-products .price { font-size: 1.8rem; }
 .g4u-featured-products__footer { margin-top: 6rem; text-align: center; }
