@@ -204,7 +204,7 @@
   border-bottom: 0rem solid #26131b; display: flex; font-family: var(--g4u-display); font-size: 1.4rem; gap: .8rem; letter-spacing: .05em; line-height: 1.2; padding: 1.6rem 0; }
 .template-product .g4u-product-payments ul { align-items: center; display: flex; gap: .4rem; list-style: none; margin: 0; padding: 0; }
 .template-product .g4u-product-payments svg { display: block; height: 2rem; width: 3.2rem; }
-.template-product .g4u-product-share-row a { align-items: center; border: .1rem solid #26131b; border-radius: 50%; color: #26131b; display: inline-flex; font-size: 1.2rem; height: 2rem; justify-content: center; text-decoration: none; width: 2rem; }
+.template-product .g4u-product-share-row a { align-items: center;  color: #26131b; display: inline-flex; font-size: 1.2rem; height: 2rem; justify-content: center; text-decoration: none; width: 2rem; }
 .template-product .g4u-product-share-row svg { height: 1.2rem; width: 1.2rem; }
 .template-product .related-products { background: var(--g4u-cream); }
 .template-product .related-products .related-products__heading {
