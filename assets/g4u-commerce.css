@@ -482,7 +482,7 @@
 .search-modal .predictive-search__item, .template-search .predictive-search__item { color: #26131b; font-family: var(--g4u-display); }
 .search-modal .predictive-search__image, .template-search .predictive-search__image { background: #f2ebe4; border-radius: .8rem; height: 6.4rem; object-fit: contain; padding: .4rem; width: 6.4rem; }
 .search-modal .predictive-search__item-heading, .template-search .predictive-search__item-heading { color: #26131b; font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; line-height: 1.2; }
-.template-search { background: #fff8f0; color: #26131b; min-height: 60vh; padding-inline: 4rem; }
+.template-search { background: #fff8f0; color: #26131b; min-height: 60vh;  }
 .template-search__header { margin-inline: auto; max-width: 76.8rem; }
 .template-search__header h1 { color: #26131b; font-family: var(--g4u-display); font-size: 4.8rem; font-weight: 700; letter-spacing: .01em; line-height: 1; text-transform: uppercase; }
 .template-search__search { position: relative; }
