@@ -328,7 +328,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 /* Footer */
 .g4u-footer { background: var(--g4u-burgundy); color: var(--g4u-cream); padding: 8rem 4rem; }
 .g4u-footer__inner { margin: auto; max-width: 136rem; }
-.g4u-footer__top { display: grid; gap: 3.2rem; grid-template-columns: minmax(24rem, 1.55fr) repeat(4, minmax(14rem, 1fr)); min-height: 24.8rem; }
+.g4u-footer__top { display: grid; gap: 3.2rem; grid-template-columns: minmax(24rem, 2.8fr) repeat(4, minmax(14rem, 1fr)); min-height: 24.8rem; }
 .g4u-footer__brand { max-width: 27.8rem; }
 .g4u-footer__logo { display: block; height: 6rem; margin-bottom: 2.4rem; overflow: hidden; position: relative; width: 14.5rem; }
 .g4u-footer__logo img { display: block; position: absolute; }
