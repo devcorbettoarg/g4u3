@@ -91,7 +91,7 @@
             {%- endif -%}
 
             <h3 class="g4u-science__panel-title g4u-display">
-              {{ block.settings.heading | escape }}
+              {{ block.settings.heading  | replace: "|", "<br>" }}
             </h3>
 
             {%- if block.settings.text != blank -%}
