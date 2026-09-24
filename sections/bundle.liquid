@@ -1872,11 +1872,6 @@
       return settings.levels.find(level => quantity < level.qty) || null;
     };
 
-    const getEffectiveDiscount = totals => {
-      if (settings.enforceMinimums && getMissingCategories(totals).length) return { qty: 0, value: 0 };
-      return getDiscount(totals.quantity);
-    };
-
     const getMissingCategories = totals => {
       return getCategoryConfiguration()
         .filter(category => (totals.byCategory[category.id] || 0) < category.minimum)
