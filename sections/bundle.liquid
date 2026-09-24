@@ -252,17 +252,27 @@
                             >
                           {%- endif -%}
 
-                          {%- if section.settings.show_tags and product.tags.size > 0 -%}
+                          {%- if section.settings.show_tags -%}
                             <div class="pb-card__tags" aria-label="{{ section.settings.tags_aria_label | escape }}">
-                              {%- for tag in product.tags limit: 3 -%}
-                                <span class="pb-card__tag">
-                                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                    <path d="m2.5 8 5.2-5.2h4.8v4.8L7.3 12.8 2.5 8Z" stroke="currentColor" stroke-width="1.1"/>
-                                    <circle cx="10.4" cy="4.9" r=".8" fill="currentColor"/>
-                                  </svg>
-                                  {{ tag }}
-                                </span>
-                              {%- endfor -%}
+                              {%- assign product_benefits = product.metafields.custom.product_benefits.value -%}
+                              {%- if product_benefits != blank -%}
+                                {%- for benefit in product_benefits limit: 3 -%}
+                                  <span class="pb-card__tag pb-card__tag--benefit">
+                                    {%- if benefit.icon.value != blank -%}{{ benefit.icon.value | image_url: width: 40 | image_tag: class: 'pb-card__tag-icon', loading: 'lazy', alt: '' }}{%- endif -%}
+                                    {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
+                                  </span>
+                                {%- endfor -%}
+                              {%- else -%}
+                                {%- for tag in product.tags limit: 3 -%}
+                                  <span class="pb-card__tag">
+                                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                      <path d="m2.5 8 5.2-5.2h4.8v4.8L7.3 12.8 2.5 8Z" stroke="currentColor" stroke-width="1.1"/>
+                                      <circle cx="10.4" cy="4.9" r=".8" fill="currentColor"/>
+                                    </svg>
+                                    {{ tag }}
+                                  </span>
+                                {%- endfor -%}
+                              {%- endif -%}
                             </div>
                           {%- endif -%}
 
@@ -1303,6 +1313,33 @@
     letter-spacing: .04em;
     line-height: 1.5;
     margin-top: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tags {
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tag {
+    border: 1px solid #ebe7e8;
+    border-radius: 4px;
+    color: #26131b;
+    font-family: "Europa Grotesk SH";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 4px;
+    height: 24px;
+    letter-spacing: .05em;
+    line-height: 1.2;
+    padding: 2px 4px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__tag-icon {
+    display: block;
+    height: 20px;
+    object-fit: contain;
+    width: 20px;
   }
 
   #PackBuilder-{{ section.id }} .pb-summary {
