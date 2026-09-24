@@ -6,7 +6,7 @@ collection-component {
 /* Regular */
 @font-face {
   font-family: "Europa Grotesk SH";
-  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Reg.otf?v=1788386825") format("opentype");
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@ collection-component {
 
 @font-face {
   font-family: "Europa Grotesk SH Con";
-  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-LigCon.otf?v=1790273571") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
