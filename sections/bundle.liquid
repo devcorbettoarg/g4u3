@@ -106,15 +106,9 @@
                     <span class="pb__tab-icon" aria-hidden="true">
                       {%- case category_index -%}
                         {%- when 1 -%}
-                          <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M7 4h10l2 5v10H5V9l2-5Z" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                          </svg>
+                          <img src="{{ 'g4u-bundle-icon-bread.svg' | asset_url }}" alt="">
                         {%- when 2 -%}
-                          <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M4 10.5c0-3 3.6-5.5 8-5.5s8 2.5 8 5.5H4Z" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M5 13h14M5 16h14M6 19h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                          </svg>
+                          <img src="{{ 'g4u-bundle-icon-snacks.svg' | asset_url }}" alt="">
                         {%- when 3 -%}
                           <svg viewBox="0 0 24 24" fill="none">
                             <path d="M7 5h10l1 14H6L7 5Z" stroke="currentColor" stroke-width="1.5"/>
