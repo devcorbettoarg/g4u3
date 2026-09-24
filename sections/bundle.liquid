@@ -1187,6 +1187,179 @@
     color: var(--pb-muted);
   }
 
+  /* Product / 5 / — diseño de referencia Figma */
+  #PackBuilder-{{ section.id }} .pb__layout {
+    align-items: flex-start;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1006px) 338px;
+    justify-content: center;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__catalog {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tabs-shell {
+    background: #fff8f0;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .1);
+    gap: 24px;
+    height: 57px;
+    margin: 0;
+    min-height: 57px;
+    padding: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tabs {
+    gap: 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab {
+    color: #26131b;
+    font-family: "Europa Grotesk SH";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 12px;
+    letter-spacing: .05em;
+    line-height: 1.2;
+    padding: 2px 4px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab:hover,
+  #PackBuilder-{{ section.id }} .pb__tab.is-active {
+    background: transparent;
+    color: #26131b;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab-icon {
+    border-color: #766c70;
+    height: 32px;
+    width: 32px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab.is-active .pb__tab-icon {
+    background: #ff4622;
+    border-color: #ff4622;
+    color: #500322;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__tab-icon svg {
+    height: 20px;
+    width: 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__grid {
+    grid-auto-columns: calc((100% - 32px) / 3);
+    gap: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card:has(.pb-card__quantity:not([hidden])) {
+    border-color: transparent;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__media {
+    aspect-ratio: auto;
+    background: #f2ebe4;
+    border-radius: 12px;
+    height: 405.6px;
+    padding: 0 60px 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__image,
+  #PackBuilder-{{ section.id }} .pb-card__placeholder {
+    mix-blend-mode: multiply;
+    object-fit: contain;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__body {
+    gap: 16px;
+    min-height: 0;
+    padding: 16px 0 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__title {
+    font-family: "Europa Grotesk SH";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .05em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-card__price {
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary {
+    position: sticky;
+    top: 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__inner {
+    background: #fff8f0;
+    border: 1px solid #d5d0ca;
+    border-radius: 12px;
+    min-height: 752px;
+    padding: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__heading-row {
+    padding: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__title {
+    color: #26131b;
+    font-family: "Europa Grotesk SH";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .05em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__message {
+    color: #766c70;
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__content {
+    padding: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress {
+    padding: 16px 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__track {
+    background: #eae4dc;
+    border-radius: 100px;
+    height: 4px;
+    margin: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__fill {
+    background: #500322;
+  }
+
   #PackBuilder-{{ section.id }} :focus-visible {
     outline: 2px solid var(--pb-accent);
     outline-offset: 3px;
