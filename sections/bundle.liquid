@@ -923,8 +923,7 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: block;
     margin-top: 10px;
     gap: 5px;
     text-align: center;
@@ -1476,8 +1475,8 @@
     line-height: 1.5;
     min-width: 45px;
     padding-top: 20px;
-    position: relative;
-    transform: none;
+    position: absolute;
+    transform: translateX(-50%);
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
@@ -2009,9 +2008,12 @@
     };
 
     const updateProgress = totals => {
-      // Cada hito vive en el centro visual de su columna: 5%, 10% y 15%.
-      // El dot debe usar exactamente esas mismas coordenadas.
-      const levelPositions = settings.levels.map((level, index) => ((index + .5) / settings.levels.length) * 100);
+      // Coordenadas medidas en el track de 306px del Figma: 54, 117 y 224px.
+      // El dot y cada hito comparten exactamente estas posiciones.
+      const figmaPositions = [17.65, 38.24, 73.2];
+      const levelPositions = settings.levels.map((level, index) => (
+        figmaPositions[index] ?? ((index + .5) / settings.levels.length) * 100
+      ));
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
@@ -2026,6 +2028,7 @@
 
       root.querySelectorAll('[data-level]').forEach((node, index) => {
         const level = settings.levels[index];
+        if (level) node.style.left = `${levelPositions[index]}%`;
         node.classList.toggle('is-reached', Boolean(level && totals.quantity >= level.qty));
       });
 
