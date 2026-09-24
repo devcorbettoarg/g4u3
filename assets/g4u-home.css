@@ -670,7 +670,7 @@ max-width:400px; }
 .g4u-nutrition-marquee:hover .g4u-nutrition-marquee__track { animation-play-state: paused; }
 .g4u-nutrition-marquee__group { align-items: center; display: flex; flex-shrink: 0; gap: 3.2rem; padding-right: 3.2rem; }
 .g4u-nutrition-marquee__item { align-items: center; display: flex; flex-shrink: 0; gap: 1.6rem; }
-.g4u-nutrition-marquee__icon { height: 9.3rem; object-fit: contain; width: 7.2rem; }
+.g4u-nutrition-marquee__icon { height: 93px;  width: auto; }
 .g4u-nutrition-marquee__text { font-size: clamp(7.2rem, 8.35vw, 12rem); line-height: .8; white-space: nowrap; }
 @keyframes g4u-marquee { to { transform: translateX(-50%); } }
 
