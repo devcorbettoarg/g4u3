@@ -53,8 +53,8 @@
         "image": "shopify://shop_images/g4u-about-value-flavor.jpg",
         "image_alt": "Pan G4U cortado sobre una tabla de madera",
         "eyebrow": "Nuestra historia",
-        "title": "Todo empezó | con una pregunta",
-        "lead": "<p>¿Y si el pan pudiera seguir siendo pan,<br/> pero nutricionalmente mejor?</p>",
+        "title": "Todo empezó  con | una pregunta",
+        "lead": "<p>¿Y si el pan pudiera seguir siendo pan,<br/>&nbsp;pero nutricionalmente mejor?</p>",
         "text": "<p>Nos preguntamos si era posible hacerlo diferente.</p><p>Así nació G4U: con el desafío de desarrollar productos que mantuvieran la experiencia de los alimentos que todos disfrutamos, pero con un perfil nutricional superior.</p><p>Hoy seguimos investigando, desarrollando y mejorando cada receta para demostrar que comer mejor no tiene por qué sentirse como un sacrificio.</p>"
       }
     },
@@ -151,7 +151,7 @@
         "value_4"
       ],
       "custom_css": [
-        "@media(max-width:980px) {br {display:none; }}"
+        "@media (max-width: 980px) {br {display: none; }}"
       ],
       "settings": {
         "title": "Lo que nos diferencia"
