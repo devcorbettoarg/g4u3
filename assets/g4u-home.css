@@ -218,7 +218,7 @@
 .g4u-choice-banner__object {
   display: inline-block;
   height: 100px;
-  margin: -.08em .08em;
+  margin: 0em .08em;
   object-fit: contain;
   vertical-align: middle;
   width:100px;
