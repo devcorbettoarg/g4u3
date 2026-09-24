@@ -553,13 +553,22 @@
 .g4u-contact { background: var(--g4u-cream); color: var(--g4u-ink); padding: 67px 40px 67px; }
 .g4u-contact__grid { align-items: stretch; display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); 
   margin: auto; max-width: 1440px; }
-.g4u-contact__media { border-radius: 1.2rem; min-height: 52rem; overflow: hidden; }.g4u-contact__media img { height: 100%; object-fit: cover; width: 100%; }
-.g4u-contact__content {  border-radius: 0 1.2rem 1.2rem 0; padding: 0rem 5.6rem; }.g4u-contact__header { margin: 0 0 3.2rem; max-width: 45rem; text-align: left; }.g4u-contact__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.4rem; letter-spacing: .1em; margin: 0 0 1.2rem; text-transform: uppercase; }.g4u-contact__header h1 { color: inherit; font-family: "Europa Grotesk SH"; font-size: 4.2rem; font-style: normal; font-weight: 700; letter-spacing: .01em; line-height: 1; margin: 0 0 1.6rem; text-transform: uppercase; }
-.g4u-contact__header .rte { font-size: 1.5rem; letter-spacing: .02em; line-height: 1.45; max-width:400px; }
-.g4u-contact__form label { display: block; font-family: var(--g4u-display); font-size: 1.3rem; letter-spacing: .04em; margin: 0 0 .8rem; }.g4u-contact__form input, .g4u-contact__form textarea { background: transparent; border: .1rem solid #8f8183; border-radius: 2rem; box-sizing: border-box; font: inherit; margin: 0 0 1.6rem; padding: 1.2rem; width: 100%; }.g4u-contact__form textarea { border-radius: .8rem; min-height: 12rem; resize: vertical; }
+.g4u-contact__media { border-radius: 1.2rem; min-height: 52rem; overflow: hidden; }
+.g4u-contact__media img { height: 100%; object-fit: cover; width: 100%; }
+.g4u-contact__content {  border-radius: 0 1.2rem 1.2rem 0; padding: 0rem 5.6rem; }
+.g4u-contact__header { margin: 0 0 3.2rem; max-width: 45rem; text-align: left; }
+.g4u-contact__header > p { font-family: "Europa Grotesk SH Con"; font-size: 18px; letter-spacing:10%; margin: 0 0 1.2rem; text-transform: uppercase; }
+.g4u-contact__header h1 { color: inherit; font-family: "Europa Grotesk SH"; font-size: 48px;
+   font-style: normal; font-weight: 700; letter-spacing: 1%; line-height: 1; margin: 0 0 1.6rem; text-transform: uppercase; }
+.g4u-contact__header .rte { font-size: 16px; letter-spacing: 4%; line-height: 1.45; max-width:465px; }
+.g4u-contact__form label { display: block; font-family: var(--g4u-display); font-size: 1.3rem; letter-spacing: .04em; margin: 0 0 .8rem; }
+.g4u-contact__form input, .g4u-contact__form textarea { background: transparent; border: .1rem solid #8f8183; border-radius: 2rem; box-sizing: border-box; font: inherit; margin: 0 0 1.6rem; padding: 1.2rem; width: 100%; }.g4u-contact__form textarea { border-radius: .8rem; min-height: 12rem; resize: vertical; }
 .g4u-contact__form button { background: #31131d; color: var(--g4u-cream); 
   font-size: 1.3rem; min-height: 45px; padding: .7rem 2.8rem; }.g4u-contact__success { color: var(--g4u-burgundy); font-size: 1.6rem; }
-@media screen and (max-width: 749px) { .g4u-contact { padding: 14rem 2rem 6.4rem; }.g4u-contact__grid { grid-template-columns: 1fr; }.g4u-contact__media { aspect-ratio: 1 / 1; border-radius: 1.2rem 1.2rem 0 0; min-height: 0; }.g4u-contact__content { border-radius: 0 0 1.2rem 1.2rem; padding: 3.2rem 2.4rem; }.g4u-contact__header h1 { font-size: 3.6rem; }.g4u-contact__header .rte { font-size: 1.5rem; }}
+@media screen and (max-width: 749px) { .g4u-contact { padding: 14rem 2rem 6.4rem; }.g4u-contact__grid { grid-template-columns: 1fr; }
+.g4u-contact__media { aspect-ratio: 1 / 1; border-radius: 1.2rem 1.2rem 0 0; min-height: 0; }
+.g4u-contact__content { border-radius: 0 0 1.2rem 1.2rem; padding: 3.2rem 2.4rem; }
+.g4u-contact__header h1 { font-size: 3.6rem; }.g4u-contact__header .rte { font-size: 1.5rem; }}
 
 /* Legal pages */
 .g4u-legal { background: var(--g4u-cream); color: var(--g4u-ink); min-height: 60vh; padding: 20rem 4rem 10rem; }
