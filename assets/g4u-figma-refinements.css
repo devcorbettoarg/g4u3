@@ -113,7 +113,7 @@ body.template-suffix-harina {
   body.template-suffix-nosotros .g4u-about-hero__text {
     font-family: var(--g4u-display);
     font-size: 2rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 5%;
     line-height: 1.2;
     max-width: 57.1rem;
   }
