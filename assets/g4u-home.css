@@ -116,10 +116,10 @@
 .g4u-home-hero__body {
   font-size: 18px;
   line-height: 27px;
-  letter-spacing: .04em;
+  letter-spacing: 2%;
   color:#FFF8F0;
   margin: 0 0 3.2rem;
-  font-weight: 400;
+  font-weight: 300;
   max-width: 49rem;
    font-family: "Europa Grotesk SH";
 }
