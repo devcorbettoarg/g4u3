@@ -524,7 +524,7 @@ font-weight: 400;
 }
 .g4u-science__eyebrow,
 .g4u-comparison__eyebrow {
-  font-family: var(--g4u-display);
+   font-family: "Europa Grotesk SH Con";
   font-size: 18px;
   letter-spacing: .1em;
   margin: 0 0 1.6rem;
