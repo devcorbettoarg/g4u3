@@ -51,7 +51,7 @@
   background: var(--g4u-ink);
   color: #fff;
   display: block;
-  height: 70rem;
+  height: 100vh;
   overflow: hidden;
   position: relative;
 }
