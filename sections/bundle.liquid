@@ -1456,6 +1456,8 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     height: 44px;
     inset: 0;
     margin: 0;
@@ -1475,8 +1477,7 @@
     min-width: 45px;
     padding-top: 20px;
     position: relative;
-    position: absolute;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
@@ -2006,10 +2007,25 @@
     };
 
     const updateProgress = totals => {
-      // El último escalón del diseño representa un pack completo de al menos 7 ítems.
-      // Evita que una configuración incompleta del editor complete la barra con un único producto.
-      const maxLevel = Math.max(settings.levels[settings.levels.length - 1]?.qty || 0, 7);
-      const percentage = Math.min((totals.quantity / maxLevel) * 100, 100);
+      const levelPositions = settings.levels.map((level, index) => ((index + 1) / settings.levels.length) * 100);
+      let percentage = 0;
+
+      for (let index = 0; index < settings.levels.length; index += 1) {
+        const level = settings.levels[index];
+        const previousLevel = settings.levels[index - 1];
+        const previousQuantity = previousLevel?.qty || 0;
+        const previousPosition = levelPositions[index - 1] || 0;
+        const position = levelPositions[index];
+
+        if (totals.quantity <= level.qty) {
+          const range = Math.max(level.qty - previousQuantity, 1);
+          percentage = previousPosition + ((totals.quantity - previousQuantity) / range) * (position - previousPosition);
+          break;
+        }
+        percentage = position;
+      }
+
+      percentage = Math.max(0, Math.min(percentage, 100));
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
@@ -2019,7 +2035,6 @@
 
       root.querySelectorAll('[data-level]').forEach((node, index) => {
         const level = settings.levels[index];
-        if (level) node.style.left = `${Math.min((level.qty / maxLevel) * 100, 100)}%`;
         node.classList.toggle('is-reached', Boolean(level && totals.quantity >= level.qty));
       });
 
@@ -2038,7 +2053,9 @@
     };
 
     const updateTotals = totals => {
-      const discount = getEffectiveDiscount(totals);
+      // La columna derecha siempre muestra una simulación del escalón alcanzado.
+      // Los mínimos de categoría se validan de forma independiente al habilitar el envío.
+      const discount = getDiscount(totals.quantity);
       const discountAmount = Math.round(totals.subtotal * (discount.value / 100));
       const estimatedTotal = totals.subtotal - discountAmount;
 
