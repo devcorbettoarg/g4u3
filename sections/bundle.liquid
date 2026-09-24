@@ -1868,6 +1868,11 @@
       return settings.levels.find(level => quantity < level.qty) || null;
     };
 
+    const getEffectiveDiscount = totals => {
+      if (settings.enforceMinimums && getMissingCategories(totals).length) return { qty: 0, value: 0 };
+      return getDiscount(totals.quantity);
+    };
+
     const getMissingCategories = totals => {
       return getCategoryConfiguration()
         .filter(category => (totals.byCategory[category.id] || 0) < category.minimum)
@@ -2029,7 +2034,7 @@
     };
 
     const updateTotals = totals => {
-      const discount = getDiscount(totals.quantity);
+      const discount = getEffectiveDiscount(totals);
       const discountAmount = Math.round(totals.subtotal * (discount.value / 100));
       const estimatedTotal = totals.subtotal - discountAmount;
 
@@ -2208,7 +2213,13 @@
           body: JSON.stringify(payload)
         });
 
-        const data = await response.json();
+        const responseText = await response.text();
+        let data = {};
+        try {
+          data = responseText ? JSON.parse(responseText) : {};
+        } catch (parseError) {
+          throw new Error(text.error);
+        }
 
         if (!response.ok || data.status) {
           throw new Error(data.description || data.message || text.error);
@@ -2255,6 +2266,14 @@
         if (event.key === 'ArrowLeft') {
           event.preventDefault();
           moveTab(-1);
+        }
+        if (event.key === 'Home') {
+          event.preventDefault();
+          activateTab(tabs[0].dataset.tab, true);
+        }
+        if (event.key === 'End') {
+          event.preventDefault();
+          activateTab(tabs[tabs.length - 1].dataset.tab, true);
         }
       });
     });
