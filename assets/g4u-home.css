@@ -161,7 +161,6 @@
 .g4u-hero__arrow:hover {
   background: var(--g4u-cream);
   color: var(--g4u-burgundy);
-  transform: translateX(.2rem);
 }
 
 .g4u-hero__arrow--prev:hover {  }
