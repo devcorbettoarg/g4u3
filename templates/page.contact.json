@@ -20,9 +20,20 @@
         "button_label": "Enviar mensaje",
         "success": "¡Gracias! Recibimos tu mensaje."
       }
+    },
+    "g4u_newsletter_p6CRdj": {
+      "type": "g4u-newsletter",
+      "settings": {
+        "title": "Suscribite y accedé a un 10% off en tu primer compra",
+        "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>",
+        "placeholder": "Ingresá tu email",
+        "button_label": "Suscribirme",
+        "success_message": "¡Gracias por suscribirte!"
+      }
     }
   },
   "order": [
-    "contact"
+    "contact",
+    "g4u_newsletter_p6CRdj"
   ]
 }
