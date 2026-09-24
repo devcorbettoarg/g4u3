@@ -164,7 +164,7 @@
   transform: translateX(.2rem);
 }
 
-.g4u-hero__arrow--prev:hover { transform: translateX(-.2rem); }
+.g4u-hero__arrow--prev:hover {  }
 .g4u-hero__arrow svg { height: 2rem; width: 2rem; }
 .g4u-hero__arrow--prev svg { transform: rotate(180deg); }
 
