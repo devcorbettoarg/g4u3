@@ -27,14 +27,18 @@
   assign price_min = product.price_min
   assign price_max = product.price_max
   assign available = target.available | default: false
-  assign money_price = price | money
-  assign money_price_min = price_min | money
-  assign money_price_max = price_max | money
+  assign money_price = price | money | remove: ' ARS' | remove: ' ars'
+  assign money_price_min = price_min | money | remove: ' ARS' | remove: ' ars'
+  assign money_price_max = price_max | money | remove: ' ARS' | remove: ' ars'
   if settings.currency_code_enabled
     assign money_price = price | money_with_currency
     assign money_price_min = price_min | money_with_currency
     assign money_price_max = price_max | money_with_currency
   endif
+
+  assign money_price = money_price | remove: ' ARS' | remove: ' ars'
+  assign money_price_min = money_price_min | remove: ' ARS' | remove: ' ars'
+  assign money_price_max = money_price_max | remove: ' ARS' | remove: ' ars'
 
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
