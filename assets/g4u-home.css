@@ -577,7 +577,11 @@ font-weight: 400;
   white-space: nowrap;
    font-family: "Europa Grotesk SH";
    font-weight:400;
-   letter-spacing: .05em;
+   letter-spacing: 5%;
+       display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .g4u-science__tab[aria-selected="true"] {
