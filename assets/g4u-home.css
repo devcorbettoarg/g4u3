@@ -1046,7 +1046,6 @@ margin-top:2px;}
 /* About page refinements: keep these changes local to /pages/nosotros. */
 @media screen and (min-width: 750px) {
   body.template-suffix-nosotros .g4u-about-hero {
-    min-height: min(120rem, 125svh);
     padding-inline: 2.4rem;
   }
 
