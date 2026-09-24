@@ -2010,24 +2010,11 @@
 
     const updateProgress = totals => {
       const levelPositions = settings.levels.map((level, index) => ((index + 1) / settings.levels.length) * 100);
-      let percentage = 0;
-
-      for (let index = 0; index < settings.levels.length; index += 1) {
-        const level = settings.levels[index];
-        const previousLevel = settings.levels[index - 1];
-        const previousQuantity = previousLevel?.qty || 0;
-        const previousPosition = levelPositions[index - 1] || 0;
-        const position = levelPositions[index];
-
-        if (totals.quantity <= level.qty) {
-          const range = Math.max(level.qty - previousQuantity, 1);
-          percentage = previousPosition + ((totals.quantity - previousQuantity) / range) * (position - previousPosition);
-          break;
-        }
-        percentage = position;
-      }
-
-      percentage = Math.max(0, Math.min(percentage, 100));
+      const reachedIndex = settings.levels.reduce(
+        (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
+        -1
+      );
+      const percentage = reachedIndex >= 0 ? levelPositions[reachedIndex] : 0;
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
