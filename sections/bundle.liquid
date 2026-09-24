@@ -57,6 +57,12 @@
       </header>
     {%- endif -%}
 
+    <nav class="pb__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span class="pb__breadcrumb-separator" aria-hidden="true">/</span>
+      <span aria-current="page">Armá tu combo</span>
+    </nav>
+
     {%- if has_collections -%}
       <div class="pb__layout">
         <div class="pb__catalog">
@@ -498,6 +504,40 @@
 
   #PackBuilder-{{ section.id }} .pb__subheading p {
     margin: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb {
+    align-items: center;
+    display: flex;
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 4px;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    margin: 0 -40px 40px;
+    min-height: 64px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb a,
+  #PackBuilder-{{ section.id }} .pb__breadcrumb span {
+    color: var(--pb-text);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb a {
+    text-decoration: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb-separator {
+    font-size: 18px;
+    line-height: 1;
   }
 
   #PackBuilder-{{ section.id }} .pb__layout {
@@ -1210,6 +1250,12 @@
 
     #PackBuilder-{{ section.id }} .pb__subheading {
       font-size: 16px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__breadcrumb {
+      font-size: 14px;
+      margin-inline: -20px;
+      margin-bottom: 32px;
     }
 
     #PackBuilder-{{ section.id }} .pb__tabs-shell {
