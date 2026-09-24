@@ -59,7 +59,7 @@
 
     <nav class="pb__breadcrumb" aria-label="Breadcrumb">
       <a href="{{ routes.root_url }}">Home</a>
-      <span class="pb__breadcrumb-separator" aria-hidden="true">/</span>
+      <span class="pb__breadcrumb-separator" aria-hidden="true"><img src="{{ 'g4u-breadcrumb-chevron.svg' | asset_url }}" alt=""></span>
       <span aria-current="page">Armá tu combo</span>
     </nav>
 
@@ -508,6 +508,7 @@
 
   #PackBuilder-{{ section.id }} .pb__breadcrumb {
     align-items: center;
+    background: #f2ebe4;
     display: flex;
     font-family: "Europa Grotesk SH";
     font-size: 16px;
@@ -519,6 +520,7 @@
     line-height: 1.5;
     margin: 0 -40px 40px;
     min-height: 64px;
+    padding: 20px 40px;
   }
 
   #PackBuilder-{{ section.id }} .pb__breadcrumb a,
@@ -536,8 +538,16 @@
   }
 
   #PackBuilder-{{ section.id }} .pb__breadcrumb-separator {
-    font-size: 18px;
-    line-height: 1;
+    align-items: center;
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    width: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__breadcrumb-separator img {
+    display: block;
+    transform: rotate(-90deg);
   }
 
   #PackBuilder-{{ section.id }} .pb__layout {
@@ -1256,6 +1266,7 @@
       font-size: 14px;
       margin-inline: -20px;
       margin-bottom: 32px;
+      padding-inline: 20px;
     }
 
     #PackBuilder-{{ section.id }} .pb__tabs-shell {
