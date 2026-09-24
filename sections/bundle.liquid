@@ -43,10 +43,13 @@
   "
 >
   <div class="pb__container">
-    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
       <header class="pb__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="pb__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
         {%- if section.settings.heading != blank -%}
-          <h2 class="pb__heading">{{ section.settings.heading }}</h2>
+          <h1 class="pb__heading">{{ section.settings.heading | escape }}</h1>
         {%- endif -%}
         {%- if section.settings.subheading != blank -%}
           <div class="pb__subheading">{{ section.settings.subheading }}</div>
@@ -423,7 +426,7 @@
   #PackBuilder-{{ section.id }} {
     background: var(--pb-bg);
     color: var(--pb-text);
-    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    padding: 180px 40px 20px;
   }
 
   #PackBuilder-{{ section.id }} *,
@@ -447,20 +450,54 @@
   }
 
   #PackBuilder-{{ section.id }} .pb__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-inline: auto;
+    max-width: 402px;
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__eyebrow {
+    color: var(--pb-text);
+    font-family: "Europa Grotesk SH Con";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .1em;
+    line-height: 1.5;
+    margin: 0;
+    text-transform: uppercase;
   }
 
   #PackBuilder-{{ section.id }} .pb__heading {
+    color: var(--pb-text);
+    font-family: "Europa Grotesk SH";
     margin: 0;
-    font-size: clamp(28px, 4vw, 46px);
-    line-height: 1.05;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .01em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   #PackBuilder-{{ section.id }} .pb__subheading {
-    max-width: 720px;
-    margin: 10px auto 0;
-    color: var(--pb-muted);
+    color: var(--pb-text);
+    font-family: "Europa Grotesk SH";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    margin: -8px 0 0;
+    max-width: 402px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb__subheading p {
+    margin: 0;
   }
 
   #PackBuilder-{{ section.id }} .pb__layout {
@@ -1155,7 +1192,24 @@
 
   @media screen and (max-width: 749px) {
     #PackBuilder-{{ section.id }} {
-      padding-inline: 12px;
+      padding: 120px 20px 20px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__header {
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__eyebrow {
+      font-size: 14px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__heading {
+      font-size: 36px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__subheading {
+      font-size: 16px;
     }
 
     #PackBuilder-{{ section.id }} .pb__tabs-shell {
@@ -1774,6 +1828,12 @@
     {
       "type": "header",
       "content": "Contenido"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "Packs personalizados"
     },
     {
       "type": "text",

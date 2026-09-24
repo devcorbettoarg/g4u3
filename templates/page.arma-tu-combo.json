@@ -42,8 +42,9 @@
       "type": "bundle",
       "name": "Constructor de pack",
       "settings": {
-        "heading": "Armá tu propio pack",
-        "subheading": "<p>Obtené descuentos exclusivos al crear tu propio pack.</p>",
+        "eyebrow": "Packs personalizados",
+        "heading": "Armá tu combo ideal",
+        "subheading": "<p>Elegí tus productos favoritos, combiná panes y snacks, y obtené descuentos exclusivos al crear tu propio pack.</p>",
         "pack_name": "Armá tu pack",
         "pack_key": "g4u-pack",
         "breakfast_title": "Panes",
