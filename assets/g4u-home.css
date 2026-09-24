@@ -217,11 +217,11 @@
 .g4u-choice-banner__accent { color: var(--g4u-choice-accent, var(--g4u-orange)); }
 .g4u-choice-banner__object {
   display: inline-block;
-  height: .95em;
+  height: 100px;
   margin: -.08em .08em;
   object-fit: contain;
   vertical-align: middle;
-  width: .95em;
+  width:100px;
 }
 
 .g4u-choice-banner__object--tortilla { width: 1.15em; }
