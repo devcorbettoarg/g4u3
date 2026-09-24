@@ -1774,6 +1774,12 @@
     const estimatedTotalNode = root.querySelector('[data-estimated-total]');
     const summaryCount = root.querySelector('[data-summary-count]');
 
+    const configuredLevels = [
+      { qty: Number(root.dataset.discount1Qty || 0), value: Number(root.dataset.discount1Value || 0) },
+      { qty: Number(root.dataset.discount2Qty || 0), value: Number(root.dataset.discount2Value || 0) },
+      { qty: Number(root.dataset.discount3Qty || 0), value: Number(root.dataset.discount3Value || 0) }
+    ].filter(level => level.qty > 0).sort((a, b) => a.qty - b.qty);
+
     const settings = {
       currency: root.dataset.currency || 'USD',
       locale: root.dataset.locale || 'es',
@@ -1782,11 +1788,11 @@
       enforceMinimums: root.dataset.enforceMinimums === 'true',
       afterAdd: root.dataset.afterAdd || 'drawer',
       resetAfterAdd: root.dataset.resetAfterAdd === 'true',
-      levels: [
-        { qty: Number(root.dataset.discount1Qty || 0), value: Number(root.dataset.discount1Value || 0) },
-        { qty: Number(root.dataset.discount2Qty || 0), value: Number(root.dataset.discount2Value || 0) },
-        { qty: Number(root.dataset.discount3Qty || 0), value: Number(root.dataset.discount3Value || 0) }
-      ].filter(level => level.qty > 0).sort((a, b) => a.qty - b.qty)
+      levels: configuredLevels.length ? configuredLevels : [
+        { qty: 2, value: 5 },
+        { qty: 5, value: 10 },
+        { qty: 7, value: 15 }
+      ]
     };
 
     const text = {
