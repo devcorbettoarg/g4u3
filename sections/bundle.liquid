@@ -2009,7 +2009,9 @@
     };
 
     const updateProgress = totals => {
-      const levelPositions = settings.levels.map((level, index) => ((index + 1) / settings.levels.length) * 100);
+      // Cada hito vive en el centro visual de su columna: 5%, 10% y 15%.
+      // El dot debe usar exactamente esas mismas coordenadas.
+      const levelPositions = settings.levels.map((level, index) => ((index + .5) / settings.levels.length) * 100);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
