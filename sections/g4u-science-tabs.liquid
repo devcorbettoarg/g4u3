@@ -10,7 +10,7 @@
       class="g4u-science__title g4u-display"
       id="G4uScience-{{ section.id }}"
     >
-      {{ section.settings.title | escape }}
+      {{ section.settings.title | replace: "|", "<br>" }}
     </h2>
 
     <div class="g4u-science__intro rte">
