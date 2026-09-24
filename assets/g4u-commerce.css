@@ -84,7 +84,16 @@
 .g4u-product-card .price--on-sale .price__sale { letter-spacing:4%;  align-items: center; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; }
 .g4u-product-card .price--on-sale .price-item--regular { letter-spacing:4%; color: var(--g4u-ink); font-size: 1.6rem; margin: 0; opacity: 1; }
 .g4u-product-card .price--on-sale .price-item--sale { letter-spacing:4%;  color: var(--g4u-orange); font-size: 18px; margin: 0; }
-.g4u-price__discount { align-items: center; align-self: stretch; background: var(--g4u-orange); border-radius: .8rem; color: #fff; display: inline-flex; font-size: 1.4rem; justify-content: center; letter-spacing: .02em; min-height: 4rem; padding: .6rem 1.2rem; }
+.g4u-price__discount {
+  align-items: center; align-self: stretch; background: var(--g4u-orange);
+   border-radius: .8rem; color: #fff; display: inline-flex; font-size: 1.4rem;
+    justify-content: center; letter-spacing: .02em; min-height: 37px; padding: .6rem 1.2rem;
+  
+      font-size: 14px;
+    line-height: 12px;
+    justify-content: center;
+    letter-spacing: 5%;
+  }
 .g4u-card__subtitle { color: var(--g4u-ink); font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; margin: 0; }
 .g4u-card__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 16px !important; }
 .g4u-card__tag { align-items: center; 
