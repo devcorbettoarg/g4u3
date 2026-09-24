@@ -557,7 +557,7 @@
 .g4u-contact__media img { height: 100%; object-fit: cover; width: 100%; }
 .g4u-contact__content {  border-radius: 0 1.2rem 1.2rem 0; padding: 0rem 5.6rem; }
 .g4u-contact__header { margin: 0 0 3.2rem; max-width: 45rem; text-align: left; }
-.g4u-contact__header > p { font-family: "Europa Grotesk SH Con"; font-size: 18px; letter-spacing: 10%; margin: 0 0 1.2rem; text-transform: uppercase; }
+.g4u-contact__header > p { font-family: "Europa Grotesk SH Con"; font-size: 18px; letter-spacing:10%; margin: 0 0 1.2rem; text-transform: uppercase; }
 .g4u-contact__header h1 { color: inherit; font-family: "Europa Grotesk SH"; font-size: 48px;
    font-style: normal; font-weight: 700; letter-spacing: 1%; line-height: 1; margin: 0 0 1.6rem; text-transform: uppercase; }
 .g4u-contact__header .rte { font-size: 16px; letter-spacing: 4%; line-height: 1.45; max-width:465px; }
