@@ -692,7 +692,7 @@ top:-10px;}
 .g4u-comparison__table td:nth-child(even) { background: rgba(80, 3, 34, .07); }
 .g4u-comparison__table th:last-child,
 .g4u-comparison__table td:last-child { background: rgba(255, 70, 34, .7); font-weight: 400; }
-.g4u-comparison__table thead th:first-child { font-size: 2rem; font-weight: 700;
+.g4u-comparison__table thead th:first-child { font-size: 2rem; font-weight: 500;
 letter-spacing:5% !important; }
 .g4u-comparison__table thead th:last-child { font-weight: 700; }
 .g4u-comparison__note { color: var(--g4u-orange); font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; margin: 2rem auto 0; max-width: 104rem; text-align: left; }
