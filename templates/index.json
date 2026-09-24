@@ -513,7 +513,7 @@
         "service_nutrition": {
           "type": "benefit",
           "settings": {
-            "text": "Nutrición inteligente, con sabor auténtico y beneficios reales"
+            "text": "Nutrición inteligente, \ncon sabor auténtico\n y beneficios reales"
           }
         },
         "service_delivery": {
