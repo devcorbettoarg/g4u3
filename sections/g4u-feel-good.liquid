@@ -82,7 +82,7 @@
     >
       {{ section.settings.heading | escape }}
 
-            {{ section.settings.accent_heading2 | escape }}   <span class="g4u-feel-good__accent">
+           {% if section.settings.accent_heading2   %}<br> {{ section.settings.accent_heading2 | escape }} {% endif %}  <span class="g4u-feel-good__accent">
   {{ section.settings.accent_heading | escape }}
       </span>
     </h2>
