@@ -44,8 +44,6 @@
 
 .search__button:not(:focus-visible):not(.focused),
 .reset__button:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
-  background-color: inherit;
 }
 
 .search__button:hover .icon,

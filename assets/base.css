@@ -1292,10 +1292,10 @@ button.shopify-payment-button__button--unbranded {
     rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
-.button:after,
-.shopify-challenge__button:after,
-.customer button:after,
-.shopify-payment-button__button--unbranded:after {
+.button:after2,
+.shopify-challenge__button:after2,
+.customer button:after2,
+.shopify-payment-button__button--unbranded:after2 {
   content: '';
   position: absolute;
   top: var(--buttons-border-width);

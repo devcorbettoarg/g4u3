@@ -51,7 +51,7 @@
   background: var(--g4u-ink);
   color: #fff;
   display: block;
-  height: 90rem;
+  height: 100vh;
   overflow: hidden;
   position: relative;
 }
@@ -116,10 +116,10 @@
 .g4u-home-hero__body {
   font-size: 18px;
   line-height: 27px;
-  letter-spacing: .04em;
+  letter-spacing: 2%;
   color:#FFF8F0;
   margin: 0 0 3.2rem;
-  font-weight: 400;
+  font-weight: 300;
   max-width: 49rem;
    font-family: "Europa Grotesk SH";
 }
@@ -148,8 +148,8 @@
   justify-content: center;
   pointer-events: auto;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
+  transform: translateY(-40%);
   padding: 0;
   transition: background-color .2s ease, transform .2s ease;
   width: 4.8rem;
@@ -161,10 +161,9 @@
 .g4u-hero__arrow:hover {
   background: var(--g4u-cream);
   color: var(--g4u-burgundy);
-  transform: translateX(.2rem);
 }
 
-.g4u-hero__arrow--prev:hover { transform: translateX(-.2rem); }
+.g4u-hero__arrow--prev:hover {  }
 .g4u-hero__arrow svg { height: 2rem; width: 2rem; }
 .g4u-hero__arrow--prev svg { transform: rotate(180deg); }
 
@@ -218,11 +217,11 @@
 .g4u-choice-banner__accent { color: var(--g4u-choice-accent, var(--g4u-orange)); }
 .g4u-choice-banner__object {
   display: inline-block;
-  height: .95em;
-  margin: -.08em .08em;
+  height: 100px;
+  margin: -.08em .08em 0em;
   object-fit: contain;
   vertical-align: middle;
-  width: .95em;
+  width:100px;
 }
 
 .g4u-choice-banner__object--tortilla { width: 1.15em; }
@@ -262,7 +261,7 @@
   letter-spacing: .04em;
   line-height: 1.5;
   margin: auto;
-  max-width: 42rem;
+  max-width: 414px;
 }
 
 .g4u-featured-products__grid {
@@ -452,7 +451,7 @@
 .g4u-flour-faq__header h2 { color: inherit; font-size: 4.8rem; line-height: 1; margin: 0 0 2.4rem; }
 .g4u-flour-faq__header .rte { font-family: var(--font-body-family); font-size: 1.8rem; font-weight: 400; letter-spacing: 0; line-height: 1.5; }
 .g4u-flour-faq__items { display: grid; gap: 1.6rem; margin: auto; max-width: 67.2rem; text-align: left; }
-.g4u-flour-faq__item { border-bottom: .1rem solid rgba(35, 31, 32, .45); border-top: .1rem solid rgba(35, 31, 32, .45); }
+.g4u-flour-faq__item {  border-top: .1rem solid rgba(35, 31, 32, .45); }
 .g4u-flour-faq__item summary { align-items: center; cursor: pointer; display: flex; font-size: 1.8rem; justify-content: space-between; letter-spacing: .04em; line-height: 1.5; list-style: none; padding: 1.6rem 2.5rem 1.6rem 0; }
 .g4u-flour-faq__item summary::-webkit-details-marker { display: none; }
 .g4u-flour-faq__item summary span { border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; flex: 0 0 auto; height: .8rem; transform: rotate(45deg) translateY(-.25rem); transition: transform .2s ease; width: .8rem; }
