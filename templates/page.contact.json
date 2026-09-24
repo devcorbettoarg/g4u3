@@ -12,9 +12,9 @@
     "contact": {
       "type": "g4u-contact",
       "settings": {
-        "eyebrow": "Estamos para ayudarte",
-        "title": "Contactanos",
-        "intro": "<p>Escribinos y nuestro equipo te responderá a la brevedad.</p>",
+        "eyebrow": "Contacto",
+        "title": "¿En qué podemos ayudarte?",
+        "intro": "<p>¿Tenés una consulta sobre nuestros productos, un pedido especial o simplemente querés saber más sobre G4U? Completá el formulario y nuestro equipo te responderá a la brevedad.</p>",
         "image": "shopify://shop_images/Placeholder_Image.png",
         "image_alt": "Productos G4U sobre una mesa",
         "button_label": "Enviar mensaje",
