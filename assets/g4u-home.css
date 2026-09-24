@@ -601,7 +601,7 @@ font-weight: 400;
 .g4u-science__media { aspect-ratio: 1; border-radius: 1.2rem; overflow: hidden; }
 .g4u-science__image { height: 100%; object-fit: cover; width: 100%; }
 .g4u-science__tagline {
-  font-family: var(--g4u-display);
+   font-family: "Europa Grotesk SH Con";
   font-size: 1.8rem;
   letter-spacing: .1em;
   margin: 0 0 1.6rem;
