@@ -1397,6 +1397,222 @@
     background: #500322;
   }
 
+  /* Panel "Armá tu pack" */
+  #PackBuilder-{{ section.id }} .pb-summary__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__heading-row {
+    display: block;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__title {
+    font-family: "Europa Grotesk SH";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .05em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__message {
+    color: #766c70;
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    margin: 8px 0 0;
+    min-height: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress {
+    min-height: 43px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__track {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__dot {
+    background: #500322;
+    border: 1px solid #eae4dc;
+    height: 16px;
+    top: 50%;
+    width: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    margin: 0 7.5px 0 39.5px;
+    position: relative;
+    text-align: center;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span {
+    color: #500322;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 4px;
+    line-height: 1.5;
+    min-width: 45px;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
+    background: #fff8f0;
+    border: 1px solid #eae4dc;
+    border-radius: 50%;
+    content: '';
+    height: 16px;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span.is-reached::before {
+    background: #500322;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span.is-reached {
+    color: #500322;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels strong,
+  #PackBuilder-{{ section.id }} .pb-progress__levels small {
+    font: inherit;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels small {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__groups {
+    gap: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group {
+    background: #fff8f0;
+    border: 1px solid #d5d0ca;
+    border-radius: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary {
+    background: #eae4dc;
+    min-height: 69px;
+    padding: 12px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary strong {
+    color: #766c70;
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .04em;
+    line-height: 1.5;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group summary small {
+    color: #766c70;
+    font-family: "Europa Grotesk SH";
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .05em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__count {
+    color: #ff4622;
+    font-family: "Europa Grotesk SH";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 8px;
+    letter-spacing: .04em;
+    line-height: 1.5;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__count svg {
+    color: #766c70;
+    height: 16px;
+    width: 16px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__items {
+    gap: 24px;
+    padding: 24px 20px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-group__empty {
+    color: #766c70;
+    font-family: "Europa Grotesk SH";
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: .05em;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected {
+    border: 0;
+    border-radius: 0;
+    gap: 16px;
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    padding: 0;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__image,
+  #PackBuilder-{{ section.id }} .pb-selected__fallback {
+    background: #f2ebe4;
+    border-radius: 12px;
+    height: 72px;
+    mix-blend-mode: multiply;
+    width: 72px;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__title,
+  #PackBuilder-{{ section.id }} .pb-selected__price {
+    color: #26131b;
+    font-family: "Europa Grotesk SH";
+    font-size: 14px;
+    font-style: normal;
+    letter-spacing: .04em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__title {
+    font-weight: 500;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__price {
+    font-weight: 400;
+    margin-top: 3px;
+  }
+
   #PackBuilder-{{ section.id }} :focus-visible {
     outline: 2px solid var(--pb-accent);
     outline-offset: 3px;
