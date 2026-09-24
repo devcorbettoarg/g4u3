@@ -1256,6 +1256,10 @@
     width: 20px;
   }
 
+  #PackBuilder-{{ section.id }} .pb__tab.is-active .pb__tab-icon img {
+    filter: brightness(0) saturate(100%);
+  }
+
   #PackBuilder-{{ section.id }} .pb__grid {
     grid-auto-columns: calc((100% - 32px) / 3);
     gap: 16px;
@@ -1994,7 +1998,9 @@
     };
 
     const updateProgress = totals => {
-      const maxLevel = settings.levels[settings.levels.length - 1]?.qty || 1;
+      // El último escalón del diseño representa un pack completo de al menos 7 ítems.
+      // Evita que una configuración incompleta del editor complete la barra con un único producto.
+      const maxLevel = Math.max(settings.levels[settings.levels.length - 1]?.qty || 0, 7);
       const percentage = Math.min((totals.quantity / maxLevel) * 100, 100);
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
