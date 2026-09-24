@@ -57,7 +57,7 @@
         "snacks_collection": "hydrogen",
         "snacks_minimum": 1,
         "enforce_category_minimums": true,
-        "discount_1_qty": 3,
+        "discount_1_qty": 2,
         "discount_1_value": 5,
         "discount_2_qty": 5,
         "discount_2_value": 10,

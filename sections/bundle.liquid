@@ -1456,11 +1456,11 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels {
-    display: flex;
-    gap: 0;
-    justify-content: space-between;
-    margin: 0 7.5px 0 39.5px;
-    position: relative;
+    height: 44px;
+    inset: 0;
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
     text-align: center;
   }
 
@@ -1475,6 +1475,8 @@
     min-width: 45px;
     padding-top: 20px;
     position: relative;
+    position: absolute;
+    transform: translateX(-50%);
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
@@ -2017,6 +2019,7 @@
 
       root.querySelectorAll('[data-level]').forEach((node, index) => {
         const level = settings.levels[index];
+        if (level) node.style.left = `${Math.min((level.qty / maxLevel) * 100, 100)}%`;
         node.classList.toggle('is-reached', Boolean(level && totals.quantity >= level.qty));
       });
 
