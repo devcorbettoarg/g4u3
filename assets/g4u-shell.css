@@ -70,6 +70,7 @@ body.template-suffix-nosotros .announcement-bar-section {
   align-items: center;
   display: flex;
   min-height: 6rem;
+  margin-left:0px;
 }
 
 /* Keep the custom mark independent from Dawn's optional logo setting. */
