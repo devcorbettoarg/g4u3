@@ -127,7 +127,7 @@
             "image": "shopify://shop_images/g4u-flour-science.jpg",
             "image_alt": "Espigas de trigo sobre harina",
             "tagline": "Almidón resistente RS4",
-            "heading": "El carbohidrato que se comporta como fibra.",
+            "heading": "El carbohidrato que | se comporta como fibra.",
             "text": "<p>Nuestra base está formulada con almidón resistente tipo 4 (RS4), que no se digiere como un carbohidrato tradicional. Ayuda a disminuir los carbohidratos netos, aporta mayor saciedad y contribuye al equilibrio de la microbiota intestinal. Es uno de los componentes que hace posible un pan con un perfil nutricional completamente diferente.</p>",
             "why_label": "POR QUÉ LO USAMOS",
             "benefit_1": "Menor impacto glucémico",
@@ -417,6 +417,7 @@
         "image_alt": "Mesa compartida con panes G4U",
         "heading": "Sentite bien,",
         "accent_heading": "comiendo rico",
+        "accent_heading2": "",
         "text": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>",
         "button_label": "Conocé nuestra harina",
         "button_link": ""
