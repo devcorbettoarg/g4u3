@@ -988,6 +988,17 @@ body.template-suffix-harina
     margin-bottom: 6rem;
     max-width: 76.8rem;
   }
+  .g4u-flour-challenge__header .g4u-eyebrow  {
+    font-family: Europa Grotesk SH;
+font-weight: 400;
+font-style: Condensed;
+font-size: 18px;
+line-height: 150%;
+letter-spacing: 10%;
+text-align: center;
+text-transform: uppercase;
+
+  }
 
   body.template-suffix-harina .g4u-flour-challenge__media {
     border-radius: 1.2rem;
