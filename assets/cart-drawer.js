@@ -41,11 +41,12 @@ class CartDrawer extends HTMLElement {
     this.addEventListener(
       'transitionend',
       () => {
+        const emptyContainer = this.querySelector('.drawer__inner-empty');
         const containerToTrapFocusOn = this.classList.contains('is-empty')
-          ? this.querySelector('.drawer__inner-empty')
-          : document.getElementById('CartDrawer');
+          ? (emptyContainer || this.querySelector('.drawer__inner'))
+          : (document.getElementById('CartDrawer') || this.querySelector('.drawer__inner'));
         const focusElement = this.querySelector('.drawer__close') || this.querySelector('.drawer__inner');
-        trapFocus(containerToTrapFocusOn, focusElement);
+        if (containerToTrapFocusOn && focusElement) trapFocus(containerToTrapFocusOn, focusElement);
       },
       { once: true },
     );
