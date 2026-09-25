@@ -1398,7 +1398,7 @@
   #PackBuilder-{{ section.id }} .pb-summary__inner {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
   }
 
   #PackBuilder-{{ section.id }} .pb-summary__heading-row {
@@ -1429,13 +1429,13 @@
   #PackBuilder-{{ section.id }} .pb-summary__content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
   }
 
   #PackBuilder-{{ section.id }} .pb-progress {
-    min-height: 55px;
-    margin-bottom: 4px;
-    padding: 0 0 8px;
+    min-height: 0;
+    margin: 0 0 16px;
+    padding: 0;
     position: relative;
     width: 100%;
   }
@@ -1456,13 +1456,11 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-progress__levels {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 52px;
-    inset: 0;
+    display: block;
+    height: 48px;
     margin: 0;
+    padding: 0;
     pointer-events: none;
-    position: absolute;
     text-align: center;
   }
 
@@ -1512,6 +1510,7 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-summary__groups {
+    display: grid;
     gap: 12px;
   }
 
@@ -1566,8 +1565,8 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-group__items {
-    gap: 24px;
-    padding: 24px 20px;
+    gap: 16px;
+    padding: 16px 12px;
   }
 
   #PackBuilder-{{ section.id }} .pb-group__empty {
@@ -1581,22 +1580,24 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-selected {
+    display: grid;
+    align-items: center;
     border: 0;
     border-radius: 0;
+    gap: 12px;
     column-gap: 12px;
-    grid-template-columns: 72px minmax(0, 1fr);
-    padding: 0 28px 0 0;
-    position: relative;
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    padding: 0;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__image,
   #PackBuilder-{{ section.id }} .pb-selected__fallback {
     background: #f2ebe4;
     border-radius: 12px;
-    height: 72px;
+    height: 64px;
     mix-blend-mode: multiply;
     object-fit: contain;
-    width: 72px;
+    width: 64px;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__title,
@@ -1614,49 +1615,38 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls {
-    position: absolute;
-    right: 0;
-    top: -10px;
-    z-index: 1;
-    display: flex;
-    width: 24px;
-    height: 0;
-    justify-content: flex-end;
-    border: 0;
-    overflow: visible;
+    display: grid;
+    grid-template-columns: 22px 24px 22px;
+    align-items: center;
+    width: auto;
+    height: 26px;
+    overflow: hidden;
+    border: 1px solid #eae4dc;
+    border-radius: 999px;
+    background: transparent;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls button {
-    display: grid;
-    width: 28px;
-    height: 28px;
+    display: block;
+    width: 22px;
+    height: 24px;
     padding: 0;
-    place-items: center;
-    border: 1px solid #eae4dc;
-    border-radius: 50%;
-    background: #fff8f0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: #26131b;
     font-size: 16px;
     line-height: 1;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls span {
-    position: absolute;
-    right: -2px;
-    top: 78px;
-    display: grid;
+    position: static;
+    display: block;
+    color: #26131b;
     width: 24px;
-    height: 24px;
-    place-items: center;
-    border-radius: 50%;
-    background: #23121b;
-    color: #fff8f0;
+    height: auto;
     font-size: 12px;
     font-weight: 400;
-  }
-
-  #PackBuilder-{{ section.id }} .pb-selected__controls button[data-selected-plus] {
-    display: none;
   }
 
   #PackBuilder-{{ section.id }} .pb-summary__totals > div:not(.pb-summary__total-row) strong {
