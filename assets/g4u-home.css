@@ -832,7 +832,7 @@ line-height:80% !important; }
 }
 
 @media screen and (max-width: 749px) {
-  .g4u-home-hero { height: min(90rem, 100svh); min-height: 68rem; }
+  .g4u-home-hero { height: 100vh; min-height: 100vh; }
   .g4u-home-hero__content { left: 2rem; right: 2rem; }
   .g4u-hero__arrow--prev { left: 2rem; }
   .g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: 2rem; }
