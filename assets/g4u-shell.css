@@ -333,9 +333,12 @@ body:not(.template-index) #cart-icon-bubble svg path {
   .announcement-bar-section .list-social { display: none; }
   .section-header .header,
   body.template-index .section-header:not(.shopify-section-header-sticky) .header,
-  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header { height: 6.4rem;
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header { height: 6.4rem;
  }
-  body.template-index .section-header:not(.shopify-section-header-sticky) .header { padding-left: 1rem !important; padding-right: 1rem !important; }
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header { padding-left: 1rem !important; padding-right: 1rem !important; }
 
   /* Keep the five mobile header controls inside the viewport. The native
      account layout adds a fourth grid column, which pushed the cart outside
@@ -397,7 +400,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon .icon,
   body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon .svg-wrapper svg,
   body.template-index .section-header.shopify-section-header-sticky .header__icon .icon,
-  body.template-index .section-header.shopify-section-header-sticky .header__icon .svg-wrapper svg {
+  body.template-index .section-header.shopify-section-header-sticky .header__icon .svg-wrapper svg,
+  body.template-suffix-nosotros .section-header .header__icon .icon,
+  body.template-suffix-nosotros .section-header .header__icon .svg-wrapper svg,
+  body.template-suffix-harina .section-header .header__icon .icon,
+  body.template-suffix-harina .section-header .header__icon .svg-wrapper svg {
     height: 2.4rem;
     width: 2.4rem;
   }
@@ -418,11 +425,14 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-collection .g4u-logo__wordmark { height: 1.9rem; left: 4.5rem; right: auto; top: 1.3rem; width: 5.2rem; }
   .g4u-logo,
   body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
-  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 4.8rem; width: 11.6rem; }
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 4.8rem; width: 11.6rem; }
   body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark,
-  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark { height: 4.8rem; width: 4.3rem; }
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo__mark { height: 4.8rem; width: 4.3rem; }
   body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
-  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.25rem; left: 5.4rem; right: auto; top: 1.55rem; width: 6.2rem; }
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.25rem; left: 5.4rem; right: auto; top: 1.55rem; width: 6.2rem; }
 }
 
 /* Footer */
