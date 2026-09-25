@@ -3740,3 +3740,6 @@ details-disclosure > details {
 
 
 
+.metafield-rich_text_field p strong {
+  font-weight:500;
+}
