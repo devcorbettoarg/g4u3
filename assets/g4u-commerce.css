@@ -310,7 +310,7 @@ margin-bottom:0pxl }
 .g4u-product-editorial__eyebrow { font-family: "Europa Grotesk SH Con"; font-size: 1.8rem; letter-spacing: .1em; line-height: 1.5; margin: 0 0 1.6rem; text-transform: uppercase; }
 .g4u-product-editorial h2 { font-size: 4rem; letter-spacing: .01em; line-height: 1; margin: 0 0 1.2rem; text-transform: uppercase; }
 .g4u-product-editorial__copy > .rte { font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; }
-.g4u-product-editorial__copy ul { display: grid; gap: 1.2rem; list-style: none; margin: 2.4rem 0; padding: 0; }
+.g4u-product-editorial__copy ul { display: grid; gap: 0; list-style: none; margin: 2.4rem 0; padding: 0; }
 .g4u-product-editorial__copy li { align-items: center; display: flex; font-size: 1.7rem; gap: 1rem; }
 .g4u-product-editorial__copy li::before { content: none; }
 .g4u-product-editorial__link { align-items: center; color: var(--g4u-orange); display: inline-flex; font-family: var(--g4u-display); font-size: 1.6rem; gap: .8rem; letter-spacing: .04em; margin-top: 2.4rem; text-decoration: none; }
