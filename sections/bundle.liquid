@@ -407,7 +407,7 @@
                   <strong data-discount-amount>—</strong>
                 </div>
                 <div class="pb-summary__total-row">
-                  <span>{{ section.settings.total_label }}</span>
+                  <span>Total</span>
                   <strong data-estimated-total>—</strong>
                 </div>
               </div>
@@ -1429,12 +1429,13 @@
   #PackBuilder-{{ section.id }} .pb-summary__content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
   }
 
   #PackBuilder-{{ section.id }} .pb-progress {
-    min-height: 43px;
-    padding: 0;
+    min-height: 55px;
+    margin-bottom: 4px;
+    padding: 0 0 8px;
     position: relative;
     width: 100%;
   }
@@ -1457,7 +1458,7 @@
   #PackBuilder-{{ section.id }} .pb-progress__levels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    height: 44px;
+    height: 52px;
     inset: 0;
     margin: 0;
     pointer-events: none;
@@ -1473,7 +1474,8 @@
     font-weight: 400;
     gap: 4px;
     line-height: 1.5;
-    min-width: 45px;
+    min-width: 0;
+    white-space: nowrap;
     padding-top: 20px;
     position: absolute;
     transform: translateX(-50%);
@@ -1581,9 +1583,10 @@
   #PackBuilder-{{ section.id }} .pb-selected {
     border: 0;
     border-radius: 0;
-    gap: 16px;
-    grid-template-columns: 72px minmax(0, 1fr) auto;
-    padding: 0;
+    column-gap: 12px;
+    grid-template-columns: 72px minmax(0, 1fr);
+    padding: 0 28px 0 0;
+    position: relative;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__image,
@@ -1592,6 +1595,7 @@
     border-radius: 12px;
     height: 72px;
     mix-blend-mode: multiply;
+    object-fit: contain;
     width: 72px;
   }
 
@@ -1607,6 +1611,73 @@
 
   #PackBuilder-{{ section.id }} .pb-selected__title {
     font-weight: 500;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    z-index: 1;
+    display: flex;
+    width: 24px;
+    height: 0;
+    justify-content: flex-end;
+    border: 0;
+    overflow: visible;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls button {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #eae4dc;
+    border-radius: 50%;
+    background: #fff8f0;
+    color: #26131b;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls span {
+    position: absolute;
+    right: -2px;
+    top: 78px;
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    border-radius: 50%;
+    background: #23121b;
+    color: #fff8f0;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls button[data-selected-plus] {
+    display: none;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__totals > div:not(.pb-summary__total-row) strong {
+    font-weight: 400;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__total-row,
+  #PackBuilder-{{ section.id }} .pb-summary__total-row strong {
+    color: #26131b;
+    font-family: "Europa Grotesk SH", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .05em;
+    line-height: 1.2;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-summary__submit,
+  #PackBuilder-{{ section.id }} .pb-summary__submit:disabled {
+    background: #766c70;
+    opacity: 1;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__price {
