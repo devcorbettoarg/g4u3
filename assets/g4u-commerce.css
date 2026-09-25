@@ -204,7 +204,13 @@
 .template-product .g4u-quantity-options__option { align-items: center; background: transparent; border: .1rem solid #26131b; border-radius: 10rem; box-sizing: border-box; color: #26131b; cursor: pointer; display: inline-flex; flex: 0 0 auto; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.6rem; font-weight: 400; gap: .8rem; justify-content: center; letter-spacing: .04em; line-height: 1.5; min-height: 4rem; padding: .8rem 1.6rem; }
 .template-product .g4u-quantity-options__option.is-selected { background: #26131b; border-color: #26131b; color: #fff8f0; }
 .template-product .product-form__buttons { align-items: stretch; display: flex; flex-direction: column; gap: 1.6rem; max-width: none; padding-top: .8rem; }
-.template-product .product-form__submit { background: #26131b; border: .1rem solid #26131b; border-radius: 10rem; color: #fff8f0; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.6rem; font-weight: 400; letter-spacing: .05em; line-height: .8; min-height: 4.5rem; }
+.template-product .product-form__submit { 
+  background: #26131b; border: .1rem solid #26131b; 
+  border-radius: 10rem; color: #fff8f0; 
+  font-family: "Europa Grotesk SH", var(--g4u-display); 
+  font-size: 1.6rem; font-weight: 400; letter-spacing: .05em; 
+  line-height: .8; min-height: 4.5rem;
+margin-bottom:0pxl }
 .template-product .product-form__submit::before, .template-product .product-form__submit::after { box-shadow: none; content: none; }
 .template-product .product-form__submit:hover { background: var(--g4u-orange); color: var(--g4u-cream); }
 .template-product .shopify-payment-button { margin-top: 0; width: 100%; }
