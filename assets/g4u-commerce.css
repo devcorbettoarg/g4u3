@@ -786,7 +786,27 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   cart-drawer .g4u-cart-drawer__payments { align-items: center; display: flex; gap: .5rem; justify-content: center; list-style: none; margin: 3.6rem 0 0; padding: 0; }
   cart-drawer .g4u-cart-drawer__payments svg { display: block; height: 2.4rem; width: 3.8rem; }
 }
-@media screen and (max-width: 989px) { .g4u-cart-drawer__upsells { display: none; } .g4u-cart-drawer__shipping { background: #f7a0ae; margin: 0 -2rem; padding: 1.6rem 2rem; } .g4u-cart-drawer__shipping > span:not(.g4u-cart-drawer__shipping-progress) { display: none; } .g4u-cart-drawer__shipping p { font-size: 1.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 0 0 1rem; text-align: center; } .g4u-cart-drawer__shipping p strong { font-weight: 500; } .g4u-cart-drawer__shipping-progress { background: rgba(255,255,255,.75); border-radius: 10rem; display: block; height: .2rem; overflow: hidden; } .g4u-cart-drawer__shipping-progress i { background: var(--g4u-burgundy); display: block; height: 100%; } }
+@media screen and (min-width: 990px) {
+  cart-drawer.is-empty .drawer__inner { align-items: stretch; grid-template-columns: minmax(0, 44.9rem) 2rem minmax(0, 30.4rem) 2.4rem; grid-template-rows: 6rem minmax(0, 1fr); padding: 0; }
+  cart-drawer.is-empty .drawer__header { display: flex; grid-column: 1 / -1; grid-row: 1; }
+  cart-drawer.is-empty .drawer__inner-empty { grid-column: 1; grid-row: 2; }
+  cart-drawer.is-empty .g4u-cart-drawer__body { display: none; }
+  cart-drawer.is-empty .g4u-cart-drawer__upsells { display: flex; grid-column: 3; grid-row: 2; }
+}
+@media screen and (max-width: 989px) {
+  .g4u-cart-drawer__upsells { display: none; }
+  cart-drawer.is-empty .drawer__inner { display: flex; flex-direction: column; align-items: stretch; padding: 0 2rem; }
+  cart-drawer.is-empty .drawer__header { display: flex; order: 0; }
+  cart-drawer.is-empty .drawer__inner-empty { flex: 0 0 auto; height: auto; order: 1; padding: 1rem 0; }
+  cart-drawer.is-empty .g4u-cart-drawer__body { display: none; }
+  cart-drawer.is-empty .g4u-cart-drawer__upsells { display: flex; flex: 1 1 auto; order: 2; overflow-y: auto; padding: 1.6rem 0; }
+  .g4u-cart-drawer__shipping { background: #f7a0ae; margin: 0 -2rem; padding: 1.6rem 2rem; }
+  .g4u-cart-drawer__shipping > span:not(.g4u-cart-drawer__shipping-progress) { display: none; }
+  .g4u-cart-drawer__shipping p { font-size: 1.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 0 0 1rem; text-align: center; }
+  .g4u-cart-drawer__shipping p strong { font-weight: 500; }
+  .g4u-cart-drawer__shipping-progress { background: rgba(255,255,255,.75); border-radius: 10rem; display: block; height: .2rem; overflow: hidden; }
+  .g4u-cart-drawer__shipping-progress i { background: var(--g4u-burgundy); display: block; height: 100%; }
+}
 
 /* Combo builder */
 .g4u-combo { background: var(--g4u-cream); color: var(--g4u-ink); padding: 18rem 4rem 9.6rem; }.g4u-combo__inner { display: block; margin: auto; max-width: 112rem; }.g4u-combo__header { margin: 0 auto 5.6rem; max-width: 72rem; text-align: center; }.g4u-combo__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.6rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }.g4u-combo__header h1 { color: inherit; font-size: clamp(4.4rem, 6vw, 7.2rem); line-height: .9; margin: 0 0 1.6rem; text-transform: uppercase; }.g4u-combo__header .rte { font-size: 1.8rem; line-height: 1.45; }
