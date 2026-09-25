@@ -187,7 +187,9 @@
 .template-product .g4u-product-highlights ul { display: grid; gap: .8rem 2.4rem; grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
 .template-product .g4u-product-highlights li { 
   font-weight:500;
-  align-items: center; display: flex; font-family: var(--g4u-display); font-size: 1.45rem; gap: .8rem; letter-spacing: .02em; line-height: 1.25; }
+  align-items: center; display: flex; font-family: var(--g4u-display); font-size: 1.45rem;
+   gap: .8rem; letter-spacing: 4%; line-height: 1.25;
+  color:#26131B; }
 .template-product .g4u-product-highlights li::before { content: none; }
 .template-product .g4u-benefit-check { flex: 0 0 2rem; filter: brightness(0) saturate(100%) invert(38%) sepia(99%) saturate(3540%) hue-rotate(353deg) brightness(102%) contrast(105%); height: 2rem; object-fit: contain; width: 2rem; }
 .template-product .product__description { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; }
