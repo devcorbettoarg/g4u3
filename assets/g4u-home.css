@@ -384,8 +384,8 @@
   .g4u-home-hero__heading { font-size: 4.2rem; }
   .g4u-home-hero__body { font-size: 1.6rem; }
   .g4u-home-hero__controls { inset: 0; }
-  .g4u-choice-banner { min-height: 32rem; padding: 6.4rem 2rem; }
-  .g4u-choice-banner__copy { font-size: 4rem; }
+  .g4u-choice-banner { min-height: auto; padding: 3.4rem 2rem; }
+  .g4u-choice-banner__copy { font-size: 3rem; }
   .g4u-featured-products { padding: 6.4rem 2rem; }
   .g4u-featured-products__grid { display: flex; gap: 1.2rem; overflow-x: auto; scroll-snap-type: x mandatory; }
   .g4u-featured-products__item { flex: 0 0 78%; scroll-snap-align: start; }
