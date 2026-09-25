@@ -2008,9 +2008,9 @@
     };
 
     const updateProgress = totals => {
-      // Coordenadas medidas en el track de 306px del Figma: 54, 117 y 224px.
+      // Centros medidos en el track de 306px del Figma: 62px, 164.5px y 271.5px.
       // El dot y cada hito comparten exactamente estas posiciones.
-      const figmaPositions = [17.65, 38.24, 73.2];
+      const figmaPositions = [20.26, 53.76, 88.73];
       const levelPositions = settings.levels.map((level, index) => (
         figmaPositions[index] ?? ((index + .5) / settings.levels.length) * 100
       ));

@@ -131,15 +131,18 @@ body.template-suffix-nosotros .announcement-bar-section {
 .g4u-mega-menu__category-link { color: var(--g4u-burgundy); display: inline-block; font-size: 1.45rem; font-weight: 500; padding: .4rem 0; text-decoration: none; }
 .g4u-mega-menu__category-link:hover { color: var(--g4u-orange); text-decoration: underline; text-underline-offset: .25rem; }
 .g4u-mega-menu__cta {
-  --alpha-button-background: 0;
+  --alpha-button-background: 0 !important;
   --buttons-border-opacity: 1;
   --buttons-radius: 10rem;
   --buttons-radius-outset: 10rem;
-  --color-button: 38, 19, 27;
+  --color-button: 80, 3, 34;
   --color-button-text: 38, 19, 27;
   --border-offset: 0px;
+  background: transparent !important;
+  border: .1rem solid rgb(80, 3, 34) !important;
   border-radius: 10rem;
-  color: var(--g4u-ink);
+  box-shadow: none !important;
+  color: rgb(80, 3, 34) !important;
   font-size: 1.3rem;
   min-height: 3.8rem;
   padding: .7rem 1.8rem;
@@ -148,6 +151,8 @@ body.template-suffix-nosotros .announcement-bar-section {
   --alpha-button-background: 1;
   --color-button: 80, 3, 34;
   --color-button-text: 255, 248, 240;
+  background: rgb(80, 3, 34) !important;
+  color: rgb(255, 248, 240) !important;
 }
 .g4u-mega-menu__products { display: grid; gap: 1.6rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .g4u-mega-menu__product { color: var(--g4u-ink); display: grid; gap: 1rem; min-width: 0; text-decoration: none; }
