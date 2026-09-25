@@ -393,6 +393,14 @@ body:not(.template-index) #cart-icon-bubble svg path {
   .section-header .header__icon--cart {
     margin-right: 0;
   }
+
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon .icon,
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon .svg-wrapper svg,
+  body.template-index .section-header.shopify-section-header-sticky .header__icon .icon,
+  body.template-index .section-header.shopify-section-header-sticky .header__icon .svg-wrapper svg {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 4.8rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
   .section-header.shopify-section-header-sticky .g4u-logo--forced { flex-basis: 11.6rem; height: 4.8rem; width: 11.6rem; }
