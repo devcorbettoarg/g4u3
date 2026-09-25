@@ -1131,7 +1131,10 @@ margin-top:2px;}
 }
 
 @media screen and (max-width: 749px) {
+  .g4u-feel-good__title  br {
+    display:none;
+  }
   body.template-suffix-nosotros .g4u-about-hero { min-height: 78rem; }
-  body.template-suffix-nosotros .g4u-feel-good__accent { display: block; }
+  body.template-suffix-nosotros .g4u-feel-good__accent { display: inline; }
   body.template-suffix-nosotros .g4u-feel-good__title { max-width: 34rem; }
 }
