@@ -329,6 +329,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-index .section-header:not(.shopify-section-header-sticky) .header,
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header { height: 6.4rem;
  }
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header { padding-left: 1rem !important; padding-right: 1rem !important; }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 4.8rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
   .section-header.shopify-section-header-sticky .g4u-logo--forced { flex-basis: 11.6rem; height: 4.8rem; width: 11.6rem; }
