@@ -426,7 +426,7 @@ color: var(--g4u-ink);
   margin-inline: auto;
   max-width: none;
   min-height: 60vh;
-  padding: 7rem 4rem 4rem;
+  padding: 72px 4rem 4rem;
   width: 100%;
 }
 
@@ -454,7 +454,7 @@ color: var(--g4u-ink);
   font-weight: 400;
   line-height: 1.65;
   margin: 0 auto 6rem;
-  max-width: 67.2rem;
+  max-width: 720px;
 }
 
 .template-policy .shopify-policy__body h2,
@@ -483,7 +483,7 @@ color: var(--g4u-ink);
 
 @media screen and (max-width: 749px) {
   .template-policy .shopify-policy__container { gap: 4rem; 
-    padding: 7rem 2rem 4rem; }
+    padding: 72px 2rem 4rem; }
   .template-policy .shopify-policy__title h1 { font-size: 4rem; }
   .template-policy .shopify-policy__body h2 { font-size: 2.8rem; margin-top: 4.8rem; }
   .template-policy .shopify-policy__body h3 { font-size: 2rem; }
