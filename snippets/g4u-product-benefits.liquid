@@ -2,6 +2,7 @@
   assign intro = product.metafields.custom.product_intro.value | default: block.settings.intro
   assign beneficios_obj = product.metafields.custom.lista_beneficios.value
 -%}
+<p>{{ product.metafields.custom.description | metafield_tag }}</p>
 
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
   {%- if intro != blank -%}
