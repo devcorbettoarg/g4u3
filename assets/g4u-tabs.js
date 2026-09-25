@@ -5,15 +5,19 @@ if (!customElements.get('g4u-tabs')) {
       connectedCallback() {
         this.tabs = [...this.querySelectorAll('[role="tab"]')];
         this.panels = [...this.querySelectorAll('[role="tabpanel"]')];
-        this.previous = this.querySelector('[data-g4u-tabs-previous]');
-        this.next = this.querySelector('[data-g4u-tabs-next]');
+        this.previousButtons = [...this.querySelectorAll('[data-g4u-tabs-previous]')];
+        this.nextButtons = [...this.querySelectorAll('[data-g4u-tabs-next]')];
 
         this.tabs.forEach((tab, index) => {
           tab.addEventListener('click', () => this.select(index));
           tab.addEventListener('keydown', (event) => this.onKeydown(event, index));
         });
-        this.previous?.addEventListener('click', () => this.select(this.activeIndex - 1));
-        this.next?.addEventListener('click', () => this.select(this.activeIndex + 1));
+        this.previousButtons.forEach((button) => {
+          button.addEventListener('click', () => this.select(this.activeIndex - 1));
+        });
+        this.nextButtons.forEach((button) => {
+          button.addEventListener('click', () => this.select(this.activeIndex + 1));
+        });
         this.select(0, false);
       }
 
