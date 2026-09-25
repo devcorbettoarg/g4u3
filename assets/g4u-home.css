@@ -691,7 +691,8 @@ top:-10px;}
 .g4u-comparison__table td { border-bottom: .1rem solid #d5d4d4; font-size: 2rem; line-height: 1.2; padding: 1.6rem 2.4rem; text-align: center; }
 .g4u-comparison__table thead th {
   border-bottom-color: var(--g4u-burgundy); font-weight: 400; height: 8.8rem; line-height: 1.2; }
-.g4u-comparison__table th:first-child { font-size: 1.6rem; font-weight: 500; padding-left: 0; text-align: left; width: 24rem; }
+.g4u-comparison__table th:first-child {
+   font-size: 1.6rem; font-weight: 500; padding-left: 0; text-align: left; width: 24rem; }
 .g4u-comparison__table th:not(:first-child),
 .g4u-comparison__table td { width: 16rem; }
 .g4u-comparison__table th:nth-child(even),
@@ -730,6 +731,7 @@ padding:0px 40px;}
   .g4u-comparison__header { margin-bottom: 3.2rem; }
   .g4u-comparison__table-wrap { margin-right: -2rem; }
   .g4u-comparison__table th:first-child {
+    max-width:200px;
     background: #f2ebe4;
     left: 0;
     padding-left: 1rem;
