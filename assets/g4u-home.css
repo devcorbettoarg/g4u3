@@ -719,7 +719,7 @@ padding:0px 40px;}
 @media screen and (max-width: 749px) {
   .g4u-science { padding: 6.4rem 2rem; }
   .g4u-science__header { margin-bottom: 3.2rem; }
-  .g4u-science__tablist { justify-content: flex-start; margin-right: -2rem; }
+  .g4u-science__tablist { justify-content: flex-start; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem; scroll-padding-inline: 2rem; }
   .g4u-science__tab { flex-basis: auto; font-size: 1.6rem; }
   .g4u-science__panels { min-height: 0; }
   .g4u-science__panel { gap: 2.8rem; grid-template-columns: 1fr; padding: 3.2rem 0; }
