@@ -2209,6 +2209,34 @@
       let handled = false;
 
       const dawnDrawer = document.querySelector('cart-drawer');
+      if (dawnDrawer && typeof dawnDrawer.renderContents === 'function') {
+        const drawerSections = typeof dawnDrawer.getSectionsToRender === 'function'
+          ? dawnDrawer.getSectionsToRender().map(section => section.id).filter(Boolean)
+          : [];
+
+        // cart/add.js can return sections from its add response, but rendering
+        // the current page sections again ensures every cart line and total is
+        // synchronized before the drawer opens.
+        if (drawerSections.length) {
+          try {
+            const sectionsUrl = new URL(window.location.href);
+            sectionsUrl.searchParams.set('sections', drawerSections.join(','));
+            const sectionsResponse = await fetch(sectionsUrl.toString(), {
+              headers: { Accept: 'application/json' }
+            });
+            if (sectionsResponse.ok) {
+              const freshSections = await sectionsResponse.json();
+              if (typeof freshSections['cart-drawer'] === 'string') {
+                response = { ...response, sections: freshSections };
+              }
+            }
+          } catch (error) {
+            console.warn('[Pack Builder] No se pudo volver a renderizar el carrito; se usarán las secciones de cart/add.js.', error);
+          }
+        }
+
+      }
+
       if (dawnDrawer && typeof dawnDrawer.renderContents === 'function' && response.sections) {
         const parsedState = {
           ...response,
