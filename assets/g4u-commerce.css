@@ -198,19 +198,21 @@
 .template-product .product-form__input input[type='radio'] + label { border-color: #d5d4d4; border-radius: 10rem; color: var(--g4u-ink); font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; }
 .template-product .product-form__input input[type='radio']:checked + label { background: var(--g4u-burgundy); border-color: var(--g4u-burgundy); color: var(--g4u-cream); }
 .template-product .g4u-quantity-source-hidden { display: none; }
-.template-product .g4u-quantity-options { margin: 2rem 0; }
-.template-product .g4u-quantity-options__heading { font-family: var(--g4u-display); font-size: 1.6rem; margin: 0 0 .8rem; }
-.template-product .g4u-quantity-options__list { display: flex; flex-wrap: wrap; gap: .8rem; }
-.template-product .g4u-quantity-options__option { background: transparent; border: .1rem solid var(--g4u-burgundy); border-radius: 10rem; color: var(--g4u-burgundy); cursor: pointer; font: inherit; padding: 1rem 1.6rem; }
-.template-product .g4u-quantity-options__option.is-selected { background: var(--g4u-burgundy); color: var(--g4u-cream); }
-.template-product .product-form__submit { background: #26131b; border-radius: 10rem; color: var(--g4u-cream); font-family: var(--g4u-display); font-size: 1.6rem; font-weight: 400; letter-spacing: .05em; line-height: .8; min-height: 4.5rem; }
+.template-product .g4u-quantity-options { align-items: flex-start; display: flex; flex-direction: column; gap: .8rem; margin: 0 0 2.4rem; width: 100%; }
+.template-product .g4u-quantity-options__heading { color: #26131b; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.6rem; font-weight: 500; letter-spacing: .04em; line-height: 1.5; margin: 0; }
+.template-product .g4u-quantity-options__list { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 1.6rem; width: 100%; }
+.template-product .g4u-quantity-options__option { align-items: center; background: transparent; border: .1rem solid #26131b; border-radius: 10rem; box-sizing: border-box; color: #26131b; cursor: pointer; display: inline-flex; flex: 0 0 auto; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.6rem; font-weight: 400; gap: .8rem; justify-content: center; letter-spacing: .04em; line-height: 1.5; min-height: 4rem; padding: .8rem 1.6rem; }
+.template-product .g4u-quantity-options__option.is-selected { background: #26131b; border-color: #26131b; color: #fff8f0; }
+.template-product .product-form__buttons { align-items: stretch; display: flex; flex-direction: column; gap: 1.6rem; max-width: none; padding-top: .8rem; }
+.template-product .product-form__submit { background: #26131b; border: .1rem solid #26131b; border-radius: 10rem; color: #fff8f0; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.6rem; font-weight: 400; letter-spacing: .05em; line-height: .8; min-height: 4.5rem; }
 .template-product .product-form__submit::before, .template-product .product-form__submit::after { box-shadow: none; content: none; }
 .template-product .product-form__submit:hover { background: var(--g4u-orange); color: var(--g4u-cream); }
+.template-product .shopify-payment-button { margin-top: 0; width: 100%; }
 .template-product quantity-input.quantity { border-color: #a9a1a3; border-radius: 10rem; min-height: 4.6rem; }
 .template-product .quantity__input { font-family: var(--g4u-display); font-size: 1.8rem; }
 .template-product quantity-input.quantity:focus-within { box-shadow: 0 0 0 .2rem var(--g4u-burgundy); }
-.template-product .product-form__buttons { max-width: none; }
-.template-product .shopify-payment-button__button { background: transparent !important; border: .1rem solid #26131b !important; border-radius: 10rem !important; color: #26131b !important; font-family: var(--g4u-display) !important; font-size: 1.6rem !important; font-weight: 400 !important; letter-spacing: .05em !important; line-height: .8 !important; min-height: 4.5rem !important; }
+.template-product .shopify-payment-button__button { background: transparent !important; border: .1rem solid #26131b !important; border-radius: 10rem !important; color: #26131b !important; font-family: "Europa Grotesk SH", var(--g4u-display) !important; font-size: 1.6rem !important; font-weight: 400 !important; letter-spacing: .05em !important; line-height: .8 !important; min-height: 4.5rem !important; padding: 1.6rem 2.4rem !important; }
+.template-product .g4u-product-shipping-note { color: #766c70; font-family: "Europa Grotesk SH", var(--g4u-display); font-size: 1.4rem; font-style: normal; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 1.6rem 0 0; text-align: center; }
 .template-product .product__accordion { border-bottom: .1rem solid #26131b; border-top: 0; margin-top: 1.6rem; }
 .template-product .product__accordion .summary__title > .svg-wrapper { display: none; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }

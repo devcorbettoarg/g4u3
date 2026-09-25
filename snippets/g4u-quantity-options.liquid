@@ -7,15 +7,16 @@
         {%- if option.active.value != false -%}
           <button type="button" class="g4u-quantity-options__option{% if forloop.first %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ option.quantity.value }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
             <span>{% if option.label.value != blank %}{{ option.label.value | escape }}{% else %}{{ option.quantity.value }} {% if option.quantity.value == 1 %}unidad{% else %}unidades{% endif %}{% endif %}</span>
-            {%- if option.total_price.value != blank -%}<span>({{ option.total_price.value | money }})</span>{%- endif -%}
+            {%- if option.total_price.value != blank -%}<span>($ {{ option.total_price.value | money_without_currency }})</span>{%- endif -%}
           </button>
         {%- endif -%}
       {%- endfor -%}
       {%- if quantity_options == blank -%}
         {%- for quantity in (1..8) -%}
           {%- if quantity == 1 or quantity == 4 or quantity == 8 -%}
+            {%- assign quantity_total_price = product.price | times: quantity -%}
             <button type="button" class="g4u-quantity-options__option{% if quantity == 1 %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ quantity }}" aria-pressed="{% if quantity == 1 %}true{% else %}false{% endif %}">
-              <span>{{ quantity }} {% if quantity == 1 %}unidad{% else %}unidades{% endif %}</span>
+              <span>{{ quantity }} {% if quantity == 1 %}unidad{% else %}unidades{% endif %} ($ {{ quantity_total_price | money_without_currency }})</span>
             </button>
           {%- endif -%}
         {%- endfor -%}

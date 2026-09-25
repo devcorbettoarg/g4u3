@@ -99,6 +99,9 @@
         </div>
       {%- endform -%}
     </product-form>
+    {%- if request.page_type == 'product' -%}
+      <p class="g4u-product-shipping-note">Envíos GRATIS a partir de $ 80.000</p>
+    {%- endif -%}
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">

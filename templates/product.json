@@ -58,7 +58,7 @@
         "quantity_options": {
           "type": "g4u_quantity_options",
           "settings": {
-            "heading": "Elegí la cantidad",
+            "heading": "¡Ahorrá comprando más unidades!",
             "aria_label": "Elegir cantidad"
           }
         },
