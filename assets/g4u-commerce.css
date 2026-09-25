@@ -491,7 +491,7 @@ color: var(--g4u-ink);
 .g4u-faq-page { background: var(--g4u-cream); color: var(--g4u-ink); padding: var(--g4u-faq-padding-top, 200px) 4rem var(--g4u-faq-padding-bottom, 80px); }
 .g4u-faq-page__header { margin: 0 auto 8rem; max-width: 76.8rem; text-align: center; }
 .g4u-faq-page__header h1 { color: inherit; font-size: 5.6rem; line-height: .9; margin: 0 0 .8rem; }
-.g4u-faq-page__header .rte { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; }
+.g4u-faq-page__header .rte { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; margin: 8px auto; max-width: 600px; }
 .g4u-faq-page__groups { display: grid; gap: 6rem; margin: auto; max-width: 102rem; }
 .g4u-faq-page__group h2 { color: inherit; font-family: var(--g4u-display); font-size: 3.2rem; letter-spacing: .02em; margin: 0 0 2.4rem; text-transform: uppercase; }
 .g4u-faq-page__group details { border-top: .1rem solid #a9a1a3; }

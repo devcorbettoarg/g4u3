@@ -3,26 +3,34 @@
     "faq": {
       "type": "g4u-faq-page",
       "blocks": {
-        "products": {
-          "type": "group",
+        "products_header": {
+          "type": "faq_header",
           "settings": {
             "title": "PRODUCTOS",
-            "subtitle": "Sobre nuestros productos",
-            "questions": "¿Qué hace diferente a los productos G4U?\n¿Los productos son aptos para una alimentación low-carb o keto?\n¿Los productos contienen gluten?\n¿Puedo congelarlos?\n¿Dónde encuentro la información nutricional?\n¿Qué hace diferente a la harina G4U?",
-            "answers": "Combinan nutrición, ciencia y sabor para mejorar el perfil nutricional de los alimentos de todos los días.\nMuchos de nuestros productos tienen menor contenido de carbohidratos. Consultá la información nutricional de cada producto para elegir el más adecuado para vos.\nConsultá la información de cada producto para conocer sus ingredientes y alérgenos.\nRevisá las indicaciones de conservación de cada producto antes de congelarlo.\nLa encontrás en cada ficha de producto.\nEs una harina funcional desarrollada para mejorar el perfil nutricional de las preparaciones cotidianas."
+            "subtitle": "Sobre nuestros productos"
           }
         },
-        "purchases": {
-          "type": "group",
+        "product_difference": { "type": "faq_item", "settings": { "question": "¿Qué hace diferente a los productos G4U?", "answer": "<p>Combinan nutrición, ciencia y sabor para mejorar el perfil nutricional de los alimentos de todos los días.</p>" } },
+        "product_low_carb": { "type": "faq_item", "settings": { "question": "¿Los productos son aptos para una alimentación low-carb o keto?", "answer": "<p>Muchos de nuestros productos tienen menor contenido de carbohidratos. Consultá la información nutricional de cada producto para elegir el más adecuado para vos.</p>" } },
+        "product_gluten": { "type": "faq_item", "settings": { "question": "¿Los productos contienen gluten?", "answer": "<p>Consultá la información de cada producto para conocer sus ingredientes y alérgenos.</p>" } },
+        "product_freeze": { "type": "faq_item", "settings": { "question": "¿Puedo congelarlos?", "answer": "<p>Revisá las indicaciones de conservación de cada producto antes de congelarlo.</p>" } },
+        "product_nutrition": { "type": "faq_item", "settings": { "question": "¿Dónde encuentro la información nutricional?", "answer": "<p>La encontrás en cada ficha de producto.</p>" } },
+        "product_flour": { "type": "faq_item", "settings": { "question": "¿Qué hace diferente a la harina G4U?", "answer": "<p>Es una harina funcional desarrollada para mejorar el perfil nutricional de las preparaciones cotidianas.</p>" } },
+        "purchases_header": {
+          "type": "faq_header",
           "settings": {
             "title": "COMPRAS, ENVÍOS Y PAGOS",
-            "subtitle": "Todo sobre tu compra",
-            "questions": "¿A qué zonas realizan envíos?\n¿Cuánto demora mi pedido?\n¿Cómo puedo seguir mi compra?\n¿Qué medios de pago aceptan?\n¿Puedo cambiar o cancelar un pedido?\n¿Cómo debo conservar los productos?",
-            "answers": "Realizamos envíos a Buenos Aires, Córdoba y Santa Fe.\nLas entregas en AMBA se realizan habitualmente en 24/48 hs.\nCuando tu pedido sea despachado recibirás la información de seguimiento correspondiente.\nLos medios de pago disponibles se informan al momento de finalizar tu compra.\nContactanos lo antes posible para que podamos ayudarte.\nCada producto incluye sus indicaciones de conservación en el envase y en su ficha online."
+            "subtitle": "Todo sobre tu compra"
           }
-        }
+        },
+        "purchase_zones": { "type": "faq_item", "settings": { "question": "¿A qué zonas realizan envíos?", "answer": "<p>Realizamos envíos a Buenos Aires, Córdoba y Santa Fe.</p>" } },
+        "purchase_delivery": { "type": "faq_item", "settings": { "question": "¿Cuánto demora mi pedido?", "answer": "<p>Las entregas en AMBA se realizan habitualmente en 24/48 hs.</p>" } },
+        "purchase_tracking": { "type": "faq_item", "settings": { "question": "¿Cómo puedo seguir mi compra?", "answer": "<p>Cuando tu pedido sea despachado recibirás la información de seguimiento correspondiente.</p>" } },
+        "purchase_payment": { "type": "faq_item", "settings": { "question": "¿Qué medios de pago aceptan?", "answer": "<p>Los medios de pago disponibles se informan al momento de finalizar tu compra.</p>" } },
+        "purchase_change": { "type": "faq_item", "settings": { "question": "¿Puedo cambiar o cancelar un pedido?", "answer": "<p>Contactanos lo antes posible para que podamos ayudarte.</p>" } },
+        "purchase_storage": { "type": "faq_item", "settings": { "question": "¿Cómo debo conservar los productos?", "answer": "<p>Cada producto incluye sus indicaciones de conservación en el envase y en su ficha online.</p>" } }
       },
-      "block_order": ["products", "purchases"],
+      "block_order": ["products_header", "product_difference", "product_low_carb", "product_gluten", "product_freeze", "product_nutrition", "product_flour", "purchases_header", "purchase_zones", "purchase_delivery", "purchase_tracking", "purchase_payment", "purchase_change", "purchase_storage"],
       "settings": {
         "title": "Preguntas frecuentes",
         "intro": "<p>Queremos que tengas toda la información para disfrutar de G4U con tranquilidad. Si no encontrás la respuesta que buscás, al final de la página podés escribirnos y nuestro equipo te responderá a la brevedad.</p>",
