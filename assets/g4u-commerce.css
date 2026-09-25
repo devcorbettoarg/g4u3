@@ -366,6 +366,7 @@ color: var(--g4u-ink);
 @media screen and (max-width: 749px) {
   .template-product product-component .page-width { padding: 0; }
   .template-product product-component .product__info-wrapper { padding: 20px; }
+  .template-product .g4u-quantity-options__option { font-size: 12px; padding: 6px 12px; }
 }
 
 /* Cart */
