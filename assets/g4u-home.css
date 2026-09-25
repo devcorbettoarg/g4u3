@@ -645,6 +645,7 @@ max-width:400px; }
   top: 50%;
   transform: translateY(-50%);
 }
+.g4u-science__arrows--mobile { display: none; }
 .g4u-science__arrow {
   align-items: center;
   background: transparent;
@@ -721,9 +722,10 @@ padding:0px 40px;}
   .g4u-science__tablist { justify-content: flex-start; margin-right: -2rem; }
   .g4u-science__tab { flex-basis: auto; font-size: 1.6rem; }
   .g4u-science__panels { min-height: 0; }
-  .g4u-science__panel { gap: 2.8rem; grid-template-columns: 1fr; padding: 3.2rem 0 7.2rem; }
+  .g4u-science__panel { gap: 2.8rem; grid-template-columns: 1fr; padding: 3.2rem 0; }
   .g4u-science__panel-title { font-size: 3.6rem; }
-  .g4u-science__arrows { bottom: 1.2rem; top: auto; transform: none; }
+  .g4u-science__arrows--desktop { display: none; }
+  .g4u-science__arrows--mobile { display: flex; margin-top: -1.2rem; position: static; transform: none; width: 100%; }
   .g4u-nutrition-marquee { height: 14rem; }
   .g4u-nutrition-marquee__icon { height: 6.4rem; width: 5rem; }
   .g4u-nutrition-marquee__text { font-size: 7.2rem; }

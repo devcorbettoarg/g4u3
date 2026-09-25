@@ -82,6 +82,13 @@
 
           </div>
 
+          {%- if section.blocks.size > 1 -%}
+            <div class="g4u-science__arrows g4u-science__arrows--mobile" aria-label="Navegación de contenidos">
+              <button class="g4u-science__arrow" type="button" data-g4u-tabs-previous aria-label="Contenido anterior">←</button>
+              <button class="g4u-science__arrow" type="button" data-g4u-tabs-next aria-label="Contenido siguiente">→</button>
+            </div>
+          {%- endif -%}
+
           <div class="g4u-science__content">
 
             {%- if block.settings.tagline != blank -%}
@@ -165,7 +172,7 @@
 
       {%- if section.blocks.size > 1 -%}
 
-        <div class="g4u-science__arrows">
+        <div class="g4u-science__arrows g4u-science__arrows--desktop">
 
           <button
             class="g4u-science__arrow"
