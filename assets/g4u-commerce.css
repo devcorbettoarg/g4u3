@@ -265,14 +265,14 @@ margin-bottom:0pxl }
 .g4u-product-comparison__metrics dd small { font-size: 5rem; font-weight: inherit; }
 .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics dd, .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics div { border-color: var(--g4u-orange); color: var(--g4u-orange); }
 .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics dt { color: var(--g4u-cream); }
-.g4u-product-comparison__note { font-size: 1.6rem; font-weight: 400; grid-column: 1 / -1; letter-spacing: .04em; line-height: 1.5; margin: 0; text-align: center; }
+.g4u-product-comparison__note { color: var(--g4u-orange); font-size: 1.6rem; font-weight: 400; grid-column: 1 / -1; letter-spacing: .04em; line-height: 1.5; margin: 0; text-align: center; }
 .g4u-product-ingredients { background: var(--g4u-cream); color: var(--g4u-ink); padding: 9.6rem 4rem; }
 .g4u-product-ingredients__header { margin: 0 auto 5.6rem; max-width: 74rem; text-align: center; }
 .g4u-product-ingredients__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.4rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
 .g4u-product-ingredients__header > p { font-size: 1.8rem; font-weight: 400; line-height: 1.5; }
 .g4u-product-ingredients__header h2 { font-size: 4rem; letter-spacing: .01em; line-height: 1; margin: 0 0 .8rem; text-transform: uppercase; }
 .g4u-product-ingredients__header .rte { font-size: 1.8rem; letter-spacing: .04em; line-height: 1.5; }
-.g4u-product-ingredients__items { display: grid; gap: 2rem 3.2rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 112rem; }
+.g4u-product-ingredients__items { display: grid; gap: 2rem 3.2rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 130rem; }
 .g4u-product-ingredients details, .g4u-product-ingredients details:nth-last-child(-n + 2) { border-bottom: 0; border-top: .1rem solid #26131b; }
 .g4u-product-ingredients summary { align-items: center; color: #26131b; cursor: pointer; display: flex; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; justify-content: space-between; letter-spacing: .05em; line-height: 1.2; list-style: none; padding: 2.4rem 0; }
 .g4u-product-ingredients summary::-webkit-details-marker { display: none; }
@@ -303,7 +303,7 @@ margin-bottom:0pxl }
 @media screen and (min-width: 750px) and (max-width: 989px) { .g4u-product-testimonials__grid > blockquote { flex-basis: 50%; } }
 .g4u-product-editorial { background: var(--g4u-cream); color: var(--g4u-ink); padding: 8rem 4rem; }
 .g4u-product-editorial--soft { background: #f2ebe4; }
-.g4u-product-editorial__inner { align-items: center; display: grid; gap: clamp(3.2rem, 5vw, 8rem); grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); margin: auto; max-width: 144rem; }
+.g4u-product-editorial__inner { align-items: center; display: grid; gap: clamp(3.2rem, 5vw, 8rem); grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 144rem; }
 .g4u-product-editorial--reverse .g4u-product-editorial__copy { order: 2; }
 .g4u-product-editorial--reverse .g4u-product-editorial__media { order: 1; }
 .g4u-product-editorial__copy { max-width: 56rem; }
@@ -324,7 +324,7 @@ margin-bottom:0pxl }
 .template-product .g4u-flour-faq__contact p { font-family: var(--g4u-display); font-size: 2.6rem; line-height: 1; }
 .template-product .g4u-flour-faq__contact .g4u-pill { background: transparent; border-color: currentColor; color: inherit; font-size: 1.4rem; min-height: 0; padding: .7rem 1.8rem; }
 @media screen and (max-width: 749px) { .template-product .page-width { padding-left: 2rem; padding-right: 2rem; } .template-product .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) { margin-left: 0; margin-right: 0; } .template-product .product__media-list { margin: 0; width: 100%; } .template-product .product__media-item { width: 100%; } .template-product .product__media img { padding: 2rem; } .template-product .thumbnail-slider { gap: 1.2rem; margin-top: 1.6rem; } .template-product .thumbnail-slider .thumbnail-list.slider { gap: 1.2rem; padding: 0; scroll-padding-left: 0; } .template-product .thumbnail-list__item.slider__slide { flex: 0 0 8rem; height: 10rem; margin: 0; width: 8rem; } .template-product .thumbnail-list__item::before { content: none; padding-bottom: 0; } .template-product .thumbnail-slider .slider-button { flex-basis: 3.6rem; height: 3.6rem; width: 3.6rem; } .template-product .product__title h1 { font-size: 4rem; } .template-product .g4u-product-highlights ul { grid-template-columns: 1fr; } }
-@media screen and (max-width: 749px) { .g4u-product-comparison, .g4u-product-ingredients, .g4u-product-testimonials, .g4u-product-editorial { padding: 6.4rem 2rem; } .g4u-product-comparison { padding-inline: 0; } .g4u-product-comparison__grid { grid-template-columns: 1fr; } .g4u-product-comparison__panel { grid-template-columns: minmax(12rem, .8fr) 1fr; min-height: 0; padding: 4rem 2rem; } .g4u-product-comparison__media { min-height: 20rem; } .g4u-product-ingredients__header { margin-bottom: 4rem; } .g4u-product-ingredients__items { grid-template-columns: 1fr; } .g4u-product-testimonials__header { align-items: start; gap: 2.4rem; flex-direction: column; margin-bottom: 3.2rem; } .g4u-product-testimonials h2 { margin-bottom: 0; } .g4u-product-testimonials__grid > blockquote { flex-basis: 100%; min-height: 0; } .g4u-product-editorial__inner { grid-template-columns: 1fr; } .g4u-product-editorial--reverse .g4u-product-editorial__copy, .g4u-product-editorial--reverse .g4u-product-editorial__media { order: initial; } }
+@media screen and (max-width: 749px) { .g4u-product-comparison, .g4u-product-ingredients, .g4u-product-testimonials, .g4u-product-editorial { padding: 6.4rem 2rem; } .g4u-product-comparison { padding-inline: 0; } .g4u-product-comparison__grid { grid-template-columns: 1fr; } .g4u-product-comparison__panel { grid-template-columns: minmax(12rem, .8fr) 1fr; min-height: 0; padding: 4rem 2rem; } .g4u-product-comparison__panel--g4u { grid-template-columns: 1fr; } .g4u-product-comparison__media { min-height: 20rem; } .g4u-product-ingredients__header { margin-bottom: 4rem; } .g4u-product-ingredients__items { grid-template-columns: 1fr; } .g4u-product-testimonials__header { align-items: start; gap: 2.4rem; flex-direction: column; margin-bottom: 3.2rem; } .g4u-product-testimonials h2 { margin-bottom: 0; } .g4u-product-testimonials__grid > blockquote { flex-basis: 100%; min-height: 0; } .g4u-product-editorial__inner { grid-template-columns: 1fr; } .g4u-product-editorial--reverse .g4u-product-editorial__copy, .g4u-product-editorial--reverse .g4u-product-editorial__media { order: initial; } }
 
 /* Cart */
 .template-cart { --g4u-ink: #26131b; }
