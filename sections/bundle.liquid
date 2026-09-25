@@ -1457,7 +1457,8 @@
 
   #PackBuilder-{{ section.id }} .pb-progress__levels {
     display: block;
-    height: 48px;
+    position: relative;
+    height: 56px;
     margin: 0;
     padding: 0;
     pointer-events: none;
@@ -1472,7 +1473,7 @@
     font-weight: 400;
     gap: 4px;
     line-height: 1.5;
-    min-width: 0;
+    min-width: max-content;
     white-space: nowrap;
     padding-top: 20px;
     position: absolute;
@@ -1585,9 +1586,10 @@
     border: 0;
     border-radius: 0;
     gap: 12px;
-    column-gap: 12px;
-    grid-template-columns: 64px minmax(0, 1fr) auto;
-    padding: 0;
+    grid-template-columns: 64px minmax(0, 1fr);
+    min-height: 64px;
+    padding: 0 0 0 0;
+    position: relative;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__image,
@@ -1615,38 +1617,49 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls {
-    display: grid;
-    grid-template-columns: 22px 24px 22px;
-    align-items: center;
-    width: auto;
-    height: 26px;
-    overflow: hidden;
-    border: 1px solid #eae4dc;
-    border-radius: 999px;
+    position: absolute;
+    top: -10px;
+    left: 52px;
+    z-index: 1;
+    display: block;
+    width: 24px;
+    height: 24px;
+    overflow: visible;
+    border: 0;
     background: transparent;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls button {
-    display: block;
-    width: 22px;
+    display: grid;
+    width: 24px;
     height: 24px;
     padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+    place-items: center;
+    border: 1px solid #eae4dc;
+    border-radius: 50%;
+    background: #fff8f0;
     color: #26131b;
     font-size: 16px;
     line-height: 1;
   }
 
   #PackBuilder-{{ section.id }} .pb-selected__controls span {
-    position: static;
-    display: block;
-    color: #26131b;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #23121b;
+    color: #fff8f0;
     width: 24px;
-    height: auto;
+    height: 24px;
     font-size: 12px;
     font-weight: 400;
+  }
+
+  #PackBuilder-{{ section.id }} .pb-selected__controls button[data-selected-plus] {
+    display: none;
   }
 
   #PackBuilder-{{ section.id }} .pb-summary__totals > div:not(.pb-summary__total-row) strong {
