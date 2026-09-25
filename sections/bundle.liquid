@@ -2008,17 +2008,15 @@
     };
 
     const updateProgress = totals => {
-      // Centros medidos en el track de 306px del Figma: 62px, 164.5px y 271.5px.
-      // El dot y cada hito comparten exactamente estas posiciones.
-      const figmaPositions = [20.26, 53.76, 88.73];
-      const levelPositions = settings.levels.map((level, index) => (
-        figmaPositions[index] ?? ((index + .5) / settings.levels.length) * 100
-      ));
+      // Distribuye los hitos según las cantidades configuradas y completa
+      // el progreso justo al alcanzar el último nivel de descuento.
+      const maxQty = settings.levels.at(-1)?.qty || 1;
+      const levelPositions = settings.levels.map(level => (level.qty / maxQty) * 100);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
       );
-      const percentage = reachedIndex >= 0 ? levelPositions[reachedIndex] : 0;
+      const percentage = Math.min((totals.quantity / maxQty) * 100, 100);
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
