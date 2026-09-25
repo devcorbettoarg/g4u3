@@ -1566,7 +1566,7 @@
   }
 
   #PackBuilder-{{ section.id }} .pb-group__items {
-    gap: 16px;
+    gap: 32px;
     padding: 16px 12px;
   }
 
@@ -1645,7 +1645,7 @@
 
   #PackBuilder-{{ section.id }} .pb-selected__controls span {
     position: absolute;
-    top: 84px;
+    top: 74px;
     left: 0;
     display: grid;
     place-items: center;
@@ -2085,12 +2085,13 @@
       // Distribuye los hitos según las cantidades configuradas y completa
       // el progreso justo al alcanzar el último nivel de descuento.
       const maxQty = settings.levels.at(-1)?.qty || 1;
-      const levelPositions = settings.levels.map(level => (level.qty / maxQty) * 100);
+      const progressEnd = 88.73;
+      const levelPositions = settings.levels.map(level => (level.qty / maxQty) * progressEnd);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
       );
-      const percentage = Math.min((totals.quantity / maxQty) * 100, 100);
+      const percentage = Math.min((totals.quantity / maxQty) * progressEnd, progressEnd);
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
@@ -2108,11 +2109,11 @@
         const missingText = missingCategories
           .map(category => `${category.missing} ${category.title}`)
           .join(text.missingJoin);
-        progressMessage.textContent = `${text.missingPrefix}${missingText}`;
+        progressMessage.textContent = `${text.missingPrefix} ${missingText}`.replace(/\s+/g, ' ').trim();
       } else if (nextDiscount) {
-        progressMessage.textContent = `${text.addMorePrefix}${nextDiscount.qty - totals.quantity}${text.addMoreSuffix}${nextDiscount.value}%`;
+        progressMessage.textContent = `${text.addMorePrefix} ${nextDiscount.qty - totals.quantity} ${text.addMoreSuffix} ${nextDiscount.value}%`.replace(/\s+/g, ' ').trim();
       } else if (currentDiscount.value > 0) {
-        progressMessage.textContent = `${text.complete} ${currentDiscount.value}% off`;
+        progressMessage.textContent = `${text.complete} ${currentDiscount.value}% off`.replace(/\s+/g, ' ').trim();
       } else {
         progressMessage.textContent = text.initialProgress;
       }
