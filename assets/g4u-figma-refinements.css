@@ -1162,20 +1162,6 @@ text-transform: uppercase;
    ACCESSIBILITY / MOTION
    ========================================================================== */
 
-/* Mobile headers for editorial pages: their hero images can be very light,
-   so retain Home's overlay composition while providing reliable contrast. */
-@media screen and (max-width: 749px) {
-  body.template-suffix-nosotros
-    .section-header:not(.shopify-section-header-sticky)
-    .header-wrapper,
-  body.template-suffix-harina
-    .section-header:not(.shopify-section-header-sticky)
-    .header-wrapper {
-    background: linear-gradient(180deg, rgba(38, 19, 27, .62), rgba(38, 19, 27, .38));
-    backdrop-filter: blur(.4rem);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   body.template-suffix-nosotros .g4u-about-manifesto__dust,
   body.template-suffix-nosotros .g4u-about-manifesto__texture,
