@@ -17,7 +17,7 @@
           <div {{ block.shopify_attributes }}><dt>{{ block.settings.label | escape }}</dt><dd><span>{{ metric_value | slice: 0, metric_number_length | escape }}</span>{% if metric_unit == 'g' %}<small>{{ metric_unit }}</small>{% else %}<span>{{ metric_unit | escape }}</span>{% endif %}</dd></div>
         {%- endfor -%}
       </dl>
-      <p class="g4u-product-comparison__note">{{ section.settings.note | escape }}</p>
+      <p class="g4u-product-comparison__note g4u-product-comparison__note1">{{ section.settings.note | escape }}</p>
     </article>
     <article class="g4u-product-comparison__panel g4u-product-comparison__panel--g4u">
       <h2 class="orange" >{{ section.settings.g4u_heading | default: product.title | split: '|' | first | strip | escape }}</h2>

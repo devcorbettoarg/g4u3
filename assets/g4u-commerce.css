@@ -210,7 +210,7 @@
   font-family: "Europa Grotesk SH", var(--g4u-display); 
   font-size: 1.6rem; font-weight: 400; letter-spacing: .05em; 
   line-height: .8; min-height: 4.5rem;
-margin-bottom:0pxl }
+margin-bottom:0px }
 .template-product .product-form__submit::before, .template-product .product-form__submit::after { box-shadow: none; content: none; }
 .template-product .product-form__submit:hover { background: var(--g4u-orange); color: var(--g4u-cream); }
 .template-product .shopify-payment-button { margin-top: 0; width: 100%; }
@@ -265,7 +265,11 @@ margin-bottom:0pxl }
 .g4u-product-comparison__metrics dd small { font-size: 5rem; font-weight: inherit; }
 .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics dd, .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics div { border-color: var(--g4u-orange); color: var(--g4u-orange); }
 .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics dt { color: var(--g4u-cream); }
+
 .g4u-product-comparison__note { color: var(--g4u-orange); font-size: 1.6rem; font-weight: 400; grid-column: 1 / -1; letter-spacing: .04em; line-height: 1.5; margin: 0; text-align: center; }
+.g4u-product-comparison__note1 {
+color: var(--g4u-ink);
+}
 .g4u-product-ingredients { background: var(--g4u-cream); color: var(--g4u-ink); padding: 9.6rem 4rem; }
 .g4u-product-ingredients__header { margin: 0 auto 5.6rem; max-width: 74rem; text-align: center; }
 .g4u-product-ingredients__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.4rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
