@@ -426,7 +426,7 @@ color: var(--g4u-ink);
   margin-inline: auto;
   max-width: none;
   min-height: 60vh;
-  padding: 20rem 4rem 4rem;
+  padding: 7rem 4rem 4rem;
   width: 100%;
 }
 
@@ -454,7 +454,7 @@ color: var(--g4u-ink);
   font-weight: 400;
   line-height: 1.65;
   margin: 0 auto 6rem;
-  max-width: 88rem;
+  max-width: 67.2rem;
 }
 
 .template-policy .shopify-policy__body h2,
@@ -608,20 +608,20 @@ color: var(--g4u-ink);
 .g4u-contact__header h1 { font-size: 3.6rem; }.g4u-contact__header .rte { font-size: 1.5rem; }}
 
 /* Legal pages */
-.g4u-legal { background: var(--g4u-cream); color: #26131b; min-height: 60vh; padding: 7rem 4rem 10rem; }
-.g4u-legal__header { margin: 0 auto; max-width: 61.4rem; text-align: center; }
-.g4u-legal__header h1 { color: inherit; font-family: var(--g4u-display); font-size: 5.6rem; font-weight: 700; letter-spacing: .02em; line-height: .9; margin: 0; text-align: center; text-transform: uppercase; }
-.g4u-legal__header > p { font-family: var(--g4u-display); font-size: 2rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: .8rem 0 0; text-align: center; }
-.g4u-legal__content { margin: 9.6rem auto 0; max-width: 67.2rem; }
+.g4u-legal { background: var(--g4u-cream); color: var(--g4u-ink); min-height: 60vh; padding: 20rem 4rem 10rem; }
+.g4u-legal__header { border-bottom: .1rem solid #a9a1a3; margin: 0 auto 5.6rem; max-width: 102rem; padding-bottom: 3.2rem; }
+.g4u-legal__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.6rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }
+.g4u-legal__header h1 { color: inherit; font-size: clamp(4.8rem, 6vw, 7.2rem); line-height: .9; margin: 0; text-transform: uppercase; }
+.g4u-legal__content { margin: auto; max-width: 88rem; }
 .g4u-legal__content > *:first-child { margin-top: 0; }
-.g4u-legal__content h2, .g4u-legal__content h3 { color: inherit; font-family: var(--g4u-display); font-weight: 400; letter-spacing: .02em; text-transform: none; }
-.g4u-legal__content h2 { font-size: 3.2rem; line-height: 1.1; margin: 5.6rem 0 1.6rem; }
-.g4u-legal__content h3 { font-size: 2.2rem; line-height: 1.2; margin: 3.2rem 0 1.2rem; }
+.g4u-legal__content h2, .g4u-legal__content h3 { color: inherit; font-family: var(--g4u-display); font-weight: 400; letter-spacing: .03em; text-transform: uppercase; }
+.g4u-legal__content h2 { font-size: 3.2rem; line-height: 1; margin: 5.6rem 0 1.6rem; }
+.g4u-legal__content h3 { font-size: 2.2rem; line-height: 1.15; margin: 3.2rem 0 1.2rem; }
 .g4u-legal__content p, .g4u-legal__content li { font-size: 1.6rem; line-height: 1.65; }
 .g4u-legal__content p { margin: 0 0 1.6rem; }
 .g4u-legal__content ul, .g4u-legal__content ol { margin: 0 0 2.4rem; padding-left: 2.4rem; }
 .g4u-legal__content a { color: var(--g4u-burgundy); text-underline-offset: .3rem; }
-@media screen and (max-width: 749px) { .g4u-legal { padding: 7rem 2rem 6.4rem; }.g4u-legal__header h1 { font-size: 4rem; }.g4u-legal__header > p { font-size: 1.6rem; }.g4u-legal__content { margin-top: 6.4rem; }.g4u-legal__content h2 { font-size: 2.8rem; margin-top: 4.8rem; }.g4u-legal__content h3 { font-size: 2rem; } }
+@media screen and (max-width: 749px) { .g4u-legal { padding: 14rem 2rem 6.4rem; }.g4u-legal__header { margin-bottom: 4rem; padding-bottom: 2.4rem; }.g4u-legal__header h1 { font-size: 4.2rem; }.g4u-legal__content h2 { font-size: 2.8rem; margin-top: 4.8rem; }.g4u-legal__content h3 { font-size: 2rem; } }
 
 /* Cart drawer */
 /* Product page breadcrumb and review metadata */
