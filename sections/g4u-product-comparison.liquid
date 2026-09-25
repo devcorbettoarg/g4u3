@@ -21,7 +21,16 @@
     </article>
     <article class="g4u-product-comparison__panel g4u-product-comparison__panel--g4u">
       <h2 class="orange" >{{ section.settings.g4u_heading | default: product.title | split: '|' | first | strip | escape }}</h2>
-      <div class="g4u-product-comparison__media">
+   
+      <dl class="g4u-product-comparison__metrics">
+        {%- for block in section.blocks -%}
+          {%- assign metric_value = block.settings.g4u_value | strip -%}
+          {%- assign metric_unit = metric_value | slice: -1, 1 -%}
+          {%- assign metric_number_length = metric_value.size | minus: 1 -%}
+          <div><dt>{{ block.settings.label | escape }}</dt><dd><span>{{ metric_value | slice: 0, metric_number_length | escape }}</span>{% if metric_unit == 'g' %}<small>{{ metric_unit }}</small>{% else %}<span>{{ metric_unit | escape }}</span>{% endif %}</dd></div>
+        {%- endfor -%}
+      </dl> 
+         <div class="g4u-product-comparison__media">
         {%- if section.settings.g4u_image != blank -%}
           {{ section.settings.g4u_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 50vw, 100vw' }}
         {%- elsif product.featured_media != blank -%}
@@ -30,14 +39,6 @@
           <img src="{{ 'g4u-choice-bread.png' | asset_url }}" alt="" width="900" height="900" loading="lazy">
         {%- endif -%}
       </div>
-      <dl class="g4u-product-comparison__metrics">
-        {%- for block in section.blocks -%}
-          {%- assign metric_value = block.settings.g4u_value | strip -%}
-          {%- assign metric_unit = metric_value | slice: -1, 1 -%}
-          {%- assign metric_number_length = metric_value.size | minus: 1 -%}
-          <div><dt>{{ block.settings.label | escape }}</dt><dd><span>{{ metric_value | slice: 0, metric_number_length | escape }}</span>{% if metric_unit == 'g' %}<small>{{ metric_unit }}</small>{% else %}<span>{{ metric_unit | escape }}</span>{% endif %}</dd></div>
-        {%- endfor -%}
-      </dl>
       <p class="g4u-product-comparison__note">{{ section.settings.g4u_note | escape }}</p>
     </article>
   </div>
