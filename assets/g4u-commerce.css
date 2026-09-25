@@ -420,27 +420,29 @@ color: var(--g4u-ink);
 
 .template-policy .shopify-policy__container {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
   margin-inline: auto;
-  max-width: 102rem;
+  max-width: none;
   min-height: 60vh;
-  padding: 20rem 0 10rem;
-  width: calc(100% - 4rem);
+  padding: 20rem 4rem 4rem;
+  width: 100%;
 }
 
 .template-policy .shopify-policy__title {
-  border-bottom: .1rem solid #a9a1a3;
-  margin: 0 0 5.6rem;
-  max-width: none;
-  padding-bottom: 3.2rem;
-  text-align: left;
+  margin: 0 auto;
+  max-width: 136rem;
+  text-align: center;
+  width: 100%;
 }
 
 .template-policy .shopify-policy__title h1 {
   color: #26131B;
   font-family: var(--g4u-display);
-  font-size: clamp(4.8rem, 6vw, 7.2rem);
-  font-weight: 400;
-  letter-spacing: .01em;
+  font-size: 5.6rem;
+  font-weight: 700;
+  letter-spacing: .02em;
   line-height: .9;
   margin: 0;
   text-transform: uppercase;
@@ -451,7 +453,7 @@ color: var(--g4u-ink);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.65;
-  margin: 0 auto;
+  margin: 0 auto 6rem;
   max-width: 88rem;
 }
 
@@ -480,9 +482,8 @@ color: var(--g4u-ink);
 .template-policy .shopify-policy__body a:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: .3rem; }
 
 @media screen and (max-width: 749px) {
-  .template-policy .shopify-policy__container { padding: 14rem 0 6.4rem; width: calc(100% - 4rem); }
-  .template-policy .shopify-policy__title { margin-bottom: 4rem; padding-bottom: 2.4rem; }
-  .template-policy .shopify-policy__title h1 { font-size: 4.2rem; }
+  .template-policy .shopify-policy__container { gap: 4rem; padding: 14rem 2rem 4rem; }
+  .template-policy .shopify-policy__title h1 { font-size: 4rem; }
   .template-policy .shopify-policy__body h2 { font-size: 2.8rem; margin-top: 4.8rem; }
   .template-policy .shopify-policy__body h3 { font-size: 2rem; }
 }
