@@ -2,7 +2,7 @@
   "sections": {
     "legal": {
       "type": "g4u-legal-page",
-      "settings": { "eyebrow": "Información legal" }
+      "settings": { "updated_at": "Última actualización: 8 de enero de 2026" }
     }
   },
   "order": ["legal"]

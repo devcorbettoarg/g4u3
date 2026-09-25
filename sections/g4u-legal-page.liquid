@@ -1,7 +1,7 @@
 <section class="g4u-legal" aria-labelledby="G4uLegalTitle-{{ section.id }}">
   <header class="g4u-legal__header">
-    <p>{{ section.settings.eyebrow | escape }}</p>
     <h1 id="G4uLegalTitle-{{ section.id }}">{{ page.title | escape }}</h1>
+    {%- if section.settings.updated_at != blank -%}<p>{{ section.settings.updated_at | escape }}</p>{%- endif -%}
   </header>
 
   <div class="g4u-legal__content rte">
@@ -17,9 +17,9 @@
   "settings": [
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Antetítulo",
-      "default": "Información legal"
+      "id": "updated_at",
+      "label": "Fecha de actualización",
+      "default": "Última actualización: 8 de enero de 2026"
     }
   ]
 }
