@@ -88,7 +88,7 @@
           class="cart__contents cart-drawer__form"
           method="post"
         >
-          {%- assign g4u_drawer_shipping_goal = 6000000 -%}
+          {%- assign g4u_drawer_shipping_goal = settings.free_shipping_threshold | default: 60000 | times: 100 -%}
           {%- assign g4u_drawer_shipping_remaining = g4u_drawer_shipping_goal | minus: cart.total_price -%}
           {%- assign g4u_drawer_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_drawer_shipping_goal -%}
           {%- if g4u_drawer_shipping_progress > 100 -%}{%- assign g4u_drawer_shipping_progress = 100 -%}{%- endif -%}

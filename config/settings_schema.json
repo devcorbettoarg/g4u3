@@ -1436,6 +1436,21 @@
       },
       {
         "type": "header",
+        "content": "Envío gratis"
+      },
+      {
+        "type": "range",
+        "id": "free_shipping_threshold",
+        "min": 1000,
+        "max": 200000,
+        "step": 1000,
+        "unit": "$",
+        "label": "Monto mínimo para envío gratis",
+        "default": 60000,
+        "info": "El progreso del carrito se completa al alcanzar este importe."
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.cart.settings.cart_drawer.header"
       },
       {
