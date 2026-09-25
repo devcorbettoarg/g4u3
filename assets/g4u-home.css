@@ -1037,7 +1037,7 @@ margin-top:2px;}
   .g4u-about-hero::before { background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, .1) 80%); }
   .g4u-about-hero__title { font-size: 4.1rem;
   max-width:400px; 
- }
+ } 
  .g4u-about-hero__title  span { display: inline; }
   .g4u-about-hero__text { font-size: 1.6rem; }
   .g4u-about-hero__scroll { bottom: 2rem; right: 2rem; }
