@@ -508,9 +508,18 @@ color: var(--g4u-ink);
 .g4u-faq-page__group details .rte > * { margin: 0; }
 .g4u-faq-page__group summary:hover { color: var(--g4u-burgundy); }
 .g4u-faq-page__group summary:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: -.2rem; }
-.g4u-faq-page__contact { margin: 8rem auto 0; text-align: center; }
-.g4u-faq-page__contact p { font-size: 3.2rem; letter-spacing: .04em; margin: 0 0 2.4rem; }
 @media screen and (max-width: 749px) { .g4u-faq-page { padding: var(--g4u-faq-padding-top, 140px) 2rem var(--g4u-faq-padding-bottom, 64px); } .g4u-faq-page__header { margin-bottom: 5.6rem; } .g4u-faq-page__header h1 { font-size: 4rem; } .g4u-faq-page__header .rte { font-size: 1.6rem; } .g4u-faq-page__groups { gap: 5.6rem; } .g4u-faq-page__group { gap: 2.4rem; grid-template-columns: 1fr; } .g4u-faq-page__group h2 { font-size: 2.8rem; } .g4u-faq-page__group summary { font-size: 1.6rem; padding: 1.8rem 0; } .g4u-faq-page__group details .rte { font-size: 1.5rem; padding-bottom: 2rem; } .g4u-faq-page__contact { margin-top: 5.6rem; } }
+
+/* FAQ contact CTA */
+.g4u-faq-contact { align-items: center; background: #f2ebe4; box-sizing: border-box; color: #26131b; display: flex; min-height: 33.4rem; padding: 8rem 4rem; }
+.g4u-faq-contact__container { align-items: center; display: flex; flex-direction: column; gap: 4rem; margin: auto; max-width: 136rem; width: 100%; }
+.g4u-faq-contact__content { align-items: center; display: flex; flex-direction: column; gap: 1.6rem; max-width: 56rem; text-align: center; width: 100%; }
+.g4u-faq-contact__content h2 { color: inherit; font-family: var(--g4u-display); font-size: 3.2rem; font-weight: 400; letter-spacing: .02em; line-height: 1.1; margin: 0; }
+.g4u-faq-contact__text { font-family: var(--font-body-family); font-size: 1.8rem; line-height: 1.5; width: 100%; }
+.g4u-faq-contact__text > * { margin: 0; }
+.g4u-faq-contact__button { border-color: currentColor; color: inherit; min-width: 20.8rem; }
+.g4u-faq-contact__button:hover { background: #26131b; color: #f2ebe4; }
+@media screen and (max-width: 749px) { .g4u-faq-contact { min-height: 0; padding: 6.4rem 2rem; } .g4u-faq-contact__container { gap: 3.2rem; } .g4u-faq-contact__content h2 { font-size: 2.8rem; } .g4u-faq-contact__text { font-size: 1.6rem; } }
 
 /* Search */
 .search-modal { --color-background: 255, 248, 240; --color-foreground: 38, 19, 27; background: #fff8f0; color: #26131b; height: auto; min-height: 8.8rem; }

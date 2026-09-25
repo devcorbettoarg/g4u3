@@ -130,16 +130,22 @@
       "settings": {
         "title": "Preguntas frecuentes",
         "intro": "<p>Queremos que tengas toda la información para disfrutar de G4U con tranquilidad. Si no encontrás la respuesta que buscás, al final de la página podés escribirnos y nuestro equipo te responderá a la brevedad.</p>",
-        "contact_title": "¿No encontraste lo que buscabas?",
-        "contact_text": "<p>Si todavía tenés alguna consulta, completá el formulario y nuestro equipo se pondrá en contacto con vos lo antes posible.</p>",
-        "contact_label": "Contactate con nosotros",
-        "contact_link": "/pages/contact",
         "padding_top": 72,
         "padding_bottom": 80
+      }
+    },
+    "faq_contact": {
+      "type": "g4u-faq-contact",
+      "settings": {
+        "title": "¿No encontraste lo que buscabas?",
+        "text": "<p>Si todavía tenés alguna consulta, completá el formulario y nuestro equipo se pondrá en contacto con vos lo antes posible.</p>",
+        "button_label": "Contactate con nosotros",
+        "button_link": "/pages/contact"
       }
     }
   },
   "order": [
-    "faq"
+    "faq",
+    "faq_contact"
   ]
 }

@@ -1,0 +1,13 @@
+<section class="g4u-faq-contact" aria-labelledby="G4uFaqContactTitle-{{ section.id }}">
+  <div class="g4u-faq-contact__container">
+    <div class="g4u-faq-contact__content">
+      <h2 id="G4uFaqContactTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.text != blank -%}<div class="g4u-faq-contact__text rte">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-faq-contact__button" href="{{ section.settings.button_link | default: routes.root_url }}">{{ section.settings.button_label | escape }}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{"name":"G4U · CTA FAQ","tag":"section","class":"section-g4u-faq-contact","settings":[{"type":"text","id":"title","label":"Título","default":"¿No encontraste lo que buscabas?"},{"type":"richtext","id":"text","label":"Texto","default":"<p>Si todavía tenés alguna consulta, completá el formulario y nuestro equipo se pondrá en contacto con vos lo antes posible.</p>"},{"type":"text","id":"button_label","label":"Texto del botón","default":"Contactate con nosotros"},{"type":"url","id":"button_link","label":"Enlace del botón"}],"presets":[{"name":"G4U · CTA FAQ"}]}
+{% endschema %}
