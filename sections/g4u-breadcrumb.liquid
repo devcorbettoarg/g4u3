@@ -20,6 +20,9 @@
     {%- if section.settings.show_collection and collection != blank and product != blank -%}
       <li><a href="{{ collection.url }}">{{ collection.title | escape }}</a></li>
     {%- endif -%}
+     {%- if  product != blank -%}
+      <li><a href="{{ collection.url }}">Produxctos</a></li>
+    {%- endif -%}
     {%- if current_label != blank -%}<li aria-current="page">{{ current_label | escape }}</li>{%- endif -%}
   </ol>
 </nav>
