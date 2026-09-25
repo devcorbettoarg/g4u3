@@ -52,7 +52,7 @@ cart-drawer.is-empty .drawer__inner {
 }
 
 cart-drawer.is-empty .drawer__header {
-  display: none;
+
 }
 
 cart-drawer:not(.is-empty) .cart-drawer__warnings,
