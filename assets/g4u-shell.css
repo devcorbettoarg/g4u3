@@ -38,6 +38,7 @@ body.template-suffix-nosotros .announcement-bar-section {
   display: flex;
     align-items: center;
 }
+.announcement-bar-section .announcement-bar__text--mobile { display: none; }
 .announcement-bar-section .list-social {
   gap: 0;
   grid-column: 3;
@@ -315,6 +316,8 @@ body:not(.template-index) #cart-icon-bubble svg path {
 }
 
 @media screen and (max-width: 749px) {
+  .announcement-bar-section .announcement-bar__text--desktop { display: none; }
+  .announcement-bar-section .announcement-bar__text--mobile { display: inline; }
   .announcement-bar-section .utility-bar__grid { display: flex; justify-content: center; padding: 0 1.6rem; }
   .announcement-bar-section .announcement-bar__message { font-size: 1.1rem; letter-spacing: .05em; white-space: nowrap; }
   .announcement-bar-section .list-social { display: none; }

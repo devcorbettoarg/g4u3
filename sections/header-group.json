@@ -18,6 +18,7 @@
           "type": "announcement",
           "settings": {
             "text": "Envíos Buenos Aires – Córdoba – Santa Fé    |    Envíos GRATIS a partir de $ 80.000",
+            "text_mobile": "",
             "link": ""
           }
         }

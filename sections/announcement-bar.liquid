@@ -40,7 +40,8 @@
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | replace: "|", "<span class='spanbar'>|</span>" }}</span>
+            <span class="announcement-bar__text announcement-bar__text--desktop">{{ section.blocks.first.settings.text | replace: "|", "<span class='spanbar'>|</span>" }}</span>
+            <span class="announcement-bar__text announcement-bar__text--mobile">{{ section.blocks.first.settings.text_mobile | default: section.blocks.first.settings.text | replace: "|", "<span class='spanbar'>|</span>" }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             {%- endif -%}
@@ -100,7 +101,8 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape }}</span>
+                      <span class="announcement-bar__text announcement-bar__text--desktop">{{ block.settings.text | escape }}</span>
+                      <span class="announcement-bar__text announcement-bar__text--mobile">{{ block.settings.text_mobile | default: block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}
@@ -238,7 +240,13 @@
           "type": "text",
           "id": "text",
           "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+          "label": "Texto desktop"
+        },
+        {
+          "type": "text",
+          "id": "text_mobile",
+          "label": "Texto mobile",
+          "info": "Si se deja vacío, se muestra el texto desktop."
         },
         {
           "type": "url",
