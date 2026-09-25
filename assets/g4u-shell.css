@@ -316,6 +316,12 @@ body:not(.template-index) #cart-icon-bubble svg path {
 }
 
 @media screen and (max-width: 749px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body.template-index .announcement-bar-section { position: relative; z-index: 11 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
 
@@ -330,6 +336,63 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header { height: 6.4rem;
  }
   body.template-index .section-header:not(.shopify-section-header-sticky) .header { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* Keep the five mobile header controls inside the viewport. The native
+     account layout adds a fourth grid column, which pushed the cart outside
+     small screens. Search and the menu now share the left control area. */
+  .section-header .header {
+    box-sizing: border-box;
+    column-gap: 0 !important;
+    grid-template-areas: 'navigation heading icons' !important;
+    grid-template-columns: 7.6rem auto 7.6rem !important;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .section-header .header > header-drawer {
+    grid-area: navigation;
+    justify-self: start;
+  }
+
+  .section-header .header > .header__search {
+    display: inline-flex !important;
+    grid-area: navigation !important;
+    justify-self: end !important;
+    margin: 0 !important;
+  }
+
+  .section-header .header__heading,
+  .section-header .header > .header__heading-link {
+    grid-area: heading;
+    justify-self: center;
+    min-width: 0;
+  }
+
+  .section-header .header__icons {
+    align-items: center;
+    gap: .4rem;
+    justify-content: flex-end;
+    justify-self: end;
+    min-width: 0;
+    padding: 0;
+    width: 7.6rem;
+  }
+
+  .section-header .header__icons > .header__search {
+    display: none !important;
+  }
+
+  .section-header .header__icon,
+  .section-header .header__icon--cart .icon,
+  .section-header .header__icon .svg-wrapper {
+    flex: 0 0 3.6rem;
+    height: 3.6rem;
+    width: 3.6rem;
+  }
+
+  .section-header .header__icon--cart {
+    margin-right: 0;
+  }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 4.8rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
   .section-header.shopify-section-header-sticky .g4u-logo--forced { flex-basis: 11.6rem; height: 4.8rem; width: 11.6rem; }
