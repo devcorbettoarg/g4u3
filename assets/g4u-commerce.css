@@ -467,7 +467,6 @@ color: var(--g4u-ink);
   letter-spacing: .03em;
   line-height: 1;
   margin: 5.6rem 0 1.6rem;
-  text-transform: uppercase;
 }
 
 .template-policy .shopify-policy__body h2 { font-size: 3.2rem; }
