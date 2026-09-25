@@ -401,6 +401,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
     height: 2.4rem;
     width: 2.4rem;
   }
+
+  .section-header #cart-icon-bubble .svg-wrapper svg {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 4.8rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
   .section-header.shopify-section-header-sticky .g4u-logo--forced { flex-basis: 11.6rem; height: 4.8rem; width: 11.6rem; }
