@@ -1891,6 +1891,16 @@
     });
 
     const formatMoney = cents => moneyFormatter.format((Number(cents) || 0) / 100);
+    const selectedPriceFormatter = new Intl.NumberFormat(settings.locale, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+    const selectedCurrencySymbol = new Intl.NumberFormat(settings.locale, {
+      style: 'currency',
+      currency: settings.currency,
+      currencyDisplay: 'narrowSymbol'
+    }).formatToParts(0).find(part => part.type === 'currency')?.value || '$';
+    const formatSelectedPrice = cents => `${selectedCurrencySymbol} ${selectedPriceFormatter.format((Number(cents) || 0) / 100)}`;
 
     const getVariantElement = card => card.querySelector('[data-variant-select]');
 
@@ -2046,7 +2056,7 @@
         <div class="pb-selected__info">
           <p class="pb-selected__title">${escapeHtml(item.productTitle)}</p>
           ${variantTitle}
-          <div class="pb-selected__price">${formatMoney(item.price * item.quantity)}</div>
+          <div class="pb-selected__price">${formatSelectedPrice(item.price * item.quantity)}</div>
         </div>
         <div class="pb-selected__controls">
           <button type="button" data-selected-minus aria-label={{ section.settings.decrease_label | json }}>−</button>
