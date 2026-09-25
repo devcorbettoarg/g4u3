@@ -378,7 +378,13 @@ color: var(--g4u-ink);
     width: calc(100% + 40px);
   }
   .template-product .g4u-quantity-options__list::-webkit-scrollbar { display: none; }
-  .template-product .g4u-quantity-options__option { font-size: 12px; padding: 6px 12px; }
+  .template-product .g4u-quantity-options__option { font-size: 14px; padding: 6px 12px; }
+  .g4u-product-comparison__metrics dd { font-size: 3.6rem; }
+  .g4u-product-comparison__metrics dd small { font-size: 2.5rem; }
+  .g4u-product-comparison__panel--g4u { grid-template-columns: minmax(12rem, .8fr) 1fr; }
+  .g4u-product-comparison__panel--g4u .g4u-product-comparison__media { grid-column: 1; grid-row: 2; }
+  .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics { grid-column: 2; grid-row: 2; }
+  .g4u-product-ingredients summary { font-size: 1.92rem; }
 }
 
 /* Cart */
@@ -910,6 +916,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 }
 @media screen and (max-width: 749px) {
   product-info {
+    padding-bottom: 0;
     padding-top: 20px;
   }
 }
