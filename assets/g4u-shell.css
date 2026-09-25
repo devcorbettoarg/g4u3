@@ -316,6 +316,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
 }
 
 @media screen and (max-width: 749px) {
+  body.template-index .announcement-bar-section { position: relative; z-index: 11 !important; }
+  body.template-index .section-header.shopify-section-header-sticky {
+    top: 4rem;
+    z-index: 10;
+  }
   .announcement-bar-section .announcement-bar__text--desktop { display: none; }
   .announcement-bar-section .announcement-bar__text--mobile { display: inline; }
   .announcement-bar-section .utility-bar__grid { display: flex; justify-content: center; padding: 0 1.6rem; }
