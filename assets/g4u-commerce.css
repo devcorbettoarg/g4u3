@@ -421,65 +421,70 @@ color: var(--g4u-ink);
 .template-policy .shopify-policy__container {
   box-sizing: border-box;
   margin-inline: auto;
-  max-width: 80rem;
-  padding: 8rem 2rem 10rem;
+  max-width: 102rem;
+  min-height: 60vh;
+  padding: 20rem 0 10rem;
   width: calc(100% - 4rem);
 }
 
 .template-policy .shopify-policy__title {
-  margin: 0 auto 1rem;
-  max-width: 80rem;
-  text-align: center;
+  border-bottom: .1rem solid #a9a1a3;
+  margin: 0 0 5.6rem;
+  max-width: none;
+  padding-bottom: 3.2rem;
+  text-align: left;
 }
 
 .template-policy .shopify-policy__title h1 {
-  color: var(--g4u-burgundy);
+  color: #26131B;
   font-family: var(--g4u-display);
-  font-size: clamp(4rem, 4.4vw, 4.8rem);
-  font-weight: 700;
-  letter-spacing: -.015em;
-  line-height: 1;
+  font-size: clamp(4.8rem, 6vw, 7.2rem);
+  font-weight: 400;
+  letter-spacing: .01em;
+  line-height: .9;
   margin: 0;
   text-transform: uppercase;
 }
 
 .template-policy .shopify-policy__body {
   font-family: var(--font-body-family);
-  font-size: clamp(1.4rem, 1.2vw, 1.6rem);
+  font-size: 1.6rem;
   font-weight: 400;
-  line-height: 1.6;
-  margin: 8rem auto 0;
-  max-width: 78rem;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 88rem;
 }
 
 .template-policy .shopify-policy__body h2,
 .template-policy .shopify-policy__body h3,
 .template-policy .shopify-policy__body h4 {
   color: var(--g4u-ink);
-  font-family: var(--font-heading-family);
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.2;
-  margin: 4.8rem 0 1.8rem;
+  font-family: var(--g4u-display);
+  font-weight: 400;
+  letter-spacing: .03em;
+  line-height: 1;
+  margin: 5.6rem 0 1.6rem;
+  text-transform: uppercase;
 }
 
-.template-policy .shopify-policy__body h2 { font-size: clamp(2.2rem, 2.2vw, 2.6rem); }
-.template-policy .shopify-policy__body h3 { font-size: clamp(1.9rem, 2vw, 2.2rem); }
-.template-policy .shopify-policy__body h4 { font-size: 1.8rem; }
+.template-policy .shopify-policy__body h2 { font-size: 3.2rem; }
+.template-policy .shopify-policy__body h3 { font-size: 2.2rem; line-height: 1.15; margin-top: 3.2rem; }
+.template-policy .shopify-policy__body h4 { font-size: 1.8rem; line-height: 1.2; margin-top: 3.2rem; }
 .template-policy .shopify-policy__body > :first-child { margin-top: 0; }
 .template-policy .shopify-policy__body p { margin: 0 0 1.6rem; }
 .template-policy .shopify-policy__body ul,
-.template-policy .shopify-policy__body ol { margin: 1.6rem 0 2rem; padding-left: 2.2rem; }
+.template-policy .shopify-policy__body ol { margin: 0 0 2.4rem; padding-left: 2.4rem; }
 .template-policy .shopify-policy__body li { margin-bottom: .6rem; }
 .template-policy .shopify-policy__body a { color: var(--g4u-burgundy); text-underline-offset: .3rem; }
+.template-policy .shopify-policy__body a:hover { color: var(--g4u-orange); }
+.template-policy .shopify-policy__body a:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: .3rem; }
 
 @media screen and (max-width: 749px) {
-  .template-policy .shopify-policy__container { padding: 5.6rem 0 6.4rem; width: calc(100% - 4rem); }
-  .template-policy .shopify-policy__title h1 { font-size: clamp(3.2rem, 10vw, 4rem); }
-  .template-policy .shopify-policy__body { margin-top: 5.6rem; }
-  .template-policy .shopify-policy__body h2,
-  .template-policy .shopify-policy__body h3,
-  .template-policy .shopify-policy__body h4 { margin-top: 3.6rem; }
+  .template-policy .shopify-policy__container { padding: 14rem 0 6.4rem; width: calc(100% - 4rem); }
+  .template-policy .shopify-policy__title { margin-bottom: 4rem; padding-bottom: 2.4rem; }
+  .template-policy .shopify-policy__title h1 { font-size: 4.2rem; }
+  .template-policy .shopify-policy__body h2 { font-size: 2.8rem; margin-top: 4.8rem; }
+  .template-policy .shopify-policy__body h3 { font-size: 2rem; }
 }
 
 /* General FAQ */
