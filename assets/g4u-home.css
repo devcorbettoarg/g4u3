@@ -1035,7 +1035,10 @@ margin-top:2px;}
 @media screen and (max-width: 749px) {
   .g4u-about-hero { min-height: 68rem; padding: 10rem 2rem 6rem; }
   .g4u-about-hero::before { background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, .1) 80%); }
-  .g4u-about-hero__title { font-size: 4.1rem; }
+  .g4u-about-hero__title { font-size: 4.1rem;
+  max-width:400px; 
+ }
+ .g4u-about-hero__title  span { display: inline; }
   .g4u-about-hero__text { font-size: 1.6rem; }
   .g4u-about-hero__scroll { bottom: 2rem; right: 2rem; }
   .g4u-about-manifesto { display: block; min-height: 0; padding: 6.4rem 2rem 0; }
