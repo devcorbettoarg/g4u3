@@ -7,7 +7,7 @@
 <div class="g4u-product-highlights" {{ block.shopify_attributes }}>
   {%- if intro != blank -%}
     <div class="g4u-product-highlights__intro">
-      {%- if product.metafields.custom.product_intro.value != blank -%}
+      {%- if product.metafields.custom.product_intro2.value != blank -%}
         {{ product.metafields.custom.product_intro | metafield_tag }}
       {%- else -%}
         {{ intro | escape }}
