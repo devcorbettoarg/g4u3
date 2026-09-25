@@ -926,6 +926,56 @@
 
 
   /* ============================================================
+     MOBILE · ESCALA TIPOGRAFÍA / OBJETOS
+
+     Desktop: título 92px, objetos aprox. 105px.
+     Ratio: 105 / 92 = 1.1413.
+     Mobile: título 40px → objetos 45.65px.
+     ============================================================ */
+
+  @media screen and (max-width: 749px) {
+
+    #G4uAboutManifesto-{{ section.id }} {
+      --g4u-manifesto-mobile-title-size: 40px;
+      --g4u-manifesto-object-ratio: 1.14130435;
+      --g4u-manifesto-mobile-object-size: calc(var(--g4u-manifesto-mobile-title-size) * var(--g4u-manifesto-object-ratio));
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__title {
+      font-size: var(--g4u-manifesto-mobile-title-size) !important;
+      line-height: .9;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__art {
+      min-height: 28rem;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object {
+      height: var(--g4u-manifesto-mobile-object-size) !important;
+      width: var(--g4u-manifesto-mobile-object-size) !important;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--snack {
+      --g4u-snack-scale: 1 !important;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--bread {
+      --g4u-bread-scale: 1 !important;
+    }
+
+    #G4uAboutManifesto-{{ section.id }}
+    .g4u-about-manifesto__object--tortilla {
+      --g4u-tortilla-scale: 1 !important;
+    }
+  }
+
+
+  /* ============================================================
      REDUCED MOTION
      ============================================================ */
 
