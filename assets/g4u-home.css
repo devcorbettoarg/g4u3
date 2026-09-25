@@ -375,6 +375,8 @@
 
 @media screen and (max-width: 749px) {
   .g4u-home-hero { min-height: 68rem; }
+  .g4u-choice-banner__object,
+  .g4u-choice-banner__object--tortilla { height: 50px; width: 50px; }
   .g4u-home-hero__slide::after {
     background: linear-gradient(0deg, rgba(20, 8, 9, .86) 0%, rgba(20, 8, 9, .25) 68%, rgba(20, 8, 9, 0) 100%);
   }
