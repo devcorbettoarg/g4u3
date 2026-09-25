@@ -2210,6 +2210,9 @@
         document.querySelectorAll('[data-cart-count], .cart-count-bubble span[aria-hidden="true"]').forEach(node => {
           node.textContent = cart.item_count;
         });
+        document.querySelectorAll('.g4u-cart-drawer__count').forEach(node => {
+          node.textContent = cart.item_count;
+        });
       } catch (error) {
         console.warn('[Pack Builder] No se pudo actualizar el contador del carrito.', error);
       }
