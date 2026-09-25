@@ -445,6 +445,7 @@ color: var(--g4u-ink);
   letter-spacing: .02em;
   line-height: .9;
   margin: 0;
+  margin-bottom:60px;
   text-transform: uppercase;
 }
 
