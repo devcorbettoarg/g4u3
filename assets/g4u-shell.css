@@ -338,6 +338,22 @@ body:not(.template-index) #cart-icon-bubble svg path {
     display: none;
   }
 
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon:hover {
+    background: transparent;
+    color: var(--g4u-cream);
+    transform: none;
+  }
+
+  .section-header.shopify-section-header-sticky summary.header__icon--menu,
+  .section-header.shopify-section-header-sticky summary.header__icon--menu:hover,
+  .section-header.shopify-section-header-sticky summary.header__icon--menu:focus,
+  .section-header.shopify-section-header-sticky summary.header__icon--menu:active,
+  .section-header.shopify-section-header-sticky details.menu-drawer-container[open] > summary.header__icon--menu {
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none;
+  }
+
   .section-header .header__search .header__icon-close {
     display: none !important;
   }
