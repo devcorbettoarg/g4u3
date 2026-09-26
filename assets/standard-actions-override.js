@@ -163,24 +163,6 @@ function initG4UCartEnhancements() {
   });
 
   document.addEventListener('click', async (event) => {
-    const copyButton = event.target.closest('[data-g4u-copy-cart-link]');
-    if (copyButton) {
-      const input = document.getElementById('G4U-Cart-Link');
-      if (!input) return;
-
-      try {
-        await navigator.clipboard.writeText(input.value);
-      } catch {
-        input.select();
-        document.execCommand('copy');
-      }
-
-      const originalLabel = copyButton.textContent;
-      copyButton.textContent = '¡Copiado!';
-      window.setTimeout(() => { copyButton.textContent = originalLabel; }, 1600);
-      return;
-    }
-
     const addButton = event.target.closest('[data-g4u-cart-drawer-add]');
     if (!addButton || addButton.disabled) return;
 
