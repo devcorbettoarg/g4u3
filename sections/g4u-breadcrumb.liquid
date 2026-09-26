@@ -2,7 +2,7 @@
   assign current_label = section.settings.current_label
   if current_label == blank
     if product != blank
-      assign current_label = product.title
+      assign current_label = product.title | split: '|' | first | strip
     elsif collection != blank
       assign current_label = collection.title
       if collection.handle == 'frontpage'

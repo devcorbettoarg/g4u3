@@ -1156,6 +1156,17 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   .g4u-cart-drawer__shipping-progress i { background: var(--g4u-burgundy); display: block; height: 100%; }
 }
 
+@media screen and (max-width: 749px) {
+  cart-drawer.is-empty .drawer__heading {
+    margin-left: 10px;
+  }
+
+  cart-drawer .g4u-cart-drawer__upsells,
+  cart-drawer.is-empty .g4u-cart-drawer__upsells {
+    display: none;
+  }
+}
+
 /* Combo builder */
 .g4u-combo { background: var(--g4u-cream); color: var(--g4u-ink); padding: 18rem 4rem 9.6rem; }.g4u-combo__inner { display: block; margin: auto; max-width: 112rem; }.g4u-combo__header { margin: 0 auto 5.6rem; max-width: 72rem; text-align: center; }.g4u-combo__header > p { font-family: "Europa Grotesk SH Con"; font-size: 1.6rem; letter-spacing: .1em; margin: 0 0 1.6rem; text-transform: uppercase; }.g4u-combo__header h1 { color: inherit; font-size: clamp(4.4rem, 6vw, 7.2rem); line-height: .9; margin: 0 0 1.6rem; text-transform: uppercase; }.g4u-combo__header .rte { font-size: 1.8rem; line-height: 1.45; }
 .g4u-combo__tabs { border-bottom: .1rem solid #a9a1a3; display: flex; gap: 3.2rem; margin-bottom: 4rem; }.g4u-combo__tab { background: transparent; border: 0; color: #766c70; cursor: pointer; font-family: var(--g4u-display); font-size: 2.4rem; letter-spacing: .04em; padding: 0 0 1.6rem; position: relative; }.g4u-combo__tab.is-active { color: var(--g4u-ink); }.g4u-combo__tab.is-active::after { background: var(--g4u-burgundy); bottom: -.1rem; content: ''; height: .3rem; left: 0; position: absolute; right: 0; }
