@@ -363,6 +363,16 @@ body:not(.template-index) #cart-icon-bubble svg path {
     stroke: var(--g4u-cream) !important;
   }
 
+  body.template-index:has(.menu-drawer-container[open]) .announcement-bar-section .utility-bar {
+    --color-foreground: 255, 248, 240;
+    background: var(--g4u-burgundy) !important;
+    color: var(--g4u-cream) !important;
+  }
+
+  body.template-index:has(.menu-drawer-container[open]) .announcement-bar-section .announcement-bar__message {
+    color: var(--g4u-cream) !important;
+  }
+
   body.template-index .announcement-bar-section { position: relative; z-index: 1 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
 
