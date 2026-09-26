@@ -438,7 +438,23 @@ color: var(--g4u-ink);
 .template-cart cart-items, .template-cart #main-cart-footer { background: var(--g4u-cream); color: var(--g4u-ink); }
 .template-cart .page-width { max-width: 136rem; padding-left: 4rem; padding-right: 4rem; }
 .template-cart .title-wrapper-with-link { align-items: center; justify-content: space-between; margin: 0 0 5.6rem; }
-.template-cart .title-wrapper-with-link .title { color: inherit; font-family: var(--g4u-display); font-size: 4.8rem; letter-spacing: .01em; line-height: 1; text-transform: uppercase; }
+.template-cart .title-wrapper-with-link .title {
+  align-self: stretch;
+  color: #26131b;
+  flex: none;
+  font-family: "Europa Grotesk SH", var(--g4u-display);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  height: 48px;
+  letter-spacing: .01em;
+  line-height: 1;
+  margin: 0;
+  max-width: 1360px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
 .template-cart .title-wrapper-with-link .underlined-link { color: var(--g4u-burgundy); font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; text-underline-offset: .4rem; }
 .template-cart .title-wrapper-with-link { justify-content: center; }
 .template-cart .title-wrapper-with-link .underlined-link { display: none; }
