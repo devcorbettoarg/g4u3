@@ -338,6 +338,17 @@ body:not(.template-index) #cart-icon-bubble svg path {
     display: none;
   }
 
+  body.template-index .section-header .menu-drawer {
+    height: calc(100dvh - 10.4rem);
+    max-height: calc(100dvh - 10.4rem);
+    top: 6.4rem;
+  }
+
+  body.template-index .section-header .menu-drawer-container[open] > .header__icon--menu {
+    position: relative;
+    z-index: 4;
+  }
+
   body.template-index .announcement-bar-section { position: relative; z-index: 1 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
 
