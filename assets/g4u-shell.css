@@ -351,25 +351,26 @@ body:not(.template-index) #cart-icon-bubble svg path {
     width: 100vw;
   }
 
-  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu {
+  body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu {
     color: var(--g4u-cream) !important;
     position: relative;
     z-index: 4;
   }
 
-  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu svg,
-  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu svg path {
+  body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu svg,
+  body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu svg path {
     color: var(--g4u-cream) !important;
+    fill: var(--g4u-cream) !important;
     stroke: var(--g4u-cream) !important;
   }
 
-  body.template-index:has(.menu-drawer-container[open]) .announcement-bar-section .utility-bar {
+  body.template-index .announcement-bar-section .utility-bar {
     --color-foreground: 255, 248, 240;
-    background: var(--g4u-burgundy) !important;
+    background: #500322 !important;
     color: var(--g4u-cream) !important;
   }
 
-  body.template-index:has(.menu-drawer-container[open]) .announcement-bar-section .announcement-bar__message {
+  body.template-index .announcement-bar-section .announcement-bar__message {
     color: var(--g4u-cream) !important;
   }
 
