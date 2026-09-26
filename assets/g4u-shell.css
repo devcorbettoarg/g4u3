@@ -351,14 +351,18 @@ body:not(.template-index) #cart-icon-bubble svg path {
     width: 100vw;
   }
 
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu,
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu:hover,
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu:focus,
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu:active,
   body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu {
     color: var(--g4u-cream) !important;
     position: relative;
     z-index: 4;
   }
 
-  body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu svg,
-  body.template-index .section-header:not(.shopify-section-header-sticky) details.menu-drawer-container[open] > summary.header__icon--menu svg path {
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu svg,
+  body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu svg path {
     color: var(--g4u-cream) !important;
     fill: var(--g4u-cream) !important;
     stroke: var(--g4u-cream) !important;
