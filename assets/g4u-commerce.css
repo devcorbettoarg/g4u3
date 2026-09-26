@@ -585,8 +585,9 @@ color: var(--g4u-ink);
   }
   .template-cart .cart-items thead th:first-child { width: 51%; }
   .template-cart .cart-items thead th:nth-child(2) { width: 13%; }
-  .template-cart .cart-items thead th.cart-items__heading--quantity { width: 22.5%; }
-  .template-cart .cart-items thead th:last-child { width: 13.5%; }
+  .template-cart .cart-items thead th.cart-items__heading--quantity { width: 15.2%; }
+  .template-cart .cart-items thead th:nth-last-child(2) { width: 13.4%; }
+  .template-cart .cart-items thead th:last-child { width: 7.4%; }
   .template-cart .cart-item { height: 11.6rem; }
   .template-cart .cart-item > td {
     box-sizing: border-box;
@@ -622,7 +623,7 @@ color: var(--g4u-ink);
     padding-left: 2.4rem;
     padding-right: 2.4rem;
   }
-  .template-cart .cart-item__quantity-wrapper { justify-content: space-between; width: 100%; }
+  .template-cart .cart-item__quantity-wrapper { justify-content: flex-start; width: 100%; }
   .template-cart .cart-item .quantity { min-height: 3.7rem; width: 8.7rem; }
   .template-cart .cart-item .quantity__button { flex: 0 0 2.8rem; width: 2.8rem; }
   .template-cart .cart-item .quantity__input {
@@ -632,7 +633,8 @@ color: var(--g4u-ink);
     letter-spacing: .05em;
     line-height: .8;
   }
-  .template-cart .cart-item cart-remove-button { margin-left: 1.6rem; }
+  .template-cart .cart-item__remove { padding-left: 2.4rem !important; padding-right: 2.4rem; }
+  .template-cart .cart-item__remove cart-remove-button { margin: 0; }
   .template-cart .cart-item__totals { padding-left: 2.4rem !important; padding-right: 2.4rem; text-align: left; }
   .template-cart .cart-item__totals .price {
     font-family: "Europa Grotesk SH", var(--g4u-display);
@@ -686,7 +688,8 @@ color: var(--g4u-ink);
   .template-cart .cart-item__price-wrapper { font-family: var(--font-body-family); font-size: 1.4rem; letter-spacing: 0; }
   .template-cart .cart-item__quantity { grid-column: 2; grid-row: 2 / 4; }
   .template-cart .cart-item__quantity-wrapper { align-items: center; }
-  .template-cart .cart-item cart-remove-button { margin-left: .4rem; }
+  .template-cart .cart-item__remove { align-items: center; display: flex; grid-column: 3; grid-row: 3; justify-content: flex-end; }
+  .template-cart .cart-item__remove cart-remove-button { margin: 0; }
   .template-cart cart-remove-button .button { min-height: 3.6rem; min-width: 3.6rem; }
   .template-cart .g4u-cart-page-layout { gap: 3.2rem; }
   .template-cart .g4u-cart-page-summary { border-radius: .8rem; max-width: none; }
