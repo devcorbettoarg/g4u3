@@ -1157,8 +1157,17 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 }
 
 @media screen and (max-width: 749px) {
+  cart-drawer.is-empty .drawer__inner {
+    align-content: flex-start;
+    justify-content: flex-start;
+  }
+
   cart-drawer.is-empty .drawer__heading {
     margin-left: 10px;
+  }
+
+  cart-drawer.is-empty .drawer__close {
+    right: 15px;
   }
 
   cart-drawer .g4u-cart-drawer__upsells,
