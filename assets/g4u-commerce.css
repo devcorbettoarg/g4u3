@@ -1058,7 +1058,13 @@ cart-drawer .cart__checkout-button:hover { background: var(--g4u-orange); }
 cart-drawer .cart-drawer__empty-content { padding: 4rem 3.2rem; }
 cart-drawer .cart__empty-text { font-size: 3.6rem; }
 cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy); border-radius: 10rem; font-family: var(--g4u-display); letter-spacing: .05em; }
-@media screen and (max-width: 749px) { cart-drawer .drawer__inner { padding: 0 2rem; width: min(44rem, 100vw); } cart-drawer .drawer__header { min-height: 7.2rem; padding-top: 2rem; } cart-drawer .drawer__heading { font-size: 3.2rem; } cart-drawer .cart-item { padding: 1.6rem 0; } }
+@media screen and (max-width: 749px) { 
+  
+   cart-drawer.is-empty .drawer__inner {
+        align-items: start !important;
+  }
+  
+  cart-drawer .drawer__inner { padding: 0 2rem; width: min(44rem, 100vw); } cart-drawer .drawer__header { min-height: 7.2rem; padding-top: 2rem; } cart-drawer .drawer__heading { font-size: 3.2rem; } cart-drawer .cart-item { padding: 1.6rem 0; } }
 @media (prefers-reduced-motion: reduce) { cart-drawer.drawer, cart-drawer .drawer__inner { transition: none; } }
 
 /* The cart drawer uses the wider two-panel composition from Figma on desktop. */
