@@ -286,7 +286,7 @@
       }
     },
     "cart": {
-      "title": "Tu carrito",
+      "title": "Carrito",
       "caption": "Artículos en el carrito",
       "remove_title": "Eliminar {{ title }}",
       "note": "Instrucciones especiales del pedido",
