@@ -1158,7 +1158,16 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 
 @media screen and (max-width: 749px) {
   cart-drawer.is-empty .drawer__inner {
-    align-content: flex-start;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+  }
+
+  cart-drawer.is-empty .drawer__inner-empty,
+  cart-drawer.is-empty .cart-drawer__warnings {
+    flex: 0 0 auto;
+    height: auto;
     justify-content: flex-start;
   }
 
