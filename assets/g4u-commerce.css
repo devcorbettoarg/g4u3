@@ -596,10 +596,10 @@ color: var(--g4u-ink);
     vertical-align: middle;
   }
   .template-cart .cart-item > td + td { padding-left: 0; }
-  .template-cart .cart-item__media { padding-left: 2.4rem; width: 10.8rem; }
+  .template-cart .cart-item__media { padding-left: 2.4rem; padding-right: 1.6rem; width: 13.2rem; }
   .template-cart .cart-item__image-container { aspect-ratio: 1; border-radius: 1.2rem; height: 9.2rem; width: 9.2rem; }
   .template-cart .cart-item__image { height: 100%; width: 100%; }
-  .template-cart .cart-item__details { padding-left: 1.6rem !important; padding-right: 2.4rem; width: auto; }
+  .template-cart .cart-item__details { padding-left: 0 !important; padding-right: 2.4rem; width: auto; }
   .template-cart .cart-item__name {
     font-family: "Europa Grotesk SH", var(--g4u-display);
     font-size: 1.8rem;
