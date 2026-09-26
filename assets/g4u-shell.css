@@ -342,7 +342,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
     display: none !important;
   }
 
-  body.template-index .section-header .menu-drawer {
+  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer {
     height: calc(100dvh - 10.4rem);
     left: 0;
     max-height: calc(100dvh - 10.4rem);
@@ -351,10 +351,19 @@ body:not(.template-index) #cart-icon-bubble svg path {
     width: 100vw;
   }
 
-  body.template-index .section-header .menu-drawer-container[open] > .header__icon--menu {
+  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu {
     position: relative;
     z-index: 4;
   }
+
+  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .header-wrapper {
+    --color-foreground: 38, 19, 27;
+    background: var(--g4u-cream);
+    color: var(--g4u-ink);
+  }
+
+  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .g4u-logo__dark { display: block; }
+  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .g4u-logo__light { display: none; }
 
   body.template-index .announcement-bar-section { position: relative; z-index: 1 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
