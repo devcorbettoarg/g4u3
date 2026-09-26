@@ -338,10 +338,17 @@ body:not(.template-index) #cart-icon-bubble svg path {
     display: none;
   }
 
+  .section-header .header__search .header__icon-close {
+    display: none !important;
+  }
+
   body.template-index .section-header .menu-drawer {
     height: calc(100dvh - 10.4rem);
+    left: 0;
     max-height: calc(100dvh - 10.4rem);
-    top: 6.4rem;
+    position: fixed;
+    top: 10.4rem;
+    width: 100vw;
   }
 
   body.template-index .section-header .menu-drawer-container[open] > .header__icon--menu {
