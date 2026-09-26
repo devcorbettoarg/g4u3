@@ -333,6 +333,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
     overflow-x: hidden;
   }
 
+  .header__icon--menu[aria-expanded='true']::before {
+    content: none;
+    display: none;
+  }
+
   body.template-index .announcement-bar-section { position: relative; z-index: 1 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
 
