@@ -352,18 +352,16 @@ body:not(.template-index) #cart-icon-bubble svg path {
   }
 
   body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu {
+    color: var(--g4u-cream) !important;
     position: relative;
     z-index: 4;
   }
 
-  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .header-wrapper {
-    --color-foreground: 38, 19, 27;
-    background: var(--g4u-cream);
-    color: var(--g4u-ink);
+  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu svg,
+  body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer-container[open] > .header__icon--menu svg path {
+    color: var(--g4u-cream) !important;
+    stroke: var(--g4u-cream) !important;
   }
-
-  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .g4u-logo__dark { display: block; }
-  body.template-index .section-header:not(.shopify-section-header-sticky):has(.menu-drawer-container[open]) .g4u-logo__light { display: none; }
 
   body.template-index .announcement-bar-section { position: relative; z-index: 1 !important; }
   body.template-index .section-header.shopify-section-header-sticky {
