@@ -1158,7 +1158,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 
 @media screen and (max-width: 749px) {
   cart-drawer.is-empty .drawer__inner {
-    align-items: stretch;
+    align-items: start;
     display: flex;
     flex-direction: column;
     justify-content: flex-start !important;
