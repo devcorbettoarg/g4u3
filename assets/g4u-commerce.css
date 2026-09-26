@@ -892,6 +892,7 @@ color: var(--g4u-ink);
 .template-search .product-grid { column-gap: 1.6rem; row-gap: 6rem; }
 .template-search .product-grid .grid__item { width: calc(25% - 1.2rem); }
 @media screen and (max-width: 749px) { .search-modal { min-height: 7.2rem; } .search-modal__content { min-height: 7.2rem; padding: 1.2rem 5.6rem 1.2rem 1.6rem; } .search-modal__close-button { right: .8rem; } .search-modal .predictive-search { border-left: 0; border-radius: 0; border-right: 0; left: -1.6rem; margin-top: 1.2rem; right: -5.6rem; width: auto; } .template-search { overflow-x: hidden; padding-inline: 0; } .template-search .page-width { padding-left: 2rem; padding-right: 2rem; } .template-search__header { box-sizing: border-box; width: 100%; } .template-search__header h1 { font-size: clamp(3rem, 9vw, 3.6rem); overflow-wrap: anywhere; } .template-search__search, .template-search__search main-search, .template-search__search form { display: block; max-width: 100%; width: 100%; } }
+@media screen and (max-width: 749px) { #predictive-search-results { padding: 5px; } }
 @media screen and (max-width: 749px) { .template-search .facets-wrapper { margin-bottom: 3.2rem; } .template-search .facets-container { border-radius: 1.2rem; padding: .8rem 1.2rem; } .template-search .facets__wrapper { display: none; } .template-search .product-grid { column-gap: 1.2rem; row-gap: 4rem; } .template-search .product-grid .grid__item { width: calc(50% - .6rem); } }
 
 /* Contact */
