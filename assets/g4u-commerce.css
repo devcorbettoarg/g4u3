@@ -1120,7 +1120,9 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   .g4u-cart-drawer__upsell a { color: var(--g4u-ink); font-size: 1.4rem; font-weight: 500; letter-spacing: .04em; line-height: 1.2; text-decoration: none; }
   .g4u-cart-drawer__upsell span { display: block; font-size: 1.4rem; letter-spacing: .04em; line-height: 1.2; margin-top: .2rem; }
   .g4u-cart-drawer__upsell-variant { background: var(--g4u-cream); border: .1rem solid #d5d0cb; border-radius: .5rem; color: var(--g4u-ink); font: inherit; font-size: 1.15rem; margin-top: .8rem; max-width: 100%; padding: .45rem 2.4rem .45rem .7rem; }
-  .g4u-cart-drawer__upsell .g4u-cart-drawer__upsell-add { align-items: center; background: var(--g4u-burgundy); border: 0; border-radius: 1.5rem; color: var(--g4u-cream); cursor: pointer; display: grid; height: 3rem; padding: .7rem .8rem .8rem .7rem; place-items: center; width: 3rem; }
+  .g4u-cart-drawer__upsell .g4u-cart-drawer__upsell-add { align-items: center; 
+    background: var(--g4u-burgundy); border: 0; border-radius: 1.5rem; 
+    color: var(--g4u-cream); cursor: pointer; display: grid; height: 3rem; padding: .7rem .7rem .7rem .7rem; place-items: center; width: 3rem; }
   .g4u-cart-drawer__upsell-add svg { display: block; height: 1.6rem; width: 1.6rem; }
   .g4u-cart-drawer__upsells::-webkit-scrollbar { width: .3rem; }
   .g4u-cart-drawer__upsells::-webkit-scrollbar-track { background: transparent; }
