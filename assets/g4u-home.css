@@ -637,9 +637,9 @@ max-width:400px; }
   text-decoration: none;
 }
 .g4u-science__link img,
-.g4u-comparison__link img { height: 1.2rem; margin: .6rem .85rem; object-fit: contain; width: .7rem; }
+.g4u-comparison__link img { height: 1.2rem; margin: .6rem .85rem; object-fit: contain; width: .7rem;    transition:1s all;}
 .g4u-science__arrows {
-  transition:1s all;
+
   display: flex;
   justify-content: space-between;
   left: 0;
