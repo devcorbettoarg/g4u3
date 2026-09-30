@@ -757,8 +757,14 @@ padding:0px 40px;}
 font-size:12px;
   }
     .g4u-comparison__table thead th { 
-      font-size:18px;
+      font-size:16px;
 
+    }
+    .g4u-comparison__table th, .g4u-comparison__table td {
+      padding:1.6rem 1.6rem;
+    }
+    .g4u-comparison__table {
+      min-width:auto;
     }
   .g4u-comparison__actions { align-items: stretch; flex-direction: column; }
 }
