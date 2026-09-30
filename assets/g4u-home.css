@@ -905,7 +905,15 @@ line-height:80% !important; }
   min-height: 4.5rem;
   padding: 1.2rem;
 }
-.g4u-newsletter__input::placeholder { color: rgba(80, 3, 34, .65); }
+.g4u-newsletter__input::placeholder { color: #00000099;
+
+font-weight: 400;
+
+font-size: 16px;
+
+line-height: 150%;
+letter-spacing: 4%;
+ }
 .g4u-newsletter__submit { background: var(--g4u-burgundy); border: .1rem solid var(--g4u-burgundy); color: var(--g4u-cream); cursor: pointer; }
 .g4u-newsletter__message { font-size: 1.4rem; margin: 1rem 0 0; }
 
