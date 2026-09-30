@@ -534,6 +534,38 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark,
   body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo__wordmark { height: 2.25rem; left: 5.4rem; right: auto; top: 1.55rem; width: 6.2rem; }
+
+  .section-header.menu-open .header-wrapper {
+    --color-foreground: 38, 19, 27;
+    background: var(--g4u-cream) !important;
+    box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
+    color: var(--g4u-ink) !important;
+  }
+  .section-header.menu-open .g4u-logo__dark { display: block !important; }
+  .section-header.menu-open .g4u-logo__light { display: none !important; }
+  .section-header.menu-open .header__icon,
+  .section-header.menu-open summary.header__icon--menu,
+  .section-header.menu-open summary.header__icon--menu:hover,
+  .section-header.menu-open summary.header__icon--menu:focus,
+  .section-header.menu-open summary.header__icon--menu:active {
+    background: transparent !important;
+    color: var(--g4u-ink) !important;
+  }
+  .section-header.menu-open .header__icon svg,
+  .section-header.menu-open .header__icon svg path {
+    color: var(--g4u-ink) !important;
+    stroke: currentColor !important;
+  }
+  .section-header.menu-open details.menu-drawer-container[open] > summary.header__icon--menu svg,
+  .section-header.menu-open details.menu-drawer-container[open] > summary.header__icon--menu svg path {
+    color: var(--g4u-ink) !important;
+    fill: var(--g4u-ink) !important;
+    stroke: var(--g4u-ink) !important;
+  }
+  .section-header.menu-open .cart-count-bubble {
+    background: var(--g4u-burgundy) !important;
+    color: var(--g4u-cream) !important;
+  }
 }
 
 /* Footer */

@@ -16,7 +16,14 @@ if (!customElements.get('g4u-tabs')) {
           this.updateScrollHint = () => {
             const maxScroll = this.tablist.scrollWidth - this.tablist.clientWidth;
             this.tabsScroll.classList.toggle('is-scrollable', maxScroll > 1);
-            this.tabsScroll.classList.toggle('is-at-end', this.tablist.scrollLeft >= maxScroll - 1);
+            if (maxScroll > 1) {
+              const trackInset = 20;
+              const trackWidth = this.tabsScroll.clientWidth - trackInset * 2;
+              const thumbWidth = Math.max(40, trackWidth * (this.tablist.clientWidth / this.tablist.scrollWidth));
+              const thumbLeft = trackInset + (this.tablist.scrollLeft / maxScroll) * (trackWidth - thumbWidth);
+              this.tabsScroll.style.setProperty('--g4u-scroll-thumb-width', `${thumbWidth}px`);
+              this.tabsScroll.style.setProperty('--g4u-scroll-thumb-left', `${thumbLeft}px`);
+            }
           };
           this.tablist.addEventListener('scroll', this.updateScrollHint, { passive: true });
           this.resizeObserver = new ResizeObserver(this.updateScrollHint);
