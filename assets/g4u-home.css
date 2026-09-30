@@ -750,6 +750,7 @@ padding:0px 40px;}
     padding-left: 1rem;
     position: sticky;
     z-index: 2;
+    font-size:12px;
   }
   .g4u-comparison__actions { align-items: stretch; flex-direction: column; }
 }
