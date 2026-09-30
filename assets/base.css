@@ -1794,7 +1794,8 @@ details[open] > .share-button__fallback {
   line-height: 1.5;
 }
 .search-modal__form  .field__label {
-  top:3rem;
+     top: 1.3rem;
+    
 }
 .field__input:focus ~ .field__label,
 .field__input:not(:placeholder-shown) ~ .field__label,
