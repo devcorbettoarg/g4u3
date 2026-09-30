@@ -2,7 +2,7 @@ product-component,
 collection-component {
   display: block;
 }
-product-component .card .card__media {
+product-component .card .card__inner {
       border-radius: 12px !important;
     overflow: hidden !important;
 }
