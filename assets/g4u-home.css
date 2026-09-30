@@ -633,7 +633,7 @@ max-width:400px; }
   font-weight: 400;
   gap: .4rem;
   letter-spacing: .05em;
-  line-height: .8;
+  line-height: 24px;
   text-decoration: none;
 }
 .g4u-science__link img,
