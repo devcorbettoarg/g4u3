@@ -743,6 +743,7 @@ padding:0px 40px;}
   .g4u-comparison { padding: 6.4rem 2rem; }
   .g4u-comparison__header { margin-bottom: 3.2rem; }
   .g4u-comparison__table-wrap { margin-right: -2rem; }
+  
   .g4u-comparison__table th:first-child {
     max-width:130px;
     background: #f2ebe4;
@@ -752,6 +753,13 @@ padding:0px 40px;}
     z-index: 2;
     font-size:12px;
   }
+  .g4u-comparison__table tbody th, .g4u-comparison__table tbody td {
+font-size:12px;
+  }
+    .g4u-comparison__table thead th { 
+      font-size:16px;
+
+    }
   .g4u-comparison__actions { align-items: stretch; flex-direction: column; }
 }
 
