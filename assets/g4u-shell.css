@@ -575,6 +575,20 @@ body:not(.template-index) #cart-icon-bubble svg path {
     background: var(--g4u-burgundy) !important;
     color: var(--g4u-cream) !important;
   }
+
+  body.overflow-hidden-tablet .section-header .header-wrapper,
+  body.overflow-hidden-mobile .section-header .header-wrapper,
+  html.overflow-hidden-tablet .section-header .header-wrapper,
+  html.overflow-hidden-mobile .section-header .header-wrapper,
+  body.overflow-hidden-tablet .section-header .header,
+  body.overflow-hidden-mobile .section-header .header {
+    --color-background: 255, 248, 240;
+    --color-foreground: 38, 19, 27;
+    background: var(--g4u-cream) !important;
+    background-color: var(--g4u-cream) !important;
+    background-image: none !important;
+    color: var(--g4u-ink) !important;
+  }
 }
 
 /* Footer */
