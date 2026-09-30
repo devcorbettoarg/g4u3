@@ -3,7 +3,8 @@ collection-component {
   display: block;
 }
 product-component .card .card__media {
-  border-radius:12px; overflow:hidden;
+      border-radius: 12px !important;
+    overflow: hidden !important;
 }
 /* Regular */
 @font-face {
