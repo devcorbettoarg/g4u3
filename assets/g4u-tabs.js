@@ -5,11 +5,24 @@ if (!customElements.get('g4u-tabs')) {
       connectedCallback() {
         this.tabs = [...this.querySelectorAll('[role="tab"]')];
         this.panels = [...this.querySelectorAll('[role="tabpanel"]')];
+        this.tablist = this.querySelector('[role="tablist"]');
+        this.tabsScroll = this.querySelector('.g4u-science__tabs-scroll');
 
         this.tabs.forEach((tab, index) => {
           tab.addEventListener('click', () => this.select(index));
           tab.addEventListener('keydown', (event) => this.onKeydown(event, index));
         });
+        if (this.tablist && this.tabsScroll) {
+          this.updateScrollHint = () => {
+            const maxScroll = this.tablist.scrollWidth - this.tablist.clientWidth;
+            this.tabsScroll.classList.toggle('is-scrollable', maxScroll > 1);
+            this.tabsScroll.classList.toggle('is-at-end', this.tablist.scrollLeft >= maxScroll - 1);
+          };
+          this.tablist.addEventListener('scroll', this.updateScrollHint, { passive: true });
+          this.resizeObserver = new ResizeObserver(this.updateScrollHint);
+          this.resizeObserver.observe(this.tablist);
+          requestAnimationFrame(this.updateScrollHint);
+        }
         this.addEventListener('click', (event) => {
           if (event.target.closest('[data-g4u-tabs-previous]')) {
             this.select(this.activeIndex - 1);
@@ -19,6 +32,10 @@ if (!customElements.get('g4u-tabs')) {
           }
         });
         this.select(0, false);
+      }
+
+      disconnectedCallback() {
+        this.resizeObserver?.disconnect();
       }
 
       onKeydown(event, index) {
@@ -44,6 +61,7 @@ if (!customElements.get('g4u-tabs')) {
           panel.hidden = !active;
           panel.classList.toggle('is-active', active);
         });
+        if (announce) this.tabs[this.activeIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
         if (announce) this.dispatchEvent(new CustomEvent('g4u:tab-change', { detail: { index: this.activeIndex } }));
       }
     }

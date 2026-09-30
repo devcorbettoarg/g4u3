@@ -20,24 +20,26 @@
 
   <g4u-tabs>
 
-    <div
-      class="g4u-science__tablist"
-      role="tablist"
-      aria-label="{{ section.settings.tabs_label | escape }}"
-    >
-      {%- for block in section.blocks -%}
-        <button
-          class="g4u-science__tab"
-          id="G4uScienceTab-{{ section.id }}-{{ forloop.index }}"
-          type="button"
-          role="tab"
-          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-          aria-controls="G4uSciencePanel-{{ section.id }}-{{ forloop.index }}"
-          tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
-        >
-          {{ forloop.index }}. {{ block.settings.tab_label | escape }}
-        </button>
-      {%- endfor -%}
+    <div class="g4u-science__tabs-scroll">
+      <div
+        class="g4u-science__tablist"
+        role="tablist"
+        aria-label="{{ section.settings.tabs_label | escape }}"
+      >
+        {%- for block in section.blocks -%}
+          <button
+            class="g4u-science__tab"
+            id="G4uScienceTab-{{ section.id }}-{{ forloop.index }}"
+            type="button"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="G4uSciencePanel-{{ section.id }}-{{ forloop.index }}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+          >
+            {{ forloop.index }}. {{ block.settings.tab_label | escape }}
+          </button>
+        {%- endfor -%}
+      </div>
     </div>
 
     <div class="g4u-science__panels">

@@ -568,6 +568,8 @@ font-weight: 400;
   scrollbar-width: none;
 }
 
+.g4u-science__tabs-scroll { position: relative; }
+
 .g4u-science__tablist::-webkit-scrollbar { display: none; }
 .g4u-science__tab {
   background: transparent;
@@ -730,7 +732,25 @@ padding:0px 40px;}
 @media screen and (max-width: 749px) {
   .g4u-science { padding: 6.4rem 2rem; }
   .g4u-science__header { margin-bottom: 3.2rem; }
-  .g4u-science__tablist { justify-content: flex-start; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem; scroll-padding-inline: 2rem; }
+  .g4u-science__tabs-scroll { margin-left: -2rem; margin-right: -2rem; }
+  .g4u-science__tabs-scroll.is-scrollable:not(.is-at-end)::after {
+    align-items: center;
+    background: linear-gradient(90deg, rgba(249, 156, 166, 0), #f99ca6 55%);
+    color: var(--g4u-burgundy);
+    content: "→";
+    display: flex;
+    font-size: 2.4rem;
+    height: 4.8rem;
+    justify-content: flex-end;
+    padding-right: 1.2rem;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 6.4rem;
+    z-index: 1;
+  }
+  .g4u-science__tablist { justify-content: flex-start; padding-left: 2rem; padding-right: 5.2rem; scroll-padding-inline: 2rem; }
   .g4u-science__tab { flex-basis: auto; font-size: 1.6rem; }
   .g4u-science__panels { min-height: 0; }
   .g4u-science__panel { gap: 2.8rem; grid-template-columns: 1fr; padding: 3.2rem 0; }
