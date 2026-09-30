@@ -545,7 +545,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 .g4u-footer__column h2 { color: inherit; font-size: 1.6rem; font-weight: 600; line-height: 1.5; margin: 0 0 1.6rem; font-family:roboto;}
 .g4u-footer__column ul { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
 .g4u-footer__column a {      color: inherit; display: inline-flex; font-size: 1.4rem; gap: .8rem; 
-  letter-spacing: .05em; line-height: 1.2; padding: .8rem 0; text-decoration: none;  align-items: center; }
+  letter-spacing: .05em; line-height: 1.2; padding: .8rem 0; text-decoration: none;  align-items: flex-end; }
 .g4u-footer__column a:hover { text-decoration: underline; text-underline-offset: .3rem; }
 .g4u-footer__social svg { fill: currentColor; height: 2rem; width: 2rem; }
 .g4u-footer__linkedin { font-size: 1.6rem; font-weight: 700; line-height: 2rem; text-align: center; width: 2rem; }
