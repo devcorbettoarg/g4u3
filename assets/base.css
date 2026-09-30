@@ -1797,6 +1797,8 @@ details[open] > .share-button__fallback {
      top: 1.3rem;
     
 }
+.search-modal__form 
+.field__input:not(:placeholder-shown)~.field__label { opacity:0; }
 .field__input:focus ~ .field__label,
 .field__input:not(:placeholder-shown) ~ .field__label,
 .field__input:-webkit-autofill ~ .field__label,
