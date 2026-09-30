@@ -17,13 +17,15 @@
       {%- endif -%}
       {%- if section.settings.link_label != blank -%}
         <a class="g4u-product-editorial__link" 
-          href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}
+          href="{{ section.settings.link | default: routes.all_products_collection_url }}">
+          {{ section.settings.link_label | escape }}
             <img
                   src="{{ 'chevron_right.svg' | asset_url }}"
                   alt=""
                   width="24"
                   height="24"
-                >{%- endif -%}
+            />
+            </a>{%- endif -%}
     </div>
     <div class="g4u-product-editorial__media">
       {%- if section.settings.image != blank -%}
