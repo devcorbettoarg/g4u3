@@ -365,11 +365,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-index .section-header:not(.shopify-section-header-sticky) .menu-drawer,
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .menu-drawer,
   body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .menu-drawer {
-    height: calc(100dvh - 10.4rem);
+    height: calc(100dvh - var(--header-bottom-position, 10.4rem));
     left: 0;
-    max-height: calc(100dvh - 10.4rem);
+    max-height: calc(100dvh - var(--header-bottom-position, 10.4rem));
     position: fixed;
-    top: 10.4rem;
+    top: var(--header-bottom-position, 10.4rem);
     width: 100vw;
   }
 
