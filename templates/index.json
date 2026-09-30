@@ -86,7 +86,7 @@
             "image": "shopify://shop_images/g4u-category-panes.jpg",
             "title": "Panes",
             "button_label": "Ver productos",
-            "link": "shopify://collections/all"
+            "link": "shopify://collections/panes"
           }
         },
         "category_packs": {
@@ -95,7 +95,7 @@
             "image": "shopify://shop_images/g4u-category-packs.jpg",
             "title": "Packs",
             "button_label": "Ver productos",
-            "link": "shopify://collections/all"
+            "link": "shopify://collections/packs"
           }
         },
         "category_snacks": {
@@ -104,7 +104,7 @@
             "image": "shopify://shop_images/g4u-category-snacks.jpg",
             "title": "Snacks",
             "button_label": "Ver productos",
-            "link": "shopify://collections/all"
+            "link": "shopify://collections/snacks"
           }
         }
       },
