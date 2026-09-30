@@ -340,7 +340,9 @@ max-height:36px; }
 .g4u-product-testimonials blockquote { border-left: .1rem solid rgba(35,31,32,.55); margin: 0; min-height: 23rem; padding: 0 3.2rem; }
 .g4u-product-testimonials blockquote:first-child { border-left: 0; padding-left: 0; }
 .g4u-product-testimonials__stars { color: var(--g4u-orange); font-size: 2rem; letter-spacing: .4rem; line-height: .945; margin: 0 0 2rem; }
-.g4u-product-testimonials blockquote .rte { font-size: 2rem; font-style: normal; letter-spacing: .05em; line-height: 1.2; }
+.g4u-product-testimonials blockquote .rte { font-size: 2rem; 
+  font-style: normal; letter-spacing: .05em; line-height: 1.2; 
+font-family:var(--g4u-displayr);}
 .g4u-product-testimonials blockquote footer { font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 500; letter-spacing: .04em; line-height: 1.5; margin-top: 3.2rem; }
 @media screen and (min-width: 750px) and (max-width: 989px) { .g4u-product-testimonials__grid > blockquote { flex-basis: 50%; } }
 .g4u-product-editorial { background: var(--g4u-cream); color: var(--g4u-ink); padding: 8rem 4rem; }
