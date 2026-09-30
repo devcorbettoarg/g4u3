@@ -579,7 +579,8 @@ font-family:var(--g4u-displayr);}
 .template-cart .g4u-cart-page-summary__shipping { padding: 1.6rem 2rem 1.2rem; }
 .template-cart .g4u-cart-page-summary__shipping p { font-size: 1.3rem; margin-left: 3.6rem; }
 .template-cart .g4u-cart-page-summary__body { gap: .6rem; padding: 2rem; }
-.template-cart .g4u-cart-page-summary__body label { font-family: var(--font-body-family); font-size: 1.6rem; letter-spacing: 0; }
+.template-cart .g4u-cart-page-summary__body label { font-family: var(--font-body-family); font-size: 1.6rem; letter-spacing: 0;
+color:#00000099; }
 .template-cart .g4u-cart-page-summary__body input,
 .template-cart .g4u-cart-page-summary__body textarea { font-size: 1.4rem; letter-spacing:4%; min-height: 4rem; padding: 1rem 1.2rem; }
 .template-cart .g4u-cart-page-summary__body textarea { min-height: 6rem; }
