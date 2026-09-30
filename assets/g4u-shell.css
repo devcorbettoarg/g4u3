@@ -589,6 +589,15 @@ body:not(.template-index) #cart-icon-bubble svg path {
     background-image: none !important;
     color: var(--g4u-ink) !important;
   }
+  body.overflow-hidden-tablet .section-header .g4u-logo__dark,
+  body.overflow-hidden-mobile .section-header .g4u-logo__dark { display: block !important; }
+  body.overflow-hidden-tablet .section-header .g4u-logo__light,
+  body.overflow-hidden-mobile .section-header .g4u-logo__light { display: none !important; }
+  body.overflow-hidden-tablet .section-header .header__icon,
+  body.overflow-hidden-mobile .section-header .header__icon {
+    background: transparent !important;
+    color: var(--g4u-ink) !important;
+  }
 }
 
 /* Footer */
