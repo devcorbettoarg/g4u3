@@ -737,9 +737,9 @@ padding:0px 40px;}
     align-items: center;
     background: linear-gradient(90deg, rgba(249, 156, 166, 0), #f99ca6 55%);
     color: var(--g4u-burgundy);
-    content: "→";
+    content: ">";
     display: flex;
-    font-size: 2.4rem;
+    font-size:1.8rem;
     height: 4.8rem;
     justify-content: flex-end;
     padding-right: 1.2rem;
