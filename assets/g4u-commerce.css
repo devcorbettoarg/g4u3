@@ -314,7 +314,7 @@ color: var(--g4u-ink);
 .g4u-product-ingredients details, .g4u-product-ingredients details:nth-last-child(-n + 2) { border-bottom: 0; border-top: .1rem solid #26131b; }
 .g4u-product-ingredients summary { align-items: center; color: #26131b; cursor: pointer; display: flex; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; justify-content: space-between; letter-spacing: .05em; line-height: 1.2; list-style: none; padding: 2.4rem 0; }
 .g4u-product-ingredients summary::-webkit-details-marker { display: none; }
-.g4u-product-ingredients__summary-label { align-items: center; display: inline-flex; gap: 1rem; }
+.g4u-product-ingredients__summary-label { align-items: center; display: inline-flex; gap: 1rem;  width:100%;}
 .g4u-product-ingredients__summary-label .svg-wrapper { display: inline-flex; height: 2rem; width: 2rem; }
 .g4u-product-ingredients__summary-label img { height: 100%; width: 100%;
 max-width:36px;
