@@ -2,7 +2,7 @@ product-component,
 collection-component {
   display: block;
 }
-product-component .card {
+product-component .card .card__media {
   border-radius:12px; overflow:hidden;
 }
 /* Regular */
