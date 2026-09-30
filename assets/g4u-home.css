@@ -4,6 +4,7 @@
   --g4u-orange: #ff4622;
   --g4u-ink: #231f20;
   --g4u-display: "Europa Grotesk SH", var(--font-heading-family);
+    --g4u-displayr: "Europa Grotesk SH R", var(--font-heading-family);
 }
 
 .g4u-display {
