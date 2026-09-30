@@ -168,7 +168,7 @@ body .announcement-bar-section {
 .template-product .thumbnail-list { gap: 1.6rem; }
 .template-product .thumbnail-list__item { background: #f2ebe4; border: 0; border-radius: 1.2rem; overflow: hidden; }
 .template-product .thumbnail { border: 0; border-radius: 1.2rem; overflow: hidden; }
-.template-product .thumbnail img { height: 100%; mix-blend-mode: multiply; object-fit: contain; padding: .4rem; width: 100%; }
+.template-product .thumbnail img { height: 100%; mix-blend-mode: multiply; object-fit: cover; padding: 0rem; width: 100%; }
 .template-product .thumbnail[aria-current] { box-shadow: none; }
 .template-product .thumbnail-list__item:has(.thumbnail[aria-current]) { border-color: transparent; }
 .template-product .thumbnail:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: -.2rem; }
