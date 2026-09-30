@@ -744,7 +744,7 @@ padding:0px 40px;}
   .g4u-comparison__header { margin-bottom: 3.2rem; }
   .g4u-comparison__table-wrap { margin-right: -2rem; }
   .g4u-comparison__table th:first-child {
-    max-width:200px;
+    max-width:130px;
     background: #f2ebe4;
     left: 0;
     padding-left: 1rem;
