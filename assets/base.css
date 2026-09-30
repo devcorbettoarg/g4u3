@@ -1793,7 +1793,9 @@ details[open] > .share-button__fallback {
   letter-spacing: 0.1rem;
   line-height: 1.5;
 }
-
+.search-modal__form  .field__label {
+  top:3rem;
+}
 .field__input:focus ~ .field__label,
 .field__input:not(:placeholder-shown) ~ .field__label,
 .field__input:-webkit-autofill ~ .field__label,
