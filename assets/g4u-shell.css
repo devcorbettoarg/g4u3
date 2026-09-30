@@ -565,16 +565,11 @@ body:not(.template-index) #cart-icon-bubble svg path {
     background: transparent !important;
     color: var(--g4u-ink) !important;
   }
-  .section-header.menu-open .header__icon svg,
-  .section-header.menu-open .header__icon svg path {
-    color: var(--g4u-ink) !important;
-    stroke: currentColor !important;
-  }
   .section-header.menu-open details.menu-drawer-container[open] > summary.header__icon--menu svg,
   .section-header.menu-open details.menu-drawer-container[open] > summary.header__icon--menu svg path {
     color: var(--g4u-ink) !important;
-    fill: var(--g4u-ink) !important;
-    stroke: var(--g4u-ink) !important;
+    fill: currentColor !important;
+    stroke: none !important;
   }
   .section-header.menu-open .cart-count-bubble {
     background: var(--g4u-burgundy) !important;
