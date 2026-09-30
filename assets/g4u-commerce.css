@@ -332,8 +332,9 @@ max-height:36px; }
 .g4u-product-testimonials__grid::-webkit-scrollbar { display: none; }
 .g4u-product-testimonials__grid > blockquote { box-sizing: border-box; flex: 0 0 33.333333%; min-width: 0; scroll-snap-align: start; }
 .g4u-product-testimonials__controls { display: flex; gap: .8rem; }
-.g4u-product-testimonials__arrow { align-items: center; background: transparent; border: .1rem solid currentColor; border-radius: 50%; color: inherit; cursor: pointer; display: inline-flex; height: 4.2rem; justify-content: center; padding: 0; width: 4.2rem; }
-.g4u-product-testimonials__arrow:hover { background: var(--g4u-burgundy); color: var(--g4u-cream); }
+.g4u-product-testimonials__arrow { 
+  transition:1s all; align-items: center; background: transparent; border: .1rem solid currentColor; border-radius: 50%; color: inherit; cursor: pointer; display: inline-flex; height: 4.2rem; justify-content: center; padding: 0; width: 4.2rem; }
+.g4u-product-testimonials__arrow:hover { opacity:0.8; }
 .g4u-product-testimonials__arrow:disabled { cursor: default; opacity: .35; }
 .g4u-product-testimonials[data-g4u-static] .g4u-product-testimonials__controls { visibility: hidden; }
 .g4u-product-testimonials__arrow img { height: 1.8rem; width: 1.8rem; }
