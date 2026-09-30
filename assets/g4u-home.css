@@ -706,7 +706,8 @@ top:-10px;}
 .g4u-comparison__table th:nth-child(even),
 .g4u-comparison__table td:nth-child(even) { background: rgba(80, 3, 34, .07); }
 .g4u-comparison__table th:last-child,
-.g4u-comparison__table td:last-child { background: rgba(255, 70, 34, .7); font-weight: 400; }
+.g4u-comparison__table tbody td:last-child { background: rgba(255, 70, 34, .7); font-weight: 400;
+border-bottom:.1rem solid #5003221A; }
 .g4u-comparison__table thead th {
   letter-spacing:5% !important;
 }
