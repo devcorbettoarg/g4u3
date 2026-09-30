@@ -30,7 +30,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
-        "{background: #fff8f0 !important;}"
+        ".gradient {background: #fff8f0 !important;}"
       ],
       "settings": {
         "products_per_page": 16,
