@@ -421,7 +421,9 @@ body:not(.template-index) #cart-icon-bubble svg path {
  }
   body.template-index .section-header:not(.shopify-section-header-sticky) .header,
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
-  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header { padding-left: 2rem !important; padding-right: 2rem !important; }
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header {
+    padding: 0 2rem !important;
+  }
 
   /* Keep the five mobile header controls inside the viewport. The native
      account layout adds a fourth grid column, which pushed the cart outside
@@ -590,6 +592,14 @@ body:not(.template-index) #cart-icon-bubble svg path {
     background-color: var(--g4u-cream) !important;
     background-image: none !important;
     color: var(--g4u-ink) !important;
+  }
+  body.overflow-hidden-tablet .section-header,
+  body.overflow-hidden-mobile .section-header,
+  html.overflow-hidden-tablet .section-header,
+  html.overflow-hidden-mobile .section-header {
+    background: var(--g4u-cream) !important;
+    background-color: var(--g4u-cream) !important;
+    background-image: none !important;
   }
   body.overflow-hidden-tablet .section-header .g4u-logo__dark,
   body.overflow-hidden-mobile .section-header .g4u-logo__dark { display: block !important; }
