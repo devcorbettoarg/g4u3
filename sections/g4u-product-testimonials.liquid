@@ -18,9 +18,13 @@
     <div class="g4u-product-testimonials__grid" data-g4u-scroll-track>
       {%- for block in section.blocks -%}
         <blockquote {{ block.shopify_attributes }}>
-          <p class="g4u-product-testimonials__stars" aria-label="{{ block.settings.rating | escape }} de 5 estrellas">
-            Vector.svg Vector.svg Vector.svg Vector.svg Vector.svg
-          </p>
+        <p class="g4u-product-testimonials__stars" aria-label="{{ block.settings.rating | escape }} de 5 estrellas">
+  <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
+  <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
+  <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
+  <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
+  <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
+</p>
           <div class="rte">{{ block.settings.quote }}</div>
           <footer>{{ block.settings.author | escape }}</footer>
         </blockquote>
