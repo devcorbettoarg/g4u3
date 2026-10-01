@@ -322,7 +322,8 @@
               >
                 <span data-summary-count>0</span>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 12h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  <path class="pb-summary__toggle-vertical" d="M12 5v14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
               </button>
             </div>
@@ -1813,6 +1814,206 @@
 
     #PackBuilder-{{ section.id }} .pb-card__tag {
       font-size: 9px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__layout {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__catalog {
+      gap: 18px;
+      order: 1;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tabs-shell {
+      background: #fff;
+      border: 1px solid #e5e1dc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(38, 19, 27, .08);
+      min-height: 48px;
+      padding: 5px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tabs {
+      gap: 4px;
+      width: 100%;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tab {
+      flex: 1 0 auto;
+      justify-content: center;
+      min-height: 38px;
+      padding: 5px 10px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tab.is-active {
+      background: #f6f4f0;
+      border-radius: 9px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__tab-icon {
+      height: 28px;
+      width: 28px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb__grid {
+      gap: 10px;
+      grid-auto-columns: min(42vw, 156px);
+      margin-inline: -20px;
+      padding-inline: 20px;
+      scroll-padding-inline: 20px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__media {
+      aspect-ratio: 1 / 1.15;
+      border-radius: 10px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__body {
+      display: flex;
+      gap: 7px;
+      min-height: 200px;
+      padding: 10px 0 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__tags {
+      flex-wrap: nowrap;
+      margin: 0;
+      order: -1;
+      overflow: hidden;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__tag {
+      flex: 0 0 auto;
+      font-size: 10px;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 3px 5px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__tag:not(:first-child) {
+      display: none;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__title {
+      font-size: 14px;
+      min-height: 36px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__price {
+      margin-top: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__actions {
+      padding-top: 8px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-card__add,
+    #PackBuilder-{{ section.id }} .pb-card__quantity {
+      min-height: 42px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary {
+      bottom: 0;
+      order: 2;
+      position: sticky;
+      top: auto;
+      width: 100%;
+      z-index: 20;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__inner {
+      background: #fff;
+      border-color: #ddd9d4;
+      border-radius: 14px;
+      box-shadow: 0 -3px 14px rgba(38, 19, 27, .08);
+      padding: 16px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__heading-row {
+      align-items: center;
+      display: flex;
+      padding: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__message {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle {
+      border: 0;
+      border-radius: 0;
+      display: inline-grid;
+      min-width: 40px;
+      padding: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle > span {
+      display: none;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle[aria-expanded="true"] svg {
+      transform: none;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__mobile-toggle[aria-expanded="true"] .pb-summary__toggle-vertical {
+      opacity: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__content,
+    #PackBuilder-{{ section.id }} .pb-summary.is-open .pb-summary__content {
+      border-top: 0;
+      display: flex;
+      max-height: none;
+      overflow: visible;
+      padding: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__groups,
+    #PackBuilder-{{ section.id }} .pb-summary__note,
+    #PackBuilder-{{ section.id }} .pb-summary__status,
+    #PackBuilder-{{ section.id }} .pb-summary__totals > div:not(.pb-summary__total-row) {
+      display: none;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary.is-open .pb-summary__groups {
+      display: grid;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-progress {
+      margin: 12px 0 8px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-progress__levels {
+      height: 50px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-progress__levels span {
+      font-size: 12px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__totals {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__total-row,
+    #PackBuilder-{{ section.id }} .pb-summary__total-row strong {
+      font-size: 14px;
+    }
+
+    #PackBuilder-{{ section.id }} .pb-summary__submit {
+      min-height: 48px;
     }
   }
 
