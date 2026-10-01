@@ -616,6 +616,14 @@ body:not(.template-index) #cart-icon-bubble svg path {
     background: transparent !important;
     color: var(--g4u-ink) !important;
   }
+  .section-header.menu-open #cart-icon-bubble svg,
+  .section-header.menu-open #cart-icon-bubble svg path,
+  body.overflow-hidden-tablet .section-header #cart-icon-bubble svg,
+  body.overflow-hidden-tablet .section-header #cart-icon-bubble svg path,
+  body.overflow-hidden-mobile .section-header #cart-icon-bubble svg,
+  body.overflow-hidden-mobile .section-header #cart-icon-bubble svg path {
+    stroke: var(--g4u-burgundy) !important;
+  }
 }
 
 /* Footer */
