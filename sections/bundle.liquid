@@ -657,7 +657,7 @@
   #PackBuilder-{{ section.id }} .pb__arrow:disabled {
 
     color: var(--pb-text);
-    cursor: default;
+    cursor: not-allowed;
   }
 
   #PackBuilder-{{ section.id }} .pb__arrow svg {
@@ -1893,7 +1893,7 @@
       defaultVariant: {{ section.settings.default_variant_label | json }}
     };
 
-    const moneyFormatter = new Intl.NumberFormat(settings.locale, {
+    const moneyFormatter = new Intl.NumberFormat('es-AR', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
