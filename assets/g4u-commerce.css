@@ -1091,6 +1091,16 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
         align-items: start !important;
   }
   
+  cart-drawer .g4u-cart-drawer__payments li { display: inline-block; }
+  cart-drawer cart-drawer-items {
+    box-sizing: border-box;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    max-width: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: calc(100% + 4rem);
+  }
   cart-drawer .drawer__inner { padding: 0 2rem; width: min(44rem, 100vw); } cart-drawer .drawer__header { min-height: 7.2rem; padding-top: 2rem; } cart-drawer .drawer__heading { font-size: 3.2rem; } cart-drawer .cart-item { padding: 1.6rem 0; } }
 @media (prefers-reduced-motion: reduce) { cart-drawer.drawer, cart-drawer .drawer__inner { transition: none; } }
 
