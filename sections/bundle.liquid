@@ -128,7 +128,7 @@
                   <path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
-              <button type="button" class="pb__arrow pb__arrow--accent" data-tab-next aria-label="{{ section.settings.next_label | escape }}">
+              <button type="button" class="pb__arrow" data-tab-next aria-label="{{ section.settings.next_label | escape }}">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -648,10 +648,16 @@
     cursor: pointer;
   }
 
-  #PackBuilder-{{ section.id }} .pb__arrow--accent {
+  #PackBuilder-{{ section.id }} .pb__arrow:not(:disabled) {
     border-color: var(--pb-accent);
     background: var(--pb-accent);
     color: var(--pb-accent-contrast);
+  }
+
+  #PackBuilder-{{ section.id }} .pb__arrow:disabled {
+    background: #fff;
+    color: var(--pb-text);
+    cursor: default;
   }
 
   #PackBuilder-{{ section.id }} .pb__arrow svg {
@@ -1291,7 +1297,7 @@
 
   #PackBuilder-{{ section.id }} .pb-card__body {
     gap: 16px;
-    min-height: 0;
+
     padding: 16px 0 0;
   }
 
@@ -1846,6 +1852,8 @@
     const discountAmountNode = root.querySelector('[data-discount-amount]');
     const estimatedTotalNode = root.querySelector('[data-estimated-total]');
     const summaryCount = root.querySelector('[data-summary-count]');
+    const previousButton = root.querySelector('[data-tab-prev]');
+    const nextButton = root.querySelector('[data-tab-next]');
 
     const defaultLevels = [
       { qty: 2, value: 5 },
@@ -1985,6 +1993,8 @@
         panel.classList.toggle('is-active', active);
         panel.hidden = !active;
       });
+
+      requestAnimationFrame(updateProductArrows);
     };
 
     const moveTab = direction => {
@@ -1992,6 +2002,16 @@
       const currentIndex = Math.max(tabs.findIndex(tab => tab.classList.contains('is-active')), 0);
       const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
       activateTab(tabs[nextIndex].dataset.tab, true);
+    };
+
+    const updateProductArrows = () => {
+      const activePanel = panels.find(panel => !panel.hidden);
+      const grid = activePanel?.querySelector('.pb__grid');
+      if (!grid) return;
+
+      const maxScroll = Math.max(grid.scrollWidth - grid.clientWidth, 0);
+      if (previousButton) previousButton.disabled = grid.scrollLeft <= 1;
+      if (nextButton) nextButton.disabled = maxScroll <= 1 || grid.scrollLeft >= maxScroll - 1;
     };
 
     const scrollProducts = direction => {
@@ -2401,8 +2421,10 @@
       });
     });
 
-    root.querySelector('[data-tab-prev]')?.addEventListener('click', () => scrollProducts(-1));
-    root.querySelector('[data-tab-next]')?.addEventListener('click', () => scrollProducts(1));
+    previousButton?.addEventListener('click', () => scrollProducts(-1));
+    nextButton?.addEventListener('click', () => scrollProducts(1));
+    panels.forEach(panel => panel.querySelector('.pb__grid')?.addEventListener('scroll', updateProductArrows, { passive: true }));
+    window.addEventListener('resize', updateProductArrows);
 
     cards.forEach(card => {
       card.querySelector('[data-add-item]')?.addEventListener('click', () => {
@@ -2437,10 +2459,12 @@
     document.addEventListener('shopify:section:unload', event => {
       if (event.detail?.sectionId === root.dataset.sectionId) {
         root.dataset.initialized = 'false';
+        window.removeEventListener('resize', updateProductArrows);
       }
     });
 
     render();
+    requestAnimationFrame(updateProductArrows);
   })();
 </script>
 
