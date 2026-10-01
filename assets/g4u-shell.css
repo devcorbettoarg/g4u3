@@ -337,6 +337,12 @@ body:not(.template-index) #cart-icon-bubble svg path {
     overflow-x: hidden;
   }
 
+  body.template-index .section-header:not(.shopify-section-header-sticky),
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky),
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) {
+    top: 4rem;
+  }
+
   .header__icon--menu[aria-expanded='true']::before {
     content: none;
     display: none;
