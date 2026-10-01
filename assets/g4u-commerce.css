@@ -1093,7 +1093,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
         align-items: start !important;
   }
   
-  cart-drawer .g4u-cart-drawer__payments li { display: inline-block; }
+  cart-drawer .g4u-cart-drawer__payments { display: none; }
   cart-drawer .g4u-cart-drawer__discount-tag { font-size: 12px; }
   cart-drawer .drawer__footer { border-top: 0; padding-top: 1.4rem; }
   cart-drawer .g4u-cart-drawer__savings {
@@ -1109,7 +1109,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
     display: block;
     margin-left: -2rem;
     margin-right: -2rem;
-    max-height: 60vh;
+    max-height: 63vh;
     max-width: none;
     overflow-x: hidden;
     overflow-y: auto;
