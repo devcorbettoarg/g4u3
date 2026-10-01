@@ -1911,10 +1911,8 @@
     }
 
     #PackBuilder-{{ section.id }} .pb-card__tags {
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       margin: 0;
-      order: -1;
-      overflow: hidden;
     }
 
     #PackBuilder-{{ section.id }} .pb-card__tag {
@@ -1925,10 +1923,6 @@
       padding: 3px 5px;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    #PackBuilder-{{ section.id }} .pb-card__tag:not(:first-child) {
-      display: none;
     }
 
     #PackBuilder-{{ section.id }} .pb-card__title {
