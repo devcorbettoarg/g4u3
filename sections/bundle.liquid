@@ -2655,6 +2655,11 @@
     nextButton?.addEventListener('click', () => scrollProducts(1));
     panels.forEach(panel => panel.querySelector('.pb__grid')?.addEventListener('scroll', updateProductArrows, { passive: true }));
     window.addEventListener('resize', updateProductArrows);
+    const gridResizeObserver = new ResizeObserver(updateProductArrows);
+    panels.forEach(panel => {
+      const grid = panel.querySelector('.pb__grid');
+      if (grid) gridResizeObserver.observe(grid);
+    });
 
     cards.forEach(card => {
       card.querySelector('[data-add-item]')?.addEventListener('click', () => {
@@ -2690,6 +2695,7 @@
       if (event.detail?.sectionId === root.dataset.sectionId) {
         root.dataset.initialized = 'false';
         window.removeEventListener('resize', updateProductArrows);
+        gridResizeObserver.disconnect();
       }
     });
 
