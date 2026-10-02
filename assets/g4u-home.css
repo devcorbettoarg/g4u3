@@ -407,16 +407,9 @@
 .g4u-flour-hero__title { color: inherit; font-size: clamp(4.5rem, 4.4vw, 5.6rem); line-height: .9; margin: 0 0 1.6rem; }
 .g4u-flour-hero__title em, .g4u-flour-quality__title em { color: var(--g4u-orange); font: inherit; }
 .g4u-flour-hero__text { font-size: 2rem; letter-spacing: .05em; line-height: 1.2; max-width: 45.7rem; }
-.g4u-flour-hero__scroll { align-items: center; bottom: 4rem; display: flex; height: 5rem; justify-content: center; position: absolute; right: 4rem; width: 2.2rem; z-index: 1; }
-.g4u-flour-hero__scroll span { animation: g4u-scroll-bounce 1.6s ease-in-out infinite; display: block; line-height: 0; }
-.g4u-flour-hero__scroll svg { display: block; height: 2.4rem; width: 2.2rem; }
-@keyframes g4u-scroll-bounce {
-  0%, 100% { transform: translateY(-.5rem); }
-  50% { transform: translateY(.7rem); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .g4u-flour-hero__scroll span { animation: none; }
-}
+.g4u-flour-hero__scroll { bottom: 4rem; height: 5rem; position: absolute; right: 4rem; width: 2.1rem; z-index: 1; }
+.g4u-flour-hero__scroll span { 
+  display:none; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; display: block; height: 1.7rem; left: .2rem; position: absolute; top: .2rem; transform: rotate(45deg); width: 1.7rem; }
 .g4u-flour-challenge { background: var(--g4u-burgundy); color: var(--g4u-cream); padding: 10rem 4rem; text-align: center; }
 .g4u-flour-challenge__inner { margin: auto; max-width: 136rem; }
 .g4u-flour-challenge__header { margin: auto auto 6rem; max-width: 76.8rem; }
