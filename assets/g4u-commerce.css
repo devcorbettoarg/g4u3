@@ -1127,7 +1127,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   
   cart-drawer .g4u-cart-drawer__payments { display: none; }
   cart-drawer .g4u-cart-drawer__discount-tag { font-size: 12px; }
-  cart-drawer .drawer__footer { border-top: 0; padding-top: 1.4rem; }
+  cart-drawer .drawer__footer { border-top: 0; padding-top: 1.4rem; padding-bottom:20px; }
   cart-drawer .g4u-cart-drawer__savings {
     align-items: center;
     display: flex;
