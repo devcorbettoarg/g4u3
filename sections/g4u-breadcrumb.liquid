@@ -17,16 +17,15 @@
 <nav class="g4u-breadcrumb" aria-label="Migas de pan">
   <ol class="g4u-breadcrumb__list" role="list">
     <li><a href="{{ routes.root_url }}">{{ section.settings.home_label | escape }}</a></li>
+
+    {%- if product != blank or collection != blank -%}
+      <li><a href="{{ routes.all_products_collection_url }}">Productos</a></li>
+    {%- endif -%}
+
     {%- if section.settings.show_collection and collection != blank and product != blank -%}
       <li><a href="{{ collection.url }}">{{ collection.title | escape }}</a></li>
     {%- endif -%}
-     {%- if product != blank -%}
-  <li>
-    <a href="{{ collection.url | default: routes.all_products_collection_url }}">
-      Productos
-    </a>
-  </li>
-{%- endif -%}
+
     {%- if current_label != blank -%}<li aria-current="page">{{ current_label | escape }}</li>{%- endif -%}
   </ol>
 </nav>
