@@ -3,6 +3,7 @@
 
   Accepts:
   - card_product: {Object} Product Liquid object (optional)
+  - card_collection: {Object} Collection used to preserve breadcrumb context (optional)
   - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
   - image_shape: {String} Image mask to apply to the product image card. Values are "arch", "blob", "chevronleft", "chevronright", "diamond", "parallelogram", and "round". (optional)
   - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
@@ -46,6 +47,13 @@
     endif
 
     assign g4u_card_title = card_product.title | split: '|' | first | strip
+
+    assign g4u_card_url = card_product.url
+    if card_collection != blank
+      assign g4u_card_url = card_product.url | within: card_collection
+    elsif product_view_context == 'collection' and collection != blank
+      assign g4u_card_url = card_product.url | within: collection
+    endif
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
@@ -125,7 +133,7 @@
                 {% endif %}
               >
                 <a
-                  href="{{ card_product.url }}"
+                  href="{{ g4u_card_url }}"
                   id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
                   class="full-unstyled-link"
                   aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}{% if card_product.available == false or card_product.compare_at_price > card_product.price %} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}{% endif %}"
@@ -162,7 +170,7 @@
               {% endif %}
             >
               <a
-                href="{{ card_product.url }}"
+                href="{{ g4u_card_url }}"
                 id="CardLink-{{ section_id }}-{{ card_product.id }}"
                 class="full-unstyled-link"
                 aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }}{% if card_product.available == false or card_product.compare_at_price > card_product.price %} Badge-{{ section_id }}-{{ card_product.id }}{% endif %}"
@@ -527,7 +535,7 @@
                             {% if card_product == blank %}
                               role="link" aria-disabled="true"
                             {% else %}
-                              href="{{ card_product.url }}"
+                              href="{{ g4u_card_url }}"
                             {% endif %}
                             class="link product__view-details animate-arrow small-hide medium-hide"
                           >
@@ -536,7 +544,7 @@
                           </a>
                         </div>
                         <div class="quick-add-modal__content-info--bulk-details large-up-hide">
-                          <a href="{{ card_product.url }}" class="full-unstyled-link">
+                          <a href="{{ g4u_card_url }}" class="full-unstyled-link">
                             <h3>{{ g4u_card_title | escape }}</h3>
                           </a>
                           {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
@@ -549,7 +557,7 @@
                       </div>
                       <div>
                         <div class="quick-add-modal__content-info--bulk-details small-hide medium-hide">
-                          <a href="{{ card_product.url }}" class="full-unstyled-link">
+                          <a href="{{ g4u_card_url }}" class="full-unstyled-link">
                             <h3 class="h2">
                               {{ g4u_card_title | escape }}
                             </h3>
