@@ -155,7 +155,9 @@
         "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 80,
-        "padding_bottom": 80
+        "padding_bottom": 80,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 0
       }
     },
     "product_comparison": {
@@ -538,7 +540,7 @@
         "description": "<p>Todo lo que querés saber antes de elegir tu producto G4U.</p>",
         "contact_title": "¿Todavía tenés preguntas?",
         "contact_label": "Contactate con nosotros",
-        "contact_link": "/pages/contacto"
+        "contact_link": "shopify://pages/contact"
       }
     },
     "g4u_services": {
