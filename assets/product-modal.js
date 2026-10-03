@@ -12,6 +12,10 @@ if (!customElements.get('product-modal')) {
 
         this.previousButton?.addEventListener('click', () => this.move(-1));
         this.nextButton?.addEventListener('click', () => this.move(1));
+        this.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft') this.move(-1);
+          if (event.key === 'ArrowRight') this.move(1);
+        });
         this.container?.addEventListener('scroll', () => {
           window.clearTimeout(this.scrollTimer);
           this.scrollTimer = window.setTimeout(() => this.updateActiveFromScroll(), 80);

@@ -1304,6 +1304,42 @@
 
     };
 
+    const mobileProducts = {
+      snack: {
+        ...desktopProducts.snack,
+        displayScale: mobileStaticProducts.snack.displayScale,
+        entryX: 36,
+        entryY: -34,
+        scrollX: -5,
+        scrollY: 24,
+        mouseX: 0,
+        mouseY: 0,
+        pointerTilt: 0
+      },
+      bread: {
+        ...desktopProducts.bread,
+        displayScale: mobileStaticProducts.bread.displayScale,
+        entryX: 30,
+        entryY: -28,
+        scrollX: -4,
+        scrollY: 30,
+        mouseX: 0,
+        mouseY: 0,
+        pointerTilt: 0
+      },
+      tortilla: {
+        ...desktopProducts.tortilla,
+        displayScale: mobileStaticProducts.tortilla.displayScale,
+        entryX: -34,
+        entryY: 38,
+        scrollX: 5,
+        scrollY: -22,
+        mouseX: 0,
+        mouseY: 0,
+        pointerTilt: 0
+      }
+    };
+
 
     /* ==========================================================
        PARTICLES DESKTOP
@@ -1604,7 +1640,6 @@
     const updateScroll = () => {
 
       if (
-        !desktopQuery.matches ||
         reducedMotionQuery.matches
       ) {
         return;
@@ -2137,7 +2172,6 @@
 
 
       if (
-        !desktopQuery.matches ||
         reducedMotionQuery.matches
       ) {
         return;
@@ -2197,6 +2231,8 @@
 
       if (visible) {
 
+        const activeProducts = desktopQuery.matches ? desktopProducts : mobileProducts;
+
         renderParticle(
           'one',
           desktopParticles.one,
@@ -2213,21 +2249,21 @@
 
         renderProduct(
           'snack',
-          desktopProducts.snack,
+          activeProducts.snack,
           time
         );
 
 
         renderProduct(
           'bread',
-          desktopProducts.bread,
+          activeProducts.bread,
           time
         );
 
 
         renderProduct(
           'tortilla',
-          desktopProducts.tortilla,
+          activeProducts.tortilla,
           time
         );
 
@@ -2245,7 +2281,6 @@
     const startDesktopAnimation = () => {
 
       if (
-        !desktopQuery.matches ||
         reducedMotionQuery.matches ||
         animationFrameId !== null
       ) {
@@ -2289,10 +2324,7 @@
       resetPointer();
 
 
-      if (
-        desktopQuery.matches &&
-        !reducedMotionQuery.matches
-      ) {
+      if (!reducedMotionQuery.matches) {
 
         updateScroll();
 
@@ -2306,9 +2338,7 @@
       stopDesktopAnimation();
 
 
-      if (
-        !desktopQuery.matches
-      ) {
+      if (!desktopQuery.matches) {
 
         applyMobileStaticState();
 
@@ -2367,14 +2397,7 @@
     window.addEventListener(
       'scroll',
       () => {
-
-        if (
-          desktopQuery.matches
-        ) {
-
-          updateScroll();
-
-        }
+        updateScroll();
 
       },
       {
@@ -2389,19 +2412,7 @@
       () => {
 
         resetPointer();
-
-
-        if (
-          desktopQuery.matches
-        ) {
-
-          updateScroll();
-
-        } else {
-
-          applyMobileStaticState();
-
-        }
+        updateScroll();
 
       },
       {
