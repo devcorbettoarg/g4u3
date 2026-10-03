@@ -335,6 +335,17 @@ body:not(.template-index) #cart-icon-bubble svg path {
     min-height: var(--g4u-header-height);
   }
 
+  /* On desktop hero templates, the announcement and header sections both sit
+     at top: 0. Reserve the announcement's 4rem only before sticky is active. */
+  body.template-index .section-header:not(.shopify-section-header-sticky):has(.header__search details[open]) .search-modal,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky):has(.header__search details[open]) .search-modal,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky):has(.header__search details[open]) .search-modal {
+    box-sizing: border-box;
+    height: calc(var(--g4u-header-height) + 4rem);
+    min-height: calc(var(--g4u-header-height) + 4rem);
+    padding-top: 4rem;
+  }
+
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
     padding: 1.4rem 4rem !important;
