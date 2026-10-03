@@ -144,13 +144,13 @@ body.template-suffix-harina {
      - art column: ~605px
      ------------------------------------------------------------------------ */
 
-  body.template-suffix-nosotros .g4u-about-manifesto {
+  body.template-suffix-nosotros .g4u-about-manifesto__inner {
     box-sizing: border-box;
     grid-template-columns: minmax(0, 1fr) 60.5rem;
+    margin: 0 auto;
+    max-width: var(--g4u-container-width);
     min-height: 97.9rem;
     padding: 0 4rem;
-    margin:0 auto;
-    max-width:136rem;
   }
 
   body.template-suffix-nosotros .g4u-about-manifesto__copy {

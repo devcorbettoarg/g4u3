@@ -1155,7 +1155,7 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 /* The cart drawer uses the wider two-panel composition from Figma on desktop. */
 @media screen and (min-width: 990px) {
   cart-drawer.drawer { align-items: stretch; background: rgba(27, 4, 11, .88); display: flex; justify-content: flex-end; padding: 0; }
-  cart-drawer .drawer__inner { border-radius: 1.2rem; box-shadow: 0 .2rem 1.2rem rgba(0,0,0,.1); display: grid; grid-template-columns: 44.9rem 2rem 30.4rem 2.4rem; grid-template-rows: auto minmax(0, 1fr) auto; height: min(86.4rem, 100vh); max-height: none; padding: 0; transform: translateX(100%); width: min(79.7rem, calc(100vw - 2rem)); }
+  cart-drawer .drawer__inner { border-radius: 1.2rem; box-shadow: 0 .2rem 1.2rem rgba(0,0,0,.1); display: grid; grid-template-columns: 44.9rem 2rem 30.4rem 2.4rem; grid-template-rows: auto minmax(0, 1fr) auto; height: 100vh; height: 100dvh; max-height: none; padding: 0; transform: translateX(100%); width: min(79.7rem, calc(100vw - 2rem)); }
   cart-drawer.drawer.active .drawer__inner { transform: translateX(0); }
   cart-drawer .drawer__header { box-sizing: border-box; grid-column: 1 / -1; min-height: 6rem; padding: 1.2rem 1.2rem 1.2rem 2rem; }
   cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4rem; letter-spacing: .05em; line-height: 1.2; margin: 0; text-transform: none; }

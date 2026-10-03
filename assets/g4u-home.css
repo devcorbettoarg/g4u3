@@ -318,6 +318,9 @@
   display: grid;
   gap: .4rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  max-width: none;
+  width: 100%;
 }
 
 .g4u-category-card {
@@ -684,7 +687,9 @@ max-width:400px; }
   background: var(--g4u-orange);
   color: var(--g4u-burgundy);
   height: 20rem;
+  max-width: none;
   overflow: hidden;
+  width: 100%;
 }
 .g4u-nutrition-marquee__track {
   align-items: center;
@@ -1036,14 +1041,19 @@ body.template-suffix-nosotros .section-header .header-wrapper {
 .g4u-about-hero__scroll span::after { border-bottom: .1rem solid currentColor; border-right: .1rem solid currentColor; bottom: .8rem; height: 1rem; left: .5rem; transform: rotate(45deg); width: 1rem; }
 
 .g4u-about-manifesto {
-  align-items: center;
   background: var(--g4u-burgundy);
   color: var(--g4u-cream);
+  overflow: hidden;
+}
+.g4u-about-manifesto__inner {
+  align-items: center;
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(42rem, 1fr);
+  margin: 0 auto;
+  max-width: var(--g4u-container-width);
   min-height: 97.9rem;
-  overflow: hidden;
   padding-left: 4rem;
+  width: 100%;
 }
 .g4u-about-manifesto__copy { padding: 6rem 0; position: relative; z-index: 2; }
 .g4u-about-manifesto__title { color: inherit; font-size: clamp(4.2rem, 3.9vw, 5.6rem); line-height: .9; margin: 0 0 4rem; }
@@ -1092,7 +1102,7 @@ margin-top:2px;}
 .g4u-about-value .rte { font-size: 1.6rem; line-height: 1.5; margin: auto; max-width: 28rem; }
 
 @media screen and (max-width: 989px) {
-  .g4u-about-manifesto { grid-template-columns: 1fr 38%; }
+  .g4u-about-manifesto__inner { grid-template-columns: 1fr 38%; }
   .g4u-about-manifesto__title { font-size: 4rem; }
   .g4u-about-story__inner { gap: 4rem; }
   .g4u-about-values__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 5.6rem; }
@@ -1107,7 +1117,7 @@ margin-top:2px;}
  .g4u-about-hero__title  span { display: inline; }
   .g4u-about-hero__text { font-size: 1.6rem; }
   .g4u-about-hero__scroll { bottom: 2rem; right: 2rem; }
-  .g4u-about-manifesto { display: block; min-height: 0; padding: 6.4rem 2rem 0; }
+  .g4u-about-manifesto__inner { display: block; min-height: 0; padding: 6.4rem 2rem 0; }
   .g4u-about-manifesto__copy { padding: 0; }
   .g4u-about-manifesto__title { font-size: 3.5rem; }
   .g4u-about-manifesto__closing { font-size: 2rem; }
