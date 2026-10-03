@@ -91,7 +91,9 @@ border-radius:12px;  overflow: hidden; }
     letter-spacing: 5%;
   }
 .g4u-card__subtitle { color: var(--g4u-ink); font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; margin: 0; }
-.g4u-card__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 16px !important; }
+.g4u-card__tags { 
+  display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 16px !important; 
+margin-bottom:5px; }
 .g4u-card__tag { align-items: flex-end;; 
  color: var(--g4u-ink); display: inline-flex;
    font-family: var(--g4u-display); font-size: 1.4rem;
