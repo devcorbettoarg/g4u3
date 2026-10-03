@@ -414,15 +414,18 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 <script>
-  new WOW({
-    boxClass: 'wow',
-    animateClass: 'animate__animated',
-    offset: 80,
-    mobile: true,
-    live: true
-  }).init();
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!window.WOW) return;
+    new WOW({
+      boxClass: 'wow',
+      animateClass: 'animate__animated',
+      offset: 80,
+      mobile: true,
+      live: true
+    }).init();
+  });
 </script>
   </body>
 </html>
