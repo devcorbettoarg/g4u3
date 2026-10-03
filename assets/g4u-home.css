@@ -1,4 +1,5 @@
 :root {
+  --g4u-container-width: 136rem;
   --g4u-cream: #fff8f0;
   --g4u-burgundy: #500322;
   --g4u-orange: #ff4622;
@@ -271,7 +272,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   list-style: none;
   margin: 0 auto;
-  max-width: 136rem;
+  max-width: var(--g4u-container-width);
   padding: 0;
 }
 
@@ -418,7 +419,7 @@
   .g4u-flour-hero__scroll span { animation: none; }
 }
 .g4u-flour-challenge { background: var(--g4u-burgundy); color: var(--g4u-cream); padding: 10rem 4rem; text-align: center; }
-.g4u-flour-challenge__inner { margin: auto; max-width: 136rem; }
+.g4u-flour-challenge__inner { margin: auto; max-width: var(--g4u-container-width); }
 .g4u-flour-challenge__header { margin: auto auto 6rem; max-width: 76.8rem; }
 .g4u-flour-challenge__title, .g4u-flour-formula__title, .g4u-flour-benefits__title { color: inherit; font-size: 4.8rem; line-height: 1; margin: 0; }
 .g4u-flour-challenge__text { font-family: var(--g4u-display);
@@ -428,7 +429,7 @@
 .g4u-flour-challenge__media img { height: 100%; object-fit: cover; width: 100%; }
 .g4u-flour-formula { background: var(--g4u-cream); color: var(--g4u-ink); padding: 10rem 4rem; text-align: center; }
 .g4u-flour-formula__header { margin: auto auto 6rem; max-width: 76.8rem; }
-.g4u-flour-formula__grid { align-items: center; display: grid; gap: 4.8rem; grid-template-columns: minmax(0, 1fr) 54rem minmax(0, 1fr); margin: auto; max-width: 136rem; }
+.g4u-flour-formula__grid { align-items: center; display: grid; gap: 4.8rem; grid-template-columns: minmax(0, 1fr) 54rem minmax(0, 1fr); margin: auto; max-width: var(--g4u-container-width); }
 .g4u-flour-formula__list { display: grid; gap: 6.4rem; }
 .g4u-flour-formula__item { align-items: center; display: flex; flex-direction: column; gap: 1.2rem; }
 .g4u-flour-formula__item img { height: 40px; margin: 0; width: 40px;  object-fit:contain;}
@@ -448,7 +449,7 @@
 .g4u-flour-formula__media img { height: 100%; object-fit: cover; width: 100%; }
 .g4u-flour-benefits { background: var(--g4u-burgundy); color: var(--g4u-cream); padding: 8rem 4rem; text-align: center; }
 .g4u-flour-benefits__title { margin: auto auto 8rem; max-width: 60rem; }
-.g4u-flour-benefits__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: auto; max-width: 136rem; }
+.g4u-flour-benefits__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: auto; max-width: var(--g4u-container-width); }
 .g4u-flour-benefit { align-items: center; display: flex; flex-direction: column; gap: 1.2rem; }
 .g4u-flour-benefit img { height: 8rem; margin: 0; object-fit: contain; width: 8rem; }
 .g4u-flour-benefit p { font-family: var(--g4u-display); letter-spacing: .04em; }
@@ -517,7 +518,7 @@
 g4u-tabs {
   display: block;
   margin: 0 auto;
-  max-width: 136rem;
+  max-width: var(--g4u-container-width);
 }
 .g4u-science {
   background: #f99ca6;
@@ -813,14 +814,14 @@ font-size:12px;
   text-align: center;
 }
 .g4u-low-carb__title { color: inherit; font-size: 4.8rem; margin: 0 0 8rem; }
-.g4u-low-carb__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 136rem; }
+.g4u-low-carb__grid { display: grid; gap: 3.2rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: var(--g4u-container-width); }
 .g4u-low-carb__icon { height: 71px; margin-bottom: 20px; object-fit: contain; width: auto; }
 .g4u-low-carb__item-title { color: inherit; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; margin: 0 0 1.2rem; }
 .g4u-low-carb__text { font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; margin: auto; max-width: 30rem; }
 
 /* Professional recommendations */
 .g4u-experts { background: #f2ebe4; color: var(--g4u-ink); display: block; font-family: var(--g4u-display); overflow: hidden; padding: 8rem 4rem; }
-.g4u-experts__header { align-items: flex-end; display: flex; gap: 3.2rem; justify-content: space-between; margin: 0 auto 6rem; max-width: 136rem; }
+.g4u-experts__header { align-items: flex-end; display: flex; gap: 3.2rem; justify-content: space-between; margin: 0 auto 6rem; max-width: var(--g4u-container-width); }
 .g4u-experts__heading { max-width: 61rem; }
 .g4u-experts__eyebrow { 
     font-family: "Europa Grotesk SH Con";
@@ -1023,7 +1024,7 @@ body.template-suffix-nosotros .section-header .header-wrapper {
   position: absolute;
   z-index: 1;
 }
-.g4u-about-hero__content { margin: 0 auto; max-width: 136rem; position: relative; width: 100%; z-index: 2; }
+.g4u-about-hero__content { margin: 0 auto; max-width: var(--g4u-container-width); position: relative; width: 100%; z-index: 2; }
 .g4u-about-hero__title { color: inherit; font-size: clamp(4.4rem, 3.9vw, 5.6rem); margin: 0 0 1.6rem; max-width: 76.8rem; }
 .g4u-about-hero__title span { display: block; }
 .g4u-about-hero__title em { color: var(--g4u-orange); font-style: inherit; }

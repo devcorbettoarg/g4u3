@@ -23,7 +23,8 @@ body.template-suffix-nosotros .announcement-bar-section {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   height: 4rem;
-  max-width: none;
+  margin: 0 auto;
+  max-width: var(--g4u-container-width);
   padding: 0 3.2rem;
 }
 .announcement-bar-section .announcement-bar { grid-column: 2; grid-row: 1; }
@@ -60,7 +61,9 @@ body.template-suffix-nosotros .announcement-bar-section {
 .section-header .header {
   column-gap: 3.2rem;
   height: var(--g4u-header-height);
-  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--g4u-container-width);
   padding: 1.4rem 4rem !important;
   width: 100%;
 }
