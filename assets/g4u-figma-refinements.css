@@ -1178,3 +1178,12 @@ text-transform: uppercase;
     transition: none !important;
   }
 }
+/* Shared scroll carousels show one complete slide from tablet landscape down. */
+@media screen and (max-width: 1080px) {
+  g4u-scroll-carousel [data-g4u-scroll-track] > .g4u-expert-card,
+  g4u-scroll-carousel [data-g4u-scroll-track] > blockquote {
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+}
