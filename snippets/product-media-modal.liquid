@@ -26,6 +26,18 @@
       {{ 'icon-close.svg' | inline_asset_content }}
     </button>
 
+    {%- if product.media.size > 1 -%}
+      <button type="button" class="g4u-product-modal__arrow g4u-product-modal__arrow--prev" data-product-modal-prev aria-label="Imagen anterior">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </button>
+      <button type="button" class="g4u-product-modal__arrow g4u-product-modal__arrow--next" data-product-modal-next aria-label="Imagen siguiente">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </button>
+      <p class="g4u-product-modal__counter" aria-live="polite">
+        <span data-product-modal-current>1</span> / <span>{{ product.media.size }}</span>
+      </p>
+    {%- endif -%}
+
     <div
       class="product-media-modal__content color-{{ section.settings.color_scheme }} gradient"
       role="document"

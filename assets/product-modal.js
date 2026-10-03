@@ -4,6 +4,18 @@ if (!customElements.get('product-modal')) {
     class ProductModal extends ModalDialog {
       constructor() {
         super();
+        this.container = this.querySelector('[role="document"]');
+        this.previousButton = this.querySelector('[data-product-modal-prev]');
+        this.nextButton = this.querySelector('[data-product-modal-next]');
+        this.currentCounter = this.querySelector('[data-product-modal-current]');
+        this.scrollTimer = null;
+
+        this.previousButton?.addEventListener('click', () => this.move(-1));
+        this.nextButton?.addEventListener('click', () => this.move(1));
+        this.container?.addEventListener('scroll', () => {
+          window.clearTimeout(this.scrollTimer);
+          this.scrollTimer = window.setTimeout(() => this.updateActiveFromScroll(), 80);
+        });
       }
 
       hide() {
@@ -25,10 +37,8 @@ if (!customElements.get('product-modal')) {
         const activeMediaTemplate = activeMedia.querySelector('template');
         const activeMediaContent = activeMediaTemplate ? activeMediaTemplate.content : null;
         activeMedia.classList.add('active');
-        activeMedia.scrollIntoView();
-
-        const container = this.querySelector('[role="document"]');
-        container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
+        activeMedia.scrollIntoView({ block: 'nearest', inline: 'center' });
+        this.updateCounter(activeMedia);
 
         if (
           activeMedia.nodeName == 'DEFERRED-MEDIA' &&
@@ -36,6 +46,40 @@ if (!customElements.get('product-modal')) {
           activeMediaContent.querySelector('.js-youtube')
         )
           activeMedia.loadContent();
+      }
+
+      getMediaItems() {
+        return Array.from(this.container?.querySelectorAll('[data-media-id]') || []);
+      }
+
+      move(direction) {
+        const items = this.getMediaItems();
+        if (!items.length) return;
+        const activeIndex = Math.max(0, items.findIndex((item) => item.classList.contains('active')));
+        const nextIndex = (activeIndex + direction + items.length) % items.length;
+        items.forEach((item, index) => item.classList.toggle('active', index === nextIndex));
+        items[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        this.updateCounter(items[nextIndex]);
+      }
+
+      updateActiveFromScroll() {
+        const items = this.getMediaItems();
+        if (!items.length || !this.container) return;
+        const center = this.container.scrollLeft + this.container.clientWidth / 2;
+        const activeMedia = items.reduce((closest, item) => {
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          return Math.abs(itemCenter - center) < Math.abs(closest.offsetLeft + closest.offsetWidth / 2 - center)
+            ? item
+            : closest;
+        }, items[0]);
+        items.forEach((item) => item.classList.toggle('active', item === activeMedia));
+        this.updateCounter(activeMedia);
+      }
+
+      updateCounter(activeMedia) {
+        if (!this.currentCounter) return;
+        const index = this.getMediaItems().indexOf(activeMedia);
+        if (index >= 0) this.currentCounter.textContent = String(index + 1);
       }
     }
   );

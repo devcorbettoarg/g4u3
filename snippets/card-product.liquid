@@ -231,11 +231,29 @@
                 {%- assign g4u_card_benefits = card_product.metafields.custom.product_benefits.value -%}
                 {%- if g4u_card_benefits != blank -%}
                   <div class="g4u-card__tags" aria-label="Características del producto">
+                    {%- assign g4u_benefit_priority_groups = 'proteico|alto-en-proteina|alto-en-proteinas,low-carb|low-carbs,apto-keto|keto,alto-en-fibra|alto-en-fibras,sin-azucar-agregada|sin-azucar' | split: ',' -%}
+                    {%- assign g4u_known_benefit_handles = '|proteico|alto-en-proteina|alto-en-proteinas|low-carb|low-carbs|apto-keto|keto|alto-en-fibra|alto-en-fibras|sin-azucar-agregada|sin-azucar|' -%}
+                    {%- for priority_group in g4u_benefit_priority_groups -%}
+                      {%- assign priority_aliases = priority_group | split: '|' -%}
+                      {%- for benefit in g4u_card_benefits -%}
+                        {%- assign benefit_handle = benefit.name.value | handleize -%}
+                        {%- if priority_aliases contains benefit_handle -%}
+                          <span class="g4u-card__tag">
+                            {%- if benefit.icon.value != blank -%}{{ benefit.icon.value | image_url: width: 100 | image_tag: class: 'g4u-card__tag-icon', loading: 'lazy', alt: benefit.name.value }}{%- endif -%}
+                            {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
+                          </span>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endfor -%}
                     {%- for benefit in g4u_card_benefits -%}
-                      <span class="g4u-card__tag">
-                        {%- if benefit.icon.value != blank -%}{{ benefit.icon.value | image_url: width: 100 | image_tag: class: 'g4u-card__tag-icon', loading: 'lazy', alt: benefit.name.value }}{%- endif -%}
-                        {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
-                      </span>
+                      {%- assign benefit_handle = benefit.name.value | handleize -%}
+                      {%- assign padded_benefit_handle = '|' | append: benefit_handle | append: '|' -%}
+                      {%- unless g4u_known_benefit_handles contains padded_benefit_handle -%}
+                        <span class="g4u-card__tag">
+                          {%- if benefit.icon.value != blank -%}{{ benefit.icon.value | image_url: width: 100 | image_tag: class: 'g4u-card__tag-icon', loading: 'lazy', alt: benefit.name.value }}{%- endif -%}
+                          {%- if benefit.name.value != blank -%}{{ benefit.name.value | escape }}{%- endif -%}
+                        </span>
+                      {%- endunless -%}
                     {%- endfor -%}
                   </div>
                 {%- endif -%}
