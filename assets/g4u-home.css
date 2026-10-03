@@ -54,8 +54,6 @@
   color: #fff;
   display: block;
   height: 100vh;
-  margin-inline: auto;
-  max-width: var(--g4u-container-width);
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -101,7 +99,7 @@
 
 .g4u-home-hero__content {
   bottom: 6.4rem;
-  left: 4rem;
+  left: max(4rem, calc((100vw - var(--g4u-container-width)) / 2 + 4rem));
   max-width: 76.8rem;
   position: absolute;
   z-index: 2;
@@ -160,8 +158,8 @@
   width: 4.8rem;
 }
 
-.g4u-hero__arrow--prev { left: 3.2rem; }
-.g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: 3.2rem; }
+.g4u-hero__arrow--prev { left: max(3.2rem, calc((100vw - var(--g4u-container-width)) / 2 + 3.2rem)); }
+.g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: max(3.2rem, calc((100vw - var(--g4u-container-width)) / 2 + 3.2rem)); }
 
 .g4u-hero__arrow:hover {
   background: var(--g4u-cream);
