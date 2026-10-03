@@ -1175,7 +1175,7 @@ margin-top:2px;}
   body.template-suffix-nosotros .g4u-about-story__inner,
   body.template-suffix-nosotros .g4u-about-values__grid,
   body.template-suffix-nosotros .g4u-featured-products__grid {
-    max-width: 144rem;
+    max-width: var(--g4u-container-width);
   }
 
   body.template-suffix-nosotros .g4u-about-story__title { font-size: 3.6rem; }
