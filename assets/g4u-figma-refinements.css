@@ -142,6 +142,7 @@ body.template-suffix-harina {
     grid-template-columns: minmax(0, 1fr) 60.5rem;
     min-height: 97.9rem;
     padding: 0 4rem;
+    max-width:136rem;
   }
 
   body.template-suffix-nosotros .g4u-about-manifesto__copy {
