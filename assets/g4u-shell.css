@@ -52,6 +52,11 @@ body.template-suffix-nosotros .announcement-bar-section {
 
 /* Header */
 .section-header { position: relative; z-index: 1; }
+.section-header.shopify-section-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
 .section-header .header-wrapper {
   background: var(--g4u-cream);
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
