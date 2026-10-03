@@ -1186,4 +1186,8 @@ text-transform: uppercase;
     flex: 0 0 100%;
     min-width: 100%;
   }
+
+  g4u-scroll-carousel [data-g4u-scroll-track] > .g4u-expert-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
