@@ -280,6 +280,17 @@ body.template-suffix-harina .section-header:has(header-menu details[open]) .head
   box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
   color: var(--g4u-ink);
 }
+/* Search uses the compact header geometry even while a hero header is still at
+   the top of the page. This keeps the announcement bar visible without adding
+   the hero header's extra top spacing to the modal. */
+body.template-index .section-header:has(.header__search details[open]) .header-wrapper,
+body.template-suffix-nosotros .section-header:has(.header__search details[open]) .header-wrapper,
+body.template-suffix-harina .section-header:has(.header__search details[open]) .header-wrapper {
+  --color-foreground: 38, 19, 27;
+  background: var(--g4u-cream);
+  box-shadow: 0 .2rem .1rem rgba(0, 0, 0, .02);
+  color: var(--g4u-ink);
+}
 body.template-index .section-header:has(header-menu details[open]) .g4u-logo__dark,
 body.template-suffix-nosotros .section-header:has(header-menu details[open]) .g4u-logo__dark { display: block; }
 body.template-index .section-header:has(header-menu details[open]) .g4u-logo__light,
@@ -308,6 +319,17 @@ body:not(.template-index) #cart-icon-bubble svg path {
   stroke: var(--g4u-ink) !important;
 }
 @media screen and (min-width: 750px) {
+  .section-header:has(.header__search details[open]) .header {
+    height: var(--g4u-header-height);
+    padding: 1.4rem 4rem !important;
+  }
+
+  .section-header:has(.header__search details[open]) .search-modal,
+  .section-header:has(.header__search details[open]) .search-modal__content {
+    height: var(--g4u-header-height);
+    min-height: var(--g4u-header-height);
+  }
+
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
     padding: 1.4rem 4rem !important;

@@ -10,7 +10,7 @@
   <div class="g4u-product-editorial__inner">
     <div class="g4u-product-editorial__copy">
       {%- if section.settings.eyebrow != blank -%}<p class="g4u-product-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      <h2 class="g4u-display" id="G4uProductEditorial-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+      <h2 class="g4u-display" id="G4uProductEditorial-{{ section.id }}">{{ section.settings.title | escape | replace: '|', '<br>' }}</h2>
       <div class="rte">{{ section.settings.text }}</div>
       {%- if section.blocks.size > 0 -%}
         <ul role="list">{%- for block in section.blocks -%}<li {{ block.shopify_attributes }}><img class="g4u-benefit-check" src="{{ 'g4u-icon-check.svg' | asset_url }}" alt="" width="20" height="20">{{ block.settings.text | escape }}</li>{%- endfor -%}</ul>
