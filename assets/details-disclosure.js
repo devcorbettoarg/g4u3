@@ -47,7 +47,7 @@ class HeaderMenu extends DetailsDisclosure {
 
     this.addEventListener('mouseleave', () => {
       if (!this.desktopHover.matches) return;
-      this.closeTimer = window.setTimeout(() => this.close(), 120);
+      this.closeTimer = window.setTimeout(() => this.close(), 350);
     });
   }
 

@@ -125,6 +125,18 @@ body.template-suffix-nosotros .announcement-bar-section {
 .header__search { display: block; }
 .header__menu-item .icon-caret { height: .8rem; margin-left: .8rem; width: 1.3rem; }
 .mega-menu__content { background: var(--g4u-cream); border-top: .1rem solid rgba(38, 19, 27, .1); box-shadow: 0 2.2rem 3.8rem rgba(38, 19, 27, .08); padding: 4.8rem 0 4.6rem; }
+@media screen and (min-width: 990px) and (hover: hover) {
+  /* Bridge the empty area between the centered trigger and the panel. */
+  header-menu .mega-menu > summary { position: relative; }
+  header-menu .mega-menu[open] > summary::after {
+    content: '';
+    height: 6rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+}
 .mega-menu__list { gap: 3.2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); max-width: 136rem; padding-left: 4rem; padding-right: 4rem; }
 .g4u-mega-menu__column { min-width: 0; }
 .mega-menu__link { color: var(--g4u-ink); font-family: var(--g4u-display); font-size: 1.5rem; letter-spacing: .04em; padding: .6rem 0; }
