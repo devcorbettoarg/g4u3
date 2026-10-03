@@ -29,7 +29,13 @@
               {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Política de envío</a></li>{%- endif -%}
               {%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">Política de privacidad</a></li>{%- endif -%}
               {%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">Términos y condiciones</a></li>{%- endif -%}
-              <li><a href="{{ pages.faqs.url | default: '/pages/faqs' }}">Preguntas frecuentes</a></li>
+              {%- liquid
+                assign g4u_faq_page = pages.faqs
+                if g4u_faq_page == blank
+                  assign g4u_faq_page = pages.faq
+                endif
+              -%}
+              {%- if g4u_faq_page != blank -%}<li><a href="{{ g4u_faq_page.url }}">Preguntas frecuentes</a></li>{%- endif -%}
             {%- else -%}
               <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}">¿Por qué G4U es diferente?</a></li>
               <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}#G4uAboutManifesto">Nuestra filosofía</a></li>

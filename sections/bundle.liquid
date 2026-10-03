@@ -1497,6 +1497,14 @@
     transform: translateX(-50%);
   }
 
+  #PackBuilder-{{ section.id }} .pb-progress__levels span:last-child {
+    transform: translateX(-100%);
+  }
+
+  #PackBuilder-{{ section.id }} .pb-progress__levels span:last-child::before {
+    left: 100%;
+  }
+
   #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
     background: #fff8f0;
     border: 1px solid #eae4dc;
@@ -2336,8 +2344,8 @@
       // Distribuye los hitos según las cantidades configuradas y completa
       // el progreso justo al alcanzar el último nivel de descuento.
       const maxQty = settings.levels.at(-1)?.qty || 1;
-      const progressEnd = 88.73;
-      const levelPositions = settings.levels.map(level => (level.qty / maxQty) * progressEnd);
+      const progressEnd = 100;
+      const levelPositions = settings.levels.map(level => Math.min((level.qty / maxQty) * progressEnd, progressEnd));
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
