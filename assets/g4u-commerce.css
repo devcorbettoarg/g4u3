@@ -1224,6 +1224,10 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   cart-drawer.is-empty .g4u-cart-drawer__upsells { display: flex; grid-column: 3; grid-row: 2; }
 }
 @media screen and (max-width: 989px) {
+  cart-drawer .drawer__inner { height: 100vh; height: 100dvh; max-height: none; overflow: hidden; width: min(48rem, 100vw); }
+  cart-drawer .drawer__contents { display: flex; flex: 1 1 auto; flex-direction: column; min-height: 0; }
+  cart-drawer cart-drawer-items { flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; }
+  cart-drawer .drawer__footer { flex: 0 0 auto; }
   .g4u-cart-drawer__upsells { display: none; }
   cart-drawer.is-empty .drawer__inner { display: flex; flex-direction: column; align-items: stretch; padding: 0 2rem; }
   cart-drawer.is-empty .drawer__header { display: flex; order: 0; }

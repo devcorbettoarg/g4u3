@@ -10,8 +10,17 @@ if (!customElements.get('product-modal')) {
         this.currentCounter = this.querySelector('[data-product-modal-current]');
         this.scrollTimer = null;
 
-        this.previousButton?.addEventListener('click', () => this.move(-1));
-        this.nextButton?.addEventListener('click', () => this.move(1));
+        [this.previousButton, this.nextButton].forEach((button) => {
+          button?.addEventListener('pointerup', (event) => event.stopPropagation());
+        });
+        this.previousButton?.addEventListener('click', (event) => {
+          event.stopPropagation();
+          this.move(-1);
+        });
+        this.nextButton?.addEventListener('click', (event) => {
+          event.stopPropagation();
+          this.move(1);
+        });
         this.addEventListener('keydown', (event) => {
           if (event.key === 'ArrowLeft') this.move(-1);
           if (event.key === 'ArrowRight') this.move(1);
