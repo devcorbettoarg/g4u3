@@ -1099,11 +1099,16 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
   cart-drawer .drawer__footer { border-top: 0; padding-top: 1.4rem;padding-bottom: 1.4rem; }
   cart-drawer .g4u-cart-drawer__savings {
     align-items: center;
+    background: #f2ebe4;
+    border-radius: .8rem;
+    color: var(--g4u-burgundy);
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 1.2rem;
+    padding: .8rem 1.2rem;
   }
-  cart-drawer .g4u-cart-drawer__savings p { margin: 0; }
+  cart-drawer .g4u-cart-drawer__savings p { font-weight: 500; margin: 0; }
+  cart-drawer .g4u-cart-drawer__savings s { color: #766c70; }
   .cart-drawer .tax-note { margin-bottom: 10px !important; margin-top: 5px !important; }
   cart-drawer cart-drawer-items {
     box-sizing: border-box;
