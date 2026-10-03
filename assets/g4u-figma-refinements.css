@@ -53,8 +53,9 @@ body.template-suffix-harina {
     box-sizing: border-box;
     height: 100vh;
     padding: 12rem 3.2rem 6.4rem;
-    max-width:136rem; 
-    margin: 0 auto;
+    margin: 0;
+    max-width: none;
+    width: 100%;
   }
 
   /*
@@ -102,7 +103,9 @@ body.template-suffix-harina {
   }
 
   body.template-suffix-nosotros .g4u-about-hero__content {
-    max-width: 76.8rem;
+    margin: 0 auto;
+    max-width: 136rem;
+    width: 100%;
   }
 
   body.template-suffix-nosotros .g4u-about-hero__title {
@@ -110,6 +113,7 @@ body.template-suffix-harina {
     letter-spacing: .02em;
     line-height: 0.9;
     margin-bottom: 1.6rem;
+    max-width: 76.8rem;
   }
 
   body.template-suffix-nosotros .g4u-about-hero__text {
