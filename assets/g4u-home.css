@@ -54,8 +54,11 @@
   color: #fff;
   display: block;
   height: 100vh;
+  margin-inline: auto;
+  max-width: var(--g4u-container-width);
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .g4u-home-hero__slides,
