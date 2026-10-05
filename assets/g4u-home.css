@@ -1138,7 +1138,12 @@ margin-top:2px;}
   .g4u-about-values__grid { display: flex; gap: 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; }
   .g4u-about-value { flex: 0 0 82%; scroll-snap-align: start; }
 }
-
+@media (min-width: 750px) and (max-width: 1000px) {
+  body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
+    width: 20rem !important;
+    height: 20rem !important;
+  }
+}
 /* About page refinements: keep these changes local to /pages/nosotros. */
 @media screen and (min-width: 750px) {
   body.template-suffix-nosotros .g4u-about-hero {
