@@ -96,7 +96,7 @@
 
   <a
     class="g4u-about-hero__scroll wow animate__fadeIn"
-    href="#G4uAboutManifesto"
+    href="{{ section.settings.scroll_link | default: '#G4uAboutManifesto' | escape }}"
     aria-label="Ir al contenido"
     data-wow-duration="0.7s"
     data-wow-delay="0.45s"
@@ -117,6 +117,13 @@
   "tag": "section",
   "class": "section-g4u-about-hero",
   "settings": [
+    {
+      "type": "url",
+      "id": "scroll_link",
+      "label": "Enlace de la flecha",
+      "default": "#G4uAboutManifesto",
+      "info": "Elegí una página o ingresá un enlace. Para ir a una sección de esta página, usá # seguido de su ID."
+    },
     {
       "type": "image_picker",
       "id": "image",

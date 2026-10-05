@@ -57,7 +57,7 @@
 
   <a
     class="g4u-flour-hero__scroll wow animate__fadeIn"
-    href="#G4uFlourChallenge"
+    href="{{ section.settings.scroll_link | default: '#G4uFlourChallenge' | escape }}"
     aria-label="Ir al contenido"
     data-wow-duration="0.8s"
     data-wow-delay="0.5s"
@@ -78,6 +78,13 @@
   "tag": "section",
   "class": "section-g4u-flour-hero",
   "settings": [
+    {
+      "type": "url",
+      "id": "scroll_link",
+      "label": "Enlace de la flecha",
+      "default": "#G4uFlourChallenge",
+      "info": "Elegí una página o ingresá un enlace. Para ir a una sección de esta página, usá # seguido de su ID."
+    },
     {
       "type": "image_picker",
       "id": "image",
