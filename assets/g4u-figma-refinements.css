@@ -150,7 +150,7 @@ body.template-suffix-harina {
     margin: 0 auto;
     max-width: var(--g4u-container-width);
     min-height: 97.9rem;
-    padding: 0 4rem;
+    padding: 0 ;
   }
 
   body.template-suffix-nosotros .g4u-about-manifesto__copy {
