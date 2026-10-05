@@ -152,16 +152,18 @@ body.template-suffix-harina {
     min-height: 97.9rem;
     padding: 0rem;
   }
-  @media  (min-width:980px) and (max-width:1400px)  {
-     body.template-suffix-nosotros .g4u-about-manifesto__inner {  padding:0 4rem; }
+@media (min-width: 980px) and (max-width: 1400px) {
+  body.template-suffix-nosotros .g4u-about-manifesto__inner {
+    padding: 0 4rem;
   }
+}
 
-  @media (min-width:750px) and  (max-width:1000px) {
-    body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
-      width:20rem !important; 
-      height:20rem !important;
-    }
+@media (min-width: 750px) and (max-width: 1000px) {
+  body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
+    width: 20rem !important;
+    height: 20rem !important;
   }
+}
   body.template-suffix-nosotros .g4u-about-manifesto__copy {
     padding: 6rem 0;
   }
