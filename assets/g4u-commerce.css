@@ -1108,9 +1108,6 @@ cart-drawer .cart__empty-text { font-size: 3.6rem; }
 cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy); border-radius: 10rem; font-family: var(--g4u-display); letter-spacing: .05em; }
 @media screen and (max-width: 749px) { 
   
-   cart-drawer.is-empty .drawer__inner {
-        align-items: start !important;
-  }
   
   cart-drawer .g4u-cart-drawer__payments { display: none; }
   cart-drawer .g4u-cart-drawer__discount-tag { font-size: 12px; }
@@ -1251,26 +1248,65 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 }
 
 @media screen and (max-width: 749px) {
-  cart-drawer.is-empty .drawer__inner {
-    align-items: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start !important;
+  cart-drawer.drawer.is-empty .drawer__inner {
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 100vw;
   }
 
-  cart-drawer.is-empty .drawer__inner-empty,
-  cart-drawer.is-empty .cart-drawer__warnings {
-    flex: 0 0 auto;
-    height: auto;
-    justify-content: flex-start;
+  cart-drawer.is-empty .drawer__header {
+    box-sizing: border-box;
+    gap: 1.6rem;
+    width: 100%;
   }
 
   cart-drawer.is-empty .drawer__heading {
-    margin-left: 10px;
+    line-height: 1.1;
+    margin: 0;
   }
 
   cart-drawer.is-empty .drawer__close {
-    right: 15px;
+    flex: 0 0 4.4rem;
+    position: static;
+  }
+
+  cart-drawer.is-empty .drawer__inner-empty {
+    flex: 1 1 auto;
+    padding: 3.2rem 0;
+  }
+
+  cart-drawer.is-empty .cart-drawer__warnings {
+    flex: 1 0 auto;
+    justify-content: center;
+    width: 100%;
+  }
+
+  cart-drawer.is-empty .cart-drawer__empty-content {
+    margin: 0 auto;
+    max-width: 36rem;
+    padding: 0;
+    width: 100%;
+  }
+
+  cart-drawer.is-empty .cart__empty-text {
+    font-size: clamp(2.6rem, 6.8vw, 3rem);
+    margin: 0 0 2.4rem;
+  }
+
+  cart-drawer.is-empty .cart-drawer__empty-content .button {
+    min-height: 4.8rem;
+    width: 100%;
+  }
+
+  cart-drawer.is-empty .cart__login-title {
+    font-size: 1.8rem;
+    margin: 3.2rem 0 .8rem;
+  }
+
+  cart-drawer.is-empty .cart__login-paragraph {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin: 0;
   }
 
   cart-drawer .g4u-cart-drawer__upsells,
