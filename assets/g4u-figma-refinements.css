@@ -156,7 +156,7 @@ body.template-suffix-harina {
      body.template-suffix-nosotros .g4u-about-manifesto__inner {  padding:0 4rem; }
   }
 
-  @media (max-width:1100px) and (min-width:980px) {
+  @media (max-width:1000px) and (min-width:800px) {
     .body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
       width:20rem;
       height:20rem;
