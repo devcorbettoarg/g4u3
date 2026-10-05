@@ -1142,6 +1142,7 @@ margin-top:2px;}
   body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
     width: 20rem !important;
     height: 20rem !important;
+    right:5% !important;
   }
 }
 /* About page refinements: keep these changes local to /pages/nosotros. */
