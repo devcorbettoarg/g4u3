@@ -13,6 +13,7 @@
       "type": "g4u-about-hero",
       "custom_css": [],
       "settings": {
+        "scroll_link": "#G4uAboutManifesto-template--30439415840849__about_manifesto",
         "image": "shopify://shop_images/Hero_1.png",
         "image_alt": "Wraps preparados con vegetales frescos",
         "line_1": "Creemos que",
