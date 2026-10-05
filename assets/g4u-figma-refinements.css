@@ -158,8 +158,8 @@ body.template-suffix-harina {
 
   @media (max-width:1000px) and (min-width:800px) {
     .body.template-suffix-nosotros .g4u-about-manifesto__object--bread {
-      width:20rem;
-      height:20rem;
+      width:20rem !important; 
+      height:20rem !important;
     }
   }
   body.template-suffix-nosotros .g4u-about-manifesto__copy {
