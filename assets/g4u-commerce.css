@@ -50,6 +50,7 @@
 .template-collection .product-count { align-items: center; color: #766c70; display: flex; flex: 0 0 auto; font-family: var(--g4u-display); font-size: 1.4rem; letter-spacing: .04em; margin: 0; min-height: 0; padding: 0; }
 .template-collection .product-count__text { margin: 0; white-space: nowrap; }
 /* Keep the count, sort label and selected value on the same text line. */
+
 .template-collection .g4u-facets__toolbar-right .product-count__text,
 .template-collection .g4u-facets__toolbar-right .facet-filters__label,
 .template-collection .g4u-facets__toolbar-right .facet-filters__sort {
@@ -58,6 +59,9 @@
   font-weight: 400;
   letter-spacing: .04em;
   line-height: 1.5;
+}
+.template-collection .g4u-facets__toolbar-right .product-count__text {
+  line-height:32px;
 }
 .template-collection .g4u-facets__toolbar-right .facet-filters__sort {
   box-sizing: border-box;
