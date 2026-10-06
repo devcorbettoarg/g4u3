@@ -954,14 +954,13 @@ body.template-suffix-harina
 
   /* ------------------------------------------------------------------------
      HERO HARINA
-     Base actual ya tiene la altura correcta de 900px.
-     Ajustamos principalmente crop + integración del header.
+     Altura de un viewport, con crop e integración del header.
      ------------------------------------------------------------------------ */
 
   body.template-suffix-harina .g4u-flour-hero {
     box-sizing: border-box;
-    height: 90rem;
-    min-height: 90rem;
+    height: 100vh;
+    min-height: 100vh;
     padding: 12rem 3.2rem 6.4rem;
   }
 
@@ -1277,6 +1276,11 @@ body.template-suffix-harina .g4u-flour-hero__content {
 
 body.template-suffix-harina .g4u-flour-hero__title {
   max-width: 76.8rem;
+}
+
+body.template-suffix-harina .g4u-flour-hero {
+  height: 100vh;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 990px) {
