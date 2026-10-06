@@ -1262,15 +1262,26 @@ body .badge.g4u-badge--sold-out {
   white-space: nowrap;
 }
 
-/* Box the Nosotros page to the same container used by the header and home. */
-body.template-suffix-nosotros #MainContent {
-  margin-inline: auto;
-  max-width: var(--g4u-container-width);
+/* Hero backgrounds fill the viewport; only the text uses the shared container. */
+body:is(.template-suffix-nosotros, .template-suffix-harina) #MainContent {
+  max-width: none;
   width: 100%;
 }
 
+body.template-suffix-nosotros .g4u-about-hero__content,
+body.template-suffix-harina .g4u-flour-hero__content {
+  margin-inline: auto;
+  max-width: calc(var(--g4u-container-width) - 8rem);
+  width: 100%;
+}
+
+body.template-suffix-harina .g4u-flour-hero__title {
+  max-width: 76.8rem;
+}
+
 @media screen and (min-width: 990px) {
-  body.template-suffix-nosotros .g4u-about-hero {
+  body.template-suffix-nosotros .g4u-about-hero,
+  body.template-suffix-harina .g4u-flour-hero {
     padding-inline: 4rem;
   }
 }

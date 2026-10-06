@@ -96,7 +96,17 @@
       </button>
     </div>
   {%- endif -%}
+  {%- assign default_scroll_link = '#G4uHomeContent-' | append: section.id -%}
+  <a class="g4u-home-hero__scroll" href="{{ section.settings.scroll_link | default: default_scroll_link | escape }}" aria-label="Ir al contenido">
+    <span aria-hidden="true">
+      <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.0664 0L11.0664 22.5" stroke="#FEFEFE" stroke-width="1.25"/>
+        <path d="M21.0664 12.8125L11.0572 22.8217L0.441407 12.206" stroke="#FEFEFE" stroke-width="1.25"/>
+      </svg>
+    </span>
+  </a>
 </g4u-hero>
+<div id="G4uHomeContent-{{ section.id }}" class="g4u-home-hero__scroll-target"></div>
 
 {% schema %}
 {
@@ -105,6 +115,12 @@
   "class": "section-g4u-hero",
   "max_blocks": 5,
   "settings": [
+    {
+      "type": "url",
+      "id": "scroll_link",
+      "label": "Enlace de la flecha",
+      "info": "Elegí una página o un enlace. Si lo dejás vacío, la flecha baja al contenido después del hero."
+    },
     {
       "type": "text",
       "id": "accessibility_label",
