@@ -415,6 +415,8 @@
 .g4u-home-hero__scroll, .g4u-flour-hero__scroll, .g4u-about-hero__scroll { align-items: center; bottom: 4rem; display: flex; height: 5rem; justify-content: center; position: absolute; right: 4rem; width: 2.2rem; z-index: 1; }
 .g4u-home-hero__scroll span, .g4u-flour-hero__scroll span, .g4u-about-hero__scroll span { animation: g4u-scroll-bounce 1.6s ease-in-out infinite; display: block; line-height: 0; }
 .g4u-home-hero__scroll svg, .g4u-flour-hero__scroll svg, .g4u-about-hero__scroll svg { display: block; height: 2.4rem; width: 2.2rem; }
+.g4u-home-hero__scroll { z-index: 4; }
+.g4u-home-hero__scroll-target { scroll-margin-top: var(--g4u-header-height, 8.8rem); }
 @keyframes g4u-scroll-bounce {
   0%, 100% { transform: translateY(-.5rem); }
   50% { transform: translateY(.7rem); }
