@@ -884,18 +884,6 @@ body.template-suffix-harina .section-header .header-wrapper {
 
 /* Logo claro antes del sticky */
 
-body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
-.g4u-logo__dark {
-  display: none;
-}
-
-body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
-.g4u-logo__light {
-  display: block;
-}
-
 
 /* Iconos claros */
 
@@ -949,18 +937,6 @@ body.template-suffix-harina
   background: var(--g4u-cream);
   box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.02);
   color: var(--g4u-ink);
-}
-
-body.template-suffix-harina
-.section-header:has(header-menu details[open])
-.g4u-logo__dark {
-  display: block;
-}
-
-body.template-suffix-harina
-.section-header:has(header-menu details[open])
-.g4u-logo__light {
-  display: none;
 }
 
 
