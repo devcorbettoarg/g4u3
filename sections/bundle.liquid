@@ -1497,14 +1497,6 @@
     transform: translateX(-50%);
   }
 
-  #PackBuilder-{{ section.id }} .pb-progress__levels span:last-child {
-    transform: translateX(-100%);
-  }
-
-  #PackBuilder-{{ section.id }} .pb-progress__levels span:last-child::before {
-    left: 100%;
-  }
-
   #PackBuilder-{{ section.id }} .pb-progress__levels span::before {
     background: #fff8f0;
     border: 1px solid #eae4dc;
@@ -2341,9 +2333,9 @@
     };
 
     const updateProgress = totals => {
-      // Cada descuento ocupa un tercio; el avance interpola las cantidades
+      // Cada descuento se centra en un tercio; el avance interpola las cantidades
       // de cada tramo para llegar al marcador cuando se alcanza su umbral.
-      const levelPositions = settings.levels.map((level, index) => ((index + 1) / settings.levels.length) * 100);
+      const levelPositions = settings.levels.map((level, index) => ((index + 0.5) / settings.levels.length) * 100);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
@@ -2357,7 +2349,7 @@
         : 1;
       const percentage = nextLevel
         ? previousPosition + fraction * (levelPositions[nextIndex] - previousPosition)
-        : 100;
+        : levelPositions.at(-1) || 0;
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
