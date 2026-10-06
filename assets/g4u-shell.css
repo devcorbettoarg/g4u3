@@ -191,7 +191,8 @@ body.template-suffix-nosotros .announcement-bar-section {
 }
 .g4u-mega-menu__product:hover .g4u-mega-menu__product-image img { transform: scale(1.04); }
 .g4u-mega-menu__product-copy { display: grid; gap: .3rem; }
-.g4u-mega-menu__product-title { font-size: 1.55rem; font-weight: 500; line-height: 1.25; }
+.g4u-mega-menu__product-title { font-size: 20px; font-weight: 400; 
+  line-height: 1.25;letter-spacing:5%; }
 .g4u-mega-menu__product-price { align-items: baseline; display: flex; flex-wrap: wrap; font-size: 1.4rem; gap: .5rem; }
 .g4u-mega-menu__product-price s { color: #7d7073; }
 .g4u-mega-menu__product-price strong { color: var(--g4u-burgundy); font-weight: 600; }
