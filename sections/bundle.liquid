@@ -2341,16 +2341,23 @@
     };
 
     const updateProgress = totals => {
-      // Distribuye los hitos según las cantidades configuradas y completa
-      // el progreso justo al alcanzar el último nivel de descuento.
-      const maxQty = settings.levels.at(-1)?.qty || 1;
-      const progressEnd = 100;
-      const levelPositions = settings.levels.map(level => Math.min((level.qty / maxQty) * progressEnd, progressEnd));
+      // Cada descuento ocupa un tercio; el avance interpola las cantidades
+      // de cada tramo para llegar al marcador cuando se alcanza su umbral.
+      const levelPositions = settings.levels.map((level, index) => ((index + 1) / settings.levels.length) * 100);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
         -1
       );
-      const percentage = Math.min((totals.quantity / maxQty) * progressEnd, progressEnd);
+      const nextIndex = reachedIndex + 1;
+      const previousQty = settings.levels[reachedIndex]?.qty || 0;
+      const previousPosition = levelPositions[reachedIndex] || 0;
+      const nextLevel = settings.levels[nextIndex];
+      const fraction = nextLevel
+        ? Math.max(0, Math.min((totals.quantity - previousQty) / (nextLevel.qty - previousQty), 1))
+        : 1;
+      const percentage = nextLevel
+        ? previousPosition + fraction * (levelPositions[nextIndex] - previousPosition)
+        : 100;
       const currentDiscount = getDiscount(totals.quantity);
       const nextDiscount = getNextDiscount(totals.quantity);
       const missingCategories = getMissingCategories(totals);
