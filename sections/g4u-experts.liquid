@@ -95,22 +95,26 @@
         {{ block.shopify_attributes }}
       >
 
-        <div class="g4u-expert-card__media">
+        {%- liquid
+          assign expert_poster = block.settings.media
+          if expert_poster == blank and block.settings.video != blank
+            assign expert_poster = block.settings.video.preview_image
+          endif
+        -%}
 
-          {%- if block.settings.media != blank -%}
-
+        {%- capture expert_poster_markup -%}
+          {%- if expert_poster != blank -%}
             {{
-              block.settings.media
+              expert_poster
               | image_url: width: 1200
               | image_tag:
                 class: 'g4u-expert-card__image',
                 loading: 'lazy',
                 widths: '500, 750, 1000, 1200',
-                sizes: '(min-width: 750px) 332px, 88vw'
+                sizes: '(min-width: 750px) 332px, 88vw',
+                alt: block.settings.name
             }}
-
           {%- else -%}
-
             <img
               class="g4u-expert-card__image"
               src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}"
@@ -119,39 +123,34 @@
               height="1593"
               loading="lazy"
             >
-
           {%- endif -%}
+        {%- endcapture -%}
 
-
-          {%- if block.settings.video_url != blank -%}
-
-            <a
-              href="{{ block.settings.video_url }}"
-              aria-label="Ver video de {{ block.settings.name | escape }}"
+        {%- if block.settings.video != blank -%}
+          <deferred-media class="g4u-expert-card__media">
+            <button
+              id="Deferred-Poster-Expert-{{ section.id }}-{{ block.id }}"
+              class="g4u-expert-card__video-poster"
+              type="button"
+              aria-label="Reproducir video de {{ block.settings.name | escape }}"
             >
-              <img
-                class="g4u-expert-card__play"
-                src="{{ 'g4u-icon-play.svg' | asset_url }}"
-                alt=""
-                width="64"
-                height="64"
-              >
-            </a>
-
-          {%- else -%}
-
-            <img
-              class="g4u-expert-card__play"
-              src="{{ 'g4u-icon-play.svg' | asset_url }}"
-              alt=""
-              width="64"
-              height="64"
-            >
-
-          {%- endif -%}
-
-        </div>
-
+              {{ expert_poster_markup }}
+              <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
+            </button>
+            <template>
+              {{ block.settings.video | video_tag: image_size: '1200x', autoplay: true, controls: true, muted: false, loop: false, preload: 'none', class: 'g4u-expert-card__video' }}
+            </template>
+          </deferred-media>
+        {%- else -%}
+          <div class="g4u-expert-card__media">
+            {{ expert_poster_markup }}
+            {%- if block.settings.video_url != blank -%}
+              <a class="g4u-expert-card__video-link" href="{{ block.settings.video_url }}" aria-label="Ver video de {{ block.settings.name | escape }}">
+                <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
 
         <blockquote class="g4u-expert-card__quote">
 
@@ -281,9 +280,16 @@
           "label": "Imagen principal"
         },
         {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Seleccioná o cargá un video. Se reproduce en la tarjeta al tocar la imagen o el botón de play."
+        },
+        {
           "type": "url",
           "id": "video_url",
-          "label": "Enlace al video"
+          "label": "Enlace al video",
+          "info": "Se usa si no hay un video cargado."
         },
         {
           "type": "image_picker",
