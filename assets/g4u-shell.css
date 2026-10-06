@@ -298,6 +298,11 @@ body.template-suffix-harina .section-header:has(.header__search details[open]) .
   color: var(--g4u-ink);
 }
 /* Explicitly inherit the active header color for the inline cart SVG. */
+body .section-header:has(header-menu details[open]) #cart-icon-bubble .cart-count-bubble {
+  background: var(--g4u-burgundy);
+  color: var(--g4u-cream);
+}
+
 .section-header.shopify-section-header-sticky #cart-icon-bubble,
 .section-header:has(header-menu details[open]) #cart-icon-bubble {
   color: var(--g4u-ink);
