@@ -1235,6 +1235,33 @@ body :is(
   letter-spacing: 10% !important;
 }
 
+/* Sold-out tag has its own 5% tracking and dimensions from Figma. */
+body .badge.g4u-badge--sold-out {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  order: 0;
+  padding: 8px;
+  gap: 4px;
+  width: 64px;
+  height: 33px;
+  background: #766c70;
+  border: 1px solid #766c70;
+  border-radius: 4px;
+  font-family: 'Europa Grotesk SH', var(--font-body-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: .05em !important;
+  letter-spacing: 5% !important;
+  color: #fff8f0;
+  white-space: nowrap;
+}
+
 /* Box the Nosotros page to the same container used by the header and home. */
 body.template-suffix-nosotros #MainContent {
   margin-inline: auto;

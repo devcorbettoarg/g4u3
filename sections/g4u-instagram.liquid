@@ -49,7 +49,7 @@
     {%- if section.settings.button_label != blank -%}
       <a
         class="g4u-pill g4u-instagram__button wow animate__fadeIn"
-        href="{{ section.settings.link | default: '#' }}"
+        href="{{ section.settings.link | default: 'https://www.instagram.com/g4u_ar' }}"
         target="_blank"
         rel="noopener"
         data-wow-duration="0.65s"
@@ -93,7 +93,7 @@
 
       <a
         class="g4u-instagram__item wow animate__g4uInstagramImageReveal"
-        href="{{ block.settings.link | default: section.settings.link | default: '#' }}"
+        href="{{ block.settings.link | default: section.settings.link | default: 'https://www.instagram.com/g4u_ar' }}"
         target="_blank"
         rel="noopener"
         aria-label="{{ block.settings.accessibility_label | escape }}"
