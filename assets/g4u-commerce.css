@@ -416,9 +416,16 @@ font-family:var(--g4u-displayr);}
 .template-product .g4u-flour-faq { background: #f2ebe4; }
 .template-product .g4u-flour-faq__header h2 { font-family: var(--g4u-display); font-weight: 700; line-height: .95; text-transform: uppercase; }
 .template-product .g4u-flour-faq__item { border-bottom: 0; border-top: .1rem solid #26131b; }
-.template-product .g4u-flour-faq__item summary { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; line-height: 1.5; }
-.template-product .g4u-flour-faq__item .rte { color: #26131b; }
-.template-product .g4u-flour-faq__contact p { font-family: var(--g4u-display); font-size: 3.2rem; line-height: 1; }
+.template-product .g4u-flour-faq__item summary { color: #26131b; 
+  font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400;
+   line-height: 1.5; }
+.template-product .g4u-flour-faq__item .rte { 
+  text-align:left;
+  padding:0px;
+  color: #26131b; }
+.template-product .g4u-flour-faq__contact p { 
+  font-family: var(--g4u-display); font-size: 3.2rem;
+   line-height: 1; }
 .template-product .g4u-flour-faq__contact .g4u-pill {
    background: transparent; border-color: currentColor; color: inherit; font-size: 16px; min-height: 0; padding: .7rem 1.8rem; 
   font-family:var(--g4u-displayr);}
