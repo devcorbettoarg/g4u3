@@ -27,19 +27,32 @@
         "slide_XUjUwF": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/semana_keto_grisin_y_marinera_3.png",
+            "image": "shopify://shop_images/Hero_4.jpg",
             "image_alt": "Pan de molde G4U sobre una tabla de madera",
-            "heading": "El pan de siempre,",
-            "accent_heading": "beneficios reales",
-            "text": "<p>Desarrollamos una harina funcional propia y logramos un pan tan rico como el de siempre, para que no tengas que elegir entre sabor y bienestar.</p>",
-            "button_label": "Descubrí nuestro pan de molde",
-            "button_link": "shopify://collections/all"
+            "heading": "SNACKEAR TAMBIÉN",
+            "accent_heading": "PUEDE HACERTE BIEN",
+            "text": "<p>Grisinis, marineras y tostaditas con alto aporte de proteínas y fibra &nbsp;para disfrutar en cualquier momento del día.</p>",
+            "button_label": "Descubrí nuestros snacks",
+            "button_link": "shopify://collections/snacks"
+          }
+        },
+        "slide_JkMz9F": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Hero_4.jpg",
+            "image_alt": "Pan de molde G4U sobre una tabla de madera",
+            "heading": "LA CIABATTA,",
+            "accent_heading": "REINVENTADA",
+            "text": "<p>Todo el sabor y la textura de una auténtica ciabatta,&nbsp;<br/>con un perfil nutricional pensado para acompañar tu alimentación.</p>",
+            "button_label": "Descubrí nuestra ciabatta",
+            "button_link": "shopify://collections/sandwich"
           }
         }
       },
       "block_order": [
         "hero_main",
-        "slide_XUjUwF"
+        "slide_XUjUwF",
+        "slide_JkMz9F"
       ],
       "settings": {
         "accessibility_label": "Promociones principales",
