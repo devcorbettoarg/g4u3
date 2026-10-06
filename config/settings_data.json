@@ -10,6 +10,7 @@
 {
   "current": {
     "logo_width": 90,
+    "favicon": "shopify://shop_images/Vector.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "roboto_n4",
@@ -145,7 +146,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#FFF8F0",
+          "background": "#fff8f0",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
