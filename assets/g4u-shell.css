@@ -106,6 +106,8 @@ body.template-suffix-nosotros .announcement-bar-section {
   text-decoration: none;
 }
 .header__menu-item span { text-decoration: none; }
+.g4u-menu-product-link { color: inherit; font: inherit; text-decoration: none; }
+.g4u-menu-product-link:focus-visible { outline: .2rem solid currentColor; outline-offset: .4rem; }
 .header__menu-item:hover span { text-decoration: none; }
 .header__menu-item .header__active-menu-item { color: var(--g4u-orange); }
 .header__icons { align-items: center;  padding-right: 0; }

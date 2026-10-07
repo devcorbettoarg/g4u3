@@ -451,6 +451,7 @@ class MenuDrawer extends HTMLElement {
   }
 
   onSummaryClick(event) {
+    if (event.target.closest('a[href]')) return;
     const summaryElement = event.currentTarget;
     const detailsElement = summaryElement.parentNode;
     const parentMenuElement = detailsElement.closest('.has-submenu');

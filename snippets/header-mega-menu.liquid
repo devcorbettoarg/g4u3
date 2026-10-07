@@ -35,7 +35,11 @@
                 class="header__menu-item list-menu__item link focus-inset"
               >
                 <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>
-                  {{- link.title | escape -}}
+                  {%- if link.handle == 'productos' -%}
+                    <a class="g4u-menu-product-link" href="{{ routes.all_products_collection_url }}">{{ link.title | escape }}</a>
+                  {%- else -%}
+                    {{- link.title | escape -}}
+                  {%- endif -%}
                 </span>
 
                 {{- 'icon-caret.svg' | inline_asset_content -}}
