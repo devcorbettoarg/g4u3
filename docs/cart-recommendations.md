@@ -2,6 +2,8 @@
 
 En **Personalizar tema → Configuración del tema → Carrito → Productos sugeridos del carrito** se pueden editar el título, el máximo de productos (1–6) y la colección de respaldo. La colección del carrito vacío es un ajuste independiente.
 
+Si el bloque aparece vacío y oculto, seleccioná y guardá una colección de respaldo con productos disponibles que no estén en el carrito, o configurá complementarios para el producto agregado en Search & Discovery. El atributo `hidden` se quita al cargar sugerencias válidas. El título tiene un respaldo en Liquid aunque el ajuste todavía no esté guardado. Al subir el tema, incluí también `config/settings_schema.json`, `assets/g4u-cart-upsells.js`, `sections/g4u-cart-recommendations.liquid` y `snippets/g4u-cart-upsell-product.liquid`; copiar únicamente el markup del drawer no alcanza.
+
 Al abrir el drawer, el tema solicita los complementarios de los productos del carrito mediante la API nativa de recomendaciones de Shopify, con `intent=complementary`. Estos productos se configuran por producto en **Shopify Search & Discovery → Recomendaciones → Productos complementarios**.
 
 La lista respeta el orden de los productos del carrito y de sus recomendaciones. Excluye productos agotados, productos ya presentes en el carrito —incluidas otras variantes del mismo producto— y duplicados entre recomendaciones. Consulta hasta tres productos del carrito en paralelo y deja de consultar al completar el máximo elegido.

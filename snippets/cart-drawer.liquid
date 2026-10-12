@@ -476,7 +476,7 @@
         data-limit="{{ g4u_upsell_limit }}"
       >
         <aside class="g4u-cart-drawer__upsells" aria-label="Productos sugeridos" hidden>
-          <h3>{{ settings.cart_upsell_heading | escape }}</h3>
+          <h3>{{ settings.cart_upsell_heading | default: 'Sumá más proteína con fibra con:' | escape }}</h3>
           <p class="visually-hidden" data-g4u-cart-drawer-status aria-live="polite"></p>
           <div class="g4u-cart-drawer__upsell-list" data-upsell-list>
             {%- assign g4u_upsell_count = 0 -%}
