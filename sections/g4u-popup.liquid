@@ -1,0 +1,742 @@
+{{ 'g4u-popup.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'g4u-popup.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+  assign form_id = 'G4uPopupForm-' | append: section.id
+  assign form_return = request.path | append: '#' | append: form_id
+-%}
+{%- style -%}
+  #G4uPopup-{{ section.id }} {
+    --popup-background: {{ section.settings.background }};
+    --popup-text: {{ section.settings.text_color }};
+    --popup-heading: {{ section.settings.heading_color }};
+    --popup-accent: {{ section.settings.accent_color }};
+    --popup-border-color: {{ section.settings.border_color }};
+    --popup-input-background: {{ section.settings.input_background }};
+    --popup-input-text: {{ section.settings.input_text }};
+    --popup-input-border: {{ section.settings.input_border }};
+    --popup-button-background: {{ section.settings.button_background }};
+    --popup-button-text: {{ section.settings.button_text }};
+    --popup-width: {{ section.settings.width }}px;
+    --popup-radius: {{ section.settings.radius }}px;
+    --popup-border-width: {{ section.settings.border_width }}px;
+    --popup-shadow: {{ section.settings.shadow | divided_by: 100.0 }};
+    --popup-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
+    --popup-align: {{ section.settings.alignment }};
+    --popup-padding-top: {{ section.settings.padding_top }}px;
+    --popup-padding-x: {{ section.settings.padding_x }}px;
+    --popup-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --popup-mobile-top: {{ section.settings.mobile_top }}px;
+    --popup-mobile-x: {{ section.settings.mobile_x }}px;
+    --popup-mobile-bottom: {{ section.settings.mobile_bottom }}px;
+    --popup-gap: {{ section.settings.gap }}px;
+    --popup-form-gap: {{ section.settings.form_gap }}px;
+    --popup-control-radius: {{ section.settings.control_radius }}px;
+    --popup-title-size: {{ section.settings.title_size }}px;
+    --popup-mobile-title-size: {{ section.settings.mobile_title_size }}px;
+    --popup-text-size: {{ section.settings.text_size }}px;
+    --popup-mobile-text-size: {{ section.settings.mobile_text_size }}px;
+    --popup-control-size: {{ section.settings.control_size }}px;
+    --popup-title-case: {% if section.settings.uppercase %}uppercase{% else %}none{% endif %};
+  }
+{%- endstyle -%}
+<g4u-popup
+  data-section="{{ section.id }}"
+  data-form="{{ form_id }}"
+  data-campaign="{{ section.settings.campaign | escape }}"
+  data-enabled="{{ section.settings.enabled }}"
+  data-preview="{{ section.settings.preview }}"
+  data-pages="{{ section.settings.pages }}"
+  data-page="{{ request.page_type }}"
+  data-devices="{{ section.settings.devices }}"
+  data-trigger="{{ section.settings.trigger }}"
+  data-delay="{{ section.settings.delay }}"
+  data-scroll="{{ section.settings.scroll }}"
+  data-frequency="{{ section.settings.frequency }}"
+  data-days="{{ section.settings.days }}"
+  {% if section.settings.close_overlay %}data-close-overlay="true"{% endif %}
+>
+  <dialog
+    class="g4u-popup"
+    id="G4uPopup-{{ section.id }}"
+    data-position="{{ section.settings.position }}"
+    aria-label="{{ section.settings.dialog_label | escape }}"
+  >
+    <button class="g4u-popup__close" type="button" data-popup-close aria-label="{{ section.settings.close_label | escape }}" autofocus>
+      <img src="{{ 'g4u-popup-close.svg' | asset_url }}" alt="" width="36" height="36">
+    </button>
+    <div class="g4u-popup__content">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2 class="g4u-popup__title" {{ block.shopify_attributes }}>
+              {{ block.settings.title }}
+              {%- if block.settings.second_line != blank -%}<br>{{ block.settings.second_line }}{%- endif -%}
+            </h2>
+          {%- when 'text' -%}
+            <div class="g4u-popup__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'image' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {%- assign image_alt = block.settings.alt | default: block.settings.image.alt -%}
+                {{ block.settings.image | image_url: width: 1800 | image_tag: class: 'g4u-popup__image', widths: '320, 490, 640, 900, 1800', sizes: '(max-width: 749px) 90vw, 900px', alt: image_alt, loading: 'lazy' }}
+              {%- endif -%}
+            </div>
+          {%- when 'newsletter' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- form 'customer', id: form_id, class: 'g4u-popup__form', return_to: form_return -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <label class="visually-hidden" for="G4uPopupEmail-{{ section.id }}">{{ block.settings.label | escape }}</label>
+                <input
+                  class="g4u-popup__input"
+                  id="G4uPopupEmail-{{ section.id }}"
+                  type="email"
+                  name="contact[email]"
+                  value="{{ form.email | escape }}"
+                  autocomplete="email"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  placeholder="{{ block.settings.placeholder | escape }}"
+                  required
+                  {% if form.errors %}aria-invalid="true" aria-describedby="G4uPopupError-{{ section.id }}"{% endif %}
+                >
+                {%- if block.settings.privacy != blank -%}
+                  <div class="g4u-popup__text rte">{{ block.settings.privacy }}</div>
+                {%- endif -%}
+                {%- if block.settings.require_consent -%}
+                  <label class="g4u-popup__text"><input type="checkbox" required> {{ block.settings.consent_label | escape }}</label>
+                {%- endif -%}
+                <button class="g4u-popup__button" type="submit">{{ block.settings.button_label | escape }}</button>
+                {%- if form.errors -%}
+                  <p class="g4u-popup__message" id="G4uPopupError-{{ section.id }}" role="alert" tabindex="-1" data-popup-result="error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+                {%- endif -%}
+                {%- if form.posted_successfully? -%}
+                  <p class="g4u-popup__message" role="status" tabindex="-1" data-popup-result="success">{{ block.settings.success_message | escape }}</p>
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+          {%- when 'button' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- if block.settings.url != blank -%}
+                <a class="g4u-popup__button" href="{{ block.settings.url }}">{{ block.settings.label | escape }}</a>
+              {%- endif -%}
+            </div>
+          {%- when 'custom_liquid' -%}
+            <div {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </dialog>
+</g4u-popup>
+
+{% schema %}
+{
+  "name": "G4U · Popup",
+  "tag": "section",
+  "class": "section-g4u-popup",
+  "limit": 1,
+  "enabled_on": {
+    "groups": [
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Activación y vista previa"
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Activar popup",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "preview",
+      "label": "Mostrar en el editor",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "campaign",
+      "label": "Identificador de campaña",
+      "default": "newsletter-v1",
+      "info": "Cambialo para volver a mostrar el popup a quienes ya lo cerraron."
+    },
+    {
+      "type": "select",
+      "id": "pages",
+      "label": "Mostrar en",
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "Todas las páginas"
+        },
+        {
+          "value": "home",
+          "label": "Solo inicio"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "devices",
+      "label": "Dispositivos",
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "Todos"
+        },
+        {
+          "value": "desktop",
+          "label": "Escritorio"
+        },
+        {
+          "value": "mobile",
+          "label": "Móvil"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "trigger",
+      "label": "Abrir al",
+      "default": "delay",
+      "options": [
+        {
+          "value": "delay",
+          "label": "Pasar un tiempo"
+        },
+        {
+          "value": "scroll",
+          "label": "Desplazarse en la página"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "Espera antes de abrir",
+      "default": 5,
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "s"
+    },
+    {
+      "type": "range",
+      "id": "scroll",
+      "label": "Porcentaje de desplazamiento",
+      "default": 50,
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "frequency",
+      "label": "Volver a mostrar",
+      "default": "days",
+      "options": [
+        {
+          "value": "always",
+          "label": "En cada página"
+        },
+        {
+          "value": "session",
+          "label": "Una vez por sesión"
+        },
+        {
+          "value": "days",
+          "label": "Después de varios días"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "days",
+      "label": "Días entre apariciones",
+      "default": 7,
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d"
+    },
+    {
+      "type": "checkbox",
+      "id": "close_overlay",
+      "label": "Cerrar al tocar fuera",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Etiqueta del botón de cierre",
+      "default": "Cerrar popup"
+    },
+    {
+      "type": "text",
+      "id": "dialog_label",
+      "label": "Nombre accesible del popup",
+      "default": "Suscripción a novedades"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Posición",
+      "default": "center",
+      "options": [
+        {
+          "value": "center",
+          "label": "Centro"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Abajo a la izquierda"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Abajo a la derecha"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alineación del contenido",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "center",
+          "label": "Centro"
+        },
+        {
+          "value": "right",
+          "label": "Derecha"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Ancho",
+      "default": 490,
+      "min": 320,
+      "max": 900,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Radio de las esquinas",
+      "default": 12,
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Grosor del borde",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "shadow",
+      "label": "Opacidad de la sombra",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "label": "Opacidad del fondo exterior",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espacio superior",
+      "default": 80,
+      "min": 48,
+      "max": 120,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Espacio lateral",
+      "default": 40,
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espacio inferior",
+      "default": 40,
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Separación entre bloques",
+      "default": 8,
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "form_gap",
+      "label": "Espacio adicional antes del formulario",
+      "default": 24,
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "control_radius",
+      "label": "Radio de campos y botones",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Móvil"
+    },
+    {
+      "type": "range",
+      "id": "mobile_top",
+      "label": "Espacio superior en móvil",
+      "default": 64,
+      "min": 48,
+      "max": 120,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_x",
+      "label": "Espacio lateral en móvil",
+      "default": 24,
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_bottom",
+      "label": "Espacio inferior en móvil",
+      "default": 32,
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Fondo",
+      "default": "#fff8f0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#500322"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Título",
+      "default": "#500322"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Texto destacado",
+      "default": "#ff4622"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borde",
+      "default": "#500322"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Fondo del campo",
+      "default": "#fff8f0"
+    },
+    {
+      "type": "color",
+      "id": "input_text",
+      "label": "Texto del campo",
+      "default": "#500322"
+    },
+    {
+      "type": "color",
+      "id": "input_border",
+      "label": "Borde del campo",
+      "default": "#500322"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Fondo del botón",
+      "default": "#26131b"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "#fff8f0"
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Tamaño del título",
+      "default": 32,
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "label": "Tamaño del título en móvil",
+      "default": 28,
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Tamaño del texto",
+      "default": 18,
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Tamaño del texto en móvil",
+      "default": 16,
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "control_size",
+      "label": "Tamaño del texto de campos y botones",
+      "default": 16,
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "Título en mayúsculas",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Título",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Primera línea",
+          "default": "Suscribite y accedé a un"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "second_line",
+          "label": "Segunda línea",
+          "default": "<strong>10% off</strong> en tu primer compra"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Texto",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Contenido",
+          "default": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Imagen",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Texto alternativo"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Formulario de suscripción",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder",
+          "default": "Ingresá tu email"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta del campo",
+          "default": "Correo electrónico"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto del botón",
+          "default": "Suscribite"
+        },
+        {
+          "type": "text",
+          "id": "success_message",
+          "label": "Mensaje de éxito",
+          "default": "¡Gracias por suscribirte!"
+        },
+        {
+          "type": "richtext",
+          "id": "privacy",
+          "label": "Texto legal o condiciones"
+        },
+        {
+          "type": "checkbox",
+          "id": "require_consent",
+          "label": "Solicitar aceptación de las condiciones",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "consent_label",
+          "label": "Texto de aceptación",
+          "default": "Acepto recibir novedades y ofertas por email."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Botón con enlace",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto",
+          "default": "Ver productos"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Destino"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Liquid personalizado",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "liquid",
+          "label": "Código Liquid",
+          "info": "Agregá contenido propio o integraciones."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "G4U · Popup",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "newsletter"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

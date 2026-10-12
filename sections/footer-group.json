@@ -11,6 +11,16 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "g4u_popup": {
+      "type": "g4u-popup",
+      "blocks": {
+        "heading": { "type": "heading", "settings": {} },
+        "text": { "type": "text", "settings": {} },
+        "newsletter": { "type": "newsletter", "settings": {} }
+      },
+      "block_order": ["heading", "text", "newsletter"],
+      "settings": {}
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -28,6 +38,7 @@
     }
   },
   "order": [
-    "footer"
+    "footer",
+    "g4u_popup"
   ]
 }
