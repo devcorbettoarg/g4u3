@@ -17,6 +17,14 @@ if (!customElements.get('g4u-cart-upsells')) {
       const excluded = new Set(productIds);
       const seen = new Set();
       const cards = [];
+      const appendCards = (candidates) => {
+        for (const card of candidates) {
+          const id = card.dataset.upsellProduct;
+          if (excluded.has(id) || seen.has(id) || cards.length >= limit) continue;
+          seen.add(id);
+          cards.push(card);
+        }
+      };
       const timeout = window.setTimeout(() => this.controller.abort(), 8000);
       aside.setAttribute('aria-busy', 'true');
       try {
@@ -36,17 +44,13 @@ if (!customElements.get('g4u-cart-upsells')) {
           if (!this.isConnected) return;
           for (const result of results) {
             if (result.status !== 'fulfilled') continue;
-            for (const card of result.value) {
-              const id = card.dataset.upsellProduct;
-              if (excluded.has(id) || seen.has(id) || cards.length >= limit) continue;
-              seen.add(id);
-              cards.push(card);
-            }
+            appendCards(result.value);
           }
         }
-        if (cards.length) list.replaceChildren(...cards);
-        // The server-rendered list is the selected collection fallback.
-        aside.hidden = !list.children.length;
+        // Fill remaining slots from the selected collection after complementary products.
+        appendCards(list.querySelectorAll('[data-upsell-product]'));
+        list.replaceChildren(...cards);
+        aside.hidden = !cards.length;
       } finally {
         window.clearTimeout(timeout);
         if (this.isConnected) aside.removeAttribute('aria-busy');

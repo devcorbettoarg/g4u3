@@ -1461,7 +1461,7 @@
       },
       {
         "type": "paragraph",
-        "content": "Se muestran los complementarios configurados en Shopify Search & Discovery. Si no hay productos disponibles fuera del carrito, se usa la colección de respaldo."
+        "content": "Se priorizan los complementarios de Shopify Search & Discovery y se completan los espacios restantes con la colección de respaldo, sin repetir productos ni mostrar los que ya están en el carrito."
       },
       {
         "type": "text",
@@ -1473,7 +1473,7 @@
         "type": "collection",
         "id": "cart_upsell_fallback_collection",
         "label": "Colección de respaldo",
-        "info": "Se usa si no hay complementarios o no se pueden cargar. Si queda vacía, se oculta el bloque cuando no hay recomendaciones."
+        "info": "Completa la lista cuando hay menos complementarios que el máximo elegido. Si no hay complementarios, se muestran solo productos de esta colección."
       },
       {
         "type": "range",

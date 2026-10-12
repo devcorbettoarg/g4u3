@@ -8,7 +8,7 @@ Al abrir el drawer, el tema solicita los complementarios de los productos del ca
 
 La lista respeta el orden de los productos del carrito y de sus recomendaciones. Excluye productos agotados, productos ya presentes en el carrito —incluidas otras variantes del mismo producto— y duplicados entre recomendaciones. Consulta hasta tres productos del carrito en paralelo y deja de consultar al completar el máximo elegido.
 
-Si no queda ningún complementario válido, muestra productos disponibles de la colección de respaldo, respetando su orden y excluyendo los productos del carrito. También usa ese respaldo si falla la API o excede ocho segundos. Si no hay recomendaciones ni productos válidos en la colección, oculta el bloque. No completa espacios con la colección cuando hay al menos un complementario válido.
+Después de los complementarios válidos, siempre completa los espacios restantes con productos disponibles de la colección de respaldo, hasta el máximo elegido. Respeta el orden de la colección y excluye los productos del carrito y los que ya aparecen como complementarios. Por ejemplo, con máximo seis y un complementario, agrega hasta cinco productos de la colección. También usa la colección si falla la API o excede ocho segundos. Si no hay recomendaciones ni productos válidos en la colección, oculta el bloque. Si la colección tiene pocos productos válidos, muestra los disponibles sin repetirlos.
 
 Las tarjetas mantienen la selección de variantes y el botón para agregar una unidad. El listado vuelve a calcularse al agregar o quitar productos, cambiar cantidades y recibir una actualización del carrito por los eventos del tema. Las consultas pendientes se cancelan al reemplazar el drawer. El estilo existente de esta columna solo la muestra en escritorio.
 
