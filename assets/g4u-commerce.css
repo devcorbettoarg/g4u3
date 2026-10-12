@@ -1181,6 +1181,8 @@ cart-drawer .cart-drawer__empty-content .button { background: var(--g4u-burgundy
 @media (prefers-reduced-motion: reduce) { cart-drawer.drawer, cart-drawer .drawer__inner { transition: none; } }
 
 /* Recommendation cards also appear in the empty tablet drawer. */
+g4u-cart-upsells { display: contents; }
+.g4u-cart-drawer__upsells[hidden] { display: none !important; }
 .g4u-cart-drawer__upsells { align-self: stretch; box-sizing: border-box; display: flex; flex-direction: column; gap: 1rem; grid-column: 3; grid-row: 2 / 4; height: auto; min-height: 0; overflow: auto; padding: 2rem 0; }
 .g4u-cart-drawer__upsells h3 { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; margin: 0; }
 .g4u-cart-drawer__upsell-list { display: flex; flex-direction: column; gap: .4rem; }

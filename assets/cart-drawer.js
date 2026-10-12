@@ -28,6 +28,7 @@ class CartDrawer extends HTMLElement {
   }
 
   open(triggeredBy) {
+    this.querySelector('g4u-cart-upsells')?.load();
     if (this.classList.contains('active')) return;
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');

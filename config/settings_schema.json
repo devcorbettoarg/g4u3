@@ -1460,6 +1460,35 @@
         "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
       },
       {
+        "type": "header",
+        "content": "Productos sugeridos del carrito"
+      },
+      {
+        "type": "paragraph",
+        "content": "Se muestran los complementarios configurados en Shopify Search & Discovery. Si no hay productos disponibles fuera del carrito, se usa la colección de respaldo."
+      },
+      {
+        "type": "text",
+        "id": "cart_upsell_heading",
+        "label": "Título de productos sugeridos",
+        "default": "Sumá más proteína con fibra con:"
+      },
+      {
+        "type": "collection",
+        "id": "cart_upsell_fallback_collection",
+        "label": "Colección de respaldo",
+        "info": "Se usa si no hay complementarios o no se pueden cargar. Si queda vacía, se oculta el bloque cuando no hay recomendaciones."
+      },
+      {
+        "type": "range",
+        "id": "cart_upsell_limit",
+        "label": "Máximo de productos sugeridos",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 6
+      },
+      {
         "type": "color_scheme",
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",

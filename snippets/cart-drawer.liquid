@@ -10,6 +10,7 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'g4u-cart-upsells.js' | asset_url }}" defer="defer"></script>
 
 <style>
   .drawer {
@@ -465,52 +466,34 @@
         </form>
       </cart-drawer-items>
       </div>
-      <aside class="g4u-cart-drawer__upsells" aria-label="Productos sugeridos">
-        <h3>Sumá más proteína con fibra con:</h3>
-        <p class="visually-hidden" data-g4u-cart-drawer-status aria-live="polite"></p>
-        <div class="g4u-cart-drawer__upsell-list">
+      {%- liquid
+        assign g4u_upsell_limit = settings.cart_upsell_limit | default: 6
+        assign g4u_cart_product_ids = cart.items | map: 'product_id' | uniq
+      -%}
+      <g4u-cart-upsells
+        data-products="{{ g4u_cart_product_ids | json | escape }}"
+        data-url="{{ routes.product_recommendations_url }}"
+        data-limit="{{ g4u_upsell_limit }}"
+      >
+        <aside class="g4u-cart-drawer__upsells" aria-label="Productos sugeridos" hidden>
+          <h3>{{ settings.cart_upsell_heading | escape }}</h3>
+          <p class="visually-hidden" data-g4u-cart-drawer-status aria-live="polite"></p>
+          <div class="g4u-cart-drawer__upsell-list" data-upsell-list>
             {%- assign g4u_upsell_count = 0 -%}
-            {%- for product in collections.all.products -%}
-              {%- if g4u_upsell_count >= 6 -%}{% break %}{%- endif -%}
-              {%- assign g4u_in_cart = false -%}
-              {%- for item in cart.items -%}{%- if item.product_id == product.id -%}{%- assign g4u_in_cart = true -%}{%- endif -%}{%- endfor -%}
-              {%- if product.available and g4u_in_cart == false -%}
-                <article class="g4u-cart-drawer__upsell">
-                  <a href="{{ product.url }}" tabindex="-1">
-                    {%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.featured_image.alt | escape }}" width="60" height="60" loading="lazy">{%- endif -%}
-                  </a>
-                  <div>
-                    <a href="{{ product.url }}">{{ product.title | split: '|' | first | strip | escape }}</a>
-                    <span>{{ product.price | money }}</span>
-                    {%- unless product.has_only_default_variant -%}
-                      <label class="visually-hidden" for="G4U-Upsell-Variant-{{ product.id }}">Elegí una variante de {{ product.title | escape }}</label>
-                      <select id="G4U-Upsell-Variant-{{ product.id }}" class="g4u-cart-drawer__upsell-variant" data-g4u-cart-drawer-variant>
-                        {%- for variant in product.variants -%}
-                          {%- if variant.available -%}
-                            <option value="{{ variant.id }}">{{ variant.title }}{% if variant.price != product.price %} — {{ variant.price | money }}{% endif %}</option>
-                          {%- endif -%}
-                        {%- endfor -%}
-                      </select>
-                    {%- endunless -%}
-                  </div>
-                  <button
-                    class="g4u-cart-drawer__upsell-add"
-                    type="button"
-                    data-g4u-cart-drawer-add
-                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                    aria-label="Agregar {{ product.title | escape }} al carrito"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                      <path d="M7.74609 15.5V0" stroke="currentColor"/>
-                      <path d="M0 7.74512L15.5 7.74512" stroke="currentColor"/>
-                    </svg>
-                  </button>
-                </article>
-                {%- assign g4u_upsell_count = g4u_upsell_count | plus: 1 -%}
-              {%- endif -%}
-            {%- endfor -%}
-        </div>
-      </aside>
+            {%- if cart != empty and settings.cart_upsell_fallback_collection != blank -%}
+              {%- for product in settings.cart_upsell_fallback_collection.products -%}
+                {%- if g4u_upsell_count >= g4u_upsell_limit -%}{% break %}{%- endif -%}
+                {%- unless g4u_cart_product_ids contains product.id -%}
+                  {%- if product.available -%}
+                    {% render 'g4u-cart-upsell-product', product: product %}
+                    {%- assign g4u_upsell_count = g4u_upsell_count | plus: 1 -%}
+                  {%- endif -%}
+                {%- endunless -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        </aside>
+      </g4u-cart-upsells>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">

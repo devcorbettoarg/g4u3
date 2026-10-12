@@ -1,0 +1,34 @@
+{% comment %}Shared card for Search & Discovery and the fallback collection.{% endcomment %}
+{%- if product.available -%}
+<article class="g4u-cart-drawer__upsell" data-upsell-product="{{ product.id }}">
+  <a href="{{ product.url }}" tabindex="-1">
+    {%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.featured_image.alt | escape }}" width="60" height="60" loading="lazy">{%- endif -%}
+  </a>
+  <div>
+    <a href="{{ product.url }}">{{ product.title | split: '|' | first | strip | escape }}</a>
+    <span>{{ product.price | money }}</span>
+    {%- unless product.has_only_default_variant -%}
+      <label class="visually-hidden" for="G4U-Upsell-Variant-{{ product.id }}">Elegí una variante de {{ product.title | escape }}</label>
+      <select id="G4U-Upsell-Variant-{{ product.id }}" class="g4u-cart-drawer__upsell-variant" data-g4u-cart-drawer-variant>
+        {%- for variant in product.variants -%}
+          {%- if variant.available -%}
+            <option value="{{ variant.id }}">{{ variant.title }}{% if variant.price != product.price %} — {{ variant.price | money }}{% endif %}</option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
+    {%- endunless -%}
+  </div>
+  <button
+    class="g4u-cart-drawer__upsell-add"
+    type="button"
+    data-g4u-cart-drawer-add
+    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    aria-label="Agregar {{ product.title | escape }} al carrito"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M7.74609 15.5V0" stroke="currentColor"/>
+      <path d="M0 7.74512L15.5 7.74512" stroke="currentColor"/>
+    </svg>
+  </button>
+</article>
+{%- endif -%}

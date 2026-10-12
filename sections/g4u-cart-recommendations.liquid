@@ -1,0 +1,12 @@
+{%- if recommendations.performed -%}
+  {%- for product in recommendations.products -%}
+    {% render 'g4u-cart-upsell-product', product: product %}
+  {%- endfor -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "G4U · Complementarios",
+  "settings": []
+}
+{% endschema %}
