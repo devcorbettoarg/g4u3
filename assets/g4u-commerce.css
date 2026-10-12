@@ -1279,8 +1279,8 @@ g4u-cart-upsells { display: contents; }
   .g4u-cart-drawer__upsells { display: none; }
   cart-drawer.drawer.is-empty .drawer__inner { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; padding: 0 2rem; }
   cart-drawer.is-empty .drawer__header { display: flex; flex: 0 0 auto; order: 0; }
-  cart-drawer.is-empty .drawer__inner-empty { flex: 0 1 auto; height: auto; min-height: 0; order: 1; overflow-y: auto; padding: 1rem 0; width: 100%; }
-  cart-drawer.is-empty .cart-drawer__warnings { flex: 0 0 auto; justify-content: flex-start; }
+  cart-drawer.is-empty .drawer__inner-empty { flex: 1 1 auto; height: auto; min-height: 0; order: 1; overflow-y: auto; padding: 1rem 0; width: 100%; }
+  cart-drawer.is-empty .cart-drawer__warnings { flex: 1 0 auto; justify-content: center; }
   cart-drawer.is-empty .cart-drawer__empty-content { padding: 2.4rem 0; }
   cart-drawer.is-empty .cart__empty-text { font-size: 3rem; line-height: 1.1; }
   cart-drawer.is-empty .g4u-cart-drawer__body { display: none; }
