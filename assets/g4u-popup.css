@@ -60,7 +60,7 @@ body:has(.g4u-popup[open]) { overflow: hidden; }
   color: var(--popup-input-text);
   font-family: var(--font-body-family);
   font-size: var(--popup-control-size);
-  height: 48px;
+  height: 45px;
   padding: 12px;
   width: 100%;
 }
@@ -75,8 +75,8 @@ body:has(.g4u-popup[open]) { overflow: hidden; }
   font-family: var(--g4u-displayr);
   font-size: var(--popup-control-size);
   letter-spacing: .05em;
-  line-height: 1;
-  padding: 15px 24px;
+  line-height: .8;
+  padding: 16px 24px;
   text-align: center;
   text-decoration: none;
   width: 100%;
