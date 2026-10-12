@@ -11,29 +11,127 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "g4u_popup": {
-      "type": "g4u-popup",
-      "blocks": {
-        "heading": { "type": "heading", "settings": {} },
-        "text": { "type": "text", "settings": {} },
-        "newsletter": { "type": "newsletter", "settings": {} }
-      },
-      "block_order": ["heading", "text", "newsletter"],
-      "settings": {}
-    },
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer_shop": { "type": "menu", "settings": { "heading": "Tienda", "fallback": "shop" } },
-        "footer_support": { "type": "menu", "settings": { "heading": "Atención al cliente", "fallback": "support" } },
-        "footer_g4u": { "type": "menu", "settings": { "heading": "G4U", "fallback": "g4u" } }
+        "footer_shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Tienda",
+            "menu": "",
+            "fallback": "shop"
+          }
+        },
+        "footer_support": {
+          "type": "menu",
+          "settings": {
+            "heading": "Atención al cliente",
+            "menu": "",
+            "fallback": "support"
+          }
+        },
+        "footer_g4u": {
+          "type": "menu",
+          "settings": {
+            "heading": "G4U",
+            "menu": "",
+            "fallback": "g4u"
+          }
+        }
       },
-      "block_order": ["footer_shop", "footer_support", "footer_g4u"],
+      "block_order": [
+        "footer_shop",
+        "footer_support",
+        "footer_g4u"
+      ],
       "settings": {
         "description": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>",
         "social_heading": "Seguinos en",
-        "payment_enable": true,
-        "linkedin_url": ""
+        "linkedin_url": "",
+        "payment_enable": true
+      }
+    },
+    "g4u_popup": {
+      "type": "g4u-popup",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Suscribite y accedé a un",
+            "second_line": "<strong>10% off</strong> en tu primer compra"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "placeholder": "Ingresá tu email",
+            "label": "Correo electrónico",
+            "button_label": "Suscribite",
+            "success_message": "¡Gracias por suscribirte!",
+            "privacy": "",
+            "require_consent": false,
+            "consent_label": "Acepto recibir novedades y ofertas por email."
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "newsletter"
+      ],
+      "disabled": true,
+      "settings": {
+        "enabled": true,
+        "preview": true,
+        "campaign": "newsletter-v1",
+        "pages": "all",
+        "devices": "all",
+        "trigger": "delay",
+        "delay": 5,
+        "scroll": 50,
+        "frequency": "session",
+        "days": 7,
+        "close_overlay": true,
+        "close_label": "Cerrar popup",
+        "dialog_label": "Suscripción a novedades",
+        "position": "bottom-right",
+        "alignment": "left",
+        "width": 490,
+        "radius": 12,
+        "border_width": 0,
+        "shadow": 0,
+        "overlay": 40,
+        "padding_top": 80,
+        "padding_x": 40,
+        "padding_bottom": 40,
+        "gap": 8,
+        "form_gap": 24,
+        "control_radius": 100,
+        "mobile_top": 64,
+        "mobile_x": 24,
+        "mobile_bottom": 32,
+        "background": "#fff8f0",
+        "text_color": "#500322",
+        "heading_color": "#500322",
+        "accent_color": "#ff4622",
+        "border_color": "#500322",
+        "input_background": "#fff8f0",
+        "input_text": "#500322",
+        "input_border": "#500322",
+        "button_background": "#26131b",
+        "button_text": "#fff8f0",
+        "title_size": 32,
+        "mobile_title_size": 28,
+        "text_size": 18,
+        "mobile_text_size": 16,
+        "control_size": 16,
+        "uppercase": true
       }
     }
   },
