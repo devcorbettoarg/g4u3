@@ -85,7 +85,6 @@
         "text",
         "newsletter"
       ],
-      "disabled": true,
       "settings": {
         "enabled": true,
         "preview": true,
@@ -95,7 +94,7 @@
         "trigger": "delay",
         "delay": 5,
         "scroll": 50,
-        "frequency": "session",
+        "frequency": "always",
         "days": 7,
         "close_overlay": true,
         "close_label": "Cerrar popup",
