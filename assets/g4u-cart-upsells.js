@@ -11,6 +11,7 @@ if (!customElements.get('g4u-cart-upsells')) {
       this.controller = new AbortController();
       const aside = this.querySelector('aside');
       const list = this.querySelector('[data-upsell-list]');
+      const collectionCards = [...list.querySelectorAll('[data-upsell-product]')];
       const productIds = JSON.parse(this.dataset.products || '[]').map(String);
       if (!productIds.length) return;
       const limit = Number(this.dataset.limit) || 6;
@@ -48,7 +49,7 @@ if (!customElements.get('g4u-cart-upsells')) {
           }
         }
         // Fill remaining slots from the selected collection after complementary products.
-        appendCards(list.querySelectorAll('[data-upsell-product]'));
+        appendCards(collectionCards);
         list.replaceChildren(...cards);
         aside.hidden = !cards.length;
       } finally {
