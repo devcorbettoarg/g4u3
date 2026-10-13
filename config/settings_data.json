@@ -127,7 +127,7 @@
     "show_cart_note": false,
     "free_shipping_threshold": 90000,
     "cart_drawer_collection": "",
-    "cart_upsell_fallback_collection": "frontpage",
+    "cart_upsell_fallback_collection": "packs",
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "sections": {
