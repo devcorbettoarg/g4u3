@@ -1445,16 +1445,7 @@
         "default": 60000,
         "info": "Ingresá el importe en pesos, sin puntos ni separadores. Ejemplo: 60000. El progreso del carrito se completa al alcanzar este importe."
       },
-      {
-        "type": "header",
-        "content": "t:settings_schema.cart.settings.cart_drawer.header"
-      },
-      {
-        "type": "collection",
-        "id": "cart_drawer_collection",
-        "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",
-        "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
-      },
+     
       {
         "type": "header",
         "content": "Productos sugeridos del carrito"
