@@ -6,6 +6,15 @@ if (!customElements.get('g4u-popup')) {
       this.controller = new AbortController();
       const options = { signal: this.controller.signal };
       this.key = `g4u-popup:${this.dataset.section}:${this.dataset.campaign}`;
+      this.pendingKey = `${this.key}:pending`;
+      this.querySelector('.g4u-popup__form')?.addEventListener('submit', () => {
+        if (window.Shopify?.designMode) return;
+        try {
+          sessionStorage.setItem(this.pendingKey, String(Date.now()));
+        } catch (_) {
+          // Native form submission still works without browser storage.
+        }
+      }, options);
       this.querySelector('[data-popup-close]').addEventListener('click', () => this.dialog.close(), options);
       this.dialog.addEventListener('click', (event) => {
         if (!this.dataset.closeOverlay || event.target !== this.dialog) return;
@@ -30,10 +39,24 @@ if (!customElements.get('g4u-popup')) {
         if (this.dataset.preview === 'true') this.open(true);
         return;
       }
-      const result = this.querySelector('[data-popup-result]');
-      if (result && window.location.hash === `#${this.dataset.form}`) {
+      const result = this.querySelector('[data-popup-result="error"]') || this.querySelector('[data-popup-result="success"]');
+      const posted = new URLSearchParams(window.location.search).get('customer_posted') === 'true';
+      const ownSubmission = this.pendingSubmission() || window.location.hash === `#${this.dataset.form}`;
+      const message = result || (posted && this.querySelector('[data-popup-success]'));
+      if (message && ownSubmission) {
+        message.hidden = false;
+        this.resultMessage = message;
         this.open(true);
-        if (result.dataset.popupResult === 'success') this.remember();
+        if (message.dataset.popupResult === 'success' || !result && posted) this.remember();
+        try {
+          sessionStorage.removeItem(this.pendingKey);
+        } catch (_) {
+          // Storage may be unavailable in private browsing.
+        }
+        const url = new URL(window.location.href);
+        url.searchParams.delete('customer_posted');
+        if (url.hash === `#${this.dataset.form}` || url.hash === '#contact_form') url.hash = '';
+        window.history.replaceState(window.history.state, '', url);
         return;
       }
       if (this.dataset.enabled !== 'true' || this.dismissed()) return;
@@ -62,7 +85,18 @@ if (!customElements.get('g4u-popup')) {
         return;
       }
       this.dialog.showModal();
-      this.querySelector('[data-popup-result]')?.focus();
+      this.resultMessage?.focus();
+    }
+
+    pendingSubmission() {
+      try {
+        const submittedAt = Number(sessionStorage.getItem(this.pendingKey));
+        if (submittedAt > 0 && Date.now() - submittedAt >= 0 && Date.now() - submittedAt < 1800000) return true;
+        sessionStorage.removeItem(this.pendingKey);
+      } catch (_) {
+        // Fall back to the form anchor when storage is unavailable.
+      }
+      return false;
     }
 
     dismissed() {

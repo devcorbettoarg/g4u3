@@ -2,7 +2,6 @@
 <script src="{{ 'g4u-popup.js' | asset_url }}" defer="defer"></script>
 {%- liquid
   assign form_id = 'G4uPopupForm-' | append: section.id
-  assign form_return = request.path | append: '#' | append: form_id
 -%}
 {%- style -%}
   #G4uPopup-{{ section.id }} {
@@ -83,7 +82,7 @@
             </div>
           {%- when 'newsletter' -%}
             <div {{ block.shopify_attributes }}>
-              {%- form 'customer', id: form_id, class: 'g4u-popup__form', return_to: form_return -%}
+              {%- form 'customer', id: form_id, class: 'g4u-popup__form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <label class="visually-hidden" for="G4uPopupEmail-{{ section.id }}">{{ block.settings.label | escape }}</label>
                 <input
@@ -107,11 +106,9 @@
                 {%- endif -%}
                 <button class="g4u-popup__button" type="submit">{{ block.settings.button_label | escape }}</button>
                 {%- if form.errors -%}
-                  <p class="g4u-popup__message" id="G4uPopupError-{{ section.id }}" role="alert" tabindex="-1" data-popup-result="error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+                  <div class="g4u-popup__message" id="G4uPopupError-{{ section.id }}" role="alert" tabindex="-1" data-popup-result="error" hidden>{{ form.errors | default_errors }}</div>
                 {%- endif -%}
-                {%- if form.posted_successfully? -%}
-                  <p class="g4u-popup__message" role="status" tabindex="-1" data-popup-result="success">{{ block.settings.success_message | escape }}</p>
-                {%- endif -%}
+                <p class="g4u-popup__message" role="status" tabindex="-1" data-popup-success hidden {% if form.posted_successfully? %}data-popup-result="success"{% endif %}>{{ block.settings.success_message | default: '¡Gracias por suscribirte!' | escape }}</p>
               {%- endform -%}
             </div>
           {%- when 'button' -%}
