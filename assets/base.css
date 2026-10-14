@@ -2162,7 +2162,9 @@ input[type='checkbox'] {
   left: 2.2rem;
   line-height: calc(1 + 0.1 / var(--font-body-scale));
 }
-
+.cart-count-bubble span {
+  padding-top:1px;
+}
 /* utility-bar */
 .utility-bar {
   height: 100%;
