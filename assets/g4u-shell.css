@@ -69,7 +69,7 @@ body.template-suffix-nosotros .announcement-bar-section {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--g4u-container-width);
-  padding: 1.4rem 4rem !important;
+  padding: 1.4rem 0rem !important;
   width: 100%;
 }
 .header__heading-link { padding: 0; }
@@ -224,7 +224,7 @@ body.template-index .section-header:not(.shopify-section-header-sticky) .header,
 
  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header{
   height: var(--g4u-header-hero-height);
-  padding: 1.4rem 4rem !important;
+  padding: 1.4rem 0rem !important;
   padding-top:44px !important;
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
@@ -330,7 +330,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 @media screen and (min-width: 750px) {
   .section-header:has(.header__search details[open]) .header {
     height: var(--g4u-header-height);
-    padding: 1.4rem 4rem !important;
+    padding: 1.4rem 0rem !important;
   }
 
   .section-header:has(.header__search details[open]) .search-modal,
@@ -352,7 +352,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
-    padding: 1.4rem 4rem !important;
+    padding: 1.4rem 0rem !important;
   }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 6rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
