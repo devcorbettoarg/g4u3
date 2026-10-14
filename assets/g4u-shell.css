@@ -248,7 +248,7 @@ body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina)
 @media screen and (max-width: 749px) {
   html:is(.overflow-hidden-tablet, .overflow-hidden-mobile) body .section-header .g4u-logo__image,
   body:is(.overflow-hidden-tablet, .overflow-hidden-mobile) .section-header .g4u-logo__image {
-    filter: none;
+    filter: none !important;
   }
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon,
