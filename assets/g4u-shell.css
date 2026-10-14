@@ -241,8 +241,15 @@ body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) 
 }
 /* White mark while the header overlays the hero with a transparent background. */
 body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina)
-.section-header:not(.shopify-section-header-sticky, .menu-open)
-:not(.unused) {
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
+.g4u-logo__image {
+  filter: brightness(0) invert(1);
+}
+@media screen and (max-width: 749px) {
+  html:is(.overflow-hidden-tablet, .overflow-hidden-mobile) body .section-header .g4u-logo__image,
+  body:is(.overflow-hidden-tablet, .overflow-hidden-mobile) .section-header .g4u-logo__image {
+    filter: none;
+  }
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header__icon,
