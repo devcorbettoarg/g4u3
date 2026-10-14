@@ -1250,7 +1250,7 @@ body .product-card-wrapper .card.card--sold-out :is(
 }
 body .product-card-wrapper .card.card--sold-out .g4u-card__tag {
   color: #766c70;
-  border-color: #766c70;
+
 }
 
 body .product-card-wrapper .card.card--sold-out .g4u-card__tag-icon {
