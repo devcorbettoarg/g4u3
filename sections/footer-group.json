@@ -85,6 +85,7 @@
         "text",
         "newsletter"
       ],
+      "disabled": true,
       "settings": {
         "enabled": true,
         "preview": true,
