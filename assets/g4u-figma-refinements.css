@@ -1243,7 +1243,11 @@ body .product-card-wrapper .card.card--sold-out :is(
 ) {
   color: #766c70;
 }
+body .product-card-wrapper .card.card--sold-out :is(
+.g4u-price__discount ) {
+  color:white;
 
+}
 body .product-card-wrapper .card.card--sold-out .g4u-card__tag {
   color: #766c70;
   border-color: #766c70;
