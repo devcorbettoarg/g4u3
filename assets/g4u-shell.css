@@ -239,6 +239,11 @@ body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) 
   flex-basis: var(--g4u-header-logo-width);
   transform: none;
 }
+/* White mark while the header overlays the hero with a transparent background. */
+body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina)
+.section-header:not(.shopify-section-header-sticky, .menu-open)
+:not(.unused) {
+}
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon,
 body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header__icon,
 body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header__icon {
