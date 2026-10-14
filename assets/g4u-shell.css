@@ -352,7 +352,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
 
   .section-header.shopify-section-header-sticky .header {
     height: var(--g4u-header-height);
-    padding: 1.4rem 4rem !important;
+    padding: 1.4rem 0rem !important;
   }
   .section-header.shopify-section-header-sticky .header__heading-link.g4u-brand-link { min-height: 6rem; }
   .section-header.shopify-section-header-sticky .g4u-logo,
