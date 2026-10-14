@@ -886,10 +886,10 @@ body.template-suffix-harina .section-header .header-wrapper {
 /* Logo claro antes del sticky */
 
 
-/* Iconos claros */
+/* Iconos claros solo mientras el header permanece transparente. */
 
 body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 .header__icon {
   background: transparent;
   box-shadow: none;
@@ -902,26 +902,26 @@ body.template-suffix-harina
  * que no son Home, por lo tanto hay que neutralizarlo específicamente.
  */
 body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble,
 body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble svg,
 body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble svg path {
   color: var(--g4u-cream) !important;
   stroke: var(--g4u-cream) !important;
 }
 
 body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble,
 body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble svg,
 body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky)
+.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
 #cart-icon-bubble svg path {
   color: var(--g4u-cream) !important;
   stroke: var(--g4u-cream) !important;
