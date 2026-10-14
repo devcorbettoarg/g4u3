@@ -1235,6 +1235,24 @@ body :is(
   letter-spacing: 10% !important;
 }
 
+/* Product card text reflects sold-out availability. */
+body .product-card-wrapper .card.card--sold-out :is(
+  .card__heading, .card__heading a,
+  .card-information, .card-information *,
+  .quick-add__submit, .quick-add__submit:hover
+) {
+  color: #766c70;
+}
+
+body .product-card-wrapper .card.card--sold-out .g4u-card__tag {
+  color: #766c70;
+  border-color: #766c70;
+}
+
+body .product-card-wrapper .card.card--sold-out .g4u-card__tag-icon {
+  opacity: 0.6;
+}
+
 /* Sold-out tag has its own 5% tracking and dimensions from Figma. */
 body .badge.g4u-badge--sold-out {
   box-sizing: border-box;
