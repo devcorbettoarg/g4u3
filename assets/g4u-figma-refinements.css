@@ -1245,7 +1245,7 @@ body .product-card-wrapper .card.card--sold-out :is(
 }
 body .product-card-wrapper .card.card--sold-out :is(
 .g4u-price__discount ) {
-  color:white;
+  color:white !important;
 
 }
 body .product-card-wrapper .card.card--sold-out .g4u-card__tag {
