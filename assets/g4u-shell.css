@@ -198,6 +198,10 @@ font-size:16px;}
   .g4u-mega-menu { column-gap: 4rem; grid-template-columns: minmax(20rem, .72fr) minmax(0, 2fr); }
 }
 
+@media screen and (min-width: 1080px) {
+  .g4u-mega-menu { padding-left:0px !important; padding-right:0px !important; }
+}
+
 
 body.template-index .shopify-section-group-header-group,
 body.template-suffix-nosotros .shopify-section-group-header-group,
@@ -248,7 +252,7 @@ body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina)
 @media screen and (max-width: 749px) {
   html:is(.overflow-hidden-tablet, .overflow-hidden-mobile) body .section-header .g4u-logo__image,
   body:is(.overflow-hidden-tablet, .overflow-hidden-mobile) .section-header .g4u-logo__image {
-    filter: none !important;
+    filter: none;
   }
 }
 body.template-index .section-header:not(.shopify-section-header-sticky) .header__icon,
