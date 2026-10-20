@@ -23,6 +23,7 @@
     },
     "g4u_newsletter_p6CRdj": {
       "type": "g4u-newsletter",
+      "disabled": true,
       "settings": {
         "title": "Suscribite y accedé a un 10% off en tu primer compra",
         "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>",
