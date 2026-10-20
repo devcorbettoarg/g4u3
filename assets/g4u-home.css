@@ -922,8 +922,8 @@ line-height:80% !important; }
 @media screen and (max-width: 749px) {
   .g4u-home-hero { height: 88vh; min-height: 88vh; }
   .g4u-home-hero__content { left: 2rem; right: 2rem; }
-  .g4u-hero__arrow--prev { left: -20px; }
-  .g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: -20px; }
+  .g4u-hero__arrow--prev { left: -10px; }
+  .g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: -10px; }
   .g4u-low-carb { padding: 6.4rem 2rem; }
   .g4u-low-carb__title { font-size: 4rem; margin-bottom: 5.6rem; }
   .g4u-low-carb__grid { grid-template-columns: 1fr; }
