@@ -489,7 +489,7 @@
 @media screen and (max-width: 749px) {
   body.template-suffix-nosotros .g4u-featured-products .card__inner.ratio::before { padding-bottom: 120% !important; }
   body.template-suffix-nosotros .g4u-featured-products .card__media img { object-fit: contain; }
-  .g4u-flour-hero { max-height: 88vh; padding: 10rem 2rem 6rem; }
+  .g4u-flour-hero { max-height: 88vh; height:88vh !important; min-height:88vh !important;padding: 10rem 2rem 6rem; }
   .g4u-flour-hero::after { background: linear-gradient(0deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .08) 75%); }
   .g4u-flour-hero__title { font-size: 4.1rem; }
   .g4u-flour-hero__text { font-size: 1.6rem; }
