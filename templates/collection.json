@@ -56,7 +56,7 @@
         "marquee_carbs": {
           "type": "item",
           "settings": {
-            "text": "Low-carbs"
+            "text": "Low-carb"
           }
         },
         "marquee_protein": {

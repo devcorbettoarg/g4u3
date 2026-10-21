@@ -331,7 +331,7 @@
         "carbs": {
           "type": "item",
           "settings": {
-            "text": "Low-carbs"
+            "text": "Low-carb"
           }
         },
         "protein": {

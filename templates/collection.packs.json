@@ -31,7 +31,7 @@
     "g4u_marquee": {
       "type": "g4u-nutrition-marquee",
       "blocks": {
-        "marquee_carbs": { "type": "item", "settings": { "text": "Low-carbs" } },
+        "marquee_carbs": { "type": "item", "settings": { "text": "Low-carb" } },
         "marquee_protein": { "type": "item", "settings": { "text": "Alto en proteínas" } },
         "marquee_fiber": { "type": "item", "settings": { "text": "Alto en fibras" } }
       },
