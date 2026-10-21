@@ -125,11 +125,11 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
-    "free_shipping_threshold": 90000,
-    "cart_drawer_collection": "",
+    "free_shipping_threshold": 95000,
     "cart_upsell_fallback_collection": "packs",
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
+    "cart_drawer_collection": "",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
