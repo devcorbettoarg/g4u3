@@ -34,7 +34,7 @@
           "type": "menu",
           "settings": {
             "heading": "G4U",
-            "menu": "",
+            "menu": "footer-3-g4u",
             "fallback": "g4u"
           }
         }
