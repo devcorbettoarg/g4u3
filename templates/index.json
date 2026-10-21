@@ -84,7 +84,7 @@
         "eyebrow": "productos",
         "title": "Nuestros packs",
         "description": "<p>Elegí el pack que mejor se adapte a tus objetivos y disfrutá de tus productos favoritos con un beneficio extra.</p>",
-        "collection": "all",
+        "collection": "packs",
         "products_to_show": 4,
         "show_secondary_image": true,
         "show_view_all": true,
