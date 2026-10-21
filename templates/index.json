@@ -338,7 +338,7 @@
         "primary_label": "Descubrir productos",
         "primary_link": "shopify://collections/all",
         "secondary_label": "Conocé nuestra harina",
-        "secondary_link": ""
+        "secondary_link": "shopify://pages/nuestra-harina"
       }
     },
     "g4u_low_carb": {
