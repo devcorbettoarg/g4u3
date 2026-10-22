@@ -76,6 +76,8 @@
         "details": {
           "type": "collapsible_tab",
           "settings": {
+            "is_nutrition": false,
+            "nutrition_html": "",
             "content_source": "existing",
             "show_free_shipping": true,
             "heading": "¿Por qué elegir G4U?",
@@ -87,6 +89,8 @@
         "ingredients": {
           "type": "collapsible_tab",
           "settings": {
+            "is_nutrition": false,
+            "nutrition_html": "",
             "content_source": "existing",
             "show_free_shipping": true,
             "heading": "Ingredientes",
@@ -99,6 +103,7 @@
           "type": "collapsible_tab",
           "settings": {
             "is_nutrition": true,
+            "nutrition_html": "",
             "content_source": "existing",
             "show_free_shipping": true,
             "heading": "Información nutricional",
@@ -110,6 +115,8 @@
         "storage": {
           "type": "collapsible_tab",
           "settings": {
+            "is_nutrition": false,
+            "nutrition_html": "",
             "content_source": "existing",
             "show_free_shipping": true,
             "heading": "Conservación",
@@ -121,6 +128,8 @@
         "shipping": {
           "type": "collapsible_tab",
           "settings": {
+            "is_nutrition": false,
+            "nutrition_html": "",
             "content_source": "shipping",
             "show_free_shipping": true,
             "heading": "Envíos",
@@ -594,6 +603,7 @@
     },
     "g4u_newsletter": {
       "type": "g4u-newsletter",
+      "disabled": true,
       "settings": {
         "title": "Suscribite y accedé a un 10% off en tu primer compra",
         "text": "<p>Y enterate primero de las novedades y ofertas exclusivas.</p>",
