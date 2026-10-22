@@ -392,6 +392,22 @@ body:not(.template-index) #cart-icon-bubble svg path {
 }
 
 @media screen and (max-width: 749px) {
+  body:is(.template-product, .template-collection, .template-suffix-arma-tu-combo)
+  .section-header.shopify-section-header-sticky {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+  }
+
+  /* Reserve the header's space when it leaves the document flow. */
+  body:is(.template-product, .template-collection, .template-suffix-arma-tu-combo):has(.section-header.shopify-section-header-sticky)
+  #MainContent::before {
+    content: '';
+    display: block;
+    flex: none;
+    height: var(--header-height, 6.4rem);
+  }
+
   html,
   body {
     max-width: 100%;
