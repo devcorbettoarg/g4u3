@@ -217,10 +217,12 @@
                 {%- when 'collapsible_tab' -%}
                   {%- liquid
                     assign g4u_accordion_metafield = blank
+                    assign g4u_details_accordion = false
                     assign g4u_shipping_accordion = false
                     assign g4u_nutrition_accordion = false
                     case block.settings.heading
                       when 'Detalles del producto', '¿Por qué elegir G4U?'
+                        assign g4u_details_accordion = true
                         assign g4u_accordion_metafield = product.metafields.custom.product_details
                       when 'Ingredientes'
                         assign g4u_accordion_metafield = product.metafields.custom.ingredients
@@ -258,7 +260,7 @@
                           {{- 'icon-caret.svg' | inline_asset_content -}}
                         {%- endif -%}
                       </summary>
-                      <div class="accordion__content rte{% if g4u_nutrition_accordion %} nutrition-info{% endif %}" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                      <div class="accordion__content rte{% if g4u_nutrition_accordion %} nutrition-info{% elsif g4u_details_accordion and g4u_shipping_accordion == false %} g4u-product-details{% endif %}" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                         {%- if block.settings.is_nutrition and block.settings.nutrition_html != blank -%}
                           {{ block.settings.nutrition_html }}
                         {%- elsif g4u_accordion_metafield != blank -%}
