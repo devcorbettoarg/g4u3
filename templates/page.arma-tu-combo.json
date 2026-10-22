@@ -57,6 +57,8 @@
         "snacks_collection": "",
         "snacks_minimum": 1,
         "enforce_category_minimums": false,
+        "discount_basis": "amount",
+        "discount_minimum_amount": 80000,
         "discount_1_qty": 2,
         "discount_1_value": 5,
         "discount_2_qty": 5,

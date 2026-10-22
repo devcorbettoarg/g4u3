@@ -5,6 +5,15 @@
 {% endcomment %}
 
 {%- liquid
+  assign discount_basis = section.settings.discount_basis | default: 'amount'
+  assign discount_threshold = section.settings.discount_minimum_amount | default: 80000 | times: 100
+  if discount_threshold <= 0
+    assign discount_threshold = 8000000
+  endif
+  assign shipping_threshold = settings.free_shipping_threshold | default: 95000 | times: 100
+  if shipping_threshold <= 0
+    assign shipping_threshold = 9500000
+  endif
   assign has_collections = false
   assign category_count = 0
   if section.settings.breakfast_collection != blank or section.settings.sandwich_collection != blank or section.settings.snacks_collection != blank
@@ -29,7 +38,10 @@
   data-locale="{{ request.locale.iso_code | default: 'es' }}"
   data-pack-name="{{ section.settings.pack_name | escape }}"
   data-pack-key="{{ section.settings.pack_key | handleize }}"
-  data-enforce-minimums="{{ section.settings.enforce_category_minimums }}"
+  data-discount-basis="{{ discount_basis }}"
+  data-discount-minimum-amount="{{ discount_threshold }}"
+  data-free-shipping-amount="{{ shipping_threshold }}"
+  data-enforce-minimums="{% if discount_basis == 'quantity' %}{{ section.settings.enforce_category_minimums }}{% else %}false{% endif %}"
   data-after-add="{{ section.settings.after_add_action }}"
   data-reset-after-add="{{ section.settings.reset_after_add }}"
   data-discount-1-qty="{{ section.settings.discount_1_qty }}"
@@ -345,6 +357,16 @@
                   <span class="pb-progress__dot" data-progress-dot></span>
                 </div>
                 <div class="pb-progress__levels">
+                  {%- if discount_basis == 'amount' -%}
+                    <span data-level="1">
+                      <strong>{{ section.settings.discount_1_value }}% off</strong>
+                      <small>{{ discount_threshold | money_without_trailing_zeros }}</small>
+                    </span>
+                    <span data-level="2">
+                      <strong>{{ section.settings.discount_1_value }}% + envío gratis</strong>
+                      <small>{{ shipping_threshold | money_without_trailing_zeros }}</small>
+                    </span>
+                  {%- else -%}
                   <span data-level="1">
                     <strong>{{ section.settings.discount_1_value }}% off</strong>
                     <small>{{ section.settings.discount_1_qty }} {{ section.settings.items_short_label }}</small>
@@ -357,6 +379,7 @@
                     <strong>{{ section.settings.discount_3_value }}% off</strong>
                     <small>{{ section.settings.discount_3_qty }} {{ section.settings.items_short_label }}</small>
                   </span>
+                  {%- endif -%}
                 </div>
               </div>
 
@@ -387,11 +410,13 @@
                       <summary>
                         <span>
                           <strong>{{ category_title }}</strong>
+                          {%- if discount_basis == 'quantity' and section.settings.enforce_category_minimums -%}
                           <small>
                             {{ section.settings.requires_prefix }}
                             {{ category_minimum }}
                             {% if category_minimum == 1 %}{{ section.settings.item_singular }}{% else %}{{ section.settings.item_plural }}{% endif %}
                           </small>
+                          {%- endif -%}
                         </span>
                         <span class="pb-group__count">
                           <span data-category-count>0</span> {{ section.settings.items_added_label }}
@@ -418,7 +443,7 @@
                   <strong data-discount-amount>—</strong>
                 </div>
                 <div class="pb-summary__total-row">
-                  <span>Total</span>
+                  <span>{{ section.settings.total_label }}</span>
                   <strong data-estimated-total>—</strong>
                 </div>
               </div>
@@ -1529,6 +1554,15 @@
     display: none;
   }
 
+  #PackBuilder-{{ section.id }}[data-discount-basis="amount"] .pb-progress__levels {
+    height: 72px;
+  }
+
+  #PackBuilder-{{ section.id }}[data-discount-basis="amount"] .pb-progress__levels small {
+    display: block;
+    font-size: .85em;
+  }
+
   #PackBuilder-{{ section.id }} .pb-summary__groups {
     display: grid;
     gap: 12px;
@@ -2090,17 +2124,25 @@
       { qty: 7, value: 15 }
     ];
 
-    const configuredLevels = defaultLevels.map((fallback, index) => ({
-      qty: Number(root.dataset[`discount${index + 1}Qty`]) || fallback.qty,
-      value: Number(root.dataset[`discount${index + 1}Value`]) || fallback.value
-    })).sort((a, b) => a.qty - b.qty);
+    const amountBased = root.dataset.discountBasis === 'amount';
+    const discountMinimum = Number(root.dataset.discountMinimumAmount) || 8000000;
+    const freeShippingMinimum = Number(root.dataset.freeShippingAmount) || 9500000;
+    const discountPercent = Number(root.dataset.discount1Value ?? 5);
+    const quantityLevels = defaultLevels.map((fallback, index) => ({
+      threshold: Number(root.dataset[`discount${index + 1}Qty`]) || fallback.qty,
+      value: Number(root.dataset[`discount${index + 1}Value`] ?? fallback.value)
+    })).sort((a, b) => a.threshold - b.threshold);
+    const configuredLevels = amountBased ? [
+      { threshold: discountMinimum, value: discountPercent, freeShipping: false },
+      { threshold: freeShippingMinimum, value: discountPercent, freeShipping: true }
+    ].sort((a, b) => a.threshold - b.threshold) : quantityLevels;
 
     const settings = {
       currency: root.dataset.currency || 'USD',
       locale: root.dataset.locale || 'es',
       packName: root.dataset.packName || 'Armá tu pack',
       packKey: root.dataset.packKey || 'pack',
-      enforceMinimums: root.dataset.enforceMinimums === 'true',
+      enforceMinimums: !amountBased && root.dataset.enforceMinimums === 'true',
       afterAdd: root.dataset.afterAdd || 'drawer',
       resetAfterAdd: root.dataset.resetAfterAdd === 'true',
       levels: configuredLevels
@@ -2181,16 +2223,16 @@
       return { quantity, subtotal, byCategory };
     };
 
-    const getDiscount = quantity => {
-      let current = { qty: 0, value: 0 };
+    const getDiscount = qualifyingTotal => {
+      let current = { threshold: 0, value: 0 };
       settings.levels.forEach(level => {
-        if (quantity >= level.qty) current = level;
+        if (qualifyingTotal >= level.threshold && (!amountBased || qualifyingTotal >= discountMinimum)) current = level;
       });
       return current;
     };
 
-    const getNextDiscount = quantity => {
-      return settings.levels.find(level => quantity < level.qty) || null;
+    const getNextDiscount = qualifyingTotal => {
+      return settings.levels.find(level => qualifyingTotal < level.threshold) || null;
     };
 
     const getMissingCategories = totals => {
@@ -2335,25 +2377,25 @@
     };
 
     const updateProgress = totals => {
-      // Cada descuento se centra en un tercio; el avance interpola las cantidades
-      // de cada tramo para llegar al marcador cuando se alcanza su umbral.
+      // Interpolate between benefit markers using the configured amount or quantity.
+      const qualifyingTotal = amountBased ? totals.subtotal : totals.quantity;
       const levelPositions = settings.levels.map((level, index) => ((index + 0.5) / settings.levels.length) * 100);
       const reachedIndex = settings.levels.reduce(
-        (lastReached, level, index) => (totals.quantity >= level.qty ? index : lastReached),
+        (lastReached, level, index) => (qualifyingTotal >= level.threshold ? index : lastReached),
         -1
       );
       const nextIndex = reachedIndex + 1;
-      const previousQty = settings.levels[reachedIndex]?.qty || 0;
+      const previousThreshold = settings.levels[reachedIndex]?.threshold || 0;
       const previousPosition = levelPositions[reachedIndex] || 0;
       const nextLevel = settings.levels[nextIndex];
       const fraction = nextLevel
-        ? Math.max(0, Math.min((totals.quantity - previousQty) / (nextLevel.qty - previousQty), 1))
+        ? Math.max(0, Math.min((qualifyingTotal - previousThreshold) / (nextLevel.threshold - previousThreshold), 1))
         : 1;
       const percentage = nextLevel
         ? previousPosition + fraction * (levelPositions[nextIndex] - previousPosition)
         : levelPositions.at(-1) || 0;
-      const currentDiscount = getDiscount(totals.quantity);
-      const nextDiscount = getNextDiscount(totals.quantity);
+      const currentDiscount = getDiscount(qualifyingTotal);
+      const nextDiscount = getNextDiscount(qualifyingTotal);
       const missingCategories = getMissingCategories(totals);
 
       if (progressFill) progressFill.style.width = `${percentage}%`;
@@ -2362,16 +2404,28 @@
       root.querySelectorAll('[data-level]').forEach((node, index) => {
         const level = settings.levels[index];
         if (level) node.style.left = `${levelPositions[index]}%`;
-        node.classList.toggle('is-reached', Boolean(level && totals.quantity >= level.qty));
+        if (level && amountBased) {
+          node.querySelector('strong').textContent = level.freeShipping ? `${discountPercent}% + envío gratis` : `${discountPercent}% off`;
+          node.querySelector('small').textContent = formatMoney(level.threshold);
+        }
+        node.classList.toggle('is-reached', Boolean(level && qualifyingTotal >= level.threshold));
       });
 
-      if (settings.enforceMinimums && missingCategories.length) {
+      if (amountBased) {
+        if (totals.subtotal < discountMinimum) {
+          progressMessage.textContent = `Agregá ${formatMoney(discountMinimum - totals.subtotal)} para obtener ${discountPercent}% de descuento en toda la orden.`;
+        } else if (totals.subtotal < freeShippingMinimum) {
+          progressMessage.textContent = `¡Tenés ${discountPercent}% de descuento! Agregá ${formatMoney(freeShippingMinimum - totals.subtotal)} para sumar envío gratis.`;
+        } else {
+          progressMessage.textContent = `¡Tenés ${discountPercent}% de descuento en toda la orden y envío gratis!`;
+        }
+      } else if (settings.enforceMinimums && missingCategories.length) {
         const missingText = missingCategories
           .map(category => `${category.missing} ${category.title}`)
           .join(text.missingJoin);
         progressMessage.textContent = `${text.missingPrefix} ${missingText}`.replace(/\s+/g, ' ').trim();
       } else if (nextDiscount) {
-        progressMessage.textContent = `${text.addMorePrefix} ${nextDiscount.qty - totals.quantity} ${text.addMoreSuffix} ${nextDiscount.value}%`.replace(/\s+/g, ' ').trim();
+        progressMessage.textContent = `${text.addMorePrefix} ${nextDiscount.threshold - totals.quantity} ${text.addMoreSuffix} ${nextDiscount.value}%`.replace(/\s+/g, ' ').trim();
       } else if (currentDiscount.value > 0) {
         progressMessage.textContent = `${text.complete} ${currentDiscount.value}% off`.replace(/\s+/g, ' ').trim();
       } else {
@@ -2382,7 +2436,7 @@
     const updateTotals = totals => {
       // La columna derecha siempre muestra una simulación del escalón alcanzado.
       // Los mínimos de categoría se validan de forma independiente al habilitar el envío.
-      const discount = getDiscount(totals.quantity);
+      const discount = getDiscount(amountBased ? totals.subtotal : totals.quantity);
       const discountAmount = Math.round(totals.subtotal * (discount.value / 100));
       const estimatedTotal = totals.subtotal - discountAmount;
 
@@ -2831,11 +2885,28 @@
     },
     {
       "type": "header",
-      "content": "Escalones visuales"
+      "content": "Beneficios del combo"
     },
     {
       "type": "paragraph",
       "content": "Estos valores solo muestran el progreso. El descuento real lo aplica la app o Discount Function."
+    },
+    {
+      "type": "select",
+      "id": "discount_basis",
+      "label": "Calcular beneficios según",
+      "default": "amount",
+      "options": [
+        { "value": "amount", "label": "Monto de productos" },
+        { "value": "quantity", "label": "Cantidad (modo anterior)" }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "discount_minimum_amount",
+      "label": "Monto mínimo para el descuento",
+      "default": 80000,
+      "info": "En pesos, sin separadores. Se evalúa el subtotal de la selección antes del descuento. El envío gratis usa el monto de Configuración del tema > Carrito."
     },
     {
       "type": "range",
@@ -2849,7 +2920,7 @@
     {
       "type": "range",
       "id": "discount_1_value",
-      "label": "Nivel 1: porcentaje",
+      "label": "Descuento por monto / nivel 1 (%)",
       "min": 0,
       "max": 100,
       "step": 1,

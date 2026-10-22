@@ -17,6 +17,9 @@
       {%- if section.settings.tortilla_image != blank -%}{{ section.settings.tortilla_image | image_url: width: 980 | image_tag: class: 'g4u-choice-banner__object g4u-choice-banner__object--tortilla', loading: 'lazy', widths: '490, 980', sizes: '490px' }}{%- else -%}<img class="g4u-choice-banner__object g4u-choice-banner__object--tortilla" src="{{ 'g4u-choice-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">{%- endif -%}
     </span>
   </h2>
+  {%- if section.settings.description != blank -%}
+    <p class="g4u-choice-banner__description">{{ section.settings.description | escape | newline_to_br }}</p>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -39,7 +42,8 @@
     { "type": "text", "id": "first_suffix", "label": "Primera línea · final", "default": "elegir entre" },
     { "type": "text", "id": "second_accent_one", "label": "Destacado 1", "default": "cuidarte" },
     { "type": "text", "id": "second_joiner", "label": "Conector", "default": "y" },
-    { "type": "text", "id": "second_accent_two", "label": "Destacado 2", "default": "disfrutar" }
+    { "type": "text", "id": "second_accent_two", "label": "Destacado 2", "default": "disfrutar" },
+    { "type": "textarea", "id": "description", "label": "Texto debajo del título" }
   ],
   "presets": [{ "name": "G4U · Manifiesto" }]
 }

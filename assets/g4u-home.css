@@ -202,6 +202,7 @@
   background: var(--g4u-choice-background, var(--g4u-burgundy));
   color: var(--g4u-choice-line-one, var(--g4u-cream));
   display: flex;
+  flex-direction: column;
   justify-content: center;
   min-height: 36.4rem;
   overflow: hidden;
@@ -218,6 +219,16 @@
 }
 
 .g4u-choice-banner__line { display: block; white-space: nowrap; }
+.g4u-choice-banner__description {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin: 2.4rem 0 0;
+  max-width: 64rem;
+  overflow-wrap: anywhere;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
 .g4u-choice-banner__line--first { color: var(--g4u-choice-line-one, var(--g4u-cream)); }
 .g4u-choice-banner__line--second { color: var(--g4u-choice-line-two, var(--g4u-cream)); }
 .g4u-choice-banner__accent { color: var(--g4u-choice-accent, var(--g4u-orange)); }
@@ -397,6 +408,7 @@
   .g4u-choice-banner { min-height: auto; 
     padding: 3.4rem 1rem; }
   .g4u-choice-banner__copy { font-size: 2.8rem; }
+  .g4u-choice-banner__description { font-size: 1.6rem; margin-top: 1.6rem; }
   .g4u-featured-products { padding: 6.4rem 2rem; }
   .g4u-featured-products__grid { display: flex; gap: 1.2rem;
      overflow-x: auto; scroll-snap-type: x mandatory; }
