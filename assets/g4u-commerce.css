@@ -237,6 +237,7 @@ body .announcement-bar-section {
 .template-product .product__title h1 { color: inherit; font-family: var(--g4u-display); font-size: 4.8rem; font-weight: 700; letter-spacing: .01em; line-height: 1; text-transform: uppercase; }
 .template-product .product__info-container { max-width: 66rem; }
 .template-product .price { color: inherit; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; }
+.template-product .related-products .g4u-product-card .price { font-size: inherit; letter-spacing: .04em; line-height: 1.5; }
 .template-product .g4u-product-highlights { border-bottom: .1rem solid #d5d4d4; margin: 0 0 2.4rem; padding: 0 0 2.4rem; }
 .template-product .g4u-product-highlights__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin: 0 0 2rem; }
 .template-product .g4u-product-highlights__tags:empty { display: none; }
@@ -408,9 +409,6 @@ margin-bottom:0px }
 .template-product .related-products .related-products__heading {
   font-weight:bold; color: var(--g4u-ink); font-family: var(--g4u-display); font-size: clamp(3.6rem, 4vw, 5.6rem); letter-spacing: .01em; text-align: center; text-transform: uppercase; }
 .template-product .related-products .product-grid { column-gap: 0.8rem; row-gap: 3.2rem; }
-.template-product .related-products .card__inner,
-.template-product .related-products .card__media .media { aspect-ratio: 1 / 1; background: #f2ebe4; }
-.template-product .related-products .card__media img { mix-blend-mode: multiply; object-fit: contain; }
 
 /* PDP editorial sequence */
 .g4u-product-comparison { background: var(--g4u-cream); padding: 0 ; }
