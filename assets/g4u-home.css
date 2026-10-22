@@ -220,13 +220,21 @@
 
 .g4u-choice-banner__line { display: block; white-space: nowrap; }
 .g4u-choice-banner__description {
-  font-size: 1.8rem;
-  line-height: 1.5;
+  color: #fff8f0;
+  flex: none;
+  font-family: "Europa Grotesk SH", var(--g4u-display);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: 1.2;
   margin: 2.4rem 0 0;
-  max-width: 64rem;
+  max-width: 100%;
+  order: 1;
   overflow-wrap: anywhere;
   position: relative;
   text-align: center;
+  width: 598px;
   z-index: 2;
 }
 .g4u-choice-banner__line--first { color: var(--g4u-choice-line-one, var(--g4u-cream)); }
@@ -408,7 +416,7 @@
   .g4u-choice-banner { min-height: auto; 
     padding: 3.4rem 1rem; }
   .g4u-choice-banner__copy { font-size: 2.8rem; }
-  .g4u-choice-banner__description { font-size: 1.6rem; margin-top: 1.6rem; }
+  .g4u-choice-banner__description { font-size: 12px; margin-top: 1.6rem; }
   .g4u-featured-products { padding: 6.4rem 2rem; }
   .g4u-featured-products__grid { display: flex; gap: 1.2rem;
      overflow-x: auto; scroll-snap-type: x mandatory; }
