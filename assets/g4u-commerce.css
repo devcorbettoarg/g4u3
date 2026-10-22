@@ -553,7 +553,8 @@ font-family:var(--g4u-displayr);}
     font-size: 1.92rem;
     padding-bottom: 0;
   }
-  .g4u-product-ingredients details > .rte { padding-top: 2.4rem; }
+  .g4u-product-ingredients details > .rte { padding-top: 2.4rem;
+  padding-bottom:1rem; }
 }
 
 /* Cart */
