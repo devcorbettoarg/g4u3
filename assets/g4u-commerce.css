@@ -284,10 +284,16 @@ margin-bottom:0px }
 .template-product .product__accordion .summary__title > .svg-wrapper { display: none; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }
 .template-product .product__accordion summary { min-height: 5.2rem; padding-block: 1.2rem; }
-.template-product .product__accordion .accordion__title { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; }
+.template-product .product__accordion .accordion__title { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; transition: color .18s ease, font-weight .18s ease; }
+.template-product .product__accordion summary:hover .accordion__title { color: var(--g4u-burgundy); }
+.template-product .product__accordion summary .icon-caret { transition: transform .18s ease; }
 .template-product .product__accordion summary:hover .accordion__title,
 .template-product .product__accordion summary:active .accordion__title,
 .template-product .product__accordion details[open] .accordion__title { font-weight: 500; }
+@media (prefers-reduced-motion: reduce) {
+  .template-product .product__accordion .accordion__title,
+  .template-product .product__accordion summary .icon-caret { transition: none; }
+}
 .template-product .product__accordion .accordion__content { padding-inline: 0; }
 .template-product .product__accordion summary:hover { color: var(--g4u-burgundy); }
 .template-product .product__accordion summary:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: .4rem; }
