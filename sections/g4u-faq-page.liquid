@@ -18,7 +18,7 @@
               {%- if faq_block.type == 'faq_header' -%}{%- break -%}{%- endif -%}
               {%- if faq_block.type == 'faq_item' and faq_block.settings.question != blank -%}
                 <details {{ faq_block.shopify_attributes }}>
-                  <summary>{{ faq_block.settings.question | escape }}<span aria-hidden="true"></span></summary>
+                  <summary>{{ faq_block.settings.question | escape }}<img class="g4u-faq-page__chevron" src="{{ 'g4u-faq-chevron.svg' | asset_url }}" alt="" width="24" height="24"></summary>
                   {%- if faq_block.settings.answer != blank -%}<div class="rte">{{ faq_block.settings.answer }}</div>{%- endif -%}
                 </details>
               {%- endif -%}
