@@ -158,8 +158,10 @@ details[open].menu-opening > .menu-drawer__submenu {
   font-size: 1.4rem;
   width: 100%;
   background-color: transparent;
-  font-family: var(--font-body-family);
-  font-style: var(--font-body-style);
+  font-family: 'Europa Grotesk SH', var(--font-body-family);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-align: left;
 }
 
