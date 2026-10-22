@@ -18,7 +18,7 @@
           "type": "menu",
           "settings": {
             "heading": "Tienda",
-            "menu": "",
+            "menu": "footer-1-g4u",
             "fallback": "shop"
           }
         },
