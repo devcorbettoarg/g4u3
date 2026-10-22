@@ -289,6 +289,11 @@ margin-bottom:0px }
 .template-product .product__accordion summary:hover { color: var(--g4u-burgundy); }
 .template-product .product__accordion summary:focus-visible { outline: .2rem solid var(--g4u-burgundy); outline-offset: .4rem; }
 .template-product .product__accordion .accordion__content { font-size: 1.6rem; line-height: 1.55; }
+.template-product .g4u-shipping-information ul { list-style: none; margin: 0; padding: 0; }
+.template-product .g4u-shipping-information li { padding-left: 2.8rem; position: relative; }
+.template-product .g4u-shipping-information li + li,
+.template-product .g4u-shipping-information ul + ul { margin-top: .8rem; }
+.template-product .g4u-shipping-information li::before { background: var(--g4u-orange); content: ''; height: 2rem; left: 0; -webkit-mask: url('g4u-icon-check.svg') center / contain no-repeat; mask: url('g4u-icon-check.svg') center / contain no-repeat; position: absolute; top: .2rem; width: 2rem; }
 .template-product .rating-wrapper { align-items: center; gap: .4rem; }
 .template-product .rating-star { --color-rating-star: #ff4622; --font-size: 1.6; --letter-spacing: .12; line-height: .945; }
 .template-product .rating-count { color: #26131b; font-family: var(--font-body-family); font-size: 1.4rem; font-weight: 400; letter-spacing: 0; line-height: 1.5; }

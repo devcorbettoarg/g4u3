@@ -217,6 +217,7 @@
                 {%- when 'collapsible_tab' -%}
                   {%- liquid
                     assign g4u_accordion_metafield = blank
+                    assign g4u_shipping_accordion = false
                     case block.settings.heading
                       when 'Detalles del producto', '¿Por qué elegir G4U?'
                         assign g4u_accordion_metafield = product.metafields.custom.product_details
@@ -227,8 +228,13 @@
                       when 'Conservación'
                         assign g4u_accordion_metafield = product.metafields.custom.storage
                       when 'Envíos y entregas', 'Envíos'
+                        assign g4u_shipping_accordion = true
                         assign g4u_accordion_metafield = product.metafields.custom.shipping
                     endcase
+                    if block.settings.content_source == 'shipping'
+                      assign g4u_shipping_accordion = true
+                      assign g4u_accordion_metafield = product.metafields.custom.shipping
+                    endif
                   -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                     <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -244,6 +250,8 @@
                       <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                         {%- if g4u_accordion_metafield != blank -%}
                           {{ g4u_accordion_metafield | metafield_tag }}
+                        {%- elsif g4u_shipping_accordion -%}
+                          {% render 'g4u-shipping-information', block: block %}
                         {%- else -%}
                           {{ block.settings.content }}
                           {{ block.settings.page.content }}
@@ -1054,6 +1062,24 @@
       "type": "collapsible_tab",
       "name": "t:sections.main-product.blocks.collapsible_tab.name",
       "settings": [
+        {
+          "type": "select",
+          "id": "content_source",
+          "label": "Fuente de contenido",
+          "default": "existing",
+          "options": [
+            { "value": "existing", "label": "Contenido actual" },
+            { "value": "shipping", "label": "Envíos compartidos" }
+          ],
+          "info": "Envíos compartidos conserva su fuente aunque cambies el título. Se prioriza la excepción de envíos del producto cuando existe."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_free_shipping",
+          "label": "Mostrar monto de envío gratis",
+          "default": true,
+          "info": "Solo en Envíos compartidos. Usa el monto de Configuración del tema > Carrito."
+        },
         {
           "type": "text",
           "id": "heading",

@@ -112,9 +112,11 @@
         "shipping": {
           "type": "collapsible_tab",
           "settings": {
+            "content_source": "shipping",
+            "show_free_shipping": true,
             "heading": "Envíos",
             "icon": "truck",
-            "content": "<p>Entregas en AMBA y envíos a Buenos Aires, Córdoba y Santa Fe.</p>",
+            "content": "<ul><li>Entrega en 24/48 horas en AMBA.</li><li>Envíos a Buenos Aires, Córdoba y Santa Fe.</li></ul>",
             "page": ""
           }
         },
