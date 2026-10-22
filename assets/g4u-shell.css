@@ -454,7 +454,7 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-index .section-header:not(.shopify-section-header-sticky) summary.header__icon--menu svg path {
     color: var(--g4u-cream) !important;
     fill: var(--g4u-cream) !important;
-    stroke: var(--g4u-cream) !important;
+    stroke: none !important;
   }
 
   body.template-index .announcement-bar-section .utility-bar {
