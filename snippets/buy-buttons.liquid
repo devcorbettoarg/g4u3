@@ -100,7 +100,9 @@
       {%- endform -%}
     </product-form>
     {%- if request.page_type == 'product' -%}
-      <p class="g4u-product-shipping-note">Envíos GRATIS a partir de $ 80.000</p>
+      {%- assign g4u_product_shipping_goal = settings.free_shipping_threshold | default: 60000 | times: 100 -%}
+      {%- if g4u_product_shipping_goal <= 0 -%}{%- assign g4u_product_shipping_goal = 6000000 -%}{%- endif -%}
+      <p class="g4u-product-shipping-note">Envíos GRATIS a partir de {{ g4u_product_shipping_goal | money_without_trailing_zeros }}</p>
     {%- endif -%}
   {%- else -%}
     <div class="product-form">
