@@ -721,7 +721,7 @@ max-width:400px; }
   height: 100%;
   width: max-content;
 }
-.g4u-nutrition-marquee:hover .g4u-nutrition-marquee__track { animation-play-state: paused; }
+.g4u-nutrition-marquee:not(.g4u-nutrition-marquee--continuous):hover .g4u-nutrition-marquee__track { animation-play-state: paused; }
 .g4u-nutrition-marquee__group { align-items: center; display: flex; flex-shrink: 0; gap: 3.2rem; padding-right: 3.2rem; }
 .g4u-nutrition-marquee__item { align-items: baseline; display: flex; flex-shrink: 0; gap: 1.6rem; }
 .g4u-nutrition-marquee__icon { transform: translateY(5px); display: block; height: 93px; width: auto; }
@@ -831,7 +831,7 @@ font-size:12px;
 
 @media (prefers-reduced-motion: reduce) {
   .g4u-science__panel.is-active { animation: none; }
-  .g4u-nutrition-marquee__track { animation: none; }
+  .g4u-nutrition-marquee:not(.g4u-nutrition-marquee--continuous) .g4u-nutrition-marquee__track { animation: none; }
 }
 
 /* Low-carb benefits */

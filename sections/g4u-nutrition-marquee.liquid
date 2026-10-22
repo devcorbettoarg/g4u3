@@ -1,4 +1,4 @@
-<section class="g4u-nutrition-marquee" aria-label="{{ section.settings.accessibility_label | escape }}" style="--g4u-marquee-duration: {{ section.settings.duration }}s;">
+<section class="g4u-nutrition-marquee{% if section.settings.continuous_animation %} g4u-nutrition-marquee--continuous{% endif %}" aria-label="{{ section.settings.accessibility_label | escape }}" style="--g4u-marquee-duration: {{ section.settings.duration }}s;">
   <div class="g4u-nutrition-marquee__track">
     {%- for duplicate in (1..2) -%}
       <div class="g4u-nutrition-marquee__group"{% if duplicate == 2 %} aria-hidden="true"{% endif %}>
@@ -32,6 +32,7 @@
   "class": "section-g4u-marquee",
   "max_blocks": 6,
   "settings": [
+    { "type": "checkbox", "id": "continuous_animation", "label": "Mantener animación siempre activa", "default": false },
     { "type": "text", "id": "accessibility_label", "label": "Nombre accesible", "default": "Beneficios nutricionales" },
     { "type": "range", "id": "duration", "label": "Duración del recorrido", "min": 8, "max": 30, "step": 1, "unit": "s", "default": 14 }
   ],
