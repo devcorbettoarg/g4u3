@@ -200,10 +200,15 @@
       "type": "g4u-experts",
       "blocks": {
         "expert_YbqVbx": {
-          "type": "expert",
+          "type": "image",
           "settings": {
             "media": "shopify://shop_images/Placeholder_Image_1.png",
-            "video_url": "",
+            "name": "Dra. Alejandra Moisello"
+          }
+        },
+        "expert_YbqVbx_quote": {
+          "type": "quote",
+          "settings": {
             "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutricion \ny Diabetes del Hospital Durand Especialista en Nutricion \ny Medicina del deporte",
@@ -213,10 +218,15 @@
           }
         },
         "expert_BqNCzq": {
-          "type": "expert",
+          "type": "image",
           "settings": {
             "media": "shopify://shop_images/g4u-expert-roxana.png",
-            "video_url": "",
+            "name": "Roxana Marachlian"
+          }
+        },
+        "expert_BqNCzq_quote": {
+          "type": "quote",
+          "settings": {
             "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA)- MN 1806 \n- MP 1128\nEspecializada en Alimentación \nlow-carb / keto. Suplementación adaptada",
@@ -228,7 +238,9 @@
       },
       "block_order": [
         "expert_YbqVbx",
-        "expert_BqNCzq"
+        "expert_YbqVbx_quote",
+        "expert_BqNCzq",
+        "expert_BqNCzq_quote"
       ],
       "settings": {
         "eyebrow": "Respaldo profesional",

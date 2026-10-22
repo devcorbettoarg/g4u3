@@ -421,10 +421,15 @@
       "type": "g4u-experts",
       "blocks": {
         "expert_alejandra": {
-          "type": "expert",
+          "type": "image",
           "settings": {
             "media": "shopify://shop_images/Placeholder_Image_1.png",
-            "video_url": "",
+            "name": "Dra. Alejandra Moisello"
+          }
+        },
+        "expert_alejandra_quote": {
+          "type": "quote",
+          "settings": {
             "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
             "role": "Jefa de Servicio de Nutricion \ny Diabetes del Hospital Durand Especialista en Nutricion \ny Medicina del deporte",
@@ -434,10 +439,16 @@
           }
         },
         "expert_roxana": {
-          "type": "expert",
+          "type": "video",
           "settings": {
             "video": "shopify://files/videos/8478619-uhd_2160_3840_24fps.mp4",
             "video_url": "https://www.instagram.com/p/DeWm9E7nXOC/",
+            "name": "Roxana Marachlian"
+          }
+        },
+        "expert_roxana_quote": {
+          "type": "quote",
+          "settings": {
             "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA)- MN 1806 \n- MP 1128\nEspecializada en Alimentación \nlow-carb / keto. Suplementación adaptada",
@@ -447,10 +458,15 @@
           }
         },
         "expert_PxAtAc": {
-          "type": "expert",
+          "type": "image",
           "settings": {
             "media": "shopify://shop_images/g4u-expert-roxana.png",
-            "video_url": "",
+            "name": "Roxana Marachlian"
+          }
+        },
+        "expert_PxAtAc_quote": {
+          "type": "quote",
+          "settings": {
             "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA)- MN 1806 \n- MP 1128\nEspecializada en Alimentación \nlow-carb / keto. Suplementación adaptada",
@@ -462,8 +478,11 @@
       },
       "block_order": [
         "expert_alejandra",
+        "expert_alejandra_quote",
         "expert_roxana",
-        "expert_PxAtAc"
+        "expert_roxana_quote",
+        "expert_PxAtAc",
+        "expert_PxAtAc_quote"
       ],
       "settings": {
         "eyebrow": "Respaldo profesional",
