@@ -549,7 +549,11 @@ font-family:var(--g4u-displayr);}
   .g4u-product-comparison__panel--g4u { grid-template-columns: minmax(12rem, .8fr) 1fr; }
   .g4u-product-comparison__panel--g4u .g4u-product-comparison__media { grid-column: 1; grid-row: 2; }
   .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics { grid-column: 2; grid-row: 2; }
-  .g4u-product-ingredients summary { font-size: 1.92rem; }
+  .g4u-product-ingredients summary {
+    font-size: 1.92rem;
+    padding-top: 2.4rem;
+    padding-bottom: 0;
+  }
 }
 
 /* Cart */
