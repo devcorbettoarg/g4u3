@@ -67,7 +67,7 @@
         "discount_3_value": 15,
         "products_limit": 12,
         "columns_desktop": 3,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "show_tags": true,
         "after_add_action": "drawer",
         "reset_after_add": false,
