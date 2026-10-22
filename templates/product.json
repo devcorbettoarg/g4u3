@@ -114,7 +114,7 @@
             "show_free_shipping": true,
             "heading": "Conservación",
             "icon": "dryer",
-            "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>",
+            "content": "<ul><li>25 días a temperatura ambiente.</li><li>45 días refrigerado.</li><li>Hasta 3 meses congelado.</li></ul>",
             "page": ""
           }
         },

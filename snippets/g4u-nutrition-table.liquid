@@ -1,0 +1,64 @@
+{%- comment -%}
+  Accepts plain multiline content (portion, pipe-separated rows, note), or legacy
+  HTML. The accordion supplies the nutrition-info wrapper and shared styles.
+{%- endcomment -%}
+{%- assign normalized_content = content | strip | downcase -%}
+{%- if normalized_content contains '<table' or normalized_content contains '<div' or normalized_content contains '<p>' or normalized_content contains '<p ' -%}
+  {{ content }}
+{%- else -%}
+  {%- liquid
+    assign lines = content | newline_to_br | split: '<br />'
+    assign portion = ''
+    assign footnote = ''
+  -%}
+  {%- capture nutrition_rows -%}
+    {%- for raw_line in lines -%}
+      {%- liquid
+        assign line = raw_line | strip
+        assign prefix = line | split: ':' | first | strip
+        assign normalized_prefix = prefix | downcase
+      -%}
+      {%- if normalized_prefix == 'porción' or normalized_prefix == 'porcion' -%}
+        {%- assign portion = line | remove_first: prefix | remove_first: ':' | strip -%}
+      {%- elsif normalized_prefix == 'nota' -%}
+        {%- assign note_text = line | remove_first: prefix | remove_first: ':' | strip -%}
+        {%- assign footnote = footnote | append: ' ' | append: note_text | strip -%}
+      {%- elsif line contains '|' -%}
+        {%- liquid
+          assign cells = line | split: '|'
+          assign nutrient = cells[0] | strip
+          assign amount = cells[1] | strip
+          assign daily_value = cells[2] | strip
+          assign normalized_nutrient = nutrient | downcase
+        -%}
+        {%- if cells.size >= 2 and nutrient != blank and amount != blank and normalized_nutrient != 'nutrientes' -%}
+          <tr>
+            <td>{{ nutrient | escape }}</td>
+            <td>{{ amount | escape }}</td>
+            <td>{{ daily_value | default: '—' | escape }}</td>
+          </tr>
+        {%- endif -%}
+      {%- elsif line != blank -%}
+        {%- assign footnote = footnote | append: ' ' | append: line | strip -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if portion != blank -%}
+    <p class="nutrition-info__portion">Porción: {{ portion | escape }}</p>
+  {%- endif -%}
+  {%- if nutrition_rows != blank -%}
+    <table class="nutrition-info__table">
+      <thead>
+        <tr>
+          <th scope="col">Nutrientes</th>
+          <th scope="col">Por Porción</th>
+          <th scope="col">%VD*</th>
+        </tr>
+      </thead>
+      <tbody>{{ nutrition_rows }}</tbody>
+    </table>
+  {%- endif -%}
+  {%- if footnote != blank -%}
+    <p class="nutrition-info__footnote">{{ footnote | escape }}</p>
+  {%- endif -%}
+{%- endif -%}
