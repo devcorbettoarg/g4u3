@@ -399,6 +399,13 @@ body:not(.template-index) #cart-icon-bubble svg path {
     top: 0;
   }
 
+  body:is(.template-product, .template-collection, .template-suffix-arma-tu-combo)
+  .section-header.shopify-section-header-sticky .header-wrapper {
+    --color-foreground: 38, 19, 27;
+    background: var(--g4u-cream);
+    color: var(--g4u-ink);
+  }
+
   /* Reserve the header's space when it leaves the document flow. */
   body:is(.template-product, .template-collection, .template-suffix-arma-tu-combo):has(.section-header.shopify-section-header-sticky)
   #MainContent::before {
