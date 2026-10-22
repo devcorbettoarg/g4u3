@@ -145,6 +145,7 @@
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
+    data-sticky-scroll-distance="{{ section.settings.sticky_scroll_distance | default: 300 }}"
   {% endif %}
   class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
@@ -341,14 +342,18 @@
 
     onScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const stickyThreshold = Math.max(
+        this.headerBounds.bottom || this.header.offsetHeight,
+        Number(this.dataset.stickyScrollDistance) || 300
+      );
 
       if ([...this.predictiveSearches].some((predictiveSearch) => predictiveSearch.isOpen)) return;
 
-      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      if (scrollTop > this.currentScrollTop && scrollTop > stickyThreshold) {
         this.header.classList.add('scrolled-past-header');
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
-      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      } else if (scrollTop < this.currentScrollTop && scrollTop > stickyThreshold) {
         this.header.classList.add('scrolled-past-header');
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
@@ -361,7 +366,7 @@
 
           requestAnimationFrame(this.hide.bind(this));
         }
-      } else if (scrollTop <= this.headerBounds.top) {
+      } else if (scrollTop <= stickyThreshold) {
         this.header.classList.remove('scrolled-past-header');
         requestAnimationFrame(this.reset.bind(this));
       }
@@ -552,6 +557,17 @@
       ],
       "default": "on-scroll-up",
       "label": "t:sections.header.settings.sticky_header_type.label"
+    },
+    {
+      "type": "range",
+      "id": "sticky_scroll_distance",
+      "label": "Scroll mínimo para el encabezado fijo",
+      "min": 100,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "default": 300,
+      "info": "En el modo Al subir, retrasa la activación hasta recorrer esta distancia."
     },
     {
       "type": "checkbox",
