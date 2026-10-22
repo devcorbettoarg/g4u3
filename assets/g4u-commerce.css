@@ -284,7 +284,14 @@ margin-bottom:0px }
 .template-product .product__accordion .summary__title > .svg-wrapper { display: none; }
 .template-product .product__accordion summary { font-family: var(--g4u-display); font-size: 1.8rem; letter-spacing: .04em; }
 .template-product .product__accordion summary { min-height: 5.2rem; padding-block: 1.2rem; }
-.template-product .product__accordion .accordion__title { color: #26131b; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; transition: color .18s ease, font-weight .18s ease; }
+.template-product .product__accordion .accordion__title { color: #26131b; display: inline-grid; font-family: var(--g4u-display); font-size: 1.8rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; transition: color .22s ease; }
+/* Static font files cannot interpolate weight. Crossfade both weights in the
+   same grid cell, reserving the larger width to prevent a jump on hover. */
+.template-product .product__accordion :is(.g4u-accordion-title__regular, .g4u-accordion-title__medium) { grid-area: 1 / 1; transition: opacity .22s ease; }
+.template-product .product__accordion .g4u-accordion-title__regular { font-weight: 400; opacity: 1; }
+.template-product .product__accordion .g4u-accordion-title__medium { font-weight: 500; opacity: 0; pointer-events: none; user-select: none; }
+.template-product .product__accordion :is(summary:hover, summary:active, details[open] > summary) .g4u-accordion-title__regular { opacity: 0; }
+.template-product .product__accordion :is(summary:hover, summary:active, details[open] > summary) .g4u-accordion-title__medium { opacity: 1; }
 .template-product .product__accordion summary:hover .accordion__title { color: var(--g4u-burgundy); }
 .template-product .product__accordion summary .icon-caret { transition: transform .18s ease; }
 .template-product .product__accordion summary:hover .accordion__title,
@@ -292,6 +299,7 @@ margin-bottom:0px }
 .template-product .product__accordion details[open] .accordion__title { font-weight: 500; }
 @media (prefers-reduced-motion: reduce) {
   .template-product .product__accordion .accordion__title,
+  .template-product .product__accordion :is(.g4u-accordion-title__regular, .g4u-accordion-title__medium),
   .template-product .product__accordion summary .icon-caret { transition: none; }
 }
 .template-product .product__accordion .accordion__content { padding-inline: 0; }

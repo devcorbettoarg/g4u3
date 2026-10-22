@@ -252,7 +252,8 @@
                         <div class="summary__title">
                           {% render 'icon-accordion', icon: block.settings.icon %}
                           <h2 class="h4 accordion__title inline-richtext">
-                            {{ block.settings.heading | default: block.settings.page.title | escape }}
+                            <span class="g4u-accordion-title__regular">{{ block.settings.heading | default: block.settings.page.title | escape }}</span>
+                            <span class="g4u-accordion-title__medium" aria-hidden="true">{{ block.settings.heading | default: block.settings.page.title | escape }}</span>
                           </h2>
                         </div>
                         {%- if g4u_shipping_accordion -%}
