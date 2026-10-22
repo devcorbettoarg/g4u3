@@ -886,9 +886,9 @@ font-size:12px;
 .g4u-experts__track::-webkit-scrollbar { display: none; }
 .g4u-expert-card {
   display: grid;
-  flex: 0 0 calc((100% - 2.4rem) / 2);
-  gap: 1.2rem;
-  grid-template-columns: 1fr 1fr;
+  flex: 0 0 calc((100% - 7.2rem) / 4);
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   scroll-snap-align: start;
 }
 .g4u-expert-card__media,

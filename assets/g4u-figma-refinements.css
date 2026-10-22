@@ -682,9 +682,8 @@ body.template-suffix-harina {
   }
 
   body.template-suffix-nosotros .g4u-expert-card {
-    flex: 0 0 67.6rem;
-    gap: 1.2rem;
-    grid-template-columns: 33.2rem 33.2rem;
+    flex: 0 0 calc((100% - 7.2rem) / 4);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body.template-suffix-nosotros .g4u-expert-card__media,
@@ -1113,9 +1112,8 @@ text-transform: uppercase;
   }
 
   body.template-suffix-harina .g4u-expert-card {
-    flex: 0 0 67.6rem;
-    gap: 1.2rem;
-    grid-template-columns: 33.2rem 33.2rem;
+    flex: 0 0 calc((100% - 7.2rem) / 4);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body.template-suffix-harina .g4u-expert-card__media,

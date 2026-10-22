@@ -84,14 +84,16 @@
         assign fallback_media = 'g4u-expert-alejandra.png'
         assign fallback_avatar = 'g4u-expert-alejandra-avatar.png'
 
-        if forloop.index == 2 or forloop.index == 4
+        assign expert_name = block.settings.name | downcase
+        if expert_name contains 'roxana'
           assign fallback_media = 'g4u-expert-roxana.png'
           assign fallback_avatar = 'g4u-expert-roxana-avatar.png'
         endif
       -%}
 
+      {%- if block.type != 'quote' -%}
       <li
-        class="g4u-expert-card"
+        class="g4u-expert-card g4u-expert-card--media"
         {{ block.shopify_attributes }}
       >
 
@@ -126,7 +128,7 @@
           {%- endif -%}
         {%- endcapture -%}
 
-        {%- if block.settings.video != blank -%}
+        {%- if block.type != 'image' and block.settings.video != blank -%}
           <deferred-media class="g4u-expert-card__media">
             <button
               id="Deferred-Poster-Expert-{{ section.id }}-{{ block.id }}"
@@ -144,7 +146,7 @@
         {%- else -%}
           <div class="g4u-expert-card__media">
             {{ expert_poster_markup }}
-            {%- if block.settings.video_url != blank -%}
+            {%- if block.type != 'image' and block.settings.video_url != blank -%}
               <a class="g4u-expert-card__video-link" href="{{ block.settings.video_url }}" aria-label="Ver video de {{ block.settings.name | escape }}">
                 <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
               </a>
@@ -152,6 +154,11 @@
           </div>
         {%- endif -%}
 
+      </li>
+      {%- endif -%}
+
+      {%- if block.type == 'quote' or block.type == 'expert' -%}
+      <li class="g4u-expert-card g4u-expert-card--quote"{% if block.type == 'quote' %} {{ block.shopify_attributes }}{% endif %}>
         <blockquote class="g4u-expert-card__quote">
 
           <div class="g4u-expert-card__profile">
@@ -235,6 +242,7 @@
         </blockquote>
 
       </li>
+      {%- endif -%}
 
     {%- endfor -%}
 
@@ -248,7 +256,7 @@
   "name": "G4U · Profesionales",
   "tag": "section",
   "class": "section-g4u-experts",
-  "max_blocks": 8,
+  "max_blocks": 16,
   "settings": [
     {
       "type": "text",
@@ -271,8 +279,94 @@
   ],
   "blocks": [
     {
+      "type": "image",
+      "name": "Imagen",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "media",
+          "label": "Imagen principal"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "Dra. Alejandra Moisello"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "media",
+          "label": "Imagen principal"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Seleccioná o cargá un video. Se reproduce en la tarjeta al tocar la imagen o el botón de play."
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Enlace al video",
+          "info": "Se usa si no hay un video cargado."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "Dra. Alejandra Moisello"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "Dra. Alejandra Moisello"
+        },
+        {
+          "type": "textarea",
+          "id": "role",
+          "label": "Especialidad",
+          "default": "Especialista en Nutrición y Medicina del deporte"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Recomendación",
+          "default": "<p>Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas.</p>"
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Usuario social",
+          "default": "@Dra.alejandramoisello"
+        },
+        {
+          "type": "url",
+          "id": "profile_link",
+          "label": "Perfil social"
+        }
+      ]
+    },
+    {
       "type": "expert",
-      "name": "Profesional",
+      "name": "Profesional (anterior)",
       "settings": [
         {
           "type": "image_picker",
@@ -333,10 +427,16 @@
       "name": "G4U · Profesionales",
       "blocks": [
         {
-          "type": "expert"
+          "type": "image"
         },
         {
-          "type": "expert"
+          "type": "quote"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "quote"
         }
       ]
     }
