@@ -76,6 +76,8 @@
         "details": {
           "type": "collapsible_tab",
           "settings": {
+            "content_source": "existing",
+            "show_free_shipping": true,
             "heading": "¿Por qué elegir G4U?",
             "icon": "check_mark",
             "content": "<p>Un pan funcional, con más proteína y fibra, menos carbohidratos y el sabor de siempre.</p>",
@@ -85,6 +87,8 @@
         "ingredients": {
           "type": "collapsible_tab",
           "settings": {
+            "content_source": "existing",
+            "show_free_shipping": true,
             "heading": "Ingredientes",
             "icon": "leaf",
             "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>",
@@ -94,15 +98,19 @@
         "nutrition": {
           "type": "collapsible_tab",
           "settings": {
+            "content_source": "existing",
+            "show_free_shipping": true,
             "heading": "Información nutricional",
             "icon": "heart",
-            "content": "<p>Consultá la tabla nutricional en la descripción del producto.</p>",
+            "content": "<p>{{ product.metafields.custom.tabla | metafield_tag }}</p>",
             "page": ""
           }
         },
         "storage": {
           "type": "collapsible_tab",
           "settings": {
+            "content_source": "existing",
+            "show_free_shipping": true,
             "heading": "Conservación",
             "icon": "dryer",
             "content": "<p>Conservá el producto en un lugar fresco y seco. Revisá el envase para conocer las indicaciones específicas.</p>",
