@@ -103,7 +103,7 @@
             "show_free_shipping": true,
             "heading": "Información nutricional",
             "icon": "heart",
-            "content": "<p>{{ product.metafields.custom.tabla | metafield_tag }}</p>",
+            "content": "",
             "page": ""
           }
         },
