@@ -272,7 +272,7 @@ body .announcement-bar-section {
   line-height: .8; min-height: 4.5rem;
 margin-bottom:0px }
 .template-product .product-form__submit::before, .template-product .product-form__submit::after { box-shadow: none; content: none; }
-.template-product .product-form__submit:hover { background: var(--g4u-orange); color: var(--g4u-cream); }
+.template-product .product-form__submit:hover { background: var(--g4u-orange); border-color: transparent; color: var(--g4u-cream); }
 .template-product .shopify-payment-button { margin-top: 0; width: 100%; }
 .template-product quantity-input.quantity { border-color: #a9a1a3; border-radius: 10rem; min-height: 4.6rem; }
 .template-product .quantity__input { font-family: var(--g4u-display); font-size: 1.8rem; }
