@@ -91,7 +91,7 @@
             "show_free_shipping": true,
             "heading": "Ingredientes",
             "icon": "leaf",
-            "content": "<p>La información de ingredientes se administra desde la descripción de cada producto.</p>",
+            "content": "{{ product.metafields.custom.ingredientes_tab | metafield_tag }}",
             "page": ""
           }
         },
