@@ -234,7 +234,7 @@
         "title": "respaldada",
         "text": "<p>Nuestra harina fue desarrollada y analizada para garantizar un perfil nutricional consistente y transparente.</p>",
         "button_label": "Ver el análisis CONICET",
-        "button_link": ""
+        "button_link": "https://drive.google.com/file/d/1phHsXeXerpK-pRPHk34W481dR7vwaBtT/view?usp=sharing"
       }
     },
     "faq": {
@@ -295,8 +295,8 @@
         "title": "Preguntas frecuentes",
         "description": "<p>Todo lo que querés saber sobre la harina que hace diferentes a nuestros productos.</p>",
         "contact_title": "¿Todavía tenés preguntas?",
-        "contact_label": "Contactate con nosotros",
-        "contact_link": ""
+        "contact_label": "Escribinos por WhatsApp",
+        "contact_link": "https://wa.me/5491156188706"
       }
     },
     "experts": {

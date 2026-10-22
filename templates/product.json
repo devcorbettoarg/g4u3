@@ -342,7 +342,7 @@
         "title": "La diferencia empieza  |  en la harina",
         "text": "<p>No usamos una harina convencional. Desarrollamos una fórmula propia que combina almidón resistente RS4, proteínas funcionales y fibras naturales para lograr un pan con menos carbohidratos, más fibra y una textura sorprendentemente similar al pan tradicional.</p>",
         "link_label": "Conocé nuestra harina",
-        "link": "/pages/nuestra-harina"
+        "link": "shopify://pages/nuestra-harina"
       }
     },
     "g4u_marquee": {
@@ -416,7 +416,7 @@
         "benefit_LyM3Nf"
       ],
       "settings": {
-        "title": "Alimentación low-carb"
+        "title": "ALIMENTACIÓN LOW-CARB"
       }
     },
     "product_reviews": {
@@ -559,8 +559,8 @@
         "title": "Preguntas frecuentes",
         "description": "<p>Todo lo que querés saber antes de elegir tu producto G4U.</p>",
         "contact_title": "¿Todavía tenés preguntas?",
-        "contact_label": "Contactate con nosotros",
-        "contact_link": "shopify://pages/contact"
+        "contact_label": "Escribinos por WhatsApp",
+        "contact_link": "https://wa.me/5491156188706"
       }
     },
     "g4u_services": {

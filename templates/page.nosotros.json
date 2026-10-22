@@ -169,7 +169,7 @@
         "accent_heading2": "con",
         "text": "<p>Descubrí la innovación que hace posible cada uno de nuestros productos.</p>",
         "button_label": "Conocé nuestra harina",
-        "button_link": ""
+        "button_link": "shopify://pages/nuestra-harina"
       }
     },
     "about_products": {

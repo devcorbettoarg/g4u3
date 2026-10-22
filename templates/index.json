@@ -79,6 +79,38 @@
         "description": "Con G4U volvés a disfrutar del pan de siempre, pero con beneficios reales"
       }
     },
+    "g4u_marquee_after_choice": {
+      "type": "g4u-nutrition-marquee",
+      "blocks": {
+        "marquee_carbs": {
+          "type": "item",
+          "settings": {
+            "text": "Low-carb"
+          }
+        },
+        "marquee_protein": {
+          "type": "item",
+          "settings": {
+            "text": "Alto en proteínas"
+          }
+        },
+        "marquee_fiber": {
+          "type": "item",
+          "settings": {
+            "text": "Alto en fibras"
+          }
+        }
+      },
+      "block_order": [
+        "marquee_carbs",
+        "marquee_protein",
+        "marquee_fiber"
+      ],
+      "settings": {
+        "accessibility_label": "Beneficios nutricionales",
+        "duration": 14
+      }
+    },
     "g4u_products": {
       "type": "g4u-featured-products",
       "settings": {
@@ -212,7 +244,7 @@
         "description": "<p>Una harina funcional desarrollada para lograr el sabor y la textura del pan tradicional, con beneficios nutricionales reales.<br/></p>",
         "tabs_label": "Más sabor",
         "link_label": "Conocé nuestra harina",
-        "link": ""
+        "link": "shopify://pages/nuestra-harina"
       }
     },
     "g4u_marquee": {
@@ -381,7 +413,7 @@
         "low_carb_wellbeing"
       ],
       "settings": {
-        "title": "Alimentación low-carb"
+        "title": "ALIMENTACIÓN LOW-CARB"
       }
     },
     "g4u_experts": {
@@ -449,7 +481,7 @@
         "accent_heading2": "",
         "text": "<p>En G4U combinamos tecnología alimentaria avanzada y sabor artesanal.</p>",
         "button_label": "Conocé nuestra harina",
-        "button_link": ""
+        "button_link": "shopify://pages/nuestra-harina"
       }
     },
     "g4u_instagram": {
@@ -583,6 +615,7 @@
   "order": [
     "g4u_hero",
     "g4u_choice",
+    "g4u_marquee_after_choice",
     "g4u_products",
     "g4u_categories",
     "g4u_science",

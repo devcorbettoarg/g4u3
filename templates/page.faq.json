@@ -138,9 +138,9 @@
       "type": "g4u-faq-contact",
       "settings": {
         "title": "¿No encontraste lo que buscabas?",
-        "text": "<p>Si todavía tenés alguna consulta, completá el formulario y nuestro equipo se pondrá en contacto con vos lo antes posible.</p>",
-        "button_label": "Contactate con nosotros",
-        "button_link": "/pages/contact"
+        "text": "<p>Si todavía tenés alguna consulta, escribinos por WhatsApp y nuestro equipo te responderá lo antes posible.</p>",
+        "button_label": "Escribinos por WhatsApp",
+        "button_link": "https://wa.me/5491156188706"
       }
     }
   },

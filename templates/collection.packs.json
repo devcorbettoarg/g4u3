@@ -56,7 +56,7 @@
         "low_carb_wellbeing": { "type": "benefit", "settings": { "title": "Menos inflamación, más bienestar", "text": "<p>Al estabilizar el azúcar en sangre, disminuye la inflamación y mejora cómo nos sentimos.</p>" } }
       },
       "block_order": ["low_carb_fat", "low_carb_energy", "low_carb_focus", "low_carb_wellbeing"],
-      "settings": { "title": "Alimentación low-carb" }
+      "settings": { "title": "ALIMENTACIÓN LOW-CARB" }
     },
     "g4u_experts": {
       "type": "g4u-experts",
