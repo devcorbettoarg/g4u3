@@ -946,6 +946,7 @@ line-height:80% !important; }
   .g4u-hero__arrow:not(.g4u-hero__arrow--prev) { right: -10px; top:40%; }
   .g4u-low-carb { padding: 6.4rem 2rem; }
   .g4u-low-carb__title { font-size: 4rem; margin-bottom: 5.6rem; }
+  .g4u-low-carb__title-second-line { display: block; }
   .g4u-low-carb__grid { grid-template-columns: 1fr; }
   .g4u-experts { padding: 6.4rem 2rem; }
   .g4u-experts__header { align-items: flex-start; flex-direction: column; margin-bottom: 3.2rem; }

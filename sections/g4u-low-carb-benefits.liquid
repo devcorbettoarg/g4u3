@@ -1,5 +1,13 @@
 <section class="g4u-low-carb" aria-labelledby="G4uLowCarb-{{ section.id }}">
-  <h2 class="g4u-low-carb__title g4u-display" id="G4uLowCarb-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+  {%- assign normalized_title = section.settings.title | strip | downcase -%}
+  <h2 class="g4u-low-carb__title g4u-display" id="G4uLowCarb-{{ section.id }}">
+    {%- if normalized_title == 'alimentación low-carb' -%}
+      {%- assign title_words = section.settings.title | strip | split: ' ' -%}
+      {{- title_words.first | escape }} <span class="g4u-low-carb__title-second-line">{{ title_words.last | escape }}</span>
+    {%- else -%}
+      {{- section.settings.title | escape -}}
+    {%- endif -%}
+  </h2>
   <div class="g4u-low-carb__grid">
     {%- for block in section.blocks -%}
       {%- liquid
