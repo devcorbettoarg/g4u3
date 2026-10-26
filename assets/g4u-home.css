@@ -709,7 +709,7 @@ max-width:400px; }
 .g4u-nutrition-marquee {
   background: var(--g4u-orange);
   color: var(--g4u-burgundy);
-  height: 20rem;
+  height: 10rem;
   max-width: none;
   overflow: hidden;
   width: 100%;
