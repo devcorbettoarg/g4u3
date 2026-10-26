@@ -373,6 +373,7 @@
         "fiber"
       ],
       "settings": {
+        "continuous_animation": true,
         "accessibility_label": "Beneficios nutricionales",
         "duration": 14
       }
