@@ -184,7 +184,9 @@ body .announcement-bar-section {
   .template-product .product:not(.product--no-media) .product__info-wrapper { max-width: none; width: 100%; }
   .template-product .product:not(.product--no-media) .product__info-wrapper { padding: 0; }
 }
-.template-product .product-media-container { --aspect-ratio: .8; }
+.template-product .product-media-container { --aspect-ratio: .75; }
+/* Keep product images at 3:4 even when viewport height constraints are enabled. */
+.template-product .product-media-container.media-type-image.constrain-height .media { padding-top: var(--ratio-percent); }
 .template-product .product__media { background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
 .template-product .thumbnail-list__item::before { padding-bottom: 125%; }
 .template-product .product__media img { 
@@ -200,7 +202,6 @@ body .announcement-bar-section {
 .template-product .thumbnail-slider .slider-button { align-items: center; background: var(--g4u-cream); border: .1rem solid var(--g4u-ink); border-radius: 50%; color: var(--g4u-ink); display: flex; flex: 0 0 4rem; height: 4rem; justify-content: center; padding: 0; width: 4rem; }
 .template-product .thumbnail-slider .slider-button:hover { background: var(--g4u-burgundy); border-color: var(--g4u-burgundy); color: var(--g4u-cream); }
 @media screen and (min-width: 750px) {
-  .template-product .product-media-container { --aspect-ratio: .8; }
   .template-product .product--thumbnail_slider media-gallery {
     display: grid;
     gap: 1.6rem;
