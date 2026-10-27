@@ -90,6 +90,7 @@
 .template-collection .card { background: transparent; border: 0; box-shadow: none; gap: 1.6rem; height: 100%; }
 .g4u-product-card.card { background: transparent; border: 0; box-shadow: none; gap: 1.6rem; 
 border-radius:12px;  overflow: hidden; }
+.product-card-wrapper .card__inner.ratio::before { padding-bottom: calc(100% * 4 / 3); }
 .g4u-product-card .card__inner { background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
 .g4u-product-card .card__media .media { background: #f2ebe4; }
 .template-collection .product-grid .card-wrapper, .template-collection .product-grid .g4u-product-card { width: 100%; }

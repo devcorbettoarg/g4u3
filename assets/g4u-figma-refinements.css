@@ -499,7 +499,7 @@ body.template-suffix-harina {
      - section: 80px 40px
      - title 48
      - header -> products 60
-     - product image ratio: 284 / 340.8 = 1.2 height
+     - product image ratio: 3:4 (shared catalog styles)
      ------------------------------------------------------------------------ */
 
   body.template-suffix-nosotros .g4u-featured-products {
@@ -522,16 +522,6 @@ body.template-suffix-harina {
   body.template-suffix-nosotros .g4u-featured-products__grid {
     gap: 1.6rem;
     max-width: 136rem;
-  }
-
-  /*
-   * Figma = portrait 5:6.
-   * El CSS anterior lo estaba obligando a cuadrado.
-   */
-  body.template-suffix-nosotros
-  .g4u-featured-products
-  .card__inner.ratio::before {
-    padding-bottom: 120% !important;
   }
 
   body.template-suffix-nosotros
