@@ -6,7 +6,12 @@
     <p class="g4u-sticky-cart__title">{{ product.title | split: '|' | first | strip | escape }}</p>
     <div data-sticky-price>{% render 'price', product: product, use_variant: true %}</div>
   </div>
-  <button type="button" class="button button--primary g4u-sticky-cart__button" data-sticky-submit>
-    {{ 'products.product.add_to_cart' | t }}
-  </button>
+  <div class="g4u-sticky-cart__actions">
+    <button type="button" class="button g4u-sticky-cart__button g4u-sticky-cart__button--buy" data-sticky-buy>
+      Comprar ahora
+    </button>
+    <button type="button" class="button button--primary g4u-sticky-cart__button" data-sticky-submit>
+      {{ 'products.product.add_to_cart' | t }}
+    </button>
+  </div>
 </g4u-sticky-cart>
