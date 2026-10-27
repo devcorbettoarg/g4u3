@@ -382,7 +382,7 @@ margin-bottom:0px }
 .template-product .rating-star { --color-rating-star: #ff4622; --font-size: 1.6; --letter-spacing: .12; line-height: .945; }
 .template-product .rating-count { color: #26131b; font-family: var(--font-body-family); font-size: 1.4rem; font-weight: 400; letter-spacing: 0; line-height: 1.5; }
 .template-product .product-media-modal__dialog { height: 100vh; height: 100dvh; overflow: hidden; position: relative; }
-.template-product .product-media-modal__content { --modal-media-height: min(80vh, calc(100vh - 12rem)); --modal-media-width: min(60vh, calc(75vh - 9rem), 100%); align-items: center; display: flex; gap: 2rem; height: 100%; max-height: none; overflow-x: auto; overflow-y: hidden; padding: 6rem max(5.6rem, 8vw); scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.template-product .product-media-modal__content { --modal-media-height: min(80vh, calc(100vh - 12rem)); --modal-media-width: min(60vh, calc(75vh - 9rem), 100%); align-items: center; display: flex; gap: 2rem; height: 100%; max-height: none; overflow-x: auto; overflow-y: hidden; padding: 0 max(5.6rem, 8vw); scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; }
 @supports (height: 100dvh) {
   .template-product .product-media-modal__content { --modal-media-height: min(80dvh, calc(100dvh - 12rem)); --modal-media-width: min(60dvh, calc(75dvh - 9rem), 100%); }
 }
