@@ -204,10 +204,11 @@ body.template-product:has(g4u-sticky-cart:not([hidden])) { padding-bottom: 10rem
 }
 @media screen and (max-width: 749px) {
   .template-product .g4u-sticky-cart { border-radius: 2.4rem; bottom: calc(1.2rem + env(safe-area-inset-bottom)); flex-wrap: wrap; gap: .8rem; padding: 1.2rem; width: calc(100% - 2.4rem); }
-  .g4u-sticky-cart__info { flex-basis: 100%; }
+  .g4u-sticky-cart__info { align-items: baseline; display: flex; flex-basis: 100%; gap: 1.2rem; justify-content: space-between; }
+  .g4u-sticky-cart__info [data-sticky-price] { flex-shrink: 0; text-align: right; }
   .g4u-sticky-cart__actions { width: 100%; }
   .g4u-sticky-cart__image { display: none; }
-  .g4u-sticky-cart__title { font-size: 1.4rem; }
+  .g4u-sticky-cart__title { flex: 1; font-size: 1.4rem; margin: 0; min-width: 0; }
   .template-product .g4u-sticky-cart .price { font-size: 1.4rem; }
   .template-product .g4u-sticky-cart .price--on-sale .price-item--regular { font-size: 1.2rem; }
   .template-product .g4u-sticky-cart__button { flex: 1; font-size: 1.4rem; min-height: 4.8rem; min-width: 0; padding: 0 1.2rem; }
