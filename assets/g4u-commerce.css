@@ -186,6 +186,8 @@ body .announcement-bar-section {
   .template-product .product:not(.product--no-media) .product__info-wrapper { padding: 0; }
 }
 .template-product .product-media-container { --aspect-ratio: .75; }
+.template-product .product-media-container.media-type-image { --media-border-width: 0px; border: 0; box-shadow: none; }
+.template-product .product-media-container.media-type-image::after { content: none; }
 /* Keep product images at 3:4 even when viewport height constraints are enabled. */
 .template-product .product-media-container.media-type-image.constrain-height .media { padding-top: var(--ratio-percent); }
 .template-product .product__media { background: #f2ebe4; border-radius: 1.2rem; overflow: hidden; }
