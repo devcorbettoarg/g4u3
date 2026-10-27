@@ -805,6 +805,12 @@
   </product-component>
 </product-info>
 
+{%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
+{%- if buy_buttons_block != blank -%}
+  {% render 'g4u-sticky-cart', product: product, section_id: section.id %}
+  <script src="{{ 'g4u-sticky-cart.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
