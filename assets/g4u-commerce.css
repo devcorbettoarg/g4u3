@@ -1609,12 +1609,16 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   margin: 0;
   text-align: center;
 }
+.product-card-wrapper .g4u-card__purchase .quick-add > :is(product-form, modal-opener) {
+  display: block;
+}
 /* Figma Product image Variant2 (52:4878), Button White / White-Hover (52:4338). */
 .product-card-wrapper .g4u-card__purchase .quick-add__submit {
   background: var(--g4u-cream);
   border: .1rem solid var(--g4u-cream);
   border-radius: 10rem;
   color: var(--g4u-burgundy);
+  display: flex;
   font-family: var(--g4u-display);
   font-size: 1.6rem;
   font-weight: 400;
@@ -1625,8 +1629,8 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   min-height: 4.5rem;
   min-width: 0;
   padding: 1.6rem 2.4rem;
-  transition: background-color .2s ease, color .2s ease;
-  width: auto;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  width: fit-content;
   max-width: 100%;
   white-space: nowrap;
 }
