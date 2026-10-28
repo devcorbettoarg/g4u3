@@ -879,43 +879,19 @@ body.template-suffix-harina .section-header .header-wrapper {
 
 body.template-suffix-harina
 .section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-.header__icon {
+.header__icon:not(:hover, :focus-visible) {
   background: transparent;
   box-shadow: none;
   color: var(--g4u-cream);
 }
 
 
-/*
- * g4u-shell.css fuerza el carrito oscuro para todas las páginas
- * que no son Home, por lo tanto hay que neutralizarlo específicamente.
- */
-body.template-suffix-harina
+/* The transparent header keeps its light color until an icon is focused or hovered. */
+body:is(.template-suffix-harina, .template-suffix-nosotros)
 .section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble,
-body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble svg,
-body.template-suffix-harina
-.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble svg path {
-  color: var(--g4u-cream) !important;
-  stroke: var(--g4u-cream) !important;
+#cart-icon-bubble:not(:hover, :focus-visible) {
+  color: var(--g4u-cream);
 }
-
-body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble,
-body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble svg,
-body.template-suffix-nosotros
-.section-header:not(.shopify-section-header-sticky, .menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]))
-#cart-icon-bubble svg path {
-  color: var(--g4u-cream) !important;
-  stroke: var(--g4u-cream) !important;
-}
-
 
 /* Mega menu abierto = fondo claro + logo oscuro */
 

@@ -281,6 +281,9 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
     {{ 'g4u-home.css' | asset_url | stylesheet_tag }}
     {{ 'g4u-shell.css' | asset_url | stylesheet_tag }}
     {{ 'g4u-commerce.css' | asset_url | stylesheet_tag }}
