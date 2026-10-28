@@ -1621,6 +1621,7 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   height: 4.5rem;
   letter-spacing: .05em;
   line-height: .8;
+  margin: 0 auto;
   min-height: 4.5rem;
   min-width: 0;
   padding: 1.6rem 2.4rem;
