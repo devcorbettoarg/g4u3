@@ -1619,6 +1619,11 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
 .product-card-wrapper .card .card__inner {
   border: 0;
 }
+/* Let the purchase control sit above the card link's stretched ::after.
+   Dawn's gradient transform otherwise traps it in a lower stacking context. */
+.product-card-wrapper .card .card__inner--purchase {
+  transform: none;
+}
 .product-card-wrapper .card .card__media {
   margin: 0;
   width: 100%;
