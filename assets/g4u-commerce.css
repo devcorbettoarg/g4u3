@@ -140,7 +140,9 @@ margin-bottom:5px; }
 body .announcement-bar-section {
   z-index:1 !important;
 }
-.template-collection .g4u-breadcrumb { padding: 1.4rem 2rem; } .template-collection .page-width { padding-left: 2rem; padding-right: 2rem; } .template-collection .facets-container { border-radius: 1.2rem; padding: .8rem 1.2rem; } .template-collection .facets__wrapper { display: none; } .template-collection .product-grid { column-gap: 1.2rem; row-gap: 4rem; } 
+.template-collection .g4u-breadcrumb { padding: 1.4rem 2rem; } .template-collection .page-width { padding-left: 2rem; padding-right: 2rem; } .template-collection .facets-container { border-radius: 1.2rem; padding: .8rem 1.2rem; } .template-collection .facets__wrapper { display: none; }
+ .template-collection .product-grid { column-gap: 1.2rem; row-gap: 4rem; display: grid;
+        grid-template-columns: 1fr 1fr; } 
 .template-collection .product-grid .grid__item { width: 100%; } .g4u-product-card .card__media .media img { padding: .8rem; } .g4u-product-card .card__heading { font-size: 1.8rem; } .g4u-product-card .card-information { font-size: 1.6rem; } .g4u-product-card .price--on-sale .price-item--regular { font-size: 1.35rem; } .g4u-product-card .price--on-sale .price-item--sale { font-size: 1.7rem; } .g4u-price__discount { min-height: 3.4rem; padding: .4rem .8rem; } }
 
 @media screen and (max-width: 749px) {
@@ -1597,7 +1599,7 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   box-shadow: none;
 }
 .product-card-wrapper .g4u-card__purchase {
-  bottom: 2.4rem;
+  bottom: 2rem;
   left: 1.6rem;
   position: absolute;
   right: 1.6rem;
@@ -1607,20 +1609,25 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   margin: 0;
   text-align: center;
 }
+/* Figma Product image Variant2 (52:4878), Button White / White-Hover (52:4338). */
 .product-card-wrapper .g4u-card__purchase .quick-add__submit {
   background: var(--g4u-cream);
-  border: 0;
+  border: .1rem solid var(--g4u-cream);
   border-radius: 10rem;
   color: var(--g4u-burgundy);
   font-family: var(--g4u-display);
-  font-size: 2rem;
-  letter-spacing: 0;
-  min-height: 6.4rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  height: 4.5rem;
+  letter-spacing: .05em;
+  line-height: .8;
+  min-height: 4.5rem;
   min-width: 0;
-  padding: 1.6rem 3.2rem;
+  padding: 1.6rem 2.4rem;
   transition: background-color .2s ease, color .2s ease;
   width: auto;
   max-width: 100%;
+  white-space: nowrap;
 }
 .product-card-wrapper .g4u-card__purchase .quick-add__submit::before,
 .product-card-wrapper .g4u-card__purchase .quick-add__submit::after {
@@ -1628,6 +1635,7 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
 }
 .product-card-wrapper .g4u-card__purchase .quick-add__submit:not(:disabled):is(:hover, :focus-visible) {
   background: var(--g4u-orange);
+  border-color: var(--g4u-orange);
   color: var(--g4u-cream);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1642,11 +1650,6 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
 }
 @media screen and (max-width: 749px) {
   .product-card-wrapper .g4u-card__purchase { bottom: 1.2rem; left: .8rem; right: .8rem; }
-  .product-card-wrapper .g4u-card__purchase .quick-add__submit {
-    font-size: 1.4rem;
-    min-height: 4.4rem;
-    padding: 1rem 1.6rem;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .product-card-wrapper .g4u-card__purchase .quick-add__submit { transition: none; }
