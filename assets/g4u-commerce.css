@@ -339,7 +339,7 @@ body.template-product:has(g4u-sticky-cart:not([hidden])) { padding-bottom: calc(
 }
 /* Optical centering for Europa Grotesk's high-set glyphs; preserve badge height. */
 .product .price .price__badge-sale {
-  padding: .7rem 1.3rem .4rem;
+  padding: .7rem 1.3rem .7rem;
   text-transform: uppercase;
 }
 .template-product .related-products .g4u-product-card .price { font-size: inherit; letter-spacing: .04em; line-height: 1.5; }
