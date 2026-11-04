@@ -206,6 +206,20 @@ body .announcement-bar-section {
 .template-product .g4u-sticky-cart .price { color: inherit; font-size: 1.4rem; font-weight: 400; letter-spacing: .04em; line-height: 1.2; margin: 0; }
 .template-product .g4u-sticky-cart .price__container { margin: 0; }
 .template-product .g4u-sticky-cart .price .price-item { font-size: inherit; }
+.template-product .g4u-sticky-cart [data-sticky-price] .price {
+  color: var(--g4u-orange);
+  text-transform: uppercase;
+}
+.template-product .g4u-sticky-cart [data-sticky-price] .price-item {
+  color: var(--g4u-orange);
+}
+.template-product .g4u-sticky-cart [data-sticky-price] .price__badge-sale {
+  background: var(--g4u-orange);
+  border-color: var(--g4u-orange);
+  color: var(--g4u-cream);
+  padding: .7rem 1.3rem .4rem;
+  text-transform: uppercase;
+}
 .g4u-sticky-cart__actions { align-items: center; display: flex; flex-shrink: 0; gap: 1.2rem; justify-content: flex-end; }
 .template-product .g4u-sticky-cart__button {
   background: var(--g4u-sticky-ink);
