@@ -322,6 +322,21 @@ body.template-product:has(g4u-sticky-cart:not([hidden])) { padding-bottom: calc(
 .template-product .product__title h1 { color: inherit; font-family: var(--g4u-display); font-size: 4.8rem; font-weight: 700; letter-spacing: .01em; line-height: 1; text-transform: uppercase; }
 .template-product .product__info-container { max-width: 66rem; }
 .template-product .price { color: inherit; font-family: var(--g4u-display); font-size: 2.4rem; font-weight: 400; letter-spacing: .05em; line-height: 1.2; }
+.product .price.price--show-badge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem 1rem;
+}
+.product .price.price--show-badge > .price__container,
+.product .price.price--show-badge > .badge {
+  margin: 0;
+}
+.product .price.price--show-badge.price--on-sale .price__sale {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .template-product .related-products .g4u-product-card .price { font-size: inherit; letter-spacing: .04em; line-height: 1.5; }
 .template-product .g4u-product-highlights { border-bottom: .1rem solid #d5d4d4; margin: 0 0 2.4rem; padding: 0 0 2.4rem; }
 .template-product .g4u-product-highlights__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin: 0 0 2rem; }
@@ -1677,6 +1692,10 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
 .product-card-wrapper .g4u-card__purchase .quick-add__submit::before,
 .product-card-wrapper .g4u-card__purchase .quick-add__submit::after {
   box-shadow: none;
+}
+/* Keep the sold-out hover control fully visible while purchase stays disabled. */
+.product-card-wrapper .g4u-card__purchase .quick-add__submit:disabled {
+  opacity: 1;
 }
 .product-card-wrapper .g4u-card__purchase .quick-add__submit:not(:disabled):is(:hover, :focus-visible) {
   background: var(--g4u-orange);
