@@ -845,6 +845,7 @@ font-family:var(--g4u-displayr);}
 .template-cart .g4u-cart-page-summary { border-color: #d5d4d4; border-radius: .8rem; top: 8rem; }
 .template-cart .g4u-cart-page-summary__shipping { padding: 1.6rem 2rem 1.2rem; }
 .template-cart .g4u-cart-page-summary__shipping p {
+  padding-top: 2px;
   color: var(--g4u-burgundy);
   font-family: "Europa Grotesk SH", var(--font-body-family);
   font-size: 1.3rem;
