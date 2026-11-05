@@ -251,80 +251,39 @@
     },
     "g4u_instagram_zDaaEa": {
       "type": "g4u-instagram",
-      "blocks": {
-        "post_XBggFT": {
-          "type": "post",
-          "settings": {
-            "image": "shopify://shop_images/g4u-instagram-1.png",
-            "accessibility_label": "Ver publicación 1 en Instagram",
-            "link": ""
-          }
-        },
-        "post_6zkfQJ": {
-          "type": "post",
-          "settings": {
-            "image": "shopify://shop_images/g4u-instagram-2.png",
-            "accessibility_label": "Ver publicación 2 en Instagram",
-            "link": ""
-          }
-        },
-        "post_bBLPWk": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 3 en Instagram",
-            "link": ""
-          }
-        },
-        "post_Yiqakk": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 4 en Instagram",
-            "link": ""
-          }
-        },
-        "post_89GpLe": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 5 en Instagram",
-            "link": ""
-          }
-        },
-        "post_gYyJAf": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 6 en Instagram",
-            "link": ""
-          }
-        },
-        "post_fXeGBR": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 7 en Instagram",
-            "link": ""
-          }
-        },
-        "post_6bbYnL": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 8 en Instagram",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "post_XBggFT",
-        "post_6zkfQJ",
-        "post_bBLPWk",
-        "post_Yiqakk",
-        "post_89GpLe",
-        "post_gYyJAf",
-        "post_fXeGBR",
-        "post_6bbYnL"
-      ],
       "settings": {
         "title": "Descubrí más en Instagram",
         "button_label": "Seguinos",
         "link": "https://www.instagram.com/g4u_ar"
+      }
+    },
+    "apps_x4cniV": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_x6pacg": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_x6pacg"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "g4u_service_benefits_ig9jdL": {
@@ -373,6 +332,7 @@
     "g4u_low_carb_benefits_ahaxxX",
     "g4u_experts_jY3Jt8",
     "g4u_instagram_zDaaEa",
+    "apps_x4cniV",
     "g4u_service_benefits_ig9jdL"
   ]
 }
