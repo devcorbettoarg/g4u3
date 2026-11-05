@@ -484,6 +484,62 @@
         "title": "Lo dicen quienes ya lo probaron"
       }
     },
+    "179389932408040dd4": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_4_eNqdwQ": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "{star} {count} Reviews",
+            "format": "5",
+            "image": "1",
+            "from": "1",
+            "onlinephotos": "1",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "date": true,
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#121212",
+            "size_text": 12,
+            "max_reviews": 10,
+            "nextButtonText": "Mostrar más reseñas",
+            "productButtonText": "Ver producto",
+            "max_width": 1200,
+            "content_padding": 22,
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25D366",
+            "label_wall_title": "Míralo en casas reales"
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_4_eNqdwQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -624,6 +680,7 @@
     "g4u_marquee",
     "g4u_low_carb_benefits_6rftF7",
     "product_reviews",
+    "179389932408040dd4",
     "related-products",
     "product_faq",
     "g4u_services",
