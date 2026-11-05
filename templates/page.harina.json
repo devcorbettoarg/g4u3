@@ -352,80 +352,39 @@
     },
     "instagram": {
       "type": "g4u-instagram",
-      "blocks": {
-        "post_1": {
-          "type": "post",
-          "settings": {
-            "image": "shopify://shop_images/d35f649ddbfec8ebbc696b87da60e1fdf6a49ac5.png",
-            "accessibility_label": "Ver publicación 1 en Instagram",
-            "link": ""
-          }
-        },
-        "post_2": {
-          "type": "post",
-          "settings": {
-            "image": "shopify://shop_images/g4u-instagram-2.png",
-            "accessibility_label": "Ver publicación 2 en Instagram",
-            "link": ""
-          }
-        },
-        "post_3": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 3 en Instagram",
-            "link": ""
-          }
-        },
-        "post_4": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 4 en Instagram",
-            "link": ""
-          }
-        },
-        "post_5": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 5 en Instagram",
-            "link": ""
-          }
-        },
-        "post_6": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 6 en Instagram",
-            "link": ""
-          }
-        },
-        "post_7": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 7 en Instagram",
-            "link": ""
-          }
-        },
-        "post_8": {
-          "type": "post",
-          "settings": {
-            "accessibility_label": "Ver publicación 8 en Instagram",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "post_1",
-        "post_2",
-        "post_3",
-        "post_4",
-        "post_5",
-        "post_6",
-        "post_7",
-        "post_8"
-      ],
       "settings": {
         "title": "Descubrí más en Instagram",
         "button_label": "Seguinos",
         "link": "https://www.instagram.com/g4u_ar"
+      }
+    },
+    "apps_cMmUkX": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_7KCLPP": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_7KCLPP"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "services": {
@@ -488,6 +447,7 @@
     "faq",
     "experts",
     "instagram",
+    "apps_cMmUkX",
     "services",
     "newsletter"
   ]
