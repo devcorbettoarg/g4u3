@@ -1161,7 +1161,8 @@ color:#00000099; }
 .template-product .product__accordion details[open] > summary .accordion__title,
 .template-product .product__accordion details[open] > summary .g4u-accordion-title__medium,
 .template-product .g4u-product-ingredients details[open] > summary,
-.g4u-flour-faq__item[open] > summary {
+.g4u-flour-faq__item[open] > summary,
+.g4u-flour-faq__item > summary:hover {
   font-family: "Europa Grotesk SH R", var(--font-body-family);
   font-weight: 700;
 }
