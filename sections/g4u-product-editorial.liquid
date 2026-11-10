@@ -1,3 +1,4 @@
+{%- if product.metafields.custom.usos.value != blank -%}
 {%- liquid
   assign fallback_asset = 'g4u-about-bread.png'
   if section.settings.fallback_asset == 'flour'
@@ -36,6 +37,7 @@
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
