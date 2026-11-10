@@ -249,18 +249,6 @@ body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina)
 .g4u-logo__image {
   filter: brightness(0) invert(1);
 }
-@media screen and (min-width: 980px) and (max-width: 1389.98px) {
-  .section-header .header,
-  .section-header.shopify-section-header-sticky .header,
-  .section-header:has(.header__search details[open]) .header,
-  body.template-index .section-header:not(.shopify-section-header-sticky) .header,
-  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
-  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-}
-
 @media screen and (max-width: 749px) {
   html:is(.overflow-hidden-tablet, .overflow-hidden-mobile) body .section-header .g4u-logo__image,
   body:is(.overflow-hidden-tablet, .overflow-hidden-mobile) .section-header .g4u-logo__image {
@@ -740,4 +728,17 @@ body .section-header .header__icon:is(:hover, :focus-visible) {
 body .section-header #cart-icon-bubble svg,
 body .section-header #cart-icon-bubble svg path {
   stroke: currentColor !important;
+}
+
+/* Apply after the sticky and tablet padding resets. */
+@media screen and (min-width: 980px) and (max-width: 1389.98px) {
+  .section-header .header,
+  .section-header.shopify-section-header-sticky .header,
+  .section-header:has(.header__search details[open]) .header,
+  body.template-index .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .header,
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .header {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 }
