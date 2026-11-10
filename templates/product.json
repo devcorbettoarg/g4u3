@@ -289,25 +289,25 @@
         "sandwiches": {
           "type": "item",
           "settings": {
-            "text": "Sandwiches"
+            "text": "{{ product.metafields.custom.usos.value.bullet_1.value }}"
           }
         },
         "breakfast": {
           "type": "item",
           "settings": {
-            "text": "Desayunos"
+            "text": "{{ product.metafields.custom.usos.value.bullet_2.value }}"
           }
         },
         "toast": {
           "type": "item",
           "settings": {
-            "text": "Tostadas"
+            "text": "{{ product.metafields.custom.usos.value.bullet_3.value }}"
           }
         },
         "lunch": {
           "type": "item",
           "settings": {
-            "text": "Almuerzos"
+            "text": "{{ product.metafields.custom.usos.value.bullet_4.value }}"
           }
         }
       },
@@ -321,11 +321,11 @@
         "background": "soft",
         "image_position": "left",
         "fallback_asset": "bread",
-        "image": "shopify://shop_images/Placeholder_Image_54ccf8d5-be36-4db0-852f-2838a151b501.png",
-        "image_alt": "Pan G4U para disfrutar todos los días",
-        "eyebrow": "Ideas para disfrutarlo",
-        "title": "Un pan, infinitas | posibilidades",
-        "text": "<p>Perfecto para desayunos, tostadas, sandwiches, hamburguesas o cualquier comida del día. Se puede tostar, congelar y disfrutar como un pan tradicional.</p>",
+        "image": "{{ product.metafields.custom.usos.value.image.value }}",
+        "image_alt": "{{ product.metafields.custom.usos.value.title.value }}",
+        "eyebrow": "{{ product.metafields.custom.usos.value.subtitulo.value }}",
+        "title": "{{ product.metafields.custom.usos.value.title.value }}",
+        "text": "<p>{{ product.metafields.custom.usos.value.texto | metafield_tag }}</p>",
         "link_label": "",
         "link": ""
       }
@@ -527,7 +527,7 @@
             "label_sort_old": "Más antiguas",
             "label_response": "Respuesta de",
             "label_stories_title": "Videos y fotos de clientes",
-            "stories_ring": "#25D366",
+            "stories_ring": "#25d366",
             "label_wall_title": "Míralo en casas reales"
           }
         }
