@@ -1695,10 +1695,10 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   box-shadow: none;
 }
 .product-card-wrapper .g4u-card__purchase {
-  bottom: 2rem;
   left: 1.6rem;
   position: absolute;
   right: 1.6rem;
+  top: calc(50% - 2.25rem);
   z-index: 3;
 }
 .product-card-wrapper .g4u-card__purchase .quick-add {
