@@ -187,32 +187,32 @@
           "type": "metric",
           "settings": {
             "label": "Proteína",
-            "other_value": "5g",
-            "g4u_value": "14g"
+            "other_value": "{{ product.metafields.custom.comparativa.value.numero_1_producto_1.value }}",
+            "g4u_value": "{{ product.metafields.custom.comparativa.value.numero_1_producto_2.value }}"
           }
         },
         "carbs": {
           "type": "metric",
           "settings": {
             "label": "Carbohidratos",
-            "other_value": "25g",
-            "g4u_value": "3g"
+            "other_value": "{{ product.metafields.custom.comparativa.value.numero_2_producto_1.value }}",
+            "g4u_value": "{{ product.metafields.custom.comparativa.value.numero_2_producto_2.value }}"
           }
         },
         "fiber": {
           "type": "metric",
           "settings": {
             "label": "Fibra",
-            "other_value": "3g",
-            "g4u_value": "17g"
+            "other_value": "{{ product.metafields.custom.comparativa.value.numero_3_producto_1.value }}",
+            "g4u_value": "{{ product.metafields.custom.comparativa.value.numero_3_producto_2.value }}"
           }
         },
         "sugar": {
           "type": "metric",
           "settings": {
             "label": "Azúcar",
-            "other_value": "2g",
-            "g4u_value": "0g"
+            "other_value": "{{ product.metafields.custom.comparativa.value.numero_4_producto_1.value }}",
+            "g4u_value": "{{ product.metafields.custom.comparativa.value.numero_4_producto_2.value }}"
           }
         }
       },
