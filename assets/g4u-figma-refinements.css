@@ -397,14 +397,8 @@ body.template-suffix-harina {
   body.template-suffix-nosotros
   .g4u-about-value:nth-child(3)
   .g4u-about-value__image {
-    bottom: auto;
-    height: 268.88%;
-    left: -21.59%;
-    max-width: none;
-    position: absolute;
-    right: auto;
-    top: -76.92%;
-    width: 179.28%;
+    height: 100%;
+    width: 100%;
   }
 
 
