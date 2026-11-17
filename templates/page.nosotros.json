@@ -102,10 +102,11 @@
         "background": "soft",
         "image_position": "left",
         "fallback_asset": "philosophy",
+        "image": "shopify://shop_images/Placeholder_Image.jpg",
         "image_alt": "Persona sosteniendo una hamburguesa G4U",
         "eyebrow": "Nuestra filosofía",
         "title": "Diseñamos alimentos | para la vida real",
-        "lead": "<p>No creemos en soluciones mágicas <br/>ni en dietas extremas.</p>",
+        "lead": "<p>No creemos en soluciones mágicas&nbsp;<br/>ni en dietas extremas.</p>",
         "text": ""
       }
     },
