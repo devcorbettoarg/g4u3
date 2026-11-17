@@ -223,12 +223,12 @@
         "sugar"
       ],
       "settings": {
-        "other_heading": "Otros “integrales”",
-        "other_image": "shopify://shop_images/1da93132b1c7a3c71bd89d39283393c3f3653d06.png",
-        "note": "Porción de 2 rebanadas / 60 g",
-        "g4u_heading": "Pan de molde G4U",
-        "g4u_image": "shopify://shop_images/8637a5422daeb876d84cd5e9593b7f1d4cd2bc12.png",
-        "g4u_note": "Porción de 2 rebanadas / 60 g"
+        "other_heading": "{{ product.metafields.custom.comparativa.value.nombre_producto_1.value }}",
+        "other_image": "{{ product.metafields.custom.comparativa.value.imagen_1.value }}",
+        "note": "{{ product.metafields.custom.comparativa.value.texto_1_producto_1.value }}",
+        "g4u_heading": "{{ product.metafields.custom.comparativa.value.nombre_producto_2.value }}",
+        "g4u_image": "{{ product.metafields.custom.comparativa.value.imagen_2.value }}",
+        "g4u_note": "{{ product.metafields.custom.comparativa.value.texto_1_producto_2.value }}"
       }
     },
     "product_ingredients": {
