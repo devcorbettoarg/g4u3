@@ -435,6 +435,7 @@ margin-bottom:0px }
 .template-product .product__accordion--shipping .accordion__content > :last-child { margin-bottom: 0; }
 .template-product .product__accordion .g4u-product-details { color: #766c70; line-height: 1.5; }
 .template-product .g4u-product-details > p { margin: 0 0 16px; }
+.template-product .g4u-product-details li strong { font-weight: 500; }
 .template-product .g4u-product-details li strong:first-child { display: block; }
 .template-product :is(.g4u-shipping-information, .g4u-product-details) ul { list-style: none; margin: 0; padding: 0; }
 .template-product :is(.g4u-shipping-information, .g4u-product-details) li { padding-left: 32px; position: relative; }
