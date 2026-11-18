@@ -41,20 +41,35 @@
         "slide_JkMz9F": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Hero_4.jpg",
+            "image": "shopify://shop_images/slider-4-desktop.webp",
+            "mobile_image": "shopify://shop_images/Home-Slide_4-Mobile.webp",
             "image_alt": "Pan de molde G4U sobre una tabla de madera",
-            "heading": "LA CIABATTA,",
+            "heading": "LA HAMBURGUESA,",
             "accent_heading": "REINVENTADA",
-            "text": "<p>Todo el sabor y la textura de una auténtica ciabatta,&nbsp;<br/>con un perfil nutricional pensado para acompañar tu alimentación.</p>",
-            "button_label": "Descubrí nuestra ciabatta",
-            "button_link": "shopify://collections/sandwich"
+            "text": "<p>Todo el sabor y la textura que te gustan, ahora con más proteína y menos carbohidratos.</p>",
+            "button_label": "Descubrí nuestro pan de hamburguesa",
+            "button_link": "shopify://products/pan-hamburguesa-proteico"
+          }
+        },
+        "slide_QHftPj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slider-3-desktop.webp",
+            "mobile_image": "shopify://shop_images/Home-Slide_3-Mobile.webp",
+            "image_alt": "Pan de molde G4U sobre una tabla de madera",
+            "heading": "TORTILLAS",
+            "accent_heading": "EN VERSIÓN PROTEICA",
+            "text": "<p>Una tortilla, infinitas posibilidades. Disfrutá tus recetas favoritas con más proteína y menos carbohidratos.</p>",
+            "button_label": "Descubrí las tortillas G4U",
+            "button_link": "shopify://products/tortilla-proteica-low-carb-sin-azucar-apto-keto-10-unidades"
           }
         }
       },
       "block_order": [
         "hero_main",
         "slide_XUjUwF",
-        "slide_JkMz9F"
+        "slide_JkMz9F",
+        "slide_QHftPj"
       ],
       "settings": {
         "scroll_link": "",
