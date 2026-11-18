@@ -28,7 +28,8 @@
         "slide_XUjUwF": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Hero_4.jpg",
+            "image": "shopify://shop_images/slider-2-desktop.webp",
+            "mobile_image": "shopify://shop_images/slider-2-Mobile.webp",
             "image_alt": "Pan de molde G4U sobre una tabla de madera",
             "heading": "SNACKEAR TAMBIÉN",
             "accent_heading": "PUEDE HACERTE BIEN",
