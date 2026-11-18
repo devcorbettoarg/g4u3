@@ -52,7 +52,7 @@
             ],
             "products_to_show": 3,
             "cta_label": "Ver todos",
-            "cta_link": ""
+            "cta_link": "shopify://collections/all"
           }
         }
       },
