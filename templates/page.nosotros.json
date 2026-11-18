@@ -15,6 +15,7 @@
       "settings": {
         "scroll_link": "#G4uAboutManifesto-template--30439415840849__about_manifesto",
         "image": "shopify://shop_images/Hero_1.png",
+        "mobile_image": "shopify://shop_images/Home-Slide_3-Mobile.webp",
         "image_alt": "Wraps preparados con vegetales frescos",
         "line_1": "Creemos que",
         "accent_1": "comer bien",
@@ -51,7 +52,7 @@
         "background": "cream",
         "image_position": "right",
         "fallback_asset": "history",
-        "image": "shopify://shop_images/Nosotros-1_4f565ff5-40e3-4943-9717-436758b20619.webp",
+        "image": "shopify://shop_images/Nosotros-1.webp",
         "image_alt": "Pan G4U cortado sobre una tabla de madera",
         "eyebrow": "Nuestra historia",
         "title": "Todo empezó  con | una pregunta",
