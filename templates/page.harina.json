@@ -303,11 +303,12 @@
     "experts": {
       "type": "g4u-experts",
       "blocks": {
-        "alejandra": {
-          "type": "image",
+        "video_AyAwAV": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/g4u-expert-alejandra.png",
-            "name": "Dra. Alejandra Moisello"
+            "video": "shopify://files/videos/1.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
         "alejandra_quote": {
@@ -321,11 +322,12 @@
             "profile_link": ""
           }
         },
-        "roxana": {
-          "type": "image",
+        "video_iVQz7f": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/g4u-expert-roxana.png",
-            "name": "Roxana Marachlian"
+            "video": "shopify://files/videos/2.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
         "roxana_quote": {
@@ -337,13 +339,22 @@
             "handle": "@nutricionintegralballester",
             "profile_link": ""
           }
+        },
+        "video_xYdCGd": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/3.mp4",
+            "video_url": "",
+            "name": ""
+          }
         }
       },
       "block_order": [
-        "alejandra",
+        "video_AyAwAV",
         "alejandra_quote",
-        "roxana",
-        "roxana_quote"
+        "video_iVQz7f",
+        "roxana_quote",
+        "video_xYdCGd"
       ],
       "settings": {
         "eyebrow": "Respaldo profesional",
