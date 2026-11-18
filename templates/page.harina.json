@@ -14,6 +14,7 @@
       "settings": {
         "scroll_link": "#G4uFlourChallenge",
         "image": "shopify://shop_images/Hero_2.jpg",
+        "mobile_image": "shopify://shop_images/Nuestra_Harina-Mobile.webp",
         "image_alt": "Masa de pan sobre una superficie con harina",
         "title_before": "La",
         "title_accent_1": "diferencia",
@@ -30,8 +31,8 @@
       "settings": {
         "eyebrow": "El desafío",
         "title": "¿Y si el pan pudiera seguir siendo pan,<br>pero nutricionalmente mejor?",
-        "text": "<p><strong>Durante años, comer saludable significó resignar sabor,<br/> textura o placer.</strong></p><p>En G4U nos propusimos desarrollar una alternativa capaz de mejorar el perfil nutricional del pan sin perder aquello que más nos gusta: su sabor, su textura y la experiencia de disfrutarlo todos los días.</p>",
-        "image": "shopify://shop_images/g4u-flour-challenge.jpg",
+        "text": "<p><strong>Durante años, comer saludable significó resignar sabor,<br/>&nbsp;textura o placer.</strong></p><p>En G4U nos propusimos desarrollar una alternativa capaz de mejorar el perfil nutricional del pan sin perder aquello que más nos gusta: su sabor, su textura y la experiencia de disfrutarlo todos los días.</p>",
+        "image": "shopify://shop_images/Nuestra_harina-2.webp",
         "image_alt": "Pan cortado sobre una tabla"
       }
     },
