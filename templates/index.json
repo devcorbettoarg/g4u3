@@ -25,19 +25,6 @@
             "button_link": "shopify://products/pan-de-molde-proteico"
           }
         },
-        "slide_XUjUwF": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/slider-2-desktop.webp",
-            "mobile_image": "shopify://shop_images/slider-2-Mobile.webp",
-            "image_alt": "Pan de molde G4U sobre una tabla de madera",
-            "heading": "SNACKEAR TAMBIÉN",
-            "accent_heading": "PUEDE HACERTE BIEN",
-            "text": "<p>Grisinis, marineras y tostaditas con alto aporte de proteínas y fibra &nbsp;para disfrutar en cualquier momento del día.</p>",
-            "button_label": "Descubrí nuestros snacks",
-            "button_link": "shopify://collections/snacks"
-          }
-        },
         "slide_JkMz9F": {
           "type": "slide",
           "settings": {
@@ -63,13 +50,26 @@
             "button_label": "Descubrí las tortillas G4U",
             "button_link": "shopify://products/tortilla-proteica-low-carb-sin-azucar-apto-keto-10-unidades"
           }
+        },
+        "slide_XUjUwF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/slider-2-desktop.webp",
+            "mobile_image": "shopify://shop_images/slider-2-Mobile.webp",
+            "image_alt": "Pan de molde G4U sobre una tabla de madera",
+            "heading": "SNACKEAR TAMBIÉN",
+            "accent_heading": "PUEDE HACERTE BIEN",
+            "text": "<p>Grisinis, marineras y tostaditas con alto aporte de proteínas y fibra &nbsp;para disfrutar en cualquier momento del día.</p>",
+            "button_label": "Descubrí nuestros snacks",
+            "button_link": "shopify://collections/snacks"
+          }
         }
       },
       "block_order": [
         "hero_main",
-        "slide_XUjUwF",
         "slide_JkMz9F",
-        "slide_QHftPj"
+        "slide_QHftPj",
+        "slide_XUjUwF"
       ],
       "settings": {
         "scroll_link": "",
@@ -438,11 +438,12 @@
     "g4u_experts": {
       "type": "g4u-experts",
       "blocks": {
-        "expert_alejandra": {
-          "type": "image",
+        "expert_roxana": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/Placeholder_Image_1.png",
-            "name": "Dra. Alejandra Moisello"
+            "video": "shopify://files/videos/1.mp4",
+            "video_url": "https://www.instagram.com/p/DeWm9E7nXOC/",
+            "name": ""
           }
         },
         "expert_alejandra_quote": {
@@ -456,12 +457,12 @@
             "profile_link": ""
           }
         },
-        "expert_roxana": {
+        "video_6Gydaa": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/8478619-uhd_2160_3840_24fps.mp4",
-            "video_url": "https://www.instagram.com/p/DeWm9E7nXOC/",
-            "name": "Roxana Marachlian"
+            "video": "shopify://files/videos/2.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
         "expert_roxana_quote": {
@@ -475,11 +476,12 @@
             "profile_link": ""
           }
         },
-        "expert_PxAtAc": {
-          "type": "image",
+        "video_KjTj9M": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/g4u-expert-roxana.png",
-            "name": "Roxana Marachlian"
+            "video": "shopify://files/videos/3.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
         "expert_PxAtAc_quote": {
@@ -495,11 +497,11 @@
         }
       },
       "block_order": [
-        "expert_alejandra",
-        "expert_alejandra_quote",
         "expert_roxana",
+        "expert_alejandra_quote",
+        "video_6Gydaa",
         "expert_roxana_quote",
-        "expert_PxAtAc",
+        "video_KjTj9M",
         "expert_PxAtAc_quote"
       ],
       "settings": {
@@ -511,7 +513,7 @@
     "g4u_feel_good": {
       "type": "g4u-feel-good",
       "settings": {
-        "image": "shopify://shop_images/30.jpg",
+        "image": "shopify://shop_images/CTA_144e2736-42cf-4b58-8ccf-884601c48c60.webp",
         "fallback_image": "feel_good",
         "image_alt": "Mesa compartida con panes G4U",
         "heading": "Sentite bien,",
