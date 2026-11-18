@@ -187,35 +187,37 @@
         "button_label": "Ver todos los productos"
       }
     },
-    "about_experts": {
+    "g4u_experts_kjEkic": {
       "type": "g4u-experts",
       "blocks": {
-        "expert_alejandra": {
-          "type": "image",
+        "video_PUyQac": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/Placeholder_Image_1.png",
-            "name": "Dra. Alejandra Moisello"
+            "video": "shopify://files/videos/1.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
-        "expert_alejandra_quote": {
+        "quote_Q9JaGP": {
           "type": "quote",
           "settings": {
             "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
-            "role": "Jefa de Servicio de Nutricion \ny Diabetes del Hospital Durand Especialista en Nutricion \ny Medicina del deporte",
-            "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”<br/><br/></p>",
+            "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand",
+            "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>",
             "handle": "@Dra.alejandramoisello",
             "profile_link": ""
           }
         },
-        "expert_roxana": {
-          "type": "image",
+        "video_gF9kNp": {
+          "type": "video",
           "settings": {
-            "media": "shopify://shop_images/g4u-expert-roxana_0f9e8a27-2d93-46ef-a0b8-d71d853cf0f0.png",
-            "name": "Roxana Marachlian"
+            "video": "shopify://files/videos/2.mp4",
+            "video_url": "",
+            "name": ""
           }
         },
-        "expert_roxana_quote": {
+        "quote_K9aFwE": {
           "type": "quote",
           "settings": {
             "name": "Roxana Marachlian",
@@ -224,13 +226,22 @@
             "handle": "@nutricionintegralballester",
             "profile_link": ""
           }
+        },
+        "video_kL3ACG": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/3.mp4",
+            "video_url": "",
+            "name": ""
+          }
         }
       },
       "block_order": [
-        "expert_alejandra",
-        "expert_alejandra_quote",
-        "expert_roxana",
-        "expert_roxana_quote"
+        "video_PUyQac",
+        "quote_Q9JaGP",
+        "video_gF9kNp",
+        "quote_K9aFwE",
+        "video_kL3ACG"
       ],
       "settings": {
         "eyebrow": "Respaldo profesional",
@@ -333,7 +344,7 @@
     "about_values",
     "about_flour",
     "about_products",
-    "about_experts",
+    "g4u_experts_kjEkic",
     "about_instagram",
     "apps_nKUm6H",
     "about_services",
