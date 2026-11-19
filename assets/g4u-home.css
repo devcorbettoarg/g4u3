@@ -3,7 +3,7 @@
   --g4u-cream: #fff8f0;
   --g4u-burgundy: #500322;
   --g4u-orange: #ff4622;
-  --g4u-ink: #231f20;
+  --g4u-ink: #26131b; /* tinta de Figma; antes había otro valor (#231f20) en este archivo */
   --g4u-display: "Europa Grotesk SH", var(--font-heading-family);
   --g4u-displayr: "Europa Grotesk SH R", var(--font-heading-family);
   /* Títulos (Figma: Europa Grotesk SH Bold Condensed / Condensed). */
@@ -121,7 +121,7 @@
 .g4u-home-hero__body {
   font-size: 18px;
   line-height: 27px;
-  letter-spacing: 2%;
+  letter-spacing: .02em;
   color:#FFF8F0;
   margin: 0 0 3.2rem;
   font-weight: 300;
@@ -620,7 +620,7 @@ font-weight: 400;
   white-space: nowrap;
    font-family: "Europa Grotesk SH R";
    font-weight:400;
-   letter-spacing: 5%;
+   letter-spacing: .05em;
        display: flex;
     align-content: center;
     justify-content: center;
@@ -752,11 +752,11 @@ padding-top:15px;}
 .g4u-comparison__table tbody   td:last-child { background: rgba(255, 70, 34, .7); font-weight: 400;
 border-bottom:.1rem solid #5003221A; }
 .g4u-comparison__table thead th {
-  letter-spacing:5% !important;
+  letter-spacing:.05em !important;
 }
 .g4u-comparison__table thead th:first-child { font-size: 2rem; font-weight: 500;
-letter-spacing:5% !important; }
-.g4u-comparison__table thead th:last-child { font-weight: 500; letter-spacing:5% !important; 
+letter-spacing:.05em !important; }
+.g4u-comparison__table thead th:last-child { font-weight: 500; letter-spacing:.05em !important; 
 padding:0px 40px;}
 .g4u-comparison__note { color: var(--g4u-orange); font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; margin: 2rem auto 0; max-width: 104rem; text-align: left; }
 .g4u-comparison__actions { align-items: center; display: flex; gap: 2.4rem; justify-content: center; margin-top: 4rem; }
@@ -1044,7 +1044,7 @@ font-weight: 400;
 font-size: 16px;
 
 line-height: 150%;
-letter-spacing: 4%;
+letter-spacing: .04em;
  }
 .g4u-newsletter__submit { background: var(--g4u-burgundy); border: .1rem solid var(--g4u-burgundy); color: var(--g4u-cream); cursor: pointer;
    max-height: 4.5rem;

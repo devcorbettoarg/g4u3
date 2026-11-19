@@ -266,7 +266,6 @@
         margin: 0;
         font-size: 1.5rem;
         letter-spacing: .04em;
-        letter-spacing: 4%;
         line-height: calc(1 + 0.8 / var(--font-body-scale));
        font-family: var(--g4u-display);
         font-style: var(--font-body-style);
@@ -298,16 +297,11 @@
       {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
+    {%- comment -%} g4u: precarga de las dos fuentes de la primera pantalla (cuerpo Regular y títulos Bold Condensed). Las de Dawn no se usan. {%- endcomment -%}
+    {% comment %}theme-check-disable AssetPreload{% endcomment %}
+    <link rel="preload" as="font" href="{{ 'EuropaGroteskSH-Reg.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ 'EuropaGroteskSH-BolCon.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    {% comment %}theme-check-enable AssetPreload{% endcomment %}
 
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
       {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
@@ -329,10 +323,8 @@
       }
     </script>
 
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+    {%- comment -%} g4u: animate.css 4.1.1 local y recortado a las animaciones que usa el theme (antes 72KB desde un CDN externo). {%- endcomment -%}
+    {{ 'g4u-animate.css' | asset_url | stylesheet_tag }}
 
     
   </head>
