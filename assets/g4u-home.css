@@ -5,11 +5,13 @@
   --g4u-orange: #ff4622;
   --g4u-ink: #231f20;
   --g4u-display: "Europa Grotesk SH", var(--font-heading-family);
-    --g4u-displayr: "Europa Grotesk SH R", var(--font-heading-family);
+  --g4u-displayr: "Europa Grotesk SH R", var(--font-heading-family);
+  /* Títulos (Figma: Europa Grotesk SH Bold Condensed / Condensed). */
+  --g4u-condensed: "Europa Grotesk SH Con", var(--font-heading-family);
 }
 
 .g4u-display {
-  font-family: var(--g4u-display);
+  font-family: var(--g4u-condensed);
   font-style: normal;
   font-weight: 700;
   letter-spacing: .02em;

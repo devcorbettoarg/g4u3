@@ -7,6 +7,24 @@ product-component .card .card__inner {
     overflow: hidden !important;
 }
 /* Regular */
+/* ==========================================================================
+   G4U · Europa Grotesk SH
+   Dos familias separadas (antes el 700 de la normal apuntaba a la condensed,
+   así que cualquier negrita salía condensada):
+   - "Europa Grotesk SH"     normal:    300 Light · 400 Light* · 500 Medium · 700 Bold
+   - "Europa Grotesk SH Con" condensed: 400 Light Condensed · 500 Medium Condensed · 700 Bold Condensed
+   - "Europa Grotesk SH R"   Regular (se usa puntualmente)
+   * 400 sigue en Light como estaba; Figma usa Regular para el cuerpo (pendiente de decisión).
+   Títulos: usar var(--g4u-condensed) (ver .g4u-display en g4u-home.css).
+   ========================================================================== */
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Europa Grotesk SH";
   src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
@@ -14,6 +32,23 @@ product-component .card .card__inner {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Med.otf?v=1789062427") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Europa Grotesk SH";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Bol.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Europa Grotesk SH R";
   src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Reg.otf?v=1788386825") format("opentype");
@@ -30,26 +65,16 @@ product-component .card .card__inner {
   font-display: swap;
 }
 
-
-/* Light */
 @font-face {
-  font-family: "Europa Grotesk SH";
-  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-/* Medium */
-@font-face {
-  font-family: "Europa Grotesk SH";
-  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Med.otf?v=1789062427") format("opentype");
+  font-family: "Europa Grotesk SH Con";
+  src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-MedCon.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
-/* Bold */
+
 @font-face {
-  font-family: "Europa Grotesk SH";
+  font-family: "Europa Grotesk SH Con";
   src: url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-BolCon.otf?v=1788387442") format("opentype");
   font-weight: 700;
   font-style: normal;

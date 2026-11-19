@@ -1254,3 +1254,18 @@ body.template-suffix-harina .g4u-flour-hero {
     padding-inline: 4rem;
   }
 }
+
+
+/* ==========================================================================
+   TIPOGRAFÍA · TÍTULOS EN BOLD CONDENSED
+   La familia normal ya no trae la condensed en 700. Los títulos piden la
+   condensed con .g4u-display o font-family: var(--g4u-condensed) en su regla.
+   Acá van los que heredan la familia de un contenedor sin regla propia.
+   Las negritas de texto corrido (strong, b, footer) quedan en Bold normal.
+   ========================================================================== */
+.g4u-choice-banner__copy,
+.g4u-about-hero__title,
+.g4u-manifesto-line,
+.g4u-about-manifesto__closing {
+  font-family: var(--g4u-condensed);
+}
