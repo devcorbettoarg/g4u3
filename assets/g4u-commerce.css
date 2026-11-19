@@ -1778,3 +1778,4 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
   .g4u-product-comparison__metrics dd small { font-size: 3.2rem; }
   .g4u-product-comparison__note { grid-row: 4; }
 }
+.g4u-cart-page-summary-wrap { display: contents; }

@@ -490,9 +490,11 @@
         </div>
       </div>
 
+      {%- comment -%} g4u: contenedor que cart.js vuelve a dibujar al cambiar cantidades (display: contents, no altera la grilla). {%- endcomment -%}
+      <div id="G4uCartSummary" class="g4u-cart-page-summary-wrap">
       {%- if cart != empty -%}
-        {%- assign g4u_shipping_goal = settings.free_shipping_threshold | default: 60000 | times: 100 -%}
-        {%- if g4u_shipping_goal <= 0 -%}{%- assign g4u_shipping_goal = 6000000 -%}{%- endif -%}
+        {%- assign g4u_shipping_goal = settings.free_shipping_threshold | default: 95000 | times: 100 -%}
+        {%- if g4u_shipping_goal <= 0 -%}{%- assign g4u_shipping_goal = 9500000 -%}{%- endif -%}
         {%- assign g4u_shipping_remaining = g4u_shipping_goal | minus: cart.total_price -%}
         {%- assign g4u_shipping_progress = cart.total_price | times: 100 | divided_by: g4u_shipping_goal -%}
         {%- if g4u_shipping_progress > 100 -%}{%- assign g4u_shipping_progress = 100 -%}{%- endif -%}
@@ -531,6 +533,7 @@
           </div>
         </aside>
       {%- endif -%}
+      </div>
       </div>
 
       <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>

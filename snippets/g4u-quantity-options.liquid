@@ -1,6 +1,7 @@
 {%- assign quantity_options = product.metafields.custom.quantity_options.value -%}
+{%- assign g4u_qo_variant = product.selected_or_first_available_variant -%}
 <script src="{{ 'g4u-quantity-options.js' | asset_url }}" defer="defer"></script>
-  <div class="g4u-quantity-options" data-g4u-quantity-options data-quantity-input="Quantity-{{ section_id }}" {{ block.shopify_attributes }}>
+  <g4u-quantity-options class="g4u-quantity-options" data-g4u-quantity-options data-quantity-input="Quantity-{{ section_id }}" {{ block.shopify_attributes }}>
     {%- if block.settings.heading != blank -%}<p class="g4u-quantity-options__heading">{{ block.settings.heading | escape }}</p>{%- endif -%}
     <div class="g4u-quantity-options__list" role="group" aria-label="{{ block.settings.aria_label | escape }}">
       {%- for option in quantity_options -%}
@@ -14,7 +15,7 @@
       {%- if quantity_options == blank -%}
         {%- for quantity in (1..8) -%}
           {%- if quantity == 1 or quantity == 4 or quantity == 8 -%}
-            {%- assign quantity_total_price = product.price | times: quantity -%}
+            {%- assign quantity_total_price = g4u_qo_variant.price | times: quantity -%}
             <button type="button" class="g4u-quantity-options__option{% if quantity == 1 %} is-selected{% endif %}" data-g4u-quantity-option data-quantity="{{ quantity }}" aria-pressed="{% if quantity == 1 %}true{% else %}false{% endif %}">
               <span>{{ quantity }} {% if quantity == 1 %}unidad{% else %}unidades{% endif %} ($ {{ quantity_total_price | money_without_currency }})</span>
             </button>
@@ -22,4 +23,4 @@
         {%- endfor -%}
       {%- endif -%}
     </div>
-  </div>
+  </g4u-quantity-options>

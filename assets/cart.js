@@ -163,6 +163,10 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
         section: document.getElementById('main-cart-footer').dataset.id,
         selector: '.js-contents',
       },
+      // g4u: el resumen del carrito (total, ahorro, envío gratis) vive fuera de .js-contents.
+      ...(document.getElementById('G4uCartSummary')
+        ? [{ id: 'G4uCartSummary', section: document.getElementById('main-cart-items').dataset.id, selector: '#G4uCartSummary' }]
+        : []),
     ];
   }
 

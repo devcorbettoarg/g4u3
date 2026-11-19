@@ -1442,8 +1442,8 @@
         "type": "number",
         "id": "free_shipping_threshold",
         "label": "Monto mínimo para envío gratis",
-        "default": 60000,
-        "info": "Ingresá el importe en pesos, sin puntos ni separadores. Ejemplo: 60000. El progreso del carrito se completa al alcanzar este importe."
+        "default": 95000,
+        "info": "Ingresá el importe en pesos, sin puntos ni separadores. Ejemplo: 95000. El progreso del carrito se completa al alcanzar este importe."
       },
      
       {

@@ -79,10 +79,13 @@ if (!customElements.get('g4u-sticky-cart')) {
       this.button.textContent = source.querySelector('span:not(.hidden)')?.textContent.trim() || source.textContent.trim();
       const price = document.getElementById(`price-${this.dataset.sectionId}`)?.querySelector('.price');
       if (price && this.price.innerHTML !== price.outerHTML) this.price.innerHTML = price.outerHTML;
+      // Llevar al formulario solo cuando el error APARECE (antes se repetía en cada cambio de la galería).
       const error = this.productInfo.querySelector('.product-form__error-message-wrapper:not([hidden])');
-      if (error?.textContent.trim() && !this.hidden) {
+      const errorText = error?.textContent.trim() || '';
+      if (errorText && errorText !== this.lastErrorText && !this.hidden) {
         this.productInfo.querySelector('product-form')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       }
+      this.lastErrorText = errorText;
     }
 
     disconnectedCallback() {

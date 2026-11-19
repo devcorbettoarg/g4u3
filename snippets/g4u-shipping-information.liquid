@@ -9,8 +9,8 @@
     {{ block.settings.content }}
   {%- endif -%}
   {%- unless block.settings.show_free_shipping == false -%}
-    {%- assign shipping_goal = settings.free_shipping_threshold | default: 60000 | times: 100 -%}
-    {%- if shipping_goal <= 0 -%}{%- assign shipping_goal = 6000000 -%}{%- endif -%}
+    {%- assign shipping_goal = settings.free_shipping_threshold | default: 95000 | times: 100 -%}
+    {%- if shipping_goal <= 0 -%}{%- assign shipping_goal = 9500000 -%}{%- endif -%}
     <ul>
       <li>Envío gratis a partir de {{ shipping_goal | money_without_trailing_zeros }}.</li>
     </ul>
