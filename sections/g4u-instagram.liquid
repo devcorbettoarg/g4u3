@@ -47,11 +47,10 @@
 
     {%- if section.settings.button_label != blank -%}
       <a
-        class="g4u-pill g4u-instagram__button wow animate__fadeIn"
+        class="g4u-pill g4u-instagram__button wow animate__fadeInUp"
         href="{{ section.settings.link | default: 'https://www.instagram.com/g4u_ar' }}"
         target="_blank"
         rel="noopener"
-        data-wow-duration="0.65s"
         data-wow-delay="0.14s"
       >
         {{ section.settings.button_label | escape }}

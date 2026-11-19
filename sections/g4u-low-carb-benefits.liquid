@@ -1,6 +1,6 @@
 <section class="g4u-low-carb" aria-labelledby="G4uLowCarb-{{ section.id }}">
   {%- assign normalized_title = section.settings.title | strip | downcase -%}
-  <h2 class="g4u-low-carb__title g4u-display wow animate__fadeIn" data-wow-duration="0.8s" id="G4uLowCarb-{{ section.id }}">
+  <h2 class="g4u-low-carb__title g4u-display wow animate__fadeInUp" id="G4uLowCarb-{{ section.id }}">
     {%- if normalized_title == 'alimentación low-carb' -%}
       {%- assign title_words = section.settings.title | strip | split: ' ' -%}
       {{- title_words.first | escape }} <span class="g4u-low-carb__title-second-line">{{ title_words.last | escape }}</span>
@@ -20,7 +20,7 @@
           assign fallback_icon = 'g4u-lowcarb-wellbeing.svg'
         endif
       -%}
-      <article class="g4u-low-carb__item wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index | times: 0.12 }}s" {{ block.shopify_attributes }}>
+      <article class="g4u-low-carb__item wow animate__fadeInUp" data-wow-delay="{{ forloop.index | times: 0.12 }}s" {{ block.shopify_attributes }}>
         {%- if block.settings.icon != blank -%}
           {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-low-carb__icon', loading: 'lazy' }}
         {%- else -%}

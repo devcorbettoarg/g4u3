@@ -10,14 +10,14 @@
 <section class="g4u-product-editorial g4u-product-editorial--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-product-editorial--reverse{% endif %}" aria-labelledby="G4uProductEditorial-{{ section.id }}">
   <div class="g4u-product-editorial__inner">
     <div class="g4u-product-editorial__copy">
-      {%- if section.settings.eyebrow != blank -%}<p class="g4u-product-editorial__eyebrow wow animate__fadeIn" data-wow-duration="0.8s">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      <h2 class="g4u-display wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.1s" id="G4uProductEditorial-{{ section.id }}">{{ section.settings.title | escape | replace: '|', '<br>' }}</h2>
-      <div class="rte wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ section.settings.text }}</div>
+      {%- if section.settings.eyebrow != blank -%}<p class="g4u-product-editorial__eyebrow wow animate__fadeInUp">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="g4u-display wow animate__fadeInUp" data-wow-delay="0.1s" id="G4uProductEditorial-{{ section.id }}">{{ section.settings.title | escape | replace: '|', '<br>' }}</h2>
+      <div class="rte wow animate__fadeInUp" data-wow-delay="0.2s">{{ section.settings.text }}</div>
       {%- if section.blocks.size > 0 -%}
-        <ul role="list">{%- for block in section.blocks -%}<li class="wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index | times: 0.12 | plus: 0.2 }}s" {{ block.shopify_attributes }}><img class="g4u-benefit-check" src="{{ 'g4u-icon-check.svg' | asset_url }}" alt="" width="20" height="20">{{ block.settings.text | escape }}</li>{%- endfor -%}</ul>
+        <ul role="list">{%- for block in section.blocks -%}<li class="wow animate__fadeInUp" data-wow-delay="{{ forloop.index | times: 0.12 | plus: 0.2 }}s" {{ block.shopify_attributes }}><img class="g4u-benefit-check" src="{{ 'g4u-icon-check.svg' | asset_url }}" alt="" width="20" height="20">{{ block.settings.text | escape }}</li>{%- endfor -%}</ul>
       {%- endif -%}
       {%- if section.settings.link_label != blank -%}
-        <a class="g4u-product-editorial__link wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.4s" 
+        <a class="g4u-product-editorial__link wow animate__fadeInUp" data-wow-delay="0.4s" 
           href="{{ section.settings.link | default: routes.all_products_collection_url }}">
           {{ section.settings.link_label | escape }}
             <img
@@ -28,7 +28,7 @@
             />
             </a>{%- endif -%}
     </div>
-    <div class="g4u-product-editorial__media wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.2s">
+    <div class="g4u-product-editorial__media wow animate__fadeInUp" data-wow-delay="0.2s">
       {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1300, 1600', sizes: '(min-width: 990px) 50vw, 100vw' }}
       {%- else -%}

@@ -14,7 +14,7 @@
       {%- else -%}
         <img class="g4u-category-card__image" src="{{ fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="2731" height="4096" loading="lazy">
       {%- endif -%}
-      <div class="g4u-category-card__content wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index0 | times: 0.15 }}s">
+      <div class="g4u-category-card__content wow animate__fadeInUp" data-wow-delay="{{ forloop.index0 | times: 0.15 }}s">
         <h2 class="g4u-category-card__title g4u-display">{{ block.settings.title | escape }}</h2>
         {%- if block.settings.button_label != blank -%}
           <a class="g4u-pill g4u-category-card__button" href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.button_label | escape }}</a>

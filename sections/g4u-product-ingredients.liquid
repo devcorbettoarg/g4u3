@@ -1,12 +1,12 @@
 <section class="g4u-product-ingredients" aria-labelledby="G4uProductIngredients-{{ section.id }}">
-  <header class="g4u-product-ingredients__header wow animate__fadeIn" data-wow-duration="0.8s">
+  <header class="g4u-product-ingredients__header wow animate__fadeInUp">
     {%- if section.settings.eyebrow != blank -%}<p>{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
     <h2 class="g4u-display" id="G4uProductIngredients-{{ section.id }}">{{ section.settings.title | replace: "|","<br>" }}</h2>
     {%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}
   </header>
   <div class="g4u-product-ingredients__items">
     {%- for block in section.blocks -%}
-      <details class="wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index | times: 0.12 | plus: 0.1 }}s" {{ block.shopify_attributes }}>
+      <details class="wow animate__fadeInUp" data-wow-delay="{{ forloop.index | times: 0.12 | plus: 0.1 }}s" {{ block.shopify_attributes }}>
         <summary>
           <span class="g4u-product-ingredients__summary-label">
             {%- if block.settings.custom_icon != blank -%}
