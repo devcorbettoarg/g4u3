@@ -81,7 +81,7 @@
                             <li>
                               <a
                                 class="g4u-mega-menu__category-link link"
-                                href="{{ childlink.url }}"
+                                href="{{ childlink.url }}"{% render 'g4u-link-target', url: childlink.url %}
                               >
                                 {{ childlink.title | escape }}
                               </a>
@@ -95,7 +95,7 @@
                       {%- if mega_block.settings.cta_label != blank and cta_url != blank -%}
                         <a
                           class="button button--secondary g4u-mega-menu__cta"
-                          href="{{ cta_url }}"
+                          href="{{ cta_url }}"{% render 'g4u-link-target', url: cta_url %}
                         >
                           {{ mega_block.settings.cta_label | escape }}
                         </a>
@@ -182,7 +182,7 @@
                       <li class="g4u-mega-menu__column">
 
                         <a
-                          href="{{ childlink.url }}"
+                          href="{{ childlink.url }}"{% render 'g4u-link-target', url: childlink.url %}
                           class="mega-menu__link mega-menu__link--level-2 g4u-mega-menu__heading link{% if childlink.current %} mega-menu__link--active{% endif %}"
                           {% if childlink.current %}
                             aria-current="page"
@@ -201,7 +201,7 @@
 
                               <li>
                                 <a
-                                  href="{{ grandchildlink.url }}"
+                                  href="{{ grandchildlink.url }}"{% render 'g4u-link-target', url: grandchildlink.url %}
                                   class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
                                   {% if grandchildlink.current %}
                                     aria-current="page"
@@ -232,7 +232,7 @@
 
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
+            href="{{ link.url }}"{% render 'g4u-link-target', url: link.url %}
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"

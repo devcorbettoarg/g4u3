@@ -63,7 +63,7 @@
                                 {%- if childlink.links == blank -%}
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                    href="{{ childlink.url }}"
+                                    href="{{ childlink.url }}"{% render 'g4u-link-target', url: childlink.url %}
                                     class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                     {% if childlink.current %}
                                       aria-current="page"
@@ -107,7 +107,7 @@
                                           <li>
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                              href="{{ grandchildlink.url }}"
+                                              href="{{ grandchildlink.url }}"{% render 'g4u-link-target', url: grandchildlink.url %}
                                               class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                               {% if grandchildlink.current %}
                                                 aria-current="page"
@@ -130,7 +130,7 @@
                   {%- else -%}
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
-                      href="{{ link.url }}"
+                      href="{{ link.url }}"{% render 'g4u-link-target', url: link.url %}
                       class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
                       {% if link.current %}
                         aria-current="page"
@@ -177,7 +177,7 @@
               <ul class="list list-social list-unstyled" role="list">
                 {%- if settings.social_twitter_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_twitter_link }}"{% render 'g4u-link-target', url: settings.social_twitter_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-twitter.svg' | inline_asset_content -}}
                       </span>
@@ -187,7 +187,7 @@
                 {%- endif -%}
                 {%- if settings.social_facebook_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_facebook_link }}"{% render 'g4u-link-target', url: settings.social_facebook_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-facebook.svg' | inline_asset_content -}}
                       </span>
@@ -197,7 +197,7 @@
                 {%- endif -%}
                 {%- if settings.social_pinterest_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_pinterest_link }}"{% render 'g4u-link-target', url: settings.social_pinterest_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-pinterest.svg' | inline_asset_content -}}
                       </span>
@@ -207,7 +207,7 @@
                 {%- endif -%}
                 {%- if settings.social_instagram_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_instagram_link }}"{% render 'g4u-link-target', url: settings.social_instagram_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-instagram.svg' | inline_asset_content -}}
                       </span>
@@ -217,7 +217,7 @@
                 {%- endif -%}
                 {%- if settings.social_tiktok_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_tiktok_link }}"{% render 'g4u-link-target', url: settings.social_tiktok_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-tiktok.svg' | inline_asset_content -}}
                       </span>
@@ -227,7 +227,7 @@
                 {%- endif -%}
                 {%- if settings.social_tumblr_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_tumblr_link }}"{% render 'g4u-link-target', url: settings.social_tumblr_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-tumblr.svg' | inline_asset_content -}}
                       </span>
@@ -237,7 +237,7 @@
                 {%- endif -%}
                 {%- if settings.social_snapchat_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_snapchat_link }}"{% render 'g4u-link-target', url: settings.social_snapchat_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-snapchat.svg' | inline_asset_content -}}
                       </span>
@@ -247,7 +247,7 @@
                 {%- endif -%}
                 {%- if settings.social_youtube_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_youtube_link }}"{% render 'g4u-link-target', url: settings.social_youtube_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-youtube.svg' | inline_asset_content -}}
                       </span>
@@ -257,7 +257,7 @@
                 {%- endif -%}
                 {%- if settings.social_vimeo_link != blank -%}
                   <li class="list-social__item">
-                    <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                    <a href="{{ settings.social_vimeo_link }}"{% render 'g4u-link-target', url: settings.social_vimeo_link %} class="list-social__link link">
                       <span class="svg-wrapper">
                         {{- 'icon-vimeo.svg' | inline_asset_content -}}
                       </span>

@@ -4,7 +4,7 @@
       <h2 id="G4uFaqContactTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>
       {%- if section.settings.text != blank -%}<div class="g4u-faq-contact__text rte">{{ section.settings.text }}</div>{%- endif -%}
     </div>
-    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-faq-contact__button" href="{{ section.settings.button_link | default: routes.root_url }}">{{ section.settings.button_label | escape }}</a>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-faq-contact__button" href="{{ section.settings.button_link | default: routes.root_url }}"{% render 'g4u-link-target', url: section.settings.button_link %}>{{ section.settings.button_label | escape }}</a>{%- endif -%}
   </div>
 </section>
 

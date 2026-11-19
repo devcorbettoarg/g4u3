@@ -1,0 +1,17 @@
+{%- comment -%}
+  g4u: agrega target="_blank" a los links que salen de la tienda (WhatsApp,
+  redes, otros sitios) para que el visitante no pierda la pestaña de G4U.
+  Uso: <a href="{{ url }}"{% render 'g4u-link-target', url: url %}>
+  Links internos (/pages/..., /collections/...) y mailto:/tel: quedan igual.
+{%- endcomment -%}
+{%- liquid
+  assign g4u_url = url | downcase | strip
+  assign g4u_external = false
+  if g4u_url contains '://' or g4u_url contains 'wa.me'
+    assign g4u_external = true
+    if g4u_url contains shop.permanent_domain or g4u_url contains shop.domain
+      assign g4u_external = false
+    endif
+  endif
+-%}
+{%- if g4u_external %} target="_blank" rel="noopener"{% endif -%}

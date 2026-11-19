@@ -16,7 +16,7 @@
           <ul role="list">
             {%- if block.settings.menu != blank -%}
               {%- for link in block.settings.menu.links -%}
-                <li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+                <li><a href="{{ link.url }}"{% render 'g4u-link-target', url: link.url %}{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
               {%- endfor -%}
             {%- elsif block.settings.fallback == 'shop' -%}
               <li><a href="{{ routes.all_products_collection_url }}">Novedades</a></li>

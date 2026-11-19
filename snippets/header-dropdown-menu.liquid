@@ -40,7 +40,7 @@
                     {%- if childlink.links == blank -%}
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
+                        href="{{ childlink.url }}"{% render 'g4u-link-target', url: childlink.url %}
                         class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
                         {% if childlink.current %}
                           aria-current="page"
@@ -65,7 +65,7 @@
                             <li>
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
+                                href="{{ grandchildlink.url }}"{% render 'g4u-link-target', url: grandchildlink.url %}
                                 class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
                                 {% if grandchildlink.current %}
                                   aria-current="page"
@@ -86,7 +86,7 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
+            href="{{ link.url }}"{% render 'g4u-link-target', url: link.url %}
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
