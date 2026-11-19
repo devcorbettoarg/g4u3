@@ -7,7 +7,7 @@
     assign fallback_asset = 'g4u-flour-ingredients.png'
   endif
 -%}
-<section class="g4u-product-editorial g4u-product-editorial--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-product-editorial--reverse{% endif %}" aria-labelledby="G4uProductEditorial-{{ section.id }}">
+<section class="g4u-product-editorial g4u-product-editorial--{{ section.settings.background }}{% if section.settings.image_position == 'left' %} g4u-product-editorial--reverse{% endif %} wow animate__g4uFadeInSoft" data-wow-duration="0.8s" aria-labelledby="G4uProductEditorial-{{ section.id }}">
   <div class="g4u-product-editorial__inner">
     <div class="g4u-product-editorial__copy">
       {%- if section.settings.eyebrow != blank -%}<p class="g4u-product-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}

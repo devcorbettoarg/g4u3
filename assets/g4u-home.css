@@ -1306,3 +1306,12 @@ margin-top:2px;}
 }
 /* FAQ: el fondo se elige en la sección (Crema / Gris claro), no por página. */
 .g4u-flour-faq--gray { background: #f2ebe4; }
+
+/* Parallax del banner "No tenés que elegir…": los productos se mueven con transform
+   (el layout del título no cambia). Ver assets/g4u-choice-parallax.js. */
+.g4u-choice-banner.is-parallax .g4u-choice-banner__object {
+  position: relative;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  z-index: 1;
+}

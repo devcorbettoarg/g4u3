@@ -1,3 +1,4 @@
+<script src="{{ 'g4u-choice-parallax.js' | asset_url }}" defer="defer"></script>
 <section
   class="g4u-choice-banner"
   aria-labelledby="G4uChoice-{{ section.id }}"
@@ -17,6 +18,8 @@
       {%- if section.settings.tortilla_image != blank -%}{{ section.settings.tortilla_image | image_url: width: 980 | image_tag: class: 'g4u-choice-banner__object g4u-choice-banner__object--tortilla', loading: 'lazy', widths: '490, 980', sizes: '490px' }}{%- else -%}<img class="g4u-choice-banner__object g4u-choice-banner__object--tortilla" src="{{ 'g4u-choice-tortilla.png' | asset_url }}" alt="" width="490" height="449" loading="lazy">{%- endif -%}
     </span>
   </h2>
+  {%- comment -%} g4u: parallax de los productos (entrada, scroll, mouse y flotación). {%- endcomment -%}
+  <g4u-choice-parallax hidden></g4u-choice-parallax>
   {%- if section.settings.description != blank -%}
     <p class="g4u-choice-banner__description">{{ section.settings.description | escape | newline_to_br }}</p>
   {%- endif -%}
