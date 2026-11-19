@@ -300,29 +300,29 @@
         "contact_link": "https://wa.me/5491156188706"
       }
     },
-    "experts": {
+    "g4u_experts_ikGgz8": {
       "type": "g4u-experts",
       "blocks": {
-        "video_AyAwAV": {
+        "video_FRc36c": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/1.mp4",
-            "video_url": "",
+            "video_url": "https://www.instagram.com/p/DeWm9E7nXOC/",
             "name": ""
           }
         },
-        "alejandra_quote": {
+        "quote_heYRTQ": {
           "type": "quote",
           "settings": {
             "avatar": "shopify://shop_images/g4u-expert-alejandra-avatar.png",
             "name": "Dra. Alejandra Moisello",
-            "role": "Jefa de Servicio de Nutrición y Diabetes del Hospital Durand",
+            "role": "Jefa de Servicio de Nutricion \ny Diabetes del Hospital Durand Especialista en Nutricion \ny Medicina del deporte",
             "quote": "<p>“Recomiendo los productos de G4U por su excelente aporte de fibra y proteínas con un perfil completo de aminoácidos. Son el aliado ideal para integrar en una alimentación equilibrada, ya que brindan saciedad real y resuelven de forma saludable esos almuerzos rápidos que el ritmo diario exige.”</p>",
             "handle": "@Dra.alejandramoisello",
             "profile_link": ""
           }
         },
-        "video_iVQz7f": {
+        "video_yz9VEV": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/2.mp4",
@@ -330,9 +330,10 @@
             "name": ""
           }
         },
-        "roxana_quote": {
+        "quote_FaqyMN": {
           "type": "quote",
           "settings": {
+            "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
             "name": "Roxana Marachlian",
             "role": "Nutricionista (UBA)- MN 1806 \n- MP 1128\nEspecializada en Alimentación \nlow-carb / keto. Suplementación adaptada",
             "quote": "<p>\"Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes. Por supuesto, siempre dentro de un plan de alimentación correctamente formulado.\"</p>",
@@ -340,26 +341,38 @@
             "profile_link": ""
           }
         },
-        "video_xYdCGd": {
+        "video_Q9b7fX": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/3.mp4",
             "video_url": "",
             "name": ""
           }
+        },
+        "quote_CARQqi": {
+          "type": "quote",
+          "settings": {
+            "avatar": "shopify://shop_images/g4u-expert-roxana-avatar.png",
+            "name": "Roxana Marachlian",
+            "role": "Nutricionista (UBA)- MN 1806 \n- MP 1128\nEspecializada en Alimentación \nlow-carb / keto. Suplementación adaptada",
+            "quote": "<p>\"Los panes G4U me resultaron una muy buena opción, ya que, al tener un alto valor proteico y muy bajo contenido de carbohidratos, son ideales para pacientes con sobrepeso, obesidad, insulinorresistencia, prediabetes y diabetes. Por supuesto, siempre dentro de un plan de alimentación correctamente formulado.\"</p>",
+            "handle": "@nutricionintegralballester",
+            "profile_link": ""
+          }
         }
       },
       "block_order": [
-        "video_AyAwAV",
-        "alejandra_quote",
-        "video_iVQz7f",
-        "roxana_quote",
-        "video_xYdCGd"
+        "video_FRc36c",
+        "quote_heYRTQ",
+        "video_yz9VEV",
+        "quote_FaqyMN",
+        "video_Q9b7fX",
+        "quote_CARQqi"
       ],
       "settings": {
-        "eyebrow": "Respaldo profesional",
-        "title": "Profesionales | que nos recomiendan",
-        "description": "<p>Nutricionistas y especialistas en alimentación confían en G4U por su perfil nutricional y lo incorporan como una herramienta dentro de una alimentación equilibrada.&nbsp;<br/><br/></p>"
+        "eyebrow": "VOCES G4U",
+        "title": "LO BUENO SE COMPARTE",
+        "description": "<p>Historias, experiencias y recomendaciones de quienes eligen disfrutar de una alimentación diferente.</p>"
       }
     },
     "instagram": {
@@ -457,7 +470,7 @@
     "comparison",
     "quality",
     "faq",
-    "experts",
+    "g4u_experts_ikGgz8",
     "instagram",
     "apps_cMmUkX",
     "services",
