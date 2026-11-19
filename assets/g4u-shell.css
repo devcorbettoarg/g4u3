@@ -761,3 +761,16 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   background: var(--g4u-cream);
   color: var(--g4u-burgundy);
 }
+
+/* G4U · Header sticky: al reaparecer entra desde arriba con fadeInDown (clase puesta por sticky-header). */
+.section-header.g4u-header-enter { transition: none; }
+.section-header.g4u-header-enter .header-wrapper {
+  animation: g4uHeaderFadeInDown .5s cubic-bezier(.22, .61, .36, 1) both;
+}
+@keyframes g4uHeaderFadeInDown {
+  from { opacity: 0; transform: translate3d(0, -100%, 0); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-header.g4u-header-enter .header-wrapper { animation: none; }
+}
