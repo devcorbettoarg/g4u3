@@ -27,7 +27,20 @@
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
   >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
+    {%- liquid
+      comment
+        g4u: si Shopify no devuelve recomendaciones (sin stock o sin configurar en
+        Search & Discovery) se muestran productos de la colección de respaldo del
+        carrito (Ajustes del tema → Carrito), para no dejar un hueco vacío.
+      endcomment
+      assign g4u_related = recommendations.products
+      assign g4u_related_count = recommendations.products_count
+      if recommendations.performed and g4u_related_count == 0 and settings.cart_upsell_fallback_collection != blank
+        assign g4u_related = settings.cart_upsell_fallback_collection.products
+        assign g4u_related_count = settings.cart_upsell_fallback_collection.products_count | at_most: section.settings.products_to_show
+      endif
+    -%}
+    {% if recommendations.performed and g4u_related_count > 0 %}
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
@@ -39,7 +52,7 @@
           aria-label="{{ 'general.slider.name' | t }}"
         >
           {% assign skip_card_product_styles = false %}
-          {% for recommendation in recommendations.products %}
+          {% for recommendation in g4u_related limit: section.settings.products_to_show %}
             <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item slider__slide">
               {% render 'card-product',
                 card_product: recommendation,
@@ -70,7 +83,7 @@
             <span class="slider-counter--current">1</span>
             <span aria-hidden="true"> / </span>
             <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-            <span class="slider-counter--total">{{ recommendations.products_count }}</span>
+            <span class="slider-counter--total">{{ g4u_related_count }}</span>
           </div>
           <button
             type="button"

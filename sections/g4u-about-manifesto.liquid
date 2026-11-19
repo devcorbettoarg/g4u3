@@ -2378,11 +2378,15 @@
        OBSERVER
        ========================================================== */
 
+    // g4u: se libera todo al descargar la sección en el editor.
+    const g4uAbort = new AbortController();
+    let observer = null;
+
     if (
       'IntersectionObserver' in window
     ) {
 
-      const observer =
+      observer =
         new IntersectionObserver(
           (entries) => {
 
@@ -2429,7 +2433,9 @@
       },
       {
         passive:
-          true
+          true,
+        signal:
+          g4uAbort.signal
       }
     );
 
@@ -2444,7 +2450,9 @@
       },
       {
         passive:
-          true
+          true,
+        signal:
+          g4uAbort.signal
       }
     );
 
@@ -2471,13 +2479,28 @@
 
     desktopQuery.addEventListener?.(
       'change',
-      syncMotionMode
+      syncMotionMode,
+      { signal: g4uAbort.signal }
     );
 
 
     reducedMotionQuery.addEventListener?.(
       'change',
-      syncMotionMode
+      syncMotionMode,
+      { signal: g4uAbort.signal }
+    );
+
+
+    const g4uSectionId = (section.closest('.shopify-section')?.id || '').replace('shopify-section-', '');
+    document.addEventListener(
+      'shopify:section:unload',
+      (event) => {
+        if (event.detail?.sectionId !== g4uSectionId) return;
+        g4uAbort.abort();
+        observer?.disconnect();
+        delete section.dataset.g4uIndependentParallaxV4;
+      },
+      { signal: g4uAbort.signal }
     );
 
 

@@ -9,35 +9,6 @@
  */
 {
   "sections": {
-    "combo": {
-      "type": "g4u-combo-builder",
-      "blocks": {
-        "product_KLxQFT": {
-          "type": "product",
-          "settings": {
-            "product": "the-multi-location-snowboard",
-            "group": "Panes"
-          }
-        },
-        "product_TcKgAk": {
-          "type": "product",
-          "settings": {
-            "product": "the-multi-location-snowboard",
-            "group": "Panes"
-          }
-        }
-      },
-      "block_order": [
-        "product_KLxQFT",
-        "product_TcKgAk"
-      ],
-      "disabled": true,
-      "settings": {
-        "eyebrow": "Elegí a tu manera",
-        "title": "Armá tu combo ideal",
-        "description": "<p>Elegí tus favoritos y agregalos juntos al carrito.</p>"
-      }
-    },
     "bundle_kaHktn": {
       "type": "bundle",
       "name": "Constructor de pack",
@@ -336,7 +307,6 @@
     }
   },
   "order": [
-    "combo",
     "bundle_kaHktn",
     "g4u_nutrition_marquee_haEjNG",
     "g4u_low_carb_benefits_ahaxxX",

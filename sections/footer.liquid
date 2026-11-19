@@ -20,9 +20,9 @@
               {%- endfor -%}
             {%- elsif block.settings.fallback == 'shop' -%}
               <li><a href="{{ routes.all_products_collection_url }}">Novedades</a></li>
-              <li><a href="{{ routes.collections_url }}/desayuno">Desayuno</a></li>
-              <li><a href="{{ routes.collections_url }}/sandwich">Sandwich</a></li>
+              <li><a href="{{ routes.collections_url }}/panes">Panes</a></li>
               <li><a href="{{ routes.collections_url }}/snacks">Snacks</a></li>
+              <li><a href="{{ routes.collections_url }}/antojos">Antojos</a></li>
               <li><a href="{{ routes.collections_url }}/packs">Packs</a></li>
             {%- elsif block.settings.fallback == 'support' -%}
               {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Política de envío</a></li>{%- endif -%}
@@ -36,8 +36,8 @@
               -%}
               {%- if g4u_faq_page != blank -%}<li><a href="{{ g4u_faq_page.url }}">Preguntas frecuentes</a></li>{%- endif -%}
             {%- else -%}
-              <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}">¿Por qué G4U es diferente?</a></li>
-              <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}#G4uAboutManifesto">Nuestra filosofía</a></li>
+              <li><a href="{{ pages['nuestra-harina'].url | default: '/pages/nuestra-harina' }}">¿Por qué G4U es diferente?</a></li>
+              <li><a href="{{ pages.nosotros.url | default: '/pages/nosotros' }}">Nuestra filosofía</a></li>
               <li><a href="{{ pages.contact.url | default: '/pages/contact' }}">Contacto</a></li>
             {%- endif -%}
           </ul>

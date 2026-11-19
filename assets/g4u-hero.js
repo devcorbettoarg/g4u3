@@ -17,11 +17,15 @@ if (!customElements.get('g4u-hero')) {
         this.addEventListener('mouseleave', () => this.start());
         this.addEventListener('focusin', () => this.stop());
         this.addEventListener('focusout', () => this.start());
-        document.addEventListener('visibilitychange', () => document.hidden ? this.stop() : this.start());
+        this.onVisibility = () => (document.hidden ? this.stop() : this.start());
+        document.addEventListener('visibilitychange', this.onVisibility);
         this.show(0, false);
       }
 
-      disconnectedCallback() { this.stop(); }
+      disconnectedCallback() {
+        this.stop();
+        document.removeEventListener('visibilitychange', this.onVisibility);
+      }
 
       onKeydown(event) {
         if (event.key === 'ArrowLeft') this.show(this.current - 1);

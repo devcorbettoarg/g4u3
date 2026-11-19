@@ -120,7 +120,7 @@
             <img
               class="g4u-expert-card__image"
               src="{{ fallback_media | replace: '.png', '.webp' | asset_url }}"
-              alt="{{ block.settings.name | escape }}"
+              alt="{% if block.settings.name != blank %}{{ block.settings.name | escape }}{% else %}Profesional que recomienda G4U{% endif %}"
               width="900"
               height="1593"
               loading="lazy"
@@ -134,7 +134,7 @@
               id="Deferred-Poster-Expert-{{ section.id }}-{{ block.id }}"
               class="g4u-expert-card__video-poster"
               type="button"
-              aria-label="Reproducir video de {{ block.settings.name | escape }}"
+              aria-label="{% if block.settings.name != blank %}Reproducir video de {{ block.settings.name | escape }}{% else %}Reproducir video de un profesional que recomienda G4U{% endif %}"
             >
               {{ expert_poster_markup }}
               <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
@@ -147,7 +147,7 @@
           <div class="g4u-expert-card__media">
             {{ expert_poster_markup }}
             {%- if block.type != 'image' and block.settings.video_url != blank -%}
-              <a class="g4u-expert-card__video-link" href="{{ block.settings.video_url }}" aria-label="Ver video de {{ block.settings.name | escape }}">
+              <a class="g4u-expert-card__video-link" href="{{ block.settings.video_url }}" aria-label="{% if block.settings.name != blank %}Ver video de {{ block.settings.name | escape }}{% else %}Ver video de un profesional que recomienda G4U{% endif %}">
                 <img class="g4u-expert-card__play" src="{{ 'g4u-icon-play.svg' | asset_url }}" alt="" width="64" height="64">
               </a>
             {%- endif -%}
