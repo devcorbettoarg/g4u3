@@ -148,7 +148,7 @@
         "category_breads": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/g4u-category-panes.jpg",
+            "image": "shopify://shop_images/1.webp",
             "title": "Panes",
             "button_label": "Ver productos",
             "link": "shopify://collections/panes"
@@ -157,7 +157,7 @@
         "category_packs": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/g4u-category-packs.jpg",
+            "image": "shopify://shop_images/2.webp",
             "title": "Packs",
             "button_label": "Ver productos",
             "link": "shopify://collections/packs"
@@ -166,7 +166,7 @@
         "category_snacks": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/g4u-category-snacks.jpg",
+            "image": "shopify://shop_images/3.webp",
             "title": "Snacks",
             "button_label": "Ver productos",
             "link": "shopify://collections/snacks"
