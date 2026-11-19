@@ -1,3 +1,4 @@
+<script src="{{ 'g4u-scroll-next.js' | asset_url }}" defer="defer"></script>
 <section
   class="g4u-about-hero"
   aria-labelledby="G4uAboutHero-{{ section.id }}"
@@ -91,6 +92,7 @@
 
 
   <a
+    data-g4u-hero-scroll
     class="g4u-about-hero__scroll wow animate__fadeIn"
     href="{{ section.settings.scroll_link | default: '#G4uAboutManifesto' | escape }}"
     aria-label="Ir al contenido"

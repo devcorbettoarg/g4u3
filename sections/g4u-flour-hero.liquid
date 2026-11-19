@@ -1,3 +1,4 @@
+<script src="{{ 'g4u-scroll-next.js' | asset_url }}" defer="defer"></script>
 <section class="g4u-flour-hero" aria-labelledby="G4uFlourHero-{{ section.id }}">
 
   <picture class="g4u-flour-hero__media">
@@ -54,6 +55,7 @@
   </div>
 
   <a
+    data-g4u-hero-scroll
     class="g4u-flour-hero__scroll wow animate__fadeIn"
     href="{{ section.settings.scroll_link | default: '#G4uFlourChallenge' | escape }}"
     aria-label="Ir al contenido"
