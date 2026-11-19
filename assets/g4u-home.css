@@ -758,6 +758,16 @@ letter-spacing:5% !important; }
 padding:0px 40px;}
 .g4u-comparison__note { color: var(--g4u-orange); font-size: 1.6rem; font-weight: 400; letter-spacing: .04em; line-height: 1.5; margin: 2rem auto 0; max-width: 104rem; text-align: left; }
 .g4u-comparison__actions { align-items: center; display: flex; gap: 2.4rem; justify-content: center; margin-top: 4rem; }
+/* Tablet: la tabla entra completa en el ancho, sin scroll (antes la columna G4U quedaba fuera de pantalla). */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .g4u-comparison__table { min-width: 0; }
+  .g4u-comparison__table th,
+  .g4u-comparison__table td { font-size: 1.6rem; padding: 1.4rem .8rem; }
+  .g4u-comparison__table th:first-child { width: 17rem; }
+  .g4u-comparison__table th:not(:first-child),
+  .g4u-comparison__table td { width: auto; }
+  .g4u-comparison__table thead th:last-child { padding: 0 .8rem; }
+}
 .g4u-comparison__button { border: .1rem solid var(--g4u-burgundy); color: var(--g4u-burgundy); }
 
 @media screen and (max-width: 989px) {
@@ -804,30 +814,54 @@ padding:0px 40px;}
   .g4u-nutrition-marquee__text { font-size: 7.2rem; }
   .g4u-comparison { padding: 6.4rem 2rem; }
   .g4u-comparison__header { margin-bottom: 3.2rem; }
-  .g4u-comparison__table-wrap { margin-right: -2rem; }
-  
+  /* Mobile: "Nutrientes" fija a la izquierda, "Harina G4U" fija a la derecha y
+     las columnas del medio se deslizan de a una entera (scroll-snap), con
+     exactamente dos visibles, para que ninguna quede cortada debajo de las fijas. */
+  .g4u-comparison {
+    --g4u-cmp-first: 11rem;
+    --g4u-cmp-last: 7.6rem;
+    --g4u-cmp-mid: min(calc((100vw - 2rem - var(--g4u-cmp-first) - var(--g4u-cmp-last)) / 2), 16rem);
+  }
+  .g4u-comparison__table-wrap {
+    margin-right: -2rem;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: var(--g4u-cmp-first) var(--g4u-cmp-last);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .g4u-comparison__table {
+    min-width: calc(var(--g4u-cmp-first) + 4 * var(--g4u-cmp-mid) + var(--g4u-cmp-last));
+  }
+  .g4u-comparison__table th,
+  .g4u-comparison__table td { padding: 1.4rem .6rem; }
+  .g4u-comparison__table th:not(:first-child),
+  .g4u-comparison__table td { width: var(--g4u-cmp-mid); }
+  .g4u-comparison__table thead th:not(:first-child):not(:last-child) { scroll-snap-align: start; }
+  .g4u-comparison__table thead th { font-size: 1.3rem; height: auto; }
+  .g4u-comparison__table thead th:first-child { font-size: 1.6rem; }
+  .g4u-comparison__table tbody th:first-child,
+  .g4u-comparison__table tbody td { font-size: 1.3rem; }
+  .g4u-comparison__table th:first-child,
+  .g4u-comparison__table th:last-child,
+  .g4u-comparison__table td:last-child { position: sticky; z-index: 2; }
   .g4u-comparison__table th:first-child {
-    max-width:140px;
     background: #f2ebe4;
+    box-shadow: .6rem 0 .8rem -.6rem rgba(80, 3, 34, .25);
     left: 0;
-    padding-left: 1rem;
-    position: sticky;
-    z-index: 2;
-    font-size:12px;
+    padding-left: 0;
+    padding-right: 1rem;
+    width: var(--g4u-cmp-first);
   }
-  .g4u-comparison__table tbody th, .g4u-comparison__table tbody td {
-font-size:12px;
+  /* Opaco: el naranja translúcido de desktop dejaría ver las columnas que pasan por debajo. */
+  .g4u-comparison__table th:last-child,
+  .g4u-comparison__table tbody td:last-child,
+  .g4u-comparison__table thead th:last-child {
+    background: #fb785c;
+    box-shadow: -.6rem 0 .8rem -.6rem rgba(80, 3, 34, .25);
+    padding: 1.4rem .6rem;
+    right: 0;
+    width: var(--g4u-cmp-last);
   }
-    .g4u-comparison__table thead th { 
-      font-size:16px;
-
-    }
-    .g4u-comparison__table th, .g4u-comparison__table td {
-      padding:1.6rem 1.6rem;
-    }
-    .g4u-comparison__table {
-      min-width:auto;
-    }
   .g4u-comparison__actions { align-items: stretch; flex-direction: column; }
 }
 
