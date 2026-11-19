@@ -668,51 +668,6 @@ font-family:var(--g4u-displayr);}
 }
 
 /* Cart */
-.section-g4u-breadcrumb {
-  background: #f2ebe4;
-}
-.section-g4u-breadcrumb .g4u-breadcrumb {
-  box-sizing: border-box;
-  margin: 0 auto;
-  max-width: var(--g4u-container-width);
-  padding: 2rem 4rem;
-  width: 100%;
-}
-.section-g4u-breadcrumb .g4u-breadcrumb__list {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: .8rem;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.section-g4u-breadcrumb .g4u-breadcrumb__list li {
-  align-items: center;
-  color: #26131b;
-  display: flex;
-  font-size: 1.4rem;
-  line-height: 1.4;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.section-g4u-breadcrumb .g4u-breadcrumb__list li + li::before {
-  color: #766c70;
-  content: '›';
-  font-size: 2rem;
-  line-height: 1;
-  margin-right: .8rem;
-}
-.section-g4u-breadcrumb .g4u-breadcrumb a {
-  color: inherit;
-  text-decoration: none;
-}
-@media screen and (max-width: 749px) {
-  .section-g4u-breadcrumb .g4u-breadcrumb { padding: 1.6rem 2rem; }
-}
 
 .template-cart { --g4u-ink: #26131b; }
 .template-cart cart-items, .template-cart #main-cart-footer { background: var(--g4u-cream); color: var(--g4u-ink); }
@@ -1770,7 +1725,7 @@ product-recommendations.related-products:not(:has(*)) { padding: 0 !important; }
    ítems en tinta 16px). Antes había tres copias distintas por página.
    ========================================================================== */
 .section-g4u-breadcrumb { background: #f2ebe4; }
-.g4u-breadcrumb { margin: 0 auto; max-width: var(--g4u-container-width); padding: 2rem 4rem; }
+.g4u-breadcrumb { box-sizing: border-box; margin: 0 auto; max-width: var(--g4u-container-width); padding: 2rem 4rem; width: 100%; }
 .g4u-breadcrumb__list { align-items: center; display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; list-style: none; margin: 0; padding: 0; }
 .g4u-breadcrumb__list li { align-items: center; color: var(--g4u-ink); display: flex; font-family: var(--g4u-display); font-size: 1.6rem; letter-spacing: .04em; line-height: 1.5; }
 .g4u-breadcrumb__list li + li::before { color: #766c70; content: '\203A'; font-size: 2rem; line-height: 1; margin-right: .8rem; }
