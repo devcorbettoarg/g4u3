@@ -14,6 +14,20 @@
   if shipping_threshold <= 0
     assign shipping_threshold = 9500000
   endif
+  comment
+    g4u: el carrito mide el envío gratis sobre el total YA descontado. El nivel
+    "% + envío gratis" se muestra en el subtotal de productos que hace falta para
+    que, con el descuento aplicado, el total llegue al mínimo de envío.
+  endcomment
+  assign g4u_discount_pct = section.settings.discount_1_value | default: 0
+  assign g4u_pct_left = 100 | minus: g4u_discount_pct
+  assign shipping_subtotal = shipping_threshold
+  if g4u_pct_left > 0
+    assign shipping_subtotal = shipping_threshold | times: 100 | plus: g4u_pct_left | minus: 1 | divided_by: g4u_pct_left
+  endif
+  if shipping_subtotal < discount_threshold
+    assign shipping_subtotal = shipping_threshold
+  endif
   assign has_collections = false
   assign category_count = 0
   if section.settings.breakfast_collection != blank or section.settings.sandwich_collection != blank or section.settings.snacks_collection != blank
@@ -41,6 +55,8 @@
   data-discount-basis="{{ discount_basis }}"
   data-discount-minimum-amount="{{ discount_threshold }}"
   data-free-shipping-amount="{{ shipping_threshold }}"
+  data-free-shipping-subtotal="{{ shipping_subtotal }}"
+  data-money-format="{{ shop.money_format | strip_html | escape }}"
   data-enforce-minimums="{% if discount_basis == 'quantity' %}{{ section.settings.enforce_category_minimums }}{% else %}false{% endif %}"
   data-after-add="{{ section.settings.after_add_action }}"
   data-reset-after-add="{{ section.settings.reset_after_add }}"
@@ -257,6 +273,7 @@
                                   data-price="{{ variant.price }}"
                                   data-price-formatted="{{ variant.price | money | escape }}"
                                   data-available="{{ variant.available }}"
+                                  {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny' %}data-max="{{ variant.inventory_quantity }}"{% endif %}
                                   data-title="{{ variant.title | escape }}"
                                   {% if variant_image != blank %}data-image="{{ variant_image | image_url: width: 320 }}"{% endif %}
                                   {% if variant.id == selected_variant.id %}selected{% endif %}
@@ -274,6 +291,7 @@
                               data-price="{{ selected_variant.price }}"
                               data-price-formatted="{{ selected_variant.price | money | escape }}"
                               data-available="{{ selected_variant.available }}"
+                              {% if selected_variant.inventory_management == 'shopify' and selected_variant.inventory_policy == 'deny' %}data-max="{{ selected_variant.inventory_quantity }}"{% endif %}
                               data-title="{{ selected_variant.title | escape }}"
                               {% if selected_variant.featured_image != blank %}data-image="{{ selected_variant.featured_image | image_url: width: 320 }}"{% elsif product.featured_image != blank %}data-image="{{ product.featured_image | image_url: width: 320 }}"{% endif %}
                             >
@@ -371,11 +389,11 @@
                   {%- if discount_basis == 'amount' -%}
                     <span data-level="1">
                       <strong>{{ section.settings.discount_1_value }}% off</strong>
-                      <small>{{ discount_threshold | money_without_trailing_zeros }}</small>
+                      <small>{{ discount_threshold | money }}</small>
                     </span>
                     <span data-level="2">
                       <strong>{{ section.settings.discount_1_value }}% + envío gratis</strong>
-                      <small>{{ shipping_threshold | money_without_trailing_zeros }}</small>
+                      <small>{{ shipping_subtotal | money }}</small>
                     </span>
                   {%- else -%}
                   <span data-level="1">
@@ -1730,6 +1748,13 @@
     font-weight: 400;
   }
 
+  /* g4u (Figma): labels del resumen ("Subtotal", "Total estimado") 16px en gris. */
+  #PackBuilder-{{ section.id }} .pb-summary__totals > div > span {
+    color: #766c70;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   #PackBuilder-{{ section.id }} .pb-summary__total-row,
   #PackBuilder-{{ section.id }} .pb-summary__total-row strong {
     color: #26131b;
@@ -2110,6 +2135,7 @@
     root.dataset.initialized = 'true';
 
     const state = new Map();
+    let isSubmitting = false; // g4u: evita habilitar el botón (y duplicar el pack) mientras se agrega
     const tabs = [...root.querySelectorAll('[data-tab]')];
     const panels = [...root.querySelectorAll('[data-panel]')];
     const cards = [...root.querySelectorAll('[data-product-card]')];
@@ -2139,13 +2165,14 @@
     const discountMinimum = Number(root.dataset.discountMinimumAmount) || 8000000;
     const freeShippingMinimum = Number(root.dataset.freeShippingAmount) || 9500000;
     const discountPercent = Number(root.dataset.discount1Value ?? 5);
+    const freeShippingSubtotal = Number(root.dataset.freeShippingSubtotal) || freeShippingMinimum;
     const quantityLevels = defaultLevels.map((fallback, index) => ({
       threshold: Number(root.dataset[`discount${index + 1}Qty`]) || fallback.qty,
       value: Number(root.dataset[`discount${index + 1}Value`] ?? fallback.value)
     })).sort((a, b) => a.threshold - b.threshold);
     const configuredLevels = amountBased ? [
       { threshold: discountMinimum, value: discountPercent, freeShipping: false },
-      { threshold: freeShippingMinimum, value: discountPercent, freeShipping: true }
+      { threshold: freeShippingSubtotal, value: discountPercent, freeShipping: true }
     ].sort((a, b) => a.threshold - b.threshold) : quantityLevels;
 
     const settings = {
@@ -2175,16 +2202,24 @@
       defaultVariant: {{ section.settings.default_variant_label | json }}
     };
 
-    const moneyFormatter = new Intl.NumberFormat('es-AR', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-    const currencySymbol = new Intl.NumberFormat(settings.locale, {
-      style: 'currency',
-      currency: settings.currency,
-      currencyDisplay: 'narrowSymbol'
-    }).formatToParts(0).find(part => part.type === 'currency')?.value || '$';
-    const formatMoney = cents => `${currencySymbol} ${moneyFormatter.format((Number(cents) || 0) / 100)}`;
+    // g4u: mismo formato de moneda que el resto de la tienda (shop.money_format).
+    const moneyFormat = root.dataset.moneyFormat || '${{amount_with_comma_separator}}';
+    const withDelimiters = (cents, precision, thousands, decimal) => {
+      const [integer, decimals] = (cents / 100).toFixed(precision).split('.');
+      const grouped = integer.replace(/\B(?=(\d{3})+(?!\d))/g, thousands);
+      return decimals ? grouped + decimal + decimals : grouped;
+    };
+    const formatMoney = value => {
+      const cents = Math.round(Number(value) || 0);
+      const key = (moneyFormat.match(/\{\{\s*(\w+)\s*\}\}/) || [])[1] || 'amount';
+      const formatted = {
+        amount_no_decimals: () => withDelimiters(cents, 0, ',', '.'),
+        amount_with_comma_separator: () => withDelimiters(cents, 2, '.', ','),
+        amount_no_decimals_with_comma_separator: () => withDelimiters(cents, 0, '.', ','),
+        amount_with_apostrophe_separator: () => withDelimiters(cents, 2, "'", '.'),
+      }[key]?.() ?? withDelimiters(cents, 2, ',', '.');
+      return moneyFormat.replace(/\{\{\s*\w+\s*\}\}/, formatted);
+    };
 
     const getVariantElement = card => card.querySelector('[data-variant-select]');
 
@@ -2203,6 +2238,7 @@
         price: Number(source.dataset.price || 0),
         priceFormatted: source.dataset.priceFormatted || formatMoney(source.dataset.price || 0),
         available: source.dataset.available !== 'false',
+        max: source.dataset.max !== undefined && source.dataset.max !== '' ? Math.max(Number(source.dataset.max), 0) : null,
         variantTitle: source.dataset.title || '',
         image: source.dataset.image || card.querySelector('.pb-card__image')?.currentSrc || card.querySelector('.pb-card__image')?.src || '',
         productTitle: card.dataset.productTitle || '',
@@ -2320,6 +2356,8 @@
 
       if (priceNode) priceNode.textContent = variant.priceFormatted;
       if (quantityValue) quantityValue.textContent = quantity;
+      const plusButton = card.querySelector('[data-card-plus]');
+      if (plusButton) plusButton.disabled = variant.max !== null && quantity >= variant.max;
 
       if (quantity > 0) {
         addButton.hidden = true;
@@ -2425,8 +2463,8 @@
       if (amountBased) {
         if (totals.subtotal < discountMinimum) {
           progressMessage.textContent = `Agregá ${formatMoney(discountMinimum - totals.subtotal)} para obtener ${discountPercent}% de descuento en toda la orden.`;
-        } else if (totals.subtotal < freeShippingMinimum) {
-          progressMessage.textContent = `¡Tenés ${discountPercent}% de descuento! Agregá ${formatMoney(freeShippingMinimum - totals.subtotal)} para sumar envío gratis.`;
+        } else if (totals.subtotal < freeShippingSubtotal) {
+          progressMessage.textContent = `¡Tenés ${discountPercent}% de descuento! Agregá ${formatMoney(freeShippingSubtotal - totals.subtotal)} para sumar envío gratis.`;
         } else {
           progressMessage.textContent = `¡Tenés ${discountPercent}% de descuento en toda la orden y envío gratis!`;
         }
@@ -2459,7 +2497,7 @@
 
       const missingCategories = getMissingCategories(totals);
       const canSubmit = totals.quantity > 0 && (!settings.enforceMinimums || missingCategories.length === 0);
-      submitButton.disabled = !canSubmit;
+      submitButton.disabled = !canSubmit || isSubmitting;
     };
 
     const render = () => {
@@ -2472,8 +2510,16 @@
     };
 
     const changeQuantity = (variantId, delta, variantData = null) => {
+      if (isSubmitting) return;
       const current = state.get(String(variantId));
-      const nextQuantity = Math.max((current?.quantity || 0) + delta, 0);
+      let nextQuantity = Math.max((current?.quantity || 0) + delta, 0);
+      // g4u: no superar el stock disponible de la variante.
+      const max = variantData?.max ?? current?.max ?? null;
+      let reachedMax = false;
+      if (delta > 0 && max !== null && nextQuantity > max) {
+        nextQuantity = max;
+        reachedMax = true;
+      }
 
       if (nextQuantity === 0) {
         state.delete(String(variantId));
@@ -2485,6 +2531,10 @@
       }
 
       render();
+      if (reachedMax) {
+        const title = variantData?.productTitle || current?.productTitle || '';
+        setStatus(`No hay más stock disponible${title ? ` de ${title}` : ''}.`, true);
+      }
     };
 
     const escapeHtml = value => String(value ?? '')
@@ -2617,11 +2667,13 @@
       const totals = getTotals();
       const missingCategories = getMissingCategories(totals);
 
+      if (isSubmitting) return;
       if (!totals.quantity || (settings.enforceMinimums && missingCategories.length)) {
         render();
         return;
       }
 
+      isSubmitting = true;
       submitButton.disabled = true;
       submitButton.classList.add('is-loading');
       submitLabel.textContent = text.loading;
@@ -2670,12 +2722,14 @@
         }
 
         await updateThemeCart(data);
-        setStatus(text.added);
 
         if (settings.resetAfterAdd) {
           state.clear();
+          isSubmitting = false;
           render();
         }
+        // g4u: el mensaje va después del reset, porque render() limpia el estado.
+        setStatus(text.added);
 
         if (settings.afterAdd === 'cart') {
           window.location.href = `${rootRoute}cart`;
@@ -2692,6 +2746,7 @@
         console.error('[Pack Builder]', error);
         setStatus(error.message || text.error, true);
       } finally {
+        isSubmitting = false;
         submitButton.classList.remove('is-loading');
         submitLabel.textContent = text.submit;
         const refreshedTotals = getTotals();
@@ -2770,7 +2825,8 @@
       }
     });
 
-    render();
+    // g4u: sin colecciones configuradas no hay barra de progreso ni cards que dibujar.
+    if (cards.length && progressMessage) render();
     requestAnimationFrame(updateProductArrows);
   })();
 </script>
