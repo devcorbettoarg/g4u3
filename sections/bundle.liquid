@@ -1961,7 +1961,8 @@
       overflow-y: hidden;
       padding-inline: 20px;
       scroll-padding-inline: 20px;
-      touch-action: pan-x;
+      /* g4u: pan-x solo bloqueaba el scroll vertical de la página al tocar los productos. */
+      touch-action: pan-x pan-y;
       width: calc(100% + 40px);
     }
 

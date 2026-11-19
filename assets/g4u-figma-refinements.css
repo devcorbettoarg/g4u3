@@ -1300,11 +1300,7 @@ body :is(
 .template-cart .g4u-featured-products__title { color: var(--g4u-ink); }
 .facet-filters__label, .facet-filters__label label { color: #766c70; }
 
-/* F10 · Cinta nutricional a 120px fuera de la Home (producto, colección, combo, harina). */
-@media screen and (min-width: 990px) {
-  body:not(.template-index) .g4u-nutrition-marquee { height: 20rem; }
-  body:not(.template-index) .g4u-nutrition-marquee__text { font-size: 120px; }
-}
+/* N02 · La cinta nutricional se ve igual que en la Home en todas las páginas (se quitó el ajuste F10 de 120px). */
 
 /* F11 · Breadcrumb a 16px en todas las páginas. */
 .g4u-breadcrumb__list, .g4u-breadcrumb__list li, .g4u-breadcrumb__list a { font-size: 1.6rem; }
@@ -1369,4 +1365,145 @@ body :is(
 }
 @media screen and (min-width: 990px) {
   .shopify-app-block[id*="instafeed_app_block"] { min-height: 80rem; }
+}
+
+/* ==========================================================================
+/* N02 · La cinta nutricional se ve igual que en la Home en todas las páginas (se quitó el ajuste F10 de 120px). */
+
+/* F11 · Breadcrumb a 16px en todas las páginas. */
+.g4u-breadcrumb__list, .g4u-breadcrumb__list li, .g4u-breadcrumb__list a { font-size: 1.6rem; }
+
+/* F12 · Banner "No tenés que elegir entre…": interlineado 0,8. */
+.g4u-choice-banner__copy { line-height: .8; }
+
+/* F13 · Tabla comparativa: filas a 1,5 y nota en Medium. */
+.g4u-comparison__table tbody :is(th, td) { line-height: 1.5; }
+.g4u-comparison__note { font-weight: 500; }
+
+/* F14 · "Sentite bien": texto a 16px. */
+.g4u-feel-good__text, .g4u-feel-good__text p { font-size: 1.6rem; }
+
+/* F15 · Colección: "Ver filtros" a 16px. */
+.g4u-facets__toggle-label { font-size: 1.6rem; }
+
+/* F16 · Contacto: labels del formulario a 16px. */
+.g4u-contact__form label { font-size: 1.6rem; line-height: 1.5; }
+
+/* F02 · Los textos gigantes (banner y cinta) usan 2% en Figma; los títulos de sección 1%. */
+.g4u-choice-banner__copy, .g4u-nutrition-marquee__text { letter-spacing: .02em; }
+
+/* F03 · "POR QUÉ LO USAMOS" (ciencia): interlineado 1,5. */
+.g4u-science__why { line-height: 1.5; }
+
+/* ==========================================================================
+   R02 · ÁREAS TÁCTILES EN MOBILE (sin cambiar cómo se ven)
+   Se agranda la zona que recibe el toque, no el dibujo.
+   ========================================================================== */
+@media screen and (max-width: 749px) {
+  .g4u-hero__dot { position: relative; }
+  .g4u-hero__dot::after { content: ""; inset: -1.2rem; position: absolute; }
+
+  :is(.g4u-home-hero__scroll, .g4u-flour-hero__scroll, .g4u-about-hero__scroll) {
+    justify-content: center;
+    min-width: 4.4rem;
+  }
+
+  .g4u-product-share-row a {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 4.4rem;
+    min-width: 4.4rem;
+  }
+
+  .pb .pb-card__title a {
+    display: inline-block;
+    margin-block: -1.2rem;
+    padding-block: 1.2rem;
+  }
+
+  :is(.mobile-facets__open-wrapper, .mobile-facets__open) { min-height: 4.4rem; }
+}
+
+/* P05 · Feed de Instagram (app Instafeed): reservar alto mientras carga para que
+   no empuje el contenido de abajo. Valores medidos con la grilla actual, apenas
+   por debajo del alto real para no dejar hueco si el feed queda más bajo. */
+@media screen and (max-width: 749px) {
+  .shopify-app-block[id*="instafeed_app_block"] { min-height: 44rem; }
+}
+@media screen and (min-width: 990px) {
+  .shopify-app-block[id*="instafeed_app_block"] { min-height: 80rem; }
+}
+
+/* ==========================================================================
+   N01 · FAQ unificado: los acordeones de Producto y Nuestra harina copian el
+   diseño de la página de FAQs (línea gris, pregunta Regular 18px, chevron,
+   abierta en naranja y negrita, respuesta gris 18px alineada a la izquierda).
+   ========================================================================== */
+body .g4u-flour-faq .g4u-flour-faq__item { border-bottom: 0; border-top: .1rem solid #766c70; }
+body .g4u-flour-faq .g4u-flour-faq__item > summary {
+  align-items: center;
+  color: var(--g4u-ink);
+  cursor: pointer;
+  display: flex;
+  font-family: "Europa Grotesk SH R", var(--font-body-family);
+  font-size: 1.8rem;
+  font-weight: 400;
+  gap: 1.2rem;
+  justify-content: space-between;
+  letter-spacing: .04em;
+  line-height: 1.5;
+  list-style: none;
+  padding: 1.6rem 0;
+  text-align: left;
+}
+body .g4u-flour-faq .g4u-flour-faq__item > summary:hover { color: var(--g4u-orange); }
+body .g4u-flour-faq .g4u-flour-faq__item[open] > summary { color: var(--g4u-orange); font-weight: 700; }
+body .g4u-flour-faq .g4u-flour-faq__item[open] .g4u-faq-page__chevron { transform: none; }
+body .g4u-flour-faq .g4u-flour-faq__item .rte {
+  color: #766c70;
+  font-family: "Europa Grotesk SH", var(--font-body-family);
+  font-size: 1.8rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  padding: .8rem 4rem 2.4rem 0;
+  text-align: left;
+}
+body .g4u-flour-faq .g4u-flour-faq__item .rte > *:first-child { margin-top: 0; }
+body .g4u-flour-faq .g4u-flour-faq__item .rte > *:last-child { margin-bottom: 0; }
+@media screen and (max-width: 749px) {
+  body .g4u-flour-faq .g4u-flour-faq__item > summary { font-size: 1.6rem; }
+  body .g4u-flour-faq .g4u-flour-faq__item .rte { font-size: 1.6rem; padding: .4rem 0 2rem; }
+}
+
+/* N03 · Header mobile simétrico: Dawn corre el menú hamburguesa -12px a la
+   izquierda, así que los íconos quedaban 14px / 26px de cada borde y el logo
+   se veía corrido. Sin ese margen quedan a la misma distancia (26px). */
+@media screen and (max-width: 989px) {
+  .section-header header-drawer { margin-left: 0; }
+}
+
+/* ==========================================================================
+   N06 · Hover suave en listados de productos
+   - La imagen secundaria entra con fundido, sin zoom.
+   - El botón de agregar aparece subiendo con fundido.
+   ========================================================================== */
+@media screen and (min-width: 990px) {
+  .product-card-wrapper .media.media--hover-effect > img {
+    transform: none !important;
+    transition: opacity .5s ease !important;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .product-card-wrapper .g4u-card__purchase {
+    transform: translateY(1.2rem);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .product-card-wrapper .card:is(:hover, :focus-within) .g4u-card__purchase {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-card-wrapper .g4u-card__purchase { transform: none !important; }
+  .product-card-wrapper .media.media--hover-effect > img { transition: none !important; }
 }

@@ -254,14 +254,15 @@ body .announcement-bar-section {
 @media (prefers-reduced-motion: reduce) {
   .template-product .g4u-sticky-cart__button { transition: none; }
 }
-body.template-product:has(g4u-sticky-cart:not([hidden])) { padding-bottom: calc(10rem + env(safe-area-inset-bottom)); }
+/* g4u: el espacio para la barra flotante va dentro del footer (burdeos), no en el body (crema), para no dejar una franja debajo del footer. */
+body.template-product:has(g4u-sticky-cart:not([hidden])) .g4u-footer { padding-bottom: calc(8rem + 10rem + env(safe-area-inset-bottom)); }
 @media screen and (max-width: 749px) {
   .template-product .g4u-sticky-cart { border-radius: 2.4rem; bottom: calc(1.2rem + env(safe-area-inset-bottom)); flex-wrap: wrap; gap: 1.2rem; padding: 1.2rem; width: calc(100% - 2.4rem); }
   .g4u-sticky-cart__product { flex-basis: 100%; gap: 1.2rem; }
   .g4u-sticky-cart__actions { width: 100%; }
   .g4u-sticky-cart__title { font-size: 1.6rem; }
   .template-product .g4u-sticky-cart__button { flex: 1; padding-inline: 1.2rem; width: auto; }
-  body.template-product:has(g4u-sticky-cart:not([hidden])) { padding-bottom: calc(16rem + env(safe-area-inset-bottom)); }
+  body.template-product:has(g4u-sticky-cart:not([hidden])) .g4u-footer { padding-bottom: calc(4rem + 16rem + env(safe-area-inset-bottom)); }
 }
 .template-product product-info { background: var(--g4u-cream); color: var(--g4u-ink); }
 .template-product .page-width { max-width: var(--g4u-container-width); padding-left: 4rem; padding-right: 4rem; }
