@@ -763,16 +763,10 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
 }
 
 /* G4U · Cambio transparente ↔ crema del header (al llegar arriba o al hacerse sticky):
-   fondo, colores, alto y logo cambian con una transición suave en vez de saltar. */
+   fondo, colores e íconos cambian con una transición suave. El tamaño y la posición
+   no se animan: en mobile quedan iguales en todos los estados. */
 .section-header .header-wrapper {
   transition: background-color .45s ease, box-shadow .45s ease, color .45s ease;
-}
-.section-header .header {
-  transition: height .45s ease, padding .45s ease;
-}
-.section-header .g4u-logo,
-.section-header .g4u-logo--forced {
-  transition: height .45s ease, width .45s ease, flex-basis .45s ease, transform .45s ease;
 }
 .section-header .g4u-logo__image {
   transition: filter .45s ease;
@@ -783,6 +777,39 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   transition: color .45s ease, background-color .45s ease, box-shadow .45s ease, transform .2s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-  .section-header .header-wrapper, .section-header .header, .section-header .g4u-logo,
-  .section-header .g4u-logo--forced, .section-header .g4u-logo__image, .section-header .header__icon { transition: none; }
+  .section-header .header-wrapper, .section-header .g4u-logo__image, .section-header .header__icon { transition: none; }
+}
+
+/* G4U · Header mobile igual en todas las páginas y estados (normal / sticky / sobre el hero):
+   64px de alto, sin padding vertical, todo centrado en la misma línea e íconos de 36px.
+   Antes el padding de 14px + el link del logo más alto corrían los elementos hacia abajo
+   y distinto según la página (y saltaban al hacerse sticky). */
+@media screen and (max-width: 749px) {
+  .section-header .header,
+  .section-header.shopify-section-header-sticky .header,
+  body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina) .section-header:not(.shopify-section-header-sticky) .header {
+    align-items: center;
+    grid-template-rows: 6.4rem;
+    height: 6.4rem;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  .section-header .header .header__heading-link.g4u-brand-link,
+  .section-header.shopify-section-header-sticky .header .header__heading-link.g4u-brand-link {
+    height: 6.4rem;
+    min-height: 0;
+  }
+  .section-header .header__icon,
+  body:is(.template-index, .template-suffix-nosotros, .template-suffix-harina) .section-header:not(.shopify-section-header-sticky) .header__icon {
+    height: 3.6rem;
+    width: 3.6rem;
+  }
+  /* Mismo logo (48px de alto) en todas las páginas y estados: antes en colección, producto,
+     carrito, etc. pasaba de 40px a 48px al hacerse sticky. */
+  body .section-header .header .g4u-logo,
+  body .section-header .header .g4u-logo--forced {
+    flex-basis: 11.6rem;
+    height: 4.8rem;
+    width: 11.6rem;
+  }
 }

@@ -16,7 +16,8 @@
       aria-label="{{ 'sections.header.menu' | t }}"
     >
       <span>
-        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        {%- comment -%} g4u: ícono propio alineado al píxel (el de Dawn se veía borroso a 24px). {%- endcomment -%}
+        {{- 'g4u-icon-menu.svg' | inline_asset_content -}}
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </summary>
