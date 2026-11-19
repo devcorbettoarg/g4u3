@@ -617,7 +617,8 @@
         "description": "<p>Todo lo que querés saber antes de elegir tu producto G4U.</p>",
         "contact_title": "¿Todavía tenés preguntas?",
         "contact_label": "Escribinos por WhatsApp",
-        "contact_link": "https://wa.me/5491156188706"
+        "contact_link": "https://wa.me/5491156188706",
+        "background": "gray"
       }
     },
     "g4u_services": {

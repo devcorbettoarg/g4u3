@@ -1,4 +1,4 @@
-<section class="g4u-flour-faq" aria-labelledby="G4uFlourFaqTitle-{{ section.id }}">
+<section class="g4u-flour-faq g4u-flour-faq--{{ section.settings.background | default: 'cream' }}" aria-labelledby="G4uFlourFaqTitle-{{ section.id }}">
 
   <header class="g4u-flour-faq__header">
 
@@ -93,6 +93,22 @@
   "class": "section-g4u-flour-faq",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Fondo",
+      "options": [
+        {
+          "value": "cream",
+          "label": "Crema"
+        },
+        {
+          "value": "gray",
+          "label": "Gris claro"
+        }
+      ],
+      "default": "cream"
+    },
     {
       "type": "text",
       "id": "title",

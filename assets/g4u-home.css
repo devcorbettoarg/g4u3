@@ -508,7 +508,7 @@
   .g4u-flour-benefits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 5.6rem; }
 }
 @media screen and (max-width: 749px) {
-  body.template-suffix-nosotros .g4u-featured-products .card__media img { object-fit: cover; }
+  .g4u-featured-products .card__media img { object-fit: cover; }
   .g4u-flour-hero { max-height: 88vh; height:88vh !important; min-height:88vh !important;padding: 10rem 2rem 6rem; }
   .g4u-flour-hero::after { background: linear-gradient(0deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .08) 75%); }
   .g4u-flour-hero__title { font-size: 4.1rem; }
@@ -1253,38 +1253,47 @@ margin-top:2px;}
   }
 
   body.template-suffix-nosotros .g4u-about-story,
-  body.template-suffix-nosotros .g4u-about-values,
-  body.template-suffix-nosotros .g4u-featured-products,
-  body.template-suffix-nosotros .g4u-experts,
-  body.template-suffix-nosotros .g4u-instagram,
-  body.template-suffix-nosotros .g4u-service-benefits,
-  body.template-suffix-nosotros .g4u-newsletter {
+  body.template-suffix-nosotros .g4u-about-values {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+
+
+  .g4u-featured-products,
+  .g4u-experts,
+  .g4u-instagram,
+  .g4u-service-benefits,
+  .g4u-newsletter {
     padding-left: 2.4rem;
     padding-right: 2.4rem;
   }
 
   body.template-suffix-nosotros .g4u-about-story__inner,
-  body.template-suffix-nosotros .g4u-about-values__grid,
-  body.template-suffix-nosotros .g4u-featured-products__grid {
+  body.template-suffix-nosotros .g4u-about-values__grid {
+    max-width: var(--g4u-container-width);
+  }
+
+
+  .g4u-featured-products__grid {
     max-width: var(--g4u-container-width);
   }
 
   body.template-suffix-nosotros .g4u-about-story__title { font-size: 3.6rem; }
   body.template-suffix-nosotros .g4u-about-values__title { font-size: 3.6rem; }
-  body.template-suffix-nosotros .g4u-featured-products__title { font-size: clamp(3.8rem, 3.1vw, 4.4rem); }
-  body.template-suffix-nosotros .g4u-experts__title { font-size: 4.4rem; }
-  body.template-suffix-nosotros .g4u-instagram__title { font-size: 4.4rem; }
-  body.template-suffix-nosotros .g4u-newsletter__title { font-size: 3.6rem; }
-  body.template-suffix-nosotros .g4u-feel-good__title {
+  .g4u-featured-products__title { font-size: clamp(3.8rem, 3.1vw, 4.4rem); }
+  .g4u-experts__title { font-size: 4.4rem; }
+  .g4u-instagram__title { font-size: 4.4rem; }
+  .g4u-newsletter__title { font-size: 3.6rem; }
+  .g4u-feel-good__title {
     font-size: clamp(5.4rem, 5.8vw, 8rem);
     max-width: 82rem;
   }
 
-  body.template-suffix-nosotros .g4u-feel-good__accent { display: inline; }
-  body.template-suffix-nosotros .g4u-service-benefits__grid { gap: 2.4rem; }
-  body.template-suffix-nosotros .g4u-service-benefits__text { font-size: 1.8rem; }
-  body.template-suffix-nosotros .g4u-footer__column h2,
-  body.template-suffix-nosotros .g4u-footer__column a { font-family: var(--g4u-display); }
+  .g4u-feel-good__accent { display: inline; }
+  .g4u-service-benefits__grid { gap: 2.4rem; }
+  .g4u-service-benefits__text { font-size: 1.8rem; }
+  .g4u-footer__column h2,
+  .g4u-footer__column a { font-family: var(--g4u-display); }
 }
 
 @media screen and (max-width: 749px) {
@@ -1292,6 +1301,8 @@ margin-top:2px;}
     display:none;
   }
   body.template-suffix-nosotros .g4u-about-hero { min-height: 88vh; max-height: 88vh !important;height:88vh !important; }
-  body.template-suffix-nosotros .g4u-feel-good__accent { display: inline; }
-  body.template-suffix-nosotros .g4u-feel-good__title { max-width: 34rem; }
+  .g4u-feel-good__accent { display: inline; }
+  .g4u-feel-good__title { max-width: 34rem; }
 }
+/* FAQ: el fondo se elige en la sección (Crema / Gris claro), no por página. */
+.g4u-flour-faq--gray { background: #f2ebe4; }
