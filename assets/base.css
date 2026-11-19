@@ -3704,7 +3704,9 @@ details-disclosure > details {
   }
 }
 
-
+.g4u-expert-card__video{
+  object-fit: cover;
+}
 
 
 
