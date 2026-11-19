@@ -96,6 +96,13 @@
             "answer": "<p>Los medios de pago disponibles se informan al momento de finalizar tu compra.</p>"
           }
         },
+        "faq_item_8p6L3V": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Entregan factura “A”?",
+            "answer": "<p>Nuestra tienda solo opera con factura del tipo “B” para Consumidor final.</p>"
+          }
+        },
         "purchase_change": {
           "type": "faq_item",
           "settings": {
@@ -124,6 +131,7 @@
         "purchase_delivery",
         "purchase_tracking",
         "purchase_payment",
+        "faq_item_8p6L3V",
         "purchase_change",
         "purchase_storage"
       ],
