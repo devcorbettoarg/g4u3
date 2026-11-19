@@ -350,7 +350,7 @@
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
         this.header.classList.add('scrolled-past-header');
-        /* g4u: si está oculto, reaparece recién pasada la mitad de la pantalla; si ya se ve, se queda. */
+        /* g4u: si está oculto, reaparece recién pasados los 500px; si ya se ve, se queda. */
         if (!this.preventReveal) {
           const hidden = this.header.classList.contains('shopify-section-header-hidden');
           if (!hidden || scrollTop > this.revealOffset()) requestAnimationFrame(this.reveal.bind(this));
@@ -380,16 +380,16 @@
 
     /* g4u: umbral de scroll a partir del cual se muestra el header sticky. */
     revealOffset() {
-      return Math.max(this.headerBounds.bottom || 0, window.innerHeight * 0.5);
+      return Math.max(this.headerBounds.bottom || 0, 500);
     }
 
     reveal() {
       if (this.headerIsAlwaysSticky) return;
-      /* g4u: si estaba oculto, entra desde arriba con fadeInDown (ver .g4u-header-enter en g4u-shell.css). */
+      /* g4u: si estaba oculto, entra con un fadeInUp sutil (ver .g4u-header-enter en g4u-shell.css). */
       if (this.header.classList.contains('shopify-section-header-hidden')) {
         this.header.classList.add('g4u-header-enter');
         clearTimeout(this.enterTimer);
-        this.enterTimer = setTimeout(() => this.header.classList.remove('g4u-header-enter'), 600);
+        this.enterTimer = setTimeout(() => this.header.classList.remove('g4u-header-enter'), 700);
       }
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
@@ -397,6 +397,12 @@
 
     reset() {
       if (this.headerIsAlwaysSticky) return;
+      /* g4u: si llega arriba con el header oculto, aparece con un fundido en vez de saltar. */
+      if (this.header.classList.contains('shopify-section-header-hidden')) {
+        this.header.classList.add('g4u-header-enter');
+        clearTimeout(this.enterTimer);
+        this.enterTimer = setTimeout(() => this.header.classList.remove('g4u-header-enter'), 700);
+      }
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
     }
 
