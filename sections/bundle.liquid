@@ -606,6 +606,10 @@
     margin: 0 -40px 40px;
     min-height: 64px;
     padding: 20px 40px;
+    /* g4u: la franja gris ocupa todo el ancho de la pantalla, como el breadcrumb del resto
+       de las páginas (sin generar scroll horizontal). */
+    box-shadow: 0 0 0 100vmax #f2ebe4;
+    clip-path: inset(0 -100vmax);
   }
 
   #PackBuilder-{{ section.id }} .pb__breadcrumb a,
