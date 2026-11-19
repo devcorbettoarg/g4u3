@@ -762,22 +762,26 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   color: var(--g4u-burgundy);
 }
 
-/* G4U · Cambio transparente ↔ crema del header (al llegar arriba o al hacerse sticky):
-   fondo, colores e íconos cambian con una transición suave. El tamaño y la posición
-   no se animan: en mobile quedan iguales en todos los estados. */
-.section-header .header-wrapper {
+/* G4U · Cambio transparente ↔ crema del header al llegar arriba o al hacerse sticky:
+   solo el fondo, el color y el logo, con una transición suave. Al abrir el mega menú, la
+   búsqueda o el menú mobile el cambio es instantáneo (sin fundido dentro del header), y el
+   hover de links e íconos mantiene su transición corta original. */
+.section-header:not(.menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open])) .header-wrapper {
   transition: background-color .45s ease, box-shadow .45s ease, color .45s ease;
 }
-.section-header .g4u-logo__image {
+.section-header:not(.menu-open):not(:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open])) .g4u-logo__image {
   transition: filter .45s ease;
 }
-.section-header .header__icon,
-.section-header .cart-count-bubble,
-.section-header .header__menu-item {
-  transition: color .45s ease, background-color .45s ease, box-shadow .45s ease, transform .2s ease;
+.section-header.menu-open .header-wrapper,
+.section-header:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]) .header-wrapper,
+.section-header.menu-open .g4u-logo__image,
+.section-header:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]) .g4u-logo__image,
+.section-header.menu-open :is(.header__icon, .cart-count-bubble, .header__menu-item),
+.section-header:has(header-menu details[open], .header__search details[open], .menu-drawer-container[open]) :is(.header__icon, .cart-count-bubble, .header__menu-item) {
+  transition: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .section-header .header-wrapper, .section-header .g4u-logo__image, .section-header .header__icon { transition: none; }
+  .section-header .header-wrapper, .section-header .g4u-logo__image { transition: none !important; }
 }
 
 /* G4U · Header mobile igual en todas las páginas y estados (normal / sticky / sobre el hero):
