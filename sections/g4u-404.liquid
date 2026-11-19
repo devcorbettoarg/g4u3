@@ -1,0 +1,65 @@
+{{ 'g4u-404.css' | asset_url | stylesheet_tag }}
+
+<section class="g4u-404" aria-labelledby="G4u404-{{ section.id }}">
+  <div class="g4u-404__inner">
+    <h1 class="g4u-404__title g4u-display" id="G4u404-{{ section.id }}">
+      {{ section.settings.title | escape }}
+    </h1>
+
+    <p class="g4u-404__code g4u-display" aria-hidden="true">404</p>
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="g4u-404__subtitle">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="g4u-404__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a class="g4u-pill g4u-404__button" href="{{ section.settings.button_link | default: routes.root_url }}">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "G4U · Página 404",
+  "tag": "section",
+  "class": "section-g4u-404",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Página no encontrada"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Lo sentimos, la página que buscás no existe."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Es posible que la página a la que intentas acceder se haya movido, haya cambiado de nombre o ya no exista. Puedes volver a la página de inicio o ponerte en contacto con nuestro equipo.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón",
+      "default": "Volver al inicio"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "info": "Si queda vacío, lleva a la página de inicio."
+    }
+  ]
+}
+{% endschema %}

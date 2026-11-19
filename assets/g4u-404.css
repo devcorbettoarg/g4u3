@@ -1,0 +1,56 @@
+/* G4U · Página 404 — Figma "Website" node 881:8532 (1440px) */
+.g4u-404 {
+  background: var(--g4u-burgundy);
+  color: var(--g4u-cream);
+  padding: 14rem 2rem 18rem;
+  text-align: center;
+}
+.g4u-404__inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 76.8rem;
+}
+.g4u-404__title {
+  color: var(--g4u-orange);
+  font-size: clamp(3.2rem, 2.8vw, 4rem);
+  margin: 0;
+}
+.g4u-404__code {
+  color: #ffa5af;
+  font-size: clamp(12rem, 13.9vw, 20rem);
+  letter-spacing: .03em;
+  line-height: .9;
+  margin: 2.4rem 0 0;
+}
+.g4u-404__subtitle {
+  color: var(--g4u-orange);
+  font-family: var(--g4u-displayr);
+  font-size: clamp(1.8rem, 1.7vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.3;
+  margin: 3.2rem 0 0;
+}
+.g4u-404__text {
+  font-family: var(--g4u-display);
+  font-size: 1.6rem;
+  letter-spacing: .04em;
+  line-height: 1.5;
+  margin-top: 2.4rem;
+  max-width: 48rem;
+}
+.g4u-404__text p { margin: 0; }
+.g4u-404__button {
+  background: var(--g4u-cream);
+  color: var(--g4u-burgundy);
+  margin-top: 3.2rem;
+}
+.g4u-404__button:hover { background: #fff; color: var(--g4u-burgundy); }
+
+@media screen and (max-width: 749px) {
+  .g4u-404 { padding: 8rem 2rem 10rem; }
+  .g4u-404__code { margin-top: 1.6rem; }
+  .g4u-404__subtitle { margin-top: 2.4rem; }
+}
