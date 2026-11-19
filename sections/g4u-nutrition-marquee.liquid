@@ -11,7 +11,7 @@
               assign fallback_icon = 'g4u-marquee-fiber.svg'
             endif
           -%}
-          <div class="g4u-nutrition-marquee__item wow animate__fadeInUp" data-wow-delay="{{ forloop.index0 | times: 0.15 }}s"{% if duplicate == 1 %} {{ block.shopify_attributes }}{% endif %}>
+          <div class="g4u-nutrition-marquee__item wow animate__fadeIn" data-wow-duration="1s" data-wow-delay="{{ forloop.index0 | times: 0.15 }}s"{% if duplicate == 1 %} {{ block.shopify_attributes }}{% endif %}>
             {%- if block.settings.icon != blank -%}
               {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-nutrition-marquee__icon', loading: 'lazy' }}
             {%- else -%}
