@@ -91,7 +91,6 @@
       <h2
         class="g4u-about-story__title g4u-display wow animate__fadeInUp"
         id="G4uAboutStory-{{ section.id }}"
-        data-wow-duration="0.8s"
         data-wow-delay="0.06s"
       >
         {{ section.settings.title | replace: "|", "<br>" }}
@@ -100,7 +99,6 @@
       {%- if section.settings.lead != blank -%}
         <div
           class="g4u-about-story__lead rte wow animate__fadeInUp"
-          data-wow-duration="0.75s"
           data-wow-delay="0.14s"
         >
           {{ section.settings.lead }}
@@ -140,7 +138,6 @@
 
             <li
               class="g4u-about-story__list-item wow animate__fadeInUp"
-              data-wow-duration="0.65s"
               data-wow-delay="{{ item_delay }}"
               {{ block.shopify_attributes }}
             >

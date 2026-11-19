@@ -77,7 +77,6 @@
     <h2
       class="g4u-feel-good__title g4u-display wow animate__fadeInUp"
       id="G4uFeelGood-{{ section.id }}"
-      data-wow-duration="0.8s"
       data-wow-delay="0.10s"
     >
       {{ section.settings.heading | escape }}
@@ -101,7 +100,6 @@
       <a
         class="g4u-pill g4u-feel-good__button wow animate__fadeInUp"
         href="{{ section.settings.button_link | default: routes.root_url }}"
-        data-wow-duration="0.7s"
         data-wow-delay="0.32s"
       >
         {{ section.settings.button_label | escape }}

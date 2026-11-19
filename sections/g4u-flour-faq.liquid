@@ -5,7 +5,6 @@
     <h2
       class="g4u-display wow animate__fadeInUp"
       id="G4uFlourFaqTitle-{{ section.id }}"
-      data-wow-duration="0.8s"
     >
       {{ section.settings.title | escape }}
     </h2>
@@ -13,7 +12,6 @@
     {%- if section.settings.description != blank -%}
       <div
         class="rte wow animate__fadeInUp"
-        data-wow-duration="0.75s"
         data-wow-delay="0.10s"
       >
         {{ section.settings.description }}
@@ -47,7 +45,6 @@
 
       <details
         class="g4u-flour-faq__item wow animate__fadeInUp"
-        data-wow-duration="0.7s"
         data-wow-delay="{{ faq_delay }}"
         {{ block.shopify_attributes }}
       >
@@ -67,7 +64,6 @@
 
   <div
     class="g4u-flour-faq__contact wow animate__fadeInUp"
-    data-wow-duration="0.75s"
     data-wow-delay="0.12s"
   >
     <p>

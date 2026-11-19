@@ -1317,11 +1317,10 @@ margin-top:2px;}
 }
 
 /* G4U · Hero: el texto del slide activo entra de a uno (se repite en cada cambio de slide).
-   La foto queda quieta. Subida corta (3rem) para que el título grande no salte. */
+   La foto queda quieta. Mismo fadeInUp default (1s) que el resto. */
 .g4u-home-hero__slide.is-active .g4u-home-hero__content > * {
-  animation: g4uHeroTextIn .8s ease both;
+  animation: fadeInUp 1s both;
 }
-@keyframes g4uHeroTextIn { from { opacity: 0; transform: translate3d(0, 3rem, 0); } to { opacity: 1; transform: none; } }
 .g4u-home-hero__slide.is-active .g4u-home-hero__content > :nth-child(2) { animation-delay: .15s; }
 .g4u-home-hero__slide.is-active .g4u-home-hero__content > :nth-child(3) { animation-delay: .3s; }
 @media (prefers-reduced-motion: reduce) {
