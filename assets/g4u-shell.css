@@ -762,16 +762,6 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   color: var(--g4u-burgundy);
 }
 
-/* G4U · Header sticky: al reaparecer baja desde arriba con fadeInDown (clase puesta por sticky-header). */
-.section-header.g4u-header-enter { transition: none; }
-.section-header.g4u-header-enter .header-wrapper {
-  animation: g4uHeaderFadeInDown .5s cubic-bezier(.22, .61, .36, 1) both;
-}
-@keyframes g4uHeaderFadeInDown {
-  from { opacity: 0; transform: translate3d(0, -100%, 0); }
-  to { opacity: 1; transform: none; }
-}
-
 /* G4U · Cambio transparente ↔ crema del header (al llegar arriba o al hacerse sticky):
    fondo, colores, alto y logo cambian con una transición suave en vez de saltar. */
 .section-header .header-wrapper {
@@ -793,7 +783,6 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   transition: color .45s ease, background-color .45s ease, box-shadow .45s ease, transform .2s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-  .section-header.g4u-header-enter .header-wrapper { animation: none; }
   .section-header .header-wrapper, .section-header .header, .section-header .g4u-logo,
   .section-header .g4u-logo--forced, .section-header .g4u-logo__image, .section-header .header__icon { transition: none; }
 }
