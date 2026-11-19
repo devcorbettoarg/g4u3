@@ -385,7 +385,7 @@
 
     reveal() {
       if (this.headerIsAlwaysSticky) return;
-      /* g4u: si estaba oculto, entra con un fadeInUp sutil (ver .g4u-header-enter en g4u-shell.css). */
+      /* g4u: si estaba oculto, baja desde arriba con fadeInDown (ver .g4u-header-enter en g4u-shell.css). */
       if (this.header.classList.contains('shopify-section-header-hidden')) {
         this.header.classList.add('g4u-header-enter');
         clearTimeout(this.enterTimer);
