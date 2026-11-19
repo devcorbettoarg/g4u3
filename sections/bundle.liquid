@@ -126,17 +126,28 @@
                     data-minimum="{{ category_minimum }}"
                   >
                     <span class="pb__tab-icon" aria-hidden="true">
-                      {%- case category_index -%}
-                        {%- when 1 -%}
-                          <img src="{{ 'g4u-bundle-icon-bread.svg' | asset_url }}" alt="" width="16" height="15">
-                        {%- when 2 -%}
-                          <img src="{{ 'g4u-bundle-icon-snacks.svg' | asset_url }}" alt="" width="16" height="16">
-                        {%- when 3 -%}
-                          <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M7 5h10l1 14H6L7 5Z" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                          </svg>
-                      {%- endcase -%}
+                      {%- liquid
+                        case category_index
+                          when 1
+                            assign category_icon = section.settings.breakfast_icon
+                          when 2
+                            assign category_icon = section.settings.sandwich_icon
+                          when 3
+                            assign category_icon = section.settings.snacks_icon
+                        endcase
+                      -%}
+                      {%- if category_icon != blank -%}
+                        {{ category_icon | image_url: width: 64 | image_tag: alt: '', width: 16, height: 16, loading: 'lazy' }}
+                      {%- else -%}
+                        {%- case category_index -%}
+                          {%- when 1 -%}
+                            <img src="{{ 'g4u-bundle-icon-bread.svg' | asset_url }}" alt="" width="16" height="15">
+                          {%- when 2 -%}
+                            <img src="{{ 'g4u-bundle-icon-snacks.svg' | asset_url }}" alt="" width="16" height="16">
+                          {%- when 3 -%}
+                            <img src="{{ 'g4u-bundle-icon-antojos.svg' | asset_url }}" alt="" width="16" height="16">
+                        {%- endcase -%}
+                      {%- endif -%}
                     </span>
                     <span>{{ category_title }}</span>
                   </button>
@@ -2821,6 +2832,12 @@
       "label": "Colección"
     },
     {
+      "type": "image_picker",
+      "id": "breakfast_icon",
+      "label": "Ícono",
+      "info": "Opcional. SVG o PNG cuadrado (16 × 16 px o más). Si queda vacío se usa el ícono predeterminado."
+    },
+    {
       "type": "range",
       "id": "breakfast_minimum",
       "label": "Cantidad mínima",
@@ -2845,6 +2862,12 @@
       "label": "Colección"
     },
     {
+      "type": "image_picker",
+      "id": "sandwich_icon",
+      "label": "Ícono",
+      "info": "Opcional. SVG o PNG cuadrado (16 × 16 px o más). Si queda vacío se usa el ícono predeterminado."
+    },
+    {
       "type": "range",
       "id": "sandwich_minimum",
       "label": "Cantidad mínima",
@@ -2867,6 +2890,12 @@
       "type": "collection",
       "id": "snacks_collection",
       "label": "Colección"
+    },
+    {
+      "type": "image_picker",
+      "id": "snacks_icon",
+      "label": "Ícono",
+      "info": "Opcional. SVG o PNG cuadrado (16 × 16 px o más). Si queda vacío se usa el ícono predeterminado."
     },
     {
       "type": "range",

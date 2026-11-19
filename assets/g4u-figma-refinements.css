@@ -521,7 +521,9 @@ body.template-suffix-harina {
   .g4u-featured-products
   .card__media img {
     mix-blend-mode: multiply;
-    object-fit: contain;
+    /* cover como en Home/colección: con contain las fotos (1128×1480) no llenaban
+       la caja 3:4 y quedaba una franja arriba y abajo. */
+    object-fit: cover;
   }
 
   body.template-suffix-nosotros
