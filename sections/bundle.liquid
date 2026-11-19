@@ -6,6 +6,15 @@
 
 {%- liquid
   assign discount_basis = section.settings.discount_basis | default: 'amount'
+  comment
+    g4u: "Solo envío gratis" oculta el descuento por monto (temporal) y deja un único
+    objetivo: el envío gratis del tema. Por dentro funciona como el modo por monto.
+  endcomment
+  assign shipping_only = false
+  if discount_basis == 'shipping'
+    assign shipping_only = true
+    assign discount_basis = 'amount'
+  endif
   assign discount_threshold = section.settings.discount_minimum_amount | default: 80000 | times: 100
   if discount_threshold <= 0
     assign discount_threshold = 8000000
@@ -25,7 +34,7 @@
   if g4u_pct_left > 0
     assign shipping_subtotal = shipping_threshold | times: 100 | plus: g4u_pct_left | minus: 1 | divided_by: g4u_pct_left
   endif
-  if shipping_subtotal < discount_threshold
+  if shipping_subtotal < discount_threshold or shipping_only
     assign shipping_subtotal = shipping_threshold
   endif
   assign has_collections = false
@@ -53,6 +62,7 @@
   data-pack-name="{{ section.settings.pack_name | escape }}"
   data-pack-key="{{ section.settings.pack_key | handleize }}"
   data-discount-basis="{{ discount_basis }}"
+  data-shipping-only="{{ shipping_only }}"
   data-discount-minimum-amount="{{ discount_threshold }}"
   data-free-shipping-amount="{{ shipping_threshold }}"
   data-free-shipping-subtotal="{{ shipping_subtotal }}"
@@ -386,7 +396,12 @@
                   <span class="pb-progress__dot" data-progress-dot></span>
                 </div>
                 <div class="pb-progress__levels">
-                  {%- if discount_basis == 'amount' -%}
+                  {%- if shipping_only -%}
+                    <span data-level="1">
+                      <strong>Envío gratis</strong>
+                      <small>{{ shipping_threshold | money }}</small>
+                    </span>
+                  {%- elsif discount_basis == 'amount' -%}
                     <span data-level="1">
                       <strong>{{ section.settings.discount_1_value }}% off</strong>
                       <small>{{ discount_threshold | money }}</small>
@@ -482,7 +497,7 @@
                 <span class="pb-summary__spinner" aria-hidden="true"></span>
               </button>
 
-              <p class="pb-summary__note">{{ section.settings.discount_note }}</p>
+              {%- unless shipping_only -%}<p class="pb-summary__note">{{ section.settings.discount_note }}</p>{%- endunless -%}
               <div class="pb-summary__status" data-status role="status" aria-live="polite"></div>
             </div>
           </div>
@@ -1591,6 +1606,18 @@
     font-size: .85em;
   }
 
+  /* g4u: solo envío gratis = un único objetivo alineado al final de la barra. */
+  #PackBuilder-{{ section.id }}[data-shipping-only="true"] .pb-progress__levels span {
+    text-align: right;
+    transform: translateX(-100%);
+  }
+
+  #PackBuilder-{{ section.id }}[data-shipping-only="true"] .pb-progress__levels span::before {
+    left: auto;
+    right: -8px;
+    transform: none;
+  }
+
   #PackBuilder-{{ section.id }} .pb-summary__groups {
     display: grid;
     gap: 12px;
@@ -2162,6 +2189,7 @@
     ];
 
     const amountBased = root.dataset.discountBasis === 'amount';
+    const shippingOnly = root.dataset.shippingOnly === 'true';
     const discountMinimum = Number(root.dataset.discountMinimumAmount) || 8000000;
     const freeShippingMinimum = Number(root.dataset.freeShippingAmount) || 9500000;
     const discountPercent = Number(root.dataset.discount1Value ?? 5);
@@ -2170,7 +2198,9 @@
       threshold: Number(root.dataset[`discount${index + 1}Qty`]) || fallback.qty,
       value: Number(root.dataset[`discount${index + 1}Value`] ?? fallback.value)
     })).sort((a, b) => a.threshold - b.threshold);
-    const configuredLevels = amountBased ? [
+    const configuredLevels = shippingOnly ? [
+      { threshold: freeShippingMinimum, value: 0, freeShipping: true }
+    ] : amountBased ? [
       { threshold: discountMinimum, value: discountPercent, freeShipping: false },
       { threshold: freeShippingSubtotal, value: discountPercent, freeShipping: true }
     ].sort((a, b) => a.threshold - b.threshold) : quantityLevels;
@@ -2428,7 +2458,9 @@
     const updateProgress = totals => {
       // Interpolate between benefit markers using the configured amount or quantity.
       const qualifyingTotal = amountBased ? totals.subtotal : totals.quantity;
-      const levelPositions = settings.levels.map((level, index) => ((index + 0.5) / settings.levels.length) * 100);
+      const levelPositions = shippingOnly
+        ? [100]
+        : settings.levels.map((level, index) => ((index + 0.5) / settings.levels.length) * 100);
       const reachedIndex = settings.levels.reduce(
         (lastReached, level, index) => (qualifyingTotal >= level.threshold ? index : lastReached),
         -1
@@ -2454,13 +2486,19 @@
         const level = settings.levels[index];
         if (level) node.style.left = `${levelPositions[index]}%`;
         if (level && amountBased) {
-          node.querySelector('strong').textContent = level.freeShipping ? `${discountPercent}% + envío gratis` : `${discountPercent}% off`;
+          node.querySelector('strong').textContent = shippingOnly
+            ? 'Envío gratis'
+            : level.freeShipping ? `${discountPercent}% + envío gratis` : `${discountPercent}% off`;
           node.querySelector('small').textContent = formatMoney(level.threshold);
         }
         node.classList.toggle('is-reached', Boolean(level && qualifyingTotal >= level.threshold));
       });
 
-      if (amountBased) {
+      if (shippingOnly) {
+        progressMessage.textContent = totals.subtotal < freeShippingMinimum
+          ? `Agregá ${formatMoney(freeShippingMinimum - totals.subtotal)} para obtener envío gratis.`
+          : '¡Tenés envío gratis!';
+      } else if (amountBased) {
         if (totals.subtotal < discountMinimum) {
           progressMessage.textContent = `Agregá ${formatMoney(discountMinimum - totals.subtotal)} para obtener ${discountPercent}% de descuento en toda la orden.`;
         } else if (totals.subtotal < freeShippingSubtotal) {
@@ -2982,6 +3020,7 @@
       "label": "Calcular beneficios según",
       "default": "amount",
       "options": [
+        { "value": "shipping", "label": "Solo envío gratis (sin descuento)" },
         { "value": "amount", "label": "Monto de productos" },
         { "value": "quantity", "label": "Cantidad (modo anterior)" }
       ]
