@@ -1760,3 +1760,21 @@ cart-drawer .drawer__heading { font-family: var(--g4u-display); font-size: 2.4re
 @media (prefers-reduced-motion: reduce) {
   .product-card-wrapper .g4u-card__purchase .quick-add__submit { transition: none; }
 }
+
+/* PDP · Comparativa (mobile): en los dos paneles, imagen arriba a todo el ancho
+   y las métricas abajo en una grilla de 2 columnas × 2 filas. */
+@media screen and (max-width: 749px) {
+  .g4u-product-comparison__panel,
+  .g4u-product-comparison__panel--other,
+  .g4u-product-comparison__panel--g4u { gap: 2.4rem; grid-template-columns: minmax(0, 1fr); padding: 4rem 2rem 3.2rem; }
+  .g4u-product-comparison__panel h2 { font-size: 3.2rem; grid-row: 1; }
+  .g4u-product-comparison__panel .g4u-product-comparison__media,
+  .g4u-product-comparison__panel--g4u .g4u-product-comparison__media { grid-column: 1; grid-row: 2; justify-content: center; min-height: 0; }
+  .g4u-product-comparison__media img { height: 24rem; object-fit: contain; width: 100%; }
+  .g4u-product-comparison__panel .g4u-product-comparison__metrics,
+  .g4u-product-comparison__panel--g4u .g4u-product-comparison__metrics { column-gap: 2.4rem; grid-column: 1; grid-row: 3; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: .8rem; }
+  .g4u-product-comparison__metrics dt { font-size: 1.6rem; }
+  .g4u-product-comparison__metrics dd { font-size: 4.8rem; margin-bottom: .8rem; }
+  .g4u-product-comparison__metrics dd small { font-size: 3.2rem; }
+  .g4u-product-comparison__note { grid-row: 4; }
+}
