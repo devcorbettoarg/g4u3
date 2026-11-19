@@ -14,7 +14,7 @@
   font-family: var(--g4u-condensed);
   font-style: normal;
   font-weight: 700;
-  letter-spacing: .02em;
+  letter-spacing: .01em; /* Figma: 1% */
   line-height: .9;
   text-transform: uppercase;
 }

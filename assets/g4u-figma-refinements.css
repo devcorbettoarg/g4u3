@@ -1149,7 +1149,7 @@ text-transform: uppercase;
 body :is(
   .text-body, .rte, input, textarea, select,
   .price, .price-item, .card-information, .g4u-card__subtitle,
-  p:not(.g4u-display, .g4u-eyebrow, [class$="__eyebrow"], [class$="__title"])
+  p:not(.g4u-display, .g4u-eyebrow, [class*="__eyebrow"], [class*="__title"], [class*="__tagline"], .g4u-contact__header > p, .g4u-legal__header > p, .g4u-product-ingredients__header > p)
 ) {
   letter-spacing: .04em !important;
   letter-spacing: 4% !important;
@@ -1174,8 +1174,7 @@ body :is(
   .g4u-card__tag, .g4u-product-highlights__tags > span,
   .badge, .g4u-price__discount, .g4u-cart-drawer__discount-tag, .pb-card__tag
 ) {
-  letter-spacing: .1em !important;
-  letter-spacing: 10% !important;
+  letter-spacing: .05em !important; /* Figma: tags 5% */
 }
 
 /* Product card text reflects sold-out availability. */
@@ -1270,3 +1269,67 @@ body.template-suffix-harina .g4u-flour-hero {
 .g4u-about-manifesto__closing {
   font-family: var(--g4u-condensed);
 }
+
+
+/* ==========================================================================
+   AJUSTES CONTRA FIGMA · revisión 19/11/2026 (tareas F03–F16)
+   ========================================================================== */
+
+/* F03 / F07 · Antetítulos: Condensed 18px, interlineado 1,5, tracking 10%. */
+body :is(
+  .g4u-eyebrow, .g4u-comparison__eyebrow, .g4u-experts__eyebrow,
+  .g4u-featured-products__eyebrow, .g4u-science__eyebrow, .g4u-science__tagline,
+  .g4u-about-story__eyebrow, .g4u-product-editorial__eyebrow,
+  .g4u-product-ingredients__header > p, .g4u-contact__header > p, .g4u-legal__header > p
+) {
+  letter-spacing: .1em !important;
+  line-height: 1.5;
+}
+
+/* F05 / F06 · Producto: lista de beneficios y textos auxiliares en Medium 16px. */
+.template-product .g4u-product-highlights .barkin-benefits-list__item {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+.template-product :is(.g4u-product-share-row, .g4u-product-payments) > span {
+  color: #766c70;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* F09 · Colores de Dawn que se colaban: tinta y gris de G4U. */
+.g4u-product-testimonials blockquote footer { color: var(--g4u-ink); }
+.template-cart .g4u-featured-products__title { color: var(--g4u-ink); }
+.facet-filters__label, .facet-filters__label label { color: #766c70; }
+
+/* F10 · Cinta nutricional a 120px fuera de la Home (producto, colección, combo, harina). */
+@media screen and (min-width: 990px) {
+  body:not(.template-index) .g4u-nutrition-marquee { height: 20rem; }
+  body:not(.template-index) .g4u-nutrition-marquee__text { font-size: 120px; }
+}
+
+/* F11 · Breadcrumb a 16px en todas las páginas. */
+.g4u-breadcrumb__list, .g4u-breadcrumb__list li, .g4u-breadcrumb__list a { font-size: 1.6rem; }
+
+/* F12 · Banner "No tenés que elegir entre…": interlineado 0,8. */
+.g4u-choice-banner__copy { line-height: .8; }
+
+/* F13 · Tabla comparativa: filas a 1,5 y nota en Medium. */
+.g4u-comparison__table tbody :is(th, td) { line-height: 1.5; }
+.g4u-comparison__note { font-weight: 500; }
+
+/* F14 · "Sentite bien": texto a 16px. */
+.g4u-feel-good__text, .g4u-feel-good__text p { font-size: 1.6rem; }
+
+/* F15 · Colección: "Ver filtros" a 16px. */
+.g4u-facets__toggle-label { font-size: 1.6rem; }
+
+/* F16 · Contacto: labels del formulario a 16px. */
+.g4u-contact__form label { font-size: 1.6rem; line-height: 1.5; }
+
+/* F02 · Los textos gigantes (banner y cinta) usan 2% en Figma; los títulos de sección 1%. */
+.g4u-choice-banner__copy, .g4u-nutrition-marquee__text { letter-spacing: .02em; }
+
+/* F03 · "POR QUÉ LO USAMOS" (ciencia): interlineado 1,5. */
+.g4u-science__why { line-height: 1.5; }
