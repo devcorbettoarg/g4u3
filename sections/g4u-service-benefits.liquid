@@ -1,4 +1,4 @@
-<section class="g4u-service-benefits wow animate__g4uFadeInSoft" data-wow-duration="0.8s" aria-label="{{ section.settings.accessibility_label | escape }}">
+<section class="g4u-service-benefits" aria-label="{{ section.settings.accessibility_label | escape }}">
   <div class="g4u-service-benefits__grid">
     {%- for block in section.blocks -%}
       {%- liquid
@@ -11,7 +11,7 @@
           assign fallback_icon = 'g4u-service-payment.svg'
         endif
       -%}
-      <article class="g4u-service-benefits__item" {{ block.shopify_attributes }}>
+      <article class="g4u-service-benefits__item wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index0 | times: 0.2 }}s" {{ block.shopify_attributes }}>
         {%- if block.settings.icon != blank -%}
           {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-service-benefits__icon', loading: 'lazy' }}
         {%- else -%}

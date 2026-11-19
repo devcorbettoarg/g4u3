@@ -1,7 +1,7 @@
 <script src="{{ 'g4u-tabs.js' | asset_url }}" defer="defer"></script>
 
-<section class="g4u-science wow animate__g4uFadeInSoft" data-wow-duration="0.8s" aria-labelledby="G4uScience-{{ section.id }}">
-  <header class="g4u-science__header">
+<section class="g4u-science" aria-labelledby="G4uScience-{{ section.id }}">
+  <header class="g4u-science__header wow animate__fadeIn" data-wow-duration="0.8s">
     <p class="g4u-science__eyebrow">
       {{ section.settings.eyebrow | escape }}
     </p>
@@ -20,7 +20,7 @@
 
   <g4u-tabs>
 
-    <div class="g4u-science__tabs-scroll">
+    <div class="g4u-science__tabs-scroll wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.15s">
       <div
         class="g4u-science__tablist"
         role="tablist"
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="g4u-science__panels">
+    <div class="g4u-science__panels wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.25s">
 
       {%- for block in section.blocks -%}
 

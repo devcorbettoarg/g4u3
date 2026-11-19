@@ -1,10 +1,10 @@
-<section class="g4u-faq-contact wow animate__g4uFadeInSoft" data-wow-duration="0.8s" aria-labelledby="G4uFaqContactTitle-{{ section.id }}">
+<section class="g4u-faq-contact" aria-labelledby="G4uFaqContactTitle-{{ section.id }}">
   <div class="g4u-faq-contact__container">
-    <div class="g4u-faq-contact__content">
+    <div class="g4u-faq-contact__content wow animate__fadeIn" data-wow-duration="0.8s">
       <h2 id="G4uFaqContactTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>
       {%- if section.settings.text != blank -%}<div class="g4u-faq-contact__text rte">{{ section.settings.text }}</div>{%- endif -%}
     </div>
-    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-faq-contact__button" href="{{ section.settings.button_link | default: routes.root_url }}"{% render 'g4u-link-target', url: section.settings.button_link %}>{{ section.settings.button_label | escape }}</a>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}<a class="g4u-pill g4u-faq-contact__button wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="0.2s" href="{{ section.settings.button_link | default: routes.root_url }}"{% render 'g4u-link-target', url: section.settings.button_link %}>{{ section.settings.button_label | escape }}</a>{%- endif -%}
   </div>
 </section>
 

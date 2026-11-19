@@ -1,14 +1,14 @@
 <section
-  class="g4u-faq-page wow animate__g4uFadeInSoft" data-wow-duration="0.8s"
+  class="g4u-faq-page"
   aria-labelledby="G4uFaqPageTitle-{{ section.id }}"
   style="--g4u-faq-padding-top: {{ section.settings.padding_top }}px; --g4u-faq-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <header class="g4u-faq-page__header"><h1 class="g4u-display" id="G4uFaqPageTitle-{{ section.id }}">{{ section.settings.title | escape }}</h1><div class="rte">{{ section.settings.intro }}</div></header>
+  <header class="g4u-faq-page__header wow animate__fadeIn" data-wow-duration="0.8s"><h1 class="g4u-display" id="G4uFaqPageTitle-{{ section.id }}">{{ section.settings.title | escape }}</h1><div class="rte">{{ section.settings.intro }}</div></header>
   <div class="g4u-faq-page__groups">
     {%- for block in section.blocks -%}
       {%- if block.type == 'faq_header' -%}
         {%- assign faq_start = forloop.index -%}
-        <article class="g4u-faq-page__group" {{ block.shopify_attributes }}>
+        <article class="g4u-faq-page__group wow animate__fadeIn" data-wow-duration="0.8s" {{ block.shopify_attributes }}>
           <header class="g4u-faq-page__group-header">
             <h2>{{ block.settings.title | escape }}</h2>
             {%- if block.settings.subtitle != blank -%}<p class="g4u-faq-page__group-subtitle">{{ block.settings.subtitle | escape }}</p>{%- endif -%}

@@ -1,4 +1,4 @@
-<section class="g4u-nutrition-marquee{% if section.settings.continuous_animation %} g4u-nutrition-marquee--continuous{% endif %} wow animate__g4uFadeInSoft" data-wow-duration="0.8s" aria-label="{{ section.settings.accessibility_label | escape }}" style="--g4u-marquee-duration: {{ section.settings.duration }}s;">
+<section class="g4u-nutrition-marquee{% if section.settings.continuous_animation %} g4u-nutrition-marquee--continuous{% endif %}" aria-label="{{ section.settings.accessibility_label | escape }}" style="--g4u-marquee-duration: {{ section.settings.duration }}s;">
   <div class="g4u-nutrition-marquee__track">
     {%- for duplicate in (1..2) -%}
       <div class="g4u-nutrition-marquee__group"{% if duplicate == 2 %} aria-hidden="true"{% endif %}>
@@ -11,7 +11,7 @@
               assign fallback_icon = 'g4u-marquee-fiber.svg'
             endif
           -%}
-          <div class="g4u-nutrition-marquee__item"{% if duplicate == 1 %} {{ block.shopify_attributes }}{% endif %}>
+          <div class="g4u-nutrition-marquee__item wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index0 | times: 0.15 }}s"{% if duplicate == 1 %} {{ block.shopify_attributes }}{% endif %}>
             {%- if block.settings.icon != blank -%}
               {{ block.settings.icon | image_url: width: 180 | image_tag: class: 'g4u-nutrition-marquee__icon', loading: 'lazy' }}
             {%- else -%}

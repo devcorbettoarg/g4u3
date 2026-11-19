@@ -1,7 +1,7 @@
 <script src="{{ 'g4u-scroll-carousel.js' | asset_url }}" defer="defer"></script>
-<g4u-scroll-carousel class="g4u-product-testimonials wow animate__g4uFadeInSoft" data-wow-duration="0.8s" role="region" aria-labelledby="G4uProductTestimonials-{{ section.id }}" data-g4u-scroll-page>
+<g4u-scroll-carousel class="g4u-product-testimonials" role="region" aria-labelledby="G4uProductTestimonials-{{ section.id }}" data-g4u-scroll-page>
   <div class="g4u-product-testimonials__inner">
-    <header class="g4u-product-testimonials__header">
+    <header class="g4u-product-testimonials__header wow animate__fadeIn" data-wow-duration="0.8s">
       <h2 class="g4u-display" id="G4uProductTestimonials-{{ section.id }}">{{ section.settings.title | escape }}</h2>
       {%- if section.blocks.size > 0 -%}
         <div class="g4u-product-testimonials__controls">
@@ -17,7 +17,7 @@
     </header>
     <div class="g4u-product-testimonials__grid" data-g4u-scroll-track>
       {%- for block in section.blocks -%}
-        <blockquote {{ block.shopify_attributes }}>
+        <blockquote class="wow animate__fadeIn" data-wow-duration="0.8s" data-wow-delay="{{ forloop.index0 | modulo: 3 | plus: 1 | times: 0.15 }}s" {{ block.shopify_attributes }}>
         <p class="g4u-product-testimonials__stars" aria-label="{{ block.settings.rating | escape }} de 5 estrellas">
   <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
   <img src="{{ 'Vector.svg' | asset_url }}" alt="" width="16" height="16">
