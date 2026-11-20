@@ -1886,3 +1886,15 @@ body.template-product .kaching-bundles .kaching-bundles__bar-variants {
   body.template-product .kaching-bundles .kaching-bundles__bar-title,
   body.template-product .kaching-bundles .kaching-bundles__bar-price { font-size: 14px !important; }
 }
+
+/* G4U · Entrada del carrito más suave: el panel se desliza con desaceleración larga (0,7s) y el
+   fondo oscuro aparece en paralelo; al cerrar sale un poco más rápido (0,5s). La visibilidad se
+   mantiene hasta que termina la salida, para que no se corte a mitad de camino. */
+cart-drawer.drawer { transition: opacity .45s ease, visibility 0s linear .5s; }
+cart-drawer.drawer.active { transition: opacity .45s ease, visibility 0s linear 0s; }
+cart-drawer .drawer__inner { transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+cart-drawer.drawer.active .drawer__inner { transition: transform .7s cubic-bezier(.22, 1, .36, 1); }
+@media (prefers-reduced-motion: reduce) {
+  cart-drawer.drawer, cart-drawer.drawer.active,
+  cart-drawer .drawer__inner, cart-drawer.drawer.active .drawer__inner { transition: none; }
+}
