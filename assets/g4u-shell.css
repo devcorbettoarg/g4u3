@@ -522,9 +522,32 @@ body:not(.template-index) #cart-icon-bubble svg path {
     box-sizing: border-box;
     column-gap: 0 !important;
     grid-template-areas: 'navigation heading icons' !important;
-    grid-template-columns: 7.6rem auto 7.6rem !important;
+    grid-template-columns: 7.6rem minmax(0, 1fr) 7.6rem !important;
     min-width: 0;
     width: 100%;
+  }
+
+  /* Logo centrado de forma robusta: en la home va dentro de un <h1> que ocupa toda la columna
+     del medio y centra el logo con flex (antes dependía de justify-self: center, que algunos
+     navegadores resuelven distinto cuando el logo no entra). Si la pantalla es muy angosta
+     (p. ej. 320px, iPhone con "Zoom de pantalla"), el logo se achica en vez de pisar los íconos. */
+  .section-header .header__heading {
+    display: flex;
+    justify-content: center;
+    justify-self: stretch !important;
+    min-width: 0;
+    width: 100%;
+  }
+  .section-header .header__heading > .header__heading-link {
+    flex: 0 1 auto;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .section-header .header .g4u-logo--forced {
+    flex-shrink: 1 !important;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .section-header .header > header-drawer {
@@ -609,10 +632,17 @@ body:not(.template-index) #cart-icon-bubble svg path {
   body.template-policy .g4u-logo--forced,
   body.template-search .g4u-logo--forced,
   body.template-suffix-arma-tu-combo .g4u-logo--forced { flex-basis: 9.6rem; height: 4rem; width: 9.6rem; }
-  .g4u-logo,
+  .g4u-logo { height: 4.8rem; width: 11.6rem; }
+  /* Home, Nosotros y Harina sobre el hero: ancho y flex-basis iguales (14.6rem). Antes el ancho
+     era 11.6rem y el flex-basis 14.6rem: Chrome usaba 14.6 y lo centraba, pero Safari armaba el
+     link a 11.6 y el logo se desbordaba a la derecha, quedando corrido ~15px solo en la home. */
   body.template-index .section-header:not(.shopify-section-header-sticky) .g4u-logo,
   body.template-suffix-nosotros .section-header:not(.shopify-section-header-sticky) .g4u-logo,
-  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo { height: 4.8rem; width: 11.6rem; }
+  body.template-suffix-harina .section-header:not(.shopify-section-header-sticky) .g4u-logo {
+    flex-basis: var(--g4u-header-logo-width);
+    height: 4.8rem;
+    width: var(--g4u-header-logo-width);
+  }
 
   .section-header.menu-open .header-wrapper,
   .section-header:has(.menu-drawer-container[open]) .header-wrapper {
@@ -828,4 +858,20 @@ body div[class*="kl-teaser-"] {
 }
 @media screen and (max-width: 749px) {
   body div[class*="kl-teaser-"] { left: 2rem !important; }
+}
+
+/* G4U · Botón flotante de WhatsApp (app Dondy): más chico en mobile (73px → 56px).
+   La app fija el tamaño con variables inline en el div del ícono; acá se pisan. */
+@media screen and (max-width: 749px) {
+  #chat-bubble #whatsapp-link > div {
+    --whatsapp-link-width: 5.6rem !important;
+    --whatsapp-link-height: 5.6rem !important;
+  }
+  #chat-bubble.whatsapp-widget,
+  #chat-bubble #whatsapp-link,
+  #chat-bubble #whatsapp-link > div,
+  #chat-bubble #whatsapp-link svg {
+    height: 5.6rem !important;
+    width: 5.6rem !important;
+  }
 }
