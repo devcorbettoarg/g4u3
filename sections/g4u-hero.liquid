@@ -1,3 +1,4 @@
+<script src="{{ 'g4u-hero-parallax.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'g4u-hero.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'g4u-scroll-next.js' | asset_url }}" defer="defer"></script>
 
@@ -20,7 +21,7 @@
         aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
         {{ block.shopify_attributes }}
       >
-        <picture class="g4u-home-hero__media">
+        <picture class="g4u-home-hero__media" data-g4u-parallax="0.35">
           {%- if block.settings.mobile_image != blank -%}
             <source
               media="(max-width: 749px)"

@@ -1326,3 +1326,7 @@ margin-top:2px;}
 @media (prefers-reduced-motion: reduce) {
   .g4u-home-hero__slide.is-active .g4u-home-hero__content > * { animation: none; }
 }
+
+/* G4U · Parallax de los heros (g4u-hero-parallax.js): el <picture> tiene que ser de bloque
+   para que el transform le aplique. */
+[data-g4u-parallax] { display: block; }

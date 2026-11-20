@@ -1,10 +1,11 @@
+<script src="{{ 'g4u-hero-parallax.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'g4u-scroll-next.js' | asset_url }}" defer="defer"></script>
 <section
   class="g4u-about-hero"
   aria-labelledby="G4uAboutHero-{{ section.id }}"
 >
 
-  <picture class="g4u-about-hero__media">
+  <picture class="g4u-about-hero__media" data-g4u-parallax="0.35">
 
     {%- if section.settings.mobile_image != blank -%}
       <source
