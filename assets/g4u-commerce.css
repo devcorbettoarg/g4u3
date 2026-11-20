@@ -1734,3 +1734,104 @@ product-recommendations.related-products:not(:has(*)) { padding: 0 !important; }
 @media screen and (max-width: 749px) {
   .g4u-breadcrumb { padding: 1.6rem 2rem; }
 }
+
+/* G4U · Kaching Bundles con el estilo del selector de unidades del theme (pills).
+   Kaching aplica el descuento por cantidad y, en los packs de 4 y 8, deja combinar
+   productos ("Suma otro producto"). Se le da la forma de las pills "1 unidad / 4 unidades":
+   cada opción es una pill en una fila y el selector de productos del pack elegido baja a
+   todo el ancho debajo de la fila. Cuando Kaching está, se ocultan las pills del theme y el
+   título de Kaching, y queda el título del theme. Clases propias de Kaching (light DOM); los selectores llevan
+   "body … .kaching-bundles" para ganarle a los estilos inline de la app. */
+.template-product .product__info-container:has(.kaching-bundles__bar) .g4u-quantity-options__list { display: none; }
+.template-product .product__info-container:has(.kaching-bundles__bar) .g4u-quantity-options { margin-bottom: .8rem; }
+body.template-product .kaching-bundles .kaching-bundles__block-title { display: none !important; }
+body.template-product .kaching-bundles .kaching-bundles__bar > input[type="radio"] {
+  clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px;
+}
+
+/* Fila de pills: la barra, su label y su wrapper no generan caja propia, así la pill
+   (bar-main) y el selector de productos son hijos directos de la fila. */
+body.template-product .kaching-bundles .kaching-bundles__bars {
+  align-items: center;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin: 0 0 2.4rem;
+  padding: 0 !important;
+}
+body.template-product .kaching-bundles .kaching-bundles__bar,
+body.template-product .kaching-bundles .kaching-bundles__bar-container,
+body.template-product .kaching-bundles .kaching-bundles__bar-wrapper { display: contents !important; }
+
+body.template-product .kaching-bundles .kaching-bundles__bar-main {
+  align-items: center !important;
+  background: transparent;
+  border: .1rem solid #26131b;
+  border-radius: 10rem;
+  box-sizing: border-box;
+  color: #26131b;
+  cursor: pointer;
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  gap: .8rem !important;
+  min-height: 4rem !important;
+  padding: .8rem 1.6rem;
+}
+body.template-product .kaching-bundles .kaching-bundles__bar--selected .kaching-bundles__bar-main,
+body.template-product .kaching-bundles .kaching-bundles__bar > input:checked + .kaching-bundles__bar-container .kaching-bundles__bar-main {
+  background: #26131b;
+  color: #fff8f0;
+}
+body.template-product .kaching-bundles .kaching-bundles__bar-content,
+body.template-product .kaching-bundles .kaching-bundles__bar-content-left,
+body.template-product .kaching-bundles .kaching-bundles__bar-first-line,
+body.template-product .kaching-bundles .kaching-bundles__bar-pricing,
+body.template-product .kaching-bundles .kaching-bundles__bar-pricing-row {
+  align-items: center !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  gap: .4rem !important;
+  min-height: 0 !important;
+}
+body.template-product .kaching-bundles .kaching-bundles__bar-content { gap: .8rem !important; }
+body.template-product .kaching-bundles .kaching-bundles__bar-radio,
+body.template-product .kaching-bundles .kaching-bundles__bar-image,
+body.template-product .kaching-bundles .kaching-bundles__bar-subtitle,
+body.template-product .kaching-bundles .kaching-bundles__bar-full-price,
+body.template-product .kaching-bundles .kaching-bundles__bar-unit-price,
+body.template-product .kaching-bundles .kaching-bundles__bar-label,
+body.template-product .kaching-bundles .kaching-bundles__bar-most-popular,
+body.template-product .kaching-bundles .kaching-bundles__badge-border { display: none !important; }
+body.template-product .kaching-bundles .kaching-bundles__bar-title,
+body.template-product .kaching-bundles .kaching-bundles__bar-price {
+  color: inherit !important;
+  font-family: "Europa Grotesk SH", var(--g4u-display) !important;
+  font-size: 1.6rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: .04em !important;
+  line-height: 1.5 !important;
+  white-space: nowrap;
+}
+body.template-product .kaching-bundles .kaching-bundles__bar-price { display: inline-flex !important; }
+body.template-product .kaching-bundles .kaching-bundles__bar-price::before { content: "("; }
+body.template-product .kaching-bundles .kaching-bundles__bar-price::after { content: ")"; }
+
+/* Selector de productos del pack elegido: abajo de la fila, a todo el ancho. */
+body.template-product .kaching-bundles .kaching-bundles__bar-collection-products,
+body.template-product .kaching-bundles .kaching-bundles__bar-variants {
+  box-sizing: border-box;
+  flex: 1 0 100%;
+  margin: 0 !important;
+  order: 10;
+}
+
+@media screen and (max-width: 749px) {
+  body.template-product .kaching-bundles .kaching-bundles__bars { gap: .8rem; }
+  body.template-product .kaching-bundles .kaching-bundles__bar-main { padding: 6px 12px; }
+  body.template-product .kaching-bundles .kaching-bundles__bar-title,
+  body.template-product .kaching-bundles .kaching-bundles__bar-price { font-size: 14px !important; }
+}

@@ -817,3 +817,15 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
     width: 11.6rem;
   }
 }
+
+/* G4U · Teaser de Klaviyo ("Suscribite y obtené un 5% OFF", la pestaña que queda al cerrar
+   el popup): abajo a la izquierda, alineado al borde del contenedor (en vez de centrado), así
+   no choca con el botón de WhatsApp de la derecha. La clase la genera Klaviyo (kl-teaser-…). */
+body div[class*="kl-teaser-"] {
+  left: max(2rem, calc((100vw - var(--g4u-container-width, 136rem)) / 2 + 4rem)) !important;
+  right: auto !important;
+  transform: none !important;
+}
+@media screen and (max-width: 749px) {
+  body div[class*="kl-teaser-"] { left: 2rem !important; }
+}
