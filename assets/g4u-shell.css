@@ -848,17 +848,22 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
   }
 }
 
-/* G4U · Teaser de Klaviyo ("Suscribite y obtené un 5% OFF", la pestaña que queda al cerrar
-   el popup): abajo a la izquierda, alineado al borde del contenedor (en vez de centrado), así
-   no choca con el botón de WhatsApp de la derecha. La clase la genera Klaviyo (kl-teaser-…). */
-body div[class*="kl-teaser-"] {
-  left: max(2rem, calc((100vw - var(--g4u-container-width, 136rem)) / 2 + 4rem)) !important;
-  right: auto !important;
-  transform: none !important;
-}
-@media screen and (max-width: 749px) {
-  body div[class*="kl-teaser-"] { left: 2rem !important; }
-}
+/* G4U · Teaser de Klaviyo ("Suscribite y obtené un 5% OFF", la pestaña flotante que queda al
+   cerrar el popup): oculto, porque tapa contenido. El popup de suscripción sigue apareciendo
+   igual. La clase la genera Klaviyo (kl-teaser-<id del formulario>). */
+body div[class*="kl-teaser-"] { display: none !important; }
+
+/* G4U · Lenis (scroll suave, assets/g4u-smooth-scroll.js): estilos base de la librería. */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* G4U · Botón flotante de WhatsApp (app Dondy): solo en la home. En el resto de las páginas
+   se oculta (la app se sigue cargando, pero el botón no se ve). Para volver a mostrarlo en todo
+   el sitio, borrar esta regla. */
+body:not(.template-index) #whatsapp-widget-root { display: none !important; }
 
 /* G4U · Botón flotante de WhatsApp (app Dondy): más chico en mobile (73px → 56px).
    La app fija el tamaño con variables inline en el div del ícono; acá se pisan. */

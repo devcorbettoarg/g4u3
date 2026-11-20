@@ -26,6 +26,7 @@
     if (!target) return;
 
     event.preventDefault();
+    if (window.g4uLenis) { window.g4uLenis.scrollTo(target, { duration: 1.2 }); return; } // scroll suave de Lenis
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const top = target.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
