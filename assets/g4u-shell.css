@@ -850,8 +850,17 @@ body.template-404 .section-header:not(.menu-open):not(:has(header-menu details[o
 
 /* G4U · Teaser de Klaviyo ("Suscribite y obtené un 5% OFF", la pestaña flotante que queda al
    cerrar el popup): oculto, porque tapa contenido. El popup de suscripción sigue apareciendo
-   igual. La clase la genera Klaviyo (kl-teaser-<id del formulario>). */
-body div[class*="kl-teaser-"] { display: none !important; }
+   igual. La clase la genera Klaviyo (kl-teaser-<id del formulario>).
+   Ojo: NO usar display:none. Al cerrar el popup Klaviyo espera el fin de la animación de entrada
+   del teaser para terminar de cerrarlo; con display:none esa animación no corre, el popup queda
+   invisible encima de la página y el body sigue con klaviyo-prevent-body-scrolling (sin scroll).
+   Por eso se oculta con visibility/opacity: la animación corre igual pero no se ve ni se puede tocar. */
+body div[class*="kl-teaser-"],
+body div[class*="kl-teaser-"] * {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
 
 /* G4U · Lenis (scroll suave, assets/g4u-smooth-scroll.js): estilos base de la librería. */
 html.lenis,
