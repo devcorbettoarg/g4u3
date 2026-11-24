@@ -545,7 +545,9 @@ margin-bottom:0px }
 .template-product .product-media-modal .product-media-modal__content img {
   background: transparent;
   border: 0;
-  border-radius: 1.2rem;
+  border-radius: 1.6rem;
+  /* el border-radius solo no recorta la foto en este modal (img flex + object-fit): clip-path sí */
+  clip-path: inset(0 round 1.6rem);
   cursor: default;
   height: var(--modal-media-height) !important;
   max-height: var(--modal-media-height) !important;

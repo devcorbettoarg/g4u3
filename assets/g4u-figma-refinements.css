@@ -1390,3 +1390,20 @@ body .g4u-flour-faq .g4u-flour-faq__item .rte > *:last-child { margin-bottom: 0;
   .product-card-wrapper .g4u-card__purchase { transform: none !important; }
   .product-card-wrapper .media.media--hover-effect > img { transition: none !important; }
 }
+
+/* G4U · Transiciones suaves en botones y links (24/11/2026).
+   :where() deja la especificidad en 0: cualquier transition propia de un módulo sigue mandando. */
+:where(a, button, .button, .link, [role="button"], input[type="submit"], input[type="button"], summary) {
+  transition: color .3s ease, background-color .3s ease, border-color .3s ease, box-shadow .3s ease,
+    opacity .3s ease, text-decoration-color .3s ease, text-underline-offset .3s ease;
+}
+:where(a, button, .button, .link) :where(svg, .icon, path) { transition: color .3s ease, fill .3s ease, stroke .3s ease; }
+/* Los botones de Dawn (.button, Agregar al carrito, etc.) traen su propia transition solo de box-shadow: se suma el resto. */
+.button, .shopify-challenge__button, .customer button, .shopify-payment-button__button {
+  transition: color .3s ease, background-color .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .3s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button, .button, .link, [role="button"], input[type="submit"], input[type="button"], summary),
+  :where(a, button, .button, .link) :where(svg, .icon, path) { transition: none; }
+  .button, .shopify-challenge__button, .customer button, .shopify-payment-button__button { transition: none; }
+}
