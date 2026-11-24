@@ -540,7 +540,11 @@ margin-bottom:0px }
 }
 .template-product .product-media-modal__content > :only-child { margin-inline: auto; }
 .template-product .product-media-modal .product-media-modal__content .media { height: 100%; padding: 0; width: auto; }
+/* background transparente: Dawn (.global-media-settings) le pone fondo crema a la imagen y
+   asomaba como un borde claro alrededor de la foto y en las esquinas redondeadas. */
 .template-product .product-media-modal .product-media-modal__content img {
+  background: transparent;
+  border: 0;
   border-radius: 1.2rem;
   cursor: default;
   height: var(--modal-media-height) !important;
