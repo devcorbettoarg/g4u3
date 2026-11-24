@@ -16,6 +16,10 @@ product-component .card .card__inner {
    - "Europa Grotesk SH R"   Regular (se usa puntualmente)
    Títulos: usar var(--g4u-condensed) (ver .g4u-display en g4u-home.css).
    ========================================================================== */
+/* g4u: ascent/descent-override (24/11/2026). Las métricas originales (77/23) dejan las mayúsculas
+   ~0,08em por encima del centro de la línea y el texto de botones y pills se ve alto. 83/17 suma
+   lo mismo (no cambia el alto de línea) y centra la altura de mayúsculas. La Light (90/25) ya
+   queda centrada y no se toca. */
 @font-face {
   font-family: "Europa Grotesk SH";
   src: url("EuropaGroteskSH-Lig.woff2") format("woff2"), url("https://cdn.shopify.com/s/files/1/0988/5404/3729/files/EuropaGroteskSH-Lig.otf?v=1789834462") format("opentype");
@@ -30,6 +34,8 @@ product-component .card .card__inner {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -38,6 +44,8 @@ product-component .card .card__inner {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -46,6 +54,8 @@ product-component .card .card__inner {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -54,6 +64,8 @@ product-component .card .card__inner {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -62,6 +74,8 @@ product-component .card .card__inner {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -70,6 +84,8 @@ product-component .card .card__inner {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 @font-face {
@@ -78,6 +94,8 @@ product-component .card .card__inner {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  ascent-override: 83%;
+  descent-override: 17%;
 }
 
 :root {
