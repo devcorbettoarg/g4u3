@@ -58,7 +58,7 @@
         "quantity_options": {
           "type": "g4u_quantity_options",
           "settings": {
-            "heading": "¡Ahorrá comprando más unidades!",
+            "heading": "Elegí cuántas unidades querés",
             "aria_label": "Elegir cantidad"
           }
         },
@@ -613,12 +613,12 @@
         "flour"
       ],
       "settings": {
+        "background": "gray",
         "title": "Preguntas frecuentes",
         "description": "<p>Todo lo que querés saber antes de elegir tu producto G4U.</p>",
         "contact_title": "¿Todavía tenés preguntas?",
         "contact_label": "Escribinos por WhatsApp",
-        "contact_link": "https://wa.me/5491156188706",
-        "background": "gray"
+        "contact_link": "https://wa.me/5491156188706"
       }
     },
     "g4u_services": {
